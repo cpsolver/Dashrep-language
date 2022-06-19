@@ -228,53 +228,9 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_text_item
-
-void get_next_text_item( )
-{
-    log_out << "function get_next_text_item" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_text_by_offset_and_length
-
-void get_text_by_offset_and_length( )
-{
-    log_out << "function get_text_by_offset_and_length (substr)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function find_matching_text
-
-void find_matching_text( )
-{
-    log_out << "function find_matching_text (index)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function yes_or_no_matching_text
-
-void yes_or_no_matching_text( )
-{
-    log_out << "function yes_or_no_matching_text" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function text_append
 
-void text_append( )
+void text_append( int from_text_item_id_number , int to_text_item_id_number )
 {
     log_out << "function text_append (overwrites char storage if fits, else abandons that storage and marks that storage area as available, and creates new storage area that holds text, but do not do trash collection; if runs out of space, programmer should split large task into smaller tasks)" << std::endl ;
     return ;
@@ -283,11 +239,88 @@ void text_append( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function text_item_clear
+
+void text_item_clear( int text_item_id_number )
+{
+    log_out << "function text_item_clear (changes text item to point to nothing, but keeps bottom-level text items)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function text_copy
 
-void text_copy( )
+void text_copy( int from_text_item_id_number , int to_text_item_id_number )
 {
-    log_out << "function text_copy (use text_append)" << std::endl ;
+    log_out << "function text_copy (use text_append after clearing prior contents)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_text_item
+
+void store_text_item( int from_text_item_id_number , int to_text_item_id_number )
+{
+    log_out << "function store_text_item" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function phrase_name_lookup
+
+void phrase_name_lookup( int text_item_id_number )
+{
+    log_out << "function phrase_name_lookup (and creates text item if phrase is new)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_text_item
+
+void get_next_text_item_within_text_item( int text_item_id_number , int pointer_to_within_text_item )
+{
+    log_out << "function get_next_text_item_within_text_item (and keep track of nested pointers)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_text_by_character_offset_and_length
+
+void get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
+{
+    log_out << "function get_text_by_character_offset_and_length (equivalent to standard substr function)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function find_matching_text
+
+void find_matching_text( int text_item_id_number , int pointer_to_within_text_item , int text_to_find_item_id_number )
+{
+    log_out << "function find_matching_text (equivalent to standard index function)" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function yes_or_no_matching_text
+
+void yes_or_no_matching_text( int from_text_item_id_number , int to_text_item_id_number )
+{
+    log_out << "function yes_or_no_matching_text" << std::endl ;
     return ;
 }
 
@@ -296,7 +329,7 @@ void text_copy( )
 // -----------------------------------------------
 //  Function text_replace
 
-void text_replace( )
+void text_replace( int text_item_id_number , int pointer_to_within_text_item )
 {
     log_out << "function text_replace (using pointers)" << std::endl ;
     return ;
@@ -307,9 +340,9 @@ void text_replace( )
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text
 
-void point_to_pattern_matching_text( )
+void point_to_pattern_matching_text( int text_item_id_number , int pointer_to_within_text_item ,  int text_pattern_id_number )
 {
-    log_out << "function point_to_pattern_matching_text (uses state machine, and symbol categorization) (do not use to find non-symbol alphanumeric text)" << std::endl ;
+    log_out << "function point_to_pattern_matching_text (uses state machine, and symbol categorization) (if non-symbol alphanumeric text is part of the intended pattern, first find that text using find_matching_text)" << std::endl ;
     return ;
 }
 
@@ -318,9 +351,9 @@ void point_to_pattern_matching_text( )
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text_backwards
 
-void point_to_pattern_matching_text_backwards( )
+void point_to_pattern_matching_text_backwards( int text_item_id_number , int pointer_to_within_text_item ,  int text_pattern_id_number )
 {
-    log_out << "function point_to_pattern_matching_text_backwards" << std::endl ;
+    log_out << "function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
     return ;
 }
 
