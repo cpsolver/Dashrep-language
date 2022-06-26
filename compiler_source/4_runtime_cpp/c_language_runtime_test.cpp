@@ -49,41 +49,59 @@ int global_text_length_for_item[ 20005 ] ;
 // -----------------------------------------------
 //  Declare the values stored in:
 //  global_text_status_available_or_read_only_for_item
+//
+//  In the future, possibly define a new Dashrep
+//  phrase "internal-reuse-memory" that allows
+//  text storage to be changeable.  In the
+//  meantime only use "read only" status.
 
-const int global_text_status_available = 1 ;
-const int global_text_status_read_only = 2 ;
-const int global_text_status_changeable = 2 ;
+const int global_text_status_read_only = 1 ;
+const int global_text_status_available = 2 ;
+const int global_text_status_changeable = 3 ;
 
 
 // -----------------------------------------------
-//  Declare the values stored in:
-//  global_text_category_for_item
-//
-//  Also declare the list that converts the
-//  character's ASCII code into one of these
-//  categories.
+//  Declare character categories, and a list that
+//  converts a character's ASCII code into one of
+//  these character categories.
 
 const int global_length_of_list_of_character_numbers = 256 ;
 
-int global_category_number_for_character_number[ 260 ] ;
+int global_character_category_number_for_character_number[ 260 ] ;
 
-const int global_category_empty = 0 ;
-const int global_category_other = 1 ;
-const int global_category_hyphen = 2 ;  // also used as minus sign
-const int global_category_space = 3 ;
-const int global_category_underscore = 4 ;
-const int global_category_newline = 5 ;
-const int global_category_tab = 6 ;
-const int global_category_slash = 7 ;
-const int global_category_open_angle_bracket = 8 ;
-const int global_category_close_angle_bracket = 9 ;
-const int global_category_quotation_mark = 10 ;  // double quotation mark
-const int global_category_apostrophe = 11 ;  // also single quotation mark
-const int global_category_period = 12 ;  // also used as decimal point
-const int global_category_plus_sign = 13 ;
-const int global_category_digit = 14 ;  // 0 through 9
-const int global_category_formfeed = 15 ;
-const int global_category_carriage_return = 16 ;
+const int global_character_category_empty = 0 ;
+const int global_character_category_other = 1 ;
+const int global_character_category_hyphen = 2 ;  // also used as minus sign
+const int global_character_category_space = 3 ;
+const int global_character_category_underscore = 4 ;
+const int global_character_category_newline = 5 ;
+const int global_character_category_tab = 6 ;
+const int global_character_category_slash = 7 ;
+const int global_character_category_open_angle_bracket = 8 ;
+const int global_character_category_close_angle_bracket = 9 ;
+const int global_character_category_quotation_mark = 10 ;  // double quotation mark
+const int global_character_category_apostrophe = 11 ;  // also single quotation mark
+const int global_character_category_period = 12 ;  // also used as decimal point
+const int global_character_category_plus_sign = 13 ;
+const int global_character_category_digit = 14 ;  // 0 through 9
+const int global_character_category_formfeed = 15 ;
+const int global_character_category_carriage_return = 16 ;
+
+
+// -----------------------------------------------
+//  Declare text "contains" categories.  Each
+//  category is more restrictive.  For example,
+//  if the text "contains no spaces or tabs" then
+//  it does not contain newlines.  A possible
+//  phrase name can contain hyphens but not any
+//  other symbols.
+
+const int global_text_contains_no_symbols = 1 ;
+const int global_text_contains_possible_phrase_name = 2 ;
+const int global_text_contains_no_spaces_or_tabs = 3 ;
+const int global_text_contains_no_newlines = 4 ;
+const int global_text_contains_possible_tabs = 5 ;
+const int global_text_contains_anything = 6 ;
 
 
 // -----------------------------------------------
@@ -92,6 +110,13 @@ const int global_category_carriage_return = 16 ;
 //
 //  States can include triggers for starting and
 //  ending a match for a character sequence.
+//
+//  Data in this matrix is specified using
+//  Dashrep code such as:
+//  next-state-for-current-state fenambee
+//  current-state amennfen and-current-category
+//  fenambee current-category amenn
+
 
 const int global_dimension_of_list_state_machine = 1000 ;
 
@@ -209,51 +234,51 @@ void do_main_initialization( )
 
     for ( pointer = 0 ; pointer <= global_length_of_list_of_character_numbers ; pointer ++ )
     {
-        global_category_number_for_character_number[ pointer ] = global_category_other ;
+        global_character_category_number_for_character_number[ pointer ] = global_character_category_other ;
     }
-    global_category_number_for_character_number[ 9 ] = global_category_tab ;
-    global_category_number_for_character_number[ 10 ] = global_category_newline ;
-    global_category_number_for_character_number[ 12 ] = global_category_formfeed ;
-    global_category_number_for_character_number[ 13 ] = global_category_carriage_return ;
-    global_category_number_for_character_number[ 34 ] = global_category_quotation_mark ;
-    global_category_number_for_character_number[ 39 ] = global_category_apostrophe ;
+    global_character_category_number_for_character_number[ 9 ] = global_character_category_tab ;
+    global_character_category_number_for_character_number[ 10 ] = global_character_category_newline ;
+    global_character_category_number_for_character_number[ 12 ] = global_character_category_formfeed ;
+    global_character_category_number_for_character_number[ 13 ] = global_character_category_carriage_return ;
+    global_character_category_number_for_character_number[ 34 ] = global_character_category_quotation_mark ;
+    global_character_category_number_for_character_number[ 39 ] = global_character_category_apostrophe ;
 
     character_number = ' ' ;
-    global_category_number_for_character_number[ character_number ] = global_category_space ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_space ;
     character_number = '-' ;
-    global_category_number_for_character_number[ character_number ] = global_category_hyphen ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_hyphen ;
     character_number = '_' ;
-    global_category_number_for_character_number[ character_number ] = global_category_underscore ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_underscore ;
     character_number = '/' ;
-    global_category_number_for_character_number[ character_number ] = global_category_slash ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_slash ;
     character_number = '<' ;
-    global_category_number_for_character_number[ character_number ] = global_category_open_angle_bracket ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_open_angle_bracket ;
     character_number = '>' ;
-    global_category_number_for_character_number[ character_number ] = global_category_close_angle_bracket ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_close_angle_bracket ;
     character_number = '.' ;
-    global_category_number_for_character_number[ character_number ] = global_category_period ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_period ;
     character_number = '+' ;
-    global_category_number_for_character_number[ character_number ] = global_category_plus_sign ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_plus_sign ;
     character_number = '0' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '1' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '2' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '3' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '4' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '5' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '6' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '7' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '8' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
     character_number = '9' ;
-    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
 
 
 // -----------------------------------------------
@@ -275,7 +300,7 @@ void text_item_clear( int text_item_id_number )
 {
     if ( global_text_status_available_or_read_only_for_item[ text_item_id_number ] == global_text_status_changeable )
     {
-        global_text_category_for_item[ text_item_id_number ] = global_category_empty ;
+        global_text_category_for_item[ text_item_id_number ] = global_character_category_empty ;
         global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
         global_text_length_for_item[ text_item_id_number ] = 0 ;
     } else
@@ -293,12 +318,15 @@ void text_item_clear( int text_item_id_number )
 //  Gets text for specified text item, using
 //  character offset and length.  Equivalent to
 //  standard "substr" function but uses Dashrep
-//  runtime text storage conventions.
+//  runtime text storage conventions.  The result
+//  is a text_item_id_number that indicates the
+//  matching text.
 
-void get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
+int get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
 {
+    int subtext_text_id_number = 0 ;
     log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
-    return ;
+    return subtext_text_id_number ;
 }
 
 
@@ -311,7 +339,7 @@ void get_text_by_character_offset_and_length( int text_item_id_number , int char
 
 void get_next_text_item_within_text_item( int text_item_id_number , int pointer_to_within_text_item )
 {
-    if ( ( global_text_category_for_item[ text_item_id_number ] == global_category_empty ) || ( global_text_length_for_item[ text_item_id_number ] == 0 ) )
+    if ( ( global_text_category_for_item[ text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ text_item_id_number ] == 0 ) )
     {
         pointer_to_within_text_item ++ ;
         if ( pointer_to_within_text_item >= global_text_pointer_allocation_end_for_item[ text_item_id_number ] )
@@ -336,7 +364,7 @@ void get_next_text_item_within_text_item( int text_item_id_number , int pointer_
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function text_append
+//  Function text_append_no_space
 //
 //  Overwrite char storage if fits, else abandons
 //  that storage and marks that storage area as
@@ -347,11 +375,11 @@ void get_next_text_item_within_text_item( int text_item_id_number , int pointer_
 //  space, programmer should split large task
 //  into smaller tasks.
 
-void text_append( int from_text_item_id_number , int to_text_item_id_number )
+void text_append_no_space( int from_text_item_id_number , int to_text_item_id_number )
 {
     if ( global_text_status_available_or_read_only_for_item[ to_text_item_id_number ] == global_text_status_changeable )
     {
-        if ( ( global_text_category_for_item[ from_text_item_id_number ] == global_category_empty ) || ( global_text_length_for_item[ from_text_item_id_number ] == 0 ) )
+        if ( ( global_text_category_for_item[ from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ from_text_item_id_number ] == 0 ) )
         {
             return ;
         }
@@ -382,7 +410,7 @@ void text_append( int from_text_item_id_number , int to_text_item_id_number )
 void text_copy( int from_text_item_id_number , int to_text_item_id_number )
 {
     text_item_clear( to_text_item_id_number ) ;
-    text_append( from_text_item_id_number , to_text_item_id_number ) ;
+    text_append_no_space( from_text_item_id_number , to_text_item_id_number ) ;
     return ;
 }
 
@@ -401,11 +429,15 @@ void phrase_name_lookup( int text_item_id_number )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function find_matching_text
+//
+//  The result is a text_item_id_number that
+//  indicates the matching text.
 
-void find_matching_text( int text_item_id_number , int pointer_to_within_text_item , int text_to_find_item_id_number )
+int find_matching_text( int text_item_id_number , int pointer_to_within_text_item , int text_to_find_item_id_number )
 {
+    int subtext_text_id_number = 0 ;
     log_out << "function find_matching_text (equivalent to standard index function)" << std::endl ;
-    return ;
+    return subtext_text_id_number ;
 }
 
 
