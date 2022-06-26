@@ -38,12 +38,21 @@ char global_char_all_text[ 100000 ] ;
 
 const int global_length_of_lists_for_text = 20000 ;
 
+int global_text_category_for_item[ 20005 ] ;
 int global_text_pointer_allocation_end_for_item[ 20005 ] ;
 int global_text_status_available_or_read_only_for_item[ 20005 ] ;
 int global_text_pointer_begin_for_item[ 20005 ] ;
 int global_text_pointer_end_for_item[ 20005 ] ;
 int global_text_length_for_item[ 20005 ] ;
-int global_text_category_for_item[ 20005 ] ;
+
+
+// -----------------------------------------------
+//  Declare the values stored in:
+//  global_text_status_available_or_read_only_for_item
+
+const int global_text_status_available = 1 ;
+const int global_text_status_read_only = 2 ;
+const int global_text_status_changeable = 2 ;
 
 
 // -----------------------------------------------
@@ -58,6 +67,7 @@ const int global_length_of_list_of_character_numbers = 256 ;
 
 int global_category_number_for_character_number[ 260 ] ;
 
+const int global_category_empty = 0 ;
 const int global_category_other = 1 ;
 const int global_category_hyphen = 2 ;  // also used as minus sign
 const int global_category_space = 3 ;
@@ -184,6 +194,7 @@ void do_main_initialization( )
 {
 
     int pointer ;
+    int character_number ;
 
 
 // -----------------------------------------------
@@ -198,24 +209,51 @@ void do_main_initialization( )
 
     for ( pointer = 0 ; pointer <= global_length_of_list_of_character_numbers ; pointer ++ )
     {
-        global_category_number_for_character_number[ pointer ] = 0 ;
+        global_category_number_for_character_number[ pointer ] = global_category_other ;
     }
-    global_category_number_for_character_number[ 123 ] = global_category_other ;
-    global_category_number_for_character_number[ 123 ] = global_category_hyphen ;
-    global_category_number_for_character_number[ 123 ] = global_category_space ;
-    global_category_number_for_character_number[ 123 ] = global_category_underscore ;
-    global_category_number_for_character_number[ 123 ] = global_category_newline ;
-    global_category_number_for_character_number[ 123 ] = global_category_tab ;
-    global_category_number_for_character_number[ 123 ] = global_category_slash ;
-    global_category_number_for_character_number[ 123 ] = global_category_open_angle_bracket ;
-    global_category_number_for_character_number[ 123 ] = global_category_close_angle_bracket ;
-    global_category_number_for_character_number[ 123 ] = global_category_quotation_mark ;
-    global_category_number_for_character_number[ 123 ] = global_category_apostrophe ;
-    global_category_number_for_character_number[ 123 ] = global_category_period ;
-    global_category_number_for_character_number[ 123 ] = global_category_plus_sign ;
-    global_category_number_for_character_number[ 123 ] = global_category_digit ;
-    global_category_number_for_character_number[ 123 ] = global_category_formfeed ;
-    global_category_number_for_character_number[ 123 ] = global_category_carriage_return ;
+    global_category_number_for_character_number[ 9 ] = global_category_tab ;
+    global_category_number_for_character_number[ 10 ] = global_category_newline ;
+    global_category_number_for_character_number[ 12 ] = global_category_formfeed ;
+    global_category_number_for_character_number[ 13 ] = global_category_carriage_return ;
+    global_category_number_for_character_number[ 34 ] = global_category_quotation_mark ;
+    global_category_number_for_character_number[ 39 ] = global_category_apostrophe ;
+
+    character_number = ' ' ;
+    global_category_number_for_character_number[ character_number ] = global_category_space ;
+    character_number = '-' ;
+    global_category_number_for_character_number[ character_number ] = global_category_hyphen ;
+    character_number = '_' ;
+    global_category_number_for_character_number[ character_number ] = global_category_underscore ;
+    character_number = '/' ;
+    global_category_number_for_character_number[ character_number ] = global_category_slash ;
+    character_number = '<' ;
+    global_category_number_for_character_number[ character_number ] = global_category_open_angle_bracket ;
+    character_number = '>' ;
+    global_category_number_for_character_number[ character_number ] = global_category_close_angle_bracket ;
+    character_number = '.' ;
+    global_category_number_for_character_number[ character_number ] = global_category_period ;
+    character_number = '+' ;
+    global_category_number_for_character_number[ character_number ] = global_category_plus_sign ;
+    character_number = '0' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '1' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '2' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '3' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '4' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '5' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '6' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '7' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '8' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
+    character_number = '9' ;
+    global_category_number_for_character_number[ character_number ] = global_category_digit ;
 
 
 // -----------------------------------------------
@@ -228,22 +266,111 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function text_append
+//  Function text_item_clear
+//
+//  Changes text item to point to nothing, but
+//  keeps bottom-level text items.
 
-void text_append( int from_text_item_id_number , int to_text_item_id_number )
+void text_item_clear( int text_item_id_number )
 {
-    log_out << "function text_append (overwrites char storage if fits, else abandons that storage and marks that storage area as available, and creates new storage area that holds text, but do not do trash collection; if runs out of space, programmer should split large task into smaller tasks)" << std::endl ;
+    if ( global_text_status_available_or_read_only_for_item[ text_item_id_number ] == global_text_status_changeable )
+    {
+        global_text_category_for_item[ text_item_id_number ] = global_category_empty ;
+        global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
+        global_text_length_for_item[ text_item_id_number ] = 0 ;
+    } else
+    {
+        log_out << "Error: Attempt to clear text item that is not changeable" << std::endl ;
+    }
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function text_item_clear
+//  Function get_text_by_character_offset_and_length
+//
+//  Gets text for specified text item, using
+//  character offset and length.  Equivalent to
+//  standard "substr" function but uses Dashrep
+//  runtime text storage conventions.
 
-void text_item_clear( int text_item_id_number )
+void get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
 {
-    log_out << "function text_item_clear (changes text item to point to nothing, but keeps bottom-level text items)" << std::endl ;
+    log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_text_item
+//
+//  Gets next text item within specified text
+//  item.  Keeps track of nested pointers.
+
+void get_next_text_item_within_text_item( int text_item_id_number , int pointer_to_within_text_item )
+{
+    if ( ( global_text_category_for_item[ text_item_id_number ] == global_category_empty ) || ( global_text_length_for_item[ text_item_id_number ] == 0 ) )
+    {
+        pointer_to_within_text_item ++ ;
+        if ( pointer_to_within_text_item >= global_text_pointer_allocation_end_for_item[ text_item_id_number ] )
+        {
+            log_out << "get_next_text_item code not yet written" << std::endl ;
+            return ;
+        }
+    }
+
+    global_text_pointer_begin_for_item[ text_item_id_number ] = 0 ;
+
+    global_text_pointer_end_for_item[ text_item_id_number ] = 0 ;
+
+    global_text_category_for_item[ text_item_id_number ] = 0 ;
+
+    global_text_length_for_item[ text_item_id_number ] = 0 ;
+
+    log_out << "get_next_text_item code not yet written" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function text_append
+//
+//  Overwrite char storage if fits, else abandons
+//  that storage and marks that storage area as
+//  available, and creates new storage area that
+//  holds text.
+//
+//  Do not do trash collection; if runs out of
+//  space, programmer should split large task
+//  into smaller tasks.
+
+void text_append( int from_text_item_id_number , int to_text_item_id_number )
+{
+    if ( global_text_status_available_or_read_only_for_item[ to_text_item_id_number ] == global_text_status_changeable )
+    {
+        if ( ( global_text_category_for_item[ from_text_item_id_number ] == global_category_empty ) || ( global_text_length_for_item[ from_text_item_id_number ] == 0 ) )
+        {
+            return ;
+        }
+
+        global_text_pointer_allocation_end_for_item[ to_text_item_id_number ] = 0 ;
+
+        global_text_pointer_begin_for_item[ to_text_item_id_number ] = 0 ;
+
+        global_text_pointer_end_for_item[ to_text_item_id_number ] = 0 ;
+
+        global_text_category_for_item[ to_text_item_id_number ] = 0 ;
+
+        global_text_length_for_item[ to_text_item_id_number ] = 0 ;
+
+    } else
+    {
+        log_out << "Error: Attempt to append to text item that is not changeable" << std::endl ;
+    }
+
     return ;
 }
 
@@ -254,18 +381,8 @@ void text_item_clear( int text_item_id_number )
 
 void text_copy( int from_text_item_id_number , int to_text_item_id_number )
 {
-    log_out << "function text_copy (use text_append after clearing prior contents)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function store_text_item
-
-void store_text_item( int from_text_item_id_number , int to_text_item_id_number )
-{
-    log_out << "function store_text_item" << std::endl ;
+    text_item_clear( to_text_item_id_number ) ;
+    text_append( from_text_item_id_number , to_text_item_id_number ) ;
     return ;
 }
 
@@ -277,28 +394,6 @@ void store_text_item( int from_text_item_id_number , int to_text_item_id_number 
 void phrase_name_lookup( int text_item_id_number )
 {
     log_out << "function phrase_name_lookup (and creates text item if phrase is new)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_text_item
-
-void get_next_text_item_within_text_item( int text_item_id_number , int pointer_to_within_text_item )
-{
-    log_out << "function get_next_text_item_within_text_item (and keep track of nested pointers)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_text_by_character_offset_and_length
-
-void get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
-{
-    log_out << "function get_text_by_character_offset_and_length (equivalent to standard substr function)" << std::endl ;
     return ;
 }
 
@@ -428,15 +523,6 @@ void do_testing( )
 
 
 // -----------------------------------------------
-
-    
-    find_matching_text( ) ;
-
-
-    log_out << std::endl << "[doing testing]" << std::endl ;
-
-
-// -----------------------------------------------
 //  End of function do_testing.
 
     return ;
@@ -450,6 +536,9 @@ void do_testing( )
 
 int main() {
 
+    int from_text_item_id_number ;
+    int to_text_item_id_number ;
+
 
 // -----------------------------------------------
 //  Initialization.
@@ -458,20 +547,15 @@ int main() {
 
 
 // -----------------------------------------------
-//  Test the functions in this file.
+//  Test basic text handling functionality.
 
-    get_next_text_item( ) ;
-    do_testing( ) ;
-    get_text_by_offset_and_length( ) ;
-    find_matching_text( ) ;
-    yes_or_no_matching_text( ) ;
-    text_append( ) ;
-    text_copy( ) ;
-    text_replace( ) ;
-    point_to_pattern_matching_text( ) ;
-    point_to_pattern_matching_text_backwards( ) ;
-
-    std::cout << "done testing" << std::endl ;
+    log_out << std::endl ;
+    log_out << "doing testing" << std::endl ;
+    from_text_item_id_number = 1 ;
+    to_text_item_id_number = 2 ;
+    text_copy( from_text_item_id_number , to_text_item_id_number ) ;
+    log_out << "done testing" << std::endl ;
+    std::cout << "program done" << std::endl ;
 
 
 // -----------------------------------------------
