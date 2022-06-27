@@ -28,6 +28,18 @@
 
 
 // -----------------------------------------------
+//  Declare storage and variables that are used to
+//  read one line of text from a file.  Allow for
+//  both the C++ string version and the C language
+//  char array.
+
+std::string global_input_line_from_file ;
+char global_input_line_c_version[ 2000 ] ;
+int global_next_character_number ;
+int global_line_character_position ;
+
+
+// -----------------------------------------------
 //  Declare the text storage list.
 
 char global_char_all_text[ 100000 ] ;
@@ -68,6 +80,7 @@ const int global_text_status_changeable = 3 ;
 const int global_length_of_list_of_character_numbers = 256 ;
 
 int global_character_category_number_for_character_number[ 260 ] ;
+int global_character_category ;
 
 const int global_character_category_empty = 0 ;
 const int global_character_category_other = 1 ;
@@ -84,8 +97,6 @@ const int global_character_category_apostrophe = 11 ;  // also single quotation 
 const int global_character_category_period = 12 ;  // also used as decimal point
 const int global_character_category_plus_sign = 13 ;
 const int global_character_category_digit = 14 ;  // 0 through 9
-const int global_character_category_formfeed = 15 ;
-const int global_character_category_carriage_return = 16 ;
 
 
 // -----------------------------------------------
@@ -102,6 +113,35 @@ const int global_text_contains_no_spaces_or_tabs = 3 ;
 const int global_text_contains_no_newlines = 4 ;
 const int global_text_contains_possible_tabs = 5 ;
 const int global_text_contains_anything = 6 ;
+
+
+// -----------------------------------------------
+//  Define some ASCII codes.
+
+const int global_ascii_code_for_tab = 9 ;
+const int global_ascii_code_for_newline = 10 ;
+const int global_ascii_code_for_formfeed = 12 ;
+const int global_ascii_code_for_carriage_return = 13 ;
+const int global_ascii_code_for_space = 32 ;
+const int global_ascii_code_for_quotation_mark = 34 ;
+const int global_ascii_code_for_apostrophe = 39 ;
+const int global_ascii_code_for_plus = 43 ;
+const int global_ascii_code_for_hyphen = 45 ;
+const int global_ascii_code_for_period = 46 ;
+const int global_ascii_code_for_slash = 47 ;
+const int global_ascii_code_for_digit_0 = 48 ;
+const int global_ascii_code_for_digit_1 = 49 ;
+const int global_ascii_code_for_digit_2 = 50 ;
+const int global_ascii_code_for_digit_3 = 51 ;
+const int global_ascii_code_for_digit_4 = 52 ;
+const int global_ascii_code_for_digit_5 = 53 ;
+const int global_ascii_code_for_digit_6 = 54 ;
+const int global_ascii_code_for_digit_7 = 55 ;
+const int global_ascii_code_for_digit_8 = 56 ;
+const int global_ascii_code_for_digit_9 = 57 ;
+const int global_ascii_code_for_open_angle_bracket = 60 ;
+const int global_ascii_code_for_close_angle_bracket = 62 ;
+const int global_ascii_code_for_underscore = 95 ;
 
 
 // -----------------------------------------------
@@ -131,6 +171,13 @@ int global_next_state_for_current_state_and_character_category[ 1005 ][ 1005 ] ;
 std::ofstream log_out ;
 
 
+
+// -----------------------------------------------
+//  Temporarily specify starting text items.
+//  Later, generate this code using the list in
+//  file: text-list-of-dashrep-key-words.txt
+
+// char * global_starting_key_words = "10 absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide e each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
 
 
 // -----------------------------------------------
@@ -236,49 +283,34 @@ void do_main_initialization( )
     {
         global_character_category_number_for_character_number[ pointer ] = global_character_category_other ;
     }
-    global_character_category_number_for_character_number[ 9 ] = global_character_category_tab ;
-    global_character_category_number_for_character_number[ 10 ] = global_character_category_newline ;
-    global_character_category_number_for_character_number[ 12 ] = global_character_category_formfeed ;
-    global_character_category_number_for_character_number[ 13 ] = global_character_category_carriage_return ;
-    global_character_category_number_for_character_number[ 34 ] = global_character_category_quotation_mark ;
-    global_character_category_number_for_character_number[ 39 ] = global_character_category_apostrophe ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_tab ] = global_character_category_tab ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_newline ] = global_character_category_newline ;
 
-    character_number = ' ' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_space ;
-    character_number = '-' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_hyphen ;
-    character_number = '_' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_underscore ;
-    character_number = '/' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_slash ;
-    character_number = '<' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_open_angle_bracket ;
-    character_number = '>' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_close_angle_bracket ;
-    character_number = '.' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_period ;
-    character_number = '+' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_plus_sign ;
-    character_number = '0' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '1' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '2' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '3' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '4' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '5' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '6' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '7' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '8' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
-    character_number = '9' ;
-    global_character_category_number_for_character_number[ character_number ] = global_character_category_digit ;
+//  carriage return and formfeed treated as newline
+    global_character_category_number_for_character_number[ global_ascii_code_for_carriage_return ] = global_character_category_newline ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_formfeed ] = global_character_category_newline ;
+
+    global_character_category_number_for_character_number[ global_ascii_code_for_quotation_mark ] = global_character_category_quotation_mark ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_apostrophe ] = global_character_category_apostrophe ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_hyphen ] = global_character_category_hyphen ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_space ] = global_character_category_space ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_hyphen ] = global_character_category_hyphen ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_underscore ] = global_character_category_underscore ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_slash ] = global_character_category_slash ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_open_angle_bracket ] = global_character_category_open_angle_bracket ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_close_angle_bracket ] = global_character_category_close_angle_bracket ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_period ] = global_character_category_period ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_plus ] = global_character_category_plus_sign ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_0 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_1 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_2 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_3 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_4 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_5 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_6 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_7 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_8 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_digit_9 ] = global_character_category_digit ;
 
 
 // -----------------------------------------------
@@ -286,6 +318,84 @@ void do_main_initialization( )
 
     return ;
 
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_next_character
+//
+//  Stores the character number that's in
+//  global_next_character_number into item id
+//  number global_text_item_id_number.
+//  Global variables are used for faster
+//  execution.
+
+void store_next_character( )
+{
+    global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
+    if ( global_character_category == global_character_category_other )
+    {
+        log_out << "[Storing character " << global_next_character_number << "]" ;
+    } else if ( global_character_category == global_character_category_space )
+    {
+        log_out << "[Storing space]" ;
+    } else if ( global_character_category == global_character_category_hyphen )
+    {
+        log_out << "[Storing hyphen]" ;
+    } else if ( global_character_category == global_character_category_newline )
+    {
+        log_out << "[Storing newline]" ;
+    } else if ( global_character_category == global_character_category_tab )
+    {
+        log_out << "[Storing tab]" ;
+    } else if ( global_character_category == global_character_category_empty )
+    {
+        log_out << "[Error, request to storing nothing]" ;
+    } else
+    {
+        log_out << "[Storing character " << global_next_character_number << "]" ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function read_text_line_from_file
+//
+//  Reads one line of text from a file.  Global
+//  variables are used for faster execution.
+
+void read_text_line_from_file( )
+{
+    std::getline( std::cin , global_input_line_from_file ) ;
+    log_out << "[input line: " << global_input_line_from_file << std::endl << "]" ;
+    std::size_t line_length = std::min( 2000 , (int) global_input_line_from_file.length() ) ;
+    std::size_t line_length_copied = global_input_line_from_file.copy( global_input_line_c_version , line_length , 0 ) ;
+    for ( global_line_character_position = 0 ; global_line_character_position < line_length_copied ; global_line_character_position ++ )
+    {
+
+// todo: fix compile error:
+        global_next_character_number = atoi( global_input_line_c_version[ global_line_character_position ] ) ;
+
+        store_next_character( ) ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_text_item_to_file
+//
+
+void write_text_item_to_file( int text_item_id_number )
+{
+
+    log_out << "Error: Attempt to clear text item that is not changeable" << std::endl ;
+
+    return ;
 }
 
 
@@ -583,6 +693,9 @@ int main() {
 
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
+
+    read_text_line_from_file( ) ;
+
     from_text_item_id_number = 1 ;
     to_text_item_id_number = 2 ;
     text_copy( from_text_item_id_number , to_text_item_id_number ) ;
