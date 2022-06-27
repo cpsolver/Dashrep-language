@@ -28,21 +28,48 @@
 
 
 // -----------------------------------------------
-//  Declare storage and variables that are used to
-//  read one line of text from a file.  Allow for
-//  both the C++ string version and the C language
-//  char array.
+//  Declare constants global_yes and global_no.
+//  They are used instead of "true" and "false"
+//  values because true and false involve making
+//  a claim that might be false, whereas asking a
+//  question involves a "yes" or "no" answer.
+//  Also, this convention matches earlier versions
+//  of the Dashrep compiler in other programming
+//  languages.
 
-std::string global_input_line_from_file ;
-char global_input_line_c_version[ 2000 ] ;
-int global_next_character_number ;
-int global_line_character_position ;
+const int global_no = 0 ;
+const int global_yes = 1 ;
 
 
 // -----------------------------------------------
-//  Declare the text storage list.
+//  Declare the text storage list.  It contains
+//  all the text characters, and all the text item
+//  ID pointers that point to either other text
+//  items or text characters.
 
 char global_char_all_text[ 100000 ] ;
+
+
+// -----------------------------------------------
+//  Declare variables that keep track of the next
+//  available text item ID number, and the
+//  beginning location for storing each new text
+//  item, and the length of the storage allocated.
+
+int global_next_available_text_item_id_number ;
+int global_next_available_begin_pointer_for_next_available_text_item_id_number ;
+int global_length_of_next_text_item_storage ;
+
+
+// -----------------------------------------------
+//  Declare various global variables.
+//  Function-specific variables are avoided for
+//  functions that are used frequently, so that
+//  execution is faster.
+
+int global_text_item_id_number ;
+int global_next_character_number ;
+int global_line_character_position ;
 
 
 // -----------------------------------------------
@@ -52,24 +79,19 @@ const int global_length_of_lists_for_text = 20000 ;
 
 int global_text_category_for_item[ 20005 ] ;
 int global_text_pointer_allocation_end_for_item[ 20005 ] ;
-int global_text_status_available_or_read_only_for_item[ 20005 ] ;
 int global_text_pointer_begin_for_item[ 20005 ] ;
 int global_text_pointer_end_for_item[ 20005 ] ;
 int global_text_length_for_item[ 20005 ] ;
 
 
 // -----------------------------------------------
-//  Declare the values stored in:
-//  global_text_status_available_or_read_only_for_item
-//
-//  In the future, possibly define a new Dashrep
-//  phrase "internal-reuse-memory" that allows
-//  text storage to be changeable.  In the
-//  meantime only use "read only" status.
+//  Declare the item ID numbers used for file
+//  input and output, and declare the size of
+//  these two storage areas.
 
-const int global_text_status_read_only = 1 ;
-const int global_text_status_available = 2 ;
-const int global_text_status_changeable = 3 ;
+int global_text_item_id_for_file_input ;
+int global_text_item_id_for_file_output ;
+const int global_allocated_length_for_file_input_or_output = 2000 ;
 
 
 // -----------------------------------------------
@@ -164,6 +186,21 @@ int global_next_state_for_current_state_and_character_category[ 1005 ][ 1005 ] ;
 
 
 // -----------------------------------------------
+//  Define a flag that tracks whether a text item
+//  can have its contents changed.
+
+int global_yes_or_no_text_item_changeable ;
+
+
+// -----------------------------------------------
+//  Define the connections to file input and file
+//  output.
+
+    FILE * global_infile_connection ;
+    FILE * global_outfile_connection ;
+
+
+// -----------------------------------------------
 //  Specify an extra output file that contains a
 //  log of actions for the purpose of monitoring
 //  or debugging intermediate calculations.
@@ -182,77 +219,19 @@ std::ofstream log_out ;
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  convert_integer_to_text
+//  Function assign_storage_for_new_text_item
 //
-//  This function is used instead of "std::to_string"
-//  for compatibility with older C++ "string" libraries
-//  that have a bug.  The bug is that the "to_string"
-//  function is not recognized as being within the
-//  "std" library, even though it is defined there.
+//  Initialize the pointers that will keep track
+//  of a new text item.
 
-std::string convert_integer_to_text( int supplied_integer )
+void assign_storage_for_new_text_item( )
 {
-    int unused_string_length ;
-    char c_format_string[ 50 ] ;
-    try
-    {
-        unused_string_length = sprintf( c_format_string , "%1d" , supplied_integer ) ;
-        return ( std::string ) c_format_string ;
-    }
-    catch( ... )
-    {
-        return "NAN" ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  convert_float_to_text
-//
-//  To read why this function is here, see the comment
-//  above for function: convert_integer_to_text
-
-std::string convert_float_to_text( float supplied_float )
-{
-    std::string returned_string ;
-    char c_format_string[ 50 ] ;
-    int unused_string_length ;
-    try
-    {
-        unused_string_length = sprintf( c_format_string , "%1f" , supplied_float ) ;
-        returned_string = ( std::string ) c_format_string ;
-        //  next line assumes the sprintf result always includes a decimal point
-        returned_string.erase( returned_string.find_last_not_of( "0" ) + 1 , std::string::npos ) ;
-        returned_string.erase( returned_string.find_last_not_of( "." ) + 1 , std::string::npos ) ;
-        return returned_string ;
-    }
-    catch( ... )
-    {
-        return "NAN" ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  convert_text_to_integer
-//
-//  To read why this function is here, see the comment
-//  above for function: convert_integer_to_text
-
-int convert_text_to_integer( char * supplied_text )
-{
-    int equivalent_integer ;
-    try
-    {
-        equivalent_integer = atoi( supplied_text ) ;
-    }
-    catch( ... )
-    {
-        equivalent_integer = -999 ;
-    }
-    return equivalent_integer ;
+    global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number ;
+    global_next_available_begin_pointer_for_next_available_text_item_id_number += global_length_of_next_text_item_storage ;
+    global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number - 1 ;
+    global_text_length_for_item[ global_next_available_text_item_id_number ] = 0 ;
+    global_next_available_text_item_id_number ++ ;
+    return ;
 }
 
 
@@ -314,6 +293,56 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Initialize the counter that indicates the next
+//  available text ID number.  (Zero is not used.)
+//  It must be incremented after each text item ID
+//  number is assigned.
+
+    global_next_available_text_item_id_number = 1 ;
+
+
+// -----------------------------------------------
+//  Put zero into the first global_char_all_text
+//  list so that storage for characters and text
+//  pointers start at one, not zero.
+
+    global_char_all_text[ 0 ] = 0 ;
+
+
+// -----------------------------------------------
+//  Initialize the pointer that keeps track of the
+//  beginning of the next available character
+//  positions in the list: global_char_all_text
+
+    global_next_available_begin_pointer_for_next_available_text_item_id_number = 1 ;
+
+
+// -----------------------------------------------
+//  Initialize the text items used for file input
+//  and output.  Shorten the length slightly in
+//  case of an overrun.
+
+    global_length_of_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
+
+    global_text_item_id_for_file_input = global_next_available_text_item_id_number ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_character_category_other ;
+    global_text_length_for_item[ global_text_item_id_for_file_input ] -= 5 ;
+
+    global_text_item_id_for_file_output = global_next_available_text_item_id_number ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_file_output ] = global_character_category_other ;
+    global_text_length_for_item[ global_text_item_id_for_file_input ] -= 5 ;
+
+
+// -----------------------------------------------
+//  Now that initialization is done, do not allow
+//  text items to have their contents changed.
+
+    global_yes_or_no_text_item_changeable = global_no ;
+
+
+// -----------------------------------------------
 //  End of function do_main_initialization.
 
     return ;
@@ -336,7 +365,7 @@ void store_next_character( )
     global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
     if ( global_character_category == global_character_category_other )
     {
-        log_out << "[Storing character " << global_next_character_number << "]" ;
+        log_out << "[Storing character " << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
     } else if ( global_character_category == global_character_category_space )
     {
         log_out << "[Storing space]" ;
@@ -369,16 +398,19 @@ void store_next_character( )
 
 void read_text_line_from_file( )
 {
-    std::getline( std::cin , global_input_line_from_file ) ;
-    log_out << "[input line: " << global_input_line_from_file << std::endl << "]" ;
-    std::size_t line_length = std::min( 2000 , (int) global_input_line_from_file.length() ) ;
-    std::size_t line_length_copied = global_input_line_from_file.copy( global_input_line_c_version , line_length , 0 ) ;
-    for ( global_line_character_position = 0 ; global_line_character_position < line_length_copied ; global_line_character_position ++ )
+    global_text_item_id_number = global_text_item_id_for_file_input ;
+    global_next_character_number = -1 ;
+    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] - 1 ;
+
+    while ( ( global_next_character_number != 0 ) && ( global_yes == global_no ) )
+
     {
-
-// todo: fix compile error:
-        global_next_character_number = atoi( global_input_line_c_version[ global_line_character_position ] ) ;
-
+        global_next_character_number = fgetc( global_infile_connection ) ;
+        if ( global_next_character_number == EOF )
+        {
+            global_next_character_number = 0 ;
+            return ;
+        }
         store_next_character( ) ;
     }
     return ;
@@ -408,7 +440,7 @@ void write_text_item_to_file( int text_item_id_number )
 
 void text_item_clear( int text_item_id_number )
 {
-    if ( global_text_status_available_or_read_only_for_item[ text_item_id_number ] == global_text_status_changeable )
+    if ( global_yes_or_no_text_item_changeable == global_yes )
     {
         global_text_category_for_item[ text_item_id_number ] = global_character_category_empty ;
         global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
@@ -487,14 +519,14 @@ void get_next_text_item_within_text_item( int text_item_id_number , int pointer_
 
 void text_append_no_space( int from_text_item_id_number , int to_text_item_id_number )
 {
-    if ( global_text_status_available_or_read_only_for_item[ to_text_item_id_number ] == global_text_status_changeable )
+    if ( global_yes_or_no_text_item_changeable == global_yes )
     {
         if ( ( global_text_category_for_item[ from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ from_text_item_id_number ] == 0 ) )
         {
             return ;
         }
-
         global_text_pointer_allocation_end_for_item[ to_text_item_id_number ] = 0 ;
+
 
         global_text_pointer_begin_for_item[ to_text_item_id_number ] = 0 ;
 
@@ -693,6 +725,10 @@ int main() {
 
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
+
+
+    global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
+    global_infile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
     read_text_line_from_file( ) ;
 
