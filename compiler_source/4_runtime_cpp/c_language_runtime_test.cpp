@@ -28,6 +28,21 @@
 
 
 // -----------------------------------------------
+//  Reminder:  This software is not an
+//  "application" that involves a "user interface"
+//  that enables a user to control this software.
+//  Therefore some of the coding conventions
+//  needed for "application" software -- which
+//  often changes to make it increasingly easier
+//  to use -- is not relevant to this low-level
+//  "utility" software.
+//
+//  Function-specific variables are avoided for
+//  functions that are used frequently.  The
+//  result is faster execution.
+
+
+// -----------------------------------------------
 //  Declare constants global_yes and global_no.
 //  They are used instead of "true" and "false"
 //  values because true and false involve making
@@ -51,25 +66,10 @@ char global_char_all_text[ 100000 ] ;
 
 
 // -----------------------------------------------
-//  Declare variables that keep track of the next
-//  available text item ID number, and the
-//  beginning location for storing each new text
-//  item, and the length of the storage allocated.
+//  Declare how much of the text storage area is
+//  used for file input and output (each).
 
-int global_next_available_text_item_id_number ;
-int global_next_available_begin_pointer_for_next_available_text_item_id_number ;
-int global_length_of_next_text_item_storage ;
-
-
-// -----------------------------------------------
-//  Declare various global variables.
-//  Function-specific variables are avoided for
-//  functions that are used frequently, so that
-//  execution is faster.
-
-int global_text_item_id_number ;
-int global_next_character_number ;
-int global_line_character_position ;
+const int global_allocated_length_for_file_input_or_output = 2000 ;
 
 
 // -----------------------------------------------
@@ -85,13 +85,53 @@ int global_text_length_for_item[ 20005 ] ;
 
 
 // -----------------------------------------------
-//  Declare the item ID numbers used for file
-//  input and output, and declare the size of
-//  these two storage areas.
+//  Declare variables that keep track of the next
+//  available text item ID number, and the
+//  beginning location for storing each new text
+//  item, and the length of the storage allocated.
 
+int global_next_available_text_item_id_number ;
+int global_next_available_begin_pointer_for_next_available_text_item_id_number ;
+int global_length_of_next_text_item_storage ;
+
+
+// -----------------------------------------------
+//  Declare global variables that hold text item
+//  ID numbers.
+
+int global_text_item_id_number ;
+int global_from_text_item_id_number ;
+int global_to_text_item_id_number ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
-const int global_allocated_length_for_file_input_or_output = 2000 ;
+
+
+// -----------------------------------------------
+//  Declare text "contains" categories.  For some
+//  of these categories, each category is more
+//  restrictive.  For example, if the text
+//  "contains no spaces or tabs" then it does not
+//  contain newlines.  A possible phrase name can
+//  contain hyphens but not any other symbols.
+//  Integers are stored as integers, not text.
+//  Real numbers are stored as real numbers, not
+//  text.
+
+const int global_text_contains_no_symbols = 1 ;
+const int global_text_contains_possible_phrase_name = 2 ;
+const int global_text_contains_no_spaces_or_tabs = 3 ;
+const int global_text_contains_no_newlines = 4 ;
+const int global_text_contains_possible_tabs = 5 ;
+const int global_text_contains_any_text = 6 ;
+const int global_text_contains_integer = 7 ;
+const int global_text_contains_decimal_number = 8 ;
+
+
+// -----------------------------------------------
+//  Declare character pointers.
+
+int global_next_character_number ;
+int global_line_character_position ;
 
 
 // -----------------------------------------------
@@ -119,22 +159,6 @@ const int global_character_category_apostrophe = 11 ;  // also single quotation 
 const int global_character_category_period = 12 ;  // also used as decimal point
 const int global_character_category_plus_sign = 13 ;
 const int global_character_category_digit = 14 ;  // 0 through 9
-
-
-// -----------------------------------------------
-//  Declare text "contains" categories.  Each
-//  category is more restrictive.  For example,
-//  if the text "contains no spaces or tabs" then
-//  it does not contain newlines.  A possible
-//  phrase name can contain hyphens but not any
-//  other symbols.
-
-const int global_text_contains_no_symbols = 1 ;
-const int global_text_contains_possible_phrase_name = 2 ;
-const int global_text_contains_no_spaces_or_tabs = 3 ;
-const int global_text_contains_no_newlines = 4 ;
-const int global_text_contains_possible_tabs = 5 ;
-const int global_text_contains_anything = 6 ;
 
 
 // -----------------------------------------------
@@ -196,8 +220,8 @@ int global_yes_or_no_text_item_changeable ;
 //  Define the connections to file input and file
 //  output.
 
-    FILE * global_infile_connection ;
-    FILE * global_outfile_connection ;
+FILE * global_infile_connection ;
+FILE * global_outfile_connection ;
 
 
 // -----------------------------------------------
@@ -208,13 +232,9 @@ int global_yes_or_no_text_item_changeable ;
 std::ofstream log_out ;
 
 
-
 // -----------------------------------------------
-//  Temporarily specify starting text items.
-//  Later, generate this code using the list in
-//  file: text-list-of-dashrep-key-words.txt
-
-// char * global_starting_key_words = "10 absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide e each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
+//  End of top-level code.
+//  Beginning of functions.
 
 
 // -----------------------------------------------
@@ -336,6 +356,17 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Temporarily, specify starting text items.
+//
+//  Later, generate this code using the list in
+//  file: text-list-of-dashrep-key-words.txt
+//  The list does not include "10" and "e" which
+//  are words within Dashrep action names.
+
+// char * global_starting_key_words = "absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
+
+
+// -----------------------------------------------
 //  Now that initialization is done, do not allow
 //  text items to have their contents changed.
 
@@ -357,8 +388,6 @@ void do_main_initialization( )
 //  Stores the character number that's in
 //  global_next_character_number into item id
 //  number global_text_item_id_number.
-//  Global variables are used for faster
-//  execution.
 
 void store_next_character( )
 {
@@ -366,6 +395,7 @@ void store_next_character( )
     if ( global_character_category == global_character_category_other )
     {
         log_out << "[Storing character " << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
+        global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
     } else if ( global_character_category == global_character_category_space )
     {
         log_out << "[Storing space]" ;
@@ -393,20 +423,17 @@ void store_next_character( )
 // -----------------------------------------------
 //  Function read_text_line_from_file
 //
-//  Reads one line of text from a file.  Global
-//  variables are used for faster execution.
+//  Reads one line of text from a file.
 
 void read_text_line_from_file( )
 {
+    global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] = global_text_pointer_begin_for_item[ global_text_item_id_for_file_input ] - 1 ;
     global_text_item_id_number = global_text_item_id_for_file_input ;
-    global_next_character_number = -1 ;
-    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] - 1 ;
-
-    while ( ( global_next_character_number != 0 ) && ( global_yes == global_no ) )
-
+    while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
-        if ( global_next_character_number == EOF )
+//        log_out << "[Got character " << global_next_character_number << "]" ;
+        if ( ( global_next_character_number == EOF ) || ( global_character_category_number_for_character_number[ global_next_character_number ] == global_character_category_newline ) )
         {
             global_next_character_number = 0 ;
             return ;
@@ -421,12 +448,12 @@ void read_text_line_from_file( )
 // -----------------------------------------------
 //  Function write_text_item_to_file
 //
+//  Write the text item pointed to by 
+//  global_text_item_id_number to the output file.
 
-void write_text_item_to_file( int text_item_id_number )
+void write_text_item_to_file( )
 {
-
-    log_out << "Error: Attempt to clear text item that is not changeable" << std::endl ;
-
+    log_out << "[todo: writing text item " << global_text_item_id_number << "]" ;
     return ;
 }
 
@@ -440,15 +467,9 @@ void write_text_item_to_file( int text_item_id_number )
 
 void text_item_clear( int text_item_id_number )
 {
-    if ( global_yes_or_no_text_item_changeable == global_yes )
-    {
-        global_text_category_for_item[ text_item_id_number ] = global_character_category_empty ;
-        global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
-        global_text_length_for_item[ text_item_id_number ] = 0 ;
-    } else
-    {
-        log_out << "Error: Attempt to clear text item that is not changeable" << std::endl ;
-    }
+    global_text_category_for_item[ text_item_id_number ] = global_character_category_empty ;
+    global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
+    global_text_length_for_item[ text_item_id_number ] = 0 ;
     return ;
 }
 
@@ -508,6 +529,11 @@ void get_next_text_item_within_text_item( int text_item_id_number , int pointer_
 // -----------------------------------------------
 //  Function text_append_no_space
 //
+//  Appends text from
+//  global_from_text_item_id_number to
+//  global_to_text_item_id_number but without
+//  inserting a space.
+//
 //  Overwrite char storage if fits, else abandons
 //  that storage and marks that storage area as
 //  available, and creates new storage area that
@@ -517,30 +543,49 @@ void get_next_text_item_within_text_item( int text_item_id_number , int pointer_
 //  space, programmer should split large task
 //  into smaller tasks.
 
-void text_append_no_space( int from_text_item_id_number , int to_text_item_id_number )
+void text_append_no_space( )
 {
-    if ( global_yes_or_no_text_item_changeable == global_yes )
+    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
     {
-        if ( ( global_text_category_for_item[ from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ from_text_item_id_number ] == 0 ) )
-        {
-            return ;
-        }
-        global_text_pointer_allocation_end_for_item[ to_text_item_id_number ] = 0 ;
-
-
-        global_text_pointer_begin_for_item[ to_text_item_id_number ] = 0 ;
-
-        global_text_pointer_end_for_item[ to_text_item_id_number ] = 0 ;
-
-        global_text_category_for_item[ to_text_item_id_number ] = 0 ;
-
-        global_text_length_for_item[ to_text_item_id_number ] = 0 ;
-
-    } else
-    {
-        log_out << "Error: Attempt to append to text item that is not changeable" << std::endl ;
+        return ;
     }
 
+    log_out << "todo: write code that appends to text item" << std::endl ;
+
+    global_text_pointer_allocation_end_for_item[ global_to_text_item_id_number ] = 0 ;
+
+    global_text_pointer_begin_for_item[ global_to_text_item_id_number ] = 0 ;
+
+    global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
+
+    global_text_category_for_item[ global_to_text_item_id_number ] = 0 ;
+
+    global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function text_append
+//
+//  Appends text from
+//  global_from_text_item_id_number to
+//  global_to_text_item_id_number but inserts a
+//  space if the "to" text is not empty.
+
+void text_append( )
+{
+    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
+    {
+        return ;
+    }
+    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] != global_character_category_empty ) || ( global_text_category_for_item[ global_to_text_item_id_number ] != global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] > 0 ) )
+    {
+        log_out << "append space" << std::endl ;
+    }
+    text_append_no_space( ) ;
     return ;
 }
 
@@ -549,10 +594,10 @@ void text_append_no_space( int from_text_item_id_number , int to_text_item_id_nu
 // -----------------------------------------------
 //  Function text_copy
 
-void text_copy( int from_text_item_id_number , int to_text_item_id_number )
+void text_copy( )
 {
-    text_item_clear( to_text_item_id_number ) ;
-    text_append_no_space( from_text_item_id_number , to_text_item_id_number ) ;
+    text_item_clear( global_to_text_item_id_number ) ;
+    text_append_no_space( ) ;
     return ;
 }
 
@@ -587,7 +632,7 @@ int find_matching_text( int text_item_id_number , int pointer_to_within_text_ite
 // -----------------------------------------------
 //  Function yes_or_no_matching_text
 
-void yes_or_no_matching_text( int from_text_item_id_number , int to_text_item_id_number )
+void yes_or_no_matching_text( )
 {
     log_out << "function yes_or_no_matching_text" << std::endl ;
     return ;
@@ -629,89 +674,9 @@ void point_to_pattern_matching_text_backwards( int text_item_id_number , int poi
 
 // -----------------------------------------------
 // -----------------------------------------------
-//    do_testing
-//
-//  Do testing.
-
-void do_testing( )
-{
-
-    std::string input_line ;
-    std::string input_text_word ;
-
-
-// -----------------------------------------------
-//  Begin loop to handle one line from the input
-//  file, which is "standard input" (which means
-//  it's the input file specified on the command
-//  line).
-
-    for ( std::string input_line ; std::getline( std::cin , input_line ) ; )
-    {
-        std::size_t pointer_found = input_line.find_last_not_of( " \t\n\r" ) ;
-        if ( pointer_found != std::string::npos )
-        {
-            input_line.erase( pointer_found + 1 ) ;
-        } else
-        {
-            input_line.clear( ) ;
-        }
-        log_out << std::endl << "[input line: " << input_line << "]" ;
-        char input_line_c_version[ 2000 ] = "" ;
-        std::size_t line_length = std::min( 2000 , (int) input_line.length() ) ;
-        std::size_t line_length_copied = input_line.copy( input_line_c_version , line_length , 0 ) ;
-        input_line_c_version[ line_length_copied ] = '\0' ;
-
-
-// -----------------------------------------------
-//  Begin loop to get first/next space-delimited
-//  word (of text) from the input line.  It must
-//  be an integer.
-
-        char * pointer_to_word ;
-        // reminder: strtok modifies the string
-        pointer_to_word = strtok( input_line_c_version , " ,." ) ;
-        while ( pointer_to_word != NULL )
-        {
-            input_text_word = pointer_to_word ;
-
-
-// -----------------------------------------------
-//  Handle the word.
-
-            log_out << "[next word]" << input_text_word << std::endl ;
-
-
-// -----------------------------------------------
-//  Repeat the loop for the next word (within the line).
-
-            pointer_to_word = strtok( NULL, " ,." ) ;
-        }
-
-
-// -----------------------------------------------
-//  Repeat the loop for the next line of data from
-//  the input file.
-
-    }
-
-
-// -----------------------------------------------
-//  End of function do_testing.
-
-    return ;
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Execution starts here.
 
 int main() {
-
-    int from_text_item_id_number ;
-    int to_text_item_id_number ;
 
 
 // -----------------------------------------------
@@ -728,13 +693,14 @@ int main() {
 
 
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
-    global_infile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
+    global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
     read_text_line_from_file( ) ;
+    write_text_item_to_file( ) ;
 
-    from_text_item_id_number = 1 ;
-    to_text_item_id_number = 2 ;
-    text_copy( from_text_item_id_number , to_text_item_id_number ) ;
+    global_from_text_item_id_number = 1 ;
+    global_to_text_item_id_number = 2 ;
+    text_copy( ) ;
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
 
