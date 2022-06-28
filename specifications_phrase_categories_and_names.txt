@@ -18,21 +18,21 @@ category_expand
 expand-text
 
 category_transfer
-get-cgi-information
 standard-output
 copy-text
-put-into-phrase
-copy-listed-words-to-phrases-named-in-pattern
 append-text
 append-text-no-space
 append-new-line
 append-repeatedly-using-count
-append-multiple-from-phrases-named-in-pattern
 prepend-text
 prepend-text-no-space
+put-into-phrase
+get-phrase-name-from-phrase
+get-cgi-information
 get-definitions-from-phrase
 put-listed-phrase-definitions-into-phrase
-get-phrase-name-from-phrase
+copy-listed-words-to-phrases-named-in-pattern
+append-multiple-from-phrases-named-in-pattern
 
 category_clear_delete
 clear-phrase
