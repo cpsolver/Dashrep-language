@@ -102,6 +102,8 @@ int global_length_of_next_text_item_storage ;
 int global_text_item_id_number ;
 int global_from_text_item_id_number ;
 int global_to_text_item_id_number ;
+int global_search_text_item_id_number ;
+int global_matching_text_item_id_number ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 
@@ -210,6 +212,12 @@ int global_next_state_for_current_state_and_character_category[ 1005 ][ 1005 ] ;
 
 
 // -----------------------------------------------
+//  Declare pointers to within a text item.
+
+int global_pointer_to_within_text_item ;
+
+
+// -----------------------------------------------
 //  Define a flag that tracks whether a text item
 //  can have its contents changed.
 
@@ -248,9 +256,13 @@ void assign_storage_for_new_text_item( )
 {
     global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number ;
     global_next_available_begin_pointer_for_next_available_text_item_id_number += global_length_of_next_text_item_storage ;
-    global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number - 1 ;
+    global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number - 1 ;
+    global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] =     global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] - 1 ;
     global_text_length_for_item[ global_next_available_text_item_id_number ] = 0 ;
     global_next_available_text_item_id_number ++ ;
+
+    log_out << "[ID " << global_next_available_text_item_id_number << " , begin " << global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] << " , end " << global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] << " , requested " << global_length_of_next_text_item_storage << " , allocated " << global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] << " , length " << global_text_length_for_item[ global_next_available_text_item_id_number ] << "]" ;
+
     return ;
 }
 
@@ -322,11 +334,16 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Put zero into the first global_char_all_text
-//  list so that storage for characters and text
-//  pointers start at one, not zero.
+//  Put zeros into the lists that are indexed by
+//  text item ID number because those ID numbers
+//  start at one, not zero.
 
     global_char_all_text[ 0 ] = 0 ;
+    global_text_category_for_item[ 0 ] = 0 ;
+    global_text_pointer_allocation_end_for_item[ 0 ] = 0 ;
+    global_text_pointer_begin_for_item[ 0 ] = 0 ;
+    global_text_pointer_end_for_item[ 0 ] = 0 ;
+    global_text_length_for_item[ 0 ] = 0 ;
 
 
 // -----------------------------------------------
@@ -347,12 +364,12 @@ void do_main_initialization( )
     global_text_item_id_for_file_input = global_next_available_text_item_id_number ;
     assign_storage_for_new_text_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_input ] = global_character_category_other ;
-    global_text_length_for_item[ global_text_item_id_for_file_input ] -= 5 ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ] -= 5 ;
 
     global_text_item_id_for_file_output = global_next_available_text_item_id_number ;
     assign_storage_for_new_text_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_output ] = global_character_category_other ;
-    global_text_length_for_item[ global_text_item_id_for_file_input ] -= 5 ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
 
 
 // -----------------------------------------------
@@ -363,7 +380,7 @@ void do_main_initialization( )
 //  The list does not include "10" and "e" which
 //  are words within Dashrep action names.
 
-// char * global_starting_key_words = "absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
+//    char * global_starting_key_words = "absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
 
 
 // -----------------------------------------------
@@ -394,8 +411,18 @@ void store_next_character( )
     global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
     if ( global_character_category == global_character_category_other )
     {
-        log_out << "[Storing character " << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
-        global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
+        log_out << "[text item ID " << global_text_item_id_number << " pointers " << global_text_pointer_end_for_item[ global_text_item_id_number ] << " and " << global_text_pointer_allocation_end_for_item[ global_text_item_id_number ] << "]" ;
+        if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
+        {
+            global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
+            global_char_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_next_character_number ;
+            global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_any_text ;
+            global_text_length_for_item[ global_text_item_id_number ] ++ ;
+            log_out << "[Storing character " << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
+        } else
+        {
+            log_out << "[Error:  Out of space for storing text line from file]" ;
+        }
     } else if ( global_character_category == global_character_category_space )
     {
         log_out << "[Storing space]" ;
@@ -410,7 +437,7 @@ void store_next_character( )
         log_out << "[Storing tab]" ;
     } else if ( global_character_category == global_character_category_empty )
     {
-        log_out << "[Error, request to storing nothing]" ;
+        log_out << "[Error, request to store nothing]" ;
     } else
     {
         log_out << "[Storing character " << global_next_character_number << "]" ;
@@ -465,11 +492,11 @@ void write_text_item_to_file( )
 //  Changes text item to point to nothing, but
 //  keeps bottom-level text items.
 
-void text_item_clear( int text_item_id_number )
+void text_item_clear( )
 {
-    global_text_category_for_item[ text_item_id_number ] = global_character_category_empty ;
-    global_text_pointer_end_for_item[ text_item_id_number ] = global_text_pointer_begin_for_item[ text_item_id_number ] ;
-    global_text_length_for_item[ text_item_id_number ] = 0 ;
+    global_text_category_for_item[ global_text_item_id_number ] = global_character_category_empty ;
+    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] ;
+    global_text_length_for_item[ global_text_item_id_number ] = 0 ;
     return ;
 }
 
@@ -482,11 +509,14 @@ void text_item_clear( int text_item_id_number )
 //  character offset and length.  Equivalent to
 //  standard "substr" function but uses Dashrep
 //  runtime text storage conventions.  The result
-//  is a text_item_id_number that indicates the
+//  is a global_text_item_id_number that indicates the
 //  matching text.
 
-int get_text_by_character_offset_and_length( int text_item_id_number , int character_offset , int characters_length )
+int get_text_by_character_offset_and_length( )
 {
+// global_text_item_id_number
+// character_offset
+// characters_length
     int subtext_text_id_number = 0 ;
     log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
     return subtext_text_id_number ;
@@ -500,25 +530,27 @@ int get_text_by_character_offset_and_length( int text_item_id_number , int chara
 //  Gets next text item within specified text
 //  item.  Keeps track of nested pointers.
 
-void get_next_text_item_within_text_item( int text_item_id_number , int pointer_to_within_text_item )
+void get_next_text_item_within_text_item( )
 {
-    if ( ( global_text_category_for_item[ text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ text_item_id_number ] == 0 ) )
+//  global_text_item_id_number
+// global_pointer_to_within_text_item
+    if ( ( global_text_category_for_item[ global_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_text_item_id_number ] == 0 ) )
     {
-        pointer_to_within_text_item ++ ;
-        if ( pointer_to_within_text_item >= global_text_pointer_allocation_end_for_item[ text_item_id_number ] )
+        global_pointer_to_within_text_item ++ ;
+        if ( global_pointer_to_within_text_item >= global_text_pointer_allocation_end_for_item[ global_text_item_id_number ] )
         {
             log_out << "get_next_text_item code not yet written" << std::endl ;
             return ;
         }
     }
 
-    global_text_pointer_begin_for_item[ text_item_id_number ] = 0 ;
+    global_text_pointer_begin_for_item[ global_text_item_id_number ] = 0 ;
 
-    global_text_pointer_end_for_item[ text_item_id_number ] = 0 ;
+    global_text_pointer_end_for_item[ global_text_item_id_number ] = 0 ;
 
-    global_text_category_for_item[ text_item_id_number ] = 0 ;
+    global_text_category_for_item[ global_text_item_id_number ] = 0 ;
 
-    global_text_length_for_item[ text_item_id_number ] = 0 ;
+    global_text_length_for_item[ global_text_item_id_number ] = 0 ;
 
     log_out << "get_next_text_item code not yet written" << std::endl ;
     return ;
@@ -596,7 +628,8 @@ void text_append( )
 
 void text_copy( )
 {
-    text_item_clear( global_to_text_item_id_number ) ;
+    global_text_item_id_number = global_to_text_item_id_number ;
+    text_item_clear( ) ;
     text_append_no_space( ) ;
     return ;
 }
@@ -606,8 +639,9 @@ void text_copy( )
 // -----------------------------------------------
 //  Function phrase_name_lookup
 
-void phrase_name_lookup( int text_item_id_number )
+void phrase_name_lookup( )
 {
+//    global_text_item_id_number
     log_out << "function phrase_name_lookup (and creates text item if phrase is new)" << std::endl ;
     return ;
 }
@@ -617,11 +651,14 @@ void phrase_name_lookup( int text_item_id_number )
 // -----------------------------------------------
 //  Function find_matching_text
 //
-//  The result is a text_item_id_number that
+//  The result is a global_text_item_id_number that
 //  indicates the matching text.
 
-int find_matching_text( int text_item_id_number , int pointer_to_within_text_item , int text_to_find_item_id_number )
+int find_matching_text( )
 {
+//    global_text_item_id_number
+//    global_pointer_to_within_text_item
+//    global_search_text_item_id_number
     int subtext_text_id_number = 0 ;
     log_out << "function find_matching_text (equivalent to standard index function)" << std::endl ;
     return subtext_text_id_number ;
@@ -643,8 +680,10 @@ void yes_or_no_matching_text( )
 // -----------------------------------------------
 //  Function text_replace
 
-void text_replace( int text_item_id_number , int pointer_to_within_text_item )
+void text_replace( )
 {
+//    global_to_text_item_id_number ;
+//    global_pointer_to_within_text_item
     log_out << "function text_replace (using pointers)" << std::endl ;
     return ;
 }
@@ -654,8 +693,11 @@ void text_replace( int text_item_id_number , int pointer_to_within_text_item )
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text
 
-void point_to_pattern_matching_text( int text_item_id_number , int pointer_to_within_text_item ,  int text_pattern_id_number )
+void point_to_pattern_matching_text( )
 {
+// global_text_item_id_number
+// global_pointer_to_within_text_item
+// global_search_text_item_id_number
     log_out << "function point_to_pattern_matching_text (uses state machine, and symbol categorization) (if non-symbol alphanumeric text is part of the intended pattern, first find that text using find_matching_text)" << std::endl ;
     return ;
 }
@@ -665,8 +707,11 @@ void point_to_pattern_matching_text( int text_item_id_number , int pointer_to_wi
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text_backwards
 
-void point_to_pattern_matching_text_backwards( int text_item_id_number , int pointer_to_within_text_item ,  int text_pattern_id_number )
+void point_to_pattern_matching_text_backwards( )
 {
+// global_text_item_id_number
+// global_pointer_to_within_text_item
+// global_search_text_item_id_number
     log_out << "function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
     return ;
 }
