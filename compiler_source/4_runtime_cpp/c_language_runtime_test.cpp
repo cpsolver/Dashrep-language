@@ -106,6 +106,19 @@ int global_search_text_item_id_number ;
 int global_matching_text_item_id_number ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
+int global_find_this_text_item_id_number ;
+int global_find_within_text_item_id_number ;
+
+
+// -----------------------------------------------
+//  Declare pointers that point to portions of the
+//  text items.  These first-in-last-out stacks
+//  are overwritten when a new action begins (if
+//  the action needs these pointers).
+
+int global_text_id_number_for_action_stack_position[ 2005 ] ;
+int global_position_in_text_item_for_action_stack_position[ 2005 ] ;
+int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
 
 
 // -----------------------------------------------
@@ -631,6 +644,92 @@ void text_copy( )
     global_text_item_id_number = global_to_text_item_id_number ;
     text_item_clear( ) ;
     text_append_no_space( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function widen_subtext_by_leading_trailing_spaces
+
+void widen_subtext_by_leading_trailing_spaces( )
+{
+//    global_text_item_id_number
+    log_out << "function widen_subtext_by_leading_trailing_spaces" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function find_subtext
+
+void find_subtext( )
+{
+//    global_text_item_id_number
+    log_out << "function find_subtext" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function insert_into_subtext
+
+void insert_into_subtext( )
+{
+//    global_text_item_id_number
+    log_out << "function find_subtext" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function trim_text_and_categorize
+//
+//  For the text item specified in
+//  global_text_item_id_number, removes leading
+//  and trailing word delimiters, and from within
+//  the text replaces multiple word delimiters
+//  with a single space.  Word delimiters include
+//  spaces, tabs, newlines, formfeeds, carriage
+//  returns, and vertical tabs.
+//  The trimmed version gets a new text item ID
+//  number and that number is put into the
+//  variable global_text_item_id_number.
+
+void trim_text_and_categorize( )
+{
+//    global_text_item_id_number
+
+// global_text_contains_no_symbols
+// global_text_contains_possible_phrase_name
+// global_text_contains_no_spaces_or_tabs
+// global_text_contains_no_newlines
+// global_text_contains_possible_tabs
+// global_text_contains_any_text
+// global_text_contains_integer
+// global_text_contains_decimal_number
+
+    log_out << "function trim_text_and_categorize" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_subset_text
+//
+//  Moves alphanumeric text from the file input
+//  buffer -- or other portion of global_text --
+//  and stores it in text items that are grouped
+//  by content type.
+
+void store_subset_text( )
+{
+//    global_text_item_id_number
+    log_out << "function store_subset_text" << std::endl ;
     return ;
 }
 
