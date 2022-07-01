@@ -83,6 +83,7 @@ int global_text_pointer_allocation_end_for_item[ 20005 ] ;
 int global_text_pointer_begin_for_item[ 20005 ] ;
 int global_text_pointer_end_for_item[ 20005 ] ;
 int global_text_length_for_item[ 20005 ] ;
+int global_item_with_phrase_definition_for_item[ 20005 ] ;
 
 
 // -----------------------------------------------
@@ -125,35 +126,42 @@ int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
 // -----------------------------------------------
 //  Declare text "contains" categories.
 //
-//  For some of these categories, each category is
-//  more restrictive.  For example, if the text
-//  "contains no spaces or tabs" then it does not
-//  contain newlines.
-//
 //  Hyphenated words must contain at least one
-//  hyphens but cannot contain spaces, tabs,
+//  hyphen but cannot contain spaces, tabs,
 //  newlines, or any other characters that are not
 //  allowed in a Dashrep phrase name.  Leading and
 //  trailing hyphens are not allowed.
 //
-//  One word does not contain any spaces, hyphens,
+//  A word cannot contain any spaces, hyphens,
 //  tabs, newlines, formfeeds, or vertical tabs.
 //
-//  For faster data processing, integers can be
-//  stored as integers, not text.  And decimal
-//  numbers can be stored as real numbers, not
-//  text.
+//  A list of words assumes the words are
+//  separated by one space between each pair of
+//  words, but those spaces are not explicitly
+//  stored.
+//
+//  A list can contain just one item.
+//
+//  Storing integers as integers instead of as
+//  text increases execution speed.  Similarly for
+//  decimal numbers being stored as real numbers.
 
-//  todo: implement this hierarchy
+const int global_text_contains_nothing_empty = 1 ;
+const int global_text_contains_list_of_text_item_ids = 2 ;
+const int global_text_contains_unicode_anything = 3 ;
+const int global_text_contains_hyphenated_word = 4 ;
+const int global_text_contains_list_of_words = 5 ;
+const int global_text_contains_list_of_integers = 6 ;
+const int global_text_contains_list_of_decimal_numbers = 7 ;
 
-const int global_text_contains_one_word = 1 ;
-const int global_text_contains_hyphenated_words = 2 ;
-const int global_text_contains_no_spaces_or_tabs = 3 ;
-const int global_text_contains_no_newlines = 4 ;
-const int global_text_contains_no_tabs = 5 ;
-const int global_text_contains_possible_tabs = 6 ;
-const int global_text_contains_integer = 7 ;
-const int global_text_contains_decimal_number = 8 ;
+
+// -----------------------------------------------
+//  Declare variables that store "text contains"
+//  category values.
+
+int global_text_contains_category ;
+int global_to_text_contains_category ;
+int global_from_text_contains_category ;
 
 
 // -----------------------------------------------
@@ -295,6 +303,7 @@ void assign_storage_for_new_text_item( )
     global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number - 1 ;
     global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] =     global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] - 1 ;
     global_text_length_for_item[ global_next_available_text_item_id_number ] = 0 ;
+    global_item_with_phrase_definition_for_item[ global_next_available_text_item_id_number ] = 0 ;
 
 //    log_out << "[ID " << global_next_available_text_item_id_number << " , begin " << global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] << " , end " << global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] << " , requested " << global_length_requested_for_next_text_item_storage << " , allocation end " << global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] << " , length " << global_text_length_for_item[ global_next_available_text_item_id_number ] << "]" ;
 
@@ -455,43 +464,29 @@ void write_single_character_to_file( )
 //
 //  Stores the character number that's in
 //  global_next_character_number into item id
-//  number global_text_item_id_number.
-
-//  todo: implement hierarchy
+//  number global_text_item_id_number.  The item
+//  is assumed to store unicode characters, which
+//  means anything can be stored there.
 
 void store_next_character( )
 {
-    if ( global_character_category == global_character_category_other )
+    global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
+    if ( global_character_category == global_character_category_empty )
     {
-        if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
-        {
-            global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
-            global_char_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_next_character_number ;
-            global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_possible_tabs ;
-            global_text_length_for_item[ global_text_item_id_number ] ++ ;
-            log_out << "[" << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
-        } else
-        {
-            log_out << "[Error:  Out of space for storing text line from file]" ;
-        }
-    } else if ( global_character_category == global_character_category_space )
+        log_out << "[nothing to store]" ;
+        return ;
+    }
+    if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
     {
-        log_out << "[Storing space]" ;
-    } else if ( global_character_category == global_character_category_hyphen )
-    {
-        log_out << "[Storing hyphen]" ;
-    } else if ( global_character_category == global_character_category_newline )
-    {
-        log_out << "[Storing newline]" ;
-    } else if ( global_character_category == global_character_category_tab )
-    {
-        log_out << "[Storing tab]" ;
-    } else if ( global_character_category == global_character_category_empty )
-    {
-        log_out << "[Error, request to store nothing]" ;
+        global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
+        global_char_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_next_character_number ;
+        global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_unicode_anything ;
+        global_text_length_for_item[ global_text_item_id_number ] ++ ;
+        log_out << "[" << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
+        log_out << "[Storing character " << global_next_character_number << "]" ;
     } else
     {
-        log_out << "[Storing character " << global_next_character_number << "]" ;
+        log_out << "[Error:  Out of space for storing text line from file]" ;
     }
     return ;
 }
@@ -509,7 +504,7 @@ void read_text_line_from_file( )
 {
     global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] = global_text_pointer_begin_for_item[ global_text_item_id_for_file_input ] - 1 ;
     global_text_length_for_item[ global_text_item_id_for_file_input ] = 0 ;
-    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_text_contains_possible_tabs ;
+    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_text_contains_unicode_anything ;
     while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
@@ -553,41 +548,159 @@ void read_text_line_from_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_text_item_within_text_item
+//  Function text_item_clear
 //
-//  Gets next text item within specified text
-//  item.  Keeps track of nested pointers.
+//  Changes text item to point to nothing, but
+//  does not change any linked lower-level text
+//  items.
 
-//  todo: implement hierarchy
-
-void get_next_text_item_within_text_item( )
+void text_item_clear( )
 {
-//  global_text_item_id_number
-// global_pointer_to_within_text_item
-    if ( ( global_text_category_for_item[ global_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_text_item_id_number ] == 0 ) )
-    {
-        global_pointer_to_within_text_item ++ ;
-        if ( global_pointer_to_within_text_item >= global_text_pointer_allocation_end_for_item[ global_text_item_id_number ] )
-        {
-            log_out << "get_next_text_item_within_text_item code not yet written" << std::endl ;
-            return ;
-        }
-    }
-
-    global_text_pointer_end_for_item[ global_text_item_id_number ] = 0 ;
-
-    global_text_category_for_item[ global_text_item_id_number ] = 0 ;
-
+    global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_nothing_empty ;
+    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] - 1 ;
     global_text_length_for_item[ global_text_item_id_number ] = 0 ;
-
-    log_out << "get_next_text_item_within_text_item code not yet written" << std::endl ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function trim_words_and_categorize
+//  Function append_linked_text
+//
+//  Appends text assuming that the text being
+//  appended will not change, so just a link to
+//  that text needs to be appended.  The text item
+//  to be appended is specified by the text item
+//  ID number in global_from_text_item_id_number,
+//  and the text item being extended is specified
+//  by the text item ID number in
+//  global_to_text_item_id_number.
+
+void append_linked_text( )
+{
+    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_text_contains_nothing_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
+    {
+        log_out << "text to append is empty so nothing to append" << std::endl ;
+        return ;
+    }
+    global_from_text_contains_category = global_text_category_for_item[ global_from_text_item_id_number ] ;
+    global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id_number ] ;
+    switch ( global_to_text_contains_category )
+    {
+
+        case global_text_contains_nothing_empty :
+            global_char_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ] = global_from_text_item_id_number ;
+            global_text_pointer_end_for_item[ global_to_text_item_id_number ] = global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ;
+            global_text_length_for_item[ global_to_text_item_id_number ] = 1 ;
+            global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+        break ;
+
+        case global_text_contains_hyphenated_word :
+
+            global_text_pointer_begin_for_item[ global_from_text_item_id_number ] = 0 ;
+            global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
+            global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
+            global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+
+        break ;
+
+        case global_text_contains_list_of_words :
+        //
+        break ;
+
+        case global_text_contains_unicode_anything :
+        //
+        break ;
+
+        case global_text_contains_list_of_integers :
+        //
+        break ;
+
+        case global_text_contains_list_of_decimal_numbers :
+        //
+        break ;
+
+        default :
+        //
+        break ;
+
+    }
+
+    if ( global_text_pointer_end_for_item[ global_to_text_item_id_number ] >= global_text_pointer_allocation_end_for_item[ global_to_text_item_id_number ] )
+    {
+        //
+    }
+
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_copied_text
+
+//  Appends text assuming that the text being
+//  appended will change, so a copy of that text
+//  must be stored.  The text item to be appended
+//  is specified by the text item ID number in
+//  global_from_text_item_id_number, and the text
+//  item being extended is specified by the text
+//  item ID number in
+//  global_to_text_item_id_number.
+
+void append_copied_text( )
+{
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_space_if_not_empty
+//
+//  Appends a space to
+//  global_to_text_item_id_number if it is not
+//  empty.
+
+void append_space_if_not_empty( )
+{
+    if ( ( global_text_category_for_item[ global_to_text_item_id_number ] != global_character_category_empty ) && ( global_text_length_for_item[ global_to_text_item_id_number ] > 0 ) )
+    {
+        log_out << "append space" << std::endl ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_linked_text
+
+void copy_linked_text( )
+{
+    global_text_item_id_number = global_to_text_item_id_number ;
+    text_item_clear( ) ;
+    append_linked_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_copied_text
+
+void copy_copied_text( )
+{
+    global_text_item_id_number = global_to_text_item_id_number ;
+    text_item_clear( ) ;
+    append_copied_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function trim_delimiters
 //
 //  For the text item specified in
 //  global_text_item_id_number, removes leading
@@ -600,131 +713,9 @@ void get_next_text_item_within_text_item( )
 //  number and that number is put into the
 //  variable global_text_item_id_number.
 
-void trim_words_and_categorize( )
+void trim_delimiters( )
 {
-//    global_text_item_id_number
-
-// global_text_contains_one_word
-// global_text_contains_hyphenated_words
-// global_text_contains_no_spaces_or_tabs
-// global_text_contains_no_newlines
-// ...
-
-    log_out << "function trim_words_and_categorize" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_item_clear
-//
-//  Changes text item to point to nothing, but
-//  keeps bottom-level text items.
-
-void text_item_clear( )
-{
-    global_text_category_for_item[ global_text_item_id_number ] = global_character_category_empty ;
-    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] - 1 ;
-    global_text_length_for_item[ global_text_item_id_number ] = 0 ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_text_by_character_offset_and_length
-//
-//  Gets text for specified text item, using
-//  character offset and length.  Equivalent to
-//  standard "substr" function but uses Dashrep
-//  runtime text storage conventions.  The result
-//  is a global_text_item_id_number that indicates the
-//  matching text.
-
-int get_text_by_character_offset_and_length( )
-{
-// global_text_item_id_number
-// character_offset
-// characters_length
-    int subtext_text_id_number = 0 ;
-    log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
-    return subtext_text_id_number ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_append_no_space
-//
-//  Appends text from
-//  global_from_text_item_id_number to
-//  global_to_text_item_id_number but without
-//  inserting a space.
-//
-//  Overwrite char storage if fits, else abandons
-//  that storage and marks that storage area as
-//  available, and creates new storage area that
-//  holds text.
-//
-//  Do not do trash collection; if runs out of
-//  space, programmer should split large task
-//  into smaller tasks.
-
-void text_append_no_space( )
-{
-    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
-    {
-        return ;
-    }
-
-    log_out << "todo: write code that appends to text item" << std::endl ;
-
-    global_text_pointer_allocation_end_for_item[ global_to_text_item_id_number ] = 0 ;
-
-    global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
-
-    global_text_category_for_item[ global_to_text_item_id_number ] = 0 ;
-
-    global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_append
-//
-//  Appends text from
-//  global_from_text_item_id_number to
-//  global_to_text_item_id_number but inserts a
-//  space if the "to" text is not empty.
-
-void text_append( )
-{
-    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
-    {
-        return ;
-    }
-    if ( ( global_text_category_for_item[ global_from_text_item_id_number ] != global_character_category_empty ) || ( global_text_category_for_item[ global_to_text_item_id_number ] != global_character_category_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] > 0 ) )
-    {
-        log_out << "append space" << std::endl ;
-    }
-    text_append_no_space( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_copy
-
-void text_copy( )
-{
-    global_text_item_id_number = global_to_text_item_id_number ;
-    text_item_clear( ) ;
-    text_append_no_space( ) ;
+    log_out << "function trim_delimiters" << std::endl ;
     return ;
 }
 
@@ -767,17 +758,13 @@ void insert_into_subtext( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function store_subset_text
-//
-//  Moves alphanumeric text from the file input
-//  buffer -- or other portion of global_text --
-//  and stores it in text items that are grouped
-//  by content type.
+//  Function text_replace
 
-void store_subset_text( )
+void text_replace( )
 {
-//    global_text_item_id_number
-    log_out << "function store_subset_text" << std::endl ;
+//    global_to_text_item_id_number ;
+//    global_pointer_to_within_text_item
+    log_out << "function text_replace (using pointers)" << std::endl ;
     return ;
 }
 
@@ -825,19 +812,6 @@ void yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function text_replace
-
-void text_replace( )
-{
-//    global_to_text_item_id_number ;
-//    global_pointer_to_within_text_item
-    log_out << "function text_replace (using pointers)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function point_to_pattern_matching_text
 
 void point_to_pattern_matching_text( )
@@ -861,6 +835,28 @@ void point_to_pattern_matching_text_backwards( )
 // global_search_text_item_id_number
     log_out << "function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_text_by_character_offset_and_length
+//
+//  Gets text for specified text item, using
+//  character offset and length.  Equivalent to
+//  standard "substr" function but uses Dashrep
+//  runtime text storage conventions.  The result
+//  is a global_text_item_id_number that indicates the
+//  matching text.
+
+int get_text_by_character_offset_and_length( )
+{
+// global_text_item_id_number
+// character_offset
+// characters_length
+    int subtext_text_id_number = 0 ;
+    log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
+    return subtext_text_id_number ;
 }
 
 
@@ -894,7 +890,7 @@ int main() {
 
     global_from_text_item_id_number = 1 ;
     global_to_text_item_id_number = 2 ;
-    text_copy( ) ;
+
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
 
