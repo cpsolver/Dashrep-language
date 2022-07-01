@@ -152,7 +152,7 @@ const int global_text_contains_unicode_anything = 3 ;
 const int global_text_contains_hyphenated_word = 4 ;
 const int global_text_contains_list_of_words = 5 ;
 const int global_text_contains_list_of_integers = 6 ;
-const int global_text_contains_list_of_decimal_numbers = 7 ;
+const int global_contains_list_of_pointers_to_decimal_numbers = 7 ;
 
 
 // -----------------------------------------------
@@ -228,6 +228,17 @@ const int global_ascii_code_for_digit_9 = 57 ;
 const int global_ascii_code_for_open_angle_bracket = 60 ;
 const int global_ascii_code_for_close_angle_bracket = 62 ;
 const int global_ascii_code_for_underscore = 95 ;
+
+
+// -----------------------------------------------
+//  Declare a storage area for decimal numbers.
+//  These are used when the text items contain
+//  the category:
+//  global_contains_list_of_pointers_to_decimal_numbers
+//  In that case, those pointers point to
+//  positions in this list.
+
+float global_decimal_number_at_position[ 2000 ] ;
 
 
 // -----------------------------------------------
@@ -550,15 +561,15 @@ void read_text_line_from_file( )
 // -----------------------------------------------
 //  Function text_item_clear
 //
-//  Changes text item to point to nothing, but
+//  Changes a text item to point to nothing, but
 //  does not change any linked lower-level text
 //  items.
 
 void text_item_clear( )
 {
-    global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_nothing_empty ;
-    global_text_pointer_end_for_item[ global_text_item_id_number ] = global_text_pointer_begin_for_item[ global_text_item_id_number ] - 1 ;
-    global_text_length_for_item[ global_text_item_id_number ] = 0 ;
+    global_text_category_for_item[ global_to_text_item_id_number ] = global_text_contains_nothing_empty ;
+    global_text_pointer_end_for_item[ global_to_text_item_id_number ] = global_text_pointer_begin_for_item[ global_to_text_item_id_number ] - 1 ;
+    global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
     return ;
 }
 
@@ -597,32 +608,43 @@ void append_linked_text( )
 
         case global_text_contains_hyphenated_word :
 
-            global_text_pointer_begin_for_item[ global_from_text_item_id_number ] = 0 ;
-            global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
-            global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
-            global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+            switch ( global_from_text_contains_category )
+            {
+
+                case global_text_contains_hyphenated_word :
+                    global_text_pointer_begin_for_item[ global_from_text_item_id_number ] = 0 ;
+                    global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
+                    global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
+                    global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+                    break ;
+
+                default :
+                    //
+                    break ;
+
+            }
 
         break ;
 
         case global_text_contains_list_of_words :
-        //
-        break ;
+            //
+            break ;
 
         case global_text_contains_unicode_anything :
-        //
-        break ;
+            //
+            break ;
 
         case global_text_contains_list_of_integers :
-        //
-        break ;
+            //
+            break ;
 
-        case global_text_contains_list_of_decimal_numbers :
-        //
-        break ;
+        case global_contains_list_of_pointers_to_decimal_numbers :
+            //
+            break ;
 
         default :
-        //
-        break ;
+            //
+            break ;
 
     }
 
@@ -651,6 +673,8 @@ void append_linked_text( )
 void append_copied_text( )
 {
 
+//  copy text, then use function append_linked_text to append it
+
 }
 
 
@@ -659,8 +683,8 @@ void append_copied_text( )
 //  Function append_space_if_not_empty
 //
 //  Appends a space to
-//  global_to_text_item_id_number if it is not
-//  empty.
+//  global_to_text_item_id_number
+//  if it is not empty.
 
 void append_space_if_not_empty( )
 {
@@ -678,7 +702,6 @@ void append_space_if_not_empty( )
 
 void copy_linked_text( )
 {
-    global_text_item_id_number = global_to_text_item_id_number ;
     text_item_clear( ) ;
     append_linked_text( ) ;
     return ;
@@ -691,7 +714,6 @@ void copy_linked_text( )
 
 void copy_copied_text( )
 {
-    global_text_item_id_number = global_to_text_item_id_number ;
     text_item_clear( ) ;
     append_copied_text( ) ;
     return ;
@@ -772,11 +794,17 @@ void text_replace( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function phrase_name_lookup
+//
+//  Finds the text item ID number of the phrase
+//  name that is contained in the text item ID
+//  number at global_from_text_item_id_number.
+//  If a match is not found, this function puts a
+//  zero into the variable
+//  global_to_text_item_id_number.
 
 void phrase_name_lookup( )
 {
-//    global_text_item_id_number
-    log_out << "function phrase_name_lookup (and creates text item if phrase is new)" << std::endl ;
+    log_out << "function phrase_name_lookup" << std::endl ;
     return ;
 }
 
@@ -787,12 +815,12 @@ void phrase_name_lookup( )
 //
 //  The result is a global_text_item_id_number that
 //  indicates the matching text.
-
-int find_matching_text( )
-{
 //    global_text_item_id_number
 //    global_pointer_to_within_text_item
 //    global_search_text_item_id_number
+
+int find_matching_text( )
+{
     int subtext_text_id_number = 0 ;
     log_out << "function find_matching_text (equivalent to standard index function)" << std::endl ;
     return subtext_text_id_number ;
