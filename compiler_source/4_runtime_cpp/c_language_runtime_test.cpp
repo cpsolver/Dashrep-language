@@ -77,16 +77,17 @@ const int global_default_length_for_text_item = 25 ;
 
 
 // -----------------------------------------------
-//  Declare the text pointer lists.
+//  Declare the pointers, lengths, and other
+//  information that is needed for each text item.
 
 const int global_length_of_lists_for_text = 20000 ;
 
-int global_text_category_for_item[ 20005 ] ;
-int global_text_pointer_allocation_end_for_item[ 20005 ] ;
 int global_text_pointer_begin_for_item[ 20005 ] ;
+int global_text_pointer_allocation_end_for_item[ 20005 ] ;
 int global_text_pointer_end_for_item[ 20005 ] ;
 int global_text_length_for_item[ 20005 ] ;
-int global_item_with_phrase_definition_for_item[ 20005 ] ;
+int global_text_category_for_item[ 20005 ] ;
+int global_id_of_item_containing_definition_for_item[ 20005 ] ;
 
 
 // -----------------------------------------------
@@ -113,8 +114,21 @@ int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_find_this_text_item_id_number ;
 int global_find_within_text_item_id_number ;
-int global_text_item_id_for_single_space ;
 int global_new_storage_text_item_id_number ;
+int global_text_item_id_for_single_space ;
+int global_text_item_id_for_single_hyphen ;
+int global_text_item_id_for_single_underscore ;
+int global_text_item_id_for_single_newline ;
+int global_text_item_id_for_single_carriage_return ;
+int global_text_item_id_for_single_open_angle_bracket ;
+int global_text_item_id_for_single_close_angle_bracket ;
+int global_text_item_id_for_single_slash ;
+int global_text_item_id_for_single_plus ;
+int global_text_item_id_for_single_period ;
+int global_text_item_id_for_single_apostrophe ;
+int global_text_item_id_for_single_quotation_mark ;
+int global_text_item_id_for_single_tab ;
+int global_text_item_id_for_single_formfeed ;
 
 
 // -----------------------------------------------
@@ -126,6 +140,26 @@ int global_new_storage_text_item_id_number ;
 int global_text_id_number_for_action_stack_position[ 2005 ] ;
 int global_position_in_text_item_for_action_stack_position[ 2005 ] ;
 int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
+
+
+// -----------------------------------------------
+//  Declare lists that are used to more quickly
+//  find matching defined phrase names.  Only the
+//  hyphenated phrases that are defined are
+//  stored here, not all hyphenated phrases.
+
+int global_id_for_defined_phrase_name_number[ 20000 ] ;
+int global_first_word_id_for_defined_phrase_name_number[ 20000 ] ;
+int global_last_word_id_for_defined_phrase_name_number[ 20000 ] ;
+
+
+// -----------------------------------------------
+//  Declare variables that point to the lists that
+//  contain information about defined phrase
+//  names.
+
+int global_defined_phrase_number ;
+int global_next_available_defined_phrase_number ;
 
 
 // -----------------------------------------------
@@ -304,8 +338,33 @@ int global_yes_or_no_can_extend_text_item ;
 
 
 // -----------------------------------------------
+//  Specify the Dashrep-recognized phrase names.
+//
+//  Later, generate this code.
+
+    char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-tab character-underscore  expand-text standard-output copy-text append-text append-text-no-space append-new-line append-repeatedly-using-count prepend-text prepend-text-no-space put-into-phrase get-phrase-name-from-phrase get-cgi-information get-definitions-from-phrase put-listed-phrase-definitions-into-phrase copy-listed-words-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern clear-phrase clear-listed-phrases delete-listed-phrases if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes use-handler-with-each-word-in-phrase word-to-use-in-handler get-count-of-words get-word-at-position get-position-of-word copy-word-at-position copy-words-from-position-to-position copy-words-offset-skip copy-words-found-in-both-lists copy-words-found-in-either-list copy-words-found-only-in-first-list copy-words-that-begin-with-text copy-words-that-begin-with-listed-words copy-words-that-contain-listed-words copy-words-unique-only list-of-unique-word-counts list-of-pointers-to-unique-words copy-words-order-reversed copy-words-sort-numeric copy-words-rearrange-using-order-sort-numeric copy-words-sort-alphabetic copy-words-rearrange-using-order-sort-alphabetic generate-counts-from-integer-to-integer generate-every-pairwise-combination-of-words generate-every-ordered-pairwise-combination-of-words generate-list-of-all-dashrep-phrases get-count-of-characters get-characters-from-position-to-position copy-characters-from-position-to-position copy-without-extra-spaces copy-lowercase-only copy-uppercase-only copy-initial-caps copy-zero-pad-left-to-length encode-as-cgi-parameter decode-from-cgi-parameter convert-unicode-to-html-entities get-position-of-matching-text copy-and-replace copy-and-replace-using-paired-listed-words generate-positions-of-listed-words generate-positions-of-delimiter generate-positions-of-first-matching-delimiter-after-listed-positions get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-square-root numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom copy-and-move-attributes-into-xml-tags copy-and-remove-attributes-from-xml-tags yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing operating-system-slash-or-backslash dashrep-file-name-if-read-file-missing generate-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists size-of-file modification-time-of-file set-file-permission-public-read set-file-permission-private set-file-permission-private-but-executable rename-file delete-file create-empty-sub-folder copy-from-file-to-phrase end-of-line-indicator text-end-of-line-here-space-delimited yes-or-no-trim-spaces-when-copy-from-file yes-or-no-skip-empty-lines-when-copy-from-file copy-from-phrase-append-to-file copy-append-file-to-file linewise-read-from-file-and-use-handler linewise-input-line-from-file linewise-input-line-count linewise-read-from-standard-input get-url-resource trace-from-get-url-resource find-line-in-file-that-begins-with-text find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-two-words-listed copy-from-columns-in-file-to-named-phrases copy-from-columns-in-file-to-column-lists yes-or-no-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-from-tagged-file-one-entry write-gathered-listed-items-to-end-of-file dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-gather-tag-matching-id trace-show trace-show-where output-trace-file-name dashrep-comments-ignored generate-phrase-usage-counts exit-from-dashrep dashrep-language-yes dashrep-version delayed-nospace delayed-newline yes-or-no-permission-administrator dashrep-endless-loop-counter-limit dashrep-time-limit " ;
+
+
+// -----------------------------------------------
 //  End of top-level code.
 //  Beginning of functions.
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_can_extend_text_item
+//
+
+void check_yes_or_no_can_extend_text_item( )
+{
+    if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
+    {
+        global_yes_or_no_can_extend_text_item = global_yes ;
+    } else
+    {
+        global_yes_or_no_can_extend_text_item = global_no ;
+    }
+}
 
 
 // -----------------------------------------------
@@ -322,13 +381,57 @@ void assign_storage_for_new_text_item( )
     global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] = global_next_available_begin_pointer_for_next_available_text_item_id_number - 1 ;
     global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] =     global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] - 1 ;
     global_text_length_for_item[ global_next_available_text_item_id_number ] = 0 ;
-    global_item_with_phrase_definition_for_item[ global_next_available_text_item_id_number ] = 0 ;
+    global_id_of_item_containing_definition_for_item[ global_next_available_text_item_id_number ] = 0 ;
 
 //    log_out << "[ID " << global_next_available_text_item_id_number << " , begin " << global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] << " , end " << global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] << " , requested " << global_length_requested_for_next_text_item_storage << " , allocation end " << global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] << " , length " << global_text_length_for_item[ global_next_available_text_item_id_number ] << "]" ;
 
     global_new_storage_text_item_id_number = global_next_available_text_item_id_number ;
     global_next_available_text_item_id_number ++ ;
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_single_character_to_file
+//
+//  Write the text item pointed to by 
+//  global_text_item_id_number to the output file.
+//  Ignore any error responses.
+
+void write_single_character_to_file( )
+{
+    global_response_integer = fputc( global_single_character , global_outfile_connection ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_one_text_number
+//
+//  Stores the integer in the variable
+//  global_one_number_to_append, putting it into
+//  the text item with ID number
+//  global_text_item_id_number.
+//  Bounds checking should be done before using
+//  this function.  The bounds checking done here
+//  should not be relied on.
+
+void store_one_text_number( )
+{
+    int yes_or_no ;
+
+    check_yes_or_no_can_extend_text_item( ) ;
+    if ( global_yes_or_no_can_extend_text_item == global_no )
+    {
+        log_out << "[BUG:  Cannot expand size of text item ID number " << global_to_text_item_id_number << "]" ;
+        exit( EXIT_FAILURE ) ;
+    }
+    global_text_pointer_end_for_item[ global_to_text_item_id_number ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id_number ] ] = global_one_number_to_append ;
+    global_text_length_for_item[ global_to_text_item_id_number ] ++ ;
+    log_out << "[stored " << global_one_number_to_append << " at " << global_text_pointer_end_for_item[ global_to_text_item_id_number ] << "]" ;
 }
 
 
@@ -343,6 +446,10 @@ void do_main_initialization( )
 
     int pointer ;
     int character_number ;
+    int next_character ;
+    int text_id_number ;
+    int text_item_id_for_next_key_word ;
+    int text_item_id_for_next_phrase_name ;
 
 
 // -----------------------------------------------
@@ -420,15 +527,82 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Create a text item for a single space.
+//  Initialize the pointer that keeps track of the
+//  end of the list:
+//  global_id_of_item_containing_definition_for_item
+
+    global_next_available_defined_phrase_number = 1 ;
+
+
+// -----------------------------------------------
+//  Create text items that each hold one symbol,
+//  and define text item ID numbers for those
+//  symbols.
 
     global_length_requested_for_next_text_item_storage = 1 ;
-    global_text_item_id_for_single_space = global_next_available_text_item_id_number ;
+
     assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_single_space ] = global_text_contains_unicode_anything ;
+    global_text_item_id_for_single_space = global_new_storage_text_item_id_number ;
     global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_space ] ] = global_ascii_code_for_space ;
-    global_text_pointer_end_for_item[ global_text_item_id_for_single_space ] = global_text_pointer_begin_for_item[ global_text_item_id_for_single_space ] ;
-    global_text_length_for_item[ global_text_item_id_for_single_space ] = 1 ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_hyphen = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_hyphen ] ] = global_ascii_code_for_hyphen ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_newline = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_newline ] ] = global_ascii_code_for_newline ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_carriage_return = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_carriage_return ] ] = global_ascii_code_for_carriage_return ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_quotation_mark = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_quotation_mark ] ] = global_ascii_code_for_quotation_mark ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_apostrophe = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_apostrophe ] ] = global_ascii_code_for_apostrophe ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_plus = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_plus ] ] = global_ascii_code_for_plus ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_underscore = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_underscore ] ] = global_ascii_code_for_underscore ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_period = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_period ] ] = global_ascii_code_for_period ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_open_angle_bracket = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_open_angle_bracket ] ] = global_ascii_code_for_open_angle_bracket ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_close_angle_bracket = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_carriage_return ] ] = global_ascii_code_for_close_angle_bracket ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_slash = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_slash ] ] = global_ascii_code_for_slash ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_tab = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_tab ] ] = global_ascii_code_for_tab ;
+
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_single_formfeed = global_new_storage_text_item_id_number ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_formfeed ] ] = global_ascii_code_for_formfeed ;
+
+    for ( text_id_number = global_text_item_id_for_single_space ; text_id_number <= global_text_item_id_for_single_formfeed ; text_id_number ++ )
+    {
+        global_text_pointer_end_for_item[ text_id_number ] = global_text_pointer_begin_for_item[ text_id_number ] ;
+        global_text_length_for_item[ text_id_number ] = 1 ;
+        global_text_category_for_item[ text_id_number ] = global_text_contains_unicode_anything ;
+    }
 
 
 // -----------------------------------------------
@@ -450,14 +624,30 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Temporarily, specify starting text items.
-//
-//  Later, generate this code using the list in
-//  file: text-list-of-dashrep-key-words.txt
-//  The list does not include "10" and "e" which
-//  are words within Dashrep action names.
+//  Initialize some counters that track other
+//  kinds of storage usage.
 
-//    char * global_starting_key_words = "absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
+    global_next_available_defined_phrase_number = 1 ;
+
+
+// -----------------------------------------------
+//  Create the text items for Dashrep-recognized
+//  phrase names.
+
+    for ( character_number = 1 ; character_number <= 9 ; character_number ++ )
+    {
+        next_character = global_dashrep_phrase_names[ character_number ] ;
+
+        global_length_requested_for_next_text_item_storage = 2 ;
+
+        assign_storage_for_new_text_item( ) ;
+        text_item_id_for_next_phrase_name = global_new_storage_text_item_id_number ;
+// todo: write this
+//  ??
+//      while ( ... )
+//    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_tab ] ] = 'A' ;
+
+    }
 
 
 // -----------------------------------------------
@@ -483,65 +673,6 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function write_single_character_to_file
-//
-//  Write the text item pointed to by 
-//  global_text_item_id_number to the output file.
-//  Ignore any error responses.
-
-void write_single_character_to_file( )
-{
-    global_response_integer = fputc( global_single_character , global_outfile_connection ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function check_yes_or_no_can_extend_text_item
-//
-
-void check_yes_or_no_can_extend_text_item ( )
-{
-    if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
-    {
-        global_yes_or_no_can_extend_text_item = global_yes ;
-    } else
-    {
-        global_yes_or_no_can_extend_text_item = global_no ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function store_one_text_number
-//
-//  Stores the integer in the variable
-//  global_one_number_to_append, putting it into
-//  the text item with ID number
-//  global_text_item_id_number.
-//  Bounds checking should be done before using
-//  this function.  The bounds checking done here
-//  should not be relied on.
-
-void store_one_text_number( )
-{
-    if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
-    {
-        global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
-        global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_one_number_to_append ;
-        global_text_length_for_item[ global_text_item_id_number ] ++ ;
-        log_out << "[stored " << global_one_number_to_append << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
-    } else
-    {
-        log_out << "[BUG:  Out of space for storing one text number in text item ID number " << global_text_item_id_number << "]" ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function read_text_line_from_file
 //
 //  Reads one line of text from a file and puts
@@ -556,10 +687,11 @@ void read_text_line_from_file( )
     while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
-        if ( global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ]  )
+        global_one_number_to_append = global_next_character_number ;
+        global_to_text_item_id_number = global_text_item_id_for_file_input ;
+        check_yes_or_no_can_extend_text_item( ) ;
+        if ( global_yes_or_no_can_extend_text_item == global_yes )
         {
-            global_one_number_to_append = global_next_character_number ;
-            global_to_text_item_id_number = global_text_item_id_for_file_input ;
             store_one_text_number( ) ;
         } else
         {
@@ -615,7 +747,10 @@ void text_item_clear( )
 //  and the text item being extended is specified
 //  by the text item ID number in
 //  global_to_text_item_id_number.  The value in
-//  global_yes_or_no_requesting_space_appended.
+//  global_yes_or_no_requesting_space_appended
+//  indicates whether to insert a space between
+//  non-empty text being extended and non-empty
+//  text being appended.
 
 void append_linked_text( )
 {
@@ -706,16 +841,26 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "...", ...
+//  items are both of category "nothing_empty",
+//  there is nothing to do, so return.
 
         case global_text_contains_nothing_empty :
-            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ] = global_from_text_item_id_number ;
-            global_text_pointer_end_for_item[ global_to_text_item_id_number ] = global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ;
-            global_text_length_for_item[ global_to_text_item_id_number ] = 1 ;
-            global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
-        break ;
+            return ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  hyphenated word", ...
 
         case global_text_contains_hyphenated_word :
+
+//            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ] = global_from_text_item_id_number ;
+//            global_text_pointer_end_for_item[ global_to_text_item_id_number ] = global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ;
+//            global_text_length_for_item[ global_to_text_item_id_number ] = 1 ;
+//            global_id_of_item_containing_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+
 
             switch ( global_from_text_contains_category )
             {
@@ -724,7 +869,7 @@ void append_linked_text( )
                     global_text_pointer_begin_for_item[ global_from_text_item_id_number ] = 0 ;
                     global_text_pointer_end_for_item[ global_to_text_item_id_number ] = 0 ;
                     global_text_length_for_item[ global_to_text_item_id_number ] = 0 ;
-                    global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
+                    global_id_of_item_containing_definition_for_item[ global_to_text_item_id_number ] = 0 ;
                     break ;
 
                 default :
@@ -735,28 +880,65 @@ void append_linked_text( )
 
         break ;
 
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  ...
+
         case global_text_contains_list_of_words :
             //
             break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  ...
 
         case global_text_contains_unicode_anything :
             //
             break ;
 
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  ...
+
         case global_text_contains_list_of_integers :
             //
             break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  ...
 
         case global_contains_list_of_pointers_to_decimal_numbers :
             //
             break ;
 
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "contains
+//  ...
+
         default :
             //
             break ;
 
+
+// -----------------------------------------------
+//  End of "switch" statement.
+
     }
 
+
+// -----------------------------------------------
+//  End of function append_linked_text.
 
 }
 
@@ -776,7 +958,7 @@ void append_linked_text( )
 
 void append_copied_text( )
 {
-
+    text_item_clear( ) ;
 //  copy text, then use function append_linked_text to append it
 
 }
@@ -998,6 +1180,8 @@ int get_text_by_character_offset_and_length( )
 
 int main() {
 
+    int character_number ;
+
 
 // -----------------------------------------------
 //  Initialization.
@@ -1023,9 +1207,9 @@ int main() {
     global_from_text_item_id_number = 1 ;
     global_to_text_item_id_number = 2 ;
 
-    for ( global_character_pointer = 1 ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_file_output ] ; global_character_pointer ++ )
+    for ( character_number = 1 ; character_number <= global_next_available_begin_pointer_for_next_available_text_item_id_number ; character_number ++ )
     {
-        log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
+        log_out << "[" << global_storage_all_text[ character_number ] << "]" ;
     }
     log_out << std::endl ;
 
