@@ -63,14 +63,17 @@ const int global_yes = 1 ;
 //  items or text characters.  The characters are
 //  stored here as INTEGERS, not as bytes!
 
-int global_char_all_text[ 100000 ] ;
+int global_storage_all_text[ 100000 ] ;
 
 
 // -----------------------------------------------
 //  Declare how much of the text storage area is
-//  used for file input and output (each).
+//  used for file input and output (each).  And
+//  declare the default size of a text item when
+//  the full needed size is unknown.
 
 const int global_allocated_length_for_file_input_or_output = 2000 ;
+const int global_default_length_for_text_item = 25 ;
 
 
 // -----------------------------------------------
@@ -110,6 +113,8 @@ int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_find_this_text_item_id_number ;
 int global_find_within_text_item_id_number ;
+int global_text_item_id_for_single_space ;
+int global_new_storage_text_item_id_number ;
 
 
 // -----------------------------------------------
@@ -293,6 +298,9 @@ std::ofstream log_out ;
 //  Declare some other global variables.
 
 int global_response_integer ;
+int global_yes_or_no_requesting_space_appended ;
+int global_one_number_to_append ;
+int global_yes_or_no_can_extend_text_item ;
 
 
 // -----------------------------------------------
@@ -318,6 +326,7 @@ void assign_storage_for_new_text_item( )
 
 //    log_out << "[ID " << global_next_available_text_item_id_number << " , begin " << global_text_pointer_begin_for_item[ global_next_available_text_item_id_number ] << " , end " << global_text_pointer_end_for_item[ global_next_available_text_item_id_number ] << " , requested " << global_length_requested_for_next_text_item_storage << " , allocation end " << global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id_number ] << " , length " << global_text_length_for_item[ global_next_available_text_item_id_number ] << "]" ;
 
+    global_new_storage_text_item_id_number = global_next_available_text_item_id_number ;
     global_next_available_text_item_id_number ++ ;
     return ;
 }
@@ -394,7 +403,7 @@ void do_main_initialization( )
 //  text item ID number because those ID numbers
 //  start at one, not zero.
 
-    global_char_all_text[ 0 ] = 0 ;
+    global_storage_all_text[ 0 ] = 0 ;
     global_text_category_for_item[ 0 ] = 0 ;
     global_text_pointer_allocation_end_for_item[ 0 ] = 0 ;
     global_text_pointer_begin_for_item[ 0 ] = 0 ;
@@ -405,9 +414,21 @@ void do_main_initialization( )
 // -----------------------------------------------
 //  Initialize the pointer that keeps track of the
 //  beginning of the next available character
-//  positions in the list: global_char_all_text
+//  positions in the list: global_storage_all_text
 
     global_next_available_begin_pointer_for_next_available_text_item_id_number = 1 ;
+
+
+// -----------------------------------------------
+//  Create a text item for a single space.
+
+    global_length_requested_for_next_text_item_storage = 1 ;
+    global_text_item_id_for_single_space = global_next_available_text_item_id_number ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_single_space ] = global_text_contains_unicode_anything ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_space ] ] = global_ascii_code_for_space ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_single_space ] = global_text_pointer_begin_for_item[ global_text_item_id_for_single_space ] ;
+    global_text_length_for_item[ global_text_item_id_for_single_space ] = 1 ;
 
 
 // -----------------------------------------------
@@ -437,6 +458,12 @@ void do_main_initialization( )
 //  are words within Dashrep action names.
 
 //    char * global_starting_key_words = "absolute absolutes add administrator after all alphabetic ambee amenn amennfen amennfenambee and any append as at attributes backslash base based begin begins both break breaking but by calculate caps cgi character characters clear column columns combee combination comenn comments compare components contain convert copy cosine count counter counts create current dashrep day decode decrement definitions delayed delete delimited delimiter delta dimensional directory distances divide each either else empty encode end endless entities entry epoch equal even every executable exists exit expand extra fen fenambee file files find first folder folders for found four from gather gathered generate get greater handler here hour html hyphen hyphens id if ignored in increment indicator info information initial input integer integers into items language latitude left length less limit line lines linewise list listed lists logarithm loop lowercase map matching maximum meridian minimum minus minute missing modification month move multiple multiply name named new newline no non nonzero nospace nospay not number numeric odd of offset on one only operating opposite or order ordered output overwrite pad paired pairwise parameter path pattern permission phrase phrases pi pointers position positions prefix prepend private public put read reading rearrange remove rename repeatedly replace resource reversed root rows same second seconds set show sine size skip slash sort space spaces split square standard sub system tab tag tagged tags text that tile time to trace trim two underscore unicode unique uppercase url usage use using values vector vectors version week when where with without word words write writing xml y year yes zero zoom" ;
+
+
+// -----------------------------------------------
+//  Initialize some variables.
+
+    global_yes_or_no_requesting_space_appended = global_yes ;
 
 
 // -----------------------------------------------
@@ -471,35 +498,45 @@ void write_single_character_to_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function store_next_character
+//  Function check_yes_or_no_can_extend_text_item
 //
-//  Stores the character number that's in
-//  global_next_character_number into item id
-//  number global_text_item_id_number.  The item
-//  is assumed to store unicode characters, which
-//  means anything can be stored there.
 
-void store_next_character( )
+void check_yes_or_no_can_extend_text_item ( )
 {
-    global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
-    if ( global_character_category == global_character_category_empty )
+    if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
     {
-        log_out << "[nothing to store]" ;
-        return ;
+        global_yes_or_no_can_extend_text_item = global_yes ;
+    } else
+    {
+        global_yes_or_no_can_extend_text_item = global_no ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_one_text_number
+//
+//  Stores the integer in the variable
+//  global_one_number_to_append, putting it into
+//  the text item with ID number
+//  global_text_item_id_number.
+//  Bounds checking should be done before using
+//  this function.  The bounds checking done here
+//  should not be relied on.
+
+void store_one_text_number( )
+{
     if ( global_text_pointer_end_for_item[ global_text_item_id_number ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_number ]  )
     {
         global_text_pointer_end_for_item[ global_text_item_id_number ] ++ ;
-        global_char_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_next_character_number ;
-        global_text_category_for_item[ global_text_item_id_number ] = global_text_contains_unicode_anything ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_number ] ] = global_one_number_to_append ;
         global_text_length_for_item[ global_text_item_id_number ] ++ ;
-        log_out << "[" << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
-        log_out << "[Storing character " << global_next_character_number << "]" ;
+        log_out << "[stored " << global_one_number_to_append << " at " << global_text_pointer_end_for_item[ global_text_item_id_number ] << "]" ;
     } else
     {
-        log_out << "[Error:  Out of space for storing text line from file]" ;
+        log_out << "[BUG:  Out of space for storing one text number in text item ID number " << global_text_item_id_number << "]" ;
     }
-    return ;
 }
 
 
@@ -521,10 +558,9 @@ void read_text_line_from_file( )
         global_next_character_number = fgetc( global_infile_connection ) ;
         if ( global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] < global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ]  )
         {
-            global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] ++ ;
-            global_char_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] ] = global_next_character_number ;
-            global_text_length_for_item[ global_text_item_id_for_file_input ] ++ ;
-            log_out << "[" << global_next_character_number << " at " << global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] << "]" ;
+            global_one_number_to_append = global_next_character_number ;
+            global_to_text_item_id_number = global_text_item_id_for_file_input ;
+            store_one_text_number( ) ;
         } else
         {
             log_out << "[Error:  Out of space for storing text line from file]" ;
@@ -534,13 +570,6 @@ void read_text_line_from_file( )
         global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
         if ( ( global_next_character_number == EOF ) || ( global_character_category == global_character_category_newline ) )
         {
-
-            for ( global_character_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_file_input ] ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_file_input ] ; global_character_pointer ++ )
-            {
-                log_out << "[" << global_char_all_text[ global_character_pointer ] << "]" ;
-            }
-            log_out << std::endl ;
-
             global_next_character_number = 0 ;
             return ;
         }
@@ -579,28 +608,108 @@ void text_item_clear( )
 //  Function append_linked_text
 //
 //  Appends text assuming that the text being
-//  appended will not change, so just a link to
-//  that text needs to be appended.  The text item
+//  appended will not change, so just add a link
+//  to the text being appended.  The text item
 //  to be appended is specified by the text item
 //  ID number in global_from_text_item_id_number,
 //  and the text item being extended is specified
 //  by the text item ID number in
-//  global_to_text_item_id_number.
+//  global_to_text_item_id_number.  The value in
+//  global_yes_or_no_requesting_space_appended.
 
 void append_linked_text( )
 {
+
+
+// -----------------------------------------------
+//  If the text being appended is empty, there is
+//  nothing to do.
+
     if ( ( global_text_category_for_item[ global_from_text_item_id_number ] == global_text_contains_nothing_empty ) || ( global_text_length_for_item[ global_from_text_item_id_number ] == 0 ) )
     {
         log_out << "text to append is empty so nothing to append" << std::endl ;
         return ;
     }
+
+
+// -----------------------------------------------
+//  If the text being extended is not empty and
+//  there is a request to insert a space between
+//  the extended text and the appended text,
+//  insert a space.
+
+    if ( ( ( global_text_category_for_item[ global_to_text_item_id_number ] != global_text_contains_nothing_empty ) || ( global_text_length_for_item[ global_to_text_item_id_number ] != 0 ) ) && ( global_yes_or_no_requesting_space_appended == global_yes ) )
+    {
+        if ( global_text_category_for_item[ global_to_text_item_id_number ] == global_text_contains_list_of_text_item_ids )
+        {
+            check_yes_or_no_can_extend_text_item( ) ;
+            if ( global_yes_or_no_can_extend_text_item == global_yes )
+            {
+                global_one_number_to_append = global_text_item_id_for_single_space ;
+                store_one_text_number( ) ;
+            } else
+            {
+                log_out << "create new text item to make room for space character" << std::endl ;
+            }
+        } else
+        {
+            global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
+            assign_storage_for_new_text_item( ) ;
+            global_text_category_for_item[ global_new_storage_text_item_id_number ] = global_text_contains_list_of_text_item_ids ;
+//  insert the to and space IDs, but not the from ID
+//        global_storage_all_text
+            global_to_text_item_id_number = global_new_storage_text_item_id_number ;
+        }
+    }
+
+
+// -----------------------------------------------
+//  Get the categories of the "from" and "to" text
+//  items.
+
     global_from_text_contains_category = global_text_category_for_item[ global_from_text_item_id_number ] ;
     global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id_number ] ;
+
+
+// -----------------------------------------------
+//  If the "to" and "from" categories are
+//  different, create a new text item of category
+//  "..." and into it put pointers that point to
+//  the "to" and "from" text items, and change the
+//  text item ID of the "to" text item, then
+//  return.
+
+    if ( global_from_text_contains_category != global_to_text_contains_category )
+    {
+        global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
+        assign_storage_for_new_text_item( ) ;
+        global_one_number_to_append = global_to_text_item_id_number ;
+        global_to_text_item_id_number = global_new_storage_text_item_id_number ;
+        store_one_text_number( ) ;
+        global_one_number_to_append = global_text_item_id_for_single_space ;
+        store_one_text_number( ) ;
+        global_one_number_to_append = global_from_text_contains_category ;
+        store_one_text_number( ) ;
+        global_text_category_for_item[ global_to_text_item_id_number ] = global_text_contains_list_of_text_item_ids ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  Begin a branch that handles cases where the
+//  "from" and "to" categories are the same.  Each
+//  branch handles a different category type.
+
     switch ( global_to_text_contains_category )
     {
 
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category "...", ...
+
         case global_text_contains_nothing_empty :
-            global_char_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ] = global_from_text_item_id_number ;
+            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ] = global_from_text_item_id_number ;
             global_text_pointer_end_for_item[ global_to_text_item_id_number ] = global_text_pointer_begin_for_item[ global_to_text_item_id_number ] ;
             global_text_length_for_item[ global_to_text_item_id_number ] = 1 ;
             global_item_with_phrase_definition_for_item[ global_to_text_item_id_number ] = 0 ;
@@ -646,11 +755,6 @@ void append_linked_text( )
             //
             break ;
 
-    }
-
-    if ( global_text_pointer_end_for_item[ global_to_text_item_id_number ] >= global_text_pointer_allocation_end_for_item[ global_to_text_item_id_number ] )
-    {
-        //
     }
 
 
@@ -918,6 +1022,13 @@ int main() {
 
     global_from_text_item_id_number = 1 ;
     global_to_text_item_id_number = 2 ;
+
+    for ( global_character_pointer = 1 ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_file_output ] ; global_character_pointer ++ )
+    {
+        log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
+    }
+    log_out << std::endl ;
+
 
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
