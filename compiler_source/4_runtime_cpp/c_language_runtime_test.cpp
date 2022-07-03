@@ -129,6 +129,7 @@ int global_text_item_id_for_single_apostrophe ;
 int global_text_item_id_for_single_quotation_mark ;
 int global_text_item_id_for_single_tab ;
 int global_text_item_id_for_single_formfeed ;
+int global_text_item_id_for_non_breaking_space ;
 int global_text_item_id_for_phrase_name_character_hyphen ;
 int global_text_item_id_for_phrase_name_character_space ;
 int global_text_item_id_for_phrase_name_character_underscore ;
@@ -137,6 +138,19 @@ int global_text_item_id_for_phrase_name_character_tab ;
 int global_text_item_id_for_phrase_name_four_hyphens ;
 int global_text_item_id_for_phrase_name_empty_text ;
 int global_text_item_id_for_phrase_name_non_breaking_space ;
+int global_text_item_id_for_lookup_of_hyphenated_phrase_name ;
+int global_text_item_id_for_word_character ;
+int global_text_item_id_for_word_space ;
+int global_text_item_id_for_word_hyphen ;
+int global_text_item_id_for_word_hyphens ;
+int global_text_item_id_for_word_newline ;
+int global_text_item_id_for_word_four ;
+int global_text_item_id_for_word_non ;
+int global_text_item_id_for_word_breaking ;
+int global_text_item_id_for_word_tab ;
+int global_text_item_id_for_word_empty ;
+int global_text_item_id_for_word_text ;
+int global_text_item_id_for_word_underscore ;
 
 
 // -----------------------------------------------
@@ -639,20 +653,33 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Initialize the text items used for file input
-//  and output.  Shorten the length slightly in
-//  case of an overrun.
+//  Create a text item that holds one hyphenated
+//  phrase name while doing a lookup to see if it
+//  matches any existing hyphenated phrase name.
+
+    global_length_requested_for_next_text_item_storage = 200 ;
+
+    global_text_item_id_for_lookup_of_hyphenated_phrase_name = global_next_available_text_item_id_number ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] = global_text_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] -= 5 ;
+
+
+// -----------------------------------------------
+//  Create the text items used for file input and
+//  output.  Shorten the length slightly in case
+//  of an overrun.
 
     global_length_requested_for_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
 
     global_text_item_id_for_file_input = global_next_available_text_item_id_number ;
     assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_character_category_other ;
+    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_text_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ] -= 5 ;
 
     global_text_item_id_for_file_output = global_next_available_text_item_id_number ;
     assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_file_output ] = global_character_category_other ;
+    global_text_category_for_item[ global_text_item_id_for_file_output ] = global_text_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
 
 
@@ -777,7 +804,7 @@ void do_main_initialization( )
     global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ++ ;
     global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_word_hyphens ;
     global_text_length_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] = 2 ;
-    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_four_hyphens ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_phrase_name_four_hyphens ;
 
 // empty-text
     assign_storage_for_new_text_item( ) ;
@@ -787,7 +814,7 @@ void do_main_initialization( )
     global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ++ ;
     global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_word_hyphen ;
     global_text_length_for_item[ global_text_item_id_for_phrase_name_empty_text ] = 2 ;
-    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_four_hyphens ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_phrase_name_empty_text ;
 
     global_length_requested_for_next_text_item_storage = 3 ;
 
@@ -801,7 +828,7 @@ void do_main_initialization( )
     global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ++ ;
     global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_word_space ;
     global_text_length_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] = 3 ;
-    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_non_breaking_space ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_phrase_name_non_breaking_space ;
 
 
 // -----------------------------------------------
@@ -1164,6 +1191,112 @@ void copy_copied_text( )
     text_item_clear( ) ;
     append_copied_text( ) ;
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function standardize_as_space_delimited_words
+//
+//  Remove leading and trailing spaces, tabs,
+//  newlines, and formfeeds.  Also remove extra
+//  spaces where two or more adjacent spaces
+//  appear.  If any changes are needed, create a
+//  new text item in which to put the words, and
+//  supply the new text item ID number as the new
+//  "to" text item ID.
+
+void standardize_as_space_delimited_words( )
+{
+
+//  todo: write this function
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function standardize_as_list_of_integers
+
+void standardize_as_list_of_integers( )
+{
+
+//  todo: write this function
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function standardize_as_list_of_decimal_numbers
+
+void standardize_as_list_of_decimal_numbers( )
+{
+
+//  todo: write this function
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function standardize_as_character_sequence
+
+void standardize_as_character_sequence( )
+{
+
+//  todo: write this function
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function lookup_hyphenated_phrase_word
+//
+//  Search all the text items that are used in
+//  defined hyphenated phrase names to find a
+//  match with one of the space-delimited words
+//  in the text item named
+//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
+
+void lookup_hyphenated_phrase_word( )
+{
+
+//  todo: write this function
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function lookup_hyphenated_phrase_name
+//
+//  Searches all the defined hyphenated phrase
+//  names to find a match with the hyphenated
+//  phrase in the text item named
+//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
+//  First, do lookups for the words between the
+//  hyphens.  If not all those words can be found,
+//  there cannot be a match for the hyphenated
+//  phrase.  If all the words can be found, search
+//  for a hyphenated phrase that has the same
+//  number of words.  When there is a match, check
+//  that the same sequence of text item ID numbers
+//  specify that hyphenated word.
+
+void lookup_hyphenated_phrase_name( )
+{
+
+//  todo: write this function
+
+//  use for each word:  lookup_hyphenated_phrase_word
+
 }
 
 
