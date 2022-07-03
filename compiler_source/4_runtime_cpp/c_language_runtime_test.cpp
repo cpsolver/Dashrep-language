@@ -129,6 +129,14 @@ int global_text_item_id_for_single_apostrophe ;
 int global_text_item_id_for_single_quotation_mark ;
 int global_text_item_id_for_single_tab ;
 int global_text_item_id_for_single_formfeed ;
+int global_text_item_id_for_phrase_name_character_hyphen ;
+int global_text_item_id_for_phrase_name_character_space ;
+int global_text_item_id_for_phrase_name_character_underscore ;
+int global_text_item_id_for_phrase_name_character_newline ;
+int global_text_item_id_for_phrase_name_character_tab ;
+int global_text_item_id_for_phrase_name_four_hyphens ;
+int global_text_item_id_for_phrase_name_empty_text ;
+int global_text_item_id_for_phrase_name_non_breaking_space ;
 
 
 // -----------------------------------------------
@@ -140,6 +148,14 @@ int global_text_item_id_for_single_formfeed ;
 int global_text_id_number_for_action_stack_position[ 2005 ] ;
 int global_position_in_text_item_for_action_stack_position[ 2005 ] ;
 int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
+
+
+// -----------------------------------------------
+//  Declare a "char" data type that is used to
+//  access a double-quoted text word.
+
+const int global_allocated_length_for_this_word = 200 ;
+char global_this_word[ 205 ] ;
 
 
 // -----------------------------------------------
@@ -437,6 +453,23 @@ void store_one_text_number( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function store_this_word_in_text_item
+//
+//  Copies the text word in the char array named
+//  global_this_word into a new text item.
+
+void store_this_word_in_text_item( )
+{
+
+//  todo: write this code
+
+    assign_storage_for_new_text_item( ) ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //    do_main_initialization
 //
 //  Does initialization at the very beginning.
@@ -624,30 +657,158 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Create the text items for words within the
+//  phrase names that have definitions (rather
+//  than only having meaning between the words
+//  ambee and amenn.
+
+    global_this_word[ ] = "character" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_character = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "hyphen" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_hyphen = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "space" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_space = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "newline" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_newline = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "underscore" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_underscore = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "tab" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_tab = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "four" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_four = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "hyphens" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_hyphens = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "non" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_non = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "breaking" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_breaking = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "empty" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_empty = global_new_storage_text_item_id_number ;
+
+    global_this_word[ ] = "text" ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_word_text = global_new_storage_text_item_id_number ;
+
+
+// -----------------------------------------------
+//  Create the text items for Dashrep-defined
+//  static phrase names.  And supply their
+//  definitions.
+
+    global_length_requested_for_next_text_item_storage = 2 ;
+
+// character-hyphen
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_character_hyphen = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] ] = global_text_item_id_for_word_hyphen ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_hyphen ] ] = global_text_item_id_for_single_hyphen ;
+
+
+// character-space
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_character_space = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_space ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_space ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_space ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_space ] ] = global_text_item_id_for_word_space ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_character_space ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_space ] ] = global_text_item_id_for_single_space ;
+
+// character-newline
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_character_newline = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_newline ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_newline ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_newline ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_newline ] ] = global_text_item_id_for_word_newline ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_character_newline ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_newline ] ] = global_text_item_id_for_single_newline ;
+
+// character-tab
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_character_tab = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_tab ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_tab ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_tab ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_tab ] ] = global_text_item_id_for_word_tab ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_character_tab ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_tab ] ] = global_text_item_id_for_single_tab ;
+
+// character-underscore
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_character_underscore = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_underscore ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_underscore ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_underscore ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_underscore ] ] = global_text_item_id_for_word_underscore ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_character_underscore ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_character_underscore ] ] = global_text_item_id_for_single_underscore ;
+
+// four-hyphens
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_four_hyphens = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_word_four ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_word_hyphens ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_four_hyphens ] ] = global_text_item_id_for_four_hyphens ;
+
+// empty-text
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_empty_text = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_word_character ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_word_hyphen ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_empty_text ] = 2 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_empty_text ] ] = global_text_item_id_for_four_hyphens ;
+
+    global_length_requested_for_next_text_item_storage = 3 ;
+
+// non-breaking-space
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_phrase_name_non_breaking_space = global_new_storage_text_item_id_number ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_word_non ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_word_breaking ;
+    global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_word_space ;
+    global_text_length_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] = 3 ;
+    global_id_of_item_containing_definition_for_item[ global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name_non_breaking_space ] ] = global_text_item_id_for_non_breaking_space ;
+
+
+// -----------------------------------------------
 //  Initialize some counters that track other
 //  kinds of storage usage.
 
     global_next_available_defined_phrase_number = 1 ;
-
-
-// -----------------------------------------------
-//  Create the text items for Dashrep-recognized
-//  phrase names.
-
-    for ( character_number = 1 ; character_number <= 9 ; character_number ++ )
-    {
-        next_character = global_dashrep_phrase_names[ character_number ] ;
-
-        global_length_requested_for_next_text_item_storage = 2 ;
-
-        assign_storage_for_new_text_item( ) ;
-        text_item_id_for_next_phrase_name = global_new_storage_text_item_id_number ;
-// todo: write this
-//  ??
-//      while ( ... )
-//    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_tab ] ] = 'A' ;
-
-    }
 
 
 // -----------------------------------------------
