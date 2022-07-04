@@ -109,12 +109,14 @@ int global_text_item_id ;
 int global_new_storage_text_item_id ;
 int global_from_text_item_id ;
 int global_to_text_item_id ;
+int global_convertable_text_item_id ;
 int global_phrase_name_text_item_id ;
 int global_definition_text_item_id ;
 int global_search_text_item_id ;
 int global_matching_text_item_id ;
 int global_find_this_text_item_id ;
 int global_find_within_text_item_id ;
+int global_subtext_text_item_id ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_single_space ;
@@ -367,6 +369,20 @@ int global_response_ignored ;
 int global_yes_or_no_requesting_space_appended ;
 int global_one_number_to_append ;
 int global_yes_or_no_can_extend_text_item ;
+int global_text_pointer ;
+int global_single_character_as_integer ;
+int global_yes_or_no_negative_number ;
+int global_single_integer ;
+int global_single_decimal_number ;
+int global_decimal_number_divisor ;
+
+
+// -----------------------------------------------
+//  Declare global_do_nothing as an integer that
+//  is incremented where the code otherwise would
+//  be empty.  This is done for readability.
+
+int global_do_nothing ;
 
 
 // -----------------------------------------------
@@ -374,7 +390,7 @@ int global_yes_or_no_can_extend_text_item ;
 //
 //  Later, generate this code.
 
-    char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-tab character-underscore  expand-text standard-output copy-text append-text append-text-no-space append-new-line append-repeatedly-using-count prepend-text prepend-text-no-space put-into-phrase get-phrase-name-from-phrase get-cgi-information get-definitions-from-phrase put-listed-phrase-definitions-into-phrase copy-listed-words-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern clear-phrase clear-listed-phrases delete-listed-phrases if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes use-handler-with-each-word-in-phrase word-to-use-in-handler get-count-of-words get-word-at-position get-position-of-word copy-word-at-position copy-words-from-position-to-position copy-words-offset-skip copy-words-found-in-both-lists copy-words-found-in-either-list copy-words-found-only-in-first-list copy-words-that-begin-with-text copy-words-that-begin-with-listed-words copy-words-that-contain-listed-words copy-words-unique-only list-of-unique-word-counts list-of-pointers-to-unique-words copy-words-order-reversed copy-words-sort-numeric copy-words-rearrange-using-order-sort-numeric copy-words-sort-alphabetic copy-words-rearrange-using-order-sort-alphabetic generate-counts-from-integer-to-integer generate-every-pairwise-combination-of-words generate-every-ordered-pairwise-combination-of-words generate-list-of-all-dashrep-phrases get-count-of-characters get-characters-from-position-to-position copy-characters-from-position-to-position copy-without-extra-spaces copy-lowercase-only copy-uppercase-only copy-initial-caps copy-zero-pad-left-to-length encode-as-cgi-parameter decode-from-cgi-parameter convert-unicode-to-html-entities get-position-of-matching-text copy-and-replace copy-and-replace-using-paired-listed-words generate-positions-of-listed-words generate-positions-of-delimiter generate-positions-of-first-matching-delimiter-after-listed-positions get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-square-root numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom copy-and-move-attributes-into-xml-tags copy-and-remove-attributes-from-xml-tags yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing operating-system-slash-or-backslash dashrep-file-name-if-read-file-missing generate-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists size-of-file modification-time-of-file set-file-permission-public-read set-file-permission-private set-file-permission-private-but-executable rename-file delete-file create-empty-sub-folder copy-from-file-to-phrase end-of-line-indicator text-end-of-line-here-space-delimited yes-or-no-trim-spaces-when-copy-from-file yes-or-no-skip-empty-lines-when-copy-from-file copy-from-phrase-append-to-file copy-append-file-to-file linewise-read-from-file-and-use-handler linewise-input-line-from-file linewise-input-line-count linewise-read-from-standard-input get-url-resource trace-from-get-url-resource find-line-in-file-that-begins-with-text find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-two-words-listed copy-from-columns-in-file-to-named-phrases copy-from-columns-in-file-to-column-lists yes-or-no-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-from-tagged-file-one-entry write-gathered-listed-items-to-end-of-file dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-gather-tag-matching-id trace-show trace-show-where output-trace-file-name dashrep-comments-ignored generate-phrase-usage-counts exit-from-dashrep dashrep-language-yes dashrep-version delayed-nospace delayed-newline yes-or-no-permission-administrator dashrep-endless-loop-counter-limit dashrep-time-limit " ;
+char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-tab character-underscore  expand-text standard-output copy-text append-text append-text-no-space append-new-line append-repeatedly-using-count prepend-text prepend-text-no-space put-into-phrase get-phrase-name-from-phrase get-cgi-information get-definitions-from-phrase put-listed-phrase-definitions-into-phrase copy-listed-words-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern clear-phrase clear-listed-phrases delete-listed-phrases if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes use-handler-with-each-word-in-phrase word-to-use-in-handler get-count-of-words get-word-at-position get-position-of-word copy-word-at-position copy-words-from-position-to-position copy-words-offset-skip copy-words-found-in-both-lists copy-words-found-in-either-list copy-words-found-only-in-first-list copy-words-that-begin-with-text copy-words-that-begin-with-listed-words copy-words-that-contain-listed-words copy-words-unique-only list-of-unique-word-counts list-of-pointers-to-unique-words copy-words-order-reversed copy-words-sort-numeric copy-words-rearrange-using-order-sort-numeric copy-words-sort-alphabetic copy-words-rearrange-using-order-sort-alphabetic generate-counts-from-integer-to-integer generate-every-pairwise-combination-of-words generate-every-ordered-pairwise-combination-of-words generate-list-of-all-dashrep-phrases get-count-of-characters get-characters-from-position-to-position copy-characters-from-position-to-position copy-without-extra-spaces copy-lowercase-only copy-uppercase-only copy-initial-caps copy-zero-pad-left-to-length encode-as-cgi-parameter decode-from-cgi-parameter convert-unicode-to-html-entities get-position-of-matching-text copy-and-replace copy-and-replace-using-paired-listed-words generate-positions-of-listed-words generate-positions-of-delimiter generate-positions-of-first-matching-delimiter-after-listed-positions get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-square-root numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom copy-and-move-attributes-into-xml-tags copy-and-remove-attributes-from-xml-tags yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing operating-system-slash-or-backslash dashrep-file-name-if-read-file-missing generate-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists size-of-file modification-time-of-file set-file-permission-public-read set-file-permission-private set-file-permission-private-but-executable rename-file delete-file create-empty-sub-folder copy-from-file-to-phrase end-of-line-indicator text-end-of-line-here-space-delimited yes-or-no-trim-spaces-when-copy-from-file yes-or-no-skip-empty-lines-when-copy-from-file copy-from-phrase-append-to-file copy-append-file-to-file linewise-read-from-file-and-use-handler linewise-input-line-from-file linewise-input-line-count linewise-read-from-standard-input get-url-resource trace-from-get-url-resource find-line-in-file-that-begins-with-text find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-two-words-listed copy-from-columns-in-file-to-named-phrases copy-from-columns-in-file-to-column-lists yes-or-no-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-from-tagged-file-one-entry write-gathered-listed-items-to-end-of-file dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-gather-tag-matching-id trace-show trace-show-where output-trace-file-name dashrep-comments-ignored generate-phrase-usage-counts exit-from-dashrep dashrep-language-yes dashrep-version delayed-nospace delayed-newline yes-or-no-permission-administrator dashrep-endless-loop-counter-limit dashrep-time-limit " ;
 
 
 // -----------------------------------------------
@@ -866,6 +882,13 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Define numeric-pi as decimal number using
+//  category list_of_decimal_numbers.
+//  If calculation is involved, set flag and do
+//  calculation later only if needed.
+
+
+// -----------------------------------------------
 //  End of function do_main_initialization.
 
     return ;
@@ -926,7 +949,10 @@ void read_text_line_from_file( )
 //
 //  Changes a text item to point to nothing, but
 //  does not change any linked lower-level text
-//  items.
+//  items.  If the text item still can possibly be
+//  referenced by another higher-level text item,
+//  do not use this function, and instead point to
+//  the empty text item or create a new text item.
 
 void text_item_clear( )
 {
@@ -1036,6 +1062,10 @@ void append_linked_text( )
 //  Begin a branch that handles cases where the
 //  "from" and "to" categories are the same.  Each
 //  branch handles a different category type.
+//
+//  Possibly move this code to a function that
+//  can call itself, to allow for nested levels
+//  of text items.
 
     switch ( global_to_text_contains_category )
     {
@@ -1085,8 +1115,9 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  ...
+//  items are both of category
+//  contains_list_of_words, then add to the list
+//  a pointer to the item that contains the word.
 
         case global_category_contains_list_of_words :
             //
@@ -1095,8 +1126,10 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  ...
+//  items are both of category
+//  contains_unicode_anything, then add the
+//  characters if they fit, and otherwise add to
+//  a/the higher-level item a pointer to the text.
 
         case global_category_contains_unicode_anything :
             //
@@ -1105,8 +1138,9 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  ...
+//  items are both of category
+//  contains_list_of_integers, add the integer to
+//  the list.
 
         case global_category_contains_list_of_integers :
             //
@@ -1115,8 +1149,9 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  ...
+//  items are both of category
+//  contains_pointers_to_decimal_numbers, add the
+//  pointers to the list.
 
         case global_category_contains_pointers_to_decimal_numbers :
             //
@@ -1124,12 +1159,10 @@ void append_linked_text( )
 
 
 // -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  ...
+//  Otherwise there is an error.
 
         default :
-            //
+            log_out << "BUG: one or more text item categories are not recognized" << std::endl ;
             break ;
 
 
@@ -1161,8 +1194,10 @@ void append_linked_text( )
 void append_copied_text( )
 {
     text_item_clear( ) ;
-//  copy text, then use function append_linked_text to append it
 
+    log_out << "todo: here, need code that copies text to be appended" << std::endl ;
+
+    append_linked_text( ) ;
 }
 
 
@@ -1173,12 +1208,15 @@ void append_copied_text( )
 //  Appends a space to
 //  global_to_text_item_id
 //  if it is not empty.
+//  If the text item is categorized as a list of
+//  numbers (integer or decimal), must convert
+//  text item into characters.
 
 void append_space_if_not_empty( )
 {
     if ( ( global_text_category_for_item[ global_to_text_item_id ] != global_character_category_empty ) && ( global_text_length_for_item[ global_to_text_item_id ] > 0 ) )
     {
-        log_out << "append space" << std::endl ;
+        log_out << "todo: append space" << std::endl ;
     }
     return ;
 }
@@ -1210,7 +1248,148 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function standardize_as_space_delimited_words
+//  Function convert_text_to_integer
+
+void convert_text_to_integer( )
+{
+    global_single_integer = 0 ;
+    global_yes_or_no_negative_number = global_no ;
+    while ( 1 == 2 )
+    {
+        global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+        switch ( global_single_character_as_integer )
+        {
+            case global_ascii_code_for_digit_0 :
+                global_single_integer = global_single_integer * 10 ;
+                break ;
+            case global_ascii_code_for_digit_1 :
+                global_single_integer = ( global_single_integer * 10 ) + 1 ;
+                break ;
+            case global_ascii_code_for_digit_2 :
+                global_single_integer = ( global_single_integer * 10 ) + 2 ;
+                break ;
+            case global_ascii_code_for_digit_3 :
+                global_single_integer = ( global_single_integer * 10 ) + 3 ;
+                break ;
+            case global_ascii_code_for_digit_4 :
+                global_single_integer = ( global_single_integer * 10 ) + 4 ;
+                break ;
+            case global_ascii_code_for_digit_5 :
+                global_single_integer = ( global_single_integer * 10 ) + 5 ;
+                break ;
+            case global_ascii_code_for_digit_6 :
+                global_single_integer = ( global_single_integer * 10 ) + 6 ;
+                break ;
+            case global_ascii_code_for_digit_7 :
+                global_single_integer = ( global_single_integer * 10 ) + 7 ;
+                break ;
+            case global_ascii_code_for_digit_8 :
+                global_single_integer = ( global_single_integer * 10 ) + 8 ;
+                break ;
+            case global_ascii_code_for_digit_9 :
+                global_single_integer = ( global_single_integer * 10 ) + 9 ;
+                break ;
+            case global_ascii_code_for_hyphen :
+                global_yes_or_no_negative_number = global_yes ;
+                break ;
+            case global_ascii_code_for_plus :
+                global_do_nothing ++ ;
+                break ;
+            default :
+                log_out << "error, invalid character (ascii number " << global_single_character_as_integer << ") for integer" << std::endl ;
+                break ;
+        }
+    }
+    if ( global_yes_or_no_negative_number == global_yes )
+    {
+        global_single_integer = - global_single_integer ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function convert_text_to_decimal
+
+void convert_text_to_decimal( )
+{
+    global_single_decimal_number = 0.0 ;
+    global_decimal_number_divisor = 1.0 ;
+    global_yes_or_no_negative_number = global_no ;
+    while ( 1 == 2 )
+    {
+        global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+        switch ( global_single_character_as_integer )
+        {
+            case global_ascii_code_for_digit_0 :
+                global_single_decimal_number = global_single_decimal_number * 10 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_1 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 1 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_2 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 2 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_3 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 3 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_4 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 4 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_5 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 5 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_6 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 6 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_7 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 7 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_8 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 8 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_digit_9 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 9 ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_period :
+                global_decimal_number_divisor = 1.0 ;
+                break ;
+            case global_ascii_code_for_hyphen :
+                global_yes_or_no_negative_number = global_yes ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            case global_ascii_code_for_plus :
+                global_do_nothing ++ ;
+                global_decimal_number_divisor *= 10.0 ;
+                break ;
+            default :
+                log_out << "error, invalid character (ascii number " << global_single_character_as_integer << ") for decimal number" << std::endl ;
+                break ;
+        }
+    }
+    global_single_decimal_number = global_single_decimal_number / global_decimal_number_divisor ;
+    if ( global_yes_or_no_negative_number == global_yes )
+    {
+        global_single_decimal_number = - global_single_decimal_number ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function convert_into_category_space_delimited_words
 //
 //  Remove leading and trailing spaces, tabs,
 //  newlines, and formfeeds.  Also remove extra
@@ -1220,69 +1399,69 @@ void copy_copied_text( )
 //  supply the new text item ID number as the new
 //  "to" text item ID.
 
-void standardize_as_space_delimited_words( )
+void convert_into_category_space_delimited_words( )
 {
 
-//  todo: write this function
-//  global_category_contains_list_of_words
+    log_out << "todo: write function convert_into_category_space_delimited_words" << std::endl ;
 
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_words ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function standardize_as_hyphenated_word
+//  Function convert_into_category_hyphenated_word
 
-void standardize_as_hyphenated_word( )
+void convert_into_category_hyphenated_word( )
 {
 
-//  todo: write this function
-//  global_category_contains_hyphenated_word
+    log_out << "todo: write function convert_into_category_hyphenated_word" << std::endl ;
 
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_hyphenated_word ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function standardize_as_list_of_integers
+//  Function convert_into_category_list_of_integers
 
-void standardize_as_list_of_integers( )
+void convert_into_category_list_of_integers( )
 {
 
-//  todo: write this function
-//  global_category_contains_list_of_integers
+    log_out << "todo: write function convert_into_category_list_of_integers" << std::endl ;
 
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_integers ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function standardize_as_list_of_decimal_numbers
+//  Function convert_into_category_pointers_to_decimal_numbers
 
-void standardize_as_list_of_decimal_numbers( )
+void convert_into_category_pointers_to_decimal_numbers( )
 {
 
-//  todo: write this function
-//  global_category_contains_pointers_to_decimal_numbers
+    log_out << "todo: write function convert_into_category_pointers_to_decimal_numbers" << std::endl ;
 
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function standardize_as_character_sequence
+//  Function convert_into_category_character_sequence
 
-void standardize_as_character_sequence( )
+void convert_into_category_character_sequence( )
 {
 
-//  todo: write this function
-//  global_category_contains_list_of_text_item_ids
-//  global_category_contains_unicode_anything
+    log_out << "todo: write function convert_into_category_character_sequence" << std::endl ;
 
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_unicode_anything ;
+    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_text_item_ids ;
     return ;
 }
 
@@ -1300,7 +1479,7 @@ void standardize_as_character_sequence( )
 void lookup_hyphenated_phrase_word( )
 {
 
-//  todo: write this function
+    log_out << "todo: write function lookup_hyphenated_phrase_word" << std::endl ;
 
     return ;
 }
@@ -1326,7 +1505,7 @@ void lookup_hyphenated_phrase_word( )
 void lookup_hyphenated_phrase_name( )
 {
 
-//  todo: write this function
+    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
 
 //  use for each word:  lookup_hyphenated_phrase_word
 
@@ -1350,7 +1529,7 @@ void lookup_hyphenated_phrase_name( )
 
 void trim_delimiters( )
 {
-    log_out << "function trim_delimiters" << std::endl ;
+    log_out << "todo: write function trim_delimiters" << std::endl ;
     return ;
 }
 
@@ -1362,7 +1541,7 @@ void trim_delimiters( )
 void widen_subtext_by_leading_trailing_spaces( )
 {
 //    global_text_item_id
-    log_out << "function widen_subtext_by_leading_trailing_spaces" << std::endl ;
+    log_out << "todo: write function widen_subtext_by_leading_trailing_spaces" << std::endl ;
     return ;
 }
 
@@ -1374,7 +1553,7 @@ void widen_subtext_by_leading_trailing_spaces( )
 void find_subtext( )
 {
 //    global_text_item_id
-    log_out << "function find_subtext" << std::endl ;
+    log_out << "todo: write function find_subtext" << std::endl ;
     return ;
 }
 
@@ -1386,7 +1565,7 @@ void find_subtext( )
 void insert_into_subtext( )
 {
 //    global_text_item_id
-    log_out << "function find_subtext" << std::endl ;
+    log_out << "todo: write function find_subtext" << std::endl ;
     return ;
 }
 
@@ -1399,7 +1578,7 @@ void text_replace( )
 {
 //    global_to_text_item_id ;
 //    global_pointer_to_within_text_item
-    log_out << "function text_replace (using pointers)" << std::endl ;
+    log_out << "todo: write function text_replace (using pointers)" << std::endl ;
     return ;
 }
 
@@ -1417,7 +1596,7 @@ void text_replace( )
 
 void phrase_name_lookup( )
 {
-    log_out << "function phrase_name_lookup" << std::endl ;
+    log_out << "todo: write function phrase_name_lookup" << std::endl ;
     return ;
 }
 
@@ -1435,7 +1614,7 @@ void phrase_name_lookup( )
 int find_matching_text( )
 {
     int subtext_text_id_number = 0 ;
-    log_out << "function find_matching_text (equivalent to standard index function)" << std::endl ;
+    log_out << "todo: function find_matching_text (equivalent to standard index function)" << std::endl ;
     return subtext_text_id_number ;
 }
 
@@ -1446,7 +1625,7 @@ int find_matching_text( )
 
 void yes_or_no_matching_text( )
 {
-    log_out << "function yes_or_no_matching_text" << std::endl ;
+    log_out << "todo: write function yes_or_no_matching_text" << std::endl ;
     return ;
 }
 
@@ -1460,7 +1639,7 @@ void point_to_pattern_matching_text( )
 // global_text_item_id
 // global_pointer_to_within_text_item
 // global_search_text_item_id
-    log_out << "function point_to_pattern_matching_text (uses state machine, and symbol categorization) (if non-symbol alphanumeric text is part of the intended pattern, first find that text using find_matching_text)" << std::endl ;
+    log_out << "todo: write function point_to_pattern_matching_text, uses symbol categorization with switch statement, if non-symbol alphanumeric text is part of the intended pattern, first find that text using find_matching_text" << std::endl ;
     return ;
 }
 
@@ -1474,7 +1653,7 @@ void point_to_pattern_matching_text_backwards( )
 // global_text_item_id
 // global_pointer_to_within_text_item
 // global_search_text_item_id
-    log_out << "function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
+    log_out << "todo: function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
     return ;
 }
 
@@ -1490,14 +1669,26 @@ void point_to_pattern_matching_text_backwards( )
 //  is a global_text_item_id that indicates the
 //  matching text.
 
-int get_text_by_character_offset_and_length( )
+void get_text_by_character_offset_and_length( )
 {
-// global_text_item_id
 // character_offset
 // characters_length
-    int subtext_text_id_number = 0 ;
-    log_out << "get_text_by_character_offset_and_length not yet written" << std::endl ;
-    return subtext_text_id_number ;
+    global_subtext_text_item_id = 0 ;
+    log_out << "todo: write function get_text_by_character_offset_and_length" << std::endl ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function expand_text
+//
+//  Expands the text item indicated in
+//  global_from_text_item_id.
+
+void expand_text( )
+{
+    log_out << "todo: write function expand_text, use current runtime version for details" << std::endl ;
 }
 
 
