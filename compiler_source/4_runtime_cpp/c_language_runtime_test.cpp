@@ -372,10 +372,19 @@ int global_yes_or_no_can_extend_text_item ;
 int global_text_pointer ;
 int global_single_character_as_integer ;
 int global_yes_or_no_negative_number ;
+int global_yes_or_no_decimal_number ;
 int global_single_integer ;
 int global_single_decimal_number ;
 int global_decimal_number_divisor ;
+int global_number_of_digits_encountered ;
+int global_yes_or_no_numeric_delimiter_encountered ;
+
+
+// -----------------------------------------------
+//  For debugging purposes.
+
 int global_pointer_for_debugging ;
+int global_text_item_id_for_sample_numbers ;
 
 
 // -----------------------------------------------
@@ -508,7 +517,7 @@ void store_this_word_in_text_item( )
         {
             break ;
         }
-       	global_character_count ++ ;
+        global_character_count ++ ;
     }
     global_length_requested_for_next_text_item_storage = global_character_count ;
     log_out << "[requested length " << global_length_requested_for_next_text_item_storage << "]" ;
@@ -733,6 +742,14 @@ void do_main_initialization( )
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_character = global_new_storage_text_item_id ;
 
+
+
+    strcpy( global_this_word , " 123 , 72.3 , -4399 , -88.6666 " ) ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_sample_numbers = global_new_storage_text_item_id ;
+
+
+
     strcpy( global_this_word , "hyphen" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_hyphen = global_new_storage_text_item_id ;
@@ -935,11 +952,11 @@ void do_main_initialization( )
     for ( global_text_item_id = 1 ; global_text_item_id < global_next_available_text_item_id ; global_text_item_id ++ )
     {
         log_out << "[" << global_text_item_id << " spans " << global_text_pointer_begin_for_item[ global_text_item_id ] << " to " << global_text_pointer_end_for_item[ global_text_item_id ] << "]" ;
-	    for ( global_character_pointer = global_text_pointer_begin_for_item[ global_text_item_id ] ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id ] ; global_character_pointer ++ )
-	    {
-	        log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
-	    }
-	    log_out << std::endl ;
+        for ( global_character_pointer = global_text_pointer_begin_for_item[ global_text_item_id ] ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id ] ; global_character_pointer ++ )
+        {
+            log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
+        }
+        log_out << std::endl ;
     }
 
 
@@ -1303,141 +1320,234 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_text_to_integer
+//  Function initialize_parse_characters_of_number
 
-void convert_text_to_integer( )
+void initialize_parse_characters_of_number( )
 {
     global_single_integer = 0 ;
+    global_single_decimal_number = 0.0 ;
+    global_decimal_number_divisor = 1.0 ;
     global_yes_or_no_negative_number = global_no ;
-    while ( 1 == 2 )
+    global_yes_or_no_decimal_number = global_no ;
+    global_yes_or_no_numeric_delimiter_encountered = global_no ;
+    global_number_of_digits_encountered = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_of_number
+
+void parse_one_character_of_number( )
+{
+    if ( global_yes_or_no_decimal_number == global_no )
     {
-        global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
-        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         switch ( global_single_character_as_integer )
         {
+            case global_ascii_code_for_period :
+                global_yes_or_no_decimal_number = global_yes ;
+                global_single_decimal_number = float( global_single_integer ) ;
+                global_single_integer = 0 ;
+                global_decimal_number_divisor = 1.0 ;
+                break ;
             case global_ascii_code_for_digit_0 :
                 global_single_integer = global_single_integer * 10 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_1 :
                 global_single_integer = ( global_single_integer * 10 ) + 1 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_2 :
                 global_single_integer = ( global_single_integer * 10 ) + 2 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_3 :
                 global_single_integer = ( global_single_integer * 10 ) + 3 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_4 :
                 global_single_integer = ( global_single_integer * 10 ) + 4 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_5 :
                 global_single_integer = ( global_single_integer * 10 ) + 5 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_6 :
                 global_single_integer = ( global_single_integer * 10 ) + 6 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_7 :
                 global_single_integer = ( global_single_integer * 10 ) + 7 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_8 :
                 global_single_integer = ( global_single_integer * 10 ) + 8 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_digit_9 :
                 global_single_integer = ( global_single_integer * 10 ) + 9 ;
+                global_number_of_digits_encountered ++ ;
                 break ;
             case global_ascii_code_for_hyphen :
-                global_yes_or_no_negative_number = global_yes ;
+                if ( global_single_integer == 0 )
+                {
+                    global_yes_or_no_negative_number = global_yes ;
+                } else
+                {
+                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                }
                 break ;
             case global_ascii_code_for_plus :
-                global_do_nothing ++ ;
+                if ( global_single_integer > 0 )
+                {
+                    log_out << "plus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                }
                 break ;
             default :
-                log_out << "error, invalid character (ascii number " << global_single_character_as_integer << ") for integer" << std::endl ;
+                log_out << "delimiter (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                break ;
+        }
+    } else
+    {
+        switch ( global_single_character_as_integer )
+        {
+            case global_ascii_code_for_period :
+                log_out << "extra period (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                break ;
+            case global_ascii_code_for_digit_0 :
+                global_single_decimal_number = global_single_decimal_number * 10 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_1 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 1 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_2 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 2 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_3 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 3 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_4 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 4 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_5 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 5 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_6 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 6 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_7 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 7 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_8 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 8 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_digit_9 :
+                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 9 ;
+                global_decimal_number_divisor *= 10.0 ;
+                global_number_of_digits_encountered ++ ;
+                break ;
+            case global_ascii_code_for_hyphen :
+                if ( global_single_decimal_number == 0 )
+                {
+                    global_yes_or_no_negative_number = global_yes ;
+                } else
+                {
+                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                }
+                break ;
+            case global_ascii_code_for_plus :
+                if ( global_single_decimal_number != 0 )
+                {
+                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                }
+                break ;
+            default :
+                global_yes_or_no_numeric_delimiter_encountered = global_yes ;
+                log_out << "delimiter (ascii number " << global_single_character_as_integer << ")" << std::endl ;
                 break ;
         }
     }
-    if ( global_yes_or_no_negative_number == global_yes )
+
+    log_out << global_single_integer << " " << global_single_decimal_number << std::endl ;
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function finish_parse_characters_of_number
+
+void finish_parse_characters_of_number( )
+{
+    if ( global_yes_or_no_decimal_number = global_no )
     {
-        global_single_integer = - global_single_integer ;
+        if ( global_yes_or_no_negative_number == global_yes )
+        {
+            global_single_integer = - global_single_integer ;
+        }
+    } else
+    {
+    	if ( global_decimal_number_divisor > 0 )
+    	{
+            global_single_decimal_number = global_single_decimal_number / global_decimal_number_divisor ;
+        }
+        if ( global_yes_or_no_negative_number == global_yes )
+        {
+            global_single_decimal_number = - global_single_decimal_number ;
+        }
     }
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_text_to_decimal
+//  Function test_parsing_numeric_characters
 
-void convert_text_to_decimal( )
+void test_parsing_numeric_characters( )
 {
-    global_single_decimal_number = 0.0 ;
-    global_decimal_number_divisor = 1.0 ;
-    global_yes_or_no_negative_number = global_no ;
-    while ( 1 == 2 )
+    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
+    initialize_parse_characters_of_number( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
     {
-        global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
         global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
-        switch ( global_single_character_as_integer )
+        parse_one_character_of_number( ) ;
+        log_out << "[digit count " << global_number_of_digits_encountered << "]" << std::endl ;
+        if ( global_yes_or_no_numeric_delimiter_encountered == global_yes )
         {
-            case global_ascii_code_for_digit_0 :
-                global_single_decimal_number = global_single_decimal_number * 10 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_1 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 1 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_2 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 2 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_3 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 3 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_4 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 4 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_5 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 5 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_6 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 6 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_7 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 7 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_8 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 8 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_digit_9 :
-                global_single_decimal_number = ( global_single_decimal_number * 10 ) + 9 ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_period :
-                global_decimal_number_divisor = 1.0 ;
-                break ;
-            case global_ascii_code_for_hyphen :
-                global_yes_or_no_negative_number = global_yes ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            case global_ascii_code_for_plus :
-                global_do_nothing ++ ;
-                global_decimal_number_divisor *= 10.0 ;
-                break ;
-            default :
-                log_out << "error, invalid character (ascii number " << global_single_character_as_integer << ") for decimal number" << std::endl ;
-                break ;
+            if ( global_number_of_digits_encountered > 0 )
+            {
+                finish_parse_characters_of_number( ) ;
+                if ( global_yes_or_no_decimal_number == global_no )
+                {
+                    log_out << "integer = " << global_single_integer << std::endl ;
+                } else
+                {
+                    log_out << "decimal number = " << global_single_decimal_number << std::endl ;
+                }
+            }
+            initialize_parse_characters_of_number( ) ;
         }
-    }
-    global_single_decimal_number = global_single_decimal_number / global_decimal_number_divisor ;
-    if ( global_yes_or_no_negative_number == global_yes )
-    {
-        global_single_decimal_number = - global_single_decimal_number ;
     }
 }
 
@@ -1768,6 +1878,8 @@ int main() {
 
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
+
+    test_parsing_numeric_characters( ) ;
 
     read_text_line_from_file( ) ;
 
