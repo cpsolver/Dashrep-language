@@ -375,6 +375,7 @@ int global_yes_or_no_negative_number ;
 int global_single_integer ;
 int global_single_decimal_number ;
 int global_decimal_number_divisor ;
+int global_pointer_for_debugging ;
 
 
 // -----------------------------------------------
@@ -430,9 +431,6 @@ void assign_storage_for_new_text_item( )
     global_text_pointer_end_for_item[ global_next_available_text_item_id ] =     global_text_pointer_begin_for_item[ global_next_available_text_item_id ] - 1 ;
     global_text_length_for_item[ global_next_available_text_item_id ] = 0 ;
     global_id_of_item_containing_definition_for_item[ global_next_available_text_item_id ] = 0 ;
-
-//    log_out << "[ID " << global_next_available_text_item_id << " , begin " << global_text_pointer_begin_for_item[ global_next_available_text_item_id ] << " , end " << global_text_pointer_end_for_item[ global_next_available_text_item_id ] << " , requested " << global_length_requested_for_next_text_item_storage << " , allocation end " << global_text_pointer_allocation_end_for_item[ global_next_available_text_item_id ] << " , length " << global_text_length_for_item[ global_next_available_text_item_id ] << "]" ;
-
     global_new_storage_text_item_id = global_next_available_text_item_id ;
     global_next_available_text_item_id ++ ;
     return ;
@@ -491,22 +489,64 @@ void store_one_text_character( )
 
 void store_this_word_in_text_item( )
 {
-    int next_character_position ;
     int next_character_position_in_storage_all_text ;
-    next_character_position_in_storage_all_text = global_next_available_begin_pointer_for_next_available_text_item_id ;
-    global_single_character = 1 ;
-    global_character_count = sizeof( global_this_word ) ;
-    for ( next_character_position = 1 ; next_character_position <= global_character_count ; next_character_position ++ )
+
+
+// -----------------------------------------------
+//  Count the characters to be stored, and request
+//  this amount of storage space.
+//
+//  Reminder:  The first character position is
+//  zero because this code handles text that
+//  is imported using the strcpy function.
+
+    global_character_count = 0 ;
+    for ( global_character_pointer = 0 ; global_character_pointer <= ( sizeof( global_this_word ) - 1 ) ; global_character_pointer ++ )
     {
-
-// todo: may not work correctly:
-        global_single_character = (int) global_this_word[ next_character_position ] ;
-
-        global_storage_all_text[ next_character_position_in_storage_all_text ] = global_single_character ;
-        next_character_position ++ ;
+        global_single_character = (int) global_this_word[ global_character_pointer ] ;
+        if ( global_single_character == 0 )
+        {
+            break ;
+        }
+       	global_character_count ++ ;
     }
     global_length_requested_for_next_text_item_storage = global_character_count ;
+    log_out << "[requested length " << global_length_requested_for_next_text_item_storage << "]" ;
+
+
+// -----------------------------------------------
+//  Create the storage for the text item.
+
     assign_storage_for_new_text_item( ) ;
+
+
+// -----------------------------------------------
+//  Store the characters in the new text item.
+//
+//  Reminder:  The first character position is
+//  zero because this code handles text that
+//  is imported using the strcpy function.
+
+    next_character_position_in_storage_all_text = global_text_pointer_begin_for_item[ global_new_storage_text_item_id ] ;
+    for ( global_character_pointer = 0 ; global_character_pointer < global_character_count ; global_character_pointer ++ )
+    {
+        global_single_character = (int) global_this_word[ global_character_pointer ] ;
+        global_storage_all_text[ next_character_position_in_storage_all_text ] = global_single_character ;
+        next_character_position_in_storage_all_text ++ ;
+    }
+
+
+// -----------------------------------------------
+//  Update the pointer to the end of the
+//  just-stored text.
+
+    global_text_pointer_end_for_item[ global_new_storage_text_item_id ] = global_text_pointer_begin_for_item[ global_new_storage_text_item_id ] + global_character_count - 1 ;
+    global_text_length_for_item[ global_new_storage_text_item_id ] = global_character_count ;
+
+
+// -----------------------------------------------
+//  End of function store_this_word_in_text_item.
+
 }
 
 
@@ -658,7 +698,7 @@ void do_main_initialization( )
 
     assign_storage_for_new_text_item( ) ;
     global_text_item_id_for_single_close_angle_bracket = global_new_storage_text_item_id ;
-    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_carriage_return ] ] = global_ascii_code_for_close_angle_bracket ;
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_single_close_angle_bracket ] ] = global_ascii_code_for_close_angle_bracket ;
 
     assign_storage_for_new_text_item( ) ;
     global_text_item_id_for_single_slash = global_new_storage_text_item_id ;
@@ -681,89 +721,59 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Create a text item that holds one hyphenated
-//  phrase name while doing a lookup to see if it
-//  matches any existing hyphenated phrase name.
-
-    global_length_requested_for_next_text_item_storage = 200 ;
-
-    global_text_item_id_for_lookup_of_hyphenated_phrase_name = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] = global_category_contains_unicode_anything ;
-    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] -= 5 ;
-
-
-// -----------------------------------------------
-//  Create the text items used for file input and
-//  output.  Shorten the length slightly in case
-//  of an overrun.
-
-    global_length_requested_for_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
-
-    global_text_item_id_for_file_input = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_category_contains_unicode_anything ;
-    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ] -= 5 ;
-
-    global_text_item_id_for_file_output = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_file_output ] = global_category_contains_unicode_anything ;
-    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
-
-
-// -----------------------------------------------
 //  Create the text items for words within the
 //  phrase names that have definitions (rather
 //  than only having meaning between the words
 //  ambee and amenn.
-//  Reminder: The leading space is important.
-//  It starts the counting at one, not zero.
+//
+//  Reminder: The strcpy function starts position
+//  counting at one, not zero.
 
-    strcpy( global_this_word , " character" ) ;
+    strcpy( global_this_word , "character" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_character = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " hyphen" ) ;
+    strcpy( global_this_word , "hyphen" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_hyphen = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " space" ) ;
+    strcpy( global_this_word , "space" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_space = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " newline" ) ;
+    strcpy( global_this_word , "newline" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_newline = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " underscore" ) ;
+    strcpy( global_this_word , "underscore" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_underscore = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " tab" ) ;
+    strcpy( global_this_word , "tab" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_tab = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " four" ) ;
+    strcpy( global_this_word , "four" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_four = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " hyphens" ) ;
+    strcpy( global_this_word , "hyphens" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_hyphens = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " non" ) ;
+    strcpy( global_this_word , "non" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_non = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " breaking" ) ;
+    strcpy( global_this_word , "breaking" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_breaking = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " empty" ) ;
+    strcpy( global_this_word , "empty" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_empty = global_new_storage_text_item_id ;
 
-    strcpy( global_this_word , " text" ) ;
+    strcpy( global_this_word , "text" ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_word_text = global_new_storage_text_item_id ;
 
@@ -862,6 +872,37 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Create a text item that holds one hyphenated
+//  phrase name while doing a lookup to see if it
+//  matches any existing hyphenated phrase name.
+
+    global_length_requested_for_next_text_item_storage = 200 ;
+
+    global_text_item_id_for_lookup_of_hyphenated_phrase_name = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] = global_category_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] -= 5 ;
+
+
+// -----------------------------------------------
+//  Create the text items used for file input and
+//  output.  Shorten the length slightly in case
+//  of an overrun.
+
+    global_length_requested_for_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
+
+    global_text_item_id_for_file_input = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_file_input ] = global_category_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ] -= 5 ;
+
+    global_text_item_id_for_file_output = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_file_output ] = global_category_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
+
+
+// -----------------------------------------------
 //  Initialize some counters that track other
 //  kinds of storage usage.
 
@@ -886,6 +927,20 @@ void do_main_initialization( )
 //  category list_of_decimal_numbers.
 //  If calculation is involved, set flag and do
 //  calculation later only if needed.
+
+
+// -----------------------------------------------
+//  For debugging, show the defined text items.
+
+    for ( global_text_item_id = 1 ; global_text_item_id < global_next_available_text_item_id ; global_text_item_id ++ )
+    {
+        log_out << "[" << global_text_item_id << " spans " << global_text_pointer_begin_for_item[ global_text_item_id ] << " to " << global_text_pointer_end_for_item[ global_text_item_id ] << "]" ;
+	    for ( global_character_pointer = global_text_pointer_begin_for_item[ global_text_item_id ] ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id ] ; global_character_pointer ++ )
+	    {
+	        log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
+	    }
+	    log_out << std::endl ;
+    }
 
 
 // -----------------------------------------------
@@ -920,7 +975,7 @@ void read_text_line_from_file( )
             store_one_text_character( ) ;
         } else
         {
-            log_out << "[Error:  Out of space for storing text line from file]" ;
+            log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
             global_next_character_number = 0 ;
             return ;
         }
@@ -1698,8 +1753,6 @@ void expand_text( )
 
 int main() {
 
-    int character_number ;
-
 
 // -----------------------------------------------
 //  Initialization.
@@ -1713,7 +1766,6 @@ int main() {
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
 
-
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
@@ -1724,13 +1776,7 @@ int main() {
 
     global_from_text_item_id = 1 ;
     global_to_text_item_id = 2 ;
-
-    for ( character_number = 1 ; character_number <= global_next_available_begin_pointer_for_next_available_text_item_id ; character_number ++ )
-    {
-        log_out << "[" << global_storage_all_text[ character_number ] << "]" ;
-    }
-    log_out << std::endl ;
-
+//    append_linked_text( ) ;
 
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
