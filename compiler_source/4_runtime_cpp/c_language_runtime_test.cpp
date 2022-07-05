@@ -26,6 +26,9 @@
 #include <cstring>
 #include <cstdio>
 
+//  Temporarily for displaying decimal numbers:
+#include <iomanip>
+
 
 // -----------------------------------------------
 //  Reminder:  This software is not an
@@ -373,11 +376,18 @@ int global_text_pointer ;
 int global_single_character_as_integer ;
 int global_yes_or_no_negative_number ;
 int global_yes_or_no_decimal_number ;
+int global_yes_or_no_number_is_valid ;
 int global_single_integer ;
-int global_single_decimal_number ;
 int global_decimal_number_divisor ;
 int global_number_of_digits_encountered ;
 int global_yes_or_no_numeric_delimiter_encountered ;
+
+
+// -----------------------------------------------
+//  Declare some variables that store decimal
+//  numbers.
+
+float global_single_decimal_number ;
 
 
 // -----------------------------------------------
@@ -520,7 +530,6 @@ void store_this_word_in_text_item( )
         global_character_count ++ ;
     }
     global_length_requested_for_next_text_item_storage = global_character_count ;
-    log_out << "[requested length " << global_length_requested_for_next_text_item_storage << "]" ;
 
 
 // -----------------------------------------------
@@ -951,12 +960,12 @@ void do_main_initialization( )
 
     for ( global_text_item_id = 1 ; global_text_item_id < global_next_available_text_item_id ; global_text_item_id ++ )
     {
-        log_out << "[" << global_text_item_id << " spans " << global_text_pointer_begin_for_item[ global_text_item_id ] << " to " << global_text_pointer_end_for_item[ global_text_item_id ] << "]" ;
+//        log_out << "[" << global_text_item_id << " spans " << global_text_pointer_begin_for_item[ global_text_item_id ] << " to " << global_text_pointer_end_for_item[ global_text_item_id ] << "]" ;
         for ( global_character_pointer = global_text_pointer_begin_for_item[ global_text_item_id ] ; global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id ] ; global_character_pointer ++ )
         {
-            log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
+//            log_out << "[" << global_storage_all_text[ global_character_pointer ] << "]" ;
         }
-        log_out << std::endl ;
+//        log_out << std::endl ;
     }
 
 
@@ -1320,6 +1329,37 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  convert_float_to_text
+//
+//  This function is used instead of "std::to_string"
+//  for compatibility with older C++ "string" libraries
+//  that have a bug.  The bug is that the "to_string"
+//  function is not recognized as being within the
+//  "std" library, even though it is defined there.
+
+std::string convert_float_to_text( float supplied_float )
+{
+    std::string returned_string ;
+    char c_format_string[ 50 ] ;
+    int unused_string_length ;
+    try
+    {
+        unused_string_length = sprintf( c_format_string , "%1f" , supplied_float ) ;
+        returned_string = ( std::string ) c_format_string ;
+        //  next line assumes the sprintf result always includes a decimal point
+        returned_string.erase( returned_string.find_last_not_of( "0" ) + 1 , std::string::npos ) ;
+        returned_string.erase( returned_string.find_last_not_of( "." ) + 1 , std::string::npos ) ;
+        return returned_string ;
+    }
+    catch( ... )
+    {
+        return "NAN" ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function initialize_parse_characters_of_number
 
 void initialize_parse_characters_of_number( )
@@ -1330,6 +1370,7 @@ void initialize_parse_characters_of_number( )
     global_yes_or_no_negative_number = global_no ;
     global_yes_or_no_decimal_number = global_no ;
     global_yes_or_no_numeric_delimiter_encountered = global_no ;
+    global_yes_or_no_number_is_valid = global_yes ;
     global_number_of_digits_encountered = 0 ;
 }
 
@@ -1348,7 +1389,6 @@ void parse_one_character_of_number( )
                 global_yes_or_no_decimal_number = global_yes ;
                 global_single_decimal_number = float( global_single_integer ) ;
                 global_single_integer = 0 ;
-                global_decimal_number_divisor = 1.0 ;
                 break ;
             case global_ascii_code_for_digit_0 :
                 global_single_integer = global_single_integer * 10 ;
@@ -1396,17 +1436,17 @@ void parse_one_character_of_number( )
                     global_yes_or_no_negative_number = global_yes ;
                 } else
                 {
-                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                    log_out << "minus sign not at beginning" << std::endl ;
                 }
                 break ;
             case global_ascii_code_for_plus :
                 if ( global_single_integer > 0 )
                 {
-                    log_out << "plus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                    log_out << "plus sign not at beginning" << std::endl ;
                 }
                 break ;
             default :
-                log_out << "delimiter (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                global_yes_or_no_numeric_delimiter_encountered = global_yes ;
                 break ;
         }
     } else
@@ -1414,7 +1454,8 @@ void parse_one_character_of_number( )
         switch ( global_single_character_as_integer )
         {
             case global_ascii_code_for_period :
-                log_out << "extra period (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                global_yes_or_no_number_is_valid = global_no ;
+                log_out << "extra period" << std::endl ;
                 break ;
             case global_ascii_code_for_digit_0 :
                 global_single_decimal_number = global_single_decimal_number * 10 ;
@@ -1472,24 +1513,20 @@ void parse_one_character_of_number( )
                     global_yes_or_no_negative_number = global_yes ;
                 } else
                 {
-                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                    log_out << "minus sign not at beginning" << std::endl ;
                 }
                 break ;
             case global_ascii_code_for_plus :
                 if ( global_single_decimal_number != 0 )
                 {
-                    log_out << "minus sign not at beginning (ascii number " << global_single_character_as_integer << ")" << std::endl ;
+                    log_out << "minus sign not at beginning" << std::endl ;
                 }
                 break ;
             default :
                 global_yes_or_no_numeric_delimiter_encountered = global_yes ;
-                log_out << "delimiter (ascii number " << global_single_character_as_integer << ")" << std::endl ;
                 break ;
         }
     }
-
-    log_out << global_single_integer << " " << global_single_decimal_number << std::endl ;
-
     return ;
 }
 
@@ -1500,7 +1537,14 @@ void parse_one_character_of_number( )
 
 void finish_parse_characters_of_number( )
 {
-    if ( global_yes_or_no_decimal_number = global_no )
+	if ( global_yes_or_no_number_is_valid == global_no )
+	{
+        global_single_integer = 0 ;
+        global_single_decimal_number = 0.0 ;
+        log_out << "number is not valid" << std::endl ;
+        return ;
+	}
+    if ( global_yes_or_no_decimal_number == global_no )
     {
         if ( global_yes_or_no_negative_number == global_yes )
         {
@@ -1508,7 +1552,7 @@ void finish_parse_characters_of_number( )
         }
     } else
     {
-    	if ( global_decimal_number_divisor > 0 )
+    	if ( global_decimal_number_divisor > 1.0 )
     	{
             global_single_decimal_number = global_single_decimal_number / global_decimal_number_divisor ;
         }
@@ -1532,18 +1576,23 @@ void test_parsing_numeric_characters( )
     {
         global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         parse_one_character_of_number( ) ;
-        log_out << "[digit count " << global_number_of_digits_encountered << "]" << std::endl ;
-        if ( global_yes_or_no_numeric_delimiter_encountered == global_yes )
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
         {
             if ( global_number_of_digits_encountered > 0 )
             {
-                finish_parse_characters_of_number( ) ;
-                if ( global_yes_or_no_decimal_number == global_no )
+                if ( global_yes_or_no_number_is_valid == global_yes )
                 {
-                    log_out << "integer = " << global_single_integer << std::endl ;
+                    finish_parse_characters_of_number( ) ;
+                    if ( global_yes_or_no_decimal_number == global_no )
+                    {
+                        log_out << "integer number = " << global_single_integer << std::endl ;
+                    } else
+                    {
+                        log_out << "decimal number = " << convert_float_to_text( global_single_decimal_number ) << std::endl ;
+                    }
                 } else
                 {
-                    log_out << "decimal number = " << global_single_decimal_number << std::endl ;
+                    log_out << "invalid number" << std::endl ;
                 }
             }
             initialize_parse_characters_of_number( ) ;
