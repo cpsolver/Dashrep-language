@@ -146,6 +146,8 @@ int global_text_item_id_for_phrase_name_four_hyphens ;
 int global_text_item_id_for_phrase_name_empty_text ;
 int global_text_item_id_for_phrase_name_non_breaking_space ;
 int global_text_item_id_for_lookup_of_hyphenated_phrase_name ;
+int global_text_item_id_for_valid_filename ;
+int global_text_item_id_for_valid_folder_name ;
 int global_text_item_id_for_word_character ;
 int global_text_item_id_for_word_space ;
 int global_text_item_id_for_word_hyphen ;
@@ -275,6 +277,7 @@ const int global_character_category_apostrophe = 11 ;  // also single quotation 
 const int global_character_category_period = 12 ;  // also used as decimal point
 const int global_character_category_plus_sign = 13 ;
 const int global_character_category_digit = 14 ;  // 0 through 9
+const int global_character_category_symbol = 15 ;
 
 
 // -----------------------------------------------
@@ -304,6 +307,25 @@ const int global_ascii_code_for_digit_9 = 57 ;
 const int global_ascii_code_for_open_angle_bracket = 60 ;
 const int global_ascii_code_for_close_angle_bracket = 62 ;
 const int global_ascii_code_for_underscore = 95 ;
+const int global_ascii_code_for_comma = 44 ;
+const int global_ascii_code_for_backslash = 92 ;
+const int global_ascii_code_for_left_square_bracket = 91 ;
+const int global_ascii_code_for_right_square_bracket = 93 ;
+const int global_ascii_code_for_left_parenthesis = 40 ;
+const int global_ascii_code_for_right_parenthesis = 41 ;
+const int global_ascii_code_for_ampersand = 38 ;
+const int global_ascii_code_for_asterisk = 42 ;
+const int global_ascii_code_for_pound_sign = 35 ;
+const int global_ascii_code_for_exclamation_point = 33 ;
+const int global_ascii_code_for_question_mark = 63 ;
+const int global_ascii_code_for_at_sign = 64 ;
+const int global_ascii_code_for_percent = 37 ;
+const int global_ascii_code_for_caret = 94 ;
+const int global_ascii_code_for_grave_accent = 96 ;
+const int global_ascii_code_for_left_curly_bracket = 123 ;
+const int global_ascii_code_for_right_curly_bracket = 125 ;
+const int global_ascii_code_for_vertical_bar = 124 ;
+const int global_ascii_code_for_tilde = 126 ;
 
 
 // -----------------------------------------------
@@ -381,6 +403,13 @@ int global_single_integer ;
 int global_decimal_number_divisor ;
 int global_number_of_digits_encountered ;
 int global_yes_or_no_numeric_delimiter_encountered ;
+int global_yes_or_no_filename_is_valid ;
+int global_yes_or_no_in_filename_before_period ;
+int global_number_of_valid_characters_encountered ;
+int global_yes_or_no_filename_delimiter_encountered ;
+int global_yes_or_no_folder_name_is_valid ;
+int global_yes_or_no_in_folder_name_before_period ;
+int global_yes_or_no_folder_name_delimiter_encountered ;
 
 
 // -----------------------------------------------
@@ -391,10 +420,12 @@ float global_single_decimal_number ;
 
 
 // -----------------------------------------------
-//  For debugging purposes.
+//  Declare variables used for debugging purposes.
 
 int global_pointer_for_debugging ;
 int global_text_item_id_for_sample_numbers ;
+int global_text_item_id_for_sample_filename ;
+int global_text_item_id_for_sample_folder_name ;
 
 
 // -----------------------------------------------
@@ -627,6 +658,25 @@ void do_main_initialization( )
     global_character_category_number_for_character_number[ global_ascii_code_for_digit_7 ] = global_character_category_digit ;
     global_character_category_number_for_character_number[ global_ascii_code_for_digit_8 ] = global_character_category_digit ;
     global_character_category_number_for_character_number[ global_ascii_code_for_digit_9 ] = global_character_category_digit ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_comma ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_backslash ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_left_square_bracket ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_right_square_bracket ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_left_parenthesis ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_right_parenthesis ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_ampersand ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_asterisk ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_pound_sign ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_exclamation_point ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_question_mark ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_at_sign ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_percent ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_caret ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_grave_accent ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_left_curly_bracket ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_right_curly_bracket ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_vertical_bar ] = global_character_category_symbol ;
+    global_character_category_number_for_character_number[ global_ascii_code_for_tilde ] = global_character_category_symbol ;
 
 
 // -----------------------------------------------
@@ -756,6 +806,15 @@ void do_main_initialization( )
     strcpy( global_this_word , " 123 , 72.3 , -4399 , -88.6666 " ) ;
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_sample_numbers = global_new_storage_text_item_id ;
+
+
+    strcpy( global_this_word , "  , xyz !@#$%^&*(){}:;?<> yes_name.txt , " ) ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_sample_filename = global_new_storage_text_item_id ;
+
+    strcpy( global_this_word , "  , xyz !@#$%/^&\\*(){}:;?<> /yes_name/txt/ , " ) ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_sample_folder_name = global_new_storage_text_item_id ;
 
 
 
@@ -926,6 +985,24 @@ void do_main_initialization( )
     assign_storage_for_new_text_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_output ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
+
+
+// -----------------------------------------------
+//  Create text items that hold one filename and
+//  one folder name after they have been changed
+//  to eliminate leading and trailing delimiters.
+
+    global_length_requested_for_next_text_item_storage = 200 ;
+
+    global_text_item_id_for_valid_filename = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_valid_filename ] = global_category_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_valid_filename ] -= 5 ;
+
+    global_text_item_id_for_valid_folder_name = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_valid_folder_name ] = global_category_contains_unicode_anything ;
+    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_valid_folder_name ] -= 5 ;
 
 
 // -----------------------------------------------
@@ -1537,13 +1614,13 @@ void parse_one_character_of_number( )
 
 void finish_parse_characters_of_number( )
 {
-	if ( global_yes_or_no_number_is_valid == global_no )
-	{
+    if ( global_yes_or_no_number_is_valid == global_no )
+    {
         global_single_integer = 0 ;
         global_single_decimal_number = 0.0 ;
         log_out << "number is not valid" << std::endl ;
         return ;
-	}
+    }
     if ( global_yes_or_no_decimal_number == global_no )
     {
         if ( global_yes_or_no_negative_number == global_yes )
@@ -1552,8 +1629,8 @@ void finish_parse_characters_of_number( )
         }
     } else
     {
-    	if ( global_decimal_number_divisor > 1.0 )
-    	{
+        if ( global_decimal_number_divisor > 1.0 )
+        {
             global_single_decimal_number = global_single_decimal_number / global_decimal_number_divisor ;
         }
         if ( global_yes_or_no_negative_number == global_yes )
@@ -1603,6 +1680,298 @@ void test_parsing_numeric_characters( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initialize_parse_characters_of_filename
+
+void initialize_parse_characters_of_filename( )
+{
+    global_yes_or_no_filename_is_valid = global_yes ;
+    global_yes_or_no_in_filename_before_period = global_yes ;
+    global_number_of_valid_characters_encountered = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_of_filename
+
+void parse_one_character_of_filename( )
+{
+    global_character_category = global_character_category_number_for_character_number[ global_character_category ] ;
+    switch ( global_character_category )
+    {
+        case global_character_category_period :
+            global_yes_or_no_in_filename_before_period = global_no ;
+            if ( global_number_of_valid_characters_encountered < 1 )
+            {
+            	global_yes_or_no_filename_is_valid = global_no ;
+            }
+            log_out << "period" << std::endl ;
+            break ;
+        case global_character_category_other :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_digit :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_hyphen :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_underscore :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        // case global_character_category_space :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_empty :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_symbol :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_newline :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_tab :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_slash :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_open_angle_bracket :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_close_angle_bracket :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_quotation_mark :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_apostrophe :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_plus_sign :
+        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        default :
+            global_yes_or_no_filename_delimiter_encountered = global_yes ;
+            log_out << "delimiter" << std::endl ;
+            break ;
+    }
+    if ( global_yes_or_no_filename_delimiter_encountered == global_yes )
+    {
+        if ( ( global_yes_or_no_in_filename_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
+        {
+       	global_yes_or_no_filename_is_valid = global_no ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function finish_parse_characters_of_filename
+
+void finish_parse_characters_of_filename( )
+{
+    if ( global_yes_or_no_filename_is_valid == global_no )
+    {
+        log_out << "filename is not valid" << std::endl ;
+        return ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function test_parsing_filename_characters
+
+void test_parsing_filename_characters( )
+{
+    global_from_text_item_id = global_text_item_id_for_sample_filename ;
+    initialize_parse_characters_of_filename( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_character_category = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_of_filename( ) ;
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+        {
+            if ( global_yes_or_no_filename_is_valid == global_yes )
+            {
+                finish_parse_characters_of_filename( ) ;
+                log_out << "filename = ?" << std::endl ;
+            } else
+            {
+                log_out << "invalid filename" << std::endl ;
+            }
+        }
+        initialize_parse_characters_of_filename( ) ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_parse_characters_of_folder_name
+
+void initialize_parse_characters_of_folder_name( )
+{
+    global_yes_or_no_folder_name_is_valid = global_yes ;
+    global_yes_or_no_in_folder_name_before_period = global_yes ;
+    global_number_of_valid_characters_encountered = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_of_folder_name
+
+void parse_one_character_of_folder_name( )
+{
+    global_character_category = global_character_category_number_for_character_number[ global_character_category ] ;
+    switch ( global_character_category )
+    {
+        case global_character_category_other :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_digit :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_hyphen :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_underscore :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_slash :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "delimiter" << std::endl ;
+            break ;
+
+        // case global_character_category_period :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_space :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_empty :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_symbol :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_newline :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_tab :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_open_angle_bracket :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_close_angle_bracket :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_quotation_mark :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_apostrophe :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+        // case global_character_category_plus_sign :
+        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+        //     log_out << "delimiter" << std::endl ;
+        //     break ;
+
+        default :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "delimiter" << std::endl ;
+            break ;
+    }
+    if ( global_yes_or_no_folder_name_delimiter_encountered == global_yes )
+    {
+        if ( ( global_yes_or_no_in_folder_name_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
+        {
+       	global_yes_or_no_folder_name_is_valid = global_no ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function finish_parse_characters_of_folder_name
+
+void finish_parse_characters_of_folder_name( )
+{
+    if ( global_yes_or_no_folder_name_is_valid == global_no )
+    {
+        log_out << "folder_name is not valid" << std::endl ;
+        return ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function test_parsing_folder_name_characters
+
+void test_parsing_folder_name_characters( )
+{
+    global_from_text_item_id = global_text_item_id_for_sample_folder_name ;
+    initialize_parse_characters_of_folder_name( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_character_category = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_of_folder_name( ) ;
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+        {
+            if ( global_yes_or_no_folder_name_is_valid == global_yes )
+            {
+                finish_parse_characters_of_folder_name( ) ;
+                log_out << "folder name = ?" << std::endl ;
+            } else
+            {
+                log_out << "invalid folder name" << std::endl ;
+            }
+        }
+        initialize_parse_characters_of_folder_name( ) ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function convert_into_category_space_delimited_words
 //
 //  Remove leading and trailing spaces, tabs,
@@ -1644,7 +2013,7 @@ void convert_into_category_hyphenated_word( )
 void convert_into_category_list_of_integers( )
 {
 
-    log_out << "todo: write function convert_into_category_list_of_integers" << std::endl ;
+    log_out << "todo: write function convert_into_category_list_of_integers, use function that parses integers" << std::endl ;
 
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_integers ;
     return ;
@@ -1658,24 +2027,9 @@ void convert_into_category_list_of_integers( )
 void convert_into_category_pointers_to_decimal_numbers( )
 {
 
-    log_out << "todo: write function convert_into_category_pointers_to_decimal_numbers" << std::endl ;
+    log_out << "todo: write function convert_into_category_pointers_to_decimal_numbers, use function that parses decimal numbers" << std::endl ;
 
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function convert_into_category_character_sequence
-
-void convert_into_category_character_sequence( )
-{
-
-    log_out << "todo: write function convert_into_category_character_sequence" << std::endl ;
-
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_unicode_anything ;
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_text_item_ids ;
     return ;
 }
 
@@ -1928,9 +2282,9 @@ int main() {
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-    test_parsing_numeric_characters( ) ;
+    test_parsing_folder_name_characters( ) ;
 
-    read_text_line_from_file( ) ;
+//    read_text_line_from_file( ) ;
 
     global_single_character = 101 ;
     write_single_character_to_file( ) ;
