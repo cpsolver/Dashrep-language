@@ -329,6 +329,37 @@ const int global_ascii_code_for_tilde = 126 ;
 
 
 // -----------------------------------------------
+//  Define the ASCII codes for the letters that
+//  appear in the words "attribute" and "specify".
+
+const int global_ascii_code_for_letter_a = 65 ;
+const int global_ascii_code_for_letter_b = 66 ;
+const int global_ascii_code_for_letter_c = 67 ;
+const int global_ascii_code_for_letter_e = 69 ;
+const int global_ascii_code_for_letter_f = 70 ;
+const int global_ascii_code_for_letter_i = 73 ;
+const int global_ascii_code_for_letter_p = 80 ;
+const int global_ascii_code_for_letter_s = 83 ;
+const int global_ascii_code_for_letter_t = 84 ;
+const int global_ascii_code_for_letter_u = 85 ;
+const int global_ascii_code_for_letter_y = 89 ;
+
+
+// -----------------------------------------------
+//  Declare a list of counters and special
+//  counters that are used by the expand_text
+//  function.
+
+int global_recent_character_position_for_character_number[ 260 ] ;
+int global_yes_or_no_looking_for_word_attribute_or_specify ;
+int global_recent_character_position_for_letter_t_prior_prior ;
+int global_recent_character_position_for_letter_t_prior ;
+int global_yes_or_no_prior_character_was_delimiter ;
+int global_yes_or_no_delimiter_encountered ;
+int global_recent_character_position_for_character_number_beyond_ascii ;
+
+
+// -----------------------------------------------
 //  Declare a storage area for decimal numbers.
 //  These are used when the text items contain
 //  the category:
@@ -426,6 +457,7 @@ int global_pointer_for_debugging ;
 int global_text_item_id_for_sample_numbers ;
 int global_text_item_id_for_sample_filename ;
 int global_text_item_id_for_sample_folder_name ;
+int global_text_item_id_for_sample_text_to_expand ;
 
 
 // -----------------------------------------------
@@ -816,6 +848,9 @@ void do_main_initialization( )
     store_this_word_in_text_item( ) ;
     global_text_item_id_for_sample_folder_name = global_new_storage_text_item_id ;
 
+    strcpy( global_this_word , "   _ hyphenated-phrase   <specify 123>  <attribute 123> " ) ;
+    store_this_word_in_text_item( ) ;
+    global_text_item_id_for_sample_text_to_expand = global_new_storage_text_item_id ;
 
 
     strcpy( global_this_word , "hyphen" ) ;
@@ -1696,7 +1731,7 @@ void initialize_parse_characters_of_filename( )
 
 void parse_one_character_of_filename( )
 {
-    global_character_category = global_character_category_number_for_character_number[ global_character_category ] ;
+    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
     switch ( global_character_category )
     {
         case global_character_category_period :
@@ -1785,20 +1820,6 @@ void parse_one_character_of_filename( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function finish_parse_characters_of_filename
-
-void finish_parse_characters_of_filename( )
-{
-    if ( global_yes_or_no_filename_is_valid == global_no )
-    {
-        log_out << "filename is not valid" << std::endl ;
-        return ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function test_parsing_filename_characters
 
 void test_parsing_filename_characters( )
@@ -1813,7 +1834,6 @@ void test_parsing_filename_characters( )
         {
             if ( global_yes_or_no_filename_is_valid == global_yes )
             {
-                finish_parse_characters_of_filename( ) ;
                 log_out << "filename = ?" << std::endl ;
             } else
             {
@@ -1843,7 +1863,7 @@ void initialize_parse_characters_of_folder_name( )
 
 void parse_one_character_of_folder_name( )
 {
-    global_character_category = global_character_category_number_for_character_number[ global_character_category ] ;
+    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
     switch ( global_character_category )
     {
         case global_character_category_other :
@@ -1930,20 +1950,6 @@ void parse_one_character_of_folder_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function finish_parse_characters_of_folder_name
-
-void finish_parse_characters_of_folder_name( )
-{
-    if ( global_yes_or_no_folder_name_is_valid == global_no )
-    {
-        log_out << "folder_name is not valid" << std::endl ;
-        return ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function test_parsing_folder_name_characters
 
 void test_parsing_folder_name_characters( )
@@ -1952,57 +1958,155 @@ void test_parsing_folder_name_characters( )
     initialize_parse_characters_of_folder_name( ) ;
     for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
     {
-        global_character_category = global_storage_all_text[ global_text_pointer ] ;
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         parse_one_character_of_folder_name( ) ;
         if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
         {
             if ( global_yes_or_no_folder_name_is_valid == global_yes )
             {
-                finish_parse_characters_of_folder_name( ) ;
                 log_out << "folder name = ?" << std::endl ;
             } else
             {
                 log_out << "invalid folder name" << std::endl ;
             }
+            initialize_parse_characters_of_folder_name( ) ;
         }
-        initialize_parse_characters_of_folder_name( ) ;
     }
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_into_category_space_delimited_words
-//
-//  Remove leading and trailing spaces, tabs,
-//  newlines, and formfeeds.  Also remove extra
-//  spaces where two or more adjacent spaces
-//  appear.  If any changes are needed, create a
-//  new text item in which to put the words, and
-//  supply the new text item ID number as the new
-//  "to" text item ID.
+//  Function initialize_parse_characters_for_expand_text
 
-void convert_into_category_space_delimited_words( )
+void initialize_parse_characters_for_expand_text( )
+{
+    global_recent_character_position_for_character_number_beyond_ascii = 0 ;
+    global_yes_or_no_prior_character_was_delimiter = global_yes ;
+    global_yes_or_no_delimiter_encountered = global_yes ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_for_expand_text
+
+void parse_one_character_for_expand_text( )
 {
 
-    log_out << "todo: write function convert_into_category_space_delimited_words" << std::endl ;
+    log_out << global_single_character_as_integer << std::endl ;
 
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_words ;
+	if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
+	{
+        if ( ( global_single_character_as_integer == global_ascii_code_for_letter_t ) && ( global_yes_or_no_looking_for_word_attribute_or_specify == global_yes ) )
+        {
+            global_recent_character_position_for_letter_t_prior_prior = global_recent_character_position_for_letter_t_prior ;
+            global_recent_character_position_for_letter_t_prior = global_recent_character_position_for_character_number[ global_ascii_code_for_letter_t ] ;
+        }
+        global_recent_character_position_for_character_number[ global_single_character_as_integer ] ++ ;
+    } else
+    {
+        global_recent_character_position_for_character_number_beyond_ascii ++ ;
+    }
+    global_yes_or_no_delimiter_encountered = global_no ;
+    switch ( global_single_character_as_integer )
+    {
+        case global_ascii_code_for_space :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_tab :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_newline :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_formfeed :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_carriage_return :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+    }
+    if ( global_yes_or_no_delimiter_encountered == global_yes )
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_no )
+        {
+        	log_out << "transition from characters to delimiter" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_yes ;
+    } else
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
+        {
+        	log_out << "transition from delimiter to characters" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_no ;
+    }
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_into_category_hyphenated_word
+//  Function test_parsing_characters_for_expand_text
 
-void convert_into_category_hyphenated_word( )
+void test_parsing_characters_for_expand_text( )
+{
+	global_yes_or_no_looking_for_word_attribute_or_specify = global_yes ;
+    global_from_text_item_id = global_text_item_id_for_sample_text_to_expand ;
+    initialize_parse_characters_for_expand_text( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_for_expand_text( ) ;
+
+//
+
+
+    }
+
+    log_out << "test parsing done" << std::endl ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function lookup_hyphenated_phrase_name
+//
+//  Searches all the defined hyphenated phrase
+//  names to find a match with the hyphenated
+//  phrase in the text item named
+//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
+//  First, look at every defined hyphenated phrase
+//  name that has the same number of words, and
+//  the same lengths of words.  Do this using a
+//  single integer that conveys this pattern.  For
+//  each same-word-number-and-same-word-length
+//  match, check the words for a match, but check
+//  the last word as the second check, and alternate
+//  looking at words at the beginning of the phrase
+//  and words at the end of the phrase.
+//  Instead of matching a word character by
+//  character, check the text item ID numbers based
+//  on always storing the same word in the same
+//  location.
+//
+//  Alternate description:
+//  Finds the text item ID number of the phrase
+//  name that is contained in the text item ID
+//  number at global_from_text_item_id.
+//  If a match is not found, this function puts a
+//  zero into the variable
+//  global_to_text_item_id.
+
+void lookup_hyphenated_phrase_name( )
 {
 
-    log_out << "todo: write function convert_into_category_hyphenated_word" << std::endl ;
+    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
 
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_hyphenated_word ;
-    return ;
+//  use for each word:  lookup_hyphenated_phrase_word
+
 }
 
 
@@ -2030,86 +2134,6 @@ void convert_into_category_pointers_to_decimal_numbers( )
     log_out << "todo: write function convert_into_category_pointers_to_decimal_numbers, use function that parses decimal numbers" << std::endl ;
 
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function lookup_hyphenated_phrase_word
-//
-//  Search all the text items that are used in
-//  defined hyphenated phrase names to find a
-//  match with one of the space-delimited words
-//  in the text item named
-//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
-
-void lookup_hyphenated_phrase_word( )
-{
-
-    log_out << "todo: write function lookup_hyphenated_phrase_word" << std::endl ;
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function lookup_hyphenated_phrase_name
-//
-//  Searches all the defined hyphenated phrase
-//  names to find a match with the hyphenated
-//  phrase in the text item named
-//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
-//  First, do lookups for the words between the
-//  hyphens.  If not all those words can be found,
-//  there cannot be a match for the hyphenated
-//  phrase.  If all the words can be found, search
-//  for a hyphenated phrase that has the same
-//  number of words.  When there is a match, check
-//  that the same sequence of text item ID numbers
-//  specify that hyphenated word.
-
-void lookup_hyphenated_phrase_name( )
-{
-
-    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
-
-//  use for each word:  lookup_hyphenated_phrase_word
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function trim_delimiters
-//
-//  For the text item specified in
-//  global_text_item_id, removes leading
-//  and trailing word delimiters, and from within
-//  the text replaces multiple word delimiters
-//  with a single space.  Word delimiters include
-//  spaces, tabs, newlines, formfeeds, carriage
-//  returns, and vertical tabs.
-//  The trimmed version gets a new text item ID
-//  number and that number is put into the
-//  variable global_text_item_id.
-
-void trim_delimiters( )
-{
-    log_out << "todo: write function trim_delimiters" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function widen_subtext_by_leading_trailing_spaces
-
-void widen_subtext_by_leading_trailing_spaces( )
-{
-//    global_text_item_id
-    log_out << "todo: write function widen_subtext_by_leading_trailing_spaces" << std::endl ;
     return ;
 }
 
@@ -2147,24 +2171,6 @@ void text_replace( )
 //    global_to_text_item_id ;
 //    global_pointer_to_within_text_item
     log_out << "todo: write function text_replace (using pointers)" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function phrase_name_lookup
-//
-//  Finds the text item ID number of the phrase
-//  name that is contained in the text item ID
-//  number at global_from_text_item_id.
-//  If a match is not found, this function puts a
-//  zero into the variable
-//  global_to_text_item_id.
-
-void phrase_name_lookup( )
-{
-    log_out << "todo: write function phrase_name_lookup" << std::endl ;
     return ;
 }
 
@@ -2282,7 +2288,7 @@ int main() {
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-    test_parsing_folder_name_characters( ) ;
+    test_parsing_characters_for_expand_text( ) ;
 
 //    read_text_line_from_file( ) ;
 
