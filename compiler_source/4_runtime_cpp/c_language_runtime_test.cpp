@@ -243,13 +243,16 @@ int global_from_text_contains_category ;
 
 
 // -----------------------------------------------
-//  Declare character pointers and numbers.
+//  Declare character numbers, character pointers,
+//  and character counts.
 
 int global_single_character ;
 int global_next_character_number ;
 int global_line_character_position ;
 int global_character_pointer ;
 int global_character_count ;
+int global_character_count_for_expand_text ;
+int global_length_of_matching_text ;
 
 
 // -----------------------------------------------
@@ -339,6 +342,7 @@ const int global_ascii_code_for_letter_e = 69 ;
 const int global_ascii_code_for_letter_f = 70 ;
 const int global_ascii_code_for_letter_i = 73 ;
 const int global_ascii_code_for_letter_p = 80 ;
+const int global_ascii_code_for_letter_r = 82 ;
 const int global_ascii_code_for_letter_s = 83 ;
 const int global_ascii_code_for_letter_t = 84 ;
 const int global_ascii_code_for_letter_u = 85 ;
@@ -352,11 +356,25 @@ const int global_ascii_code_for_letter_y = 89 ;
 
 int global_recent_character_position_for_character_number[ 260 ] ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
-int global_recent_character_position_for_letter_t_prior_prior ;
-int global_recent_character_position_for_letter_t_prior ;
 int global_yes_or_no_prior_character_was_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
 int global_recent_character_position_for_character_number_beyond_ascii ;
+
+
+// -----------------------------------------------
+//  Declare buffers that hold multiple character
+//  pointers that point to hyphens, underscores,
+//  and the letter "t" which appears three times
+//  in the word "attribute".
+
+int global_buffer_rotation_number ;
+const int global_maximum_buffer_rotation_number = 30 ;
+int global_position_count_for_hyphen_for_buffer_rotation[ 31 ] ;
+int global_position_count_for_underscore_for_buffer_rotation[ 31 ] ;
+int global_position_count_for_letter_t_for_buffer_rotation[ 31 ] ;
+int global_buffer_rotation_number_for_hyphen ;
+int global_buffer_rotation_number_for_underscore ;
+int global_buffer_rotation_number_for_letter_t ;
 
 
 // -----------------------------------------------
@@ -1738,7 +1756,7 @@ void parse_one_character_of_filename( )
             global_yes_or_no_in_filename_before_period = global_no ;
             if ( global_number_of_valid_characters_encountered < 1 )
             {
-            	global_yes_or_no_filename_is_valid = global_no ;
+                global_yes_or_no_filename_is_valid = global_no ;
             }
             log_out << "period" << std::endl ;
             break ;
@@ -1811,7 +1829,7 @@ void parse_one_character_of_filename( )
     {
         if ( ( global_yes_or_no_in_filename_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
         {
-       	global_yes_or_no_filename_is_valid = global_no ;
+           global_yes_or_no_filename_is_valid = global_no ;
         }
     }
     return ;
@@ -1941,7 +1959,7 @@ void parse_one_character_of_folder_name( )
     {
         if ( ( global_yes_or_no_in_folder_name_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
         {
-       	global_yes_or_no_folder_name_is_valid = global_no ;
+           global_yes_or_no_folder_name_is_valid = global_no ;
         }
     }
     return ;
@@ -1977,6 +1995,61 @@ void test_parsing_folder_name_characters( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initialize_rotation_buffers
+
+void initialize_rotation_buffers( )
+{
+    global_buffer_rotation_number_for_hyphen = 1 ;
+    global_buffer_rotation_number_for_underscore = 1 ;
+    global_buffer_rotation_number_for_letter_t =1 ;
+    for ( global_buffer_rotation_number = 1 ; global_buffer_rotation_number <= global_maximum_buffer_rotation_number ; global_buffer_rotation_number ++ )
+    {
+        global_position_count_for_hyphen_for_buffer_rotation[ global_buffer_rotation_number ] ;
+        global_position_count_for_underscore_for_buffer_rotation[ global_buffer_rotation_number ] ;
+        global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number ] ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_for_word_specify_or_attribute
+
+void check_for_word_specify_or_attribute( )
+{
+    global_length_of_matching_text = 0 ;
+    if ( ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_p ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 2 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_e ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 3 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_c ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 4 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_i ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 5 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_f ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 6 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_y ] ) )
+    {
+        global_length_of_matching_text = 7 ;
+    } else if ( ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_r ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_i ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_b ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_u ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_e ] ) )
+    {
+        if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
+        {
+            global_buffer_rotation_number_for_letter_t -- ;
+            if ( global_buffer_rotation_number_for_letter_t < 1 )
+            {
+                global_buffer_rotation_number_for_letter_t = global_maximum_buffer_rotation_number ;
+            }
+            if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 2 )
+            {
+		        global_buffer_rotation_number_for_letter_t -- ;
+		        if ( global_buffer_rotation_number_for_letter_t < 1 )
+		        {
+		            global_buffer_rotation_number_for_letter_t = global_maximum_buffer_rotation_number ;
+		        }
+                if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
+                {
+                    global_length_of_matching_text = 9 ;
+                }
+            }
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function initialize_parse_characters_for_expand_text
 
 void initialize_parse_characters_for_expand_text( )
@@ -1996,17 +2069,41 @@ void parse_one_character_for_expand_text( )
 
     log_out << global_single_character_as_integer << std::endl ;
 
-	if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
-	{
-        if ( ( global_single_character_as_integer == global_ascii_code_for_letter_t ) && ( global_yes_or_no_looking_for_word_attribute_or_specify == global_yes ) )
+    if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
+    {
+        switch ( global_single_character_as_integer )
         {
-            global_recent_character_position_for_letter_t_prior_prior = global_recent_character_position_for_letter_t_prior ;
-            global_recent_character_position_for_letter_t_prior = global_recent_character_position_for_character_number[ global_ascii_code_for_letter_t ] ;
+            case global_ascii_code_for_hyphen :
+                global_buffer_rotation_number_for_hyphen ++ ;
+                if ( global_buffer_rotation_number_for_hyphen > global_maximum_buffer_rotation_number )
+                {
+                    global_buffer_rotation_number_for_hyphen = 1 ;
+                }
+                global_position_count_for_hyphen_for_buffer_rotation[ global_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
+                break ;
+            case global_ascii_code_for_underscore :
+                global_buffer_rotation_number_for_underscore ++ ;
+                if ( global_buffer_rotation_number_for_underscore > global_maximum_buffer_rotation_number )
+                {
+                    global_buffer_rotation_number_for_underscore = 1 ;
+                }
+                global_position_count_for_underscore_for_buffer_rotation[ global_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
+                break ;
+            case global_ascii_code_for_letter_t :
+                global_buffer_rotation_number_for_letter_t ++ ;
+                if ( global_buffer_rotation_number_for_letter_t > global_maximum_buffer_rotation_number )
+                {
+                    global_buffer_rotation_number_for_letter_t = 1 ;
+                }
+                global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] = global_character_count_for_expand_text ;
+                break ;
+            default :
+                global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_character_count_for_expand_text ;
+                break ;
         }
-        global_recent_character_position_for_character_number[ global_single_character_as_integer ] ++ ;
     } else
     {
-        global_recent_character_position_for_character_number_beyond_ascii ++ ;
+        global_recent_character_position_for_character_number_beyond_ascii = global_character_count_for_expand_text ;
     }
     global_yes_or_no_delimiter_encountered = global_no ;
     switch ( global_single_character_as_integer )
@@ -2031,14 +2128,14 @@ void parse_one_character_for_expand_text( )
     {
         if (global_yes_or_no_prior_character_was_delimiter == global_no )
         {
-        	log_out << "transition from characters to delimiter" << std::endl ;
+            log_out << "transition from characters to delimiter" << std::endl ;
         }
         global_yes_or_no_prior_character_was_delimiter = global_yes ;
     } else
     {
         if (global_yes_or_no_prior_character_was_delimiter == global_yes )
         {
-        	log_out << "transition from delimiter to characters" << std::endl ;
+            log_out << "transition from delimiter to characters" << std::endl ;
         }
         global_yes_or_no_prior_character_was_delimiter = global_no ;
     }
@@ -2052,7 +2149,7 @@ void parse_one_character_for_expand_text( )
 
 void test_parsing_characters_for_expand_text( )
 {
-	global_yes_or_no_looking_for_word_attribute_or_specify = global_yes ;
+    global_yes_or_no_looking_for_word_attribute_or_specify = global_yes ;
     global_from_text_item_id = global_text_item_id_for_sample_text_to_expand ;
     initialize_parse_characters_for_expand_text( ) ;
     for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
@@ -2270,7 +2367,20 @@ void expand_text( )
 // -----------------------------------------------
 //  Execution starts here.
 
-int main() {
+int main( int argc, char *argv[] )
+{
+
+    int argv_pointer ;
+
+
+// -----------------------------------------------
+//  Get environment variable values that include
+//  CGI info.
+
+    for ( int argv_pointer = 0 ; argv_pointer < argc ; argv_pointer ++ )
+    {
+        printf( "argv[ %d ] = %s\n", argv_pointer, argv[ argv_pointer ] ) ;
+    }
 
 
 // -----------------------------------------------
