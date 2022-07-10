@@ -338,14 +338,15 @@ const int global_character_category_underscore = 4 ;
 const int global_character_category_newline = 5 ;
 const int global_character_category_tab = 6 ;
 const int global_character_category_slash = 7 ;
-const int global_character_category_open_angle_bracket = 8 ;
-const int global_character_category_close_angle_bracket = 9 ;
-const int global_character_category_quotation_mark = 10 ;  // double quotation mark
-const int global_character_category_apostrophe = 11 ;  // also single quotation mark
-const int global_character_category_period = 12 ;  // also used as decimal point
-const int global_character_category_plus_sign = 13 ;
-const int global_character_category_digit = 14 ;  // 0 through 9
-const int global_character_category_symbol = 15 ;
+const int global_character_category_backslash = 8 ;
+const int global_character_category_open_angle_bracket = 9 ;
+const int global_character_category_close_angle_bracket = 10 ;
+const int global_character_category_quotation_mark = 11 ;  // double quotation mark
+const int global_character_category_apostrophe = 12 ;  // also single quotation mark
+const int global_character_category_period = 13 ;  // also used as decimal point
+const int global_character_category_plus_sign = 14 ;
+const int global_character_category_digit = 15 ;  // 0 through 9
+const int global_character_category_symbol = 16 ;
 
 
 // -----------------------------------------------
@@ -421,11 +422,14 @@ const int global_ascii_code_for_letter_y = 89 ;
 //  This approach avoids the need to load and save
 //  text item IDs and character pointers.
 
+int global_text_item_for_getting_next_character ;
 const int global_maximum_stack_number = 10 ;
+int global_current_stack_number ;
+int global_prior_stack_number ;
 const int global_maximum_stack_level = 20 ;
-int global_text_item_id_for_stack_number_and_level[ 12 ][ 22 ] ;
-int global_character_pointer_for_stack_number_and_level[ 12 ][ 22 ] ;
-int global_stack_rotation_sequence_number[ 12 ] ;
+int global_current_stack_level ;
+int global_text_item_id_for_stack_number_and_stack_level[ 12 ][ 22 ] ;
+int global_character_pointer_for_stack_number_and_stack_level[ 12 ][ 22 ] ;
 
 
 // -----------------------------------------------
@@ -613,7 +617,10 @@ char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens
 void choose_slash_or_backslash( )
 {
     global_yes_or_no_use_slash_not_backslash = global_yes ;
-    #ifdef _WIN32 || _WIN64
+    #ifdef _WIN32
+    global_yes_or_no_use_slash_not_backslash = global_no ;
+    #endif
+    #ifdef _WIN64
     global_yes_or_no_use_slash_not_backslash = global_no ;
     #endif
 }
@@ -2331,13 +2338,13 @@ void convert_into_category_pointers_to_decimal_numbers( )
 void initialize_get_next_character_from_text_item( )
 {
     global_text_item_for_getting_next_character = global_text_item_id ;
-    global_stack_rotation_sequence_number ++ ;
-    if ( global_stack_rotation_sequence_number > global_maximum_stack_number )
+    global_current_stack_number ++ ;
+    if ( global_current_stack_number > global_maximum_stack_number )
     {
-    	global_stack_rotation_sequence_number = 1 ;
+    	global_current_stack_number = 1 ;
     }
-    global_text_item_id_at_stack_rotation_sequence_number = global_text_item_for_getting_next_character ;
-
+    global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_item_for_getting_next_character ;
+    global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ] ;
 }
 
 
@@ -2370,7 +2377,19 @@ void get_next_character_from_text_item( )
 //  Handle the category "unicode_anything".
 
         case global_category_contains_unicode_anything :
+
+    // global_text_item_for_getting_next_character = global_text_item_id ;
+    // global_current_stack_number ++ ;
+    // if ( global_current_stack_number > global_maximum_stack_number )
+    // {
+    // 	global_current_stack_number = 1 ;
+    // }
+    // global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_item_for_getting_next_character ;
+    // global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ] ;
+
             log_out << "character category " << global_text_item_category << std::endl ;
+
+
             break ;
 
 
