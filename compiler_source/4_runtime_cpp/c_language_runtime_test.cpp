@@ -350,6 +350,20 @@ const int global_ascii_code_for_letter_y = 89 ;
 
 
 // -----------------------------------------------
+//  Declare stack-type storage for text items and
+//  character pointers.  These are used in
+//  rotation, with the rotation sequence tracked.
+//  This approach avoids the need to load and save
+//  text item IDs and character pointers.
+
+const int global_maximum_stack_number = 10 ;
+const int global_maximum_stack_level = 20 ;
+int global_text_item_id_for_stack_number_and_level[ 12 ][ 22 ] ;
+int global_character_pointer_for_stack_number_and_level[ 12 ][ 22 ] ;
+int global_stack_rotation_sequence_number[ 12 ] ;
+
+
+// -----------------------------------------------
 //  Declare a list of counters and special
 //  counters that are used by the expand_text
 //  function.
@@ -386,6 +400,25 @@ int global_buffer_rotation_number_for_letter_t ;
 //  positions in this list.
 
 float global_decimal_number_at_position[ 2000 ] ;
+
+
+// -----------------------------------------------
+//  Declare pointers to words.  The first items
+//  are compared to determine whether the text
+//  begins with a delimiter or a word.
+
+int global_character_pointer_to_word_number[ 20000 ] ;
+int global_character_pointer_to_delimiter_number[ 20000 ] ;
+
+
+// -----------------------------------------------
+//  Declare text items related to operands.
+
+int global_text_item_for_operand_one ;
+int global_text_item_for_operand_two ;
+int global_text_item_for_operand_three ;
+int global_word_count_operand_one ;
+int global_word_count_operand_two ;
 
 
 // -----------------------------------------------
@@ -1459,6 +1492,16 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function remove_leading_trailing_delimiters
+
+void remove_leading_trailing_delimiters( )
+{
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  convert_float_to_text
 //
 //  This function is used instead of "std::to_string"
@@ -2196,6 +2239,16 @@ void test_parsing_characters_for_expand_text( )
 //  If a match is not found, this function puts a
 //  zero into the variable
 //  global_to_text_item_id.
+//
+//  Alternate note:
+//  Use "switch" on the number of words,
+//  and use sub-level "switch"es on the length of
+//  each word.  These lead to linked lists of
+//  text item IDs of phrase names that have the
+//  same "hash" value.  These lists are stored in
+//  the same array, with each new item added to
+//  the end.  A second array points to the next
+//  item in these linked lists.
 
 void lookup_hyphenated_phrase_name( )
 {
@@ -2233,6 +2286,30 @@ void convert_into_category_pointers_to_decimal_numbers( )
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_get_next_character_from_text_item
+
+void initialize_get_next_character_from_text_item( )
+{
+
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_character_from_text_item
+
+void get_next_character_from_text_item( )
+{
+
+//  use switch, based on text item category
+
+}
+
 
 
 // -----------------------------------------------
