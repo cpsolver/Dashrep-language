@@ -204,31 +204,96 @@ int global_next_available_defined_phrase_number ;
 // -----------------------------------------------
 //  Declare text "contains" categories.
 //
-//  Hyphenated words must contain at least one
-//  hyphen but cannot contain spaces, tabs,
-//  newlines, or any other characters that are not
-//  allowed in a Dashrep phrase name.  Leading and
-//  trailing hyphens are not allowed.
+//  A text item can contain any of the following
+//  categories.
 //
-//  A word cannot contain any spaces, hyphens,
-//  tabs, newlines, formfeeds, or vertical tabs.
+//  * "unicode_anything"
+//    Characters of any kind, with each character
+//    being stored as an integer.  This allows
+//    Unicode characters.  In particular,
+//    each integer can represent one
+//    Chinese character.
 //
-//  A list of words assumes the words are
-//  separated by one space between each pair of
-//  words, but those spaces are not explicitly
-//  stored.
+//  * "list_of_text_item_ids"
+//    Pointers to other text items that are
+//    handled as "sub text items".
+//
+//  * "nothing_empty"
+//    Zero characters.  This category eliminates
+//    the need to check the text item's "begin"
+//    and "end" pointers to see that the "end"
+//    pointer is one character position less than
+//    the "begin" pointer.
+//
+//  * "hyphenated_word"
+//    A text item of category "unicode_anything"
+//    that contains a word that can be used as one
+//    of the words in a hyphenated phrase name.
+//    The word must not contain any delimiter,
+//    such as a space, tab, newline, formfeed, or
+//    carriage return.  The same word cannot be
+//    stored in a different text item of this
+//    hyphenated word category.  This convention
+//    allows searching for a specific phrase name
+//    just by looking at the text item IDs of the
+//    words in the phrase name.
+//
+//  * "hyphenated_phrase"
+//    A list of text item IDs that only point to
+//    "hyphenated_word" text items.  The result is
+//    a valid hyphenated phrase name -- which is
+//    not necessarily a defined phrase name.  Each
+//    pair of words is assumed to be separated by
+//    one hyphen, without explicitly storing those
+//    hyphens.  Each of the linked words must be
+//    the same text item as used in any other
+//    hyphenated phrase name that includes that
+//    same word.  This convention allows searching
+//    for a phrase name just by looking at the
+//    text item IDs of the words in the phrase
+//    name.  Note that this convention does not
+//    allow a leading or trailing hyphen, and
+//    does not allow two or more adjacent
+//    hyphens.
+//
+//  * "list_of_integers"
+//    A list of integers.  These are generated
+//    when an integer calculation is done, such as
+//    adding two vectors of integers.  And this
+//    list is generated prior to a request for
+//    integer math, such as incrementing.
+//    This convention regards the integers as
+//    being separated by one space between each
+//    pair of integers, without those spaces
+//    being explicitly stored.  If a list of
+//    numbers includes even one decimal number,
+//    the "pointers_to_decimal_numbers" category
+//    must be used.  This storage type increases
+//    speed by eliminating unneeded conversions
+//    of numbers between text type and the "int"
+//    data type.
+//
+//  * "pointers_to_decimal_numbers"
+//  * A list of pointers to decimal numbers.  The
+//    decimal numbers are stored separately in a
+//    "float" array.  Each pair of pointers is
+//    assumed to be separated by one space, without
+//    explicitly storing those spaces.  This
+//    convention increases speed by eliminating
+//    unneeded conversions of numbers between text
+//    type and the "float" data type.
 //
 //  A list can contain just one item.
 //
-//  Storing integers as integers instead of as
-//  text increases execution speed.  Similarly for
-//  decimal numbers being stored as real numbers.
+//  These categories are stored in the array named
+//  global_text_category_for_item.
 
+int global_text_item_category ;
 const int global_category_contains_nothing_empty = 1 ;
-const int global_category_contains_list_of_text_item_ids = 2 ;
-const int global_category_contains_unicode_anything = 3 ;
+const int global_category_contains_unicode_anything = 2 ;
+const int global_category_contains_list_of_text_item_ids = 3 ;
 const int global_category_contains_hyphenated_word = 4 ;
-const int global_category_contains_list_of_words = 5 ;
+const int global_category_contains_hyphenated_phrase_name = 5 ;
 const int global_category_contains_list_of_integers = 6 ;
 const int global_category_contains_pointers_to_decimal_numbers = 7 ;
 
@@ -492,6 +557,7 @@ int global_yes_or_no_filename_delimiter_encountered ;
 int global_yes_or_no_folder_name_is_valid ;
 int global_yes_or_no_in_folder_name_before_period ;
 int global_yes_or_no_folder_name_delimiter_encountered ;
+int global_yes_or_no_use_slash_not_backslash ;
 
 
 // -----------------------------------------------
@@ -530,6 +596,27 @@ char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens
 // -----------------------------------------------
 //  End of top-level code.
 //  Beginning of functions.
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function choose_slash_or_backslash
+//
+//  This function checks the operating system to
+//  determine whether slashes or backslashes
+//  should be used in folder names.
+//
+//  This code uses compiler macros because there
+//  is no way to create a library function that
+//  would work on all operating systems.
+
+void choose_slash_or_backslash( )
+{
+    global_yes_or_no_use_slash_not_backslash = global_yes ;
+    #ifdef _WIN32 || _WIN64
+    global_yes_or_no_use_slash_not_backslash = global_no ;
+    #endif
+}
 
 
 // -----------------------------------------------
@@ -1360,17 +1447,6 @@ void append_linked_text( )
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
 //  items are both of category
-//  contains_list_of_words, then add to the list
-//  a pointer to the item that contains the word.
-
-        case global_category_contains_list_of_words :
-            //
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
 //  contains_unicode_anything, then add the
 //  characters if they fit, and otherwise add to
 //  a/the higher-level item a pointer to the text.
@@ -1945,54 +2021,12 @@ void parse_one_character_of_folder_name( )
             break ;
         case global_character_category_slash :
             global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-            log_out << "delimiter" << std::endl ;
+            log_out << "valid character" << std::endl ;
             break ;
-
-        // case global_character_category_period :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_space :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_empty :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_symbol :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_newline :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_tab :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_open_angle_bracket :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_close_angle_bracket :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_quotation_mark :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_apostrophe :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_plus_sign :
-        //     global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-
+        case global_character_category_backslash :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "valid character" << std::endl ;
+            break ;
         default :
             global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
             log_out << "delimiter" << std::endl ;
@@ -2012,6 +2046,8 @@ void parse_one_character_of_folder_name( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function test_parsing_folder_name_characters
+//
+//  todo: use global_yes_or_no_use_slash_not_backslash
 
 void test_parsing_folder_name_characters( )
 {
@@ -2294,7 +2330,13 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 void initialize_get_next_character_from_text_item( )
 {
-
+    global_text_item_for_getting_next_character = global_text_item_id ;
+    global_stack_rotation_sequence_number ++ ;
+    if ( global_stack_rotation_sequence_number > global_maximum_stack_number )
+    {
+    	global_stack_rotation_sequence_number = 1 ;
+    }
+    global_text_item_id_at_stack_rotation_sequence_number = global_text_item_for_getting_next_character ;
 
 }
 
@@ -2306,7 +2348,86 @@ void initialize_get_next_character_from_text_item( )
 void get_next_character_from_text_item( )
 {
 
-//  use switch, based on text item category
+
+// -----------------------------------------------
+//  Jump to the appropriate section based on the
+//  category of the text item or sub text item.
+
+    global_text_item_category = global_text_category_for_item[ global_text_item_for_getting_next_character ] ;
+	switch ( global_text_item_category )
+	{
+
+
+// -----------------------------------------------
+//  Handle the category "nothing_empty".
+
+        case global_category_contains_nothing_empty :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "unicode_anything".
+
+        case global_category_contains_unicode_anything :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_text_item_ids".
+
+        case global_category_contains_list_of_text_item_ids :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "hyphenated_word".
+
+        case global_category_contains_hyphenated_word :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "hyphenated_phrase_name".
+
+        case global_category_contains_hyphenated_phrase_name :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_integers".
+
+        case global_category_contains_list_of_integers :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "pointers_to_decimal_numbers".
+
+        case global_category_contains_pointers_to_decimal_numbers :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the text item category was not recognized,
+//  there is a bug.
+
+        default :
+            log_out << "BUG, invalid text item category" << std::endl ;
+            break ;
+    }
+
+
+// -----------------------------------------------
+//  All done in function get_next_character_from_text_item.
+
+    return ;
 
 }
 
