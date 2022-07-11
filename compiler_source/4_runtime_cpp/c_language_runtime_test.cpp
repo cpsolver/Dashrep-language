@@ -450,14 +450,14 @@ int global_recent_character_position_for_character_number_beyond_ascii ;
 //  and the letter "t" which appears three times
 //  in the word "attribute".
 
-int global_buffer_rotation_number ;
-const int global_maximum_buffer_rotation_number = 30 ;
-int global_position_count_for_hyphen_for_buffer_rotation[ 31 ] ;
-int global_position_count_for_underscore_for_buffer_rotation[ 31 ] ;
-int global_position_count_for_letter_t_for_buffer_rotation[ 31 ] ;
-int global_buffer_rotation_number_for_hyphen ;
-int global_buffer_rotation_number_for_underscore ;
-int global_buffer_rotation_number_for_letter_t ;
+int global_character_usage_buffer_rotation_number ;
+const int global_maximum_character_usage_buffer_rotation_number = 30 ;
+int global_character_usage_position_for_hyphen_for_buffer_rotation[ 31 ] ;
+int global_character_usage_position_for_underscore_for_buffer_rotation[ 31 ] ;
+int global_character_usage_position_for_letter_t_for_buffer_rotation[ 31 ] ;
+int global_character_usage_buffer_rotation_number_for_hyphen ;
+int global_character_usage_buffer_rotation_number_for_underscore ;
+int global_character_usage_buffer_rotation_number_for_letter_t ;
 
 
 // -----------------------------------------------
@@ -1575,6 +1575,171 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initialize_get_next_character_from_text_item
+
+void initialize_get_next_character_from_text_item( )
+{
+    global_text_item_for_getting_next_character = global_text_item_id ;
+    global_current_stack_number ++ ;
+    if ( global_current_stack_number > global_maximum_stack_number )
+    {
+    	global_current_stack_number = 1 ;
+    }
+    global_current_stack_level = 1 ;
+    global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ global_current_stack_level ] = global_text_item_for_getting_next_character ;
+    global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ global_current_stack_level ] = global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ] ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_character_from_text_item
+
+void get_next_character_from_text_item( )
+{
+
+
+// -----------------------------------------------
+//  Begin a loop that points to the next
+//  character.  When needed, move up or down the
+//  stack, or sometimes both up and down.
+
+global_single_character_as_integer = 0 ;
+while ( 1 == 1 )
+{
+
+
+// -----------------------------------------------
+//  If the previous character was the last
+//  character in the current-level text item,
+//  track this situation.  Allow for the
+//  possibility that the text item is empty.
+
+    global_yes_or_no_reached_end_of_current_text_item = global_no ;
+    if ( global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ global_current_stack_level ] >= global_text_pointer_end_for_item )
+    {
+        global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+    }
+
+
+// -----------------------------------------------
+//  If the last character has already been
+//  supplied, supply the character number as zero.
+
+    if ( ( global_current_stack_level == 1 ) && ( global_yes_or_no_reached_end_of_current_text_item == global_yes ) )
+    {
+        global_single_character_as_integer = 0 ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the end of a sub text item has been
+//  reached, move to a lower level on the stack,
+//  and repeat the loop.  Also update the category
+//  that indicates what the current text item
+//  contains.
+
+    if ( global_yes_or_no_reached_end_of_current_text_item == global_yes )
+    {
+        global_current_stack_level -- ;
+        global_text_item_category = global_text_category_for_item[ global_text_item_for_getting_next_character ] ;
+        continue ;
+    }
+
+
+// -----------------------------------------------
+//  Jump to the appropriate section based on the
+//  category of the text item or sub text item.
+
+	switch ( global_text_item_category )
+	{
+
+
+// -----------------------------------------------
+//  Handle the category "unicode_anything".
+
+        case global_category_contains_unicode_anything :
+            global_text_item_id = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ global_current_stack_level ] ;
+
+            global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ global_current_stack_level ] ++ ;
+            global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ]
+
+            global_single_character_as_integer = global_storage_all_text[ global___ ] ;
+
+            log_out << "character " << global_single_character_as_integer << std::endl ;
+            return ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_text_item_ids".
+
+        case global_category_contains_list_of_text_item_ids :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "hyphenated_phrase_name".
+
+        case global_category_contains_hyphenated_phrase_name :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_integers".
+
+        case global_category_contains_list_of_integers :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "pointers_to_decimal_numbers".
+
+        case global_category_contains_pointers_to_decimal_numbers :
+            log_out << "character category " << global_text_item_category << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the text item category was not recognized,
+//  there is a bug.
+
+        default :
+            log_out << "BUG, invalid text item category" << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  End of cases for the category of the current
+//  text item.
+
+        }
+
+
+// -----------------------------------------------
+//  Repeat the loop to handle pointing to the next
+//  character.
+
+        log_out << "[Error, likely infinite loop]" << std::endl ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  All done in function get_next_character_from_text_item.
+
+    return ;
+
+}
+
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function remove_leading_trailing_delimiters
 
 void remove_leading_trailing_delimiters( )
@@ -2081,18 +2246,18 @@ void test_parsing_folder_name_characters( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function initialize_rotation_buffers
+//  Function initialize_character_usage_buffers
 
-void initialize_rotation_buffers( )
+void initialize_character_usage_buffers( )
 {
-    global_buffer_rotation_number_for_hyphen = 1 ;
-    global_buffer_rotation_number_for_underscore = 1 ;
-    global_buffer_rotation_number_for_letter_t =1 ;
-    for ( global_buffer_rotation_number = 1 ; global_buffer_rotation_number <= global_maximum_buffer_rotation_number ; global_buffer_rotation_number ++ )
+    global_character_usage_buffer_rotation_number_for_hyphen = 1 ;
+    global_character_usage_buffer_rotation_number_for_underscore = 1 ;
+    global_character_usage_buffer_rotation_number_for_letter_t =1 ;
+    for ( global_character_usage_buffer_rotation_number = 1 ; global_character_usage_buffer_rotation_number <= global_maximum_character_usage_buffer_rotation_number ; global_character_usage_buffer_rotation_number ++ )
     {
-        global_position_count_for_hyphen_for_buffer_rotation[ global_buffer_rotation_number ] ;
-        global_position_count_for_underscore_for_buffer_rotation[ global_buffer_rotation_number ] ;
-        global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number ] ;
+        global_character_usage_position_for_hyphen_for_buffer_rotation[ global_character_usage_buffer_rotation_number ] ;
+        global_character_usage_position_for_underscore_for_buffer_rotation[ global_character_usage_buffer_rotation_number ] ;
+        global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number ] ;
     }
 }
 
@@ -2109,21 +2274,21 @@ void check_for_word_specify_or_attribute( )
         global_length_of_matching_text = 7 ;
     } else if ( ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_r ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_i ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_b ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_u ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_e ] ) )
     {
-        if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
+        if ( global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
         {
-            global_buffer_rotation_number_for_letter_t -- ;
-            if ( global_buffer_rotation_number_for_letter_t < 1 )
+            global_character_usage_buffer_rotation_number_for_letter_t -- ;
+            if ( global_character_usage_buffer_rotation_number_for_letter_t < 1 )
             {
-                global_buffer_rotation_number_for_letter_t = global_maximum_buffer_rotation_number ;
+                global_character_usage_buffer_rotation_number_for_letter_t = global_maximum_character_usage_buffer_rotation_number ;
             }
-            if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 2 )
+            if ( global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 2 )
             {
-		        global_buffer_rotation_number_for_letter_t -- ;
-		        if ( global_buffer_rotation_number_for_letter_t < 1 )
+		        global_character_usage_buffer_rotation_number_for_letter_t -- ;
+		        if ( global_character_usage_buffer_rotation_number_for_letter_t < 1 )
 		        {
-		            global_buffer_rotation_number_for_letter_t = global_maximum_buffer_rotation_number ;
+		            global_character_usage_buffer_rotation_number_for_letter_t = global_maximum_character_usage_buffer_rotation_number ;
 		        }
-                if ( global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
+                if ( global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
                 {
                     global_length_of_matching_text = 9 ;
                 }
@@ -2160,28 +2325,28 @@ void parse_one_character_for_expand_text( )
         switch ( global_single_character_as_integer )
         {
             case global_ascii_code_for_hyphen :
-                global_buffer_rotation_number_for_hyphen ++ ;
-                if ( global_buffer_rotation_number_for_hyphen > global_maximum_buffer_rotation_number )
+                global_character_usage_buffer_rotation_number_for_hyphen ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_hyphen > global_maximum_character_usage_buffer_rotation_number )
                 {
-                    global_buffer_rotation_number_for_hyphen = 1 ;
+                    global_character_usage_buffer_rotation_number_for_hyphen = 1 ;
                 }
-                global_position_count_for_hyphen_for_buffer_rotation[ global_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
+                global_character_usage_position_for_hyphen_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
                 break ;
             case global_ascii_code_for_underscore :
-                global_buffer_rotation_number_for_underscore ++ ;
-                if ( global_buffer_rotation_number_for_underscore > global_maximum_buffer_rotation_number )
+                global_character_usage_buffer_rotation_number_for_underscore ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_underscore > global_maximum_character_usage_buffer_rotation_number )
                 {
-                    global_buffer_rotation_number_for_underscore = 1 ;
+                    global_character_usage_buffer_rotation_number_for_underscore = 1 ;
                 }
-                global_position_count_for_underscore_for_buffer_rotation[ global_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
+                global_character_usage_position_for_underscore_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
                 break ;
             case global_ascii_code_for_letter_t :
-                global_buffer_rotation_number_for_letter_t ++ ;
-                if ( global_buffer_rotation_number_for_letter_t > global_maximum_buffer_rotation_number )
+                global_character_usage_buffer_rotation_number_for_letter_t ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_letter_t > global_maximum_character_usage_buffer_rotation_number )
                 {
-                    global_buffer_rotation_number_for_letter_t = 1 ;
+                    global_character_usage_buffer_rotation_number_for_letter_t = 1 ;
                 }
-                global_position_count_for_letter_t_for_buffer_rotation[ global_buffer_rotation_number_for_letter_t ] = global_character_count_for_expand_text ;
+                global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] = global_character_count_for_expand_text ;
                 break ;
             default :
                 global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_character_count_for_expand_text ;
@@ -2329,127 +2494,6 @@ void convert_into_category_pointers_to_decimal_numbers( )
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function initialize_get_next_character_from_text_item
-
-void initialize_get_next_character_from_text_item( )
-{
-    global_text_item_for_getting_next_character = global_text_item_id ;
-    global_current_stack_number ++ ;
-    if ( global_current_stack_number > global_maximum_stack_number )
-    {
-    	global_current_stack_number = 1 ;
-    }
-    global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_item_for_getting_next_character ;
-    global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ] ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_character_from_text_item
-
-void get_next_character_from_text_item( )
-{
-
-
-// -----------------------------------------------
-//  Jump to the appropriate section based on the
-//  category of the text item or sub text item.
-
-    global_text_item_category = global_text_category_for_item[ global_text_item_for_getting_next_character ] ;
-	switch ( global_text_item_category )
-	{
-
-
-// -----------------------------------------------
-//  Handle the category "nothing_empty".
-
-        case global_category_contains_nothing_empty :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "unicode_anything".
-
-        case global_category_contains_unicode_anything :
-
-    // global_text_item_for_getting_next_character = global_text_item_id ;
-    // global_current_stack_number ++ ;
-    // if ( global_current_stack_number > global_maximum_stack_number )
-    // {
-    // 	global_current_stack_number = 1 ;
-    // }
-    // global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_item_for_getting_next_character ;
-    // global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number ][ 1 ] = global_text_pointer_begin_for_item[ global_text_item_for_getting_next_character ] ;
-
-            log_out << "character category " << global_text_item_category << std::endl ;
-
-
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "list_of_text_item_ids".
-
-        case global_category_contains_list_of_text_item_ids :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "hyphenated_word".
-
-        case global_category_contains_hyphenated_word :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "hyphenated_phrase_name".
-
-        case global_category_contains_hyphenated_phrase_name :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "list_of_integers".
-
-        case global_category_contains_list_of_integers :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  Handle the category "pointers_to_decimal_numbers".
-
-        case global_category_contains_pointers_to_decimal_numbers :
-            log_out << "character category " << global_text_item_category << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the text item category was not recognized,
-//  there is a bug.
-
-        default :
-            log_out << "BUG, invalid text item category" << std::endl ;
-            break ;
-    }
-
-
-// -----------------------------------------------
-//  All done in function get_next_character_from_text_item.
-
-    return ;
-
-}
-
 
 
 // -----------------------------------------------
