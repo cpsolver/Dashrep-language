@@ -542,13 +542,14 @@ int global_next_state_for_current_state_and_character_category[ 1005 ][ 1005 ] ;
 //  Declare pointers to within a text item.
 
 int global_pointer_to_within_text_item ;
+int global_text_item_pointer ;
 
 
 // -----------------------------------------------
-//  Define a flag that tracks whether a text item
-//  can have its contents changed.
+//  Declare some flags.
 
 int global_yes_or_no_text_item_changeable ;
+int global_yes_or_no_reached_end_of_current_text_item ;
 
 
 // -----------------------------------------------
@@ -633,6 +634,17 @@ char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function exit_not_yet_supported
+
+void exit_not_yet_supported( )
+{
+    log_out << "BUG:  This text item category, " << global_text_item_category << ", is not yet supported." << std::endl ;
+    exit( EXIT_FAILURE ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function choose_slash_or_backslash
 //
 //  This function checks the operating system to
@@ -689,6 +701,33 @@ void assign_storage_for_new_text_item( )
     global_id_of_item_containing_definition_for_item[ global_next_available_text_item_id ] = 0 ;
     global_new_storage_text_item_id = global_next_available_text_item_id ;
     global_next_available_text_item_id ++ ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function recover_memory_from_top_text_item
+//
+//  If the top-most text item contains text that
+//  does not extend to the end of the allocated
+//  number of sub-items, reduce the allocation
+//  size.  If the text item type is
+//  list_of_text_item_ids, allocate an extra
+//  position for future extension.
+
+void recover_memory_from_top_text_item( )
+{
+    if ( global_new_storage_text_item_id != ( global_next_available_text_item_id - 1 ) )
+    {
+    	return ;
+    }
+    global_next_available_begin_pointer_for_next_available_text_item_id = global_text_pointer_end_for_item[ global_new_storage_text_item_id ] + 1 ;
+    if ( global_text_category_for_item[ global_new_storage_text_item_id ] == global_category_contains_list_of_text_item_ids )
+    {
+    	global_next_available_begin_pointer_for_next_available_text_item_id ++ ;
+    }
+    global_text_pointer_allocation_end_for_item[ global_new_storage_text_item_id ] = global_next_available_begin_pointer_for_next_available_text_item_id - 1 ;
     return ;
 }
 
@@ -1363,6 +1402,58 @@ void append_linked_text( )
 
 
 // -----------------------------------------------
+//  If the text being extended is empty, just put
+//  a pointer into the text being extended.  The
+//  pointer points to the text being appended.
+
+    global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
+    if ( ( global_to_text_contains_category == global_category_contains_nothing_empty ) || ( global_text_length_for_item[ global_to_text_item_id ] == 0 ) )
+    {
+        switch ( global_to_text_contains_category )
+        {
+            case global_category_contains_list_of_text_item_ids :
+                return ;
+                break ;
+            case global_category_contains_unicode_anything :
+                return ;
+                break ;
+            case global_category_contains_unicode_no_delimiters :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_hyphenated_word :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_hyphenated_phrase_name :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_list_of_integers :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_pointers_to_decimal_numbers :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            default :
+                return ;
+                break ;
+
+        }
+
+        log_out << "text being extended is empty so just point to the text being appended" << std::endl ;
+        return ;
+    }
+
+
+// -----------------------------------------------
 //  If the text being extended is not empty and
 //  there is a request to insert a space between
 //  the extended text and the appended text,
@@ -1454,6 +1545,8 @@ void append_linked_text( )
 //  hyphenated word", ...
 
         case global_category_contains_hyphenated_word :
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
 
 //            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
 //            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
@@ -1465,6 +1558,8 @@ void append_linked_text( )
             {
 
                 case global_category_contains_hyphenated_word :
+                    global_text_item_id = global_to_text_contains_category ;
+                    exit_not_yet_supported( ) ;
                     global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
                     global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
                     global_text_length_for_item[ global_to_text_item_id ] = 0 ;
@@ -1499,7 +1594,8 @@ void append_linked_text( )
 //  the list.
 
         case global_category_contains_list_of_integers :
-            //
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
             break ;
 
 
@@ -1510,7 +1606,8 @@ void append_linked_text( )
 //  pointers to the list.
 
         case global_category_contains_pointers_to_decimal_numbers :
-            //
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
             break ;
 
 
@@ -1752,10 +1849,20 @@ while ( 1 == 1 )
 
 
 // -----------------------------------------------
+//  Handle the category "unicode_no_delimiters".
+
+        case global_category_contains_unicode_no_delimiters :
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
 //  Handle the category "hyphenated_phrase_name".
 
         case global_category_contains_hyphenated_phrase_name :
-            log_out << "character category " << global_text_item_category << std::endl ;
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
             break ;
 
 
@@ -1763,7 +1870,8 @@ while ( 1 == 1 )
 //  Handle the category "list_of_integers".
 
         case global_category_contains_list_of_integers :
-            log_out << "character category " << global_text_item_category << std::endl ;
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
             break ;
 
 
@@ -1771,7 +1879,8 @@ while ( 1 == 1 )
 //  Handle the category "pointers_to_decimal_numbers".
 
         case global_category_contains_pointers_to_decimal_numbers :
-            log_out << "character category " << global_text_item_category << std::endl ;
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
             break ;
 
 
@@ -1811,11 +1920,37 @@ while ( 1 == 1 )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function remove_leading_trailing_delimiters
+//  Function remove_leading_delimiters
 
-void remove_leading_trailing_delimiters( )
+void remove_leading_delimiters( )
 {
+//  get_next_character_from_text_item
+//  
+}
 
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function remove_trailing_delimiters
+
+void remove_trailing_delimiters( )
+{
+    // write later, traverse backwards from end, see remove_leading_characters
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function reorganize_as_linked_list_of_words
+//
+//  To increase speed when the text item is a list
+//  of space delimited words, reorganize the text
+//  item so that each word is in a separate
+//  sub-text item that contains no delimiters.
+
+void reorganize_as_linked_list_of_words( )
+{
+    //  write this code later
 }
 
 
@@ -2697,22 +2832,10 @@ void expand_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Execution starts here.
+//  Function do_everything
 
-int main( int argc, char *argv[] )
+void do_everything( )
 {
-
-    int argv_pointer ;
-
-
-// -----------------------------------------------
-//  Get environment variable values that include
-//  CGI info.
-
-    for ( int argv_pointer = 0 ; argv_pointer < argc ; argv_pointer ++ )
-    {
-        printf( "argv[ %d ] = %s\n", argv_pointer, argv[ argv_pointer ] ) ;
-    }
 
 
 // -----------------------------------------------
@@ -2743,6 +2866,38 @@ int main( int argc, char *argv[] )
 
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
+
+
+// -----------------------------------------------
+//  End of "do_everything" code.
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Execution starts here.
+
+int main( int argc, char *argv[] )
+{
+
+    int argv_pointer ;
+
+
+// -----------------------------------------------
+//  Get environment variable values that include
+//  CGI info.
+
+    for ( int argv_pointer = 0 ; argv_pointer < argc ; argv_pointer ++ )
+    {
+        printf( "argv[ %d ] = %s\n", argv_pointer, argv[ argv_pointer ] ) ;
+    }
+
+
+// -----------------------------------------------
+//  Do everything using a single function.
+
+    do_everything( ) ;
 
 
 // -----------------------------------------------
