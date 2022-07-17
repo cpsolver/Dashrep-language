@@ -119,13 +119,15 @@ int global_new_storage_text_item_id ;
 int global_from_text_item_id ;
 int global_to_text_item_id ;
 int global_convertable_text_item_id ;
+
 int global_phrase_name_text_item_id ;
 int global_definition_text_item_id ;
-int global_search_text_item_id ;
-int global_matching_text_item_id ;
-int global_find_this_text_item_id ;
-int global_find_within_text_item_id ;
-int global_subtext_text_item_id ;
+
+int global_finding_match_text_item_id ;
+int global_looking_at_hyphenated_phrase_in_text_item_id ;
+int global_matching_subtext_text_item_id ;
+int global_hyphenated_phrase_in_text_item_id ;
+
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_single_space ;
@@ -546,10 +548,31 @@ int global_text_item_pointer ;
 
 
 // -----------------------------------------------
+//  Declare other pointers.
+
+int global_word_position ;
+
+
+// -----------------------------------------------
 //  Declare some flags.
 
 int global_yes_or_no_text_item_changeable ;
 int global_yes_or_no_reached_end_of_current_text_item ;
+int global_yes_or_no_same_unicode_characters ;
+int global_yes_or_no_same_hyphenated_phrase ;
+
+
+// -----------------------------------------------
+//  Declare some variables.
+
+int global_check_for_match_text_item_id ;
+int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
+int global_text_item_intended_next_word_in_hyphenated_phrase ;
+int global_word_count_hyphenated_phrase ;
+int global_search_character_pointer_begin ;
+int global_search_character_pointer_end ;
+int global_match_character_pointer_begin ;
+int global_match_character_pointer_end ;
 
 
 // -----------------------------------------------
@@ -638,7 +661,7 @@ char global_dashrep_phrase_names[ ] = "hyphen-here character-hyphen four-hyphens
 
 void exit_not_yet_supported( )
 {
-    log_out << "BUG:  This text item category, " << global_text_item_category << ", is not yet supported." << std::endl ;
+    log_out << "BUG:  This text item category, " << global_text_item_category << ", (or some other capability) is not yet supported." << std::endl ;
     exit( EXIT_FAILURE ) ;
 }
 
@@ -720,12 +743,12 @@ void recover_memory_from_top_text_item( )
 {
     if ( global_new_storage_text_item_id != ( global_next_available_text_item_id - 1 ) )
     {
-    	return ;
+        return ;
     }
     global_next_available_begin_pointer_for_next_available_text_item_id = global_text_pointer_end_for_item[ global_new_storage_text_item_id ] + 1 ;
     if ( global_text_category_for_item[ global_new_storage_text_item_id ] == global_category_contains_list_of_text_item_ids )
     {
-    	global_next_available_begin_pointer_for_next_available_text_item_id ++ ;
+        global_next_available_begin_pointer_for_next_available_text_item_id ++ ;
     }
     global_text_pointer_allocation_end_for_item[ global_new_storage_text_item_id ] = global_next_available_begin_pointer_for_next_available_text_item_id - 1 ;
     return ;
@@ -1580,10 +1603,12 @@ void append_linked_text( )
 //  items are both of category
 //  contains_unicode_anything, then add the
 //  characters if they fit, and otherwise add to
-//  a/the higher-level item a pointer to the text.
+//  the higher-level item a pointer to the text.
 
         case global_category_contains_unicode_anything :
-            //
+
+            // todo:
+
             break ;
 
 
@@ -1708,7 +1733,7 @@ void point_to_next_stack_storage_area( )
     global_current_stack_number_available ++ ;
     if ( global_current_stack_number_available > global_maximum_stack_number )
     {
-    	global_current_stack_number_available = 1 ;
+        global_current_stack_number_available = 1 ;
     }
 }
 
@@ -1720,7 +1745,7 @@ void point_to_next_stack_storage_area( )
 void initialize_get_next_character_from_text_item( )
 {
     global_current_stack_number_for_getting_next_character = global_current_stack_number_available ;
-	point_to_next_stack_storage_area( ) ;
+    point_to_next_stack_storage_area( ) ;
     global_text_item_id_for_getting_next_character = global_text_item_id ;
     global_current_stack_level_for_getting_next_character = 1 ;
     global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_item_id_for_getting_next_character ;
@@ -1799,8 +1824,8 @@ while ( 1 == 1 )
 //  Jump to the appropriate section based on the
 //  category of the text item or sub text item.
 
-	switch ( global_text_item_category )
-	{
+    switch ( global_text_item_category )
+    {
 
 
 // -----------------------------------------------
@@ -1821,7 +1846,7 @@ while ( 1 == 1 )
             } else
             {
 
-                log_out << "pop stack" << std::endl ;
+                log_out << "incomplete code: pop stack" << std::endl ;
 
                 continue ;
             }
@@ -1832,6 +1857,9 @@ while ( 1 == 1 )
 //  Handle the category "list_of_text_item_ids".
 
         case global_category_contains_list_of_text_item_ids :
+
+            log_out << "incomplete code: handle list of text items" << std::endl ;
+
             global_text_item_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
 
             global_text_item_id_for_getting_next_character = global_storage_all_text[ global_text_item_pointer ] ;
@@ -1924,18 +1952,22 @@ while ( 1 == 1 )
 
 void remove_leading_delimiters( )
 {
-//  get_next_character_from_text_item
-//  
+    global_text_item_id = 81 ;
+    exit_not_yet_supported( ) ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function remove_trailing_delimiters
+//
+//  traverse backwards from end, see
+//  remove_leading_delimiters
 
 void remove_trailing_delimiters( )
 {
-    // write later, traverse backwards from end, see remove_leading_characters
+    global_text_item_id = 82 ;
+    exit_not_yet_supported( ) ;
 }
 
 
@@ -1950,7 +1982,8 @@ void remove_trailing_delimiters( )
 
 void reorganize_as_linked_list_of_words( )
 {
-    //  write this code later
+    global_text_item_id = 80 ;
+    exit_not_yet_supported( ) ;
 }
 
 
@@ -2273,50 +2306,6 @@ void parse_one_character_of_filename( )
             global_number_of_valid_characters_encountered ++ ;
             log_out << "valid character" << std::endl ;
             break ;
-        // case global_character_category_space :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_empty :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_symbol :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_newline :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_tab :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_slash :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_open_angle_bracket :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_close_angle_bracket :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_quotation_mark :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_apostrophe :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
-        // case global_character_category_plus_sign :
-        //     global_yes_or_no_filename_delimiter_encountered = global_yes ;
-        //     log_out << "delimiter" << std::endl ;
-        //     break ;
         default :
             global_yes_or_no_filename_delimiter_encountered = global_yes ;
             log_out << "delimiter" << std::endl ;
@@ -2489,11 +2478,11 @@ void check_for_word_specify_or_attribute( )
             }
             if ( global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 2 )
             {
-		        global_character_usage_buffer_rotation_number_for_letter_t -- ;
-		        if ( global_character_usage_buffer_rotation_number_for_letter_t < 1 )
-		        {
-		            global_character_usage_buffer_rotation_number_for_letter_t = global_maximum_character_usage_buffer_rotation_number ;
-		        }
+                global_character_usage_buffer_rotation_number_for_letter_t -- ;
+                if ( global_character_usage_buffer_rotation_number_for_letter_t < 1 )
+                {
+                    global_character_usage_buffer_rotation_number_for_letter_t = global_maximum_character_usage_buffer_rotation_number ;
+                }
                 if ( global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 1 )
                 {
                     global_length_of_matching_text = 9 ;
@@ -2502,6 +2491,196 @@ void check_for_word_specify_or_attribute( )
         }
     }
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function yes_or_no_matching_text
+//
+//  Checks if two sequences of text characters are
+//  the same.  It starts checking at both the
+//  beginning and the end.  This approach is
+//  faster when the two text sequences are
+//  numbers because the end digits are more likely
+//  to be different.
+
+void yes_or_no_matching_text( )
+{
+    global_yes_or_no_same_unicode_characters = global_yes ;
+    while ( 1 == 1 )
+    {
+        if ( global_storage_all_text[ global_search_character_pointer_begin ] != global_storage_all_text[ global_match_character_pointer_begin ] )
+        {
+            global_yes_or_no_same_unicode_characters = global_no ;
+            return ;
+        }
+        global_search_character_pointer_begin ++ ;
+        global_match_character_pointer_begin ++ ;
+        if ( global_search_character_pointer_begin > global_search_character_pointer_end )
+        {
+            return ;
+        }
+        if ( global_storage_all_text[ global_search_character_pointer_end ] != global_storage_all_text[ global_match_character_pointer_end ] )
+        {
+            global_yes_or_no_same_unicode_characters = global_no ;
+            return ;
+        }
+        global_search_character_pointer_end -- ;
+        global_match_character_pointer_end -- ;
+        if ( global_search_character_pointer_begin > global_search_character_pointer_end )
+        {
+            return ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_matching_text_items
+//
+//  Checks if the text item
+//  global_finding_match_text_item_id is the same text as
+//  text item global_check_for_match_text_item_id.  The
+//  result is indicated by the yes or no value in
+//  global_yes_or_no_same_unicode_characters.
+
+void check_yes_or_no_matching_text_items( )
+{
+    global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_finding_match_text_item_id ] ;
+    global_match_character_pointer_begin = global_text_pointer_begin_for_item[ global_check_for_match_text_item_id ] ;
+    global_search_character_pointer_end = global_text_pointer_end_for_item[ global_finding_match_text_item_id ] ;
+    global_match_character_pointer_end = global_text_pointer_end_for_item[ global_check_for_match_text_item_id ] ;
+    yes_or_no_matching_text( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_same_hyphenated_phrase
+//
+//  Checks if the text item
+//  global_hyphenated_phrase_in_text_item_id
+//  contains the same hyphenated phrase (name) as
+//  the text item
+//  global_looking_at_hyphenated_phrase_in_text_item_id.
+//  The two text items are assumed to contain the
+//  category "contains_hyphenated_phrase_name",
+//  but this assumption is not checked here.  The
+//  result is in
+//  global_yes_or_no_same_hyphenated_phrase.
+
+void check_yes_or_no_same_hyphenated_phrase( )
+{
+
+
+// -----------------------------------------------
+//  Initialization.
+
+    global_yes_or_no_same_hyphenated_phrase = global_yes ;
+
+
+// -----------------------------------------------
+//  If the number of words in the two hyphenated
+//  phrase names are different, there is no match.
+
+    global_word_count_hyphenated_phrase = global_text_pointer_end_for_item[ global_hyphenated_phrase_in_text_item_id ] - global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] + 1 ;
+    if ( global_word_count_hyphenated_phrase == ( global_text_pointer_end_for_item[ global_hyphenated_phrase_in_text_item_id ] - global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] + 1 ) )
+    {
+        global_yes_or_no_same_hyphenated_phrase = global_no ;
+    }
+
+
+// -----------------------------------------------
+//  Point to the text items that hold the first
+//  word in each phrase name.
+
+    global_text_item_intended_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] ] ;
+    global_text_item_looking_at_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_in_text_item_id ] ] ;
+
+
+// -----------------------------------------------
+//  Check each word for a match.  If they differ,
+//  the hyphenated phrase names do not match.
+//
+//  Later, alternate between checking at beginning
+//  and end.  This approach would increase speed
+//  in situations where the last word is an
+//  integer.
+//
+//  Later, when phrase words are not duplicated,
+//  just check if the text item ID numbers differ.
+
+    for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase ; global_word_position ++ )
+    {
+    	global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
+        global_finding_match_text_item_id = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
+        check_yes_or_no_matching_text_items( ) ;
+        if ( global_yes_or_no_same_unicode_characters == global_no )
+        {
+            global_yes_or_no_same_hyphenated_phrase = global_no ;
+            return ;
+        }
+        global_text_item_intended_next_word_in_hyphenated_phrase ++ ;
+        global_text_item_looking_at_next_word_in_hyphenated_phrase ++ ;
+    }
+
+
+// -----------------------------------------------
+//  End of function check_yes_or_no_same_hyphenated_phrase.
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function lookup_hyphenated_phrase_name
+//
+//  Searches all the defined hyphenated phrase
+//  names to find a match with the hyphenated
+//  phrase in the text item named
+//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
+//  First, look at every defined hyphenated phrase
+//  name that has the same number of words, and
+//  the same lengths of words.  Do this using a
+//  single integer that conveys this pattern.  For
+//  each same-word-number-and-same-word-length
+//  match, check the words for a match, but check
+//  the last word as the second check, and alternate
+//  looking at words at the beginning of the phrase
+//  and words at the end of the phrase.
+//  Instead of matching a word character by
+//  character, check the text item ID numbers based
+//  on always storing the same word in the same
+//  location.
+//
+//  Alternate description:
+//  Finds the text item ID number of the phrase
+//  name that is contained in the text item ID
+//  number at global_from_text_item_id.
+//  If a match is not found, this function puts a
+//  zero into the variable
+//  global_to_text_item_id.
+//
+//  Alternate note:
+//  Use "switch" on the number of words,
+//  and use sub-level "switch"es on the length of
+//  each word.  These lead to linked lists of
+//  text item IDs of phrase names that have the
+//  same "hash" value.  These lists are stored in
+//  the same array, with each new item added to
+//  the end.  A second array points to the next
+//  item in these linked lists.
+
+void lookup_hyphenated_phrase_name( )
+{
+
+    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
+
+//  use for each word:  lookup_hyphenated_phrase_word
+
 }
 
 
@@ -2626,63 +2805,15 @@ void test_parsing_characters_for_expand_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function lookup_hyphenated_phrase_name
-//
-//  Searches all the defined hyphenated phrase
-//  names to find a match with the hyphenated
-//  phrase in the text item named
-//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
-//  First, look at every defined hyphenated phrase
-//  name that has the same number of words, and
-//  the same lengths of words.  Do this using a
-//  single integer that conveys this pattern.  For
-//  each same-word-number-and-same-word-length
-//  match, check the words for a match, but check
-//  the last word as the second check, and alternate
-//  looking at words at the beginning of the phrase
-//  and words at the end of the phrase.
-//  Instead of matching a word character by
-//  character, check the text item ID numbers based
-//  on always storing the same word in the same
-//  location.
-//
-//  Alternate description:
-//  Finds the text item ID number of the phrase
-//  name that is contained in the text item ID
-//  number at global_from_text_item_id.
-//  If a match is not found, this function puts a
-//  zero into the variable
-//  global_to_text_item_id.
-//
-//  Alternate note:
-//  Use "switch" on the number of words,
-//  and use sub-level "switch"es on the length of
-//  each word.  These lead to linked lists of
-//  text item IDs of phrase names that have the
-//  same "hash" value.  These lists are stored in
-//  the same array, with each new item added to
-//  the end.  A second array points to the next
-//  item in these linked lists.
-
-void lookup_hyphenated_phrase_name( )
-{
-
-    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
-
-//  use for each word:  lookup_hyphenated_phrase_word
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function convert_into_category_list_of_integers
+//
+//  use function that parses integers
 
 void convert_into_category_list_of_integers( )
 {
 
-    log_out << "todo: write function convert_into_category_list_of_integers, use function that parses integers" << std::endl ;
-
+    global_text_item_id = 83 ;
+    exit_not_yet_supported( ) ;
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_integers ;
     return ;
 }
@@ -2691,50 +2822,14 @@ void convert_into_category_list_of_integers( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function convert_into_category_pointers_to_decimal_numbers
+//
+//  use function that parses decimal numbers
 
 void convert_into_category_pointers_to_decimal_numbers( )
 {
-
-    log_out << "todo: write function convert_into_category_pointers_to_decimal_numbers, use function that parses decimal numbers" << std::endl ;
-
+    global_text_item_id = 80 ;
+    exit_not_yet_supported( ) ;
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function find_subtext
-
-void find_subtext( )
-{
-//    global_text_item_id
-    log_out << "todo: write function find_subtext" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function insert_into_subtext
-
-void insert_into_subtext( )
-{
-//    global_text_item_id
-    log_out << "todo: write function find_subtext" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_replace
-
-void text_replace( )
-{
-//    global_to_text_item_id ;
-//    global_pointer_to_within_text_item
-    log_out << "todo: write function text_replace (using pointers)" << std::endl ;
     return ;
 }
 
@@ -2747,37 +2842,40 @@ void text_replace( )
 //  indicates the matching text.
 //    global_text_item_id
 //    global_pointer_to_within_text_item
-//    global_search_text_item_id
+//    global_finding_match_text_item_id
+//
+//  equivalent to standard "index" function
 
 int find_matching_text( )
 {
     int subtext_text_id_number = 0 ;
-    log_out << "todo: function find_matching_text (equivalent to standard index function)" << std::endl ;
+    global_text_item_id = 90 ;
+    exit_not_yet_supported( ) ;
     return subtext_text_id_number ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function yes_or_no_matching_text
-
-void yes_or_no_matching_text( )
-{
-    log_out << "todo: write function yes_or_no_matching_text" << std::endl ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function point_to_pattern_matching_text
+//
+//  input:
+//  global_text_item_id
+//  global_pointer_to_within_text_item
+//  global_finding_match_text_item_id
+//
+//  uses symbol categorization with switch
+//  statement, if non-symbol alphanumeric text is
+//  part of the intended pattern, first find that
+//  text using find_matching_text
 
 void point_to_pattern_matching_text( )
 {
-// global_text_item_id
-// global_pointer_to_within_text_item
-// global_search_text_item_id
-    log_out << "todo: write function point_to_pattern_matching_text, uses symbol categorization with switch statement, if non-symbol alphanumeric text is part of the intended pattern, first find that text using find_matching_text" << std::endl ;
+
+// todo:
+
+    global_text_item_id = 92 ;
+    exit_not_yet_supported( ) ;
     return ;
 }
 
@@ -2785,13 +2883,64 @@ void point_to_pattern_matching_text( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text_backwards
+//
+//  operates like point_to_pattern_matching_text
+//  but does checking in reverse direction, use for
+//  what can precede a word of characters
+//
+//  inputs:
+//  global_text_item_id
+//  global_pointer_to_within_text_item
+//  global_finding_match_text_item_id
 
 void point_to_pattern_matching_text_backwards( )
 {
-// global_text_item_id
-// global_pointer_to_within_text_item
-// global_search_text_item_id
-    log_out << "todo: function point_to_pattern_matching_text_backwards (operates like point_to_pattern_matching_text but does checking in reverse direction, use for what can precede a word of characters)" << std::endl ;
+    global_text_item_id = 93 ;
+    exit_not_yet_supported( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function find_subtext
+//
+//  input: global_text_item_id
+
+//  todo:
+
+void find_subtext( )
+{
+    global_text_item_id = 86 ;
+    exit_not_yet_supported( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function insert_into_subtext
+
+//  todo:
+
+void insert_into_subtext( )
+{
+    global_text_item_id = 87 ;
+    exit_not_yet_supported( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function text_replace
+
+void text_replace( )
+{
+//    global_to_text_item_id ;
+//    global_pointer_to_within_text_item
+    global_text_item_id = 89 ;
+    exit_not_yet_supported( ) ;
     return ;
 }
 
@@ -2811,8 +2960,9 @@ void get_text_by_character_offset_and_length( )
 {
 // character_offset
 // characters_length
-    global_subtext_text_item_id = 0 ;
-    log_out << "todo: write function get_text_by_character_offset_and_length" << std::endl ;
+    global_matching_subtext_text_item_id = 0 ;
+    global_text_item_id = 94 ;
+    exit_not_yet_supported( ) ;
     return ;
 }
 
@@ -2823,10 +2973,13 @@ void get_text_by_character_offset_and_length( )
 //
 //  Expands the text item indicated in
 //  global_from_text_item_id.
+//
+//  use current runtime version for details
 
 void expand_text( )
 {
-    log_out << "todo: write function expand_text, use current runtime version for details" << std::endl ;
+    global_text_item_id = 92 ;
+    exit_not_yet_supported( ) ;
 }
 
 
