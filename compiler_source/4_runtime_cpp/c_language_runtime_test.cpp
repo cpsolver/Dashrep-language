@@ -123,10 +123,8 @@ int global_convertable_text_item_id ;
 int global_phrase_name_text_item_id ;
 int global_definition_text_item_id ;
 
-int global_finding_match_text_item_id ;
-int global_looking_at_hyphenated_phrase_in_text_item_id ;
 int global_matching_subtext_text_item_id ;
-int global_hyphenated_phrase_in_text_item_id ;
+int global_finding_match_text_item_id ;
 
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
@@ -153,7 +151,6 @@ int global_text_item_id_for_phrase_name_character_tab ;
 int global_text_item_id_for_phrase_name_four_hyphens ;
 int global_text_item_id_for_phrase_name_empty_text ;
 int global_text_item_id_for_phrase_name_non_breaking_space ;
-int global_text_item_id_for_lookup_of_hyphenated_phrase_name ;
 int global_text_item_id_for_valid_filename ;
 int global_text_item_id_for_valid_folder_name ;
 int global_text_item_id_for_word_character ;
@@ -180,6 +177,36 @@ int global_text_item_id_for_getting_next_character ;
 int global_text_id_number_for_action_stack_position[ 2005 ] ;
 int global_position_in_text_item_for_action_stack_position[ 2005 ] ;
 int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
+
+
+// -----------------------------------------------
+//  Declare a list of hyphenated phrase names that
+//  are stored as text items.  Also declare text
+//  item pointers that are used when searching for
+//  a matching hyphenated phrase name.
+
+const int global_maximum_number_of_hyphenated_phrase_names_in_text_items = 5000 ;
+int global_number_of_hyphenated_phrase_names_in_text_items ;
+int global_list_of_hyphenated_phrase_text_items[ 5005 ] ;
+int global_position_in_list_of_hyphenated_phrase_text_items ;
+int global_looking_at_hyphenated_phrase_name_in_text_item_id ;
+int global_text_item_id_of_matching_hyphenated_phrase_name ;
+
+
+// -----------------------------------------------
+//  Declare a two lists of pointers that point to
+//  the words of a hyphenated phrase name.  This
+//  is where such a name is stored while checking
+//  for a match with an existing hyphenated phrase
+//  name.  Allow 30 words for the longest phrase
+//  name.  Array position counting starts at 1,
+//  not zero.  Also declare related pointers.
+
+const int global_maximum_words_in_hyphenated_phrase_name = 30 ;
+int global_word_count_parsed_hyphenated_phrase_name ;
+int global_parsed_hyphenated_phrase_name_pointer_begin_word[ 32 ] ;
+int global_parsed_hyphenated_phrase_name_pointer_end_word[ 32 ] ;
+int global_word_position_in_parsed_hyphenated_phrase_name ;
 
 
 // -----------------------------------------------
@@ -559,7 +586,7 @@ int global_word_position ;
 int global_yes_or_no_text_item_changeable ;
 int global_yes_or_no_reached_end_of_current_text_item ;
 int global_yes_or_no_same_unicode_characters ;
-int global_yes_or_no_same_hyphenated_phrase ;
+int global_yes_or_no_same_hyphenated_phrase_name ;
 
 
 // -----------------------------------------------
@@ -568,7 +595,7 @@ int global_yes_or_no_same_hyphenated_phrase ;
 int global_check_for_match_text_item_id ;
 int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
 int global_text_item_intended_next_word_in_hyphenated_phrase ;
-int global_word_count_hyphenated_phrase ;
+int global_word_count_hyphenated_phrase_name ;
 int global_search_character_pointer_begin ;
 int global_search_character_pointer_end ;
 int global_match_character_pointer_begin ;
@@ -1228,19 +1255,6 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Create a text item that holds one hyphenated
-//  phrase name while doing a lookup to see if it
-//  matches any existing hyphenated phrase name.
-
-    global_length_requested_for_next_text_item_storage = 200 ;
-
-    global_text_item_id_for_lookup_of_hyphenated_phrase_name = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
-    global_text_category_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] = global_category_contains_unicode_anything ;
-    global_text_pointer_allocation_end_for_item[ global_text_item_id_for_lookup_of_hyphenated_phrase_name ] -= 5 ;
-
-
-// -----------------------------------------------
 //  Create the text items used for file input and
 //  output.  Shorten the length slightly in case
 //  of an overrun.
@@ -1287,6 +1301,7 @@ void do_main_initialization( )
 //  Initialize some variables.
 
     global_yes_or_no_requesting_space_appended = global_yes ;
+    global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
 
 
 // -----------------------------------------------
@@ -1408,6 +1423,15 @@ void text_item_clear( )
 //  indicates whether to insert a space between
 //  non-empty text being extended and non-empty
 //  text being appended.
+//
+//  If the text item is almost full, create a new
+//  sub text item and point to it with the last
+//  available linked-list position, and append
+//  the linked text item to the beginning of the
+//  new sub text item.  The result leaves room
+//  for more sub text items to be appended
+//  without needing to add a new sub text item
+//  for every appended text item.
 
 void append_linked_text( )
 {
@@ -2414,7 +2438,9 @@ void parse_one_character_of_folder_name( )
 // -----------------------------------------------
 //  Function test_parsing_folder_name_characters
 //
-//  todo: use global_yes_or_no_use_slash_not_backslash
+//  The flag global_yes_or_no_use_slash_not_backslash
+//  identifies whether slashes or backslashes are
+//  allowed in folder names.
 
 void test_parsing_folder_name_characters( )
 {
@@ -2539,20 +2565,21 @@ void yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_yes_or_no_matching_text_items
+//  Function check_word_match_in_parsed_hyphenated_phrase_name
 //
 //  Checks if the text item
-//  global_finding_match_text_item_id is the same text as
-//  text item global_check_for_match_text_item_id.  The
-//  result is indicated by the yes or no value in
-//  global_yes_or_no_same_unicode_characters.
+//  global_finding_match_text_item_id is the same
+//  word as a word in the
+//  "global_parsed_hyphenated_phrase_name" area.
+//  The result is indicated by the yes or no value
+//  in global_yes_or_no_same_unicode_characters.
 
-void check_yes_or_no_matching_text_items( )
+void check_word_match_in_parsed_hyphenated_phrase_name( )
 {
     global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_finding_match_text_item_id ] ;
-    global_match_character_pointer_begin = global_text_pointer_begin_for_item[ global_check_for_match_text_item_id ] ;
     global_search_character_pointer_end = global_text_pointer_end_for_item[ global_finding_match_text_item_id ] ;
-    global_match_character_pointer_end = global_text_pointer_end_for_item[ global_check_for_match_text_item_id ] ;
+    global_match_character_pointer_begin = global_parsed_hyphenated_phrase_name_pointer_begin_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
+    global_match_character_pointer_end = global_parsed_hyphenated_phrase_name_pointer_end_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
     yes_or_no_matching_text( ) ;
 }
 
@@ -2562,15 +2589,15 @@ void check_yes_or_no_matching_text_items( )
 //  Function check_yes_or_no_same_hyphenated_phrase
 //
 //  Checks if the text item
-//  global_hyphenated_phrase_in_text_item_id
-//  contains the same hyphenated phrase (name) as
-//  the text item
-//  global_looking_at_hyphenated_phrase_in_text_item_id.
-//  The two text items are assumed to contain the
+//  global_looking_at_hyphenated_phrase_name_in_text_item_id
+//  contains the same hyphenated phrase name as
+//  the hyphenated phrase name stored in the
+//  "parsed_hyphenated_phrase_name" area.
+//  The text item is assumed to contain the
 //  category "contains_hyphenated_phrase_name",
 //  but this assumption is not checked here.  The
-//  result is in
-//  global_yes_or_no_same_hyphenated_phrase.
+//  comparison result is in
+//  global_yes_or_no_same_hyphenated_phrase_name.
 
 void check_yes_or_no_same_hyphenated_phrase( )
 {
@@ -2579,17 +2606,17 @@ void check_yes_or_no_same_hyphenated_phrase( )
 // -----------------------------------------------
 //  Initialization.
 
-    global_yes_or_no_same_hyphenated_phrase = global_yes ;
+    global_yes_or_no_same_hyphenated_phrase_name = global_yes ;
 
 
 // -----------------------------------------------
 //  If the number of words in the two hyphenated
 //  phrase names are different, there is no match.
 
-    global_word_count_hyphenated_phrase = global_text_pointer_end_for_item[ global_hyphenated_phrase_in_text_item_id ] - global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] + 1 ;
-    if ( global_word_count_hyphenated_phrase == ( global_text_pointer_end_for_item[ global_hyphenated_phrase_in_text_item_id ] - global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] + 1 ) )
+    global_word_count_hyphenated_phrase_name = global_text_pointer_end_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] - global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] + 1 ;
+    if ( global_word_count_hyphenated_phrase_name == global_word_count_parsed_hyphenated_phrase_name )
     {
-        global_yes_or_no_same_hyphenated_phrase = global_no ;
+        global_yes_or_no_same_hyphenated_phrase_name = global_no ;
     }
 
 
@@ -2597,8 +2624,8 @@ void check_yes_or_no_same_hyphenated_phrase( )
 //  Point to the text items that hold the first
 //  word in each phrase name.
 
-    global_text_item_intended_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_hyphenated_phrase_in_text_item_id ] ] ;
-    global_text_item_looking_at_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_in_text_item_id ] ] ;
+    global_text_item_intended_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] ] ;
+    global_text_item_looking_at_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] ] ;
 
 
 // -----------------------------------------------
@@ -2613,14 +2640,14 @@ void check_yes_or_no_same_hyphenated_phrase( )
 //  Later, when phrase words are not duplicated,
 //  just check if the text item ID numbers differ.
 
-    for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase ; global_word_position ++ )
+    for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase_name ; global_word_position ++ )
     {
     	global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
         global_finding_match_text_item_id = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
-        check_yes_or_no_matching_text_items( ) ;
+        check_word_match_in_parsed_hyphenated_phrase_name( ) ;
         if ( global_yes_or_no_same_unicode_characters == global_no )
         {
-            global_yes_or_no_same_hyphenated_phrase = global_no ;
+            global_yes_or_no_same_hyphenated_phrase_name = global_no ;
             return ;
         }
         global_text_item_intended_next_word_in_hyphenated_phrase ++ ;
@@ -2640,46 +2667,47 @@ void check_yes_or_no_same_hyphenated_phrase( )
 //
 //  Searches all the defined hyphenated phrase
 //  names to find a match with the hyphenated
-//  phrase in the text item named
-//  global_text_item_id_for_lookup_of_hyphenated_phrase_name.
-//  First, look at every defined hyphenated phrase
-//  name that has the same number of words, and
-//  the same lengths of words.  Do this using a
-//  single integer that conveys this pattern.  For
-//  each same-word-number-and-same-word-length
-//  match, check the words for a match, but check
-//  the last word as the second check, and alternate
-//  looking at words at the beginning of the phrase
-//  and words at the end of the phrase.
-//  Instead of matching a word character by
-//  character, check the text item ID numbers based
-//  on always storing the same word in the same
-//  location.
-//
-//  Alternate description:
-//  Finds the text item ID number of the phrase
-//  name that is contained in the text item ID
-//  number at global_from_text_item_id.
-//  If a match is not found, this function puts a
-//  zero into the variable
-//  global_to_text_item_id.
-//
-//  Alternate note:
-//  Use "switch" on the number of words,
-//  and use sub-level "switch"es on the length of
-//  each word.  These lead to linked lists of
-//  text item IDs of phrase names that have the
-//  same "hash" value.  These lists are stored in
-//  the same array, with each new item added to
-//  the end.  A second array points to the next
-//  item in these linked lists.
+//  phrase name defined by the pointers in the 
+//  "parsed_hyphenated_phrase_name" area.
+//  Puts the text item ID of the matching
+//  hyphenated phrase name into the variable
+//  global_text_item_id_of_matching_hyphenated_phrase_name,
+//  but that variable is zero if no match was
+//  found.
 
 void lookup_hyphenated_phrase_name( )
 {
+	global_text_item_id_of_matching_hyphenated_phrase_name = 0 ;
+    for ( global_position_in_list_of_hyphenated_phrase_text_items = 1 ; global_position_in_list_of_hyphenated_phrase_text_items <= global_number_of_hyphenated_phrase_names_in_text_items ; global_position_in_list_of_hyphenated_phrase_text_items ++ )
+    {
+        global_looking_at_hyphenated_phrase_name_in_text_item_id = global_list_of_hyphenated_phrase_text_items[ global_position_in_list_of_hyphenated_phrase_text_items ] ;
+        check_yes_or_no_same_hyphenated_phrase( ) ;
+        if ( global_yes_or_no_same_hyphenated_phrase_name == global_yes )
+        {
+        	global_text_item_id_of_matching_hyphenated_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
+        	return ;
+        }
+    }
+}
 
-    log_out << "todo: write function lookup_hyphenated_phrase_name" << std::endl ;
 
-//  use for each word:  lookup_hyphenated_phrase_word
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function add_new_hyphenated_phrase_name
+//
+//  Adds the hyphenated phrase name in the
+//  "parsed_hyphenated_phrase_name" area.  This
+//  function assumes the hyphenated phrase name
+//  does not match any existing hyphenated phrase
+//  name.
+//
+//  Later, avoid duplicating any words that are
+//  already used in other hyphenated phrase names.
+
+void add_new_hyphenated_phrase_name( )
+{
+
+// todo:
 
 }
 
@@ -2793,8 +2821,7 @@ void test_parsing_characters_for_expand_text( )
         global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         parse_one_character_for_expand_text( ) ;
 
-//
-
+//  todo: ...
 
     }
 
