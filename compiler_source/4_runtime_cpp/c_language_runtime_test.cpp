@@ -261,22 +261,19 @@ int global_next_available_defined_phrase_number ;
 //    pointer is one character position less than
 //    the "begin" pointer.
 //
-//  * "hyphenated_word"
-//    A text item of category "unicode_anything"
-//    that contains a word that can be used as one
-//    of the words in a hyphenated phrase name.
-//    The word must not contain any delimiter,
-//    such as a space, tab, newline, formfeed, or
-//    carriage return.  The same word cannot be
-//    stored in a different text item of this
-//    hyphenated word category.  This convention
-//    allows searching for a specific phrase name
-//    just by looking at the text item IDs of the
-//    words in the phrase name.
+//  * "unicode_no_delimiters"
+//    A text item of category
+//   "unicode_no_delimiters" does not contain any
+//    spaces, hyphens, underscores, tabs,
+//    newlines, etc.  This category is used to
+//    hold the words in a hyphenated phrase name,
+//    and to hold one of the words in a list of
+//    space-delimited words.  It is used to
+//    increase software execution speed.
 //
 //  * "hyphenated_phrase"
 //    A list of text item IDs that only point to
-//    "hyphenated_word" text items.  The result is
+//    "unicode_no_delimiters" text items.  The result is
 //    a valid hyphenated phrase name -- which is
 //    not necessarily a defined phrase name.  Each
 //    pair of words is assumed to be separated by
@@ -319,17 +316,6 @@ int global_next_available_defined_phrase_number ;
 //    unneeded conversions of numbers between text
 //    type and the "float" data type.
 //
-//  * "unicode_no_delimiters"
-//    The same as "unicode_anything" except that
-//    the text does not contain any spaces,
-//    hyphens, underscores, tabs, newlines, etc.
-//    This category can be used to increase speed
-//    when handling lists of words, so that when
-//    counting words it's not necessary to look
-//    for delimiters within text items that have
-//    been categorized this way.  Currently this
-//    category is not yet used.
-//
 //  A list can contain just one item.
 //
 //  These categories are stored in the array named
@@ -338,12 +324,11 @@ int global_next_available_defined_phrase_number ;
 int global_text_item_category ;
 const int global_category_contains_nothing_empty = 1 ;
 const int global_category_contains_unicode_anything = 2 ;
-const int global_category_contains_list_of_text_item_ids = 3 ;
-const int global_category_contains_hyphenated_word = 4 ;
+const int global_category_contains_unicode_no_delimiters = 3 ;
+const int global_category_contains_list_of_text_item_ids = 4 ;
 const int global_category_contains_hyphenated_phrase_name = 5 ;
 const int global_category_contains_list_of_integers = 6 ;
 const int global_category_contains_pointers_to_decimal_numbers = 7 ;
-const int global_category_contains_unicode_no_delimiters = 8 ;
 
 
 // -----------------------------------------------
@@ -353,6 +338,16 @@ const int global_category_contains_unicode_no_delimiters = 8 ;
 int global_text_contains_category ;
 int global_to_text_contains_category ;
 int global_from_text_contains_category ;
+
+
+// -----------------------------------------------
+//  Declare a list of the subitems of category
+//  "unicode_no_delimiters" that hold words used
+//  hyphenated phrases.
+
+int gloal_pointer_to_text_item_unicode_no_delimiters ;
+const int gloal_maximum_number_of_text_items_unicode_no_delimiters = 2000 ;
+int global_list_of_text_items_unicode_no_delimiters[ 2005 ] ;
 
 
 // -----------------------------------------------
@@ -1469,11 +1464,6 @@ void append_linked_text( )
                 exit_not_yet_supported( ) ;
                 return ;
                 break ;
-            case global_category_contains_hyphenated_word :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
             case global_category_contains_hyphenated_phrase_name :
                 global_text_item_id = global_to_text_contains_category ;
                 exit_not_yet_supported( ) ;
@@ -1588,10 +1578,12 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
-//  items are both of category "contains
-//  hyphenated word", ...
+//  items are both of category
+//  contains_unicode_anything, then add the
+//  characters if they fit, and otherwise add to
+//  the higher-level item a pointer to the text.
 
-        case global_category_contains_hyphenated_word :
+        case global_category_contains_unicode_anything :
             global_text_item_id = global_to_text_contains_category ;
             exit_not_yet_supported( ) ;
 
@@ -1601,38 +1593,12 @@ void append_linked_text( )
 //            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
 
 
-            switch ( global_from_text_contains_category )
-            {
-
-                case global_category_contains_hyphenated_word :
-                    global_text_item_id = global_to_text_contains_category ;
-                    exit_not_yet_supported( ) ;
-                    global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
-                    global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
-                    global_text_length_for_item[ global_to_text_item_id ] = 0 ;
-                    global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
-                    break ;
-
-                default :
-                    //
-                    break ;
-
-            }
-
-        break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  contains_unicode_anything, then add the
-//  characters if they fit, and otherwise add to
-//  the higher-level item a pointer to the text.
-
-        case global_category_contains_unicode_anything :
-
-            // todo:
-
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
+            global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
+            global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
+            global_text_length_for_item[ global_to_text_item_id ] = 0 ;
+            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
             break ;
 
 
@@ -3008,6 +2974,46 @@ void expand_text( )
     global_text_item_id = 92 ;
     exit_not_yet_supported( ) ;
 }
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Functions that will call the above functions:
+
+//  dashrep-expand-phrases
+//  handle-endless-loop-encountered
+//  handle-time-limit-exceeded
+
+//  parameterized-yes-or-no-empty
+//  parameterized-remove-leading-trailing-spaces
+//  parameterized-yes-or-no-phrase-name
+//  parameterized-yes-or-no-phrase-definition-not-empty
+//  parameterized-yes-or-no-positive-integer
+//  parameterized-yes-or-no-integer
+//  parameterized-yes-or-no-positive-real-number
+//  parameterized-yes-or-no-real-number
+//  parameterized-yes-or-no-phrase-contains-real-numbers
+//  parameterized-normalize-calculated-value
+//  parameterized-convert-numeric-text-into-numeric-value
+//  parameterized-convert-numeric-value-into-numeric-text
+//  parameterized-get-list-of-words
+//  parameterized-yes-or-no-valid-url
+//  parameterized-yes-or-no-valid-path
+//  parameterized-yes-or-no-valid-path-prefix
+//  parameterized-yes-or-no-file-name
+//  parameterized-yes-or-no-folder-name
+//  parameterized-yes-or-no-input-file-exists
+//  parameterized-open-file-for-reading
+//  parameterized-open-file-for-appending
+
+//  point-to-words
+//  point-to-words-in-operand-one
+//  point-to-words-in-operand-two
+//  point-to-words-in-operand-three
+//  remove-extra-spaces
+//  get-count-of-words
+//  get-word-at-position
+//  open-trace-output-file-if-not-open
 
 
 // -----------------------------------------------
