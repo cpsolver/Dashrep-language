@@ -578,6 +578,7 @@ int global_word_position ;
 // -----------------------------------------------
 //  Declare some flags.
 
+int global_yes_or_no ;
 int global_yes_or_no_text_item_changeable ;
 int global_yes_or_no_reached_end_of_current_text_item ;
 int global_yes_or_no_same_unicode_characters ;
@@ -1295,6 +1296,7 @@ void do_main_initialization( )
 // -----------------------------------------------
 //  Initialize some variables.
 
+    global_yes_or_no = global_yes ;
     global_yes_or_no_requesting_space_appended = global_yes ;
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
 
@@ -2314,33 +2316,6 @@ void parse_one_character_of_filename( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function test_parsing_filename_characters
-
-void test_parsing_filename_characters( )
-{
-    global_from_text_item_id = global_text_item_id_for_sample_filename ;
-    initialize_parse_characters_of_filename( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
-    {
-        global_character_category = global_storage_all_text[ global_text_pointer ] ;
-        parse_one_character_of_filename( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
-        {
-            if ( global_yes_or_no_filename_is_valid == global_yes )
-            {
-                log_out << "filename = ?" << std::endl ;
-            } else
-            {
-                log_out << "invalid filename" << std::endl ;
-            }
-        }
-        initialize_parse_characters_of_filename( ) ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function initialize_parse_characters_of_folder_name
 
 void initialize_parse_characters_of_folder_name( )
@@ -2397,37 +2372,6 @@ void parse_one_character_of_folder_name( )
         }
     }
     return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function test_parsing_folder_name_characters
-//
-//  The flag global_yes_or_no_use_slash_not_backslash
-//  identifies whether slashes or backslashes are
-//  allowed in folder names.
-
-void test_parsing_folder_name_characters( )
-{
-    global_from_text_item_id = global_text_item_id_for_sample_folder_name ;
-    initialize_parse_characters_of_folder_name( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
-    {
-        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
-        parse_one_character_of_folder_name( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
-        {
-            if ( global_yes_or_no_folder_name_is_valid == global_yes )
-            {
-                log_out << "folder name = ?" << std::endl ;
-            } else
-            {
-                log_out << "invalid folder name" << std::endl ;
-            }
-            initialize_parse_characters_of_folder_name( ) ;
-        }
-    }
 }
 
 
@@ -2608,7 +2552,7 @@ void check_yes_or_no_same_hyphenated_phrase( )
 
     for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase_name ; global_word_position ++ )
     {
-    	global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
+        global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
         global_finding_match_text_item_id = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
         check_word_match_in_parsed_hyphenated_phrase_name( ) ;
         if ( global_yes_or_no_same_unicode_characters == global_no )
@@ -2643,15 +2587,15 @@ void check_yes_or_no_same_hyphenated_phrase( )
 
 void lookup_hyphenated_phrase_name( )
 {
-	global_text_item_id_of_matching_hyphenated_phrase_name = 0 ;
+    global_text_item_id_of_matching_hyphenated_phrase_name = 0 ;
     for ( global_position_in_list_of_hyphenated_phrase_text_items = 1 ; global_position_in_list_of_hyphenated_phrase_text_items <= global_number_of_hyphenated_phrase_names_in_text_items ; global_position_in_list_of_hyphenated_phrase_text_items ++ )
     {
         global_looking_at_hyphenated_phrase_name_in_text_item_id = global_list_of_hyphenated_phrase_text_items[ global_position_in_list_of_hyphenated_phrase_text_items ] ;
         check_yes_or_no_same_hyphenated_phrase( ) ;
         if ( global_yes_or_no_same_hyphenated_phrase_name == global_yes )
         {
-        	global_text_item_id_of_matching_hyphenated_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
-        	return ;
+            global_text_item_id_of_matching_hyphenated_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
+            return ;
         }
     }
 }
@@ -2978,42 +2922,255 @@ void expand_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Functions that will call the above functions:
+//  Functions that call the above functions.
+//  These are needed to match the use of functions
+//  in the Perl version, but these will be
+//  eliminated later.
 
-//  dashrep-expand-phrases
-//  handle-endless-loop-encountered
-//  handle-time-limit-exceeded
+void dashrep_expand_phrases( )
+{
+    return ;
+}
 
-//  parameterized-yes-or-no-empty
-//  parameterized-remove-leading-trailing-spaces
-//  parameterized-yes-or-no-phrase-name
-//  parameterized-yes-or-no-phrase-definition-not-empty
-//  parameterized-yes-or-no-positive-integer
-//  parameterized-yes-or-no-integer
-//  parameterized-yes-or-no-positive-real-number
-//  parameterized-yes-or-no-real-number
-//  parameterized-yes-or-no-phrase-contains-real-numbers
-//  parameterized-normalize-calculated-value
-//  parameterized-convert-numeric-text-into-numeric-value
-//  parameterized-convert-numeric-value-into-numeric-text
-//  parameterized-get-list-of-words
-//  parameterized-yes-or-no-valid-url
-//  parameterized-yes-or-no-valid-path
-//  parameterized-yes-or-no-valid-path-prefix
-//  parameterized-yes-or-no-file-name
-//  parameterized-yes-or-no-folder-name
-//  parameterized-yes-or-no-input-file-exists
-//  parameterized-open-file-for-reading
-//  parameterized-open-file-for-appending
+void handle_endless_loop_encountered( )
+{
+    exit( EXIT_FAILURE ) ;
+    return ;
+}
 
-//  point-to-words
-//  point-to-words-in-operand-one
-//  point-to-words-in-operand-two
-//  point-to-words-in-operand-three
-//  remove-extra-spaces
-//  get-count-of-words
-//  get-word-at-position
-//  open-trace-output-file-if-not-open
+void handle_time_limit_exceeded( )
+{
+    exit( EXIT_FAILURE ) ;
+    return ;
+}
+
+int parameterized_yes_or_no_empty( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_remove_leading_trailing_spaces( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_phrase_name( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_phrase_definition_not_empty( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_positive_integer( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_integer( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_positive_real_number( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_real_number( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_phrase_contains_real_numbers( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_normalize_calculated_value( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_text_item_id ;
+}
+
+int parameterized_convert_numeric_text_into_numeric_value( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_text_item_id ;
+}
+
+int parameterized_convert_numeric_value_into_numeric_text( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_text_item_id ;
+}
+
+int parameterized_get_list_of_words( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_text_item_id ;
+}
+
+int parameterized_yes_or_no_valid_url( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_valid_path( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_valid_path_prefix( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_yes_or_no_file_name( int local_text_item_id )
+{
+    local_text_item_id = global_text_item_id ;
+    initialize_parse_characters_of_filename( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_character_category = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_of_filename( ) ;
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+        {
+            if ( global_yes_or_no_filename_is_valid == global_yes )
+            {
+                log_out << "filename = ?" << std::endl ;
+            } else
+            {
+                log_out << "invalid filename" << std::endl ;
+            }
+        }
+        initialize_parse_characters_of_filename( ) ;
+    }
+    return global_yes_or_no_filename_is_valid ;
+}
+
+int parameterized_yes_or_no_folder_name( int local_text_item_id )
+{
+//  The flag global_yes_or_no_use_slash_not_backslash
+//  identifies whether slashes or backslashes are
+//  allowed in folder names.
+    local_text_item_id = global_text_item_id ;
+    initialize_parse_characters_of_folder_name( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_of_folder_name( ) ;
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_text_item_id ] ) )
+        {
+            if ( global_yes_or_no_folder_name_is_valid == global_yes )
+            {
+                log_out << "folder name = ?" << std::endl ;
+            } else
+            {
+                log_out << "invalid folder name" << std::endl ;
+            }
+            initialize_parse_characters_of_folder_name( ) ;
+        }
+    }
+    return global_yes_or_no_folder_name_is_valid ;
+}
+
+int parameterized_yes_or_no_input_file_exists( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_open_file_for_reading( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+int parameterized_open_file_for_appending( int local_text_item_id )
+{
+    int local_yes_or_no ;
+    local_text_item_id = global_text_item_id ;
+    return local_yes_or_no ;
+}
+
+void point_to_words( )
+{
+    return ;
+}
+
+void point_to_words_in_operand_one( )
+{
+    global_text_item_id = global_text_item_for_operand_one ;
+    point_to_words( ) ;
+    return ;
+}
+
+void point_to_words_in_operand_two( )
+{
+    global_text_item_id = global_text_item_for_operand_two ;
+    point_to_words( ) ;
+    return ;
+}
+
+void point_to_words_in_operand_three( )
+{
+    global_text_item_id = global_text_item_for_operand_three ;
+    point_to_words( ) ;
+    return ;
+}
+
+void remove_extra_spaces( )
+{
+    return ;
+}
+
+void get_count_of_words( )
+{
+    return ;
+}
+
+void get_word_at_position( )
+{
+    return ;
+}
+
+void open_trace_output_file_if_not_open( )
+{
+    return ;
+}
 
 
 // -----------------------------------------------
