@@ -925,8 +925,8 @@ int global_current_stack_level_for_getting_next_character ;
 
 // -----------------------------------------------
 //  Declare a list of counters and special
-//  counters that are used by the expand_text
-//  function.
+//  counters that are used when parsing text or
+//  when expanding text.
 
 int global_recent_character_position_for_character_number[ 260 ] ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
@@ -999,6 +999,7 @@ int global_word_position ;
 
 int global_yes_or_no ;
 int global_yes_or_no_text_item_changeable ;
+int global_yes_or_no_reached_begin_of_current_text_item ;
 int global_yes_or_no_reached_end_of_current_text_item ;
 int global_yes_or_no_same_unicode_characters ;
 int global_yes_or_no_same_hyphenated_phrase_name ;
@@ -1328,6 +1329,8 @@ int store_text_and_get_its_text_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  Function store_phrase_name_and_get_id
 
+// todo: figure out how to allow different numbers of arguments
+
 int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve , int word_thirteen , int word_fourteen , int word_fifteen , int word_sixteen , int word_seventeen , int word_eighteen , int word_nineteen , int word_twenty )
 {
     return 1 ;
@@ -1507,197 +1510,197 @@ void do_main_initialization( )
 //  Create the text items for the Dashrep-defined
 //  phrase names.
 
-    global_id_for_phrase_name_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here ) ;
-    global_id_for_phrase_name_character_hyphen = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_hyphen ) ;
-    global_id_for_phrase_name_four_hyphens = store_phrase_name_and_get_id( global_id_for_phrase_word_four , global_id_for_phrase_word_hyphens ) ;
-    global_id_for_phrase_name_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_empty_text = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_one_space = store_phrase_name_and_get_id( global_id_for_phrase_word_one , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_character_space = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_non_breaking_space = store_phrase_name_and_get_id( global_id_for_phrase_word_non , global_id_for_phrase_word_breaking , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_new , global_id_for_phrase_word_line ) ;
-    global_id_for_phrase_name_empty_line = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_line ) ;
-    global_id_for_phrase_name_line_break = store_phrase_name_and_get_id( global_id_for_phrase_word_line , global_id_for_phrase_word_break ) ;
-    global_id_for_phrase_name_character_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_newline ) ;
-    global_id_for_phrase_name_character_tab = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_tab ) ;
-    global_id_for_phrase_name_character_underscore = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_underscore ) ;
-    global_id_for_phrase_name_expand_text = store_phrase_name_and_get_id( global_id_for_phrase_word_expand , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_standard_output = store_phrase_name_and_get_id( global_id_for_phrase_word_standard , global_id_for_phrase_word_output ) ;
-    global_id_for_phrase_name_copy_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_append_text = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_append_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_append_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_new , global_id_for_phrase_word_line ) ;
-    global_id_for_phrase_name_append_repeatedly_using_count = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_repeatedly , global_id_for_phrase_word_using , global_id_for_phrase_word_count ) ;
-    global_id_for_phrase_name_prepend_text = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_prepend_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
-    global_id_for_phrase_name_put_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_get_phrase_name_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_phrase , global_id_for_phrase_word_name , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_get_cgi_information = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_cgi , global_id_for_phrase_word_information ) ;
-    global_id_for_phrase_name_get_definitions_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_definitions , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , global_id_for_phrase_word_to , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern ) ;
-    global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_multiple , global_id_for_phrase_word_from , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern ) ;
-    global_id_for_phrase_name_clear_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_clear_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases ) ;
-    global_id_for_phrase_name_delete_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases ) ;
-    global_id_for_phrase_name_if_yes_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_yes , global_id_for_phrase_word_begin ) ;
-    global_id_for_phrase_name_if_no_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_no , global_id_for_phrase_word_begin ) ;
-    global_id_for_phrase_name_if_else = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_else ) ;
-    global_id_for_phrase_name_if_end = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_end ) ;
-    global_id_for_phrase_name_yes_or_no_empty_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_empty , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions ) ;
-    global_id_for_phrase_name_yes_or_no_same_two_words = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_yes_or_no_opposite = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_opposite ) ;
-    global_id_for_phrase_name_yes_if_all_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_all , global_id_for_phrase_word_yes ) ;
-    global_id_for_phrase_name_yes_if_any_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_yes ) ;
-    global_id_for_phrase_name_no_if_any_no = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_no ) ;
-    global_id_for_phrase_name_yes_if_not_no = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_no ) ;
-    global_id_for_phrase_name_no_if_not_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_yes ) ;
-    global_id_for_phrase_name_use_handler_with_each_word_in_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_use , global_id_for_phrase_word_handler , global_id_for_phrase_word_with , global_id_for_phrase_word_each , global_id_for_phrase_word_word , global_id_for_phrase_word_in , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_word_to_use_in_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_word , global_id_for_phrase_word_to , global_id_for_phrase_word_use , global_id_for_phrase_word_in , global_id_for_phrase_word_handler ) ;
-    global_id_for_phrase_name_get_count_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_get_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position ) ;
-    global_id_for_phrase_name_get_position_of_word = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_word ) ;
-    global_id_for_phrase_name_copy_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position ) ;
-    global_id_for_phrase_name_copy_words_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
-    global_id_for_phrase_name_copy_words_offset_skip = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_offset , global_id_for_phrase_word_skip ) ;
-    global_id_for_phrase_name_copy_words_found_in_both_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_both , global_id_for_phrase_word_lists ) ;
-    global_id_for_phrase_name_copy_words_found_in_either_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_either , global_id_for_phrase_word_list ) ;
-    global_id_for_phrase_name_copy_words_found_only_in_first_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_only , global_id_for_phrase_word_in , global_id_for_phrase_word_first , global_id_for_phrase_word_list ) ;
-    global_id_for_phrase_name_copy_words_that_begin_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_copy_words_that_begin_with_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_copy_words_that_contain_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_contain , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_copy_words_unique_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_unique , global_id_for_phrase_word_only ) ;
-    global_id_for_phrase_name_list_of_unique_word_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_unique , global_id_for_phrase_word_word , global_id_for_phrase_word_counts ) ;
-    global_id_for_phrase_name_list_of_pointers_to_unique_words = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_pointers , global_id_for_phrase_word_to , global_id_for_phrase_word_unique , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_copy_words_order_reversed = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_order , global_id_for_phrase_word_reversed ) ;
-    global_id_for_phrase_name_copy_words_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric ) ;
-    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric ) ;
-    global_id_for_phrase_name_copy_words_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic ) ;
-    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic ) ;
-    global_id_for_phrase_name_generate_counts_from_integer_to_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_counts , global_id_for_phrase_word_from , global_id_for_phrase_word_integer , global_id_for_phrase_word_to , global_id_for_phrase_word_integer ) ;
-    global_id_for_phrase_name_generate_every_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_ordered , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_generate_list_of_all_dashrep_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_all , global_id_for_phrase_word_dashrep , global_id_for_phrase_word_phrases ) ;
-    global_id_for_phrase_name_get_count_of_characters = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_characters ) ;
-    global_id_for_phrase_name_get_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
-    global_id_for_phrase_name_copy_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
-    global_id_for_phrase_name_copy_without_extra_spaces = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_without , global_id_for_phrase_word_extra , global_id_for_phrase_word_spaces ) ;
-    global_id_for_phrase_name_copy_lowercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_lowercase , global_id_for_phrase_word_only ) ;
-    global_id_for_phrase_name_copy_uppercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_uppercase , global_id_for_phrase_word_only ) ;
-    global_id_for_phrase_name_copy_initial_caps = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_initial , global_id_for_phrase_word_caps ) ;
-    global_id_for_phrase_name_copy_zero_pad_left_to_length = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_zero , global_id_for_phrase_word_pad , global_id_for_phrase_word_left , global_id_for_phrase_word_to , global_id_for_phrase_word_length ) ;
-    global_id_for_phrase_name_encode_as_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_encode , global_id_for_phrase_word_as , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter ) ;
-    global_id_for_phrase_name_decode_from_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_decode , global_id_for_phrase_word_from , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter ) ;
-    global_id_for_phrase_name_convert_unicode_to_html_entities = store_phrase_name_and_get_id( global_id_for_phrase_word_convert , global_id_for_phrase_word_unicode , global_id_for_phrase_word_to , global_id_for_phrase_word_html , global_id_for_phrase_word_entities ) ;
-    global_id_for_phrase_name_get_position_of_matching_text = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_matching , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_copy_and_replace = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace ) ;
-    global_id_for_phrase_name_copy_and_replace_using_paired_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , global_id_for_phrase_word_using , global_id_for_phrase_word_paired , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_generate_positions_of_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
-    global_id_for_phrase_name_generate_positions_of_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_delimiter ) ;
-    global_id_for_phrase_name_generate_positions_of_first_matching_delimiter_after_listed_positions = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_first , global_id_for_phrase_word_matching , global_id_for_phrase_word_delimiter , global_id_for_phrase_word_after , global_id_for_phrase_word_listed , global_id_for_phrase_word_positions ) ;
-    global_id_for_phrase_name_get_current_time_in_epoch_seconds = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_current , global_id_for_phrase_word_time , global_id_for_phrase_word_in , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds ) ;
-    global_id_for_phrase_name_split_epoch_seconds_into_named_components = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components ) ;
-    global_id_for_phrase_name_split_epoch_seconds_into_named_components_for_zero_meridian = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , global_id_for_phrase_word_for , global_id_for_phrase_word_zero , global_id_for_phrase_word_meridian ) ;
-    global_id_for_phrase_name_time_day_of_month = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_month ) ;
-    global_id_for_phrase_name_time_day_of_week = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_week ) ;
-    global_id_for_phrase_name_time_day_of_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_year ) ;
-    global_id_for_phrase_name_time_hour = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_hour ) ;
-    global_id_for_phrase_name_time_minute = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_minute ) ;
-    global_id_for_phrase_name_time_month_number = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_month , global_id_for_phrase_word_number ) ;
-    global_id_for_phrase_name_time_second = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_second ) ;
-    global_id_for_phrase_name_time_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_year ) ;
-    global_id_for_phrase_name_zero_or_nonzero = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_or , global_id_for_phrase_word_nonzero ) ;
-    global_id_for_phrase_name_zero_one_multiple = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_one , global_id_for_phrase_word_multiple ) ;
-    global_id_for_phrase_name_numeric_equal_greater_less_compare = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_equal , global_id_for_phrase_word_greater , global_id_for_phrase_word_less , global_id_for_phrase_word_compare ) ;
-    global_id_for_phrase_name_numeric_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_add ) ;
-    global_id_for_phrase_name_numeric_minus = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minus ) ;
-    global_id_for_phrase_name_numeric_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_multiply ) ;
-    global_id_for_phrase_name_numeric_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_divide , global_id_for_phrase_word_by ) ;
-    global_id_for_phrase_name_numeric_maximum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_maximum ) ;
-    global_id_for_phrase_name_numeric_minimum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minimum ) ;
-    global_id_for_phrase_name_numeric_increment = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_increment ) ;
-    global_id_for_phrase_name_numeric_decrement = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_decrement ) ;
-    global_id_for_phrase_name_numeric_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_integer ) ;
-    global_id_for_phrase_name_numeric_absolute = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_absolute ) ;
-    global_id_for_phrase_name_numeric_odd_or_even = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_odd , global_id_for_phrase_word_or , global_id_for_phrase_word_even ) ;
-    global_id_for_phrase_name_numeric_square_root = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_square , global_id_for_phrase_word_root ) ;
-    global_id_for_phrase_name_numeric_sine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_sine ) ;
-    global_id_for_phrase_name_numeric_cosine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_cosine ) ;
-    global_id_for_phrase_name_numeric_logarithm_base_e = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_e ) ;
-    global_id_for_phrase_name_numeric_logarithm_base_10 = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_10 ) ;
-    global_id_for_phrase_name_numeric_pi = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_pi ) ;
-    global_id_for_phrase_name_numeric_vector_add_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_add , global_id_for_phrase_word_number ) ;
-    global_id_for_phrase_name_numeric_vector_multiply_by_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_multiply , global_id_for_phrase_word_by , global_id_for_phrase_word_number ) ;
-    global_id_for_phrase_name_numeric_vectors_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_add ) ;
-    global_id_for_phrase_name_numeric_vectors_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_multiply ) ;
-    global_id_for_phrase_name_numeric_vectors_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_divide , global_id_for_phrase_word_by ) ;
-    global_id_for_phrase_name_numeric_vector_integers = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_integers ) ;
-    global_id_for_phrase_name_numeric_vector_absolutes = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_absolutes ) ;
-    global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_from , global_id_for_phrase_word_delta , global_id_for_phrase_word_values , global_id_for_phrase_word_calculate , global_id_for_phrase_word_distances ) ;
-    global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_two , global_id_for_phrase_word_dimensional , global_id_for_phrase_word_sort , global_id_for_phrase_word_into , global_id_for_phrase_word_columns , global_id_for_phrase_word_and , global_id_for_phrase_word_rows ) ;
-    global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_y , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_number , global_id_for_phrase_word_based , global_id_for_phrase_word_on , global_id_for_phrase_word_latitude ) ;
-    global_id_for_phrase_name_numeric_map_tile_zoom = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_zoom ) ;
-    global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_move , global_id_for_phrase_word_attributes , global_id_for_phrase_word_into , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags ) ;
-    global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_remove , global_id_for_phrase_word_attributes , global_id_for_phrase_word_from , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags ) ;
-    global_id_for_phrase_name_yes_or_no_permission_to_append_to_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_files ) ;
-    global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_delete , global_id_for_phrase_word_or , global_id_for_phrase_word_overwrite , global_id_for_phrase_word_files ) ;
-    global_id_for_phrase_name_dashrep_path_prefix_for_file_reading = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_reading ) ;
-    global_id_for_phrase_name_dashrep_path_prefix_for_file_writing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_writing ) ;
-    global_id_for_phrase_name_operating_system_slash_or_backslash = store_phrase_name_and_get_id( global_id_for_phrase_word_operating , global_id_for_phrase_word_system , global_id_for_phrase_word_slash , global_id_for_phrase_word_or , global_id_for_phrase_word_backslash ) ;
-    global_id_for_phrase_name_dashrep_file_name_if_read_file_missing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_file , global_id_for_phrase_word_name , global_id_for_phrase_word_if , global_id_for_phrase_word_read , global_id_for_phrase_word_file , global_id_for_phrase_word_missing ) ;
-    global_id_for_phrase_name_generate_list_of_files_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_files , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory ) ;
-    global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_folders , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory ) ;
-    global_id_for_phrase_name_yes_or_no_file_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_file , global_id_for_phrase_word_exists ) ;
-    global_id_for_phrase_name_yes_or_no_folder_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_folder , global_id_for_phrase_word_exists ) ;
-    global_id_for_phrase_name_size_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_size , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_modification_time_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_modification , global_id_for_phrase_word_time , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_set_file_permission_public_read = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_public , global_id_for_phrase_word_read ) ;
-    global_id_for_phrase_name_set_file_permission_private = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private ) ;
-    global_id_for_phrase_name_set_file_permission_private_but_executable = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , global_id_for_phrase_word_but , global_id_for_phrase_word_executable ) ;
-    global_id_for_phrase_name_rename_file = store_phrase_name_and_get_id( global_id_for_phrase_word_rename , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_delete_file = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_create_empty_sub_folder = store_phrase_name_and_get_id( global_id_for_phrase_word_create , global_id_for_phrase_word_empty , global_id_for_phrase_word_sub , global_id_for_phrase_word_folder ) ;
-    global_id_for_phrase_name_copy_from_file_to_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_phrase ) ;
-    global_id_for_phrase_name_end_of_line_indicator = store_phrase_name_and_get_id( global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_indicator ) ;
-    global_id_for_phrase_name_text_end_of_line_here_space_delimited = store_phrase_name_and_get_id( global_id_for_phrase_word_text , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_here , global_id_for_phrase_word_space , global_id_for_phrase_word_delimited ) ;
-    global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_trim , global_id_for_phrase_word_spaces , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_skip , global_id_for_phrase_word_empty , global_id_for_phrase_word_lines , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_copy_from_phrase_append_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_copy_append_file_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_append , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_linewise_read_from_file_and_use_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_and , global_id_for_phrase_word_use , global_id_for_phrase_word_handler ) ;
-    global_id_for_phrase_name_linewise_input_line_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_linewise_input_line_count = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_count ) ;
-    global_id_for_phrase_name_linewise_read_from_standard_input = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_standard , global_id_for_phrase_word_input ) ;
-    global_id_for_phrase_name_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource ) ;
-    global_id_for_phrase_name_trace_from_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_from , global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource ) ;
-    global_id_for_phrase_name_find_line_in_file_that_begins_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_line , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begins , global_id_for_phrase_word_with , global_id_for_phrase_word_text ) ;
-    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_listed , global_id_for_phrase_word_word ) ;
-    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_two , global_id_for_phrase_word_words , global_id_for_phrase_word_listed ) ;
-    global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_named , global_id_for_phrase_word_phrases ) ;
-    global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_column , global_id_for_phrase_word_lists ) ;
-    global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_use , global_id_for_phrase_word_two , global_id_for_phrase_word_spaces , global_id_for_phrase_word_as , global_id_for_phrase_word_column , global_id_for_phrase_word_delimiter ) ;
-    global_id_for_phrase_name_gather_tagged_info_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_tagged , global_id_for_phrase_word_info , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_gather_from_tagged_file_one_entry = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_from , global_id_for_phrase_word_tagged , global_id_for_phrase_word_file , global_id_for_phrase_word_one , global_id_for_phrase_word_entry ) ;
-    global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_write , global_id_for_phrase_word_gathered , global_id_for_phrase_word_listed , global_id_for_phrase_word_items , global_id_for_phrase_word_to , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_begin ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_end = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_end ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_unique = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_unique ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_delete = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_delete ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_matching_id = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_matching , global_id_for_phrase_word_id ) ;
-    global_id_for_phrase_name_trace_show = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show ) ;
-    global_id_for_phrase_name_trace_show_where = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , global_id_for_phrase_word_where ) ;
-    global_id_for_phrase_name_output_trace_file_name = store_phrase_name_and_get_id( global_id_for_phrase_word_output , global_id_for_phrase_word_trace , global_id_for_phrase_word_file , global_id_for_phrase_word_name ) ;
-    global_id_for_phrase_name_dashrep_comments_ignored = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_comments , global_id_for_phrase_word_ignored ) ;
-    global_id_for_phrase_name_generate_phrase_usage_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_phrase , global_id_for_phrase_word_usage , global_id_for_phrase_word_counts ) ;
-    global_id_for_phrase_name_exit_from_dashrep = store_phrase_name_and_get_id( global_id_for_phrase_word_exit , global_id_for_phrase_word_from , global_id_for_phrase_word_dashrep ) ;
-    global_id_for_phrase_name_dashrep_language_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_language , global_id_for_phrase_word_yes ) ;
-    global_id_for_phrase_name_dashrep_version = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_version ) ;
-    global_id_for_phrase_name_delayed_nospace = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_nospace ) ;
-    global_id_for_phrase_name_delayed_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_newline ) ;
-    global_id_for_phrase_name_yes_or_no_permission_administrator = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_administrator ) ;
-    global_id_for_phrase_name_dashrep_endless_loop_counter_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_endless , global_id_for_phrase_word_loop , global_id_for_phrase_word_counter , global_id_for_phrase_word_limit ) ;
-    global_id_for_phrase_name_dashrep_time_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_time , global_id_for_phrase_word_limit ) ;
+    // global_id_for_phrase_name_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here ) ;
+    // global_id_for_phrase_name_character_hyphen = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_hyphen ) ;
+    // global_id_for_phrase_name_four_hyphens = store_phrase_name_and_get_id( global_id_for_phrase_word_four , global_id_for_phrase_word_hyphens ) ;
+    // global_id_for_phrase_name_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_empty_text = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_one_space = store_phrase_name_and_get_id( global_id_for_phrase_word_one , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_character_space = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_non_breaking_space = store_phrase_name_and_get_id( global_id_for_phrase_word_non , global_id_for_phrase_word_breaking , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_new , global_id_for_phrase_word_line ) ;
+    // global_id_for_phrase_name_empty_line = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_line ) ;
+    // global_id_for_phrase_name_line_break = store_phrase_name_and_get_id( global_id_for_phrase_word_line , global_id_for_phrase_word_break ) ;
+    // global_id_for_phrase_name_character_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_newline ) ;
+    // global_id_for_phrase_name_character_tab = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_tab ) ;
+    // global_id_for_phrase_name_character_underscore = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_underscore ) ;
+    // global_id_for_phrase_name_expand_text = store_phrase_name_and_get_id( global_id_for_phrase_word_expand , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_standard_output = store_phrase_name_and_get_id( global_id_for_phrase_word_standard , global_id_for_phrase_word_output ) ;
+    // global_id_for_phrase_name_copy_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_append_text = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_append_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_append_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_new , global_id_for_phrase_word_line ) ;
+    // global_id_for_phrase_name_append_repeatedly_using_count = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_repeatedly , global_id_for_phrase_word_using , global_id_for_phrase_word_count ) ;
+    // global_id_for_phrase_name_prepend_text = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_prepend_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space ) ;
+    // global_id_for_phrase_name_put_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_get_phrase_name_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_phrase , global_id_for_phrase_word_name , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_get_cgi_information = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_cgi , global_id_for_phrase_word_information ) ;
+    // global_id_for_phrase_name_get_definitions_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_definitions , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , global_id_for_phrase_word_to , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern ) ;
+    // global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_multiple , global_id_for_phrase_word_from , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern ) ;
+    // global_id_for_phrase_name_clear_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_clear_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases ) ;
+    // global_id_for_phrase_name_delete_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases ) ;
+    // global_id_for_phrase_name_if_yes_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_yes , global_id_for_phrase_word_begin ) ;
+    // global_id_for_phrase_name_if_no_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_no , global_id_for_phrase_word_begin ) ;
+    // global_id_for_phrase_name_if_else = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_else ) ;
+    // global_id_for_phrase_name_if_end = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_end ) ;
+    // global_id_for_phrase_name_yes_or_no_empty_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_empty , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions ) ;
+    // global_id_for_phrase_name_yes_or_no_same_two_words = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_yes_or_no_opposite = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_opposite ) ;
+    // global_id_for_phrase_name_yes_if_all_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_all , global_id_for_phrase_word_yes ) ;
+    // global_id_for_phrase_name_yes_if_any_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_yes ) ;
+    // global_id_for_phrase_name_no_if_any_no = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_no ) ;
+    // global_id_for_phrase_name_yes_if_not_no = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_no ) ;
+    // global_id_for_phrase_name_no_if_not_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_yes ) ;
+    // global_id_for_phrase_name_use_handler_with_each_word_in_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_use , global_id_for_phrase_word_handler , global_id_for_phrase_word_with , global_id_for_phrase_word_each , global_id_for_phrase_word_word , global_id_for_phrase_word_in , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_word_to_use_in_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_word , global_id_for_phrase_word_to , global_id_for_phrase_word_use , global_id_for_phrase_word_in , global_id_for_phrase_word_handler ) ;
+    // global_id_for_phrase_name_get_count_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_get_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position ) ;
+    // global_id_for_phrase_name_get_position_of_word = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_word ) ;
+    // global_id_for_phrase_name_copy_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position ) ;
+    // global_id_for_phrase_name_copy_words_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
+    // global_id_for_phrase_name_copy_words_offset_skip = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_offset , global_id_for_phrase_word_skip ) ;
+    // global_id_for_phrase_name_copy_words_found_in_both_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_both , global_id_for_phrase_word_lists ) ;
+    // global_id_for_phrase_name_copy_words_found_in_either_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_either , global_id_for_phrase_word_list ) ;
+    // global_id_for_phrase_name_copy_words_found_only_in_first_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_only , global_id_for_phrase_word_in , global_id_for_phrase_word_first , global_id_for_phrase_word_list ) ;
+    // global_id_for_phrase_name_copy_words_that_begin_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_copy_words_that_begin_with_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_copy_words_that_contain_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_contain , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_copy_words_unique_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_unique , global_id_for_phrase_word_only ) ;
+    // global_id_for_phrase_name_list_of_unique_word_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_unique , global_id_for_phrase_word_word , global_id_for_phrase_word_counts ) ;
+    // global_id_for_phrase_name_list_of_pointers_to_unique_words = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_pointers , global_id_for_phrase_word_to , global_id_for_phrase_word_unique , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_copy_words_order_reversed = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_order , global_id_for_phrase_word_reversed ) ;
+    // global_id_for_phrase_name_copy_words_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric ) ;
+    // global_id_for_phrase_name_copy_words_rearrange_using_order_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric ) ;
+    // global_id_for_phrase_name_copy_words_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic ) ;
+    // global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic ) ;
+    // global_id_for_phrase_name_generate_counts_from_integer_to_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_counts , global_id_for_phrase_word_from , global_id_for_phrase_word_integer , global_id_for_phrase_word_to , global_id_for_phrase_word_integer ) ;
+    // global_id_for_phrase_name_generate_every_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_ordered , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_generate_list_of_all_dashrep_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_all , global_id_for_phrase_word_dashrep , global_id_for_phrase_word_phrases ) ;
+    // global_id_for_phrase_name_get_count_of_characters = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_characters ) ;
+    // global_id_for_phrase_name_get_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
+    // global_id_for_phrase_name_copy_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position ) ;
+    // global_id_for_phrase_name_copy_without_extra_spaces = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_without , global_id_for_phrase_word_extra , global_id_for_phrase_word_spaces ) ;
+    // global_id_for_phrase_name_copy_lowercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_lowercase , global_id_for_phrase_word_only ) ;
+    // global_id_for_phrase_name_copy_uppercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_uppercase , global_id_for_phrase_word_only ) ;
+    // global_id_for_phrase_name_copy_initial_caps = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_initial , global_id_for_phrase_word_caps ) ;
+    // global_id_for_phrase_name_copy_zero_pad_left_to_length = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_zero , global_id_for_phrase_word_pad , global_id_for_phrase_word_left , global_id_for_phrase_word_to , global_id_for_phrase_word_length ) ;
+    // global_id_for_phrase_name_encode_as_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_encode , global_id_for_phrase_word_as , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter ) ;
+    // global_id_for_phrase_name_decode_from_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_decode , global_id_for_phrase_word_from , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter ) ;
+    // global_id_for_phrase_name_convert_unicode_to_html_entities = store_phrase_name_and_get_id( global_id_for_phrase_word_convert , global_id_for_phrase_word_unicode , global_id_for_phrase_word_to , global_id_for_phrase_word_html , global_id_for_phrase_word_entities ) ;
+    // global_id_for_phrase_name_get_position_of_matching_text = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_matching , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_copy_and_replace = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace ) ;
+    // global_id_for_phrase_name_copy_and_replace_using_paired_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , global_id_for_phrase_word_using , global_id_for_phrase_word_paired , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_generate_positions_of_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_listed , global_id_for_phrase_word_words ) ;
+    // global_id_for_phrase_name_generate_positions_of_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_delimiter ) ;
+    // global_id_for_phrase_name_generate_positions_of_first_matching_delimiter_after_listed_positions = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_first , global_id_for_phrase_word_matching , global_id_for_phrase_word_delimiter , global_id_for_phrase_word_after , global_id_for_phrase_word_listed , global_id_for_phrase_word_positions ) ;
+    // global_id_for_phrase_name_get_current_time_in_epoch_seconds = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_current , global_id_for_phrase_word_time , global_id_for_phrase_word_in , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds ) ;
+    // global_id_for_phrase_name_split_epoch_seconds_into_named_components = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components ) ;
+    // global_id_for_phrase_name_split_epoch_seconds_into_named_components_for_zero_meridian = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , global_id_for_phrase_word_for , global_id_for_phrase_word_zero , global_id_for_phrase_word_meridian ) ;
+    // global_id_for_phrase_name_time_day_of_month = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_month ) ;
+    // global_id_for_phrase_name_time_day_of_week = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_week ) ;
+    // global_id_for_phrase_name_time_day_of_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_year ) ;
+    // global_id_for_phrase_name_time_hour = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_hour ) ;
+    // global_id_for_phrase_name_time_minute = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_minute ) ;
+    // global_id_for_phrase_name_time_month_number = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_month , global_id_for_phrase_word_number ) ;
+    // global_id_for_phrase_name_time_second = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_second ) ;
+    // global_id_for_phrase_name_time_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_year ) ;
+    // global_id_for_phrase_name_zero_or_nonzero = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_or , global_id_for_phrase_word_nonzero ) ;
+    // global_id_for_phrase_name_zero_one_multiple = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_one , global_id_for_phrase_word_multiple ) ;
+    // global_id_for_phrase_name_numeric_equal_greater_less_compare = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_equal , global_id_for_phrase_word_greater , global_id_for_phrase_word_less , global_id_for_phrase_word_compare ) ;
+    // global_id_for_phrase_name_numeric_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_add ) ;
+    // global_id_for_phrase_name_numeric_minus = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minus ) ;
+    // global_id_for_phrase_name_numeric_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_multiply ) ;
+    // global_id_for_phrase_name_numeric_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_divide , global_id_for_phrase_word_by ) ;
+    // global_id_for_phrase_name_numeric_maximum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_maximum ) ;
+    // global_id_for_phrase_name_numeric_minimum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minimum ) ;
+    // global_id_for_phrase_name_numeric_increment = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_increment ) ;
+    // global_id_for_phrase_name_numeric_decrement = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_decrement ) ;
+    // global_id_for_phrase_name_numeric_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_integer ) ;
+    // global_id_for_phrase_name_numeric_absolute = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_absolute ) ;
+    // global_id_for_phrase_name_numeric_odd_or_even = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_odd , global_id_for_phrase_word_or , global_id_for_phrase_word_even ) ;
+    // global_id_for_phrase_name_numeric_square_root = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_square , global_id_for_phrase_word_root ) ;
+    // global_id_for_phrase_name_numeric_sine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_sine ) ;
+    // global_id_for_phrase_name_numeric_cosine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_cosine ) ;
+    // global_id_for_phrase_name_numeric_logarithm_base_e = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_e ) ;
+    // global_id_for_phrase_name_numeric_logarithm_base_10 = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_10 ) ;
+    // global_id_for_phrase_name_numeric_pi = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_pi ) ;
+    // global_id_for_phrase_name_numeric_vector_add_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_add , global_id_for_phrase_word_number ) ;
+    // global_id_for_phrase_name_numeric_vector_multiply_by_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_multiply , global_id_for_phrase_word_by , global_id_for_phrase_word_number ) ;
+    // global_id_for_phrase_name_numeric_vectors_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_add ) ;
+    // global_id_for_phrase_name_numeric_vectors_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_multiply ) ;
+    // global_id_for_phrase_name_numeric_vectors_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_divide , global_id_for_phrase_word_by ) ;
+    // global_id_for_phrase_name_numeric_vector_integers = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_integers ) ;
+    // global_id_for_phrase_name_numeric_vector_absolutes = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_absolutes ) ;
+    // global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_from , global_id_for_phrase_word_delta , global_id_for_phrase_word_values , global_id_for_phrase_word_calculate , global_id_for_phrase_word_distances ) ;
+    // global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_two , global_id_for_phrase_word_dimensional , global_id_for_phrase_word_sort , global_id_for_phrase_word_into , global_id_for_phrase_word_columns , global_id_for_phrase_word_and , global_id_for_phrase_word_rows ) ;
+    // global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_y , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_number , global_id_for_phrase_word_based , global_id_for_phrase_word_on , global_id_for_phrase_word_latitude ) ;
+    // global_id_for_phrase_name_numeric_map_tile_zoom = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_zoom ) ;
+    // global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_move , global_id_for_phrase_word_attributes , global_id_for_phrase_word_into , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags ) ;
+    // global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_remove , global_id_for_phrase_word_attributes , global_id_for_phrase_word_from , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags ) ;
+    // global_id_for_phrase_name_yes_or_no_permission_to_append_to_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_files ) ;
+    // global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_delete , global_id_for_phrase_word_or , global_id_for_phrase_word_overwrite , global_id_for_phrase_word_files ) ;
+    // global_id_for_phrase_name_dashrep_path_prefix_for_file_reading = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_reading ) ;
+    // global_id_for_phrase_name_dashrep_path_prefix_for_file_writing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_writing ) ;
+    // global_id_for_phrase_name_operating_system_slash_or_backslash = store_phrase_name_and_get_id( global_id_for_phrase_word_operating , global_id_for_phrase_word_system , global_id_for_phrase_word_slash , global_id_for_phrase_word_or , global_id_for_phrase_word_backslash ) ;
+    // global_id_for_phrase_name_dashrep_file_name_if_read_file_missing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_file , global_id_for_phrase_word_name , global_id_for_phrase_word_if , global_id_for_phrase_word_read , global_id_for_phrase_word_file , global_id_for_phrase_word_missing ) ;
+    // global_id_for_phrase_name_generate_list_of_files_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_files , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory ) ;
+    // global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_folders , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory ) ;
+    // global_id_for_phrase_name_yes_or_no_file_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_file , global_id_for_phrase_word_exists ) ;
+    // global_id_for_phrase_name_yes_or_no_folder_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_folder , global_id_for_phrase_word_exists ) ;
+    // global_id_for_phrase_name_size_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_size , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_modification_time_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_modification , global_id_for_phrase_word_time , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_set_file_permission_public_read = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_public , global_id_for_phrase_word_read ) ;
+    // global_id_for_phrase_name_set_file_permission_private = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private ) ;
+    // global_id_for_phrase_name_set_file_permission_private_but_executable = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , global_id_for_phrase_word_but , global_id_for_phrase_word_executable ) ;
+    // global_id_for_phrase_name_rename_file = store_phrase_name_and_get_id( global_id_for_phrase_word_rename , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_delete_file = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_create_empty_sub_folder = store_phrase_name_and_get_id( global_id_for_phrase_word_create , global_id_for_phrase_word_empty , global_id_for_phrase_word_sub , global_id_for_phrase_word_folder ) ;
+    // global_id_for_phrase_name_copy_from_file_to_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_phrase ) ;
+    // global_id_for_phrase_name_end_of_line_indicator = store_phrase_name_and_get_id( global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_indicator ) ;
+    // global_id_for_phrase_name_text_end_of_line_here_space_delimited = store_phrase_name_and_get_id( global_id_for_phrase_word_text , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_here , global_id_for_phrase_word_space , global_id_for_phrase_word_delimited ) ;
+    // global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_trim , global_id_for_phrase_word_spaces , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_skip , global_id_for_phrase_word_empty , global_id_for_phrase_word_lines , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_copy_from_phrase_append_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_copy_append_file_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_append , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_linewise_read_from_file_and_use_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_and , global_id_for_phrase_word_use , global_id_for_phrase_word_handler ) ;
+    // global_id_for_phrase_name_linewise_input_line_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_linewise_input_line_count = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_count ) ;
+    // global_id_for_phrase_name_linewise_read_from_standard_input = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_standard , global_id_for_phrase_word_input ) ;
+    // global_id_for_phrase_name_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource ) ;
+    // global_id_for_phrase_name_trace_from_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_from , global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource ) ;
+    // global_id_for_phrase_name_find_line_in_file_that_begins_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_line , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begins , global_id_for_phrase_word_with , global_id_for_phrase_word_text ) ;
+    // global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_listed , global_id_for_phrase_word_word ) ;
+    // global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_two , global_id_for_phrase_word_words , global_id_for_phrase_word_listed ) ;
+    // global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_named , global_id_for_phrase_word_phrases ) ;
+    // global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_column , global_id_for_phrase_word_lists ) ;
+    // global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_use , global_id_for_phrase_word_two , global_id_for_phrase_word_spaces , global_id_for_phrase_word_as , global_id_for_phrase_word_column , global_id_for_phrase_word_delimiter ) ;
+    // global_id_for_phrase_name_gather_tagged_info_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_tagged , global_id_for_phrase_word_info , global_id_for_phrase_word_from , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_gather_from_tagged_file_one_entry = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_from , global_id_for_phrase_word_tagged , global_id_for_phrase_word_file , global_id_for_phrase_word_one , global_id_for_phrase_word_entry ) ;
+    // global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_write , global_id_for_phrase_word_gathered , global_id_for_phrase_word_listed , global_id_for_phrase_word_items , global_id_for_phrase_word_to , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_file ) ;
+    // global_id_for_phrase_name_dashrep_gather_tag_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_begin ) ;
+    // global_id_for_phrase_name_dashrep_gather_tag_end = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_end ) ;
+    // global_id_for_phrase_name_dashrep_gather_tag_unique = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_unique ) ;
+    // global_id_for_phrase_name_dashrep_gather_tag_delete = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_delete ) ;
+    // global_id_for_phrase_name_dashrep_gather_tag_matching_id = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_matching , global_id_for_phrase_word_id ) ;
+    // global_id_for_phrase_name_trace_show = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show ) ;
+    // global_id_for_phrase_name_trace_show_where = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , global_id_for_phrase_word_where ) ;
+    // global_id_for_phrase_name_output_trace_file_name = store_phrase_name_and_get_id( global_id_for_phrase_word_output , global_id_for_phrase_word_trace , global_id_for_phrase_word_file , global_id_for_phrase_word_name ) ;
+    // global_id_for_phrase_name_dashrep_comments_ignored = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_comments , global_id_for_phrase_word_ignored ) ;
+    // global_id_for_phrase_name_generate_phrase_usage_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_phrase , global_id_for_phrase_word_usage , global_id_for_phrase_word_counts ) ;
+    // global_id_for_phrase_name_exit_from_dashrep = store_phrase_name_and_get_id( global_id_for_phrase_word_exit , global_id_for_phrase_word_from , global_id_for_phrase_word_dashrep ) ;
+    // global_id_for_phrase_name_dashrep_language_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_language , global_id_for_phrase_word_yes ) ;
+    // global_id_for_phrase_name_dashrep_version = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_version ) ;
+    // global_id_for_phrase_name_delayed_nospace = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_nospace ) ;
+    // global_id_for_phrase_name_delayed_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_newline ) ;
+    // global_id_for_phrase_name_yes_or_no_permission_administrator = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_administrator ) ;
+    // global_id_for_phrase_name_dashrep_endless_loop_counter_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_endless , global_id_for_phrase_word_loop , global_id_for_phrase_word_counter , global_id_for_phrase_word_limit ) ;
+    // global_id_for_phrase_name_dashrep_time_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_time , global_id_for_phrase_word_limit ) ;
 
 
 // -----------------------------------------------
@@ -1809,6 +1812,133 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initialize_parse_characters_individually
+//
+//  Do the initialization needed before starting
+//  to use the function
+//  parse_one_character_individually.
+
+void initialize_parse_characters_individually( )
+{
+    global_recent_character_position_for_character_number_beyond_ascii = 0 ;
+    global_yes_or_no_prior_character_was_delimiter = global_yes ;
+    global_yes_or_no_delimiter_encountered = global_yes ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_individually
+//
+//  Identify the next character.  Specifically
+//  categorize it as a delimiter or non-delimiter.
+//  And store pointers that point to the beginning
+//  of each delimiter and non-delimiter.
+
+void parse_one_character_individually( )
+{
+
+    log_out << global_single_character_as_integer << std::endl ;
+
+    if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
+    {
+        switch ( global_single_character_as_integer )
+        {
+            case global_ascii_code_for_hyphen :
+                global_character_usage_buffer_rotation_number_for_hyphen ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_hyphen > global_maximum_character_usage_buffer_rotation_number )
+                {
+                    global_character_usage_buffer_rotation_number_for_hyphen = 1 ;
+                }
+                global_character_usage_position_for_hyphen_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
+                break ;
+            case global_ascii_code_for_underscore :
+                global_character_usage_buffer_rotation_number_for_underscore ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_underscore > global_maximum_character_usage_buffer_rotation_number )
+                {
+                    global_character_usage_buffer_rotation_number_for_underscore = 1 ;
+                }
+                global_character_usage_position_for_underscore_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
+                break ;
+            case global_ascii_code_for_letter_t :
+                global_character_usage_buffer_rotation_number_for_letter_t ++ ;
+                if ( global_character_usage_buffer_rotation_number_for_letter_t > global_maximum_character_usage_buffer_rotation_number )
+                {
+                    global_character_usage_buffer_rotation_number_for_letter_t = 1 ;
+                }
+                global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] = global_character_count_for_expand_text ;
+                break ;
+            default :
+                global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_character_count_for_expand_text ;
+                break ;
+        }
+    } else
+    {
+        global_recent_character_position_for_character_number_beyond_ascii = global_character_count_for_expand_text ;
+    }
+    global_yes_or_no_delimiter_encountered = global_no ;
+    switch ( global_single_character_as_integer )
+    {
+        case global_ascii_code_for_space :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_tab :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_newline :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_formfeed :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_carriage_return :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+    }
+    if ( global_yes_or_no_delimiter_encountered == global_yes )
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_no )
+        {
+            log_out << "transition from characters to delimiter" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_yes ;
+    } else
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
+        {
+            log_out << "transition from delimiter to characters" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_no ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function test_parsing_characters_individually
+
+void test_parsing_characters_individually( )
+{
+    global_yes_or_no_looking_for_word_attribute_or_specify = global_yes ;
+    global_from_text_item_id = global_text_item_id_for_sample_text_to_expand ;
+    initialize_parse_characters_individually( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+        parse_one_character_individually( ) ;
+        global_text_item_id = 108 ;
+        exit_not_yet_supported( ) ;
+        return ;
+    }
+
+    log_out << "test parsing done" << std::endl ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function read_text_line_from_file
 //
 //  Reads one line of text from a file and puts
@@ -1847,326 +1977,9 @@ void read_text_line_from_file( )
         } else
         {
             log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
+            exit( EXIT_FAILURE ) ;
         }
     }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_item_clear
-//
-//  Changes a text item to point to nothing, but
-//  does not change any linked lower-level text
-//  items.  If the text item still can possibly be
-//  referenced by another higher-level text item,
-//  do not use this function, and instead point to
-//  the empty text item or create a new text item.
-
-void text_item_clear( )
-{
-    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_linked_text
-//
-//  Appends text assuming that the text being
-//  appended will not change, so just add a link
-//  to the text being appended.  The text item
-//  to be appended is specified by the text item
-//  ID number in global_from_text_item_id,
-//  and the text item being extended is specified
-//  by the text item ID number in
-//  global_to_text_item_id.  The value in
-//  global_yes_or_no_requesting_space_appended
-//  indicates whether to insert a space between
-//  non-empty text being extended and non-empty
-//  text being appended.
-//
-//  If the text item is almost full, create a new
-//  sub text item and point to it with the last
-//  available linked-list position, and append
-//  the linked text item to the beginning of the
-//  new sub text item.  The result leaves room
-//  for more sub text items to be appended
-//  without needing to add a new sub text item
-//  for every appended text item.
-
-void append_linked_text( )
-{
-
-
-// -----------------------------------------------
-//  If the text being appended is empty, there is
-//  nothing to do.
-
-    if ( global_text_pointer_end_for_item[ global_from_text_item_id ] < global_text_pointer_begin_for_item[ global_from_text_item_id ] )
-    {
-        log_out << "text to append is empty so nothing to append" << std::endl ;
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  If the text being extended is empty, just put
-//  a pointer into the text being extended.  The
-//  pointer points to the text being appended.
-
-    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
-    {
-        global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
-        switch ( global_to_text_contains_category )
-        {
-            case global_category_contains_list_of_text_item_ids :
-                return ;
-                break ;
-            case global_category_contains_unicode_anything :
-                return ;
-                break ;
-            case global_category_contains_unicode_no_delimiters :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            case global_category_contains_hyphenated_phrase_name :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            case global_category_contains_list_of_integers :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            case global_category_contains_pointers_to_decimal_numbers :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            default :
-                return ;
-                break ;
-
-        }
-
-        log_out << "text being extended is empty so just point to the text being appended" << std::endl ;
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  If the text being extended is not empty and
-//  there is a request to insert a space between
-//  the extended text and the appended text,
-//  insert a space.
-
-    if ( ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] ) && ( global_yes_or_no_requesting_space_appended == global_yes ) )
-    {
-        if ( global_text_category_for_item[ global_to_text_item_id ] == global_category_contains_list_of_text_item_ids )
-        {
-            check_yes_or_no_can_extend_text_item( ) ;
-            if ( global_yes_or_no_can_extend_text_item == global_yes )
-            {
-                global_one_number_to_append = global_text_item_id_for_single_space ;
-                store_one_text_character( ) ;
-            } else
-            {
-                log_out << "create new text item to make room for space character" << std::endl ;
-            }
-        } else
-        {
-            global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
-            assign_storage_for_new_text_item( ) ;
-            global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
-//  insert the to and space IDs, but not the from ID
-//        global_storage_all_text
-            global_to_text_item_id = global_new_storage_text_item_id ;
-        }
-    }
-
-
-// -----------------------------------------------
-//  Get the categories of the "from" and "to" text
-//  items.
-
-    global_from_text_contains_category = global_text_category_for_item[ global_from_text_item_id ] ;
-    global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
-
-
-// -----------------------------------------------
-//  If the "to" and "from" categories are
-//  different, create a new text item of category
-//  "..." and into it put pointers that point to
-//  the "to" and "from" text items, and change the
-//  text item ID of the "to" text item, then
-//  return.
-
-    if ( global_from_text_contains_category != global_to_text_contains_category )
-    {
-        global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
-        assign_storage_for_new_text_item( ) ;
-        global_one_number_to_append = global_to_text_item_id ;
-        global_to_text_item_id = global_new_storage_text_item_id ;
-        store_one_text_character( ) ;
-        global_one_number_to_append = global_text_item_id_for_single_space ;
-        store_one_text_character( ) ;
-        global_one_number_to_append = global_from_text_contains_category ;
-        store_one_text_character( ) ;
-        global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  Begin a branch that handles cases where the
-//  "from" and "to" categories are the same.  Each
-//  branch handles a different category type.
-//
-//  Possibly move this code to a function that
-//  can call itself, to allow for nested levels
-//  of text items.
-
-    switch ( global_to_text_contains_category )
-    {
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  contains_unicode_anything, then add the
-//  characters if they fit, and otherwise add to
-//  the higher-level item a pointer to the text.
-
-        case global_category_contains_unicode_anything :
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-
-//            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
-//            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-//            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
-
-
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-            global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
-            global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
-            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  contains_list_of_integers, add the integer to
-//  the list.
-
-        case global_category_contains_list_of_integers :
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  contains_pointers_to_decimal_numbers, add the
-//  pointers to the list.
-
-        case global_category_contains_pointers_to_decimal_numbers :
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  Otherwise there is an error.
-
-        default :
-            log_out << "BUG: one or more text item categories are not recognized" << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  End of "switch" statement.
-
-    }
-
-
-// -----------------------------------------------
-//  End of function append_linked_text.
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_copied_text
-
-//  Appends text assuming that the text being
-//  appended will change, so a copy of that text
-//  must be stored.  The text item to be appended
-//  is specified by the text item ID number in
-//  global_from_text_item_id, and the text
-//  item being extended is specified by the text
-//  item ID number in
-//  global_to_text_item_id.
-
-void append_copied_text( )
-{
-    text_item_clear( ) ;
-
-    log_out << "todo: here, need code that copies text to be appended" << std::endl ;
-
-    append_linked_text( ) ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_space_if_not_empty
-//
-//  Appends a space to
-//  global_to_text_item_id
-//  if it is not empty.
-//  If the text item is categorized as a list of
-//  numbers (integer or decimal), must convert
-//  text item into characters.
-
-void append_space_if_not_empty( )
-{
-    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
-    {
-        log_out << "todo: append space" << std::endl ;
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_linked_text
-
-void copy_linked_text( )
-{
-    text_item_clear( ) ;
-    append_linked_text( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_copied_text
-
-void copy_copied_text( )
-{
-    text_item_clear( ) ;
-    append_copied_text( ) ;
     return ;
 }
 
@@ -2276,35 +2089,12 @@ while ( 1 == 1 )
 
 
 // -----------------------------------------------
-//  Handle the category "unicode_anything".
-//  Supply the next character.  If there are no
-//  more characters, pop the stack and point to
-//  the text item at the next lower level, and
-//  repeat the loop.
-
-        case global_category_contains_unicode_anything :
-            global_character_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
-            if ( global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] )
-            {
-                global_single_character_as_integer = global_storage_all_text[ global_character_pointer ] ;
-                log_out << "character " << global_single_character_as_integer << std::endl ;
-                global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ++ ;
-                return ;
-            } else
-            {
-
-                log_out << "incomplete code: pop stack" << std::endl ;
-
-                continue ;
-            }
-            break ;
-
-
-// -----------------------------------------------
 //  Handle the category "list_of_text_item_ids".
 
         case global_category_contains_list_of_text_item_ids :
 
+            global_text_item_id = 116 ;
+            exit_not_yet_supported( ) ;
             log_out << "incomplete code: handle list of text items" << std::endl ;
 
             global_text_item_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
@@ -2324,19 +2114,10 @@ while ( 1 == 1 )
 
 
 // -----------------------------------------------
-//  Handle the category "unicode_no_delimiters".
-
-        case global_category_contains_unicode_no_delimiters :
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
 //  Handle the category "hyphenated_phrase_name".
 
         case global_category_contains_hyphenated_phrase_name :
-            global_text_item_id = global_to_text_contains_category ;
+            global_text_item_id = global_to_text_item_id ;
             exit_not_yet_supported( ) ;
             break ;
 
@@ -2345,7 +2126,7 @@ while ( 1 == 1 )
 //  Handle the category "list_of_integers".
 
         case global_category_contains_list_of_integers :
-            global_text_item_id = global_to_text_contains_category ;
+            global_text_item_id = global_to_text_item_id ;
             exit_not_yet_supported( ) ;
             break ;
 
@@ -2354,17 +2135,34 @@ while ( 1 == 1 )
 //  Handle the category "pointers_to_decimal_numbers".
 
         case global_category_contains_pointers_to_decimal_numbers :
-            global_text_item_id = global_to_text_contains_category ;
+            global_text_item_id = global_to_text_item_id ;
             exit_not_yet_supported( ) ;
             break ;
 
 
 // -----------------------------------------------
-//  If the text item category was not recognized,
-//  there is a bug.
+//  Handle the category "unicode_anything" or the
+//  category "unicode_no_delimiters".
+//  Supply the next character.  If there are no
+//  more characters, pop the stack and point to
+//  the text item at the next lower level, and
+//  repeat the loop.
 
         default :
-            log_out << "BUG, invalid text item category" << std::endl ;
+            global_character_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+            if ( global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] )
+            {
+                global_single_character_as_integer = global_storage_all_text[ global_character_pointer ] ;
+                log_out << "character " << global_single_character_as_integer << std::endl ;
+                global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ++ ;
+                return ;
+            } else
+            {
+                log_out << "incomplete code: pop stack" << std::endl ;
+                global_text_item_id = 112 ;
+                exit_not_yet_supported( ) ;
+                continue ;
+            }
             break ;
 
 
@@ -2392,15 +2190,226 @@ while ( 1 == 1 )
 }
 
 
-
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function remove_leading_delimiters
 
 void remove_leading_delimiters( )
 {
-    global_text_item_id = 81 ;
-    exit_not_yet_supported( ) ;
+    initialize_get_next_character_from_text_item( ) ;
+    global_single_character_as_integer = 1 ;
+    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_prior_character_was_delimiter == global_yes ) )
+    {
+        get_next_character_from_text_item( ) ;
+        if ( global_yes_or_no_prior_character_was_delimiter == global_no )
+        {
+            for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
+            {
+                global_text_item_id = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+                global_text_pointer_begin_for_item[ global_text_item_id ] = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+            }
+            if ( global_single_character_as_integer == 0 )
+            {
+                return ;
+            }
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_get_previous_character_from_text_item
+//
+//  The backwards version of
+//  initialize_get_next_character_from_text_item
+
+void initialize_get_previous_character_from_text_item( )
+{
+	initialize_get_next_character_from_text_item( ) ;
+    global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_previous_character_from_text_item
+//
+//  The backwards version of
+//  get_next_character_from_text_item
+
+void get_previous_character_from_text_item( )
+{
+
+
+// -----------------------------------------------
+//  Begin a loop that begins by pointing to the
+//  last character in the text item.  When needed,
+//  move up or down the stack, or sometimes both
+//  up and down.  This function exits within the
+//  loop as soon as the previous character is
+//  known.
+
+global_single_character_as_integer = 0 ;
+while ( 1 == 1 )
+{
+
+
+// -----------------------------------------------
+//  Write debugging info.
+
+    log_out << "stack number " << global_current_stack_number_for_getting_next_character << ", stack level " << global_current_stack_level_for_getting_next_character << ", yes/no begin of text item " << global_yes_or_no_reached_begin_of_current_text_item << ", text item " << global_text_item_id_for_getting_next_character << ", character pointer " << global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] << ", text item category " << global_text_item_category << std::endl ;
+
+
+// -----------------------------------------------
+//  If the following character was the last
+//  character in the current-level text item,
+//  track this situation.  Allow for the
+//  possibility that the text item is empty.
+
+    global_yes_or_no_reached_begin_of_current_text_item = global_no ;
+    if ( global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] <= global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] )
+    {
+        global_yes_or_no_reached_begin_of_current_text_item = global_yes ;
+    }
+
+
+// -----------------------------------------------
+//  If the last character has already been
+//  supplied, supply the character number as zero.
+
+    if ( ( global_current_stack_level_for_getting_next_character == 1 ) && ( global_yes_or_no_reached_begin_of_current_text_item == global_yes ) )
+    {
+        global_single_character_as_integer = 0 ;
+        log_out << "begin of text" << std::endl ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the end of a sub text item has been
+//  reached, move to a lower level on the stack,
+//  and repeat the loop.  Get the information for
+//  this text item from the stack.
+
+    if ( global_yes_or_no_reached_begin_of_current_text_item == global_yes )
+    {
+        global_current_stack_level_for_getting_next_character -- ;
+        global_text_item_id_for_getting_next_character = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+        global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] ;
+        global_text_item_category = global_text_category_for_item[ global_text_item_id_for_getting_next_character ] ;
+        continue ;
+    }
+
+
+// -----------------------------------------------
+//  Jump to the appropriate section based on the
+//  category of the text item or sub text item.
+
+    switch ( global_text_item_category )
+    {
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_text_item_ids".
+
+        case global_category_contains_list_of_text_item_ids :
+
+            global_text_item_id = 116 ;
+            exit_not_yet_supported( ) ;
+            log_out << "incomplete code: handle list of text items" << std::endl ;
+
+            global_text_item_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+
+            global_text_item_id_for_getting_next_character = global_storage_all_text[ global_text_item_pointer ] ;
+
+            global_current_stack_level_for_getting_next_character ++ ;
+
+            global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_item_id_for_getting_next_character ;
+
+            global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] ;
+
+            global_text_item_category = global_text_category_for_item[ global_text_item_id_for_getting_next_character ] ;
+
+            continue ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "hyphenated_phrase_name".
+
+        case global_category_contains_hyphenated_phrase_name :
+            global_text_item_id = global_to_text_item_id ;
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "list_of_integers".
+
+        case global_category_contains_list_of_integers :
+            global_text_item_id = global_to_text_item_id ;
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "pointers_to_decimal_numbers".
+
+        case global_category_contains_pointers_to_decimal_numbers :
+            global_text_item_id = global_to_text_item_id ;
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  Handle the category "unicode_anything" or the
+//  category "unicode_no_delimiters".
+//  Supply the next character.  If there are no
+//  more characters, pop the stack and point to
+//  the text item at the next lower level, and
+//  repeat the loop.
+
+        default :
+            global_character_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+            if ( global_character_pointer >= global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] )
+            {
+                global_single_character_as_integer = global_storage_all_text[ global_character_pointer ] ;
+                log_out << "character " << global_single_character_as_integer << std::endl ;
+                global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ++ ;
+                return ;
+            } else
+            {
+                log_out << "incomplete code: pop stack" << std::endl ;
+                global_text_item_id = 112 ;
+                exit_not_yet_supported( ) ;
+                continue ;
+            }
+            break ;
+
+
+// -----------------------------------------------
+//  End of cases for the category of the current
+//  text item.
+
+        }
+
+
+// -----------------------------------------------
+//  Repeat the loop to handle pointing to the next
+//  character.
+
+        log_out << "[Error, likely infinite loop]" << std::endl ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  All done in function get_previous_character_from_text_item.
+
+    return ;
+
 }
 
 
@@ -2408,13 +2417,386 @@ void remove_leading_delimiters( )
 // -----------------------------------------------
 //  Function remove_trailing_delimiters
 //
-//  traverse backwards from end, see
-//  remove_leading_delimiters
+//  The backwards version of
+//  remove_leading_delimiters.
 
 void remove_trailing_delimiters( )
 {
-    global_text_item_id = 82 ;
+    initialize_get_previous_character_from_text_item( ) ;
+    global_single_character_as_integer = 1 ;
+    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_prior_character_was_delimiter == global_yes ) )
+    {
+        get_next_character_from_text_item( ) ;
+        if ( global_yes_or_no_prior_character_was_delimiter == global_no )
+        {
+            for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
+            {
+                global_text_item_id = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+                global_text_pointer_end_for_item[ global_text_item_id ] = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+            }
+            if ( global_single_character_as_integer == 0 )
+            {
+                return ;
+            }
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function remove_leading_and_trailing_delimiters
+
+void remove_leading_and_trailing_delimiters( )
+{
+    remove_leading_delimiters( ) ;
+    remove_trailing_delimiters( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function text_item_clear
+//
+//  Changes a text item to point to nothing, but
+//  does not change any linked lower-level text
+//  items.  If the text item still can possibly be
+//  referenced by another higher-level text item,
+//  do not use this function, and instead point to
+//  the empty text item or create a new text item.
+
+void text_item_clear( )
+{
+    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_space_if_not_empty
+//
+//  Appends a space to
+//  global_to_text_item_id
+//  if it is not empty.
+//  If the text item is categorized as a list of
+//  numbers (integer or decimal), must convert
+//  text item into characters.
+
+void append_space_if_not_empty( )
+{
+    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
+    {
+        if ( global_text_category_for_item[ global_to_text_item_id ] == global_category_contains_list_of_text_item_ids )
+        {
+            check_yes_or_no_can_extend_text_item( ) ;
+            if ( global_yes_or_no_can_extend_text_item == global_yes )
+            {
+                global_one_number_to_append = global_text_item_id_for_single_space ;
+            } else
+            {
+                global_text_item_id = 111 ;
+                exit_not_yet_supported( ) ;
+                return ;
+            }
+        } else
+        {
+            global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
+            assign_storage_for_new_text_item( ) ;
+            global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+//  insert the to and space IDs, but not the from ID
+//        global_storage_all_text
+            global_to_text_item_id = global_new_storage_text_item_id ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_linked_text
+//
+//  Appends text assuming that the text being
+//  appended will not change, so just add a link
+//  to the text being appended.  The text item
+//  to be appended is specified by the text item
+//  ID number in global_from_text_item_id,
+//  and the text item being extended is specified
+//  by the text item ID number in
+//  global_to_text_item_id.  The value in
+//  global_yes_or_no_requesting_space_appended
+//  indicates whether to insert a space between
+//  non-empty text being extended and non-empty
+//  text being appended.
+//
+//  If the text item is almost full, create a new
+//  sub text item and point to it with the last
+//  available linked-list position, and append
+//  the linked text item to the beginning of the
+//  new sub text item.  The result leaves room
+//  for more sub text items to be appended
+//  without needing to add a new sub text item
+//  for every appended text item.
+
+void append_linked_text( )
+{
+
+
+// -----------------------------------------------
+//  If the text being appended is empty, there is
+//  nothing to do.
+
+    if ( global_text_pointer_end_for_item[ global_from_text_item_id ] < global_text_pointer_begin_for_item[ global_from_text_item_id ] )
+    {
+        log_out << "text to append is empty so nothing to append" << std::endl ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the text being extended is empty, just put
+//  a pointer into the text being extended.  The
+//  pointer points to the text being appended.
+
+    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
+    {
+        global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
+        switch ( global_to_text_contains_category )
+        {
+            case global_category_contains_list_of_text_item_ids :
+                global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
+                global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+                return ;
+                break ;
+            case global_category_contains_hyphenated_phrase_name :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_list_of_integers :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            case global_category_contains_pointers_to_decimal_numbers :
+                global_text_item_id = global_to_text_contains_category ;
+                exit_not_yet_supported( ) ;
+                return ;
+                break ;
+            default :
+//  covers categories unicode_anything and unicode_no_delimiters :
+                global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
+                global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+                global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+                return ;
+                break ;
+
+        }
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the text being extended is not empty and
+//  there is a request to insert a space between
+//  the extended text and the appended text,
+//  insert a space.
+
+    if ( global_yes_or_no_requesting_space_appended == global_yes )
+    {
+        append_space_if_not_empty( ) ;
+    }
+
+
+// -----------------------------------------------
+//  Get the categories of the "from" and "to" text
+//  items.
+
+    global_from_text_contains_category = global_text_category_for_item[ global_from_text_item_id ] ;
+    global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
+
+
+// -----------------------------------------------
+//  If the "to" and "from" categories are
+//  different, create a new text item of category
+//  "list_of_text_item_ids" and into it put
+//  pointers that point to the "to" and "from"
+//  text items, and change the text item ID of the
+//  "to" text item, then return.
+
+    if ( global_from_text_contains_category != global_to_text_contains_category )
+    {
+        global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
+        assign_storage_for_new_text_item( ) ;
+        global_one_number_to_append = global_to_text_item_id ;
+        global_to_text_item_id = global_new_storage_text_item_id ;
+        store_one_text_character( ) ;
+        global_one_number_to_append = global_text_item_id_for_single_space ;
+        store_one_text_character( ) ;
+        global_one_number_to_append = global_from_text_contains_category ;
+        store_one_text_character( ) ;
+        global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  Begin a branch that handles cases where the
+//  "from" and "to" categories are the same.  Each
+//  branch handles a different category type.
+//
+//  Possibly move this code to a function that
+//  can call itself, to allow for nested levels
+//  of text items.
+
+    switch ( global_to_text_contains_category )
+    {
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  contains_unicode_anything, then add the
+//  characters if they fit, and otherwise add to
+//  the higher-level item a pointer to the text.
+
+        case global_category_contains_unicode_anything :
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
+
+//            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
+//            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+//            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
+
+
+            global_text_item_id = global_to_text_contains_category ;
+            exit_not_yet_supported( ) ;
+            global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
+            global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
+            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  contains_list_of_text_item_ids, then add the
+//  pointer.
+  
+        case global_category_contains_list_of_text_item_ids :
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  "unicode_no_delimiters", ...
+
+        case global_category_contains_unicode_no_delimiters :
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  "contains_hyphenated_phrase_name", ...
+
+        case global_category_contains_hyphenated_phrase_name :
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  "contains_list_of_integers", add the integer
+//  (or integers) to the list.
+
+        case global_category_contains_list_of_integers :
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  "contains_pointers_to_decimal_numbers", add
+//  the pointers to the list.
+
+        case global_category_contains_pointers_to_decimal_numbers :
+            exit_not_yet_supported( ) ;
+            break ;
+
+
+// -----------------------------------------------
+//  Otherwise there is an error.
+
+        default :
+            log_out << "BUG: one or more text item categories are not recognized" << std::endl ;
+            break ;
+
+
+// -----------------------------------------------
+//  End of "switch" statement.
+
+    }
+
+
+// -----------------------------------------------
+//  End of function append_linked_text.
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_copied_text
+
+//  Appends text assuming that the text being
+//  appended will change, so a copy of that text
+//  must be stored.  The text item to be appended
+//  is specified by the text item ID number in
+//  global_from_text_item_id, and the text
+//  item being extended is specified by the text
+//  item ID number in
+//  global_to_text_item_id.
+
+void append_copied_text( )
+{
+    text_item_clear( ) ;
+    global_text_item_id = 111 ;
     exit_not_yet_supported( ) ;
+    log_out << "todo: here, need code that copies text to be appended" << std::endl ;
+    append_linked_text( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_linked_text
+
+void copy_linked_text( )
+{
+    text_item_clear( ) ;
+    append_linked_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_copied_text
+
+void copy_copied_text( )
+{
+    text_item_clear( ) ;
+    append_copied_text( ) ;
+    return ;
 }
 
 
@@ -2431,6 +2813,7 @@ void reorganize_as_linked_list_of_words( )
 {
     global_text_item_id = 80 ;
     exit_not_yet_supported( ) ;
+    return ;
 }
 
 
@@ -2891,10 +3274,10 @@ void check_for_word_specify_or_attribute( )
 //
 //  Checks if two sequences of text characters are
 //  the same.  It starts checking at both the
-//  beginning and the end.  This approach is
-//  faster when the two text sequences are
-//  numbers because the end digits are more likely
-//  to be different.
+//  beginning and the end.  This approach is more
+//  often going to be faster when the two text
+//  sequences are numbers because the end digits
+//  are more likely to be different.
 
 void yes_or_no_matching_text( )
 {
@@ -3064,134 +3447,14 @@ void lookup_hyphenated_phrase_name( )
 //  "parsed_hyphenated_phrase_name" area.  This
 //  function assumes the hyphenated phrase name
 //  does not match any existing hyphenated phrase
-//  name.
-//
-//  Later, avoid duplicating any words that are
+//  name.  Do not duplicate any words that are
 //  already used in other hyphenated phrase names.
 
 void add_new_hyphenated_phrase_name( )
 {
-
-// todo:
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function initialize_parse_characters_for_expand_text
-
-void initialize_parse_characters_for_expand_text( )
-{
-    global_recent_character_position_for_character_number_beyond_ascii = 0 ;
-    global_yes_or_no_prior_character_was_delimiter = global_yes ;
-    global_yes_or_no_delimiter_encountered = global_yes ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function parse_one_character_for_expand_text
-
-void parse_one_character_for_expand_text( )
-{
-
-    log_out << global_single_character_as_integer << std::endl ;
-
-    if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
-    {
-        switch ( global_single_character_as_integer )
-        {
-            case global_ascii_code_for_hyphen :
-                global_character_usage_buffer_rotation_number_for_hyphen ++ ;
-                if ( global_character_usage_buffer_rotation_number_for_hyphen > global_maximum_character_usage_buffer_rotation_number )
-                {
-                    global_character_usage_buffer_rotation_number_for_hyphen = 1 ;
-                }
-                global_character_usage_position_for_hyphen_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
-                break ;
-            case global_ascii_code_for_underscore :
-                global_character_usage_buffer_rotation_number_for_underscore ++ ;
-                if ( global_character_usage_buffer_rotation_number_for_underscore > global_maximum_character_usage_buffer_rotation_number )
-                {
-                    global_character_usage_buffer_rotation_number_for_underscore = 1 ;
-                }
-                global_character_usage_position_for_underscore_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
-                break ;
-            case global_ascii_code_for_letter_t :
-                global_character_usage_buffer_rotation_number_for_letter_t ++ ;
-                if ( global_character_usage_buffer_rotation_number_for_letter_t > global_maximum_character_usage_buffer_rotation_number )
-                {
-                    global_character_usage_buffer_rotation_number_for_letter_t = 1 ;
-                }
-                global_character_usage_position_for_letter_t_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_letter_t ] = global_character_count_for_expand_text ;
-                break ;
-            default :
-                global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_character_count_for_expand_text ;
-                break ;
-        }
-    } else
-    {
-        global_recent_character_position_for_character_number_beyond_ascii = global_character_count_for_expand_text ;
-    }
-    global_yes_or_no_delimiter_encountered = global_no ;
-    switch ( global_single_character_as_integer )
-    {
-        case global_ascii_code_for_space :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_tab :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_newline :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_formfeed :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_carriage_return :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-    }
-    if ( global_yes_or_no_delimiter_encountered == global_yes )
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_no )
-        {
-            log_out << "transition from characters to delimiter" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_yes ;
-    } else
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
-        {
-            log_out << "transition from delimiter to characters" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_no ;
-    }
+    global_text_item_id = 102 ;
+    exit_not_yet_supported( ) ;
     return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function test_parsing_characters_for_expand_text
-
-void test_parsing_characters_for_expand_text( )
-{
-    global_yes_or_no_looking_for_word_attribute_or_specify = global_yes ;
-    global_from_text_item_id = global_text_item_id_for_sample_text_to_expand ;
-    initialize_parse_characters_for_expand_text( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
-    {
-        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
-        parse_one_character_for_expand_text( ) ;
-
-//  todo: ...
-
-    }
-
-    log_out << "test parsing done" << std::endl ;
-
 }
 
 
@@ -3312,8 +3575,6 @@ void find_subtext( )
 // -----------------------------------------------
 //  Function insert_into_subtext
 
-//  todo:
-
 void insert_into_subtext( )
 {
     global_text_item_id = 87 ;
@@ -3398,18 +3659,18 @@ void parameterized_append_text_using_copies( int local_text_item_id )
 void parameterized_get_phrase_definition( int local_to_text_item_id , int local_from_text_item_id )
 {
     local_to_text_item_id = global_id_of_item_containing_definition_for_item[ local_from_text_item_id ] ;
-	return ;
+    return ;
 }
 
 void parameterized_put_phrase_definition( int local_from_text_item_id , int local_to_text_item_id )
 {
     global_id_of_item_containing_definition_for_item[ local_to_text_item_id ] = local_from_text_item_id ;
-	return ;
+    return ;
 }
 
 void dashrep_expand_phrases( )
 {
-	expand_text( ) ;
+    expand_text( ) ;
     return ;
 }
 
@@ -3704,7 +3965,7 @@ void do_everything( )
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-    test_parsing_characters_for_expand_text( ) ;
+    test_parsing_characters_individually( ) ;
 
 //    read_text_line_from_file( ) ;
 
