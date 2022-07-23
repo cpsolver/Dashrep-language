@@ -2558,42 +2558,23 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the text being extended is empty, just put
-//  a pointer into the text being extended.  The
+//  a pointer into the text being extended, and
+//  specify a category of "list_of_text_items"
+//  regardless of what it was before.  The
 //  pointer points to the text being appended.
 
     if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
     {
         global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
-        switch ( global_to_text_contains_category )
+        if ( global_to_text_contains_category == global_category_contains_list_of_text_item_ids )
         {
-            case global_category_contains_list_of_text_item_ids :
-                global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
-                global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-                return ;
-                break ;
-            case global_category_contains_hyphenated_phrase_name :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            case global_category_contains_list_of_integers :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            case global_category_contains_pointers_to_decimal_numbers :
-                global_text_item_id = global_to_text_contains_category ;
-                exit_not_yet_supported( ) ;
-                return ;
-                break ;
-            default :
-//  covers categories unicode_anything and unicode_no_delimiters :
-                global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
-                global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-                global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
-                return ;
-                break ;
-
+            global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
+            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+        } else
+        {
+            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
+            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+	        global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
         }
         return ;
     }
@@ -2683,7 +2664,7 @@ void append_linked_text( )
 // -----------------------------------------------
 //  If the categories of the "from" and "to" text
 //  items are both of category
-//  contains_list_of_text_item_ids, then add the
+//  "contains_list_of_text_item_ids", then add the
 //  pointer.
   
         case global_category_contains_list_of_text_item_ids :
@@ -3518,10 +3499,10 @@ int find_matching_text( )
 //  global_pointer_to_within_text_item
 //  global_finding_match_text_item_id
 //
-//  uses symbol categorization with switch
-//  statement, if non-symbol alphanumeric text is
+//  Uses symbol categorization with switch
+//  statement.  If non-symbol alphanumeric text is
 //  part of the intended pattern, first find that
-//  text using find_matching_text
+//  text using find_matching_text.
 
 void point_to_pattern_matching_text( )
 {
@@ -3625,13 +3606,335 @@ void get_text_by_character_offset_and_length( )
 //
 //  Expands the text item indicated in
 //  global_from_text_item_id.
-//
-//  use current runtime version for details
+
+//  Currently being changed from Perl code to C.
 
 void expand_text( )
 {
     global_text_item_id = 92 ;
     exit_not_yet_supported( ) ;
+
+
+// -----------------------------------------------
+//  Declarations.
+
+	int expand_endless_cycle_count_maximum ;
+	int supplied_text ;
+	int current_phrase ;
+	int result_text ;
+	int output_buffer ;
+	int space_directive ;
+	int expand_endless_loop_counter ;
+	int expand_endless_loop_counter_maximum ;
+	int recursion_level ;
+	int pointer_to_phrase_begin ;
+	int pointer_to_next_space ;
+	int pointer_to_phrase_end ;
+	int prior_length ;
+	int prefix ;
+	int possible_phrase_name_with_underscores ;
+	int length_of_tag ;
+	int new_output_buffer ;
+	int pointer_to_remainder_of_output_buffer ;
+	int possible_phrase_name_with_hyphens ;
+	int pointer_to_close_angle_bracket ;
+	int length_of_output_buffer ;
+	int maximum_cycle_count ;
+	int phrase_name ;
+	int cycle_count ;
+	int phrase_name_with_highest_cycle_count ;
+	int length_of_code_at_recursion_level_current ;
+
+	int code_at_recursion_level[ 105 ] ;
+	int length_of_code_at_recursion_level[ 105 ] ;
+	int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
+
+
+// -----------------------------------------------
+//  Get the hyphenated phrase or supplied string.
+
+// if ( scalar( @_ ) == 1 ) {
+// supplied_text = $_[ 0 ] ;
+// } else {
+// result_text = '' ;
+// return $result_text ;
+// }
+
+
+// -----------------------------------------------
+//  Initialization.
+
+// space_directive = 'none' ;
+// result_text = '' ;
+// output_buffer = '' ;
+// pointer_to_remainder_of_output_buffer = 0 ;
+// new_output_buffer = '' ;
+// possible_phrase_name_with_underscores = '' ;
+// expand_endless_loop_counter = 0 ;
+// expand_endless_loop_counter_maximum = 100000 ;
+// expand_endless_cycle_count_maximum = 100000 ;
+
+// @code_at_recursion_level = ( ) ;
+// @length_of_code_at_recursion_level = ( ) ;
+// @pointer_to_remainder_of_code_at_recursion_level = ( ) ;
+
+// code_at_recursion_level[ 0 ] = 'unused' ;
+// pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;
+// length_of_code_at_recursion_level[ 0 ] = 0 ;
+
+
+// -----------------------------------------------
+//  Begin a loop that handles each space delimited
+//  string in the phrase definition.
+
+// code_at_recursion_level[ 1 ] = supplied_text ;
+// pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
+// length_of_code_at_recursion_level[ 1 ] = length( code_at_recursion_level[ 1 ] ) ;
+// recursion_level = 1 ;
+// while ( ( recursion_level > 0 ) && ( expand_endless_loop_counter <= expand_endless_loop_counter_maximum ) ) {
+// expand_endless_loop_counter ++ ;
+
+
+// -----------------------------------------------
+//  Get the next phrase name.  If there is no more
+//  code at the current recursion level, shift
+//  back to the previous recursion level.  When
+//  the recursion_level reaches zero, the loop
+//  will end.
+
+// length_of_code_at_recursion_level_current = length_of_code_at_recursion_level[ recursion_level ] ;
+// if ( length_of_code_at_recursion_level_current == 0 ) {
+// recursion_level <character_hyphen><character_hyphen> ;
+// next ;
+// }
+// pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;
+// while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq ' ' ) ) {
+// pointer_to_phrase_begin ++ ;
+// }
+// pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
+// if ( pointer_to_next_space == -1 ) {
+// pointer_to_phrase_end = length_of_code_at_recursion_level_current - 1 ;
+// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = length_of_code_at_recursion_level_current ;
+// } else {
+// pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
+// if ( pointer_to_next_space > pointer_to_phrase_begin ) {
+// pointer_to_phrase_end = pointer_to_next_space - 1 ;
+// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_next_space ;
+// } else {
+// pointer_to_phrase_end = <character_hyphen>2 ;
+// }
+// }
+// if ( pointer_to_phrase_begin > pointer_to_phrase_end ) {
+// recursion_level <character_hyphen><character_hyphen> ;
+// next ;
+// }
+// current_phrase = substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , ( pointer_to_phrase_end - pointer_to_phrase_begin + 1 ) ) ;
+
+
+// -----------------------------------------------
+// Check for an endless loop caused by the same
+// phrase name being encountered too many times.
+// If this occurs, exit the endless loop.
+
+// if ( global_yes_or_no_count_phrase_usage == global_yes ) {
+// global_number_of_times_encountered_phrase_named{ current_phrase } ++ ;
+// if ( global_number_of_times_encountered_phrase_named{ current_phrase } >= expand_endless_cycle_count_maximum ) {
+// maximum_cycle_count = 0 ;
+// foreach phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {
+// cycle_count = global_number_of_times_encountered_phrase_named{ phrase_name } ;
+// if ( cycle_count > maximum_cycle_count ) {
+// maximum_cycle_count = cycle_count ;
+// phrase_name = phrase_name_with_highest_cycle_count ;
+// }
+// }
+// global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . phrase_name_with_highest_cycle_count . ' ' . maximum_cycle_count . "\n" ;
+// print global_action_result . "\n" ;
+// return '' ;
+// }
+// }
+
+
+// -----------------------------------------------
+//  If the phrase name is a hyphen directive, or a
+//  space directive, or a line directive, handle
+//  it.
+
+// if ( current_phrase eq ( 'hyphen' . '-' . 'here' ) ) {
+// output_buffer .= '-' ;
+// space_directive = 'none' ;
+// next ;
+// }
+// if ( current_phrase eq ( 'no' . '-' . 'space' ) ) {
+// if ( space_directive ne 'one_requested' ) {
+// space_directive = 'none' ;
+// }
+// next ;
+// }
+// if ( current_phrase eq ( '<' . 'no_space' . '>' ) ) {
+// space_directive = 'none' ;
+// next ;
+// }
+// if ( current_phrase eq ( 'one' . '-' . 'space' ) ) {
+// space_directive = 'one_requested' ;
+// next ;
+// }
+// if ( current_phrase eq ( '<' . 'one_space' . '>' ) ) {
+// space_directive = 'one_requested' ;
+// next ;
+// }
+// if ( current_phrase eq ( 'new' . '-' . 'line' ) ) {
+// output_buffer .= "\n" ;
+// space_directive = 'none' ;
+// next ;
+// }
+// if ( current_phrase eq ( '<' . 'new_line' . '>' ) ) {
+// output_buffer .= "\n" ;
+// space_directive = 'none' ;
+// next ;
+// }
+// if ( current_phrase eq ( 'empty' . '-' . 'line' ) ) {
+// output_buffer .= "\n\n" ;
+// space_directive = 'none' ;
+// next ;
+// }
+// if ( current_phrase eq ( '<' . 'empty_line' . '>' ) ) {
+// output_buffer .= "\n\n" ;
+// space_directive = 'none' ;
+// next ;
+// }
+
+
+// -----------------------------------------------
+//  If the phrase name has a definition (which can
+//  be empty), and it is not a space directive or
+//  line directive, insert phrase definition into
+//  the text being expanded, and remove the phrase
+//  name.
+
+// if ( ( current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( global_dashrep_replacement{ current_phrase } ) ) ) {
+// recursion_level ++ ;
+// code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase } ;
+// length_of_code_at_recursion_level[ recursion_level ] = length( code_at_recursion_level[ recursion_level ] ) ;
+// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = 0 ;
+// next ;
+// }
+
+
+// -----------------------------------------------
+//  If a space should be inserted here, insert it.
+//  Specify a default of inserting one space after
+//  the next phrase insertion.
+
+// if ( ( space_directive eq 'one' ) || ( space_directive eq 'one_requested' ) ) {
+// output_buffer .= ' ' ;
+// }
+// space_directive = 'one' ;
+
+
+// -----------------------------------------------
+//  At this point the current text string is not
+//  the name of a defined phrase, so just use the
+//  text string.
+
+// output_buffer .= current_phrase ;
+// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_phrase_end + 1 ;
+
+
+// -----------------------------------------------
+//  In the output buffer, if there is a
+//  "<specify " string that needs to be combined
+//  with the preceding tag, combine it into a
+//  single XML or HTML tag.  Handle tags of type
+//  "<xyz />" as well as "<xyz>".
+
+// if ( index( output_buffer , '<specify ' ) > 0 ) {
+// prior_length = 0 ;
+// while ( length( output_buffer ) != prior_length ) {
+// prior_length = length( output_buffer ) ;
+// output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
+// }
+// if ( index( output_buffer , '<specify ' ) > 0 ) {
+// prior_length = 0 ;
+// while ( length( output_buffer ) != prior_length ) {
+// prior_length = length( output_buffer ) ;
+// output_buffer =~ s/ *> *<specify +/ / ;
+// }
+// }
+// }
+
+
+// -----------------------------------------------
+//  If the output buffer contains a recognized
+//  phrase name using underscores instead of
+//  hyphens, and it is enclosed in angle brackets
+//  (with no spaces), then replace that text with
+//  the definition of the specified phrase.
+
+// output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ;
+// output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;
+// output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
+
+// if ( output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) {
+// space_directive = 'none' ;
+// }
+// length_of_output_buffer = -1 ;
+// pointer_to_remainder_of_output_buffer = 0 ;
+// new_output_buffer = '' ;
+// while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \<character_hyphen><character_close_angle_bracket>]+_[^ \<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) {
+// prefix = $1 ;
+// possible_phrase_name_with_underscores = $2 ;
+// length_of_output_buffer = length( output_buffer ) ;
+// new_output_buffer .= prefix ;
+// length_of_tag = length( possible_phrase_name_with_underscores ) ;
+// pointer_to_remainder_of_output_buffer += length( prefix ) + length_of_tag + 2 ;
+
+// possible_phrase_name_with_hyphens = possible_phrase_name_with_underscores ;
+// possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ;
+// if ( exists( global_dashrep_replacement{ possible_phrase_name_with_hyphens } ) ) {
+// new_output_buffer .= global_dashrep_replacement{ possible_phrase_name_with_hyphens } ;
+// } else {
+// new_output_buffer .= '<' . possible_phrase_name_with_underscores . '>' ;
+// }
+// }
+// if ( length_of_output_buffer != -1 ) {
+// output_buffer = new_output_buffer . substr( output_buffer , pointer_to_remainder_of_output_buffer ) ;
+// new_output_buffer = '' ;
+// possible_phrase_name_with_underscores = '' ;
+// }
+
+
+// -----------------------------------------------
+//  If the output buffer does not contain any text
+//  that might need to be revised, then append it
+//  to the result text.
+
+// pointer_to_close_angle_bracket = index( output_buffer , '>' ) ;
+// if ( pointer_to_close_angle_bracket < 0 ) {
+// result_text .= output_buffer ;
+// output_buffer = '' ;
+// } elsif ( length( output_buffer ) > 1000 ) {
+// result_text .= substr( output_buffer , 0 , 500 ) ;
+// output_buffer = substr( output_buffer , 500 ) ;
+// }
+
+
+// -----------------------------------------------
+//  Repeat the loop that handles each space
+//  delimited string.
+
+// }
+
+
+// -----------------------------------------------
+//  Supply the results.
+
+// result_text .= output_buffer ;
+// return result_text ;
+
+
+// -----------------------------------------------
+//  End of function expand_text.
+
 }
 
 
@@ -3641,6 +3944,13 @@ void expand_text( )
 //  These are needed to match the use of functions
 //  in the Perl version, but these will be
 //  eliminated later.
+
+int parameterized_dashrep_expand_text( int local_text_item_id )
+{
+    global_from_text_item_id = local_text_item_id ;
+    expand_text( ) ;
+    return global_to_text_item_id ;
+}
 
 void parameterized_append_text_using_links( int local_text_item_id )
 {
@@ -3665,12 +3975,6 @@ void parameterized_get_phrase_definition( int local_to_text_item_id , int local_
 void parameterized_put_phrase_definition( int local_from_text_item_id , int local_to_text_item_id )
 {
     global_id_of_item_containing_definition_for_item[ local_to_text_item_id ] = local_from_text_item_id ;
-    return ;
-}
-
-void dashrep_expand_phrases( )
-{
-    expand_text( ) ;
     return ;
 }
 
