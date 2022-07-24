@@ -989,9 +989,10 @@ int global_text_item_pointer ;
 
 
 // -----------------------------------------------
-//  Declare other pointers.
+//  Declare other pointers and character counters.
 
 int global_word_position ;
+int global_space_available_in_text_item ;
 
 
 // -----------------------------------------------
@@ -1004,7 +1005,6 @@ int global_yes_or_no_reached_end_of_current_text_item ;
 int global_yes_or_no_same_unicode_characters ;
 int global_yes_or_no_same_hyphenated_phrase_name ;
 int global_yes_or_no_requesting_space_appended ;
-int global_yes_or_no_can_extend_text_item ;
 int global_yes_or_no_negative_number ;
 int global_yes_or_no_decimal_number ;
 int global_yes_or_no_number_is_valid ;
@@ -1016,6 +1016,7 @@ int global_yes_or_no_folder_name_is_valid ;
 int global_yes_or_no_in_folder_name_before_period ;
 int global_yes_or_no_folder_name_delimiter_encountered ;
 int global_yes_or_no_use_slash_not_backslash ;
+int global_yes_or_no_count_phrase_usage ;
 
 
 // -----------------------------------------------
@@ -1143,17 +1144,11 @@ int check_yes_or_no_text_item_is_empty( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_yes_or_no_can_extend_text_item
+//  Function measure_space_available_in_text_item
 
-void check_yes_or_no_can_extend_text_item( )
+void measure_space_available_in_text_item( )
 {
-    if ( global_text_pointer_end_for_item[ global_text_item_id ] < global_text_pointer_allocation_end_for_item[ global_text_item_id ]  )
-    {
-        global_yes_or_no_can_extend_text_item = global_yes ;
-    } else
-    {
-        global_yes_or_no_can_extend_text_item = global_no ;
-    }
+    global_space_available_in_text_item = global_text_pointer_allocation_end_for_item[ global_text_item_id ] - global_text_pointer_end_for_item[ global_text_item_id ] ;
 }
 
 
@@ -1232,8 +1227,8 @@ void write_single_character_to_file( )
 
 void store_one_text_character( )
 {
-    check_yes_or_no_can_extend_text_item( ) ;
-    if ( global_yes_or_no_can_extend_text_item == global_no )
+    measure_space_available_in_text_item( ) ;
+    if ( global_space_available_in_text_item < 1 )
     {
         log_out << "[BUG:  Cannot expand size of text item ID number " << global_to_text_item_id << "]" ;
         exit( EXIT_FAILURE ) ;
@@ -1952,12 +1947,12 @@ void read_text_line_from_file( )
     while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
-        global_one_number_to_append = global_next_character_number ;
         global_to_text_item_id = global_text_item_id_for_file_input ;
-        check_yes_or_no_can_extend_text_item( ) ;
-        if ( global_yes_or_no_can_extend_text_item == global_yes )
+        measure_space_available_in_text_item( ) ;
+        if ( global_space_available_in_text_item > 1 )
         {
-            store_one_text_character( ) ;
+            global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
+            global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_next_character_number ;
         } else
         {
             log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
@@ -2491,10 +2486,11 @@ void append_space_if_not_empty( )
     {
         if ( global_text_category_for_item[ global_to_text_item_id ] == global_category_contains_list_of_text_item_ids )
         {
-            check_yes_or_no_can_extend_text_item( ) ;
-            if ( global_yes_or_no_can_extend_text_item == global_yes )
+            measure_space_available_in_text_item( ) ;
+            if ( global_space_available_in_text_item >= 2 )
             {
-                global_one_number_to_append = global_text_item_id_for_single_space ;
+                global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
+                global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_text_item_id_for_single_space ;
             } else
             {
                 global_text_item_id = 111 ;
@@ -2551,7 +2547,6 @@ void append_linked_text( )
 
     if ( global_text_pointer_end_for_item[ global_from_text_item_id ] < global_text_pointer_begin_for_item[ global_from_text_item_id ] )
     {
-        log_out << "text to append is empty so nothing to append" << std::endl ;
         return ;
     }
 
@@ -2601,131 +2596,36 @@ void append_linked_text( )
 
 
 // -----------------------------------------------
-//  If the "to" and "from" categories are
-//  different, create a new text item of category
-//  "list_of_text_item_ids" and into it put
-//  pointers that point to the "to" and "from"
-//  text items, and change the text item ID of the
-//  "to" text item, then return.
+//  If the categories of the "from" and "to" text
+//  items are both of category
+//  "contains_list_of_text_item_ids", add the
+//  pointer.
 
-    if ( global_from_text_contains_category != global_to_text_contains_category )
+    if ( ( global_from_text_contains_category == global_category_contains_list_of_text_item_ids ) && ( global_to_text_contains_category == global_category_contains_list_of_text_item_ids ) )
     {
-        global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
-        assign_storage_for_new_text_item( ) ;
-        global_one_number_to_append = global_to_text_item_id ;
-        global_to_text_item_id = global_new_storage_text_item_id ;
-        store_one_text_character( ) ;
-        global_one_number_to_append = global_text_item_id_for_single_space ;
-        store_one_text_character( ) ;
-        global_one_number_to_append = global_from_text_contains_category ;
-        store_one_text_character( ) ;
-        global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+        global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
         return ;
     }
 
 
 // -----------------------------------------------
-//  Begin a branch that handles cases where the
-//  "from" and "to" categories are the same.  Each
-//  branch handles a different category type.
-//
-//  Possibly move this code to a function that
-//  can call itself, to allow for nested levels
-//  of text items.
+//  Create a new text item of category
+//  "list_of_text_item_ids" and into it put
+//  pointers that point to the "to" and "from"
+//  text items, and change the text item ID of the
+//  "to" text item so that the new top-level item
+//  points to both the "to" and "from".
 
-    switch ( global_to_text_contains_category )
-    {
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  contains_unicode_anything, then add the
-//  characters if they fit, and otherwise add to
-//  the higher-level item a pointer to the text.
-
-        case global_category_contains_unicode_anything :
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-
-//            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
-//            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-//            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
-
-
-            global_text_item_id = global_to_text_contains_category ;
-            exit_not_yet_supported( ) ;
-            global_text_pointer_begin_for_item[ global_from_text_item_id ] = 0 ;
-            global_text_pointer_end_for_item[ global_to_text_item_id ] = 0 ;
-            global_id_of_item_containing_definition_for_item[ global_to_text_item_id ] = 0 ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  "contains_list_of_text_item_ids", then add the
-//  pointer.
-  
-        case global_category_contains_list_of_text_item_ids :
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  "unicode_no_delimiters", ...
-
-        case global_category_contains_unicode_no_delimiters :
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  "contains_hyphenated_phrase_name", ...
-
-        case global_category_contains_hyphenated_phrase_name :
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  "contains_list_of_integers", add the integer
-//  (or integers) to the list.
-
-        case global_category_contains_list_of_integers :
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  If the categories of the "from" and "to" text
-//  items are both of category
-//  "contains_pointers_to_decimal_numbers", add
-//  the pointers to the list.
-
-        case global_category_contains_pointers_to_decimal_numbers :
-            exit_not_yet_supported( ) ;
-            break ;
-
-
-// -----------------------------------------------
-//  Otherwise there is an error.
-
-        default :
-            log_out << "BUG: one or more text item categories are not recognized" << std::endl ;
-            break ;
-
-
-// -----------------------------------------------
-//  End of "switch" statement.
-
-    }
+    global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_to_text_item_id ;
+    global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+    global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_from_text_item_id ;
+    global_to_text_item_id = global_new_storage_text_item_id ;
+    return ;
 
 
 // -----------------------------------------------
@@ -2750,9 +2650,16 @@ void append_linked_text( )
 void append_copied_text( )
 {
     text_item_clear( ) ;
-    global_text_item_id = 111 ;
-    exit_not_yet_supported( ) ;
-    log_out << "todo: here, need code that copies text to be appended" << std::endl ;
+    global_length_requested_for_next_text_item_storage = global_text_pointer_end_for_item[ global_from_text_item_id ] - global_text_pointer_begin_for_item[ global_from_text_item_id ] + 1 ;
+    assign_storage_for_new_text_item( ) ;
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_storage_all_text[ global_text_pointer_end_for_item[ global_from_text_item_id ] ]
+         ;
+    }
+    global_text_category_for_item[ global_new_storage_text_item_id ] = global_text_category_for_item[ global_from_text_item_id ] ;
+    global_from_text_item_id = global_new_storage_text_item_id ;
     append_linked_text( ) ;
 }
 
@@ -2789,6 +2696,8 @@ void copy_copied_text( )
 //  of space delimited words, reorganize the text
 //  item so that each word is in a separate
 //  sub-text item that contains no delimiters.
+//
+//  todo: write this code
 
 void reorganize_as_linked_list_of_words( )
 {
@@ -3430,6 +3339,8 @@ void lookup_hyphenated_phrase_name( )
 //  does not match any existing hyphenated phrase
 //  name.  Do not duplicate any words that are
 //  already used in other hyphenated phrase names.
+//
+//  todo: write this code
 
 void add_new_hyphenated_phrase_name( )
 {
@@ -3444,6 +3355,8 @@ void add_new_hyphenated_phrase_name( )
 //  Function convert_into_category_list_of_integers
 //
 //  Use function that parses integers.
+//
+//  todo: write this code
 
 void convert_into_category_list_of_integers( )
 {
@@ -3519,14 +3432,16 @@ void point_to_pattern_matching_text( )
 // -----------------------------------------------
 //  Function point_to_pattern_matching_text_backwards
 //
-//  operates like point_to_pattern_matching_text
-//  but does checking in reverse direction, use for
-//  what can precede a word of characters
+//  Operates like point_to_pattern_matching_text
+//  but does checking in reverse direction.  Use
+//  for what can precede a word of characters
 //
 //  inputs:
 //  global_text_item_id
 //  global_pointer_to_within_text_item
 //  global_finding_match_text_item_id
+
+//  todo:
 
 void point_to_pattern_matching_text_backwards( )
 {
@@ -3556,6 +3471,8 @@ void find_subtext( )
 // -----------------------------------------------
 //  Function insert_into_subtext
 
+//  todo:
+
 void insert_into_subtext( )
 {
     global_text_item_id = 87 ;
@@ -3567,6 +3484,8 @@ void insert_into_subtext( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function text_replace
+
+//  todo:
 
 void text_replace( )
 {
@@ -3588,6 +3507,8 @@ void text_replace( )
 //  runtime text storage conventions.  The result
 //  is a global_text_item_id that indicates the
 //  matching text.
+
+//  todo:
 
 void get_text_by_character_offset_and_length( )
 {
@@ -3619,9 +3540,8 @@ void expand_text( )
 //  Declarations.
 
 	int expand_endless_cycle_count_maximum ;
-	int supplied_text ;
-	int current_phrase ;
-	int result_text ;
+	int current_phrase_text_item_id ;
+	int expand_result_text_item_id ;
 	int output_buffer ;
 	int space_directive ;
 	int expand_endless_loop_counter ;
@@ -3649,30 +3569,30 @@ void expand_text( )
 	int length_of_code_at_recursion_level[ 105 ] ;
 	int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
 
+    int expand_to_text_item_id ;
+    int expand_buffer_text_item_id ;
 
-// -----------------------------------------------
-//  Get the hyphenated phrase or supplied string.
-
-// if ( scalar( @_ ) == 1 ) {
-// supplied_text = $_[ 0 ] ;
-// } else {
-// result_text = '' ;
-// return $result_text ;
-// }
+    const int space_directive_none = 1 ;
+    const int space_directive_one = 2 ;
+    const int space_directive_one_requested = 3 ;
 
 
 // -----------------------------------------------
 //  Initialization.
 
-// space_directive = 'none' ;
-// result_text = '' ;
+    expand_to_text_item_id = global_to_text_item_id ;
+    global_text_item_id = expand_buffer_text_item_id ;
+    text_item_clear( ) ;
+
 // output_buffer = '' ;
-// pointer_to_remainder_of_output_buffer = 0 ;
+    space_directive = space_directive_none ;
 // new_output_buffer = '' ;
 // possible_phrase_name_with_underscores = '' ;
-// expand_endless_loop_counter = 0 ;
-// expand_endless_loop_counter_maximum = 100000 ;
-// expand_endless_cycle_count_maximum = 100000 ;
+
+    pointer_to_remainder_of_output_buffer = 0 ;
+    expand_endless_loop_counter = 0 ;
+    expand_endless_loop_counter_maximum = 100000 ;
+    expand_endless_cycle_count_maximum = 100000 ;
 
 // @code_at_recursion_level = ( ) ;
 // @length_of_code_at_recursion_level = ( ) ;
@@ -3683,16 +3603,20 @@ void expand_text( )
 // length_of_code_at_recursion_level[ 0 ] = 0 ;
 
 
+
 // -----------------------------------------------
 //  Begin a loop that handles each space delimited
 //  string in the phrase definition.
 
-// code_at_recursion_level[ 1 ] = supplied_text ;
+// code_at_recursion_level[ 1 ] = global_from_text_item_id ;
 // pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
 // length_of_code_at_recursion_level[ 1 ] = length( code_at_recursion_level[ 1 ] ) ;
-// recursion_level = 1 ;
-// while ( ( recursion_level > 0 ) && ( expand_endless_loop_counter <= expand_endless_loop_counter_maximum ) ) {
-// expand_endless_loop_counter ++ ;
+
+    recursion_level = 1 ;
+
+    while ( ( recursion_level > 0 ) && ( expand_endless_loop_counter <= expand_endless_loop_counter_maximum ) )
+    {
+        expand_endless_loop_counter ++ ;
 
 
 // -----------------------------------------------
@@ -3703,32 +3627,38 @@ void expand_text( )
 //  will end.
 
 // length_of_code_at_recursion_level_current = length_of_code_at_recursion_level[ recursion_level ] ;
-// if ( length_of_code_at_recursion_level_current == 0 ) {
-// recursion_level <character_hyphen><character_hyphen> ;
-// next ;
-// }
+if ( length_of_code_at_recursion_level_current == 0 )
+{
+    recursion_level -- ;
+    continue ;
+}
 // pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;
 // while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq ' ' ) ) {
-// pointer_to_phrase_begin ++ ;
+pointer_to_phrase_begin ++ ;
 // }
 // pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-// if ( pointer_to_next_space == -1 ) {
+if ( pointer_to_next_space == -1 )
+{
 // pointer_to_phrase_end = length_of_code_at_recursion_level_current - 1 ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = length_of_code_at_recursion_level_current ;
-// } else {
+} else
+{
 // pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-// if ( pointer_to_next_space > pointer_to_phrase_begin ) {
-// pointer_to_phrase_end = pointer_to_next_space - 1 ;
+    if ( pointer_to_next_space > pointer_to_phrase_begin )
+    {
+        pointer_to_phrase_end = pointer_to_next_space - 1 ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_next_space ;
-// } else {
-// pointer_to_phrase_end = <character_hyphen>2 ;
-// }
-// }
-// if ( pointer_to_phrase_begin > pointer_to_phrase_end ) {
-// recursion_level <character_hyphen><character_hyphen> ;
-// next ;
-// }
-// current_phrase = substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , ( pointer_to_phrase_end - pointer_to_phrase_begin + 1 ) ) ;
+    } else
+    {
+        pointer_to_phrase_end = -2 ;
+    }
+}
+if ( pointer_to_phrase_begin > pointer_to_phrase_end )
+{
+    recursion_level -- ;
+    continue ;
+}
+// current_phrase_text_item_id = substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , ( pointer_to_phrase_end - pointer_to_phrase_begin + 1 ) ) ;
 
 
 // -----------------------------------------------
@@ -3736,22 +3666,24 @@ void expand_text( )
 // phrase name being encountered too many times.
 // If this occurs, exit the endless loop.
 
-// if ( global_yes_or_no_count_phrase_usage == global_yes ) {
-// global_number_of_times_encountered_phrase_named{ current_phrase } ++ ;
-// if ( global_number_of_times_encountered_phrase_named{ current_phrase } >= expand_endless_cycle_count_maximum ) {
-// maximum_cycle_count = 0 ;
+    if ( global_yes_or_no_count_phrase_usage == global_yes )
+    {
+// global_number_of_times_encountered_phrase_named{ current_phrase_text_item_id } ++ ;
+// if ( global_number_of_times_encountered_phrase_named{ current_phrase_text_item_id } >= expand_endless_cycle_count_maximum ) {
+        maximum_cycle_count = 0 ;
 // foreach phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {
 // cycle_count = global_number_of_times_encountered_phrase_named{ phrase_name } ;
-// if ( cycle_count > maximum_cycle_count ) {
-// maximum_cycle_count = cycle_count ;
+    if ( cycle_count > maximum_cycle_count )
+    {
+       maximum_cycle_count = cycle_count ;
 // phrase_name = phrase_name_with_highest_cycle_count ;
-// }
+    }
 // }
 // global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . phrase_name_with_highest_cycle_count . ' ' . maximum_cycle_count . "\n" ;
 // print global_action_result . "\n" ;
 // return '' ;
 // }
-// }
+    }
 
 
 // -----------------------------------------------
@@ -3759,48 +3691,54 @@ void expand_text( )
 //  space directive, or a line directive, handle
 //  it.
 
-// if ( current_phrase eq ( 'hyphen' . '-' . 'here' ) ) {
+if ( current_phrase_text_item_id == global_id_for_phrase_name_hyphen_here )
+{
 // output_buffer .= '-' ;
-// space_directive = 'none' ;
-// next ;
+    space_directive = space_directive_none ;
+    continue ;
+}
+if ( current_phrase_text_item_id == global_id_for_phrase_name_no_space )
+{
+    if ( space_directive = space_directive_one_requested )
+    {
+        space_directive = space_directive_none ;
+    }
+    continue ;
+}
+// if ( current_phrase_text_item_id eq ( '<' . 'no_space' . '>' ) ) {
+    space_directive = space_directive_none ;
+    continue ;
 // }
-// if ( current_phrase eq ( 'no' . '-' . 'space' ) ) {
-// if ( space_directive ne 'one_requested' ) {
-// space_directive = 'none' ;
+if ( current_phrase_text_item_id == global_id_for_phrase_name_one_space )
+{
+    space_directive = space_directive_one_requested ;
+    continue ;
+}
+// if ( current_phrase_text_item_id eq ( '<' . 'one_space' . '>' ) ) {
+    space_directive = space_directive_one_requested ;
+    continue ;
 // }
-// next ;
-// }
-// if ( current_phrase eq ( '<' . 'no_space' . '>' ) ) {
-// space_directive = 'none' ;
-// next ;
-// }
-// if ( current_phrase eq ( 'one' . '-' . 'space' ) ) {
-// space_directive = 'one_requested' ;
-// next ;
-// }
-// if ( current_phrase eq ( '<' . 'one_space' . '>' ) ) {
-// space_directive = 'one_requested' ;
-// next ;
-// }
-// if ( current_phrase eq ( 'new' . '-' . 'line' ) ) {
+if ( current_phrase_text_item_id == global_id_for_phrase_name_new_line )
+{
 // output_buffer .= "\n" ;
-// space_directive = 'none' ;
-// next ;
-// }
-// if ( current_phrase eq ( '<' . 'new_line' . '>' ) ) {
+    space_directive = space_directive_none ;
+    continue ;
+}
+// if ( current_phrase_text_item_id eq ( '<' . 'new_line' . '>' ) ) {
 // output_buffer .= "\n" ;
-// space_directive = 'none' ;
-// next ;
+    space_directive = space_directive_none ;
+    continue ;
 // }
-// if ( current_phrase eq ( 'empty' . '-' . 'line' ) ) {
+if ( current_phrase_text_item_id == global_id_for_phrase_name_empty_line )
+{
 // output_buffer .= "\n\n" ;
-// space_directive = 'none' ;
-// next ;
-// }
-// if ( current_phrase eq ( '<' . 'empty_line' . '>' ) ) {
+    space_directive = space_directive_none ;
+    continue ;
+}
+// if ( current_phrase_text_item_id eq ( '<' . 'empty_line' . '>' ) ) {
 // output_buffer .= "\n\n" ;
-// space_directive = 'none' ;
-// next ;
+    space_directive = space_directive_none ;
+    continue ;
 // }
 
 
@@ -3811,12 +3749,12 @@ void expand_text( )
 //  the text being expanded, and remove the phrase
 //  name.
 
-// if ( ( current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( global_dashrep_replacement{ current_phrase } ) ) ) {
-// recursion_level ++ ;
-// code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase } ;
+// if ( ( current_phrase_text_item_id =~ /[^ \-]\-[^ \-]/ ) && ( exists( global_dashrep_replacement{ current_phrase_text_item_id } ) ) ) {
+    recursion_level ++ ;
+// code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase_text_item_id } ;
 // length_of_code_at_recursion_level[ recursion_level ] = length( code_at_recursion_level[ recursion_level ] ) ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = 0 ;
-// next ;
+    continue ;
 // }
 
 
@@ -3825,10 +3763,11 @@ void expand_text( )
 //  Specify a default of inserting one space after
 //  the next phrase insertion.
 
-// if ( ( space_directive eq 'one' ) || ( space_directive eq 'one_requested' ) ) {
+if ( ( space_directive == space_directive_one ) || ( space_directive == space_directive_one_requested ) )
+{
 // output_buffer .= ' ' ;
-// }
-// space_directive = 'one' ;
+}
+space_directive = space_directive_one ;
 
 
 // -----------------------------------------------
@@ -3836,7 +3775,7 @@ void expand_text( )
 //  the name of a defined phrase, so just use the
 //  text string.
 
-// output_buffer .= current_phrase ;
+// output_buffer .= current_phrase_text_item_id ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_phrase_end + 1 ;
 
 
@@ -3848,13 +3787,13 @@ void expand_text( )
 //  "<xyz />" as well as "<xyz>".
 
 // if ( index( output_buffer , '<specify ' ) > 0 ) {
-// prior_length = 0 ;
+prior_length = 0 ;
 // while ( length( output_buffer ) != prior_length ) {
 // prior_length = length( output_buffer ) ;
 // output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
 // }
 // if ( index( output_buffer , '<specify ' ) > 0 ) {
-// prior_length = 0 ;
+prior_length = 0 ;
 // while ( length( output_buffer ) != prior_length ) {
 // prior_length = length( output_buffer ) ;
 // output_buffer =~ s/ *> *<specify +/ / ;
@@ -3870,17 +3809,17 @@ void expand_text( )
 //  (with no spaces), then replace that text with
 //  the definition of the specified phrase.
 
-// output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ;
+// output_buffer =~ s/ *<placeholder_for_hyphen_here> */-/sg ;
 // output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;
 // output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
 
-// if ( output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) {
-// space_directive = 'none' ;
+// if ( output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ ) {
+    space_directive = space_directive_none ;
 // }
-// length_of_output_buffer = -1 ;
-// pointer_to_remainder_of_output_buffer = 0 ;
+    length_of_output_buffer = -1 ;
+    pointer_to_remainder_of_output_buffer = 0 ;
 // new_output_buffer = '' ;
-// while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \<character_hyphen><character_close_angle_bracket>]+_[^ \<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) {
+// while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s ) {
 // prefix = $1 ;
 // possible_phrase_name_with_underscores = $2 ;
 // length_of_output_buffer = length( output_buffer ) ;
@@ -3889,18 +3828,19 @@ void expand_text( )
 // pointer_to_remainder_of_output_buffer += length( prefix ) + length_of_tag + 2 ;
 
 // possible_phrase_name_with_hyphens = possible_phrase_name_with_underscores ;
-// possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ;
+// possible_phrase_name_with_hyphens =~ s/_/-/g ;
 // if ( exists( global_dashrep_replacement{ possible_phrase_name_with_hyphens } ) ) {
 // new_output_buffer .= global_dashrep_replacement{ possible_phrase_name_with_hyphens } ;
 // } else {
 // new_output_buffer .= '<' . possible_phrase_name_with_underscores . '>' ;
 // }
 // }
-// if ( length_of_output_buffer != -1 ) {
+    if ( length_of_output_buffer != -1 )
+    {
 // output_buffer = new_output_buffer . substr( output_buffer , pointer_to_remainder_of_output_buffer ) ;
 // new_output_buffer = '' ;
 // possible_phrase_name_with_underscores = '' ;
-// }
+    }
 
 
 // -----------------------------------------------
@@ -3910,10 +3850,10 @@ void expand_text( )
 
 // pointer_to_close_angle_bracket = index( output_buffer , '>' ) ;
 // if ( pointer_to_close_angle_bracket < 0 ) {
-// result_text .= output_buffer ;
+// expand_result_text_item_id .= output_buffer ;
 // output_buffer = '' ;
 // } elsif ( length( output_buffer ) > 1000 ) {
-// result_text .= substr( output_buffer , 0 , 500 ) ;
+// expand_result_text_item_id .= substr( output_buffer , 0 , 500 ) ;
 // output_buffer = substr( output_buffer , 500 ) ;
 // }
 
@@ -3922,14 +3862,15 @@ void expand_text( )
 //  Repeat the loop that handles each space
 //  delimited string.
 
-// }
+    }
 
 
 // -----------------------------------------------
 //  Supply the results.
 
-// result_text .= output_buffer ;
-// return result_text ;
+// expand_result_text_item_id .= output_buffer ;
+// return: global_expand_result_text_item_id ;
+    return ;
 
 
 // -----------------------------------------------
@@ -3949,7 +3890,8 @@ int parameterized_dashrep_expand_text( int local_text_item_id )
 {
     global_from_text_item_id = local_text_item_id ;
     expand_text( ) ;
-    return global_to_text_item_id ;
+    int expand_result_text_item_id ;  // temporary, to avoid compiler error
+    return expand_result_text_item_id ;
 }
 
 void parameterized_append_text_using_links( int local_text_item_id )
