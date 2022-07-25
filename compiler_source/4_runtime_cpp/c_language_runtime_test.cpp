@@ -355,6 +355,10 @@ int global_id_for_phrase_name_yes_or_no_permission_administrator ;
 int global_id_for_phrase_name_dashrep_endless_loop_counter_limit ;
 int global_id_for_phrase_name_dashrep_time_limit ;
 
+int global_id_for_phrase_name_placeholder_for_hyphen_here ;
+int global_id_for_phrase_name_placeholder_for_new_line ;
+int global_id_for_phrase_name_placeholder_for_empty_line ;
+
 int global_id_for_phrase_word_10 ;
 int global_id_for_phrase_word_absolute ;
 int global_id_for_phrase_word_absolutes ;
@@ -605,6 +609,9 @@ int global_id_for_phrase_word_year ;
 int global_id_for_phrase_word_yes ;
 int global_id_for_phrase_word_zero ;
 int global_id_for_phrase_word_zoom ;
+int global_id_for_phrase_word_placeholder ;
+
+int global_message_trace__expand_phrases__endless_loop ;
 
 
 // -----------------------------------------------
@@ -1739,6 +1746,16 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Create some special hyphenated phrase names.
+
+    global_id_for_phrase_name_placeholder_for_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+
+    global_id_for_phrase_name_placeholder_for_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+
+    global_id_for_phrase_name_placeholder_for_empty_line = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_empty , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+
+
+// -----------------------------------------------
 //  Connect the Dashrep-defined static phrase
 //  names with their definitions.
 
@@ -1774,6 +1791,14 @@ void do_main_initialization( )
     assign_storage_for_new_text_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_output ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
+
+
+// -----------------------------------------------
+//  Create text items that contain specific
+//  unchanging messages.
+
+    global_message_trace__expand_phrases__endless_loop = store_text_and_get_its_text_item_id( "trace_diagnostic__expand_phrases__error_endless_loop__highest_count " ) ;
+
 
 
 // -----------------------------------------------
@@ -3942,7 +3967,6 @@ void implement_loop( )
 // -----------------------------------------------
 //  Initialization.
 
-// template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;
     local_pointer_to_next_space = -1 ;
 // length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;
 
