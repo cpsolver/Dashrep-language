@@ -3881,6 +3881,128 @@ prior_length = 0 ;
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function implement_loop
+
+void implement_loop( )
+{
+
+
+// -----------------------------------------------
+//  Declarations.
+
+	int local_pointer_to_next_space ;
+	int local_pointer_to_future_space ;
+	int local_pointer_to_next_word ;
+	int local_endless_loop_counter ;
+	int local_endless_loop_counter_limit ;
+	int length_of_text_in_word_list ;
+	int local_counter_number_of_adjacent_spaces ;
+
+
+// -----------------------------------------------
+//  Initialization.
+
+// template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;
+    local_pointer_to_next_space = -1 ;
+// length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;
+
+
+// -----------------------------------------------
+//  Start ABABA loop, which has exit in middle of
+//  loop.
+
+local_endless_loop_counter = 0 ;
+local_endless_loop_counter_limit = int( ( length_of_text_in_word_list / 2 ) ) + 10 ;
+while ( 1 == 1 ) {
+
+local_endless_loop_counter ++ ;
+if ( local_endless_loop_counter > local_endless_loop_counter_limit )
+{
+    break ;
+}
+
+if ( local_pointer_to_next_space >= length_of_text_in_word_list )
+{
+    break ;
+}
+
+
+// -----------------------------------------------
+//  Start a second, inner, ABABA loop, which has
+//  its exit in the middle of the loop.
+
+local_counter_number_of_adjacent_spaces = 0 ;
+while ( 1 == 1 ) {
+
+local_counter_number_of_adjacent_spaces ++ ;
+if ( local_counter_number_of_adjacent_spaces > length_of_text_in_word_list )
+{
+    break ;
+}
+
+// local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_space + 1 ) ;
+
+
+// -----------------------------------------------
+//  Exit from second, inner, ABABA loop.  If the
+//  next line is edited, ensure it reaches an end
+//  point, otherwise there will be an endless
+//  loop.
+
+if ( local_pointer_to_future_space != local_pointer_to_next_space + 1 )
+{
+    break ;
+}
+
+local_pointer_to_next_space = local_pointer_to_future_space ;
+
+
+// -----------------------------------------------
+//  End of second, inner, ABABA loop.
+
+}
+
+local_pointer_to_next_word = local_pointer_to_next_space + 1 ;
+
+// local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_word ) ;
+
+if ( local_pointer_to_next_space < 0 )
+{
+    local_pointer_to_next_space = length_of_text_in_word_list ;
+}
+
+
+// -----------------------------------------------
+//  Exit from ABABA loop.  If the next line is
+//  edited, ensure it reaches an end point.
+//  Otherwise there will be an endless loop.
+
+if ( ( local_pointer_to_next_word >= local_pointer_to_next_space ) || ( local_pointer_to_next_word < 0 ) || ( local_pointer_to_next_space < 0 ) )
+{
+    break ;
+}
+
+// global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , local_pointer_to_next_word , local_pointer_to_next_space - local_pointer_to_next_word ) ;
+
+
+// code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;
+// & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;
+
+
+// -----------------------------------------------
+//  End of ABABA loop.
+
+}
+
+
+// -----------------------------------------------
+//  End of function implement_loop.
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Functions that call the above functions.
 //  These are needed to match the use of functions
 //  in the Perl version, but these will be
