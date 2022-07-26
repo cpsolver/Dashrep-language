@@ -129,6 +129,8 @@ int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_valid_filename ;
 int global_text_item_id_for_valid_folder_name ;
+int global_text_item_id_for_integer_as_text ;
+int global_text_item_id_for_float_as_text ;
 
 int global_text_item_id_for_single_space ;
 int global_text_item_id_for_single_hyphen ;
@@ -1069,10 +1071,13 @@ int global_decimal_number_divisor ;
 
 
 // -----------------------------------------------
-//  Declare some variables that store decimal
-//  numbers.
+//  Declare some variables that are used to
+//  handle non-integers.
 
 float global_single_decimal_number ;
+std::string global_cplusplus_string ;
+char global_c_format_string[ 50 ] ;
+int global_unused_string_length ;
 
 
 // -----------------------------------------------
@@ -1216,6 +1221,72 @@ void recover_memory_from_top_text_item( )
 void write_single_character_to_file( )
 {
     global_response_ignored = fputc( global_single_character , global_outfile_connection ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  convert_integer_to_text
+//
+//  This function converts an integer into text
+//  stored at text item
+//  global_text_item_id_for_integer_as_text.
+
+void convert_integer_to_text( )
+{
+	global_character_count = 1 ;
+    if ( global_single_integer == 0 )
+    {
+//    	global_c_format_string[ 0 ] = "0" ;
+    } else
+    {
+	    try
+	    {
+	        global_character_count = sprintf( global_c_format_string , "%1d" , global_single_integer ) ;
+	    }
+	    catch( ... )
+	    {
+//            global_c_format_string[ 0 ] = char( "?" ) ;
+	    }
+    }
+    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+    for ( global_character_pointer = 0 ; global_character_pointer < global_character_count ; global_character_pointer ++ )
+    {
+        global_storage_all_text[ global_text_item_pointer ] = global_c_format_string[ global_character_pointer ] ;
+        global_text_item_pointer ++ ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_text_item_to_file
+//
+//  This function writes the contents of one text
+//  item to the output file.
+
+//  todo: use parse character function ...!!
+
+void write_text_item_to_file( )
+{
+    // if ( ( global_text_category_for_item[ global_text_item_id ] == global_category_contains_unicode_anything ) || ( global_text_category_for_item[ global_text_item_id ] == global_category_contains_unicode_no_delimiters ) )
+    // {
+    //     global_character_category = 
+    // }
+    // for ( global_text_pointer = 0 ; global_text_pointer <= ( global_text_pointer_end_for_item[ global_text_item_id ] - global_text_pointer_begin_for_item[ global_text_item_id ] + 1 ) ; global_text_pointer ++ )
+    // {
+    //     global_single_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id ] ] ;
+    //     	global_single_character = global_single_integer ;
+    //         write_single_character_to_file( ) ;
+    //     } else
+    //     {
+    //         convert_integer_to_text( global_single_integer ) ;
+    //         global_single_character = global_ascii_code_for_newline ;
+    //         write_single_character_to_file( ) ;
+    //     }
+    // }
     return ;
 }
 
@@ -2784,21 +2855,21 @@ void reorganize_as_linked_list_of_words( )
 
 std::string convert_float_to_text( float supplied_float )
 {
-    std::string returned_string ;
-    char c_format_string[ 50 ] ;
-    int unused_string_length ;
+//    std::string returned_string ;
+//    char c_format_string[ 50 ] ;
+//    int unused_string_length ;
     try
     {
-        unused_string_length = sprintf( c_format_string , "%1f" , supplied_float ) ;
-        returned_string = ( std::string ) c_format_string ;
+        global_unused_string_length = sprintf( global_c_format_string , "%1f" , supplied_float ) ;
+        global_cplusplus_string = ( std::string ) global_c_format_string ;
         //  next line assumes the sprintf result always includes a decimal point
-        returned_string.erase( returned_string.find_last_not_of( "0" ) + 1 , std::string::npos ) ;
-        returned_string.erase( returned_string.find_last_not_of( "." ) + 1 , std::string::npos ) ;
-        return returned_string ;
+        global_cplusplus_string.erase( global_cplusplus_string.find_last_not_of( "0" ) + 1 , std::string::npos ) ;
+        global_cplusplus_string.erase( global_cplusplus_string.find_last_not_of( "." ) + 1 , std::string::npos ) ;
+        return global_cplusplus_string ;
     }
     catch( ... )
     {
-        return "NAN" ;
+        return "not_a_number" ;
     }
 }
 
