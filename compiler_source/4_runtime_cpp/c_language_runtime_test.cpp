@@ -1252,12 +1252,8 @@ void convert_integer_to_text( )
 
     if ( global_single_integer == 0 )
     {
-    	global_c_format_single_character = '0' ;
-        global_single_character_as_integer = (int) global_c_format_single_character ;
-        global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
-        global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] ] = global_single_character_as_integer ;
-//        log_out << "digit " << global_single_character_as_integer << std::endl ;
-        return ;
+        global_c_format_string[ 0 ] = '0' ;
+        global_character_count = 1 ;
 
 
 // -----------------------------------------------
@@ -1266,31 +1262,39 @@ void convert_integer_to_text( )
 
     } else
     {
-	    try
-	    {
-	        global_character_count = sprintf( global_c_format_string , "%1d" , global_single_integer ) ;
-	    }
+        try
+        {
+            global_character_count = sprintf( global_c_format_string , "%1d" , global_single_integer ) ;
+        }
 
 
 // -----------------------------------------------
-//  If the conversion was not successful, just
-//  insert a question mark.
+//  If the conversion was not successful, insert
+//  the text "not_an_integer".
 
-	    catch( ... )
-	    {
-            global_c_format_single_character = '?' ;
-            global_single_character_as_integer = (int) global_c_format_single_character ;
-            global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
-            global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] ] = global_single_character_as_integer ;
-//            log_out << "digit " << global_single_character_as_integer << std::endl ;
-            return ;
-	    }
-	}
+        catch( ... )
+        {
+            global_c_format_string[ 0 ] = 'n' ;
+            global_c_format_string[ 1 ] = 'o' ;
+            global_c_format_string[ 2 ] = 't' ;
+            global_c_format_string[ 3 ] = '_' ;
+            global_c_format_string[ 4 ] = 'a' ;
+            global_c_format_string[ 5 ] = 'n' ;
+            global_c_format_string[ 6 ] = '_' ;
+            global_c_format_string[ 7 ] = 'i' ;
+            global_c_format_string[ 8 ] = 'n' ;
+            global_c_format_string[ 9 ] = 't' ;
+            global_c_format_string[ 10 ] = 'e' ;
+            global_c_format_string[ 11 ] = 'g' ;
+            global_c_format_string[ 12 ] = 'e' ;
+            global_c_format_string[ 13 ] = 'r' ;
+            global_character_count = 14 ;
+        }
+    }
 
 
 // -----------------------------------------------
-//  If the conversion was successful, store the
-//  digits.
+//  Store the text.
 
     for ( global_character_pointer = 0 ; global_character_pointer < global_character_count ; global_character_pointer ++ )
     {
@@ -1303,6 +1307,92 @@ void convert_integer_to_text( )
 
 // -----------------------------------------------
 //  End of function convert_integer_to_text.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  convert_decimal_to_text
+//
+//  This function converts the decimal stored in
+//  global_single_decimal_number into text digits
+//  that are stored in text item
+//  global_text_item_id_for_integer_as_text.
+
+void convert_decimal_to_text( )
+{
+
+
+// -----------------------------------------------
+//  Point to where the first character (as an
+//  integer) will be stored.
+
+    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+
+
+// -----------------------------------------------
+//  If the decimal number is zero, use the text
+//  "0.0".
+
+    if ( global_single_decimal_number == 0 )
+    {
+        global_c_format_string[ 0 ] = '0' ;
+        global_c_format_string[ 1 ] = '.' ;
+        global_c_format_string[ 2 ] = '0' ;
+        global_character_count = 3 ;
+
+
+// -----------------------------------------------
+//  Otherwise, convert the decimal number into
+//  digit characters, plus a decimal point.
+
+    } else
+    {
+        try
+        {
+            global_character_count = sprintf( global_c_format_string , "%1f" , global_single_decimal_number ) ;
+        }
+
+
+// -----------------------------------------------
+//  If the conversion was not successful, insert
+//  the text "not_a_number".
+
+        catch( ... )
+        {
+            global_c_format_string[ 0 ] = 'n' ;
+            global_c_format_string[ 1 ] = 'o' ;
+            global_c_format_string[ 2 ] = 't' ;
+            global_c_format_string[ 3 ] = '_' ;
+            global_c_format_string[ 4 ] = 'a' ;
+            global_c_format_string[ 5 ] = '_' ;
+            global_c_format_string[ 6 ] = 'n' ;
+            global_c_format_string[ 7 ] = 'u' ;
+            global_c_format_string[ 8 ] = 'm' ;
+            global_c_format_string[ 9 ] = 'b' ;
+            global_c_format_string[ 10 ] = 'e' ;
+            global_c_format_string[ 11 ] = 'r' ;
+            global_character_count = 12 ;
+        }
+    }
+
+
+// -----------------------------------------------
+//  Store the text.
+
+    for ( global_character_pointer = 0 ; global_character_pointer < global_character_count ; global_character_pointer ++ )
+    {
+        global_single_character_as_integer = (int) global_c_format_string[ global_character_pointer ] ;
+        global_storage_all_text[ global_text_item_pointer ] = global_single_character_as_integer ;
+        global_text_item_pointer ++ ;
+//        log_out << "digit " << global_single_character_as_integer << std::endl ;
+    }
+
+
+// -----------------------------------------------
+//  End of function convert_decimal_to_text.
 
     return ;
 }
@@ -1326,7 +1416,7 @@ void write_text_item_to_file( )
     // for ( global_text_pointer = 0 ; global_text_pointer <= ( global_text_pointer_end_for_item[ global_text_item_id ] - global_text_pointer_begin_for_item[ global_text_item_id ] + 1 ) ; global_text_pointer ++ )
     // {
     //     global_single_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id ] ] ;
-    //     	global_single_character = global_single_integer ;
+    //         global_single_character = global_single_integer ;
     //         write_single_character_to_file( ) ;
     //     } else
     //     {
@@ -1490,7 +1580,7 @@ int store_phrase_name_and_get_id( int word_one , int word_two , int word_three ,
     {
         if ( global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] > 0 )
         {
-        	break ;
+            break ;
         }
         global_text_pointer_end_for_item[ global_new_storage_text_item_id ] -- ;
     }
@@ -2406,7 +2496,7 @@ void remove_leading_delimiters( )
 
 void initialize_get_previous_character_from_text_item( )
 {
-	initialize_get_next_character_from_text_item( ) ;
+    initialize_get_next_character_from_text_item( ) ;
     global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] ;
 }
 
@@ -2753,7 +2843,7 @@ void append_linked_text( )
         {
             global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
             global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-	        global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+            global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
         }
         return ;
     }
@@ -2888,37 +2978,6 @@ void reorganize_as_linked_list_of_words( )
     global_text_item_id = 80 ;
     exit_not_yet_supported( ) ;
     return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  convert_float_to_text
-//
-//  This function is used instead of "std::to_string"
-//  for compatibility with older C++ "string" libraries
-//  that have a bug.  The bug is that the "to_string"
-//  function is not recognized as being within the
-//  "std" library, even though it is defined there.
-
-std::string convert_float_to_text( float supplied_float )
-{
-//    std::string returned_string ;
-//    char c_format_string[ 50 ] ;
-//    int unused_string_length ;
-    try
-    {
-        global_unused_string_length = sprintf( global_c_format_string , "%1f" , supplied_float ) ;
-        global_cplusplus_string = ( std::string ) global_c_format_string ;
-        //  next line assumes the sprintf result always includes a decimal point
-        global_cplusplus_string.erase( global_cplusplus_string.find_last_not_of( "0" ) + 1 , std::string::npos ) ;
-        global_cplusplus_string.erase( global_cplusplus_string.find_last_not_of( "." ) + 1 , std::string::npos ) ;
-        return global_cplusplus_string ;
-    }
-    catch( ... )
-    {
-        return "not_a_number" ;
-    }
 }
 
 
@@ -3152,7 +3211,8 @@ void test_parsing_numeric_characters( )
                         log_out << "integer number = " << global_single_integer << std::endl ;
                     } else
                     {
-                        log_out << "decimal number = " << convert_float_to_text( global_single_decimal_number ) << std::endl ;
+                    	convert_decimal_to_text( ) ;
+                        log_out << "decimal number in text item " << std::endl ;
                     }
                 } else
                 {
@@ -3723,35 +3783,35 @@ void expand_text( )
 // -----------------------------------------------
 //  Declarations.
 
-	int expand_endless_cycle_count_maximum ;
-	int current_phrase_text_item_id ;
-	int expand_result_text_item_id ;
-	int output_buffer ;
-	int space_directive ;
-	int expand_endless_loop_counter ;
-	int expand_endless_loop_counter_maximum ;
-	int recursion_level ;
-	int pointer_to_phrase_begin ;
-	int pointer_to_next_space ;
-	int pointer_to_phrase_end ;
-	int prior_length ;
-	int prefix ;
-	int possible_phrase_name_with_underscores ;
-	int length_of_tag ;
-	int new_output_buffer ;
-	int pointer_to_remainder_of_output_buffer ;
-	int possible_phrase_name_with_hyphens ;
-	int pointer_to_close_angle_bracket ;
-	int length_of_output_buffer ;
-	int maximum_cycle_count ;
-	int phrase_name ;
-	int cycle_count ;
-	int phrase_name_with_highest_cycle_count ;
-	int length_of_code_at_recursion_level_current ;
+    int expand_endless_cycle_count_maximum ;
+    int current_phrase_text_item_id ;
+    int expand_result_text_item_id ;
+    int output_buffer ;
+    int space_directive ;
+    int expand_endless_loop_counter ;
+    int expand_endless_loop_counter_maximum ;
+    int recursion_level ;
+    int pointer_to_phrase_begin ;
+    int pointer_to_next_space ;
+    int pointer_to_phrase_end ;
+    int prior_length ;
+    int prefix ;
+    int possible_phrase_name_with_underscores ;
+    int length_of_tag ;
+    int new_output_buffer ;
+    int pointer_to_remainder_of_output_buffer ;
+    int possible_phrase_name_with_hyphens ;
+    int pointer_to_close_angle_bracket ;
+    int length_of_output_buffer ;
+    int maximum_cycle_count ;
+    int phrase_name ;
+    int cycle_count ;
+    int phrase_name_with_highest_cycle_count ;
+    int length_of_code_at_recursion_level_current ;
 
-	int code_at_recursion_level[ 105 ] ;
-	int length_of_code_at_recursion_level[ 105 ] ;
-	int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
+    int code_at_recursion_level[ 105 ] ;
+    int length_of_code_at_recursion_level[ 105 ] ;
+    int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
 
     int expand_to_text_item_id ;
     int expand_buffer_text_item_id ;
@@ -4074,13 +4134,13 @@ void implement_loop( )
 // -----------------------------------------------
 //  Declarations.
 
-	int local_pointer_to_next_space ;
-	int local_pointer_to_future_space ;
-	int local_pointer_to_next_word ;
-	int local_endless_loop_counter ;
-	int local_endless_loop_counter_limit ;
-	int length_of_text_in_word_list ;
-	int local_counter_number_of_adjacent_spaces ;
+    int local_pointer_to_next_space ;
+    int local_pointer_to_future_space ;
+    int local_pointer_to_next_word ;
+    int local_endless_loop_counter ;
+    int local_endless_loop_counter_limit ;
+    int length_of_text_in_word_list ;
+    int local_counter_number_of_adjacent_spaces ;
 
 
 // -----------------------------------------------
