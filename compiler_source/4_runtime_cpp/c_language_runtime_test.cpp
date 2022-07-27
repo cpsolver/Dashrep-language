@@ -1078,6 +1078,7 @@ float global_single_decimal_number ;
 std::string global_cplusplus_string ;
 char global_c_format_string[ 50 ] ;
 int global_unused_string_length ;
+char global_c_format_single_character ;
 
 
 // -----------------------------------------------
@@ -1229,33 +1230,80 @@ void write_single_character_to_file( )
 // -----------------------------------------------
 //  convert_integer_to_text
 //
-//  This function converts an integer into text
-//  stored at text item
+//  This function converts the integer stored in
+//  global_single_integer into text digits that
+//  are stored in text item
 //  global_text_item_id_for_integer_as_text.
 
 void convert_integer_to_text( )
 {
-	global_character_count = 1 ;
+
+
+// -----------------------------------------------
+//  Point to where the first character (as an
+//  integer) will be stored.
+
+    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+
+
+// -----------------------------------------------
+//  If the integer is zero, just use the single
+//  digit zero (0).
+
     if ( global_single_integer == 0 )
     {
-//    	global_c_format_string[ 0 ] = "0" ;
+    	global_c_format_single_character = '0' ;
+        global_single_character_as_integer = (int) global_c_format_single_character ;
+        global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] ] = global_single_character_as_integer ;
+//        log_out << "digit " << global_single_character_as_integer << std::endl ;
+        return ;
+
+
+// -----------------------------------------------
+//  Otherwise, convert the integer into
+//  digit characters.
+
     } else
     {
 	    try
 	    {
 	        global_character_count = sprintf( global_c_format_string , "%1d" , global_single_integer ) ;
 	    }
+
+
+// -----------------------------------------------
+//  If the conversion was not successful, just
+//  insert a question mark.
+
 	    catch( ... )
 	    {
-//            global_c_format_string[ 0 ] = char( "?" ) ;
+            global_c_format_single_character = '?' ;
+            global_single_character_as_integer = (int) global_c_format_single_character ;
+            global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+            global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_integer_as_text ] ] = global_single_character_as_integer ;
+//            log_out << "digit " << global_single_character_as_integer << std::endl ;
+            return ;
 	    }
-    }
-    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+	}
+
+
+// -----------------------------------------------
+//  If the conversion was successful, store the
+//  digits.
+
     for ( global_character_pointer = 0 ; global_character_pointer < global_character_count ; global_character_pointer ++ )
     {
-        global_storage_all_text[ global_text_item_pointer ] = global_c_format_string[ global_character_pointer ] ;
+        global_single_character_as_integer = (int) global_c_format_string[ global_character_pointer ] ;
+        global_storage_all_text[ global_text_item_pointer ] = global_single_character_as_integer ;
         global_text_item_pointer ++ ;
+//        log_out << "digit " << global_single_character_as_integer << std::endl ;
     }
+
+
+// -----------------------------------------------
+//  End of function convert_integer_to_text.
+
     return ;
 }
 
@@ -4469,6 +4517,9 @@ void do_everything( )
 
 // -----------------------------------------------
 //  Test basic text handling functionality.
+
+    global_single_integer = 0 ;
+    convert_integer_to_text( ) ;
 
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
