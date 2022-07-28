@@ -1216,12 +1216,15 @@ void recover_memory_from_top_text_item( )
 // -----------------------------------------------
 //  Function write_single_character_to_file
 //
-//  Write the global_single_character to the
-//  output file.  Ignore any error responses.
+//  Write the the character -- expressed as an
+//  integer -- to the output file.  The character
+//  integer is supplied in the variable
+//  global_single_character_as_integer.  Ignore
+//  any error responses.
 
-void write_single_character_to_file( )
+void write_single_character_as_integer_to_file( )
 {
-    global_response_ignored = fputc( global_single_character , global_outfile_connection ) ;
+    global_response_ignored = fputc( char( global_single_character_as_integer ) , global_outfile_connection ) ;
     return ;
 }
 
@@ -1394,37 +1397,6 @@ void convert_decimal_to_text( )
 // -----------------------------------------------
 //  End of function convert_decimal_to_text.
 
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function write_text_item_to_file
-//
-//  This function writes the contents of one text
-//  item to the output file.
-
-//  todo: use parse character function ...!!
-
-void write_text_item_to_file( )
-{
-    // if ( ( global_text_category_for_item[ global_text_item_id ] == global_category_contains_unicode_anything ) || ( global_text_category_for_item[ global_text_item_id ] == global_category_contains_unicode_no_delimiters ) )
-    // {
-    //     global_character_category = 
-    // }
-    // for ( global_text_pointer = 0 ; global_text_pointer <= ( global_text_pointer_end_for_item[ global_text_item_id ] - global_text_pointer_begin_for_item[ global_text_item_id ] + 1 ) ; global_text_pointer ++ )
-    // {
-    //     global_single_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id ] ] ;
-    //         global_single_character = global_single_integer ;
-    //         write_single_character_to_file( ) ;
-    //     } else
-    //     {
-    //         convert_integer_to_text( global_single_integer ) ;
-    //         global_single_character = global_ascii_code_for_newline ;
-    //         write_single_character_to_file( ) ;
-    //     }
-    // }
     return ;
 }
 
@@ -2285,6 +2257,10 @@ void initialize_get_next_character_from_text_item( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function get_next_character_from_text_item
+//
+//  Gets the next character from the text item and
+//  puts the character -- as an integer -- into
+//  global_single_character_as_integer.
 
 void get_next_character_from_text_item( )
 {
@@ -2456,6 +2432,31 @@ while ( 1 == 1 )
 
     return ;
 
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_text_item_to_file
+//
+//  This function writes the contents of one text
+//  item to the output file.  If that text item
+//  points to any sub text items, those sub text
+//  items also are written to the file.
+
+void write_text_item_to_file( )
+{
+    initialize_get_next_character_from_text_item( ) ;
+    while ( 1 == 1 )
+    {
+        get_next_character_from_text_item( ) ;
+        if ( global_single_character_as_integer == 0 )
+        {
+            return ;
+        }
+        write_single_character_as_integer_to_file( ) ;
+    }
+    return ;
 }
 
 
@@ -4587,12 +4588,18 @@ void do_everything( )
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-    test_parsing_characters_individually( ) ;
+//    test_parsing_characters_individually( ) ;
 
 //    read_text_line_from_file( ) ;
 
-    global_single_character = 101 ;
-    write_single_character_to_file( ) ;
+    global_single_character_as_integer = 47 ;
+    write_single_character_as_integer_to_file( ) ;
+    global_single_character_as_integer = 101 ;
+    write_single_character_as_integer_to_file( ) ;
+
+    global_from_text_item_id = global_id_for_phrase_word_numeric ;
+    global_text_item_id = global_id_for_phrase_word_numeric ;
+    write_text_item_to_file( ) ;
 
     global_from_text_item_id = 1 ;
     global_to_text_item_id = 2 ;
