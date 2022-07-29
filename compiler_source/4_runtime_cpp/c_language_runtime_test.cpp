@@ -129,7 +129,7 @@ int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_valid_filename ;
 int global_text_item_id_for_valid_folder_name ;
-int global_text_item_id_for_integer_as_text ;
+int global_text_item_id_for_number_as_text ;
 int global_text_item_id_for_float_as_text ;
 
 int global_text_item_id_for_single_space ;
@@ -1221,6 +1221,10 @@ void recover_memory_from_top_text_item( )
 //  integer is supplied in the variable
 //  global_single_character_as_integer.  Ignore
 //  any error responses.
+//
+//  Later, replace "fputc" function with C++ code
+//  that handles Unicode characters, including
+//  Chinese characters.
 
 void write_single_character_as_integer_to_file( )
 {
@@ -1236,7 +1240,7 @@ void write_single_character_as_integer_to_file( )
 //  This function converts the integer stored in
 //  global_single_integer into text digits that
 //  are stored in text item
-//  global_text_item_id_for_integer_as_text.
+//  global_text_item_id_for_number_as_text.
 
 void convert_integer_to_text( )
 {
@@ -1246,7 +1250,7 @@ void convert_integer_to_text( )
 //  Point to where the first character (as an
 //  integer) will be stored.
 
-    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_number_as_text ] ;
 
 
 // -----------------------------------------------
@@ -1304,8 +1308,9 @@ void convert_integer_to_text( )
         global_single_character_as_integer = (int) global_c_format_string[ global_character_pointer ] ;
         global_storage_all_text[ global_text_item_pointer ] = global_single_character_as_integer ;
         global_text_item_pointer ++ ;
-//        log_out << "digit " << global_single_character_as_integer << std::endl ;
+        log_out << "digit " << global_single_character_as_integer << std::endl ;
     }
+    global_text_pointer_begin_for_item[ global_text_item_id_for_number_as_text ] = global_text_item_pointer - 1 ;
 
 
 // -----------------------------------------------
@@ -1322,7 +1327,7 @@ void convert_integer_to_text( )
 //  This function converts the decimal stored in
 //  global_single_decimal_number into text digits
 //  that are stored in text item
-//  global_text_item_id_for_integer_as_text.
+//  global_text_item_id_for_number_as_text.
 
 void convert_decimal_to_text( )
 {
@@ -1332,7 +1337,7 @@ void convert_decimal_to_text( )
 //  Point to where the first character (as an
 //  integer) will be stored.
 
-    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_integer_as_text ] ;
+    global_text_item_pointer = global_text_pointer_begin_for_item[ global_text_item_id_for_number_as_text ] ;
 
 
 // -----------------------------------------------
@@ -1398,32 +1403,6 @@ void convert_decimal_to_text( )
 //  End of function convert_decimal_to_text.
 
     return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function store_one_text_character
-//
-//  Stores the integer in the variable
-//  global_one_number_to_append, putting it into
-//  the text item with ID number
-//  global_text_item_id.
-//  Bounds checking should be done before using
-//  this function.  The bounds checking done here
-//  should not be relied on.
-
-void store_one_text_character( )
-{
-    measure_space_available_in_text_item( ) ;
-    if ( global_space_available_in_text_item < 1 )
-    {
-        log_out << "[BUG:  Cannot expand size of text item ID number " << global_to_text_item_id << "]" ;
-        exit( EXIT_FAILURE ) ;
-    }
-    global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
-    global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_one_number_to_append ;
-    log_out << "[stored " << global_one_number_to_append << " at " << global_text_pointer_end_for_item[ global_to_text_item_id ] << "]" ;
 }
 
 
@@ -1733,6 +1712,8 @@ void do_main_initialization( )
 //  Create the text items for the Dashrep-defined
 //  phrase names.
 
+    global_id_for_phrase_word_numeric = store_text_and_get_its_text_item_id( "numeric" ) ;
+
     global_id_for_phrase_name_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
     global_id_for_phrase_name_character_hyphen = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_hyphen , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
     global_id_for_phrase_name_four_hyphens = store_phrase_name_and_get_id( global_id_for_phrase_word_four , global_id_for_phrase_word_hyphens , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
@@ -1975,6 +1956,16 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Create the text item used to store the result
+//  of converting a number into text.
+
+    global_length_requested_for_next_text_item_storage = 20 ;
+    global_text_item_id_for_number_as_text = global_next_available_text_item_id ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_category_for_item[ global_text_item_id_for_number_as_text ] = global_category_contains_unicode_anything ;
+
+
+// -----------------------------------------------
 //  Create text items that contain specific
 //  unchanging messages.
 
@@ -2013,6 +2004,7 @@ void do_main_initialization( )
     global_yes_or_no = global_yes ;
     global_yes_or_no_requesting_space_appended = global_yes ;
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
+    global_current_stack_number_available = 1 ;
 
 
 // -----------------------------------------------
@@ -2185,6 +2177,10 @@ void test_parsing_characters_individually( )
 //  Reads one line of text from a file and puts
 //  the text into the text item ID numbered
 //  global_text_item_id_for_file_input.
+//
+//  Later, replace "fgetc" function with C++ code
+//  that reads unicode characters.  Test with
+//  Chinese characters.
 
 void read_text_line_from_file( )
 {
@@ -2227,9 +2223,9 @@ void read_text_line_from_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function point_to_next_stack_storage_area
+//  Function point_to_available_stack_storage_area
 
-void point_to_next_stack_storage_area( )
+void point_to_available_stack_storage_area( )
 {
     global_current_stack_number_available ++ ;
     if ( global_current_stack_number_available > global_maximum_stack_number )
@@ -2245,9 +2241,9 @@ void point_to_next_stack_storage_area( )
 
 void initialize_get_next_character_from_text_item( )
 {
+	point_to_available_stack_storage_area( ) ;
+	global_text_item_id_for_getting_next_character = global_from_text_item_id ;
     global_current_stack_number_for_getting_next_character = global_current_stack_number_available ;
-    point_to_next_stack_storage_area( ) ;
-    global_text_item_id_for_getting_next_character = global_text_item_id ;
     global_current_stack_level_for_getting_next_character = 1 ;
     global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_item_id_for_getting_next_character ;
     global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] ;
@@ -2291,7 +2287,7 @@ while ( 1 == 1 )
 //  possibility that the text item is empty.
 
     global_yes_or_no_reached_end_of_current_text_item = global_no ;
-    if ( global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] >= global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] )
+    if ( global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] > global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] )
     {
         global_yes_or_no_reached_end_of_current_text_item = global_yes ;
     }
@@ -2442,10 +2438,12 @@ while ( 1 == 1 )
 //  This function writes the contents of one text
 //  item to the output file.  If that text item
 //  points to any sub text items, those sub text
-//  items also are written to the file.
+//  items also are written to the file.  The text
+//  item ID must be in global_from_text_item_id.
 
 void write_text_item_to_file( )
 {
+    log_out << "global_from_text_item_id " << global_from_text_item_id << std::endl ;
     initialize_get_next_character_from_text_item( ) ;
     while ( 1 == 1 )
     {
@@ -4579,8 +4577,6 @@ void do_everything( )
 // -----------------------------------------------
 //  Test basic text handling functionality.
 
-    global_single_integer = 0 ;
-    convert_integer_to_text( ) ;
 
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
@@ -4592,13 +4588,14 @@ void do_everything( )
 
 //    read_text_line_from_file( ) ;
 
-    global_single_character_as_integer = 47 ;
-    write_single_character_as_integer_to_file( ) ;
-    global_single_character_as_integer = 101 ;
-    write_single_character_as_integer_to_file( ) ;
+    for ( global_single_character_as_integer = 101 ; global_single_character_as_integer <= 107 ; global_single_character_as_integer ++ )
+    {
+//        write_single_character_as_integer_to_file( ) ;
+    }
 
-    global_from_text_item_id = global_id_for_phrase_word_numeric ;
-    global_text_item_id = global_id_for_phrase_word_numeric ;
+    global_single_integer = 107 ;
+    convert_integer_to_text( ) ;
+    global_from_text_item_id = global_text_item_id_for_number_as_text ;
     write_text_item_to_file( ) ;
 
     global_from_text_item_id = 1 ;
