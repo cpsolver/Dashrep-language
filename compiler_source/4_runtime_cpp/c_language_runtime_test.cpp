@@ -942,6 +942,19 @@ int global_yes_or_no_looking_for_word_attribute_or_specify ;
 int global_yes_or_no_prior_character_was_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
 int global_recent_character_position_for_character_number_beyond_ascii ;
+int global_yes_or_no_use_copy_when_appending ;
+
+
+// -----------------------------------------------
+//  Declare a variable that tracks which kind of
+//  delimiter -- if any -- is inserted between
+//  sub text items.  Also declare its allowed
+//  values.
+
+int global_character_to_insert_between_subitems ;
+const int global_insertion_character_none = 1 ;
+const int global_insertion_character_space = 2 ;
+const int global_insertion_character_hyphen = 3 ;
 
 
 // -----------------------------------------------
@@ -2247,6 +2260,21 @@ void initialize_get_next_character_from_text_item( )
     global_current_stack_level_for_getting_next_character = 1 ;
     global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_item_id_for_getting_next_character ;
     global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] ;
+    switch ( global_text_category_for_item[ global_text_item_id_for_getting_next_character ] )
+    {
+        global_category_contains_hyphenated_phrase_name :
+            global_character_to_insert_between_subitems = global_insertion_character_hyphen ;
+            break ;
+        global_category_contains_list_of_integers :
+            global_character_to_insert_between_subitems = global_insertion_character_space ;
+            break ;
+        global_category_contains_pointers_to_decimal_numbers :
+            global_character_to_insert_between_subitems = global_insertion_character_space ;
+            break ;
+        default :
+            global_character_to_insert_between_subitems = global_insertion_character_none ;
+            break ;
+    }
 }
 
 
@@ -3812,7 +3840,6 @@ void expand_text( )
     int length_of_code_at_recursion_level[ 105 ] ;
     int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
 
-    int expand_to_text_item_id ;
     int expand_buffer_text_item_id ;
 
     const int space_directive_none = 1 ;
@@ -3821,9 +3848,21 @@ void expand_text( )
 
 
 // -----------------------------------------------
+//  Specify the text item being expanded.
+
+    global_id_for_phrase_name_expand_text = global_to_text_item_id ;
+
+
+// -----------------------------------------------
+//  Specify that when appending is done, the
+//  "copied" version is used.
+
+    global_yes_or_no_use_copy_when_appending = global_yes ;
+
+
+// -----------------------------------------------
 //  Initialization.
 
-    expand_to_text_item_id = global_to_text_item_id ;
     global_text_item_id = expand_buffer_text_item_id ;
     text_item_clear( ) ;
 
@@ -3927,6 +3966,19 @@ if ( pointer_to_phrase_begin > pointer_to_phrase_end )
 // return '' ;
 // }
     }
+
+// -----------------------------------------------
+//  todo:
+//
+//  Later, terminate the first loop and start a
+//  separate loop that handles space directives,
+//  and a third separate loop that handles angle-
+//  bracketed and underscore-joined phrase names,
+//  and a fourth loop that repositions "specify"
+//  and "attribute" directives.
+
+
+// global_id_for_phrase_name_expand_text
 
 
 // -----------------------------------------------
