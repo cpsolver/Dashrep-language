@@ -923,13 +923,15 @@ int global_character_pointer_for_stack_number_and_stack_level[ 12 ][ 22 ] ;
 //  Declare variables for using the stack-type
 //  storage pointers.
 
+int global_stack_number ;
+int global_stack_level ;
+int global_current_stack_level ;
+int global_current_stack_level_for_getting_next_character ;
 int global_current_stack_number_for_getting_next_character ;
 int global_current_stack_number_for_appending_next_character ;
 int global_current_stack_number_for_word_list ;
 int global_current_stack_number_for_word_list_for_loops ;
-
-int global_current_stack_level ;
-int global_current_stack_level_for_getting_next_character ;
+int global_new_item_and_pointer_stack_number ;
 
 
 // -----------------------------------------------
@@ -943,6 +945,7 @@ int global_yes_or_no_prior_character_was_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
 int global_recent_character_position_for_character_number_beyond_ascii ;
 int global_yes_or_no_use_copy_when_appending ;
+int global_yes_or_no_inserted_character ;
 
 
 // -----------------------------------------------
@@ -2260,13 +2263,37 @@ void specify_character_to_insert_between_subitems( )
 
 void initialize_get_next_character_from_text_item( )
 {
-	point_to_available_stack_storage_area( ) ;
-	global_text_item_id_for_getting_next_character = global_from_text_item_id ;
+    point_to_available_stack_storage_area( ) ;
+    global_text_item_id_for_getting_next_character = global_from_text_item_id ;
     global_current_stack_number_for_getting_next_character = global_current_stack_number_available ;
     global_current_stack_level_for_getting_next_character = 1 ;
     global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_item_id_for_getting_next_character ;
     global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] ;
     specify_character_to_insert_between_subitems( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_item_and_character_pointer_stack
+//
+//  Copies the information needed to point to a
+//  specific character position within a text
+//  item, or within a sub text item.  This allows
+//  a way to go backward to the most recent
+//  character (or delimiter) of a specific type,
+//  without losing the current character position
+//  being parsed.
+
+void copy_item_and_character_pointer_stack( )
+{
+    point_to_available_stack_storage_area( ) ;
+    global_new_item_and_pointer_stack_number = global_current_stack_number_available ;
+    for ( global_stack_level = 1 ; global_stack_level <= global_current_stack_level_for_getting_next_character ; global_stack_level ++ )
+    {
+        global_text_item_id_for_stack_number_and_stack_level[ global_new_item_and_pointer_stack_number ][ global_stack_level ] = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_stack_level ] ;
+        global_character_pointer_for_stack_number_and_stack_level[ global_new_item_and_pointer_stack_number ][ global_stack_level ] = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_stack_level ] ;
+    }
 }
 
 
@@ -2326,6 +2353,31 @@ while ( 1 == 1 )
 
 
 // -----------------------------------------------
+//  If a space or hyphen needs to be inserted
+//  here, insert it.  This applies to a list of
+//  integers, a list of pointers to decimal
+//  numbers, or a hyphenated phrase name.
+
+    if ( global_character_to_insert_between_subitems != global_insertion_character_none )
+    {
+        global_character_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+        global_text_item_id = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+        if ( global_text_pointer_begin_for_item[ global_text_item_id ] < global_text_pointer_end_for_item[ global_text_item_id ] )
+        {
+            if ( ( global_character_pointer == ( global_text_pointer_begin_for_item[ global_text_item_id ] + 1 ) ) || ( global_character_pointer == ( global_text_pointer_end_for_item[ global_text_item_id ] - 1 ) ) )
+            {
+		        if ( global_yes_or_no_inserted_character == global_no )
+		        {
+		            global_single_character_as_integer = global_character_to_insert_between_subitems ;
+		            global_yes_or_no_inserted_character = global_yes ;
+		            return ;
+		        }
+		    }
+	    }
+    }
+
+
+// -----------------------------------------------
 //  If the end of a sub text item has been
 //  reached, move to a lower level on the stack,
 //  and repeat the loop.  Get the information for
@@ -2356,10 +2408,6 @@ while ( 1 == 1 )
 //  todo: write/edit code here
 
         case global_category_contains_list_of_text_item_ids :
-
-            global_text_item_id = 116 ;
-            exit_not_yet_supported( ) ;
-            log_out << "incomplete code: handle list of text items" << std::endl ;
 
             global_text_item_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
 
@@ -2418,8 +2466,6 @@ while ( 1 == 1 )
 //  the text item at the next lower level, and
 //  repeat the loop.
 
-//  todo: write/edit code here
-
         default :
             global_character_pointer = global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
             if ( global_character_pointer <= global_text_pointer_end_for_item[ global_text_item_id_for_getting_next_character ] )
@@ -2430,9 +2476,11 @@ while ( 1 == 1 )
                 return ;
             } else
             {
-                log_out << "incomplete code: pop stack" << std::endl ;
-                global_text_item_id = 112 ;
-                exit_not_yet_supported( ) ;
+		        global_current_stack_level_for_getting_next_character -- ;
+		        global_text_item_id_for_getting_next_character = global_text_item_id_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] ;
+		        global_character_pointer_for_stack_number_and_stack_level[ global_current_stack_number_for_getting_next_character ][ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_text_item_id_for_getting_next_character ] ;
+		        specify_character_to_insert_between_subitems( ) ;
+		        global_text_item_category = global_text_category_for_item[ global_text_item_id_for_getting_next_character ] ;
                 continue ;
             }
             break ;
@@ -2994,25 +3042,6 @@ void copy_copied_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function reorganize_as_linked_list_of_words
-//
-//  To increase speed when the text item is a list
-//  of space delimited words, reorganize the text
-//  item so that each word is in a separate
-//  sub-text item that contains no delimiters.
-//
-//  todo: write this code
-
-void reorganize_as_linked_list_of_words( )
-{
-    global_text_item_id = 80 ;
-    exit_not_yet_supported( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function initialize_parse_characters_of_number
 
 void initialize_parse_characters_of_number( )
@@ -3241,7 +3270,7 @@ void test_parsing_numeric_characters( )
                         log_out << "integer number = " << global_single_integer << std::endl ;
                     } else
                     {
-                    	convert_decimal_to_text( ) ;
+                        convert_decimal_to_text( ) ;
                         log_out << "decimal number in text item " << std::endl ;
                     }
                 } else
