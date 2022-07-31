@@ -653,8 +653,8 @@ int global_text_item_id_of_matching_hyphenated_phrase_name ;
 
 const int global_maximum_words_in_hyphenated_phrase_name = 30 ;
 int global_word_count_parsed_hyphenated_phrase_name ;
-int global_parsed_hyphenated_phrase_name_pointer_begin_word[ 32 ] ;
-int global_parsed_hyphenated_phrase_name_pointer_end_word[ 32 ] ;
+int global_parsed_hyphenated_phrase_name_pointer_begin_for_word[ 32 ] ;
+int global_parsed_hyphenated_phrase_name_pointer_end_for_word[ 32 ] ;
 int global_word_position_in_parsed_hyphenated_phrase_name ;
 
 
@@ -948,6 +948,8 @@ int global_yes_or_no_delimiter_encountered ;
 int global_recent_character_position_for_character_number_beyond_ascii ;
 int global_yes_or_no_use_copy_when_appending ;
 int global_yes_or_no_inserted_character ;
+int global_yes_or_no_transition_from_character_to_delimiter ;
+int global_yes_or_no_transition_from_delimiter_to_character ;
 
 
 // -----------------------------------------------
@@ -2081,8 +2083,9 @@ void initialize_character_usage_buffers( )
 //  Function initialize_parse_characters_individually
 //
 //  Do the initialization needed before starting
-//  to use the function
-//  parse_one_character_individually.
+//  to use either of the functions
+//  "parse_one_character_individually" or
+//  "track_transition_to_from_delimiter".
 
 void initialize_parse_characters_individually( )
 {
@@ -2094,12 +2097,54 @@ void initialize_parse_characters_individually( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function track_transition_to_from_delimiter
+
+void track_transition_to_from_delimiter( )
+{
+    global_yes_or_no_transition_from_character_to_delimiter = global_no ;
+    global_yes_or_no_transition_from_delimiter_to_character = global_no ;
+    global_yes_or_no_delimiter_encountered = global_no ;
+    switch ( global_single_character_as_integer )
+    {
+        case global_ascii_code_for_space :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_tab :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_newline :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_formfeed :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+        case global_ascii_code_for_carriage_return :
+            global_yes_or_no_delimiter_encountered = global_yes ;
+            break ;
+    }
+    if ( global_yes_or_no_delimiter_encountered == global_yes )
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_no )
+        {
+            global_yes_or_no_transition_from_character_to_delimiter = global_yes ;
+            log_out << "transition from character to delimiter" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_yes ;
+    } else
+    {
+        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
+        {
+            global_yes_or_no_transition_from_delimiter_to_character = global_yes ;
+            log_out << "transition from delimiter to character" << std::endl ;
+        }
+        global_yes_or_no_prior_character_was_delimiter = global_no ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function parse_one_character_individually
-//
-//  Identify the next character.  Specifically
-//  categorize it as a delimiter or non-delimiter.
-//  And store pointers that point to the beginning
-//  of each delimiter and non-delimiter.
 
 void parse_one_character_individually( )
 {
@@ -2134,40 +2179,7 @@ void parse_one_character_individually( )
     {
         global_recent_character_position_for_character_number_beyond_ascii = global_character_count_for_expand_text ;
     }
-    global_yes_or_no_delimiter_encountered = global_no ;
-    switch ( global_single_character_as_integer )
-    {
-        case global_ascii_code_for_space :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_tab :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_newline :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_formfeed :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-        case global_ascii_code_for_carriage_return :
-            global_yes_or_no_delimiter_encountered = global_yes ;
-            break ;
-    }
-    if ( global_yes_or_no_delimiter_encountered == global_yes )
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_no )
-        {
-            log_out << "transition from characters to delimiter" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_yes ;
-    } else
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
-        {
-            log_out << "transition from delimiter to characters" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_no ;
-    }
+    track_transition_to_from_delimiter( ) ;
     return ;
 }
 
@@ -2609,9 +2621,9 @@ void get_previous_character_from_text_item( )
 //  loop as soon as the previous character is
 //  known.
 
-global_single_character_as_integer = 0 ;
-while ( 1 == 1 )
-{
+    global_single_character_as_integer = 0 ;
+    while ( 1 == 1 )
+    {
 
 
 // -----------------------------------------------
@@ -2648,7 +2660,7 @@ void remove_trailing_delimiters( )
     global_single_character_as_integer = 1 ;
     while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_prior_character_was_delimiter == global_yes ) )
     {
-        get_next_character_from_text_item( ) ;
+        get_previous_character_from_text_item( ) ;
         if ( global_yes_or_no_prior_character_was_delimiter == global_no )
         {
             for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
@@ -2746,11 +2758,11 @@ void append_space_if_not_empty( )
 //  appended will not change, so just add a link
 //  to the text being appended.  The text item
 //  to be appended is specified by the text item
-//  ID number in global_from_text_item_id,
+//  ID number in "global_from_text_item_id",
 //  and the text item being extended is specified
 //  by the text item ID number in
-//  global_to_text_item_id.  The value in
-//  global_yes_or_no_requesting_space_appended
+//  "global_to_text_item_id".  The value in
+//  "global_yes_or_no_requesting_space_appended"
 //  indicates whether to insert a space between
 //  non-empty text being extended and non-empty
 //  text being appended.
@@ -2894,6 +2906,11 @@ void append_copied_text( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function append_text
+//
+//  Appends text from the text item
+//  "global_from_text_item_id" to the text item
+//  "global_to_text_item_id".
+//  Allow the two text item IDs to be the same.
 
 void append_text( )
 {
@@ -2928,6 +2945,23 @@ void copy_copied_text( )
 {
     global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
     append_copied_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_text
+
+void copy_text( )
+{
+    if ( global_from_text_item_id > global_text_item_id_last_predefined )
+    {
+        copy_copied_text( ) ;
+    } else
+    {
+        copy_linked_text( ) ;
+    }
     return ;
 }
 
@@ -3302,6 +3336,11 @@ void parse_one_character_of_folder_name( )
 // -----------------------------------------------
 //  Function check_for_word_specify_or_attribute
 
+//  Later, generalize this, create desired counts
+//  based on distance between last letter of
+//  searched text and position of the last
+//  occurance of other letters in the search text.
+
 void check_for_word_specify_or_attribute( )
 {
     global_length_of_matching_text = 0 ;
@@ -3329,10 +3368,23 @@ void check_for_word_specify_or_attribute( )
 //  beginning and the end.  This approach is more
 //  often going to be faster when the two text
 //  sequences are numbers because the end digits
-//  are more likely to be different.
+//  are more likely to be different.  The
+//  characters are in "global_storage_all_text",
+//  and the character pointers are:
+//  "global_search_character_pointer_begin"
+//  "global_search_character_pointer_end"
+//  "global_match_character_pointer_begin"
+//  "global_match_character_pointer_end".
+//  If the lengths are different, there is no
+//  match.
 
 void yes_or_no_matching_text( )
 {
+    if ( ( global_search_character_pointer_end - global_search_character_pointer_begin ) != ( global_match_character_pointer_end - global_match_character_pointer_begin ) )
+    {
+        global_yes_or_no_same_unicode_characters = global_no ;
+        return ;
+    }
     global_yes_or_no_same_unicode_characters = global_yes ;
     while ( 1 == 1 )
     {
@@ -3368,18 +3420,20 @@ void yes_or_no_matching_text( )
 //  Function check_word_match_in_parsed_hyphenated_phrase_name
 //
 //  Checks if the text item
-//  global_finding_match_text_item_id is the same
+//  "global_finding_match_text_item_id" is the same
 //  word as a word in the
 //  "global_parsed_hyphenated_phrase_name" area.
 //  The result is indicated by the yes or no value
-//  in global_yes_or_no_same_unicode_characters.
+//  in "global_yes_or_no_same_unicode_characters".
+
+//  todo: code needs editing
 
 void check_word_match_in_parsed_hyphenated_phrase_name( )
 {
     global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_finding_match_text_item_id ] ;
     global_search_character_pointer_end = global_text_pointer_end_for_item[ global_finding_match_text_item_id ] ;
-    global_match_character_pointer_begin = global_parsed_hyphenated_phrase_name_pointer_begin_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
-    global_match_character_pointer_end = global_parsed_hyphenated_phrase_name_pointer_end_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
+    global_match_character_pointer_begin = global_parsed_hyphenated_phrase_name_pointer_begin_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
+    global_match_character_pointer_end = global_parsed_hyphenated_phrase_name_pointer_end_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
     yes_or_no_matching_text( ) ;
 }
 
@@ -3389,7 +3443,7 @@ void check_word_match_in_parsed_hyphenated_phrase_name( )
 //  Function check_yes_or_no_same_hyphenated_phrase
 //
 //  Checks if the text item
-//  global_looking_at_hyphenated_phrase_name_in_text_item_id
+//  "global_looking_at_hyphenated_phrase_name_in_text_item_id"
 //  contains the same hyphenated phrase name as
 //  the hyphenated phrase name stored in the
 //  "parsed_hyphenated_phrase_name" area.
@@ -3397,7 +3451,7 @@ void check_word_match_in_parsed_hyphenated_phrase_name( )
 //  category "contains_hyphenated_phrase_name",
 //  but this assumption is not checked here.  The
 //  comparison result is in
-//  global_yes_or_no_same_hyphenated_phrase_name.
+//  "global_yes_or_no_same_hyphenated_phrase_name".
 
 void check_yes_or_no_same_hyphenated_phrase( )
 {
@@ -3554,7 +3608,8 @@ void convert_into_category_pointers_to_decimal_numbers( )
 //    global_pointer_to_within_text_item
 //    global_finding_match_text_item_id
 //
-//  equivalent to standard "index" function
+//  This function is similar to the standard
+//  C-language "index" function.
 
 int find_matching_text( )
 {
@@ -3694,8 +3749,6 @@ void get_text_by_character_offset_and_length( )
 
 void expand_text( )
 {
-    global_text_item_id = 92 ;
-    exit_not_yet_supported( ) ;
 
 
 // -----------------------------------------------
@@ -3800,37 +3853,37 @@ void expand_text( )
 //  will end.
 
 // length_of_code_at_recursion_level_current = length_of_code_at_recursion_level[ recursion_level ] ;
-if ( length_of_code_at_recursion_level_current == 0 )
-{
-    recursion_level -- ;
-    continue ;
-}
+        if ( length_of_code_at_recursion_level_current == 0 )
+        {
+            recursion_level -- ;
+            continue ;
+        }
 // pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;
 // while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq ' ' ) ) {
-pointer_to_phrase_begin ++ ;
+        pointer_to_phrase_begin ++ ;
 // }
 // pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-if ( pointer_to_next_space == -1 )
-{
+        if ( pointer_to_next_space == -1 )
+        {
 // pointer_to_phrase_end = length_of_code_at_recursion_level_current - 1 ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = length_of_code_at_recursion_level_current ;
-} else
-{
+        } else
+        {
 // pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-    if ( pointer_to_next_space > pointer_to_phrase_begin )
-    {
-        pointer_to_phrase_end = pointer_to_next_space - 1 ;
+            if ( pointer_to_next_space > pointer_to_phrase_begin )
+            {
+                pointer_to_phrase_end = pointer_to_next_space - 1 ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_next_space ;
-    } else
-    {
-        pointer_to_phrase_end = -2 ;
-    }
-}
-if ( pointer_to_phrase_begin > pointer_to_phrase_end )
-{
-    recursion_level -- ;
-    continue ;
-}
+            } else
+            {
+                pointer_to_phrase_end = -2 ;
+            }
+        }
+        if ( pointer_to_phrase_begin > pointer_to_phrase_end )
+        {
+            recursion_level -- ;
+            continue ;
+        }
 // current_phrase_text_item_id = substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , ( pointer_to_phrase_end - pointer_to_phrase_begin + 1 ) ) ;
 
 
@@ -3839,24 +3892,25 @@ if ( pointer_to_phrase_begin > pointer_to_phrase_end )
 // phrase name being encountered too many times.
 // If this occurs, exit the endless loop.
 
-    if ( global_yes_or_no_count_phrase_usage == global_yes )
-    {
+        if ( global_yes_or_no_count_phrase_usage == global_yes )
+        {
 // global_number_of_times_encountered_phrase_named{ current_phrase_text_item_id } ++ ;
 // if ( global_number_of_times_encountered_phrase_named{ current_phrase_text_item_id } >= expand_endless_cycle_count_maximum ) {
-        maximum_cycle_count = 0 ;
+            maximum_cycle_count = 0 ;
 // foreach phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {
 // cycle_count = global_number_of_times_encountered_phrase_named{ phrase_name } ;
-    if ( cycle_count > maximum_cycle_count )
-    {
-       maximum_cycle_count = cycle_count ;
+        if ( cycle_count > maximum_cycle_count )
+        {
+           maximum_cycle_count = cycle_count ;
 // phrase_name = phrase_name_with_highest_cycle_count ;
-    }
+        }
 // }
 // global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . phrase_name_with_highest_cycle_count . ' ' . maximum_cycle_count . "\n" ;
 // print global_action_result . "\n" ;
 // return '' ;
 // }
-    }
+        }
+
 
 // -----------------------------------------------
 //  todo:
@@ -3877,54 +3931,54 @@ if ( pointer_to_phrase_begin > pointer_to_phrase_end )
 //  space directive, or a line directive, handle
 //  it.
 
-if ( current_phrase_text_item_id == global_id_for_phrase_name_hyphen_here )
-{
+        if ( current_phrase_text_item_id == global_id_for_phrase_name_hyphen_here )
+        {
 // output_buffer .= '-' ;
-    space_directive = space_directive_none ;
-    continue ;
-}
-if ( current_phrase_text_item_id == global_id_for_phrase_name_no_space )
-{
-    if ( space_directive = space_directive_one_requested )
-    {
-        space_directive = space_directive_none ;
-    }
-    continue ;
-}
+            space_directive = space_directive_none ;
+            continue ;
+        }
+        if ( current_phrase_text_item_id == global_id_for_phrase_name_no_space )
+        {
+            if ( space_directive = space_directive_one_requested )
+            {
+                space_directive = space_directive_none ;
+            }
+            continue ;
+        }
 // if ( current_phrase_text_item_id eq ( '<' . 'no_space' . '>' ) ) {
-    space_directive = space_directive_none ;
-    continue ;
+            space_directive = space_directive_none ;
+            continue ;
 // }
-if ( current_phrase_text_item_id == global_id_for_phrase_name_one_space )
-{
-    space_directive = space_directive_one_requested ;
-    continue ;
-}
+        if ( current_phrase_text_item_id == global_id_for_phrase_name_one_space )
+        {
+            space_directive = space_directive_one_requested ;
+            continue ;
+        }
 // if ( current_phrase_text_item_id eq ( '<' . 'one_space' . '>' ) ) {
-    space_directive = space_directive_one_requested ;
-    continue ;
+            space_directive = space_directive_one_requested ;
+            continue ;
 // }
-if ( current_phrase_text_item_id == global_id_for_phrase_name_new_line )
-{
+        if ( current_phrase_text_item_id == global_id_for_phrase_name_new_line )
+        {
 // output_buffer .= "\n" ;
-    space_directive = space_directive_none ;
-    continue ;
-}
+            space_directive = space_directive_none ;
+            continue ;
+        }
 // if ( current_phrase_text_item_id eq ( '<' . 'new_line' . '>' ) ) {
 // output_buffer .= "\n" ;
-    space_directive = space_directive_none ;
-    continue ;
+            space_directive = space_directive_none ;
+            continue ;
 // }
-if ( current_phrase_text_item_id == global_id_for_phrase_name_empty_line )
-{
+        if ( current_phrase_text_item_id == global_id_for_phrase_name_empty_line )
+        {
 // output_buffer .= "\n\n" ;
-    space_directive = space_directive_none ;
-    continue ;
-}
+            space_directive = space_directive_none ;
+            continue ;
+        }
 // if ( current_phrase_text_item_id eq ( '<' . 'empty_line' . '>' ) ) {
 // output_buffer .= "\n\n" ;
-    space_directive = space_directive_none ;
-    continue ;
+            space_directive = space_directive_none ;
+            continue ;
 // }
 
 
@@ -3936,11 +3990,11 @@ if ( current_phrase_text_item_id == global_id_for_phrase_name_empty_line )
 //  name.
 
 // if ( ( current_phrase_text_item_id =~ /[^ \-]\-[^ \-]/ ) && ( exists( global_dashrep_replacement{ current_phrase_text_item_id } ) ) ) {
-    recursion_level ++ ;
+            recursion_level ++ ;
 // code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase_text_item_id } ;
 // length_of_code_at_recursion_level[ recursion_level ] = length( code_at_recursion_level[ recursion_level ] ) ;
 // pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = 0 ;
-    continue ;
+            continue ;
 // }
 
 
@@ -3949,11 +4003,11 @@ if ( current_phrase_text_item_id == global_id_for_phrase_name_empty_line )
 //  Specify a default of inserting one space after
 //  the next phrase insertion.
 
-if ( ( space_directive == space_directive_one ) || ( space_directive == space_directive_one_requested ) )
-{
+        if ( ( space_directive == space_directive_one ) || ( space_directive == space_directive_one_requested ) )
+        {
 // output_buffer .= ' ' ;
-}
-space_directive = space_directive_one ;
+        }
+        space_directive = space_directive_one ;
 
 
 // -----------------------------------------------
@@ -3973,13 +4027,13 @@ space_directive = space_directive_one ;
 //  "<xyz />" as well as "<xyz>".
 
 // if ( index( output_buffer , '<specify ' ) > 0 ) {
-prior_length = 0 ;
+        prior_length = 0 ;
 // while ( length( output_buffer ) != prior_length ) {
 // prior_length = length( output_buffer ) ;
 // output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
 // }
 // if ( index( output_buffer , '<specify ' ) > 0 ) {
-prior_length = 0 ;
+        prior_length = 0 ;
 // while ( length( output_buffer ) != prior_length ) {
 // prior_length = length( output_buffer ) ;
 // output_buffer =~ s/ *> *<specify +/ / ;
@@ -4000,10 +4054,10 @@ prior_length = 0 ;
 // output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
 
 // if ( output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ ) {
-    space_directive = space_directive_none ;
+            space_directive = space_directive_none ;
 // }
-    length_of_output_buffer = -1 ;
-    pointer_to_remainder_of_output_buffer = 0 ;
+            length_of_output_buffer = -1 ;
+            pointer_to_remainder_of_output_buffer = 0 ;
 // new_output_buffer = '' ;
 // while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s ) {
 // prefix = $1 ;
@@ -4021,12 +4075,12 @@ prior_length = 0 ;
 // new_output_buffer .= '<' . possible_phrase_name_with_underscores . '>' ;
 // }
 // }
-    if ( length_of_output_buffer != -1 )
-    {
+            if ( length_of_output_buffer != -1 )
+            {
 // output_buffer = new_output_buffer . substr( output_buffer , pointer_to_remainder_of_output_buffer ) ;
 // new_output_buffer = '' ;
 // possible_phrase_name_with_underscores = '' ;
-    }
+            }
 
 
 // -----------------------------------------------
@@ -4096,34 +4150,34 @@ void implement_loop( )
 //  Start ABABA loop, which has exit in middle of
 //  loop.
 
-local_endless_loop_counter = 0 ;
-local_endless_loop_counter_limit = int( ( length_of_text_in_word_list / 2 ) ) + 10 ;
-while ( 1 == 1 ) {
+    local_endless_loop_counter = 0 ;
+    local_endless_loop_counter_limit = int( ( length_of_text_in_word_list / 2 ) ) + 10 ;
+    while ( 1 == 1 ) {
 
-local_endless_loop_counter ++ ;
-if ( local_endless_loop_counter > local_endless_loop_counter_limit )
-{
-    break ;
-}
+        local_endless_loop_counter ++ ;
+        if ( local_endless_loop_counter > local_endless_loop_counter_limit )
+        {
+            break ;
+        }
 
-if ( local_pointer_to_next_space >= length_of_text_in_word_list )
-{
-    break ;
-}
+        if ( local_pointer_to_next_space >= length_of_text_in_word_list )
+        {
+            break ;
+        }
 
 
 // -----------------------------------------------
 //  Start a second, inner, ABABA loop, which has
 //  its exit in the middle of the loop.
 
-local_counter_number_of_adjacent_spaces = 0 ;
-while ( 1 == 1 ) {
+        local_counter_number_of_adjacent_spaces = 0 ;
+        while ( 1 == 1 ) {
 
-local_counter_number_of_adjacent_spaces ++ ;
-if ( local_counter_number_of_adjacent_spaces > length_of_text_in_word_list )
-{
-    break ;
-}
+            local_counter_number_of_adjacent_spaces ++ ;
+            if ( local_counter_number_of_adjacent_spaces > length_of_text_in_word_list )
+            {
+                break ;
+            }
 
 // local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_space + 1 ) ;
 
@@ -4134,27 +4188,27 @@ if ( local_counter_number_of_adjacent_spaces > length_of_text_in_word_list )
 //  point, otherwise there will be an endless
 //  loop.
 
-if ( local_pointer_to_future_space != local_pointer_to_next_space + 1 )
-{
-    break ;
-}
+			if ( local_pointer_to_future_space != local_pointer_to_next_space + 1 )
+			{
+			    break ;
+			}
 
-local_pointer_to_next_space = local_pointer_to_future_space ;
+			local_pointer_to_next_space = local_pointer_to_future_space ;
 
 
 // -----------------------------------------------
 //  End of second, inner, ABABA loop.
 
-}
+        }
 
-local_pointer_to_next_word = local_pointer_to_next_space + 1 ;
+        local_pointer_to_next_word = local_pointer_to_next_space + 1 ;
 
 // local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_word ) ;
 
-if ( local_pointer_to_next_space < 0 )
-{
-    local_pointer_to_next_space = length_of_text_in_word_list ;
-}
+        if ( local_pointer_to_next_space < 0 )
+        {
+            local_pointer_to_next_space = length_of_text_in_word_list ;
+        }
 
 
 // -----------------------------------------------
@@ -4162,10 +4216,10 @@ if ( local_pointer_to_next_space < 0 )
 //  edited, ensure it reaches an end point.
 //  Otherwise there will be an endless loop.
 
-if ( ( local_pointer_to_next_word >= local_pointer_to_next_space ) || ( local_pointer_to_next_word < 0 ) || ( local_pointer_to_next_space < 0 ) )
-{
-    break ;
-}
+        if ( ( local_pointer_to_next_word >= local_pointer_to_next_space ) || ( local_pointer_to_next_word < 0 ) || ( local_pointer_to_next_space < 0 ) )
+        {
+            break ;
+        }
 
 // global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , local_pointer_to_next_word , local_pointer_to_next_space - local_pointer_to_next_word ) ;
 
@@ -4177,7 +4231,7 @@ if ( ( local_pointer_to_next_word >= local_pointer_to_next_space ) || ( local_po
 // -----------------------------------------------
 //  End of ABABA loop.
 
-}
+    }
 
 
 // -----------------------------------------------
@@ -4513,28 +4567,20 @@ void do_everything( )
 // -----------------------------------------------
 //  Test basic text handling functionality.
 
-
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
 
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-//    read_text_line_from_file( ) ;
-
-    for ( global_single_character_as_integer = 101 ; global_single_character_as_integer <= 107 ; global_single_character_as_integer ++ )
-    {
-//        write_single_character_as_integer_to_file( ) ;
-    }
-
     global_single_integer = 170512 ;
     convert_integer_to_text( ) ;
     global_from_text_item_id = global_text_item_id_for_number_as_text ;
     write_text_item_to_file( ) ;
 
-    global_from_text_item_id = 1 ;
-    global_to_text_item_id = 2 ;
-//    append_linked_text( ) ;
+    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
+    global_to_text_item_id = global_text_item_id_for_sample_numbers ;
+    append_text( ) ;
 
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
