@@ -119,6 +119,7 @@ int global_from_text_item_id ;
 int global_to_text_item_id ;
 int global_convertable_text_item_id ;
 int global_text_item_id_last_predefined ;
+int global_saved_text_item_id ;
 
 int global_phrase_name_text_item_id ;
 int global_definition_text_item_id ;
@@ -995,6 +996,16 @@ float global_decimal_number_at_position[ 2000 ] ;
 
 int global_character_pointer_to_word_number[ 20000 ] ;
 int global_character_pointer_to_delimiter_number[ 20000 ] ;
+
+
+// -----------------------------------------------
+//  Declare lists and variables used to find
+//  matching text.
+
+int global_searched_usage_count_for_character[ 155 ] ;
+int global_usage_count_for_character[ 155 ] ;
+const int global_minimum_usage_character_to_consider 32 ;
+const int global_maximum_usage_character_to_consider 125 ;
 
 
 // -----------------------------------------------
@@ -3600,100 +3611,139 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function count_character_usage_in_text_item
+
+void count_character_usage_in_text_item( )
+{
+	for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
+	{
+		global_usage_count_for_character[ global_single_character_as_integer ] = 0 ;
+	}
+    initialize_get_next_character_from_text_item( ) ;
+    global_next_character_position_count = 0 ;
+    while ( 1 == 1 )
+    {
+        get_next_character_from_text_item( ) ;
+        global_next_character_position_count ++ ;
+        if ( global_single_character_as_integer == 0 )
+        {
+    	    break ;
+        }
+        if ( ( global_single_character_as_integer >= global_minimum_usage_character_to_consider ) && ( global_single_character_as_integer <= global_maximum_usage_character_to_consider ) )
+        {
+            global_usage_count_for_character[ global_single_character_as_integer ] ++ ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function scan_searched_text_before_doing_find_text
+
+void scan_searched_text_before_doing_find_text( )
+{
+	global_saved_text_item_id = global_from_text_item_id ;
+    global_from_text_item_id = global_to_text_item_id ;
+    count_character_usage_in_text_item( ) ;
+    global_from_text_item_id = global_saved_text_item_id ;
+    for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
+    {
+        global_searched_usage_count_for_character[ global_single_character_as_integer ] = global_usage_count_for_character[ global_single_character_as_integer ] ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function find_optimum_character_for_find_pause
+//
+//  This function finds which character should be
+//  used as a trigger for pausing the find process
+//  to fully check for a match.  The optimum
+//  character is one that is at or near the end of
+//  the text being found, and is a character that
+//  appears less often in the text being searched,
+//  and appears only once in the text being found.
+//  This function assumes the text to find has no
+//  subordinate text items, and contains only
+//  unicode characters (of any kind).  If this
+//  code is enhanced to handle Chinese characters,
+//  a larger character code range is needed.
+
+void find_optimum_character_for_find_pause( )
+{
+    global_length_of_text_to_find = global_text_pointer_end_for_item[ global_from_text_item_id ] - global_text_pointer_begin_for_item[ global_from_text_item_id ] + 1 ;
+    global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+    global_optimum_character_for_find_pause = global_storage_all_text[ global_text_pointer ] ;
+    global_highest_score_for_optimum_character_for_find_pause = 0 ;
+    for ( global_position_within_text_to_find = 1 ; global_position_within_text_to_find <= global_length_of_text_to_find ; global_position_within_text_to_find ++ )
+    {
+    	global_possible_optimum_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+    	global_score_for_possible_optimum_character = global_position_within_text_to_find - global_usage_count_for_character[ global_possible_optimum_character_as_integer ] - global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ;
+        if ( global_score_for_possible_optimum_character > global_highest_score_for_optimum_character_for_find_pause )
+        {
+            global_optimum_character_for_find_pause = global_possible_optimum_character ;
+            global_highest_score_for_optimum_character_for_find_pause = global_score_for_possible_optimum_character ;
+        }
+        global_text_pointer ++ ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function find_matching_text
 //
-//  The result is a global_text_item_id that
-//  indicates the matching text.
-//    global_text_item_id
-//    global_pointer_to_within_text_item
-//    global_finding_match_text_item_id
+//  This function finds some "matched" text
+//  within some text to be searched.  The text to
+//  match must be in "global_from_text_item_id".
+//  The text to be searched must be in
+//  "global_to_text_item_id" and that text must be
+//  the same text that was scanned using the
+//  function "scan_searched_text_before_doing_find_text".
+//  The result is ...
+
+//  The starting point for the text to be searched
+//  must be specified by the pointer stack pointed
+//  to by "global_...".
 //
 //  This function is similar to the standard
-//  C-language "index" function.
+//  C-language "index" function, but allows the
+//  text being searched to be in text items and
+//  subordinate text items, and can include
+//  integers and decimal numbers that are searched
+//  as text.  Also, the characters are stored as
+//  integers, not bytes, to allow unicode
+//  searches.
 
-int find_matching_text( )
-{
-    int subtext_text_id_number = 0 ;
-    global_text_item_id = 90 ;
-    exit_not_yet_supported( ) ;
-    return subtext_text_id_number ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function point_to_pattern_matching_text
-//
-//  input:
-//  global_text_item_id
-//  global_pointer_to_within_text_item
-//  global_finding_match_text_item_id
-//
-//  Uses symbol categorization with switch
-//  statement.  If non-symbol alphanumeric text is
-//  part of the intended pattern, first find that
-//  text using find_matching_text.
-
-void point_to_pattern_matching_text( )
+void find_matching_text( )
 {
 
-// todo:
 
-    global_text_item_id = 92 ;
-    exit_not_yet_supported( ) ;
-    return ;
-}
+// -----------------------------------------------
+//  Get the character usage counts for the text to
+//  be found.
+
+    count_character_usage_in_text_item( ) ;
 
 
 // -----------------------------------------------
-// -----------------------------------------------
-//  Function point_to_pattern_matching_text_backwards
-//
-//  Operates like point_to_pattern_matching_text
-//  but does checking in reverse direction.  Use
-//  for what can precede a word of characters
-//
-//  inputs:
-//  global_text_item_id
-//  global_pointer_to_within_text_item
-//  global_finding_match_text_item_id
+//  Determine which character to use for
+//  triggering pauses when the full text is
+//  checked for a match.
 
-//  todo:
-
-void point_to_pattern_matching_text_backwards( )
-{
-    global_text_item_id = 93 ;
-    exit_not_yet_supported( ) ;
-    return ;
-}
+    find_optimum_character_for_find_pause( ) ;
+//    global_optimum_character_for_find_pause ;
 
 
 // -----------------------------------------------
-// -----------------------------------------------
-//  Function find_subtext
-//
-//  input: global_text_item_id
-
-//  todo:
-
-void find_subtext( )
-{
-    global_text_item_id = 86 ;
-    exit_not_yet_supported( ) ;
-    return ;
-}
 
 
 // -----------------------------------------------
-// -----------------------------------------------
-//  Function insert_into_subtext
+//  End of function find_matching_text.
 
-//  todo:
-
-void insert_into_subtext( )
-{
-    global_text_item_id = 87 ;
-    exit_not_yet_supported( ) ;
     return ;
 }
 
