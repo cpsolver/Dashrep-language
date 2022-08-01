@@ -3345,33 +3345,6 @@ void parse_one_character_of_folder_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_for_word_specify_or_attribute
-
-//  Later, generalize this, create desired counts
-//  based on distance between last letter of
-//  searched text and position of the last
-//  occurance of other letters in the search text.
-
-void check_for_word_specify_or_attribute( )
-{
-    global_length_of_matching_text = 0 ;
-    if ( ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 1 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_p ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 2 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_e ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 3 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_c ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 4 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_i ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 5 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_f ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_s ] + 6 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_y ] ) )
-    {
-        global_length_of_matching_text = 7 ;
-    } else if ( ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 3 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_r ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 4 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_i ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 5 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_b ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 6 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_u ] ) && ( ( global_recent_character_position_for_character_number[ global_ascii_code_for_letter_a ] + 8 ) == global_recent_character_position_for_character_number[ global_ascii_code_for_letter_e ] ) )
-    {
-
-//  todo: check letters not already checked above
-
-        global_length_of_matching_text = 9 ;
-
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function yes_or_no_matching_text
 //
 //  Checks if two sequences of text characters are
@@ -3681,14 +3654,46 @@ void find_optimum_character_for_find_pause( )
     for ( global_position_within_text_to_find = 1 ; global_position_within_text_to_find <= global_length_of_text_to_find ; global_position_within_text_to_find ++ )
     {
     	global_possible_optimum_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
-    	global_score_for_possible_optimum_character = global_position_within_text_to_find - global_usage_count_for_character[ global_possible_optimum_character_as_integer ] - global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ;
+    	global_score_for_possible_optimum_character = ( global_length_of_matching_text - global_position_within_text_to_find ) * global_usage_count_for_character[ global_possible_optimum_character_as_integer ] * global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ;
         if ( global_score_for_possible_optimum_character > global_highest_score_for_optimum_character_for_find_pause )
         {
             global_optimum_character_for_find_pause = global_possible_optimum_character ;
             global_highest_score_for_optimum_character_for_find_pause = global_score_for_possible_optimum_character ;
+            global_position_of_optimum_character_for_pause = global_position_within_text_to_find ;
+
+            log_out << "position " << global_position_within_text_to_find << ", character " << global_possible_optimum_character_as_integer << ", score " << global_score_for_possible_optimum_character << std::endl ;
+
         }
         global_text_pointer ++ ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_for_match_where_paused
+
+void check_for_match_where_paused( )
+{
+    global_yes_or_no_matching_text = global_yes ;
+
+    global_position_of_found_character_for_find_pause = global_recent_character_position_for_character_number[ global_optimum_character_for_find_pause ] ;
+
+//    global_position_of_optimum_character_for_pause ;
+
+    global_character_distance_from_optimum_character_for_pause = 0 ;
+
+    for ( global_text_pointer = global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer >= global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer -- )
+    {
+    	global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+    	if ( ( global_recent_character_position_for_character_number[ global_single_character_as_integer ] + global_character_distance_from_optimum_character_for_pause ) != global_position_of_found_character_for_find_pause )
+        {
+            global_yes_or_no_matching_text = global_no ;
+            return ;
+        }
+        global_character_distance_from_optimum_character_for_pause ++ ;
+    }
+    return ;
 }
 
 
@@ -3723,6 +3728,13 @@ void find_matching_text( )
 
 
 // -----------------------------------------------
+//  Initialize the flag the indicates whether the
+//  matching text was found.
+
+    global_yes_or_no_matching_text = global_no ;
+
+
+// -----------------------------------------------
 //  Get the character usage counts for the text to
 //  be found.
 
@@ -3732,10 +3744,35 @@ void find_matching_text( )
 // -----------------------------------------------
 //  Determine which character to use for
 //  triggering pauses when the full text is
-//  checked for a match.
+//  checked for a match.  It is put into the
+//  variable
+//  "global_optimum_character_for_find_pause".
 
     find_optimum_character_for_find_pause( ) ;
-//    global_optimum_character_for_find_pause ;
+
+
+// -----------------------------------------------
+//  Scan the text being searched, and pause when
+//  the "optimum" character is encountered, and
+//  check whether there is a full match at that
+//  position.  If so, return with pointers to the
+//  beginning and end of the matching text.
+
+// later, allow for starting/resuming search later than beginning
+    global_text_pointer_begin = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+
+    initialize_get_next_character_from_text_item( ) ;
+    for ( global_text_pointer = global_text_pointer_begin ;
+     ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    {
+        get_next_character_from_text_item( ) ;
+        global_position_of_found_character_for_find_pause = global_text_pointer ;
+        check_for_match_where_paused( ) ;
+        if ( global_yes_or_no_matching_text == global_no )
+        {
+            break ;
+        }
+    }
 
 
 // -----------------------------------------------
