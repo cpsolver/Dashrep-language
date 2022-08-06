@@ -133,6 +133,9 @@ int global_text_item_id_for_valid_filename ;
 int global_text_item_id_for_valid_folder_name ;
 int global_text_item_id_for_number_as_text ;
 int global_text_item_id_for_float_as_text ;
+int global_text_item_id_for_integers_as_text ;
+int global_text_item_id_for_list_of_integers ;
+int global_text_item_id_for_pointer_begin_end ;
 
 int global_text_item_id_for_single_space ;
 int global_text_item_id_for_single_hyphen ;
@@ -630,6 +633,13 @@ int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
 
 
 // -----------------------------------------------
+//  Declare some text pointers.
+
+int global_text_pointer_begin ;
+int global_text_pointer_end ;
+
+
+// -----------------------------------------------
 //  Declare a list of hyphenated phrase names that
 //  are stored as text items.  Also declare text
 //  item pointers that are used when searching for
@@ -938,9 +948,9 @@ int global_new_item_and_pointer_stack_number ;
 
 
 // -----------------------------------------------
-//  Declare a list of counters and special
-//  counters that are used when parsing text or
-//  when expanding text.
+//  Declare a list of counters and special flags
+//  and pointers that are used when parsing text
+//  or when expanding text.
 
 int global_recent_character_position_for_character_number[ 260 ] ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
@@ -1004,8 +1014,18 @@ int global_character_pointer_to_delimiter_number[ 20000 ] ;
 
 int global_searched_usage_count_for_character[ 155 ] ;
 int global_usage_count_for_character[ 155 ] ;
-const int global_minimum_usage_character_to_consider 32 ;
-const int global_maximum_usage_character_to_consider 125 ;
+const int global_minimum_usage_character_to_consider = 32 ;
+const int global_maximum_usage_character_to_consider = 125 ;
+int global_optimum_character_for_find_pause ;
+int global_possible_optimum_character_as_integer ;
+int global_yes_or_no_matching_text ;
+int global_position_of_found_character_for_find_pause ;
+int global_position_of_optimum_character_for_pause ;
+int global_score_for_possible_optimum_character ;
+int global_highest_score_for_optimum_character_for_find_pause ;
+int global_position_within_text_to_find ;
+int global_character_distance_from_optimum_character_for_pause ;
+int global_length_of_text_to_find ;
 
 
 // -----------------------------------------------
@@ -1023,6 +1043,9 @@ int global_word_count_operand_two ;
 
 int global_pointer_to_within_text_item ;
 int global_text_item_pointer ;
+int global_pointer_next_word_begin ;
+int global_pointer_next_word_end ;
+int global_next_character_position_count ;
 
 
 // -----------------------------------------------
@@ -1067,6 +1090,7 @@ int global_search_character_pointer_begin ;
 int global_search_character_pointer_end ;
 int global_match_character_pointer_begin ;
 int global_match_character_pointer_end ;
+int global_count_of_words_handled ;
 
 
 // -----------------------------------------------
@@ -1236,6 +1260,24 @@ void recover_memory_from_top_text_item( )
         global_next_available_begin_pointer_for_next_available_text_item_id ++ ;
     }
     global_text_pointer_allocation_end_for_item[ global_new_storage_text_item_id ] = global_next_available_begin_pointer_for_next_available_text_item_id - 1 ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function extend_length_of_top_text_item
+//
+//  Extend the length of the top-most text item.
+
+void extend_length_of_top_text_item( )
+{
+    if ( global_new_storage_text_item_id != ( global_next_available_text_item_id - 1 ) )
+    {
+        return ;
+    }
+    global_text_pointer_allocation_end_for_item[ global_new_storage_text_item_id ] += global_default_length_for_text_item ;
+    global_next_available_begin_pointer_for_next_available_text_item_id = global_text_pointer_allocation_end_for_item[ global_new_storage_text_item_id ] + 1 ;
     return ;
 }
 
@@ -3552,17 +3594,98 @@ void add_new_hyphenated_phrase_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initialize_point_to_next_word_in_text_item
+
+void initialize_point_to_next_word_in_text_item( )
+{
+    initialize_get_next_character_from_text_item( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function point_to_next_word_in_text_item
+
+void point_to_next_word_in_text_item( )
+{
+
+//  todo: write this code
+
+    get_next_character_from_text_item( ) ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function convert_into_category_list_of_integers
 //
-//  Use function that parses integers.
-//
-//  todo: write this code
+//  Convert a text item that contains only integers
+//  -- in text format -- into a text item that is
+//  a list of integers.
 
 void convert_into_category_list_of_integers( )
 {
-    global_text_item_id = 83 ;
-    exit_not_yet_supported( ) ;
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_list_of_integers ;
+	global_count_of_words_handled = 0 ;
+    global_text_item_id_for_integers_as_text = global_from_text_item_id ;
+    global_length_requested_for_next_text_item_storage = 2 ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_list_of_integers = global_new_storage_text_item_id ;
+    initialize_point_to_next_word_in_text_item( ) ;
+    while ( 1 == 1 )
+    {
+        point_to_next_word_in_text_item( ) ;
+        if ( global_pointer_next_word_begin == 0 )
+        {
+            log_out << "no more words" << std::endl ;
+        	break ;
+        }
+        global_text_pointer_begin_for_item[ global_text_item_id_for_pointer_begin_end ] = global_pointer_next_word_begin ;
+        global_text_pointer_end_for_item[ global_text_item_id_for_pointer_begin_end ] = global_pointer_next_word_end ;
+        measure_space_available_in_text_item( ) ;
+        if ( global_space_available_in_text_item < 1 )
+        {
+            extend_length_of_top_text_item( ) ;
+        }
+
+        global_text_item_id_for_integers_as_text = global_text_item_id_for_pointer_begin_end ;
+
+        while ( 1 == 1 )
+        {
+            initialize_parse_characters_of_number( ) ;
+	        global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
+	        parse_one_character_of_number( ) ;
+	        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+	        {
+	            if ( global_number_of_digits_encountered > 0 )
+	            {
+	                if ( global_yes_or_no_number_is_valid == global_yes )
+	                {
+	                    finish_parse_characters_of_number( ) ;
+	                    if ( global_yes_or_no_decimal_number == global_no )
+	                    {
+                            global_text_pointer_end_for_item[ global_text_item_id_for_list_of_integers ] ++ ;
+	                    	global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_list_of_integers ] ] = global_single_integer ;
+	                        log_out << "integer number = " << global_single_integer << std::endl ;
+	                        break ;
+	                    } else
+	                    {
+	                        log_out << "number is not integer, is decimal" << std::endl ;
+	                        break ;
+	                    }
+	                } else
+	                {
+	                    log_out << "invalid number" << std::endl ;
+                        break ;
+	                }
+	            }
+	            initialize_parse_characters_of_number( ) ;
+	        }
+	    }
+    }
+    recover_memory_from_top_text_item( ) ;
+    global_to_text_item_id = global_text_item_id_for_list_of_integers ;
+    global_text_category_for_item[ global_text_item_id_for_list_of_integers ] = global_category_contains_list_of_integers ;
     return ;
 }
 
@@ -3575,8 +3698,9 @@ void convert_into_category_list_of_integers( )
 
 void convert_into_category_pointers_to_decimal_numbers( )
 {
-    global_text_item_id = 80 ;
-    exit_not_yet_supported( ) ;
+
+//  todo: copy code from integer version -- after it has been debugged
+
     global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
@@ -3664,7 +3788,7 @@ void find_optimum_character_for_find_pause( )
     	global_score_for_possible_optimum_character = ( global_length_of_matching_text - global_position_within_text_to_find ) + ( global_usage_count_for_character[ global_possible_optimum_character_as_integer ] * global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ) ;
         if ( global_score_for_possible_optimum_character > global_highest_score_for_optimum_character_for_find_pause )
         {
-            global_optimum_character_for_find_pause = global_possible_optimum_character ;
+            global_optimum_character_for_find_pause = global_possible_optimum_character_as_integer ;
             global_highest_score_for_optimum_character_for_find_pause = global_score_for_possible_optimum_character ;
             global_position_of_optimum_character_for_pause = global_position_within_text_to_find ;
 
@@ -3789,8 +3913,7 @@ void find_matching_text( )
     global_text_pointer_begin = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
 
     initialize_get_next_character_from_text_item( ) ;
-    for ( global_text_pointer = global_text_pointer_begin ;
-     ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_text_pointer_begin ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
     {
         get_next_character_from_text_item( ) ;
         global_position_of_found_character_for_find_pause = global_text_pointer ;
