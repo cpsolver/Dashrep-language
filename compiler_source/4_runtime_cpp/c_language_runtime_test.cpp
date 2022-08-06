@@ -3643,18 +3643,25 @@ void scan_searched_text_before_doing_find_text( )
 //  subordinate text items, and contains only
 //  unicode characters (of any kind).  If this
 //  code is enhanced to handle Chinese characters,
-//  a larger character code range is needed.
+//  a larger character code range is needed.  If
+//  none of the letters in the match text appear
+//  in the search text, then the character to find
+//  is set to zero to indicate this case.
 
 void find_optimum_character_for_find_pause( )
 {
+	global_optimum_character_for_find_pause = 0 ;
     global_length_of_text_to_find = global_text_pointer_end_for_item[ global_from_text_item_id ] - global_text_pointer_begin_for_item[ global_from_text_item_id ] + 1 ;
     global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
-    global_optimum_character_for_find_pause = global_storage_all_text[ global_text_pointer ] ;
     global_highest_score_for_optimum_character_for_find_pause = 0 ;
     for ( global_position_within_text_to_find = 1 ; global_position_within_text_to_find <= global_length_of_text_to_find ; global_position_within_text_to_find ++ )
     {
     	global_possible_optimum_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
-    	global_score_for_possible_optimum_character = ( global_length_of_matching_text - global_position_within_text_to_find ) * global_usage_count_for_character[ global_possible_optimum_character_as_integer ] * global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ;
+        if ( global_usage_count_for_character[ global_possible_optimum_character_as_integer ] == 0 )
+        {
+        	continue ;
+        }
+    	global_score_for_possible_optimum_character = ( global_length_of_matching_text - global_position_within_text_to_find ) + ( global_usage_count_for_character[ global_possible_optimum_character_as_integer ] * global_searched_usage_count_for_character[ global_possible_optimum_character_as_integer ] ) ;
         if ( global_score_for_possible_optimum_character > global_highest_score_for_optimum_character_for_find_pause )
         {
             global_optimum_character_for_find_pause = global_possible_optimum_character ;
@@ -3666,6 +3673,7 @@ void find_optimum_character_for_find_pause( )
         }
         global_text_pointer ++ ;
     }
+    log_out << "optimum character to find is " << global_optimum_character_for_find_pause << std::endl ;
 }
 
 
@@ -3722,6 +3730,13 @@ void check_for_match_where_paused( )
 //  as text.  Also, the characters are stored as
 //  integers, not bytes, to allow unicode
 //  searches.
+//
+//  Reminder:  This function is not used during
+//  runtime to search for matching hyphenated
+//  phrase names unless the directive fenambee
+//  or amennfen are involved.  During compile time
+//  matching phrase names are resolved
+//  immediately.
 
 void find_matching_text( )
 {
@@ -3749,6 +3764,18 @@ void find_matching_text( )
 //  "global_optimum_character_for_find_pause".
 
     find_optimum_character_for_find_pause( ) ;
+
+
+// -----------------------------------------------
+//  If none of the characters in the matching text
+//  appear in the text being searched, indicate
+//  the text does not contain the matching text.
+
+    if ( global_optimum_character_for_find_pause == 0 )
+    {
+        global_position_of_found_character_for_find_pause = 0 ;
+        return ;
+    }
 
 
 // -----------------------------------------------
