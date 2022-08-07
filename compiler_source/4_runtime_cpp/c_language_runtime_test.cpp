@@ -732,7 +732,7 @@ int global_next_available_defined_phrase_number ;
 //    Pointers to other text items that are
 //    handled as "sub text items".
 //
-//  * "direct_begin_end_pointers"
+//  * "pointer_pair"
 //    Just one pair of pointers that directly
 //    point to the beginning and end of text in
 //    the storage area.  This type of item is used
@@ -796,7 +796,7 @@ const int global_category_contains_list_of_text_item_ids = 3 ;
 const int global_category_contains_hyphenated_phrase_name = 4 ;
 const int global_category_contains_list_of_integers = 5 ;
 const int global_category_contains_pointers_to_decimal_numbers = 6 ;
-const int global_category_contains_direct_begin_end_pointers = 7 ;
+const int global_category_contains_pointer_pair = 7 ;
 
 
 // -----------------------------------------------
@@ -928,24 +928,30 @@ const int global_ascii_code_for_letter_y = 89 ;
 
 
 // -----------------------------------------------
-//  Declare variables that assist in using the
-//  main array to store stack-oriented pointers.
-//  These pointer have different levels because
-//  a text item can branch out into sub text
-//  items, and those items can branch into further
-//  sub text items.  The variable
-//  "global_pointer_stack_prior_stack_item" is
-//  zero for the bottom stack level.  The variable
-//  "global_pointer_stack_next_stack_item" is zero
-//  if there has not yet been any need to create a
-//  higher-level stack item.
+//  Declare the variables that implement the
+//  "target pointer stack".  Each stack
+//  collectively points to a single character.
+//  Each stack level applies to one text item.
+//  The variable
+//  "global_target_stack_item_prior"
+//  is zero for the bottom stack level.  The
+//  variable
+//  "global_target_stack_item_next"
+//  is zero if there has not yet been any need to
+//  create a higher-level stack item.
 
-int global_item_id_bottom_of_pointer_stack ;
-int global_item_id_top_of_pointer_stack ;
-int global_pointer_stack_prior_stack_item ;
-int global_pointer_stack_next_stack_item ;
-int global_pointer_stack_current_text_item ;
-int global_pointer_stack_position_within_current_text_item ;
+const int global_offset_for_target_stack_item_bottom = 0 ;
+int global_target_stack_item_bottom ;
+const int global_offset_for_target_stack_item_top = 1 ;
+int global_target_stack_item_top ;
+const int global_offset_for_target_stack_item_prior = 2 ;
+int global_target_stack_item_prior ;
+const int global_offset_for_target_stack_item_next = 3 ;
+int global_target_stack_item_next ;
+const int global_offset_for_current_target_text_item = 4 ;
+int global_current_target_text_item ;
+const int global_offset_for_current_target_character_position = 5 ;
+int global_current_target_character_position ;
 int global_pointer_to_within_stack_item ;
 
 
@@ -956,7 +962,7 @@ int global_pointer_to_within_stack_item ;
 
 int global_recent_character_position_for_character_number[ 260 ] ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
-int global_yes_or_no_prior_character_was_delimiter ;
+int global_yes_or_no_character_is_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
 int global_recent_character_position_for_character_number_beyond_ascii ;
 int global_yes_or_no_use_copy_when_appending ;
@@ -2136,112 +2142,29 @@ void initialize_character_usage_buffers( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function initialize_parse_characters_individually
-//
-//  Do the initialization needed before starting
-//  to use the function
-//  "track_transition_to_from_delimiter".
+//  Function check_if_delimiter
 
-//  currently UNUSED!!
-
-void initialize_parse_characters_individually( )
+void check_if_delimiter( )
 {
-    global_recent_character_position_for_character_number_beyond_ascii = 0 ;
-    global_yes_or_no_prior_character_was_delimiter = global_yes ;
-    global_yes_or_no_delimiter_encountered = global_yes ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function track_transition_to_from_delimiter
-
-//  currently UNUSED!!
-
-void track_transition_to_from_delimiter( )
-{
-    global_yes_or_no_transition_from_character_to_delimiter = global_no ;
-    global_yes_or_no_transition_from_delimiter_to_character = global_no ;
-    global_yes_or_no_delimiter_encountered = global_no ;
+    global_yes_or_no_character_is_delimiter = global_no ;
     switch ( global_single_character_as_integer )
     {
         case global_ascii_code_for_space :
-            global_yes_or_no_delimiter_encountered = global_yes ;
+            global_yes_or_no_character_is_delimiter = global_yes ;
             break ;
         case global_ascii_code_for_tab :
-            global_yes_or_no_delimiter_encountered = global_yes ;
+            global_yes_or_no_character_is_delimiter = global_yes ;
             break ;
         case global_ascii_code_for_newline :
-            global_yes_or_no_delimiter_encountered = global_yes ;
+            global_yes_or_no_character_is_delimiter = global_yes ;
             break ;
         case global_ascii_code_for_formfeed :
-            global_yes_or_no_delimiter_encountered = global_yes ;
+            global_yes_or_no_character_is_delimiter = global_yes ;
             break ;
         case global_ascii_code_for_carriage_return :
-            global_yes_or_no_delimiter_encountered = global_yes ;
+            global_yes_or_no_character_is_delimiter = global_yes ;
             break ;
     }
-    if ( global_yes_or_no_delimiter_encountered == global_yes )
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_no )
-        {
-            global_yes_or_no_transition_from_character_to_delimiter = global_yes ;
-            log_out << "transition from character to delimiter" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_yes ;
-    } else
-    {
-        if (global_yes_or_no_prior_character_was_delimiter == global_yes )
-        {
-            global_yes_or_no_transition_from_delimiter_to_character = global_yes ;
-            log_out << "transition from delimiter to character" << std::endl ;
-        }
-        global_yes_or_no_prior_character_was_delimiter = global_no ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function parse_one_character_individually
-
-//  currently UNUSED!
-
-void parse_one_character_individually( )
-{
-
-    log_out << global_single_character_as_integer << std::endl ;
-
-    if ( global_single_character_as_integer <= global_length_of_list_of_character_numbers )
-    {
-        switch ( global_single_character_as_integer )
-        {
-            case global_ascii_code_for_hyphen :
-                global_character_usage_buffer_rotation_number_for_hyphen ++ ;
-                if ( global_character_usage_buffer_rotation_number_for_hyphen > global_maximum_character_usage_buffer_rotation_number )
-                {
-                    global_character_usage_buffer_rotation_number_for_hyphen = 1 ;
-                }
-                global_character_usage_position_for_hyphen_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_hyphen ] = global_character_count_for_expand_text ;
-                break ;
-            case global_ascii_code_for_underscore :
-                global_character_usage_buffer_rotation_number_for_underscore ++ ;
-                if ( global_character_usage_buffer_rotation_number_for_underscore > global_maximum_character_usage_buffer_rotation_number )
-                {
-                    global_character_usage_buffer_rotation_number_for_underscore = 1 ;
-                }
-                global_character_usage_position_for_underscore_for_buffer_rotation[ global_character_usage_buffer_rotation_number_for_underscore ] = global_character_count_for_expand_text ;
-                break ;
-            default :
-                global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_character_count_for_expand_text ;
-                break ;
-        }
-    } else
-    {
-        global_recent_character_position_for_character_number_beyond_ascii = global_character_count_for_expand_text ;
-    }
-    track_transition_to_from_delimiter( ) ;
-    return ;
 }
 
 
@@ -2302,8 +2225,8 @@ void read_text_line_from_file( )
 
 void specify_character_to_insert_between_subitems( )
 {
-	global_item_id_top_of_pointer_stack = global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ] ;
-    global_text_item_with_next_character = global_storage_all_text[ global_text_pointer_begin_for_item[ global_item_id_top_of_pointer_stack ] ] ;
+	global_target_stack_item_top = global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ] ;
+    global_text_item_with_next_character = global_storage_all_text[ global_text_pointer_begin_for_item[ global_target_stack_item_top ] ] ;
     switch ( global_text_category_for_item[ global_text_item_with_next_character ] )
     {
         global_category_contains_hyphenated_phrase_name :
@@ -2324,17 +2247,81 @@ void specify_character_to_insert_between_subitems( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function push_onto_pointer_stack
+//  Function put_info_into_target_pointer_stack_item
+
+void put_info_into_target_pointer_stack_item( )
+{
+        global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+
+        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+
+        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] = global_target_stack_item_prior ;
+
+        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
+
+        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
+
+        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_info_from_target_pointer_stack_item
+
+void get_info_from_target_pointer_stack_item( )
+{
+        global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] = global_pointer_to_within_stack_item ;
+
+        global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] ;
+
+        global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] ;
+
+        global_target_stack_item_next = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] ;
+
+        global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_text_item ] ;
+
+        global_current_target_character_position = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_character_position ] ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function pop_target_pointer_stack
 //
-//  Add one level to the pointer stack.  If this
-//  is the first use of this pointer stack -- as
-//  indicated by a value of zero -- create the
+//  Move down one level in the target pointer
+//  stack.
+
+void pop_target_pointer_stack( )
+{
+    global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] ;
+
+    global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] = global_pointer_to_within_stack_item ;
+
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] ;
+
+    global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] = 0 ;
+
+    global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
+
+    specify_character_to_insert_between_subitems( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function push_target_pointer_stack
+//
+//  Add one level to the target pointer stack.  If
+//  this is the first use of this pointer stack --
+//  is indicated by a value of zero -- create the
 //  bottom level of the stack.  Each additional
 //  pointer stack level is added as needed.  The
 //  pointer stack is specified by the ID number in
-//  "global_item_id_bottom_of_pointer_stack".
+//  "global_target_stack_item_bottom".
 
-void push_onto_pointer_stack( )
+void push_target_pointer_stack( )
 {
 
 
@@ -2342,22 +2329,17 @@ void push_onto_pointer_stack( )
 //  If a new pointer stack needs to be created,
 //  create it, then return with the variables set.
 
-	if ( global_item_id_bottom_of_pointer_stack == 0 )
+	if ( global_target_stack_item_bottom == 0 )
 	{
 		global_length_requested_for_next_text_item_storage = 5 ;
 		assign_storage_for_new_text_item( ) ;
-        global_item_id_bottom_of_pointer_stack = global_new_storage_text_item_id ;
-        global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_item_id_bottom_of_pointer_stack ] ;
-        global_item_id_top_of_pointer_stack = global_item_id_bottom_of_pointer_stack ;
-        global_storage_all_text[ global_pointer_to_within_stack_item ] = global_item_id_top_of_pointer_stack ;
-        global_pointer_stack_prior_stack_item = 0 ;
-        global_storage_all_text[ global_pointer_to_within_stack_item + 1 ] = global_pointer_stack_prior_stack_item ;
-        global_pointer_stack_next_stack_item = 0 ;
-        global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] = global_pointer_stack_next_stack_item ;
-        global_pointer_stack_current_text_item = 0 ;
-        global_storage_all_text[ global_pointer_to_within_stack_item + 3 ] = global_pointer_stack_current_text_item ;
-        global_pointer_stack_position_within_current_text_item = 0 ;
-        global_storage_all_text[ global_pointer_to_within_stack_item + 4 ] = global_pointer_stack_position_within_current_text_item ;
+        global_target_stack_item_bottom = global_new_storage_text_item_id ;
+        global_target_stack_item_top = global_target_stack_item_bottom ;
+        global_target_stack_item_prior = 0 ;
+        global_target_stack_item_next = 0 ;
+        global_current_target_text_item = 0 ;
+        global_current_target_character_position = 0 ;
+        put_info_into_target_pointer_stack_item( ) ;
         return ;
 	}
 
@@ -2366,25 +2348,21 @@ void push_onto_pointer_stack( )
 //  If a new stack level needs to be created,
 //  create it, then return with the variables set.
 
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_item_id_bottom_of_pointer_stack ] ;
-    global_pointer_stack_next_stack_item = global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] ;
-	if ( global_pointer_stack_next_stack_item == 0 )
+    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+    global_target_stack_item_next = global_pointer_to_within_stack_item ;
+	if ( global_target_stack_item_next == 0 )
 	{
 		global_length_requested_for_next_text_item_storage = 5 ;
 		assign_storage_for_new_text_item( ) ;
-		global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] = global_new_storage_text_item_id ;
 
-	    global_new_pointer_stack_item_id = global_text_pointer_begin_for_item[ global_item_id_bottom_of_pointer_stack ] ;
+        global_xyz = global_new_storage_text_item_id ;
 
-// global_new_storage_text_item_id
-
-        global_storage_all_text[ global_new_pointer_stack_item_id ] = global_item_id_top_of_pointer_stack ;
-        global_pointer_stack_prior_stack_item = 0 ;
-        global_storage_all_text[ global_new_pointer_stack_item_id + 1 ] = global_pointer_stack_prior_stack_item ;
-        global_pointer_stack_current_text_item = 0 ;
-        global_storage_all_text[ global_new_pointer_stack_item_id + 3 ] = global_pointer_stack_current_text_item ;
-        global_pointer_stack_position_within_current_text_item = 0 ;
-        global_storage_all_text[ global_new_pointer_stack_item_id + 4 ] = global_pointer_stack_position_within_current_text_item ;
+	    global_new_pointer_stack_item_id = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+        global_storage_all_text[ global_new_pointer_stack_item_id ] = global_target_stack_item_top ;
+        global_target_stack_item_prior = 0 ;
+        global_current_target_text_item = 0 ;
+        global_current_target_character_position = 0 ;
+        put_info_into_target_pointer_stack_item( ) ;
         return ;
 	}
 
@@ -2394,16 +2372,9 @@ void push_onto_pointer_stack( )
 //  and give to it the appropriate stack pointer
 //  variables with their current values.
 
-//  todo: finish writing this code
-
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_item_id_bottom_of_pointer_stack ] ;
-    global_pointer_stack_next_stack_item = global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] ;
-
-    global_item_id_top_of_pointer_stack = global_storage_all_text[ global_pointer_to_within_stack_item ] ;
-    global_pointer_stack_prior_stack_item = global_storage_all_text[ global_pointer_to_within_stack_item + 1 ] ;
-    global_pointer_stack_next_stack_item = global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] ;
-    global_pointer_stack_current_text_item = global_storage_all_text[ global_pointer_to_within_stack_item + 3 ] ;
-    global_pointer_stack_position_within_current_text_item = global_storage_all_text[ global_pointer_to_within_stack_item + 4 ] ;
+    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item ] ;
+    put_info_into_target_pointer_stack_item( ) ;
 
 
 // -----------------------------------------------
@@ -2425,26 +2396,19 @@ void initialize_get_next_character_from_text_item( )
 {
     if ( global_id_pointer_stack_for_getting_next_character == 0 )
     {
-        global_item_id_bottom_of_pointer_stack = global_id_pointer_stack_for_getting_next_character ;
-        push_onto_pointer_stack( ) ;
+        global_target_stack_item_bottom = global_id_pointer_stack_for_getting_next_character ;
+        push_target_pointer_stack( ) ;
     }
 
-
-    global_item_id_bottom_of_pointer_stack = global_new_storage_text_item_id ;
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_item_id_bottom_of_pointer_stack ] ;
-    global_storage_all_text[ global_pointer_to_within_stack_item ] = global_item_id_bottom_of_pointer_stack ;
-    global_storage_all_text[ global_pointer_to_within_stack_item + 2 ] = 0 ;
-    global_storage_all_text[ global_pointer_to_within_stack_item + 3 ] = 0 ;
-    global_storage_all_text[ global_pointer_to_within_stack_item + 4 ] = 0 ;
-
+    global_target_stack_item_bottom = global_new_storage_text_item_id ;
+    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+    global_storage_all_text[ global_pointer_to_within_stack_item ] = global_target_stack_item_bottom ;
 
 //  todo: refactor to use main array to store pointers and stack info
 
+    global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
 
-//    global_current_stack_level_for_getting_next_character = 1 ;
-//    global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_id_pointer_stack_for_getting_next_character ;
-//    global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
-//    global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
+    get_info_from_target_pointer_stack_item( ) ;
     specify_character_to_insert_between_subitems( ) ;
 
 
@@ -2478,32 +2442,6 @@ void copy_pointer_stack( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function point_to_subordinate_text_item
-
-void point_to_subordinate_text_item( )
-{
-
-//  todo: update this code to use the new pointer stack method
-
-    // global_text_item_pointer = global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
-
-    // global_id_pointer_stack_for_getting_next_character = global_storage_all_text[ global_text_item_pointer ] ;
-
-    // global_current_stack_level_for_getting_next_character ++ ;
-
-    // global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_id_pointer_stack_for_getting_next_character ;
-
-    // global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
-
-    // global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
-
-    specify_character_to_insert_between_subitems( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function get_next_character_from_text_item
 //
 //  Gets the next character from the text item and
@@ -2529,7 +2467,7 @@ void get_next_character_from_text_item( )
 // -----------------------------------------------
 //  Write debugging info.
 
-        log_out << "stack number " << global_current_stack_number_for_getting_next_character << ", stack level " << global_current_stack_level_for_getting_next_character << ", yes/no end of text item " << global_yes_or_no_reached_end_of_current_text_item << ", text item " << global_id_pointer_stack_for_getting_next_character << ", character pointer " << global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] << ", global_text_pointer_begin_for_item " << global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", global_text_pointer_end_for_item " << global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", text item category " << global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] << std::endl ;
+        log_out << "stack number " << global_current_stack_number_for_getting_next_character << ", stack level " << global_current_stack_level_for_getting_next_character << ", yes/no end of text item " << global_yes_or_no_reached_end_of_current_text_item << ", text item " << global_id_pointer_stack_for_getting_next_character << ", character pointer " << "?" << ", global_text_pointer_begin_for_item " << global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", global_text_pointer_end_for_item " << global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", text item category " << global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] << std::endl ;
 
 
 // -----------------------------------------------
@@ -2539,7 +2477,7 @@ void get_next_character_from_text_item( )
 //  possibility that the text item is empty.
 
         global_yes_or_no_reached_end_of_current_text_item = global_no ;
-        if ( global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] > global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] )
+        if ( xyz > global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] )
         {
             global_yes_or_no_reached_end_of_current_text_item = global_yes ;
         }
@@ -2567,8 +2505,9 @@ void get_next_character_from_text_item( )
         if ( global_yes_or_no_reached_end_of_current_text_item == global_yes )
         {
             global_current_stack_level_for_getting_next_character -- ;
-            global_id_pointer_stack_for_getting_next_character = global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
-            global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
+
+            global_id_pointer_stack_for_getting_next_character = global_xyz ;
+
             continue ;
         }
 
@@ -2590,8 +2529,8 @@ void get_next_character_from_text_item( )
 
         if ( global_character_to_insert_between_subitems != global_insertion_character_none )
         {
-            global_character_pointer_for_text_item = global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
-            global_text_item_id = global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
+            global_character_pointer_for_text_item = global_xyz ;
+            global_text_item_id = global_xyz ;
             if ( global_text_pointer_begin_for_item[ global_text_item_id ] < global_text_pointer_end_for_item[ global_text_item_id ] )
             {
                 if ( ( global_character_pointer_for_text_item == ( global_text_pointer_begin_for_item[ global_text_item_id ] + 1 ) ) || ( global_character_pointer_for_text_item == ( global_text_pointer_end_for_item[ global_text_item_id ] - 1 ) ) )
@@ -2616,12 +2555,12 @@ void get_next_character_from_text_item( )
 
         if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) )
         {
-            global_character_pointer_for_text_item = global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
+            global_character_pointer_for_text_item = global_xyz ;
             if ( global_character_pointer_for_text_item <= global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] )
             {
                 global_single_character_as_integer = global_storage_all_text[ global_character_pointer_for_text_item ] ;
                 log_out << "character " << global_single_character_as_integer << std::endl ;
-                global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ++ ;
+                global_xyz ++ ;
                 return ;
             }
             continue ;
@@ -2640,7 +2579,7 @@ void get_next_character_from_text_item( )
 
         if ( ( global_text_item_category == global_category_contains_list_of_text_item_ids ) || ( global_text_item_category == global_category_contains_hyphenated_phrase_name ) )
         {
-            point_to_subordinate_text_item( ) ;
+            push_target_pointer_stack( ) ;
             continue ;
         }
 
@@ -2670,18 +2609,43 @@ void get_next_character_from_text_item( )
             global_id_pointer_stack_for_getting_next_character = global_text_item_id_for_number_as_text ;
             global_current_stack_level_for_getting_next_character ++ ;
 
-            global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_id_pointer_stack_for_getting_next_character ;
+            global_xyz = global_id_pointer_stack_for_getting_next_character ;
 
-            global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] = global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
+            global_xyz = global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
 
-            global_single_character_as_integer = global_storage_all_text[ global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ] ;
+            global_single_character_as_integer = global_storage_all_text[ global_xyz ] ;
 
-            global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ++ ;
+            global_xyz ++ ;
 
             global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] = global_category_contains_unicode_no_delimiters ;
 
             specify_character_to_insert_between_subitems( ) ;
             return ;
+        }
+
+
+// -----------------------------------------------
+//  If the text item category is
+//  "category_pointer_pair", point to the next
+//  character in the text being pointed to.  If
+//  the pointer already is at the end of the
+//  characters, repeat the loop.
+
+        if ( global_text_item_category == global_category_contains_pointer_pair )
+        {
+            //
+            return ;
+        }
+
+
+// -----------------------------------------------
+//  If the character number is zero, skip it and
+//  repeat the loop.
+
+        if ( global_single_character_as_integer == 0 )
+        {
+//
+            continue ;
         }
 
 
@@ -2734,15 +2698,15 @@ void remove_leading_delimiters( )
 {
     initialize_get_next_character_from_text_item( ) ;
     global_single_character_as_integer = 1 ;
-    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_prior_character_was_delimiter == global_yes ) )
+    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_character_is_delimiter == global_yes ) )
     {
         get_next_character_from_text_item( ) ;
-        if ( global_yes_or_no_prior_character_was_delimiter == global_no )
+        if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
             {
-                global_text_item_id = global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
-                global_text_pointer_begin_for_item[ global_text_item_id ] = global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
+                global_text_item_id = global_xyz ;
+                global_text_pointer_begin_for_item[ global_text_item_id ] = global_xyz ;
             }
             if ( global_single_character_as_integer == 0 )
             {
@@ -2826,15 +2790,15 @@ void remove_trailing_delimiters( )
 {
     initialize_get_previous_character_from_text_item( ) ;
     global_single_character_as_integer = 1 ;
-    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_prior_character_was_delimiter == global_yes ) )
+    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_character_is_delimiter == global_yes ) )
     {
         get_previous_character_from_text_item( ) ;
-        if ( global_yes_or_no_prior_character_was_delimiter == global_no )
+        if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
             {
-                global_text_item_id = global_text_item_id_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
-                global_text_pointer_end_for_item[ global_text_item_id ] = global_character_pointer_for_stack_level[ global_current_stack_level_for_getting_next_character ] ;
+                global_text_item_id = global_xyz ;
+                global_text_pointer_end_for_item[ global_text_item_id ] = global_xyz ;
             }
             if ( global_single_character_as_integer == 0 )
             {
