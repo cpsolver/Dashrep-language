@@ -952,7 +952,8 @@ const int global_offset_for_current_target_text_item = 4 ;
 int global_current_target_text_item ;
 const int global_offset_for_current_target_character_position = 5 ;
 int global_current_target_character_position ;
-int global_pointer_to_within_stack_item ;
+int global_pointer_to_within_target_stack_item_bottom ;
+int global_pointer_to_within_target_stack_item_top ;
 
 
 // -----------------------------------------------
@@ -2085,6 +2086,8 @@ void do_main_initialization( )
     global_yes_or_no = global_yes ;
     global_yes_or_no_requesting_space_appended = global_yes ;
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
+    global_id_for_target_stack_pointer_for_get_next_character = 0 ;
+    global_target_stack_item_bottom = 0 ;
 
 
 // -----------------------------------------------
@@ -2225,7 +2228,7 @@ void read_text_line_from_file( )
 
 void specify_character_to_insert_between_subitems( )
 {
-	global_target_stack_item_top = global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ] ;
+    global_target_stack_item_top = global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ] ;
     global_text_item_with_next_character = global_storage_all_text[ global_text_pointer_begin_for_item[ global_target_stack_item_top ] ] ;
     switch ( global_text_category_for_item[ global_text_item_with_next_character ] )
     {
@@ -2251,17 +2254,17 @@ void specify_character_to_insert_between_subitems( )
 
 void put_info_into_target_pointer_stack_item( )
 {
-        global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
 
-        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
 
-        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] = global_target_stack_item_prior ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] = global_target_stack_item_prior ;
 
-        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
 
-        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
 
-        global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
 }
 
 
@@ -2271,17 +2274,17 @@ void put_info_into_target_pointer_stack_item( )
 
 void get_info_from_target_pointer_stack_item( )
 {
-        global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] = global_pointer_to_within_stack_item ;
+    global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
 
-        global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] ;
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_top ] ;
 
-        global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] ;
+    global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] ;
 
-        global_target_stack_item_next = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] ;
+    global_target_stack_item_next = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
 
-        global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_text_item ] ;
+    global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] ;
 
-        global_current_target_character_position = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_current_target_character_position ] ;
+    global_current_target_character_position = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] ;
 }
 
 
@@ -2294,17 +2297,49 @@ void get_info_from_target_pointer_stack_item( )
 
 void pop_target_pointer_stack( )
 {
-    global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_prior ] ;
 
-    global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] = global_pointer_to_within_stack_item ;
 
-    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_top ] ;
+// -----------------------------------------------
+//  Identify the stack's top item.
 
-    global_storage_all_text[ global_pointer_to_within_stack_item + global_offset_for_target_stack_item_next ] = 0 ;
+    global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
 
-    global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] ;
+
+
+// -----------------------------------------------
+//  Identify the prior item, one stack level
+//  lower.
+
+    global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+
+    global_target_stack_item_prior = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] ;
+
+
+// -----------------------------------------------
+//  Use the prior item as the new top item.
+
+    global_target_stack_item_top = global_target_stack_item_prior ;
+
+    global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+
+
+// -----------------------------------------------
+//  Get the info from the new top item.
+
+    get_info_from_target_pointer_stack_item( ) ;
+
+
+// -----------------------------------------------
+//  Specify the automatic insertion character for
+//  the new top item.
 
     specify_character_to_insert_between_subitems( ) ;
+
+
+// -----------------------------------------------
+//  End of function pop_target_pointer_stack.
+
     return ;
 }
 
@@ -2326,13 +2361,29 @@ void push_target_pointer_stack( )
 
 
 // -----------------------------------------------
-//  If a new pointer stack needs to be created,
-//  create it, then return with the variables set.
+//  If a new target pointer stack item needs to be
+//  created, create it.
 
-	if ( global_target_stack_item_bottom == 0 )
-	{
-		global_length_requested_for_next_text_item_storage = 5 ;
-		assign_storage_for_new_text_item( ) ;
+    if ( global_target_stack_item_bottom != 0 )
+    {
+        global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+        global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] ;
+        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+        global_target_stack_item_next = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
+    }
+    if ( ( global_target_stack_item_bottom == 0 ) || ( global_target_stack_item_next == 0 ) )
+    {
+        global_length_requested_for_next_text_item_storage = 5 ;
+        assign_storage_for_new_text_item( ) ;
+    }
+
+
+// -----------------------------------------------
+//  If a new bottom stack item was created, fill
+//  it with the needed info, then return.
+
+    if ( global_target_stack_item_bottom == 0 )
+    {
         global_target_stack_item_bottom = global_new_storage_text_item_id ;
         global_target_stack_item_top = global_target_stack_item_bottom ;
         global_target_stack_item_prior = 0 ;
@@ -2341,40 +2392,38 @@ void push_target_pointer_stack( )
         global_current_target_character_position = 0 ;
         put_info_into_target_pointer_stack_item( ) ;
         return ;
-	}
+    }
 
 
 // -----------------------------------------------
-//  If a new stack level needs to be created,
-//  create it, then return with the variables set.
+//  If a new non-bottom stack level was created,
+//  point to it from what will become the prior
+//  stack level, fill it with the needed info,
+//  and point to it as the new top stack level
+//  item.
 
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_target_stack_item_next = global_pointer_to_within_stack_item ;
-	if ( global_target_stack_item_next == 0 )
-	{
-		global_length_requested_for_next_text_item_storage = 5 ;
-		assign_storage_for_new_text_item( ) ;
-
-        global_xyz = global_new_storage_text_item_id ;
-
-	    global_new_pointer_stack_item_id = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-        global_storage_all_text[ global_new_pointer_stack_item_id ] = global_target_stack_item_top ;
-        global_target_stack_item_prior = 0 ;
+    if ( global_target_stack_item_next == 0 )
+    {
+        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_new_storage_text_item_id ;
+        global_target_stack_item_top = global_new_storage_text_item_id ;
+        global_target_stack_item_next = global_new_storage_text_item_id ;
         global_current_target_text_item = 0 ;
         global_current_target_character_position = 0 ;
         put_info_into_target_pointer_stack_item( ) ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_new_storage_text_item_id ;
         return ;
-	}
+    }
 
 
 // -----------------------------------------------
-//  Otherwise use an existing pointer stack item,
-//  and give to it the appropriate stack pointer
-//  variables with their current values.
+//  Otherwise use an existing pointer stack item
+//  and fill it with the needed info.
 
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_stack_item ] ;
-    put_info_into_target_pointer_stack_item( ) ;
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
+    global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+    global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = 0 ;
+    global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = 0 ;
 
 
 // -----------------------------------------------
@@ -2390,32 +2439,19 @@ void push_target_pointer_stack( )
 //
 //  Initialize the pointer stack that is used by
 //  the function
-//  "get_next_character_from_text_item".
+//  "get_next_character_from_text_item".  The
+//  starting text item ID is specified in
+//  "global_from_text_item_id".
 
 void initialize_get_next_character_from_text_item( )
 {
-    if ( global_id_pointer_stack_for_getting_next_character == 0 )
-    {
-        global_target_stack_item_bottom = global_id_pointer_stack_for_getting_next_character ;
-        push_target_pointer_stack( ) ;
-    }
-
-    global_target_stack_item_bottom = global_new_storage_text_item_id ;
-    global_pointer_to_within_stack_item = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_storage_all_text[ global_pointer_to_within_stack_item ] = global_target_stack_item_bottom ;
-
-//  todo: refactor to use main array to store pointers and stack info
-
-    global_text_item_category = global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] ;
-
+    global_current_target_text_item = global_from_text_item_id ;
+    global_current_target_character_position = 1 ;
+    global_id_for_target_stack_pointer_for_get_next_character = global_target_stack_item_bottom ;
+    put_info_into_target_pointer_stack_item( ) ;
+    global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
     get_info_from_target_pointer_stack_item( ) ;
     specify_character_to_insert_between_subitems( ) ;
-
-
-// -----------------------------------------------
-//  End of function
-//  "initialize_get_next_character_from_text_item".
-
     return ;
 }
 
@@ -2467,7 +2503,7 @@ void get_next_character_from_text_item( )
 // -----------------------------------------------
 //  Write debugging info.
 
-        log_out << "stack number " << global_current_stack_number_for_getting_next_character << ", stack level " << global_current_stack_level_for_getting_next_character << ", yes/no end of text item " << global_yes_or_no_reached_end_of_current_text_item << ", text item " << global_id_pointer_stack_for_getting_next_character << ", character pointer " << "?" << ", global_text_pointer_begin_for_item " << global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", global_text_pointer_end_for_item " << global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", text item category " << global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] << std::endl ;
+        log_out << "yes/no end of text item " << global_yes_or_no_reached_end_of_current_text_item << ", text item " << global_id_pointer_stack_for_getting_next_character << ", character pointer " << "?" << ", global_text_pointer_begin_for_item " << global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", global_text_pointer_end_for_item " << global_text_pointer_end_for_item[ global_id_pointer_stack_for_getting_next_character ] << ", text item category " << global_text_category_for_item[ global_id_pointer_stack_for_getting_next_character ] << std::endl ;
 
 
 // -----------------------------------------------
