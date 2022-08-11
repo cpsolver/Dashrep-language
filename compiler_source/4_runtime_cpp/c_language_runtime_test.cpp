@@ -139,6 +139,9 @@ int global_text_item_id_for_integers_as_text ;
 int global_text_item_id_for_list_of_integers ;
 int global_text_item_id_for_pointer_begin_end ;
 
+int global_id_for_target_stack_pointer_for_get_next_character ;
+int global_text_item_with_next_character ;
+
 int global_text_item_id_for_single_space ;
 int global_text_item_id_for_single_hyphen ;
 int global_text_item_id_for_single_underscore ;
@@ -1087,6 +1090,7 @@ int global_search_character_pointer_end ;
 int global_match_character_pointer_begin ;
 int global_match_character_pointer_end ;
 int global_count_of_words_handled ;
+int global_distance_between_item_begin_and_end ;
 
 
 // -----------------------------------------------
@@ -2432,6 +2436,7 @@ void initialize_get_next_character_from_text_item( )
     put_info_into_target_pointer_stack_item( ) ;
     global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
     specify_character_to_insert_between_subitems( ) ;
+    global_yes_or_no_inserted_character = global_no ;
     return ;
 }
 
@@ -2482,7 +2487,6 @@ void get_next_character_from_text_item( )
 //  function exits within the loop as soon as the
 //  next character is known.
 
-    global_single_character_as_integer = 0 ;
     while ( 1 == 1 )
     {
 
@@ -2499,7 +2503,8 @@ void get_next_character_from_text_item( )
 //  track this situation.  Allow for the
 //  possibility that the text item is empty.
 
-        if ( global_current_target_character_position > global_text_pointer_end_for_item[ global_current_target_text_item ] )
+        global_distance_between_item_begin_and_end = global_text_pointer_begin_for_item[ global_current_target_text_item ] - global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+        if ( global_current_target_character_position > global_distance_between_item_begin_and_end )
         {
             global_yes_or_no_reached_end_of_current_text_item = global_yes ;
         } else
@@ -2531,6 +2536,7 @@ void get_next_character_from_text_item( )
         {
             pop_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
+            global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
             continue ;
         }
 
@@ -2557,26 +2563,21 @@ void get_next_character_from_text_item( )
             }
         }
 
+
 // -----------------------------------------------
 //  If the text item category is either
 //  "unicode_anything" or "unicode_no_delimiters",
 //  supply the next character, increment the
-//  pointer, and return with the character.  If
-//  the pointer already is at the end of the
-//  characters, repeat the loop.
+//  pointer, and return.  If the pointer already
+//  is at the end of the characters, repeat the
+//  loop.
 
         if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) )
         {
-            if ( global_current_target_character_position <= global_text_pointer_end_for_item[ global_current_target_text_item ] )
-            {
-                global_single_character_as_integer = global_storage_all_text[ global_current_target_character_position ] ;
-                log_out << "character " << global_single_character_as_integer << std::endl ;
-                global_current_target_character_position ++ ;
-                return ;
-            } else
-            {
-                continue ;
-            }
+            global_single_character_as_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
+            log_out << "character " << global_single_character_as_integer << std::endl ;
+            global_current_target_character_position ++ ;
+            return ;
         }
 
 
@@ -2592,13 +2593,14 @@ void get_next_character_from_text_item( )
 
         if ( ( global_text_item_category == global_category_contains_list_of_text_item_ids ) || ( global_text_item_category == global_category_contains_hyphenated_phrase_name ) )
         {
-        	put_info_into_target_pointer_stack_item( ) ;
+            put_info_into_target_pointer_stack_item( ) ;
             push_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
-
-            global_current_target_text_item = 123 ;
-
+            global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+            global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] ;
             global_current_target_character_position = 1 ;
+            global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+            global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
             continue ;
         }
 
@@ -2618,18 +2620,20 @@ void get_next_character_from_text_item( )
         {
             if ( global_text_item_category == global_category_contains_list_of_integers )
             {
-                global_single_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_text_item - 1 ] ;
+                global_single_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
                 convert_integer_to_text( ) ;
             } else
             {
-                global_single_decimal_number = global_decimal_number_at_position[ global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] global_current_target_text_item - 1 ] ] ;
+                global_single_decimal_number = global_decimal_number_at_position[ global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ] ;
                 convert_decimal_to_text( ) ;
             }
             push_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
             global_current_target_text_item = global_text_item_id_for_number_as_text ;
             global_current_target_character_position = 1 ;
-            put_info_into_target_pointer_stack_item( ) ;
+            global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+            global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
+            global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
             continue ;
         }
 
@@ -2637,14 +2641,19 @@ void get_next_character_from_text_item( )
 // -----------------------------------------------
 //  If the text item category is
 //  "category_pointer_pair", point to the next
-//  character in the text being pointed to.  If
-//  the pointer already is at the end of the
-//  characters, repeat the loop.
+//  character in the text being pointed to, get
+//  that character, then return.  If the pointer
+//  already is at the end of the characters,
+//  repeat the loop.
 
         if ( global_text_item_category == global_category_contains_pointer_pair )
         {
-            //
-            continue ;
+            //  todo:  fix this code, also check when done which is different for this category
+
+            global_single_character_as_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
+            log_out << "character " << global_single_character_as_integer << std::endl ;
+            global_current_target_character_position ++ ;
+            return ;
         }
 
 
@@ -2667,6 +2676,7 @@ void get_next_character_from_text_item( )
 // -----------------------------------------------
 //  All done in function get_next_character_from_text_item.
 
+    global_single_character_as_integer = 0 ;
     return ;
 
 }
@@ -2712,11 +2722,11 @@ void remove_leading_delimiters( )
         get_next_character_from_text_item( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
-            {
-                global_text_item_id = global_xyz ;
-                global_text_pointer_begin_for_item[ global_current_target_text_item ] = global_xyz ;
-            }
+            // for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
+            // {
+            //     global_text_item_id = global_xyz ;
+            //     global_text_pointer_begin_for_item[ global_current_target_text_item ] = global_xyz ;
+            // }
             if ( global_single_character_as_integer == 0 )
             {
                 return ;
@@ -2804,10 +2814,10 @@ void remove_trailing_delimiters( )
         get_previous_character_from_text_item( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
-            {
-                global_text_pointer_end_for_item[ global_current_target_text_item ] = global_current_target_character_position ;
-            }
+            // for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
+            // {
+            //     global_text_pointer_end_for_item[ global_current_target_text_item ] = global_current_target_character_position ;
+            // }
             if ( global_single_character_as_integer == 0 )
             {
                 continue ;
