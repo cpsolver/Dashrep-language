@@ -833,6 +833,7 @@ int global_character_pointer_for_text_item ;
 int global_character_count ;
 int global_character_count_for_expand_text ;
 int global_length_of_matching_text ;
+int global_character_pointer_if_category_pointer_pair ;
 
 
 // -----------------------------------------------
@@ -1091,6 +1092,8 @@ int global_match_character_pointer_begin ;
 int global_match_character_pointer_end ;
 int global_count_of_words_handled ;
 int global_distance_between_item_begin_and_end ;
+int global_current_target_text_item_begin ;
+int global_current_target_text_item_end ;
 
 
 // -----------------------------------------------
@@ -2492,18 +2495,24 @@ void get_next_character_from_text_item( )
 
 
 // -----------------------------------------------
-//  Write debugging info.
+//  Point to the beginning and end of the current
+//  text item, and calculate the distance between
+//  them.
 
-        log_out << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << " , global_target_stack_item_top " << global_target_stack_item_top << " , global_target_stack_item_prior " << global_target_stack_item_prior << " , global_target_stack_item_next " << global_target_stack_item_next << " , global_current_target_text_item " << global_current_target_text_item << " , global_current_target_character_position " << global_current_target_character_position << " , global_text_pointer_begin " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << " , global_text_pointer_end " << global_text_pointer_end_for_item[ global_current_target_text_item ] << " , global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl ;
+        global_current_target_text_item_begin = global_text_pointer_begin_for_item[ global_current_target_text_item ] ;
+        global_current_target_text_item_end = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+        global_distance_between_item_begin_and_end = global_current_target_text_item_begin - global_current_target_text_item_end ;
 
 
 // -----------------------------------------------
 //  If the previous character was the last
 //  character in the current-level text item,
 //  track this situation.  Allow for the
-//  possibility that the text item is empty.
+//  possibility that the text item is empty.  If
+//  the text item category is
+//  "category_pointer_pair", this calculation is
+//  different from the other category types.
 
-        global_distance_between_item_begin_and_end = global_text_pointer_begin_for_item[ global_current_target_text_item ] - global_text_pointer_end_for_item[ global_current_target_text_item ] ;
         if ( global_current_target_character_position > global_distance_between_item_begin_and_end )
         {
             global_yes_or_no_reached_end_of_current_text_item = global_yes ;
@@ -2511,7 +2520,23 @@ void get_next_character_from_text_item( )
         {
             global_yes_or_no_reached_end_of_current_text_item = global_no ;
         }
-        log_out << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl ;
+        if ( global_text_category_for_item[ global_current_target_text_item ] == global_category_contains_pointer_pair )
+        {
+            global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin ] + global_current_target_character_position - 1 ;
+            if ( global_character_pointer_if_category_pointer_pair > global_storage_all_text[ global_current_target_text_item_end ] )
+            {
+	            global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+	        } else
+	        {
+	            global_yes_or_no_reached_end_of_current_text_item = global_no ;
+            }
+        }
+
+
+// -----------------------------------------------
+//  Write debugging info.
+
+        log_out << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << " , global_target_stack_item_top " << global_target_stack_item_top << " , global_target_stack_item_prior " << global_target_stack_item_prior << " , global_target_stack_item_next " << global_target_stack_item_next << " , global_current_target_text_item " << global_current_target_text_item << " , global_current_target_character_position " << global_current_target_character_position << " , global_text_pointer_begin " << global_current_target_text_item_begin << " , global_text_pointer_end " << global_current_target_text_item_end << " , global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << " , global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl ;
 
 
 // -----------------------------------------------
@@ -2536,6 +2561,7 @@ void get_next_character_from_text_item( )
         {
             pop_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
+            global_yes_or_no_inserted_character = global_no ;
             global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
             continue ;
         }
@@ -2549,9 +2575,9 @@ void get_next_character_from_text_item( )
 
         if ( global_character_to_insert_between_subitems != global_insertion_character_none )
         {
-            if ( global_text_pointer_begin_for_item[ global_current_target_text_item ] < global_text_pointer_end_for_item[ global_current_target_text_item ] )
+            if ( global_current_target_text_item_begin < global_current_target_text_item_end )
             {
-                if ( ( global_current_target_character_position == ( global_text_pointer_begin_for_item[ global_current_target_text_item ] + 1 ) ) || ( global_current_target_character_position == ( global_text_pointer_end_for_item[ global_current_target_text_item ] - 1 ) ) )
+                if ( ( global_current_target_character_position == ( global_current_target_text_item_begin + 1 ) ) || ( global_current_target_character_position == ( global_current_target_text_item_end - 1 ) ) )
                 {
                     if ( global_yes_or_no_inserted_character == global_no )
                     {
@@ -2601,6 +2627,7 @@ void get_next_character_from_text_item( )
             global_current_target_character_position = 1 ;
             global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
             global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
+            global_yes_or_no_inserted_character = global_no ;
             continue ;
         }
 
@@ -2648,9 +2675,7 @@ void get_next_character_from_text_item( )
 
         if ( global_text_item_category == global_category_contains_pointer_pair )
         {
-            //  todo:  fix this code, also check when done which is different for this category
-
-            global_single_character_as_integer = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
+            global_single_character_as_integer = global_storage_all_text[ global_character_pointer_if_category_pointer_pair ] ;
             log_out << "character " << global_single_character_as_integer << std::endl ;
             global_current_target_character_position ++ ;
             return ;
