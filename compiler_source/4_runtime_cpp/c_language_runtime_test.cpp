@@ -2243,6 +2243,9 @@ void put_info_into_target_pointer_stack_item( )
         global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
 
         global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+
+    log_out << "put, global_target_stack_item_bottom " << global_target_stack_item_bottom << " , global_target_stack_item_top " << global_target_stack_item_top << " , global_target_stack_item_prior " << global_target_stack_item_prior << " , global_target_stack_item_next " << global_target_stack_item_next << std::endl ;
+
 }
 
 
@@ -2263,6 +2266,9 @@ void get_info_from_target_pointer_stack_item( )
     global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] ;
 
     global_current_target_character_position = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] ;
+
+    log_out << "get, global_current_target_text_item " << global_current_target_text_item << " , global_current_target_character_position " << global_current_target_character_position << std::endl ;
+
 }
 
 
@@ -2322,6 +2328,9 @@ void pop_target_pointer_stack( )
     specify_character_to_insert_between_subitems( ) ;
 
 
+    log_out << "pop, global_target_stack_item_top " << global_target_stack_item_top << " , global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl ;
+
+
 // -----------------------------------------------
 //  End of function pop_target_pointer_stack.
 
@@ -2349,7 +2358,9 @@ void push_target_pointer_stack( )
 //  If a new target pointer stack item needs to be
 //  created, create it.
 
-    if ( global_target_stack_item_bottom != 0 )
+// todo: debug, bottom pointer is zero? yet also not zero below?
+
+    if ( global_target_stack_item_bottom == 0 )
     {
         global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
         global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] ;
@@ -2375,6 +2386,7 @@ void push_target_pointer_stack( )
         global_target_stack_item_next = 0 ;
         global_current_target_text_item = 0 ;
         global_current_target_character_position = 0 ;
+        log_out << "new bottom, global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
         put_info_into_target_pointer_stack_item( ) ;
         return ;
     }
@@ -2397,6 +2409,7 @@ void push_target_pointer_stack( )
         global_current_target_character_position = 0 ;
         put_info_into_target_pointer_stack_item( ) ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_new_storage_text_item_id ;
+        log_out << "new non-bottom, global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
         return ;
     }
 
@@ -2411,8 +2424,11 @@ void push_target_pointer_stack( )
     global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = 0 ;
 
 
+    log_out << "push, global_target_stack_item_top " << global_target_stack_item_top << " , global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl ;
+
+
 // -----------------------------------------------
-//  End of function initialize_pointer_stack.
+//  End of function push_target_pointer_stack.
 
     return ;
 }
@@ -2434,12 +2450,15 @@ void initialize_get_next_character_from_text_item( )
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack( ) ;
     global_id_for_target_stack_pointer_for_get_next_character = global_target_stack_item_bottom ;
+    log_out << "init, global_target_stack_item_bottom " << global_target_stack_item_bottom << " , global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl ;
     get_info_from_target_pointer_stack_item( ) ;
+    global_current_target_text_item = global_from_text_item_id ;
     global_current_target_character_position = 1 ;
     put_info_into_target_pointer_stack_item( ) ;
     global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
     specify_character_to_insert_between_subitems( ) ;
     global_yes_or_no_inserted_character = global_no ;
+    log_out << "initializing stack, global_current_target_text_item " << global_current_target_text_item << " , global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
     return ;
 }
 
@@ -4938,14 +4957,22 @@ void do_everything( )
     global_infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     global_outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
-    global_single_integer = 170512 ;
-    convert_integer_to_text( ) ;
-    global_from_text_item_id = global_text_item_id_for_number_as_text ;
-    write_text_item_to_file( ) ;
+//    global_single_integer = 170512 ;
+//    convert_integer_to_text( ) ;
+
+//    log_out << "next test" << std::endl ;
+
+//    global_from_text_item_id = global_text_item_id_for_number_as_text ;
+//    write_text_item_to_file( ) ;
+
+//    log_out << "next test" << std::endl ;
 
     global_from_text_item_id = global_text_item_id_for_sample_numbers ;
-    global_to_text_item_id = global_text_item_id_for_sample_numbers ;
-    append_text( ) ;
+    write_text_item_to_file( ) ;
+
+//    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
+//    global_to_text_item_id = global_text_item_id_for_sample_numbers ;
+//    append_text( ) ;
 
     log_out << "done testing" << std::endl ;
     std::cout << "program done" << std::endl ;
