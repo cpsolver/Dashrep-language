@@ -2202,11 +2202,19 @@ void read_text_line_from_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+
+void write_to_log( )
+{
+    log_out << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ global_current_target_text_item ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ global_current_target_text_item ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function specify_character_to_insert_between_subitems
 
 void specify_character_to_insert_between_subitems( )
 {
-    global_target_stack_item_top = global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_pointer_stack_for_getting_next_character ] ] ;
     global_text_item_with_next_character = global_storage_all_text[ global_text_pointer_begin_for_item[ global_target_stack_item_top ] ] ;
     switch ( global_text_category_for_item[ global_text_item_with_next_character ] )
     {
@@ -2223,6 +2231,8 @@ void specify_character_to_insert_between_subitems( )
             global_character_to_insert_between_subitems = global_insertion_character_none ;
             break ;
     }
+//    log_out << "char insert" << std::endl ;
+//    write_to_log( ) ;
 }
 
 
@@ -2244,8 +2254,8 @@ void put_info_into_target_pointer_stack_item( )
 
         global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
 
-    log_out << "put, global_target_stack_item_bottom " << global_target_stack_item_bottom << " , global_target_stack_item_top " << global_target_stack_item_top << " , global_target_stack_item_prior " << global_target_stack_item_prior << " , global_target_stack_item_next " << global_target_stack_item_next << std::endl ;
-
+//    log_out << "put" << std::endl ;
+//    write_to_log( ) ;
 }
 
 
@@ -2267,8 +2277,8 @@ void get_info_from_target_pointer_stack_item( )
 
     global_current_target_character_position = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] ;
 
-    log_out << "get, global_current_target_text_item " << global_current_target_text_item << " , global_current_target_character_position " << global_current_target_character_position << std::endl ;
-
+//    log_out << "get" << std::endl ;
+//    write_to_log( ) ;
 }
 
 
@@ -2327,8 +2337,8 @@ void pop_target_pointer_stack( )
 
     specify_character_to_insert_between_subitems( ) ;
 
-
-    log_out << "pop, global_target_stack_item_top " << global_target_stack_item_top << " , global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl ;
+    log_out << "pop" << std::endl ;
+    write_to_log( ) ;
 
 
 // -----------------------------------------------
@@ -2358,8 +2368,6 @@ void push_target_pointer_stack( )
 //  If a new target pointer stack item needs to be
 //  created, create it.
 
-// todo: debug, bottom pointer is zero? yet also not zero below?
-
     if ( global_target_stack_item_bottom == 0 )
     {
         global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
@@ -2386,8 +2394,9 @@ void push_target_pointer_stack( )
         global_target_stack_item_next = 0 ;
         global_current_target_text_item = 0 ;
         global_current_target_character_position = 0 ;
-        log_out << "new bottom, global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
         put_info_into_target_pointer_stack_item( ) ;
+        log_out << "new bottom" << std::endl ;
+        write_to_log( ) ;
         return ;
     }
 
@@ -2403,13 +2412,17 @@ void push_target_pointer_stack( )
     {
         global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_new_storage_text_item_id ;
+
+// todo: fix
+
         global_target_stack_item_top = global_new_storage_text_item_id ;
         global_target_stack_item_next = global_new_storage_text_item_id ;
         global_current_target_text_item = 0 ;
         global_current_target_character_position = 0 ;
         put_info_into_target_pointer_stack_item( ) ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_new_storage_text_item_id ;
-        log_out << "new non-bottom, global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
+        log_out << "new non-bottom" << std::endl ;
+        write_to_log( ) ;
         return ;
     }
 
@@ -2422,9 +2435,8 @@ void push_target_pointer_stack( )
     global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
     global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = 0 ;
     global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = 0 ;
-
-
-    log_out << "push, global_target_stack_item_top " << global_target_stack_item_top << " , global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl ;
+    log_out << "new bottom" << std::endl ;
+    write_to_log( ) ;
 
 
 // -----------------------------------------------
@@ -2450,15 +2462,16 @@ void initialize_get_next_character_from_text_item( )
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack( ) ;
     global_id_for_target_stack_pointer_for_get_next_character = global_target_stack_item_bottom ;
-    log_out << "init, global_target_stack_item_bottom " << global_target_stack_item_bottom << " , global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl ;
     get_info_from_target_pointer_stack_item( ) ;
     global_current_target_text_item = global_from_text_item_id ;
     global_current_target_character_position = 1 ;
+    global_target_stack_item_top = global_target_stack_item_bottom ;
     put_info_into_target_pointer_stack_item( ) ;
     global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
     specify_character_to_insert_between_subitems( ) ;
     global_yes_or_no_inserted_character = global_no ;
-    log_out << "initializing stack, global_current_target_text_item " << global_current_target_text_item << " , global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl ;
+    log_out << "init get char" << std::endl ;
+    write_to_log( ) ;
     return ;
 }
 
@@ -2555,7 +2568,8 @@ void get_next_character_from_text_item( )
 // -----------------------------------------------
 //  Write debugging info.
 
-        log_out << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << " , global_target_stack_item_top " << global_target_stack_item_top << " , global_target_stack_item_prior " << global_target_stack_item_prior << " , global_target_stack_item_next " << global_target_stack_item_next << " , global_current_target_text_item " << global_current_target_text_item << " , global_current_target_character_position " << global_current_target_character_position << " , global_text_pointer_begin " << global_current_target_text_item_begin << " , global_text_pointer_end " << global_current_target_text_item_end << " , global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << " , global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl ;
+        log_out << "get char" << std::endl ;
+        write_to_log( ) ;
 
 
 // -----------------------------------------------
