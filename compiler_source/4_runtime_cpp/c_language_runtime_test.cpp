@@ -138,9 +138,12 @@ int global_text_item_id_for_float_as_text ;
 int global_text_item_id_for_integers_as_text ;
 int global_text_item_id_for_list_of_integers ;
 int global_text_item_id_for_pointer_begin_end ;
+int global_text_item_id_for_truncate ;
 
 int global_id_for_target_stack_pointer_for_get_next_character ;
 int global_text_item_with_next_character ;
+int global_id_for_target_stack_pointer_for_get_previous_character ;
+int global_text_item_with_previous_character ;
 
 int global_text_item_id_for_single_space ;
 int global_text_item_id_for_single_hyphen ;
@@ -958,6 +961,8 @@ const int global_offset_for_current_target_character_position = 5 ;
 int global_current_target_character_position ;
 int global_pointer_to_within_target_stack_item_bottom ;
 int global_pointer_to_within_target_stack_item_top ;
+int global_pointer_to_within_target_stack_item_current ;
+int global_target_stack_item_current ;
 
 
 // -----------------------------------------------
@@ -974,6 +979,7 @@ int global_yes_or_no_use_copy_when_appending ;
 int global_yes_or_no_inserted_character ;
 int global_yes_or_no_transition_from_character_to_delimiter ;
 int global_yes_or_no_transition_from_delimiter_to_character ;
+int global_yes_or_no_begin_not_end ;
 
 
 // -----------------------------------------------
@@ -1094,6 +1100,7 @@ int global_count_of_words_handled ;
 int global_distance_between_item_begin_and_end ;
 int global_current_target_text_item_begin ;
 int global_current_target_text_item_end ;
+int global_test_loop_counter ;
 
 
 // -----------------------------------------------
@@ -2205,7 +2212,14 @@ void read_text_line_from_file( )
 
 void write_to_log( )
 {
-    log_out << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ global_current_target_text_item ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ global_current_target_text_item ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+    log_out << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ global_current_target_text_item ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ global_current_target_text_item ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+
+    global_test_loop_counter ++ ;
+    if ( global_test_loop_counter > 200 )
+    {
+        log_out << "reached endless loop counter limit" << std::endl ;
+    	exit( EXIT_FAILURE ) ;
+    }
 }
 
 
@@ -2533,7 +2547,7 @@ void get_next_character_from_text_item( )
 
         global_current_target_text_item_begin = global_text_pointer_begin_for_item[ global_current_target_text_item ] ;
         global_current_target_text_item_end = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
-        global_distance_between_item_begin_and_end = global_current_target_text_item_begin - global_current_target_text_item_end ;
+        global_distance_between_item_begin_and_end = global_current_target_text_item_end - global_current_target_text_item_begin ;
 
 
 // -----------------------------------------------
@@ -2742,61 +2756,6 @@ void get_next_character_from_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function write_text_item_to_file
-//
-//  This function writes the contents of one text
-//  item to the output file.  If that text item
-//  points to any sub text items, those sub text
-//  items also are written to the file.  The text
-//  item ID must be in global_from_text_item_id.
-
-void write_text_item_to_file( )
-{
-    log_out << "global_from_text_item_id " << global_from_text_item_id << std::endl ;
-    initialize_get_next_character_from_text_item( ) ;
-    while ( 1 == 1 )
-    {
-        get_next_character_from_text_item( ) ;
-        if ( global_single_character_as_integer == 0 )
-        {
-            return ;
-        }
-        write_single_character_as_integer_to_file( ) ;
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function remove_leading_delimiters
-
-void remove_leading_delimiters( )
-{
-    initialize_get_next_character_from_text_item( ) ;
-    global_single_character_as_integer = 1 ;
-    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_character_is_delimiter == global_yes ) )
-    {
-        get_next_character_from_text_item( ) ;
-        if ( global_yes_or_no_character_is_delimiter == global_no )
-        {
-            // for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
-            // {
-            //     global_text_item_id = global_xyz ;
-            //     global_text_pointer_begin_for_item[ global_current_target_text_item ] = global_xyz ;
-            // }
-            if ( global_single_character_as_integer == 0 )
-            {
-                return ;
-            }
-        }
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function initialize_get_previous_character_from_text_item
 //
 //  The backwards version of
@@ -2805,9 +2764,21 @@ void remove_leading_delimiters( )
 void initialize_get_previous_character_from_text_item( )
 {
     initialize_get_next_character_from_text_item( ) ;
-
-
-
+    global_current_target_text_item = global_from_text_item_id ;
+    global_target_stack_item_bottom = 0 ;
+    push_target_pointer_stack( ) ;
+    global_id_for_target_stack_pointer_for_get_previous_character = global_target_stack_item_bottom ;
+    get_info_from_target_pointer_stack_item( ) ;
+    global_current_target_text_item = global_from_text_item_id ;
+    global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+    global_target_stack_item_top = global_target_stack_item_bottom ;
+    put_info_into_target_pointer_stack_item( ) ;
+    global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
+    specify_character_to_insert_between_subitems( ) ;
+    global_yes_or_no_inserted_character = global_no ;
+    log_out << "init get previous char" << std::endl ;
+    write_to_log( ) ;
+    return ;
 }
 
 
@@ -2858,6 +2829,87 @@ void get_previous_character_from_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function truncate_text_item_using_target_pointer_stack
+//
+//  This function changes the "begin" or "end"
+//  pointers of a text item and any sub text items
+//  to match the target pointer stack that is
+//  pointed to by "global_to_text_item_id".  This
+//  function truncates the beginning if the flag
+//  "global_yes_or_no_begin_not_end" is
+//  "global_yes" or else truncates the ending.
+//  This function should not be used if the text
+//  item and sub text items must not change.
+
+void truncate_text_item_using_target_pointer_stack( )
+{
+    global_text_item_id_for_truncate = global_to_text_item_id ;
+    global_target_stack_item_current = global_target_stack_item_bottom ;
+    global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
+    global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
+    while ( global_target_stack_item_current > 0 )
+    {
+    	global_text_item_category = global_text_category_for_item[ global_target_stack_item_current ] ;
+        if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) || ( global_text_item_category == global_category_contains_list_of_text_item_ids ) )
+        {
+            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
+            if ( global_yes_or_no_begin_not_end == global_yes )
+            {
+                global_text_pointer_begin_for_item[ global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_text_item ] ] += global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
+            } else
+            {
+                global_text_pointer_end_for_item[ global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_text_item ] ] += global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
+            }
+            log_out << "truncate" << std::endl ;
+            write_to_log( ) ;
+            if ( global_target_stack_item_current == global_target_stack_item_top )
+            {
+            	global_target_stack_item_current = 0 ;
+            } else
+            {
+                global_target_stack_item_current = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_next ] ;
+            }
+        } else
+        {
+        	return ;
+        }
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function remove_leading_delimiters
+//
+//  This function changes the "begin" pointer of
+//  a text item to skip over leading delimiters.
+//  If the text item points to sub text items,
+//  those "begin" pointers are also changed.  This
+//  function should not be used if the text item
+//  and sub text items must not change.
+
+void remove_leading_delimiters( )
+{
+    initialize_get_next_character_from_text_item( ) ;
+    global_yes_or_no_character_is_delimiter = global_yes ;
+    while ( global_yes_or_no_character_is_delimiter == global_yes )
+    {
+        get_next_character_from_text_item( ) ;
+        check_if_delimiter( ) ;
+        if ( global_yes_or_no_character_is_delimiter == global_no )
+        {
+            get_previous_character_from_text_item( ) ;
+            global_yes_or_no_begin_not_end = global_yes ;
+        	truncate_text_item_using_target_pointer_stack( ) ;
+            return ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function remove_trailing_delimiters
 //
 //  The backwards version of
@@ -2866,20 +2918,17 @@ void get_previous_character_from_text_item( )
 void remove_trailing_delimiters( )
 {
     initialize_get_previous_character_from_text_item( ) ;
-    global_single_character_as_integer = 1 ;
-    while ( ( global_single_character_as_integer != 0 ) && ( global_yes_or_no_character_is_delimiter == global_yes ) )
+    global_yes_or_no_character_is_delimiter = global_yes ;
+    while ( global_yes_or_no_character_is_delimiter == global_yes )
     {
         get_previous_character_from_text_item( ) ;
+        check_if_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            // for ( global_current_stack_level = global_current_stack_level_for_getting_next_character ; global_current_stack_level > 0 ; global_current_stack_level -- )
-            // {
-            //     global_text_pointer_end_for_item[ global_current_target_text_item ] = global_current_target_character_position ;
-            // }
-            if ( global_single_character_as_integer == 0 )
-            {
-                continue ;
-            }
+        	get_next_character_from_text_item( ) ;
+            global_yes_or_no_begin_not_end = global_no ;
+        	truncate_text_item_using_target_pointer_stack( ) ;
+            return ;
         }
     }
     return ;
@@ -2894,6 +2943,33 @@ void remove_leading_and_trailing_delimiters( )
 {
     remove_leading_delimiters( ) ;
     remove_trailing_delimiters( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_text_item_to_file
+//
+//  This function writes the contents of one text
+//  item to the output file.  If that text item
+//  points to any sub text items, those sub text
+//  items also are written to the file.  The text
+//  item ID must be in global_from_text_item_id.
+
+void write_text_item_to_file( )
+{
+    log_out << "global_from_text_item_id " << global_from_text_item_id << std::endl ;
+    initialize_get_next_character_from_text_item( ) ;
+    while ( 1 == 1 )
+    {
+        get_next_character_from_text_item( ) ;
+        if ( global_single_character_as_integer == 0 )
+        {
+            return ;
+        }
+        write_single_character_as_integer_to_file( ) ;
+    }
     return ;
 }
 
@@ -4982,6 +5058,7 @@ void do_everything( )
 //    log_out << "next test" << std::endl ;
 
     global_from_text_item_id = global_text_item_id_for_sample_numbers ;
+    remove_leading_delimiters( ) ;
     write_text_item_to_file( ) ;
 
 //    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
