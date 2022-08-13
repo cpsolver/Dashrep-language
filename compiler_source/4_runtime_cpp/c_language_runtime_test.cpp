@@ -4313,6 +4313,9 @@ void get_text_by_character_offset_and_length( )
 //  Expands the text item indicated in
 //  global_from_text_item_id.
 
+//  Local variables are used because this function
+//  can be used recursively.
+
 //  Currently being changed from Perl code to C.
 
 void expand_text( )
@@ -4689,122 +4692,45 @@ void expand_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function execute_loop_handler_based_on_handler_id
+
+void execute_loop_handler_based_on_handler_id( int local_text_item_id_for_next_word , int local_loop_handler )
+{
+
+//  use switch statement
+
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function implement_loop
+//
+//  This function points to the next word using a
+//  pair of target pointer stacks, then executes
+//  the requested action.
+//
+//  Local variables are used because this function
+//  can be used recursively.
 
 void implement_loop( )
 {
-
-
-// -----------------------------------------------
-//  Declarations.
-
-    int local_pointer_to_next_space ;
-    int local_pointer_to_future_space ;
-    int local_pointer_to_next_word ;
-    int local_endless_loop_counter ;
-    int local_endless_loop_counter_limit ;
-    int length_of_text_in_word_list ;
-    int local_counter_number_of_adjacent_spaces ;
-
-
-// -----------------------------------------------
-//  Initialization.
-
-    local_pointer_to_next_space = -1 ;
-// length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;
-
-
-// -----------------------------------------------
-//  Start ABABA loop, which has exit in middle of
-//  loop.
-
-    local_endless_loop_counter = 0 ;
-    local_endless_loop_counter_limit = int( ( length_of_text_in_word_list / 2 ) ) + 10 ;
-    while ( 1 == 1 ) {
-
-        local_endless_loop_counter ++ ;
-        if ( local_endless_loop_counter > local_endless_loop_counter_limit )
-        {
-            break ;
-        }
-
-        if ( local_pointer_to_next_space >= length_of_text_in_word_list )
-        {
-            break ;
-        }
-
-
-// -----------------------------------------------
-//  Start a second, inner, ABABA loop, which has
-//  its exit in the middle of the loop.
-
-        local_counter_number_of_adjacent_spaces = 0 ;
-        while ( 1 == 1 ) {
-
-            local_counter_number_of_adjacent_spaces ++ ;
-            if ( local_counter_number_of_adjacent_spaces > length_of_text_in_word_list )
-            {
-                break ;
-            }
-
-// local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_space + 1 ) ;
-
-
-// -----------------------------------------------
-//  Exit from second, inner, ABABA loop.  If the
-//  next line is edited, ensure it reaches an end
-//  point, otherwise there will be an endless
-//  loop.
-
-            if ( local_pointer_to_future_space != local_pointer_to_next_space + 1 )
-            {
-                break ;
-            }
-
-            local_pointer_to_next_space = local_pointer_to_future_space ;
-
-
-// -----------------------------------------------
-//  End of second, inner, ABABA loop.
-
-        }
-
-        local_pointer_to_next_word = local_pointer_to_next_space + 1 ;
-
-// local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , local_pointer_to_next_word ) ;
-
-        if ( local_pointer_to_next_space < 0 )
-        {
-            local_pointer_to_next_space = length_of_text_in_word_list ;
-        }
-
-
-// -----------------------------------------------
-//  Exit from ABABA loop.  If the next line is
-//  edited, ensure it reaches an end point.
-//  Otherwise there will be an endless loop.
-
-        if ( ( local_pointer_to_next_word >= local_pointer_to_next_space ) || ( local_pointer_to_next_word < 0 ) || ( local_pointer_to_next_space < 0 ) )
-        {
-            break ;
-        }
-
-// global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , local_pointer_to_next_word , local_pointer_to_next_space - local_pointer_to_next_word ) ;
-
-
-// code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;
-// & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;
-
-
-// -----------------------------------------------
-//  End of ABABA loop.
-
+    int local_text_item_id_contains_word_list ;
+    int local_text_item_id_for_next_word ;
+    int local_loop_handler ;
+    local_text_item_id_contains_word_list = global_from_text_item_id ;
+    initialize_point_to_next_word_in_text_item( ) ;
+    while ( 1 == 1 )
+    {
+        point_to_next_word_in_text_item( ) ;
+	    if ( global_single_character_as_integer == 0 )
+	    {
+	    	return ;
+	    }
+        execute_loop_handler_based_on_handler_id( local_text_item_id_for_next_word , local_loop_handler ) ;
+// ... handler-name-with-underscores ...
     }
-
-
-// -----------------------------------------------
-//  End of function implement_loop.
-
 }
 
 
