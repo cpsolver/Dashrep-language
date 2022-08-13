@@ -140,10 +140,10 @@ int global_text_item_id_for_list_of_integers ;
 int global_text_item_id_for_pointer_begin_end ;
 int global_text_item_id_for_truncate ;
 int global_text_item_id_for_next_word ;
+int global_text_item_id_for_next_word_begin ;
+int global_text_item_id_for_next_word_end ;
 
-int global_id_for_target_stack_pointer_for_get_next_character ;
 int global_text_item_with_next_character ;
-int global_id_for_target_stack_pointer_for_get_previous_character ;
 int global_text_item_with_previous_character ;
 
 int global_text_item_id_for_single_space ;
@@ -963,8 +963,22 @@ int global_current_target_character_position ;
 int global_pointer_to_within_target_stack_item_bottom ;
 int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_target_stack_item_current ;
+int global_pointer_to_within_target_stack_item_current_copy ;
+int global_pointer_to_within_target_stack_item_current_original ;
+int global_pointer_to_within_target_stack_item_copy ;
+int global_pointer_to_within_target_stack_item_original ;
 int global_target_stack_item_current ;
+int global_target_stack_item_current_original ;
 int global_target_stack_item_top_previous ;
+int global_target_stack_item_current_copy ;
+int global_target_stack_item_previous_copy ;
+int global_id_for_target_stack_pointer_for_get_next_character ;
+int global_id_for_target_stack_pointer_for_get_previous_character ;
+int global_id_for_target_stack_pointer_for_copy_from ;
+int global_id_for_target_stack_pointer_for_copy_to ;
+int global_id_for_copy_of_target_pointer_stack ;
+int global_id_for_original_of_target_pointer_stack ;
+int global_target_stack_item_previous_original ;
 
 
 // -----------------------------------------------
@@ -2502,13 +2516,46 @@ void initialize_get_next_character_from_text_item( )
 //  a way to go backward to the most recent
 //  character (or delimiter) of a specific type,
 //  without losing the current character position
-//  being parsed.
+//  being parsed.  Also two of these stacks can
+//  be used to point to the beginning and end of
+//  a word or found (matching) text, even if it
+//  spans beyond a single sub text item.  The copy
+//  is pointed to by
+//  "global_id_for_copy_of_target_pointer_stack".
+//  The original is pointed to by
+//  "global_id_for_original_of_target_pointer_stack".
+
+//        global_id_for_target_stack_pointer_for_copy_from ;
 
 void copy_pointer_stack( )
 {
 
-//  todo: write this code
+//  todo: proofread this code
 
+    global_target_stack_item_bottom = 0 ;
+    push_target_pointer_stack( ) ;
+    global_id_for_copy_of_target_pointer_stack = global_target_stack_item_bottom ;
+    global_target_stack_item_current_copy = global_id_for_copy_of_target_pointer_stack ;
+    global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
+    while ( global_target_stack_item_current_original > 0 )
+    {
+        global_pointer_to_within_target_stack_item_current_copy = global_text_pointer_begin_for_item[ global_target_stack_item_current_copy ] ;
+        global_pointer_to_within_target_stack_item_current_original = global_text_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_text_item ] = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_text_item ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_character_position ] = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_character_position ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_top ] = 0 ;
+        global_target_stack_item_previous_original = global_target_stack_item_current_original ;
+        global_target_stack_item_current_original = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
+        if ( global_target_stack_item_current_original == 0 )
+        {
+        	break ;
+        }
+	    push_target_pointer_stack( ) ;
+	    global_target_stack_item_current_copy = global_target_stack_item_bottom ;
+	    global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
+    }
+    global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_for_copy_of_target_pointer_stack ] + global_offset_for_target_stack_item_top ] = global_target_stack_item_current_copy ;
+    return ;
 }
 
 
@@ -2964,8 +3011,10 @@ void initialize_point_to_next_word_in_text_item( )
 //  Function point_to_next_word_in_text_item
 //
 //  Gets the next word from the text item and
-//  points to the word -- as a text item of
-//  category "pointer_pair" with the ID of
+//  points to the word using a pair of target
+//  pointer stacks, which are pointed to by
+//  "global_text_item_id_for_next_word_begin" and
+//  "global_text_item_id_for_next_word_end".
 //  "global_text_item_id_for_next_word".  Before
 //  using this function the initialization
 //  function
@@ -2985,20 +3034,8 @@ void point_to_next_word_in_text_item( )
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             get_previous_character_from_text_item( ) ;
-            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-            global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
-            global_text_item_id_for_next_word = global_target_stack_item_top ;
-            if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) || ( global_text_item_category == global_category_contains_list_of_text_item_ids ) )
-            {
-                global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
-                global_text_pointer_begin_for_item[ global_text_item_id_for_next_word ] = global_text_pointer_begin_for_item[ global_target_stack_item_top ] + global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
-                log_out << "next word begin" << std::endl ;
-                write_to_log( ) ;
-            } else
-            {
-                global_text_item_id_for_next_word = global_text_item_id_for_empty_text ;
-                return ;
-            }
+            copy_pointer_stack( ) ;
+            global_text_item_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
         }
     }
     global_target_stack_item_top_previous = global_target_stack_item_top ;
@@ -3008,23 +3045,8 @@ void point_to_next_word_in_text_item( )
         check_if_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_yes )
         {
-            get_previous_character_from_text_item( ) ;
-            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-            global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
-            if ( global_target_stack_item_top != global_target_stack_item_top_previous )
-            {
-//  todo: point indirectly
-//                global_text_item_id_for_next_word = global_text_item_id_for_empty_text ;
-                log_out << "BUG: next word is split across multiple text items" << std::endl ;
-                exit( EXIT_FAILURE ) ;
-            }
-
-// todo: finish writing this code
-
-            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
-            global_text_pointer_begin_for_item[ global_text_item_id_for_next_word ] = global_text_pointer_begin_for_item[ global_target_stack_item_top ] + global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
-            log_out << "next word end" << std::endl ;
-            write_to_log( ) ;
+            copy_pointer_stack( ) ;
+            global_text_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
         }
     }
     return ;
@@ -3828,7 +3850,7 @@ void check_yes_or_no_same_hyphenated_phrase( )
 //  the hyphenated phrase names do not match.
 //
 //  Later, alternate between checking at beginning
-//  and end.  This approach would increase speed
+//  and end.  This approach will increase speed
 //  in situations where the last word is an
 //  integer.
 //
@@ -3869,6 +3891,16 @@ void check_yes_or_no_same_hyphenated_phrase( )
 //  global_text_item_id_of_matching_hyphenated_phrase_name,
 //  but that variable is zero if no match was
 //  found.
+//
+//  To increase speed, when a word within the
+//  phrase name matches a word in the same
+//  position of another phrase name, progress to
+//  looking for the next word in the phrase name.
+//  This approach is faster when the phrase name
+//  contains an integer -- because the integer
+//  is looked for earlier in the process, and
+//  there are likely to be fewer phrase names
+//  that include an integer.
 
 void lookup_hyphenated_phrase_name( )
 {
@@ -4240,6 +4272,8 @@ void find_matching_text( )
 
 void text_replace( )
 {
+
+//  todo:
 //    global_to_text_item_id ;
 //    global_pointer_to_within_text_item
     global_text_item_id = 89 ;
