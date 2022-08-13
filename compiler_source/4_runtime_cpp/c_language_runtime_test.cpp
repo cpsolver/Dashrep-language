@@ -139,6 +139,7 @@ int global_text_item_id_for_integers_as_text ;
 int global_text_item_id_for_list_of_integers ;
 int global_text_item_id_for_pointer_begin_end ;
 int global_text_item_id_for_truncate ;
+int global_text_item_id_for_next_word ;
 
 int global_id_for_target_stack_pointer_for_get_next_character ;
 int global_text_item_with_next_character ;
@@ -963,6 +964,7 @@ int global_pointer_to_within_target_stack_item_bottom ;
 int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_target_stack_item_current ;
 int global_target_stack_item_current ;
+int global_target_stack_item_top_previous ;
 
 
 // -----------------------------------------------
@@ -2218,7 +2220,7 @@ void write_to_log( )
     if ( global_test_loop_counter > 200 )
     {
         log_out << "reached endless loop counter limit" << std::endl ;
-    	exit( EXIT_FAILURE ) ;
+        exit( EXIT_FAILURE ) ;
     }
 }
 
@@ -2571,10 +2573,10 @@ void get_next_character_from_text_item( )
             global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin ] + global_current_target_character_position - 1 ;
             if ( global_character_pointer_if_category_pointer_pair > global_storage_all_text[ global_current_target_text_item_end ] )
             {
-	            global_yes_or_no_reached_end_of_current_text_item = global_yes ;
-	        } else
-	        {
-	            global_yes_or_no_reached_end_of_current_text_item = global_no ;
+                global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+            } else
+            {
+                global_yes_or_no_reached_end_of_current_text_item = global_no ;
             }
         }
 
@@ -2849,7 +2851,7 @@ void truncate_text_item_using_target_pointer_stack( )
     global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
     while ( global_target_stack_item_current > 0 )
     {
-    	global_text_item_category = global_text_category_for_item[ global_target_stack_item_current ] ;
+        global_text_item_category = global_text_category_for_item[ global_target_stack_item_current ] ;
         if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) || ( global_text_item_category == global_category_contains_list_of_text_item_ids ) )
         {
             global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
@@ -2864,14 +2866,14 @@ void truncate_text_item_using_target_pointer_stack( )
             write_to_log( ) ;
             if ( global_target_stack_item_current == global_target_stack_item_top )
             {
-            	global_target_stack_item_current = 0 ;
+                global_target_stack_item_current = 0 ;
             } else
             {
                 global_target_stack_item_current = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_next ] ;
             }
         } else
         {
-        	return ;
+            return ;
         }
     }
 }
@@ -2900,7 +2902,7 @@ void remove_leading_delimiters( )
         {
             get_previous_character_from_text_item( ) ;
             global_yes_or_no_begin_not_end = global_yes ;
-        	truncate_text_item_using_target_pointer_stack( ) ;
+            truncate_text_item_using_target_pointer_stack( ) ;
             return ;
         }
     }
@@ -2925,9 +2927,9 @@ void remove_trailing_delimiters( )
         check_if_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-        	get_next_character_from_text_item( ) ;
+            get_next_character_from_text_item( ) ;
             global_yes_or_no_begin_not_end = global_no ;
-        	truncate_text_item_using_target_pointer_stack( ) ;
+            truncate_text_item_using_target_pointer_stack( ) ;
             return ;
         }
     }
@@ -2943,6 +2945,88 @@ void remove_leading_and_trailing_delimiters( )
 {
     remove_leading_delimiters( ) ;
     remove_trailing_delimiters( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_point_to_next_word_in_text_item
+
+void initialize_point_to_next_word_in_text_item( )
+{
+    initialize_get_next_character_from_text_item( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function point_to_next_word_in_text_item
+//
+//  Gets the next word from the text item and
+//  points to the word -- as a text item of
+//  category "pointer_pair" with the ID of
+//  "global_text_item_id_for_next_word".  Before
+//  using this function the initialization
+//  function
+//  "initialize_get_next_word_from_text_item"
+//  should be used.  It uses
+//  "global_from_text_item_id" and creates a
+//  target pointer stack that is referred to by
+//  "global_target_stack_item_bottom".
+
+void point_to_next_word_in_text_item( )
+{
+    global_yes_or_no_character_is_delimiter = global_yes ;
+    while ( global_yes_or_no_character_is_delimiter == global_yes )
+    {
+        get_next_character_from_text_item( ) ;
+        check_if_delimiter( ) ;
+        if ( global_yes_or_no_character_is_delimiter == global_no )
+        {
+            get_previous_character_from_text_item( ) ;
+            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+            global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
+            global_text_item_id_for_next_word = global_target_stack_item_top ;
+            if ( ( global_text_item_category == global_category_contains_unicode_anything ) || ( global_text_item_category == global_category_contains_unicode_no_delimiters ) || ( global_text_item_category == global_category_contains_list_of_text_item_ids ) )
+            {
+                global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
+                global_text_pointer_begin_for_item[ global_text_item_id_for_next_word ] = global_text_pointer_begin_for_item[ global_target_stack_item_top ] + global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
+                log_out << "next word begin" << std::endl ;
+                write_to_log( ) ;
+            } else
+            {
+                global_text_item_id_for_next_word = global_text_item_id_for_empty_text ;
+                return ;
+            }
+        }
+    }
+    global_target_stack_item_top_previous = global_target_stack_item_top ;
+    while ( global_yes_or_no_character_is_delimiter == global_no )
+    {
+        get_next_character_from_text_item( ) ;
+        check_if_delimiter( ) ;
+        if ( global_yes_or_no_character_is_delimiter == global_yes )
+        {
+            get_previous_character_from_text_item( ) ;
+            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+            global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
+            if ( global_target_stack_item_top != global_target_stack_item_top_previous )
+            {
+//  todo: point indirectly
+//                global_text_item_id_for_next_word = global_text_item_id_for_empty_text ;
+                log_out << "BUG: next word is split across multiple text items" << std::endl ;
+                exit( EXIT_FAILURE ) ;
+            }
+
+// todo: finish writing this code
+
+            global_pointer_to_within_target_stack_item_current = global_text_pointer_begin_for_item[ global_target_stack_item_current ] ;
+            global_text_pointer_begin_for_item[ global_text_item_id_for_next_word ] = global_text_pointer_begin_for_item[ global_target_stack_item_top ] + global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] - 1 ;
+            log_out << "next word end" << std::endl ;
+            write_to_log( ) ;
+        }
+    }
     return ;
 }
 
@@ -3820,30 +3904,6 @@ void add_new_hyphenated_phrase_name( )
     global_text_item_id = 102 ;
     exit_not_yet_supported( ) ;
     return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function initialize_point_to_next_word_in_text_item
-
-void initialize_point_to_next_word_in_text_item( )
-{
-    initialize_get_next_character_from_text_item( ) ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function point_to_next_word_in_text_item
-
-void point_to_next_word_in_text_item( )
-{
-
-//  todo: write this code
-
-    get_next_character_from_text_item( ) ;
-
 }
 
 
