@@ -115,20 +115,15 @@ int global_id_pointer_stack_for_getting_next_character ;
 //  Declare global variables that hold text item
 //  ID numbers.
 
-int global_text_item_id ;
 int global_new_storage_text_item_id ;
 int global_from_text_item_id ;
 int global_to_text_item_id ;
-int global_convertable_text_item_id ;
+
+int global_text_item_id ;
+int global_text_item_id_saved ;
 int global_text_item_id_last_predefined ;
-int global_saved_text_item_id ;
-
-int global_phrase_name_text_item_id ;
-int global_definition_text_item_id ;
-
-int global_matching_subtext_text_item_id ;
-int global_finding_match_text_item_id ;
-
+int global_text_item_id_to_find ;
+int global_text_item_id_to_search ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_valid_filename ;
@@ -990,7 +985,6 @@ int global_recent_character_position_for_character_number[ 260 ] ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
 int global_yes_or_no_character_is_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
-int global_recent_character_position_for_character_number_beyond_ascii ;
 int global_yes_or_no_use_copy_when_appending ;
 int global_yes_or_no_inserted_character ;
 int global_yes_or_no_transition_from_character_to_delimiter ;
@@ -2147,9 +2141,9 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_if_delimiter
+//  Function check_yes_or_no_character_is_delimiter
 
-void check_if_delimiter( )
+void check_yes_or_no_character_is_delimiter( )
 {
     switch ( global_single_character_as_integer )
     {
@@ -2231,7 +2225,7 @@ void read_text_line_from_file( )
 
 void write_to_log( )
 {
-    log_out << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ global_current_target_text_item ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ global_current_target_text_item ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+    log_out << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
 
     global_test_loop_counter ++ ;
     if ( global_test_loop_counter > 200 )
@@ -2401,13 +2395,6 @@ void push_target_pointer_stack( )
 //  If a new target pointer stack item needs to be
 //  created, create it.
 
-    if ( global_target_stack_item_bottom == 0 )
-    {
-        global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-        global_target_stack_item_top = global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] ;
-        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
-        global_target_stack_item_next = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
-    }
     if ( ( global_target_stack_item_bottom == 0 ) || ( global_target_stack_item_next == 0 ) )
     {
         global_length_requested_for_next_text_item_storage = 5 ;
@@ -2443,17 +2430,15 @@ void push_target_pointer_stack( )
 
     if ( global_target_stack_item_next == 0 )
     {
-        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
-        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_new_storage_text_item_id ;
-
-// todo: fix
-
         global_target_stack_item_top = global_new_storage_text_item_id ;
-        global_target_stack_item_next = global_new_storage_text_item_id ;
+        global_pointer_to_within_target_stack_item_bottom = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+        global_target_stack_item_next = 0 ;
+        global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
         global_current_target_text_item = 0 ;
         global_current_target_character_position = 0 ;
         put_info_into_target_pointer_stack_item( ) ;
-        global_storage_all_text[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_new_storage_text_item_id ;
         log_out << "new non-bottom" << std::endl ;
         write_to_log( ) ;
         return ;
@@ -2488,16 +2473,16 @@ void push_target_pointer_stack( )
 //  "get_next_or_previous_character_from_text_item"
 //  and specify the "next" (not "previous"
 //  direction).  The starting text item ID is
-//  specified in "global_from_text_item_id".
+//  specified in "global_text_item_id".
 
 void initialize_get_next_character_from_text_item( )
 {
-    global_current_target_text_item = global_from_text_item_id ;
+    global_current_target_text_item = global_text_item_id ;
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack( ) ;
     global_id_for_target_stack_pointer_for_get_next_character = global_target_stack_item_bottom ;
     get_info_from_target_pointer_stack_item( ) ;
-    global_current_target_text_item = global_from_text_item_id ;
+    global_current_target_text_item = global_text_item_id ;
     global_current_target_character_position = 1 ;
     global_target_stack_item_top = global_target_stack_item_bottom ;
     put_info_into_target_pointer_stack_item( ) ;
@@ -2520,7 +2505,7 @@ void initialize_get_next_character_from_text_item( )
 //  "get_next_or_previous_character_from_text_item"
 //  and specify the "previous" (not "next"
 //  direction).  The starting text item ID is
-//  specified in "global_from_text_item_id".
+//  specified in "global_text_item_id".
 
 void initialize_get_previous_character_from_text_item( )
 {
@@ -2604,7 +2589,7 @@ void copy_pointer_stack( )
 //  or
 //  "initialize_get_previous_character_from_text_item"
 //  must be used.  Those function use
-//  "global_from_text_item_id" as the text item
+//  "global_text_item_id" as the text item
 //  that contains the text to be accessed.  The
 //  choice of which target pointer stack to use is
 //  specified by the ID in
@@ -2665,7 +2650,7 @@ void get_next_or_previous_character_from_text_item( )
         }
         if ( global_text_category_for_item[ global_current_target_text_item ] == global_category_contains_pointer_pair )
         {
-            global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin ] + global_current_target_character_position - 1 ;
+            global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin + global_current_target_character_position - 1 ] ;
             if ( global_direction_next_or_previous == global_direction_next )
             {
 	            if ( global_character_pointer_if_category_pointer_pair > global_storage_all_text[ global_current_target_text_item_end ] )
@@ -2787,8 +2772,9 @@ void get_next_or_previous_character_from_text_item( )
             put_info_into_target_pointer_stack_item( ) ;
             push_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
-            global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-            global_current_target_text_item = global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] ;
+            global_current_target_text_item = global_storage_all_text[ global_text_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
+            global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_top ] ;
+            global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
             if ( global_direction_next_or_previous == global_direction_next )
             {
                 global_current_target_character_position = 1 ;
@@ -2954,12 +2940,15 @@ void truncate_text_item_using_target_pointer_stack( )
 
 void remove_leading_delimiters( )
 {
+
+    log_out << "removing leading delimiters " << global_text_item_id << std::endl ;
+
     initialize_get_next_character_from_text_item( ) ;
     global_yes_or_no_character_is_delimiter = global_yes ;
     while ( global_yes_or_no_character_is_delimiter == global_yes )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        check_if_delimiter( ) ;
+        check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             global_direction_next_or_previous = global_direction_previous ;
@@ -2977,7 +2966,7 @@ void remove_leading_delimiters( )
 // -----------------------------------------------
 //  Function remove_trailing_delimiters
 //
-//  The backwards version of
+//  This is the backwards version of
 //  remove_leading_delimiters.
 
 void remove_trailing_delimiters( )
@@ -2987,7 +2976,7 @@ void remove_trailing_delimiters( )
     while ( global_yes_or_no_character_is_delimiter == global_yes )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        check_if_delimiter( ) ;
+        check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             global_direction_next_or_previous = global_direction_next ;
@@ -3037,7 +3026,7 @@ void initialize_point_to_next_word_in_text_item( )
 //  function
 //  "initialize_get_next_word_from_text_item"
 //  should be used.  It uses
-//  "global_from_text_item_id" and creates a
+//  "global_text_item_id" and creates a
 //  target pointer stack that is referred to by
 //  "global_target_stack_item_bottom".
 
@@ -3047,7 +3036,7 @@ void point_to_next_word_in_text_item( )
     while ( global_yes_or_no_character_is_delimiter == global_yes )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        check_if_delimiter( ) ;
+        check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
             global_direction_next_or_previous = global_direction_previous ;
@@ -3061,7 +3050,7 @@ void point_to_next_word_in_text_item( )
     while ( global_yes_or_no_character_is_delimiter == global_no )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        check_if_delimiter( ) ;
+        check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_yes )
         {
             copy_pointer_stack( ) ;
@@ -3080,11 +3069,11 @@ void point_to_next_word_in_text_item( )
 //  item to the output file.  If that text item
 //  points to any sub text items, those sub text
 //  items also are written to the file.  The text
-//  item ID must be in global_from_text_item_id.
+//  item ID must be in global_text_item_id.
 
 void write_text_item_to_file( )
 {
-    log_out << "global_from_text_item_id " << global_from_text_item_id << std::endl ;
+    log_out << "global_text_item_id " << global_text_item_id << std::endl ;
     initialize_get_next_character_from_text_item( ) ;
     while ( 1 == 1 )
     {
@@ -3802,7 +3791,7 @@ void yes_or_no_matching_text( )
 //  Function check_word_match_in_parsed_hyphenated_phrase_name
 //
 //  Checks if the text item
-//  "global_finding_match_text_item_id" is the same
+//  "global_text_item_id_to_find" is the same
 //  word as a word in the
 //  "global_parsed_hyphenated_phrase_name" area.
 //  The result is indicated by the yes or no value
@@ -3812,8 +3801,8 @@ void yes_or_no_matching_text( )
 
 void check_word_match_in_parsed_hyphenated_phrase_name( )
 {
-    global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_finding_match_text_item_id ] ;
-    global_search_character_pointer_end = global_text_pointer_end_for_item[ global_finding_match_text_item_id ] ;
+    global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_text_item_id_to_find ] ;
+    global_search_character_pointer_end = global_text_pointer_end_for_item[ global_text_item_id_to_find ] ;
     global_match_character_pointer_begin = global_parsed_hyphenated_phrase_name_pointer_begin_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
     global_match_character_pointer_end = global_parsed_hyphenated_phrase_name_pointer_end_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
     yes_or_no_matching_text( ) ;
@@ -3879,7 +3868,7 @@ void check_yes_or_no_same_hyphenated_phrase( )
     for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase_name ; global_word_position ++ )
     {
         global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
-        global_finding_match_text_item_id = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
+        global_text_item_id_to_find = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
         check_word_match_in_parsed_hyphenated_phrase_name( ) ;
         if ( global_yes_or_no_same_unicode_characters == global_no )
         {
@@ -3948,12 +3937,12 @@ void lookup_hyphenated_phrase_name( )
 //  name.  Do not duplicate any words that are
 //  already used in other hyphenated phrase names.
 //
-//  todo: write this code
 
 void add_new_hyphenated_phrase_name( )
 {
-    global_text_item_id = 102 ;
-    exit_not_yet_supported( ) ;
+
+//  todo: write this code
+
     return ;
 }
 
@@ -4049,7 +4038,7 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 //  todo: copy code from integer version -- after it has been debugged
 
-    global_text_category_for_item[ global_convertable_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
+    global_text_category_for_item[ global_from_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
 
@@ -4057,6 +4046,11 @@ void convert_into_category_pointers_to_decimal_numbers( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function count_character_usage_in_text_item
+//
+//  This function scans the text item indicated by
+//  "global_from_text_item_id" and counts how
+//  many times each character appears within that
+//  text.
 
 void count_character_usage_in_text_item( )
 {
@@ -4086,13 +4080,19 @@ void count_character_usage_in_text_item( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function scan_searched_text_before_doing_find_text
+//
+//  This function scans the text item indicated by
+//  "global_text_item_id_to_search" and copies
+//  into the
+//  "global_searched_usage_count_for_character"
+//  array the character usage counts.
 
 void scan_searched_text_before_doing_find_text( )
 {
-    global_saved_text_item_id = global_from_text_item_id ;
+    global_text_item_id_saved = global_text_item_id_to_search ;
     global_from_text_item_id = global_to_text_item_id ;
     count_character_usage_in_text_item( ) ;
-    global_from_text_item_id = global_saved_text_item_id ;
+    global_from_text_item_id = global_text_item_id_saved ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
     {
         global_searched_usage_count_for_character[ global_single_character_as_integer ] = global_usage_count_for_character[ global_single_character_as_integer ] ;
@@ -4152,18 +4152,25 @@ void find_optimum_character_for_find_pause( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function check_for_match_where_paused
+//
+//  This function determines whether the text
+//  being searched matches the text to find.  This
+//  check is done when the target pointer stack is
+//  pointing to an occurance of the optimum
+//  character that triggers this check.  The text
+//  item "global_text_item_id_to_find" is the text
+//  to find.  The text item being searched is
+//  ...
+
+//  todo: proofread this code
 
 void check_for_match_where_paused( )
 {
     global_yes_or_no_matching_text = global_yes ;
 
     global_position_of_found_character_for_find_pause = global_recent_character_position_for_character_number[ global_optimum_character_for_find_pause ] ;
-
-//    global_position_of_optimum_character_for_pause ;
-
     global_character_distance_from_optimum_character_for_pause = 0 ;
-
-    for ( global_text_pointer = global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer >= global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer -- )
+    for ( global_text_pointer = global_text_pointer_end_for_item[ global_text_item_id_to_find ] ; global_text_pointer >= global_text_pointer_begin_for_item[ global_text_item_id_to_find ] ; global_text_pointer -- )
     {
         global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         if ( ( global_recent_character_position_for_character_number[ global_single_character_as_integer ] + global_character_distance_from_optimum_character_for_pause ) != global_position_of_found_character_for_find_pause )
@@ -4183,11 +4190,12 @@ void check_for_match_where_paused( )
 //
 //  This function finds some "matched" text
 //  within some text to be searched.  The text to
-//  match must be in "global_from_text_item_id".
+//  match must be in "global_text_item_id_to_find"
 //  The text to be searched must be in
-//  "global_to_text_item_id" and that text must be
-//  the same text that was scanned using the
-//  function "scan_searched_text_before_doing_find_text".
+//  "global_text_item_id_to_search" and that text
+//  must be the same text that was scanned using
+//  the function
+//  "scan_searched_text_before_doing_find_text".
 //  The result is ...
 
 //  The starting point for the text to be searched
@@ -4225,6 +4233,7 @@ void find_matching_text( )
 //  Get the character usage counts for the text to
 //  be found.
 
+    global_from_text_item_id = global_text_item_id_to_find ;
     count_character_usage_in_text_item( ) ;
 
 
@@ -4254,26 +4263,38 @@ void find_matching_text( )
 //  Scan the text being searched, and pause when
 //  the "optimum" character is encountered, and
 //  check whether there is a full match at that
-//  position.  If so, return with pointers to the
-//  beginning and end of the matching text.
-
-// later, allow for starting/resuming search later than beginning
-    global_text_pointer_begin = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+//  position.
 
     initialize_get_next_character_from_text_item( ) ;
-    for ( global_text_pointer = global_text_pointer_begin ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    while ( 1 == 1 )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        global_position_of_found_character_for_find_pause = global_text_pointer ;
-        check_for_match_where_paused( ) ;
-        if ( global_yes_or_no_matching_text == global_no )
+        if ( global_single_character_as_integer == 0 )
         {
-            break ;
+            global_yes_or_no_matching_text = 0 ;
+        	return ;
+        }
+        if ( global_single_character_as_integer == global_optimum_character_for_find_pause )
+        {
+            check_for_match_where_paused( ) ;
+            if ( global_yes_or_no_matching_text == global_yes )
+            {
+                break ;
+            }
         }
     }
 
 
 // -----------------------------------------------
+//  If the text matches, return with pointers to
+//  the beginning and end of the matching text.
+
+    if ( global_yes_or_no_matching_text == global_yes )
+    {
+
+//  todo: write this code
+
+    }
 
 
 // -----------------------------------------------
@@ -4287,16 +4308,12 @@ void find_matching_text( )
 // -----------------------------------------------
 //  Function text_replace
 
-//  todo:
 
 void text_replace( )
 {
 
-//  todo:
-//    global_to_text_item_id ;
-//    global_pointer_to_within_text_item
-    global_text_item_id = 89 ;
-    exit_not_yet_supported( ) ;
+//  todo: write this code
+
     return ;
 }
 
@@ -4312,15 +4329,15 @@ void text_replace( )
 //  is a global_text_item_id that indicates the
 //  matching text.
 
-//  todo:
 
 void get_text_by_character_offset_and_length( )
 {
+
+//  todo: write this code
+
 // character_offset
 // characters_length
-    global_matching_subtext_text_item_id = 0 ;
-    global_text_item_id = 94 ;
-    exit_not_yet_supported( ) ;
+
     return ;
 }
 
@@ -5097,7 +5114,8 @@ void do_everything( )
 //    log_out << "next test" << std::endl ;
 
     global_from_text_item_id = global_text_item_id_for_sample_numbers ;
-    remove_leading_delimiters( ) ;
+    remove_leading_and_trailing_delimiters( ) ;
+    global_text_item_id = global_text_item_id_for_sample_numbers ;
     write_text_item_to_file( ) ;
 
 //    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
