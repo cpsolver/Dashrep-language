@@ -978,11 +978,16 @@ int global_target_stack_item_previous_original ;
 
 
 // -----------------------------------------------
-//  Declare a list of counters and special flags
-//  and pointers that are used when parsing text
-//  or when expanding text.
+//  Declare lists, flags, counters, and other
+//  variables that are used when finding matching
+//  text, matching patterns, expanding text, and
+//  otherwise parsing text.
 
 int global_recent_character_position_for_character_number[ 260 ] ;
+int global_searched_usage_count_for_character[ 155 ] ;
+int global_usage_count_for_character[ 155 ] ;
+const int global_minimum_usage_character_to_consider = 32 ;
+const int global_maximum_usage_character_to_consider = 125 ;
 int global_yes_or_no_looking_for_word_attribute_or_specify ;
 int global_yes_or_no_character_is_delimiter ;
 int global_yes_or_no_delimiter_encountered ;
@@ -991,10 +996,24 @@ int global_yes_or_no_inserted_character ;
 int global_yes_or_no_transition_from_character_to_delimiter ;
 int global_yes_or_no_transition_from_delimiter_to_character ;
 int global_yes_or_no_begin_not_end ;
+int global_yes_or_no_matching_text ;
 int global_direction_next_or_previous ;
 const int global_direction_next = 1 ;
 const int global_direction_previous = 2 ;
 int global_direction_opposite ;
+int global_length_of_text_to_find ;
+int global_position_within_text_to_find ;
+int global_optimum_character_for_find_pause ;
+int global_possible_optimum_character_as_integer ;
+int global_score_for_possible_optimum_character ;
+int global_highest_score_for_optimum_character_for_find_pause ;
+int global_position_of_found_character_for_find_pause ;
+int global_position_of_optimum_character_for_pause ;
+int global_recent_position_of_any_delimiter ;
+int global_character_distance_from_optimum_character_for_pause ;
+int global_position_of_underscore ;
+int global_position_of_open_angle_bracket ;
+int global_position_of_close_angle_bracket ;
 
 
 // -----------------------------------------------
@@ -1027,26 +1046,6 @@ float global_decimal_number_at_position[ 2000 ] ;
 
 int global_character_pointer_to_word_number[ 20000 ] ;
 int global_character_pointer_to_delimiter_number[ 20000 ] ;
-
-
-// -----------------------------------------------
-//  Declare lists and variables used to find
-//  matching text.
-
-int global_searched_usage_count_for_character[ 155 ] ;
-int global_usage_count_for_character[ 155 ] ;
-const int global_minimum_usage_character_to_consider = 32 ;
-const int global_maximum_usage_character_to_consider = 125 ;
-int global_optimum_character_for_find_pause ;
-int global_possible_optimum_character_as_integer ;
-int global_yes_or_no_matching_text ;
-int global_position_of_found_character_for_find_pause ;
-int global_position_of_optimum_character_for_pause ;
-int global_score_for_possible_optimum_character ;
-int global_highest_score_for_optimum_character_for_find_pause ;
-int global_position_within_text_to_find ;
-int global_character_distance_from_optimum_character_for_pause ;
-int global_length_of_text_to_find ;
 
 
 // -----------------------------------------------
@@ -1171,7 +1170,7 @@ int global_text_item_id_for_sample_text_to_expand ;
 // -----------------------------------------------
 //  Declare global_do_nothing as an integer that
 //  is incremented where the code otherwise would
-//  be empty.  This is done for readability.
+//  be empty.  This is done for code readability.
 
 int global_do_nothing ;
 
@@ -4094,34 +4093,63 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function count_character_usage_in_text_item
+//  Function scan_text_item_for_character_usage
 //
 //  This function scans the text item indicated by
-//  "global_from_text_item_id" and counts how
+//  "global_text_item_id" and counts how
 //  many times each character appears within that
 //  text.
 
-void count_character_usage_in_text_item( )
+void scan_text_item_for_character_usage( )
 {
+
+
+// -----------------------------------------------
+//  Initialization.
+
+	log_out << "global_text_item_id " << global_text_item_id << std::endl ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
     {
         global_usage_count_for_character[ global_single_character_as_integer ] = 0 ;
     }
+
+
+// -----------------------------------------------
+//  Begin a loop that looks at each character, and
+//  exit the loop when there are no more
+//  characters.
+
     initialize_get_next_character_from_text_item( ) ;
     global_next_character_position_count = 0 ;
-    while ( 1 == 1 )
+    while ( global_single_character_as_integer != 0 )
     {
         get_next_or_previous_character_from_text_item( ) ;
-        global_next_character_position_count ++ ;
         if ( global_single_character_as_integer == 0 )
         {
             break ;
         }
+
+
+// -----------------------------------------------
+//  Count how many times each character is
+//  encountered.
+
         if ( ( global_single_character_as_integer >= global_minimum_usage_character_to_consider ) && ( global_single_character_as_integer <= global_maximum_usage_character_to_consider ) )
         {
             global_usage_count_for_character[ global_single_character_as_integer ] ++ ;
         }
+
+
+// -----------------------------------------------
+//  Repeat the loop for the next character.
+
     }
+
+
+// -----------------------------------------------
+//  End of function
+//  scan_text_item_for_character_usage.
+
     return ;
 }
 
@@ -4138,14 +4166,117 @@ void count_character_usage_in_text_item( )
 
 void scan_searched_text_before_doing_find_text( )
 {
-    global_text_item_id_saved = global_text_item_id_to_search ;
-    global_from_text_item_id = global_to_text_item_id ;
-    count_character_usage_in_text_item( ) ;
-    global_from_text_item_id = global_text_item_id_saved ;
+    global_text_item_id = global_text_item_id_to_search ;
+    scan_text_item_for_character_usage( ) ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
     {
         global_searched_usage_count_for_character[ global_single_character_as_integer ] = global_usage_count_for_character[ global_single_character_as_integer ] ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_track_recent_position_of_each_character
+
+void initialize_track_recent_position_of_each_character( )
+{
+	log_out << "global_text_item_id " << global_text_item_id << std::endl ;
+    global_next_character_position_count = 0 ;
+    initialize_get_next_character_from_text_item( ) ;
+    for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
+    {
+        global_recent_character_position_for_character_number[ global_single_character_as_integer ] = 0 ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function track_recent_position_of_each_character
+//
+//  This function keeps track of the position
+//  where each character was last encountered.
+//  The function
+//  "initialize_track_recent_position_of_each_character"
+//  must be used before using this function.  This
+//  function is used repeatedly because it stops
+//  when the character specified in
+//  "global_optimum_character_for_find_pause" is
+//  encountered.
+
+void track_recent_position_of_each_character( )
+{
+
+
+// -----------------------------------------------
+//  Begin a loop that looks at each character in
+//  the text item.
+
+    while ( global_single_character_as_integer != 0 )
+    {
+        get_next_or_previous_character_from_text_item( ) ;
+
+
+// -----------------------------------------------
+//  Exit the loop and this function when the
+//  character specified in
+//  "global_optimum_character_for_find_pause" is
+//  encountered, or when the end of the text item
+//  is reached.
+
+        if ( ( global_single_character_as_integer == global_optimum_character_for_find_pause ) || ( global_single_character_as_integer == 0 ) )
+        {
+            return ;
+        }
+
+
+// -----------------------------------------------
+//  Update a list of pointers that indicates when
+//  the current character was last encountered.
+
+        global_next_character_position_count ++ ;
+        if ( ( global_single_character_as_integer >= global_minimum_usage_character_to_consider ) && ( global_single_character_as_integer <= global_maximum_usage_character_to_consider ) )
+        {
+            global_recent_character_position_for_character_number[ global_single_character_as_integer ] = global_next_character_position_count ;
+        }
+
+
+// -----------------------------------------------
+//  Also track the last appearance of any
+//  delimiter.
+
+	    switch ( global_single_character_as_integer )
+	    {
+	        case global_ascii_code_for_space :
+                global_recent_position_of_any_delimiter = global_next_character_position_count ;
+	            break ;
+	        case global_ascii_code_for_tab :
+                global_recent_position_of_any_delimiter = global_next_character_position_count ;
+	            break ;
+	        case global_ascii_code_for_newline :
+                global_recent_position_of_any_delimiter = global_next_character_position_count ;
+	            break ;
+	        case global_ascii_code_for_formfeed :
+                global_recent_position_of_any_delimiter = global_next_character_position_count ;
+	            break ;
+	        case global_ascii_code_for_carriage_return :
+                global_recent_position_of_any_delimiter = global_next_character_position_count ;
+	            break ;
+	    }
+
+
+// -----------------------------------------------
+//  Repeat the loop for the next character.
+
+    }
+
+
+// -----------------------------------------------
+//  End of function
+//  track_recent_position_of_each_character.
+
+    return ;
 }
 
 
@@ -4283,7 +4414,7 @@ void find_matching_text( )
 //  be found.
 
     global_from_text_item_id = global_text_item_id_to_find ;
-    count_character_usage_in_text_item( ) ;
+    scan_text_item_for_character_usage( ) ;
 
 
 // -----------------------------------------------
@@ -4348,6 +4479,43 @@ void find_matching_text( )
 
 // -----------------------------------------------
 //  End of function find_matching_text.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function find_next_angle_bracketed_phrase_name
+//
+//  This function finds the next occurance of a
+//  phrase name in angle brackets, with
+//  underscores where the hyphens would otherwise
+//  appear, such as "<character_hyphen>".  It does
+//  not check whether the phrase name is defined.
+//  It only checks that the characters between the
+//  angle brackets include at least one underscore
+//  and does not include a hyphen.
+
+void find_next_angle_bracketed_phrase_name( )
+{
+    initialize_track_recent_position_of_each_character( ) ;
+    global_optimum_character_for_find_pause = global_ascii_code_for_close_angle_bracket ;
+    while ( global_single_character_as_integer > 0 )
+    {
+        find_next_angle_bracketed_phrase_name( ) ;
+        global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
+        global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
+        if ( ( global_recent_position_of_any_delimiter < global_position_of_open_angle_bracket ) || ( global_position_of_open_angle_bracket < global_position_of_underscore ) )
+        {
+            break ;
+        }
+    }
+    global_position_of_close_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_close_angle_bracket ] ;
+    global_text_item_id = global_current_target_text_item ;
+    global_character_pointer = global_current_target_character_position ;
+
+    log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl ;
 
     return ;
 }
