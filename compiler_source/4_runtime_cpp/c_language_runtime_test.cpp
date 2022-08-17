@@ -1014,6 +1014,8 @@ int global_character_distance_from_optimum_character_for_pause ;
 int global_position_of_underscore ;
 int global_position_of_open_angle_bracket ;
 int global_position_of_close_angle_bracket ;
+int global_position_of_open_angle_bracket_within_text_item ;
+int global_position_of_close_angle_bracket_within_text_item ;
 
 
 // -----------------------------------------------
@@ -1143,6 +1145,7 @@ int global_number_of_valid_characters_encountered ;
 int global_number_of_digits_encountered ;
 int global_single_integer ;
 int global_single_character_as_integer ;
+int global_saved_single_character_as_integer ;
 int global_decimal_number_divisor ;
 
 
@@ -4267,6 +4270,16 @@ void track_recent_position_of_each_character( )
 
 
 // -----------------------------------------------
+//  Point to the position of the found character.
+
+    global_saved_single_character_as_integer = global_single_character_as_integer ;
+    global_direction_next_or_previous = global_direction_previous ;
+    get_next_or_previous_character_from_text_item( ) ;
+    global_direction_next_or_previous = global_direction_next ;
+    global_single_character_as_integer = global_saved_single_character_as_integer ;
+
+
+// -----------------------------------------------
 //  Repeat the loop for the next character.
 
     }
@@ -4499,23 +4512,140 @@ void find_matching_text( )
 
 void find_next_angle_bracketed_phrase_name( )
 {
+
+
+// -----------------------------------------------
+//  Initialization.
+
+// todo: still need to handle pointer to stack for recent copy of stack
+
+    global_text_item_id = global_text_item_id_to_edit ;
+	initialize_get_next_character_from_text_item( ) ;
     initialize_track_recent_position_of_each_character( ) ;
-    global_optimum_character_for_find_pause = global_ascii_code_for_close_angle_bracket ;
+
+
+// -----------------------------------------------
+//  Begin a loop that looks for the desired
+//  sequence of a delimiter, an open angle
+//  bracket, an underscore, and then a close angle
+//  bracket.
+
     while ( global_single_character_as_integer > 0 )
     {
-        find_next_angle_bracketed_phrase_name( ) ;
-        global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
-        global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
-        if ( ( global_recent_position_of_any_delimiter < global_position_of_open_angle_bracket ) || ( global_position_of_open_angle_bracket < global_position_of_underscore ) )
+
+
+// -----------------------------------------------
+//  If the pattern was not found, return without
+//  a pointer to the found text.
+
+        if ( global_single_character_as_integer == 0 )
         {
-            break ;
+            log_out << "angle bracketed phrase not found" << std::endl ;
+        	return ;
         }
+
+
+// -----------------------------------------------
+//  Find the next open angle bracket, and save a
+//  copy of the target pointer stack to keep track
+//  of this location.
+
+	    global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
+	    track_recent_position_of_each_character( ) ;
+	    copy_pointer_stack( ) ;
+
+
+// -----------------------------------------------
+//  If an open angle bracket was not found, return
+//  without a pointer to the found text.
+
+        if ( global_single_character_as_integer == 0 )
+        {
+            log_out << "angle bracketed phrase not found" << std::endl ;
+        	return ;
+        }
+
+
+// -----------------------------------------------
+//  Find the next close angle bracket.
+
+	    global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
+	    track_recent_position_of_each_character( ) ;
+
+
+// -----------------------------------------------
+//  If a close angle bracket was not found, return
+//  without a pointer to the found text.
+
+        if ( global_single_character_as_integer == 0 )
+        {
+            log_out << "angle bracketed phrase not found" << std::endl ;
+        	return ;
+        }
+
+
+// -----------------------------------------------
+//  If the sequence of the latest underscore and
+//  angle brackets does not match the sequence
+//  being searched for -- namely delimiter, open
+//  angle bracket, underscore, then close angle
+//  bracket -- then repeat the search loop.
+
+	    global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
+	    global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
+        global_position_of_close_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_close_angle_bracket ] ;
+	    if ( ( global_recent_position_of_any_delimiter < global_position_of_open_angle_bracket ) && ( global_position_of_open_angle_bracket < global_position_of_underscore ) && ( global_position_of_underscore < global_position_of_close_angle_bracket ) )
+	    {
+	    	break ;
+	    }
+
+
+// -----------------------------------------------
+//  Repeat the loop until the desired pattern has
+//  been found.
+
     }
-    global_position_of_close_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_close_angle_bracket ] ;
-    global_text_item_id = global_current_target_text_item ;
-    global_character_pointer = global_current_target_character_position ;
+
+
+// -----------------------------------------------
+//  Point to the found text that matches the
+//  pattern.
+
+    global_position_of_close_angle_bracket_within_text_item = global_current_target_character_position - 1 ;
+    global_position_of_open_angle_bracket_within_text_item = global_position_of_close_angle_bracket_within_text_item - ( global_position_of_close_angle_bracket - global_position_of_open_angle_bracket ) ;
+
+
+// -----------------------------------------------
+//  If the angle bracketed phrase name is not
+//  entirely within one text item, exit with an
+//  error.  Later, if this error ever occurs,
+//  add code that copies the entire text item into
+//  a single text item, and switch to using that
+//  instead.
+
+    if ( global_position_of_open_angle_bracket < 1 )
+    {
+        log_out << "angle bracketed phrase is not within a single text item and current code does not yet handle this situation" << std::endl ;
+        exit( EXIT_FAILURE ) ;
+    }
+
+
+// -----------------------------------------------
+//  Find the hyphenated phrase name.
+
+
+// -----------------------------------------------
+//  Find the definition of the phrase name and
+//  insert that text where the angle bracketed
+//  phrase name appears.
+
+
 
     log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl ;
+
+
+// -----------------------------------------------
+//  End of find_next_angle_bracketed_phrase_name.
 
     return ;
 }
@@ -4530,6 +4660,8 @@ void text_replace( )
 {
 
 //  todo: write this code
+//  if shorter, pad with zeros
+//  if longer, insert branching ...
 
     return ;
 }
