@@ -116,12 +116,9 @@ int global_id_pointer_stack_for_getting_next_character ;
 //  ID numbers.
 
 int global_new_storage_text_item_id ;
-int global_from_text_item_id ;
-int global_to_text_item_id ;
-
 int global_text_item_id ;
 int global_text_item_id_saved ;
-int global_text_item_id_last_predefined ;
+int global_text_item_id_from_origin ;
 int global_text_item_id_to_edit ;
 int global_text_item_id_to_truncate ;
 int global_text_item_id_to_find ;
@@ -139,6 +136,7 @@ int global_text_item_id_for_pointer_begin_end ;
 int global_text_item_id_for_next_word ;
 int global_text_item_id_for_next_word_begin ;
 int global_text_item_id_for_next_word_end ;
+int global_text_item_id_last_predefined ;
 
 int global_text_item_with_next_character ;
 int global_text_item_with_previous_character ;
@@ -966,20 +964,15 @@ int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_target_stack_item_current ;
 int global_pointer_to_within_target_stack_item_current_copy ;
 int global_pointer_to_within_target_stack_item_current_original ;
-int global_pointer_to_within_target_stack_item_copy ;
-int global_pointer_to_within_target_stack_item_original ;
+int global_target_stack_item_top_original ;
 int global_target_stack_item_current ;
 int global_target_stack_item_current_original ;
-int global_target_stack_item_top_previous ;
 int global_target_stack_item_current_copy ;
-int global_target_stack_item_previous_copy ;
-int global_id_for_target_stack_pointer_for_get_next_character ;
-int global_id_for_target_stack_pointer_for_get_previous_character ;
-int global_id_for_target_stack_pointer_for_copy_from ;
-int global_id_for_target_stack_pointer_for_copy_to ;
+int global_target_stack_pointer_for_get_next_previous_character ;
+int global_target_stack_pointer_for_copy_from ;
+int global_target_stack_pointer_for_copy_to ;
 int global_id_for_copy_of_target_pointer_stack ;
 int global_id_for_original_of_target_pointer_stack ;
-int global_target_stack_item_previous_original ;
 
 
 // -----------------------------------------------
@@ -2110,7 +2103,7 @@ void do_main_initialization( )
     global_yes_or_no = global_yes ;
     global_yes_or_no_requesting_space_appended = global_yes ;
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
-    global_id_for_target_stack_pointer_for_get_next_character = 0 ;
+    global_target_stack_pointer_for_get_next_previous_character = 0 ;
     global_target_stack_item_bottom = 0 ;
 
 
@@ -2200,12 +2193,12 @@ void read_text_line_from_file( )
     while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
-        global_to_text_item_id = global_text_item_id_for_file_input ;
+        global_text_item_id_to_edit = global_text_item_id_for_file_input ;
         measure_space_available_in_text_item( ) ;
         if ( global_space_available_in_text_item > 1 )
         {
-            global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
-            global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_next_character_number ;
+            global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ++ ;
+            global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ] = global_next_character_number ;
         } else
         {
             log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
@@ -2237,7 +2230,7 @@ void read_text_line_from_file( )
 
 void write_to_log( )
 {
-    log_out << "global_direction_next_or_previous " << global_direction_next_or_previous << std::endl << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_id_for_target_stack_pointer_for_get_next_character " << global_id_for_target_stack_pointer_for_get_next_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+    log_out << "global_direction_next_or_previous " << global_direction_next_or_previous << std::endl << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_target_stack_pointer_for_get_next_previous_character " << global_target_stack_pointer_for_get_next_previous_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_text_pointer_begin_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_text_pointer_end_for_item[ " << global_current_target_text_item << " ] " << global_text_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_text_category_for_item " << global_text_category_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
 
     global_test_loop_counter ++ ;
     if ( global_test_loop_counter > 200 )
@@ -2493,7 +2486,7 @@ void initialize_get_next_character_from_text_item( )
     global_current_target_text_item = global_text_item_id ;
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack( ) ;
-    global_id_for_target_stack_pointer_for_get_next_character = global_target_stack_item_bottom ;
+    global_target_stack_pointer_for_get_next_previous_character = global_target_stack_item_bottom ;
     get_info_from_target_pointer_stack_item( ) ;
     global_current_target_text_item = global_text_item_id ;
     global_current_target_character_position = 1 ;
@@ -2543,45 +2536,102 @@ void initialize_get_previous_character_from_text_item( )
 //  a way to go backward to the most recent
 //  character (or delimiter) of a specific type,
 //  without losing the current character position
-//  being parsed.  Also two of these stacks can
-//  be used to point to the beginning and end of
-//  a word or found (matching) text, even if it
-//  spans beyond a single sub text item.  The copy
-//  is pointed to by
+//  being parsed.  Also sometimes two of these
+//  stacks are used to point to the beginning and
+//  end of a word or found (matching) text, even
+//  if it spans beyond a single sub text item.
+//  The copy is pointed to by
 //  "global_id_for_copy_of_target_pointer_stack".
 //  The original is pointed to by
 //  "global_id_for_original_of_target_pointer_stack".
 
-//        global_id_for_target_stack_pointer_for_copy_from ;
-
 void copy_pointer_stack( )
 {
 
-//  todo: proofread this code
+
+// -----------------------------------------------
+//  Create a new, empty, target pointer stack
+//  item, and get its location.
 
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack( ) ;
     global_id_for_copy_of_target_pointer_stack = global_target_stack_item_bottom ;
     global_target_stack_item_current_copy = global_id_for_copy_of_target_pointer_stack ;
+
+
+// -----------------------------------------------
+//  Get the location of the target pointer stack
+//  being copied, and get the location of the top
+//  item in that stack.
+
     global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
+    global_pointer_to_within_target_stack_item_current_original = global_text_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
+    global_target_stack_item_top_original = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_top ] ;
+
+
+// -----------------------------------------------
+//  Begin a loop that handles each stack level.
+
     while ( global_target_stack_item_current_original > 0 )
     {
+
+
+// -----------------------------------------------
+//  Copy the pointer information.
+
         global_pointer_to_within_target_stack_item_current_copy = global_text_pointer_begin_for_item[ global_target_stack_item_current_copy ] ;
         global_pointer_to_within_target_stack_item_current_original = global_text_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_text_item ] = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_text_item ] ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_character_position ] = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_character_position ] ;
         global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_top ] = 0 ;
-        global_target_stack_item_previous_original = global_target_stack_item_current_original ;
         global_target_stack_item_current_original = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
-        if ( global_target_stack_item_current_original == 0 )
+
+
+// -----------------------------------------------
+//  If the top stack level has been reached, exit
+//  the loop.
+
+        if ( ( global_target_stack_item_current_original == 0 ) || ( global_target_stack_item_current_original == global_target_stack_item_top_original ) )
         {
             break ;
         }
+
+
+// -----------------------------------------------
+//  Create a new, empty, target pointer stack
+//  item that will store the pointers at the next
+//  higher stack level, and update the previous
+//  stack level to point to this new stack level.
+
+        global_target_stack_item_bottom = 0 ;
         push_target_pointer_stack( ) ;
         global_target_stack_item_current_copy = global_target_stack_item_bottom ;
-        global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
+        global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_next ] = global_target_stack_item_current_copy ;
+
+
+// -----------------------------------------------
+//  Get from the original stack item the "next"
+//  higher stack item ID.
+
+        global_pointer_to_within_target_stack_item_current_original = global_text_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
+        global_target_stack_item_current_original = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
+
+
+// -----------------------------------------------
+//  Repeat the loop to handle the next stack
+//  level.
+
     }
+
+
+// -----------------------------------------------
+
     global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_for_copy_of_target_pointer_stack ] + global_offset_for_target_stack_item_top ] = global_target_stack_item_current_copy ;
+
+
+// -----------------------------------------------
+//  End of copy_pointer_stack.
+
     return ;
 }
 
@@ -2631,7 +2681,7 @@ void get_next_or_previous_character_from_text_item( )
 
 // -----------------------------------------------
 //  If the previous character was the last (or
-//  first) character in the current-level text
+//  previous) character in the current-level text
 //  item, track this situation.  Allow for the
 //  possibility that the text item is empty.  If
 //  the text item category is
@@ -2841,8 +2891,8 @@ void get_next_or_previous_character_from_text_item( )
 // -----------------------------------------------
 //  If the text item category is
 //  "category_pointer_pair", point to the next (or
-//  first) character in the text being pointed to,
-//  get that character, then return.  If the
+//  previous) character in the text being pointed
+//  to, get that character, then return.  If the
 //  pointer already is at the end (or beginning)
 //  of the characters, repeat the loop.
 
@@ -2893,7 +2943,7 @@ void get_next_or_previous_character_from_text_item( )
 //  This function changes the "begin" or "end"
 //  pointers of a text item and any sub text items
 //  to match the target pointer stack that is
-//  pointed to by "global_to_text_item_id".  This
+//  pointed to by "global_text_item_id_to_edit".  This
 //  function truncates the beginning if the flag
 //  "global_yes_or_no_begin_not_end" is
 //  "global_yes" or else truncates the ending.
@@ -2994,7 +3044,7 @@ void remove_leading_or_trailing_delimiters( )
 
 
 // -----------------------------------------------
-//  Search for the first non-delimiter.
+//  Search for the first (or last) non-delimiter.
 
     global_yes_or_no_character_is_delimiter = global_yes ;
     while ( global_yes_or_no_character_is_delimiter == global_yes )
@@ -3009,9 +3059,9 @@ void remove_leading_or_trailing_delimiters( )
 
 
 // -----------------------------------------------
-//  Point to that leading non-delimiter and use it
-//  as the new beginning of the text item being
-//  edited.
+//  Point to that leading (or trailing)
+//  non-delimiter and use it as the new beginning
+//  (or end) of the text item being edited.
 
     global_direction_next_or_previous = global_direction_opposite ;
     get_next_or_previous_character_from_text_item( ) ;
@@ -3075,8 +3125,8 @@ void initialize_point_to_next_word_in_text_item( )
 // -----------------------------------------------
 //  Function point_to_next_word_in_text_item
 //
-//  Gets the next word from the text item and
-//  points to the word using a pair of target
+//  Identifies the next word from the text item
+//  and points to the word using a pair of target
 //  pointer stacks, which are pointed to by
 //  "global_text_item_id_for_next_word_begin" and
 //  "global_text_item_id_for_next_word_end".
@@ -3104,9 +3154,11 @@ void point_to_next_word_in_text_item( )
             get_next_or_previous_character_from_text_item( ) ;
             copy_pointer_stack( ) ;
             global_text_item_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
+            break ;
         }
     }
-    global_target_stack_item_top_previous = global_target_stack_item_top ;
+    global_target_stack_item_top_original = global_target_stack_item_top ;
+    get_next_or_previous_character_from_text_item( ) ;
     global_direction_next_or_previous = global_direction_next ;
     while ( global_yes_or_no_character_is_delimiter == global_no )
     {
@@ -3114,8 +3166,11 @@ void point_to_next_word_in_text_item( )
         check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_yes )
         {
+            global_direction_next_or_previous = global_direction_previous ;
+            get_next_or_previous_character_from_text_item( ) ;
             copy_pointer_stack( ) ;
             global_text_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
+            break ;
         }
     }
     return ;
@@ -3220,7 +3275,7 @@ void write_text_item_to_file( )
 // -----------------------------------------------
 //  Function text_item_clear
 //
-//  Changes a text item to point to nothing, but
+//  Changes a text item to contain nothing, but
 //  does not change any linked lower-level text
 //  items.  If the text item still can possibly be
 //  referenced by another higher-level text item,
@@ -3229,7 +3284,7 @@ void write_text_item_to_file( )
 
 void text_item_clear( )
 {
-    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
+    global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] - 1 ;
     return ;
 }
 
@@ -3239,7 +3294,7 @@ void text_item_clear( )
 //  Function append_space_if_not_empty
 //
 //  Appends a space to
-//  global_to_text_item_id
+//  "global_text_item_id_to_edit"
 //  if it is not empty.
 //  If the text item is categorized as a list of
 //  numbers (integer or decimal), must convert
@@ -3247,15 +3302,15 @@ void text_item_clear( )
 
 void append_space_if_not_empty( )
 {
-    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
+    if ( global_text_pointer_end_for_item[ global_text_item_id_to_edit ] < global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] )
     {
-        if ( global_text_category_for_item[ global_to_text_item_id ] == global_category_contains_list_of_text_item_ids )
+        if ( global_text_category_for_item[ global_text_item_id_to_edit ] == global_category_contains_list_of_text_item_ids )
         {
             measure_space_available_in_text_item( ) ;
             if ( global_space_available_in_text_item >= 2 )
             {
-                global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
-                global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_text_item_id_for_single_space ;
+                global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ++ ;
+                global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ] = global_text_item_id_for_single_space ;
             } else
             {
                 global_text_item_id = 111 ;
@@ -3269,7 +3324,7 @@ void append_space_if_not_empty( )
             global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
 //  insert the to and space IDs, but not the from ID
 //        global_storage_all_text
-            global_to_text_item_id = global_new_storage_text_item_id ;
+            global_text_item_id_to_edit = global_new_storage_text_item_id ;
         }
     }
     return ;
@@ -3284,10 +3339,10 @@ void append_space_if_not_empty( )
 //  appended will not change, so just add a link
 //  to the text being appended.  The text item
 //  to be appended is specified by the text item
-//  ID number in "global_from_text_item_id",
+//  ID number in "global_text_item_id_from_origin",
 //  and the text item being extended is specified
 //  by the text item ID number in
-//  "global_to_text_item_id".  The value in
+//  "global_text_item_id_to_edit".  The value in
 //  "global_yes_or_no_requesting_space_appended"
 //  indicates whether to insert a space between
 //  non-empty text being extended and non-empty
@@ -3310,7 +3365,7 @@ void append_linked_text( )
 //  If the text being appended is empty, there is
 //  nothing to do.
 
-    if ( global_text_pointer_end_for_item[ global_from_text_item_id ] < global_text_pointer_begin_for_item[ global_from_text_item_id ] )
+    if ( global_text_pointer_end_for_item[ global_text_item_id_from_origin ] < global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] )
     {
         return ;
     }
@@ -3323,18 +3378,18 @@ void append_linked_text( )
 //  regardless of what it was before.  The
 //  pointer points to the text being appended.
 
-    if ( global_text_pointer_end_for_item[ global_to_text_item_id ] < global_text_pointer_begin_for_item[ global_to_text_item_id ] )
+    if ( global_text_pointer_end_for_item[ global_text_item_id_to_edit ] < global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] )
     {
-        global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
+        global_to_text_contains_category = global_text_category_for_item[ global_text_item_id_to_edit ] ;
         if ( global_to_text_contains_category == global_category_contains_list_of_text_item_ids )
         {
-            global_text_pointer_begin_for_item[ global_to_text_item_id ] = global_from_text_item_id ;
-            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
+            global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] = global_text_item_id_from_origin ;
+            global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] ;
         } else
         {
-            global_storage_all_text[ global_text_pointer_begin_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
-            global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] ;
-            global_text_category_for_item[ global_to_text_item_id ] = global_category_contains_list_of_text_item_ids ;
+            global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] ] = global_text_item_id_from_origin ;
+            global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] ;
+            global_text_category_for_item[ global_text_item_id_to_edit ] = global_category_contains_list_of_text_item_ids ;
         }
         return ;
     }
@@ -3356,8 +3411,8 @@ void append_linked_text( )
 //  Get the categories of the "from" and "to" text
 //  items.
 
-    global_from_text_contains_category = global_text_category_for_item[ global_from_text_item_id ] ;
-    global_to_text_contains_category = global_text_category_for_item[ global_to_text_item_id ] ;
+    global_from_text_contains_category = global_text_category_for_item[ global_text_item_id_from_origin ] ;
+    global_to_text_contains_category = global_text_category_for_item[ global_text_item_id_to_edit ] ;
 
 
 // -----------------------------------------------
@@ -3368,8 +3423,8 @@ void append_linked_text( )
 
     if ( ( global_from_text_contains_category == global_category_contains_list_of_text_item_ids ) && ( global_to_text_contains_category == global_category_contains_list_of_text_item_ids ) )
     {
-        global_text_pointer_end_for_item[ global_to_text_item_id ] ++ ;
-        global_storage_all_text[ global_text_pointer_end_for_item[ global_to_text_item_id ] ] = global_from_text_item_id ;
+        global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ++ ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_to_edit ] ] = global_text_item_id_from_origin ;
         return ;
     }
 
@@ -3385,11 +3440,11 @@ void append_linked_text( )
     global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
     assign_storage_for_new_text_item( ) ;
     global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
-    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_to_text_item_id ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_text_item_id_to_edit ;
     global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
     global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
-    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_from_text_item_id ;
-    global_to_text_item_id = global_new_storage_text_item_id ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_text_item_id_from_origin ;
+    global_text_item_id_to_edit = global_new_storage_text_item_id ;
     return ;
 
 
@@ -3407,24 +3462,24 @@ void append_linked_text( )
 //  appended will change, so a copy of that text
 //  must be stored.  The text item to be appended
 //  is specified by the text item ID number in
-//  global_from_text_item_id, and the text
+//  global_text_item_id_from_origin, and the text
 //  item being extended is specified by the text
 //  item ID number in
-//  global_to_text_item_id.
+//  global_text_item_id_to_edit.
 
 void append_copied_text( )
 {
-    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
-    global_length_requested_for_next_text_item_storage = global_text_pointer_end_for_item[ global_from_text_item_id ] - global_text_pointer_begin_for_item[ global_from_text_item_id ] + 1 ;
+    global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] - 1 ;
+    global_length_requested_for_next_text_item_storage = global_text_pointer_end_for_item[ global_text_item_id_from_origin ] - global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] + 1 ;
     assign_storage_for_new_text_item( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ; global_text_pointer ++ )
     {
         global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
-        global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_storage_all_text[ global_text_pointer_end_for_item[ global_from_text_item_id ] ]
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ]
          ;
     }
-    global_text_category_for_item[ global_new_storage_text_item_id ] = global_text_category_for_item[ global_from_text_item_id ] ;
-    global_from_text_item_id = global_new_storage_text_item_id ;
+    global_text_category_for_item[ global_new_storage_text_item_id ] = global_text_category_for_item[ global_text_item_id_from_origin ] ;
+    global_text_item_id_from_origin = global_new_storage_text_item_id ;
     append_linked_text( ) ;
 }
 
@@ -3434,13 +3489,13 @@ void append_copied_text( )
 //  Function append_text
 //
 //  Appends text from the text item
-//  "global_from_text_item_id" to the text item
-//  "global_to_text_item_id".
+//  "global_text_item_id_from_origin" to the text item
+//  "global_text_item_id_to_edit".
 //  Allow the two text item IDs to be the same.
 
 void append_text( )
 {
-    if ( global_from_text_item_id > global_text_item_id_last_predefined )
+    if ( global_text_item_id_from_origin > global_text_item_id_last_predefined )
     {
         append_copied_text( ) ;
     } else
@@ -3457,7 +3512,7 @@ void append_text( )
 
 void copy_linked_text( )
 {
-    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
+    global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] - 1 ;
     append_linked_text( ) ;
     return ;
 }
@@ -3469,7 +3524,7 @@ void copy_linked_text( )
 
 void copy_copied_text( )
 {
-    global_text_pointer_end_for_item[ global_to_text_item_id ] = global_text_pointer_begin_for_item[ global_to_text_item_id ] - 1 ;
+    global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] - 1 ;
     append_copied_text( ) ;
     return ;
 }
@@ -3481,7 +3536,7 @@ void copy_copied_text( )
 
 void copy_text( )
 {
-    if ( global_from_text_item_id > global_text_item_id_last_predefined )
+    if ( global_text_item_id_from_origin > global_text_item_id_last_predefined )
     {
         copy_copied_text( ) ;
     } else
@@ -3704,13 +3759,13 @@ void finish_parse_characters_of_number( )
 
 void test_parsing_numeric_characters( )
 {
-    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
+    global_text_item_id_from_origin = global_text_item_id_for_sample_numbers ;
     initialize_parse_characters_of_number( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ; global_text_pointer ++ )
     {
         global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
         parse_one_character_of_number( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ) )
         {
             if ( global_number_of_digits_encountered > 0 )
             {
@@ -4125,7 +4180,7 @@ void add_new_hyphenated_phrase_name( )
 void convert_into_category_list_of_integers( )
 {
     global_count_of_words_handled = 0 ;
-    global_text_item_id_for_integers_as_text = global_from_text_item_id ;
+    global_text_item_id_for_integers_as_text = global_text_item_id_from_origin ;
     global_length_requested_for_next_text_item_storage = 2 ;
     assign_storage_for_new_text_item( ) ;
     global_text_item_id_for_list_of_integers = global_new_storage_text_item_id ;
@@ -4153,7 +4208,7 @@ void convert_into_category_list_of_integers( )
             initialize_parse_characters_of_number( ) ;
             global_single_character_as_integer = global_storage_all_text[ global_text_pointer ] ;
             parse_one_character_of_number( ) ;
-            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ) )
             {
                 if ( global_number_of_digits_encountered > 0 )
                 {
@@ -4169,7 +4224,7 @@ void convert_into_category_list_of_integers( )
                         } else
                         {
                             global_text_item_id_for_list_of_integers = 0 ;
-                            global_to_text_item_id = 0 ;
+                            global_text_item_id_to_edit = 0 ;
                             recover_memory_from_top_text_item( ) ;
                             log_out << "number is not integer, is decimal" << std::endl ;
                             return ;
@@ -4177,7 +4232,7 @@ void convert_into_category_list_of_integers( )
                     } else
                     {
                         global_text_item_id_for_list_of_integers = 0 ;
-                        global_to_text_item_id = 0 ;
+                        global_text_item_id_to_edit = 0 ;
                         recover_memory_from_top_text_item( ) ;
                         log_out << "invalid number" << std::endl ;
                         return ;
@@ -4188,7 +4243,7 @@ void convert_into_category_list_of_integers( )
         }
     }
     recover_memory_from_top_text_item( ) ;
-    global_to_text_item_id = global_text_item_id_for_list_of_integers ;
+    global_text_item_id_to_edit = global_text_item_id_for_list_of_integers ;
     global_text_category_for_item[ global_text_item_id_for_list_of_integers ] = global_category_contains_list_of_integers ;
     return ;
 }
@@ -4205,7 +4260,7 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 //  todo: copy code from integer version -- after it has been debugged
 
-    global_text_category_for_item[ global_from_text_item_id ] = global_category_contains_pointers_to_decimal_numbers ;
+    global_text_category_for_item[ global_text_item_id_from_origin ] = global_category_contains_pointers_to_decimal_numbers ;
     return ;
 }
 
@@ -4432,8 +4487,8 @@ void track_recent_position_of_each_character( )
 void find_optimum_character_for_find_pause( )
 {
     global_optimum_character_for_find_pause = 0 ;
-    global_length_of_text_to_find = global_text_pointer_end_for_item[ global_from_text_item_id ] - global_text_pointer_begin_for_item[ global_from_text_item_id ] + 1 ;
-    global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ;
+    global_length_of_text_to_find = global_text_pointer_end_for_item[ global_text_item_id_from_origin ] - global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] + 1 ;
+    global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] ;
     global_highest_score_for_optimum_character_for_find_pause = 0 ;
     for ( global_position_within_text_to_find = 1 ; global_position_within_text_to_find <= global_length_of_text_to_find ; global_position_within_text_to_find ++ )
     {
@@ -4542,7 +4597,7 @@ void find_matching_text( )
 //  Get the character usage counts for the text to
 //  be found.
 
-    global_from_text_item_id = global_text_item_id_to_find ;
+    global_text_item_id_from_origin = global_text_item_id_to_find ;
     scan_text_item_for_character_usage( ) ;
 
 
@@ -4774,7 +4829,7 @@ void replace_angle_bracketed_phrase_names( )
 //  Function expand_text
 //
 //  Expands the text item indicated in
-//  global_from_text_item_id.
+//  global_text_item_id_from_origin.
 
 //  Local variables are used because this function
 //  can be used recursively.
@@ -4828,7 +4883,7 @@ void expand_text( )
 // -----------------------------------------------
 //  Specify the text item being expanded.
 
-    global_id_for_phrase_name_expand_text = global_to_text_item_id ;
+    global_id_for_phrase_name_expand_text = global_text_item_id_to_edit ;
 
 
 // -----------------------------------------------
@@ -4868,7 +4923,7 @@ void expand_text( )
 //  Begin a loop that handles each space delimited
 //  string in the phrase definition.
 
-// code_at_recursion_level[ 1 ] = global_from_text_item_id ;
+// code_at_recursion_level[ 1 ] = global_text_item_id_from_origin ;
 // pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
 // length_of_code_at_recursion_level[ 1 ] = length( code_at_recursion_level[ 1 ] ) ;
 
@@ -5182,7 +5237,7 @@ void implement_loop( )
     int local_text_item_id_contains_word_list ;
     int local_text_item_id_for_next_word ;
     int local_loop_handler ;
-    local_text_item_id_contains_word_list = global_from_text_item_id ;
+    local_text_item_id_contains_word_list = global_text_item_id_from_origin ;
     initialize_point_to_next_word_in_text_item( ) ;
     while ( 1 == 1 )
     {
@@ -5206,7 +5261,7 @@ void implement_loop( )
 
 int parameterized_use_handler_with_each_word_in_phrase( int local_text_item_id )
 {
-    global_from_text_item_id = local_text_item_id ;
+    global_text_item_id_from_origin = local_text_item_id ;
     implement_loop( ) ;
     int expand_result_text_item_id ;  // temporary, to avoid compiler error
     return expand_result_text_item_id ;
@@ -5214,7 +5269,7 @@ int parameterized_use_handler_with_each_word_in_phrase( int local_text_item_id )
 
 int parameterized_dashrep_expand_text( int local_text_item_id )
 {
-    global_from_text_item_id = local_text_item_id ;
+    global_text_item_id_from_origin = local_text_item_id ;
     expand_text( ) ;
     int expand_result_text_item_id ;  // temporary, to avoid compiler error
     return expand_result_text_item_id ;
@@ -5222,7 +5277,7 @@ int parameterized_dashrep_expand_text( int local_text_item_id )
 
 void parameterized_append_text( int local_text_item_id )
 {
-    global_from_text_item_id = local_text_item_id ;
+    global_text_item_id_from_origin = local_text_item_id ;
     append_copied_text( ) ;
     return ;
 }
@@ -5384,11 +5439,11 @@ int parameterized_yes_or_no_file_name( int local_text_item_id )
 {
     global_text_item_id = local_text_item_id ;
     initialize_parse_characters_of_filename( ) ;
-    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_from_text_item_id ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_from_text_item_id ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ; global_text_pointer ++ )
     {
         global_character_category = global_storage_all_text[ global_text_pointer ] ;
         parse_one_character_of_filename( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_from_text_item_id ] ) )
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ) )
         {
             if ( global_yes_or_no_filename_is_valid == global_yes )
             {
@@ -5535,7 +5590,7 @@ void do_everything( )
 
 //    log_out << "next test" << std::endl ;
 
-//    global_from_text_item_id = global_text_item_id_for_number_as_text ;
+//    global_text_item_id_from_origin = global_text_item_id_for_number_as_text ;
 //    write_text_item_to_file( ) ;
 
 //    log_out << "next test" << std::endl ;
@@ -5545,8 +5600,8 @@ void do_everything( )
     global_text_item_id = global_text_item_id_for_sample_numbers ;
     write_text_item_to_file( ) ;
 
-//    global_from_text_item_id = global_text_item_id_for_sample_numbers ;
-//    global_to_text_item_id = global_text_item_id_for_sample_numbers ;
+//    global_text_item_id_from_origin = global_text_item_id_for_sample_numbers ;
+//    global_text_item_id_to_edit = global_text_item_id_for_sample_numbers ;
 //    append_text( ) ;
 
     log_out << "done testing" << std::endl ;
