@@ -126,6 +126,7 @@ int global_text_item_id_to_edit ;
 int global_text_item_id_to_truncate ;
 int global_text_item_id_to_find ;
 int global_text_item_id_to_search ;
+int global_text_item_id_for_copy ;
 int global_text_item_id_for_file_input ;
 int global_text_item_id_for_file_output ;
 int global_text_item_id_for_valid_filename ;
@@ -141,6 +142,8 @@ int global_text_item_id_for_next_word_end ;
 
 int global_text_item_with_next_character ;
 int global_text_item_with_previous_character ;
+int global_text_item_one ;
+int global_text_item_two ;
 
 int global_text_item_id_for_single_space ;
 int global_text_item_id_for_single_hyphen ;
@@ -834,6 +837,8 @@ int global_character_count ;
 int global_character_count_for_expand_text ;
 int global_length_of_matching_text ;
 int global_character_pointer_if_category_pointer_pair ;
+int global_character_offset ;
+int global_character_length ;
 
 
 // -----------------------------------------------
@@ -1084,8 +1089,9 @@ int global_yes_or_no ;
 int global_yes_or_no_text_item_changeable ;
 int global_yes_or_no_reached_begin_of_current_text_item ;
 int global_yes_or_no_reached_end_of_current_text_item ;
-int global_yes_or_no_same_unicode_characters ;
-int global_yes_or_no_same_hyphenated_phrase_name ;
+int global_yes_or_no_same_text ;
+int global_yes_or_no_same_phrase_name ;
+int global_yes_or_no_same_phrase_word ;
 int global_yes_or_no_requesting_space_appended ;
 int global_yes_or_no_negative_number ;
 int global_yes_or_no_decimal_number ;
@@ -1108,10 +1114,10 @@ int global_check_for_match_text_item_id ;
 int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
 int global_text_item_intended_next_word_in_hyphenated_phrase ;
 int global_word_count_hyphenated_phrase_name ;
-int global_search_character_pointer_begin ;
-int global_search_character_pointer_end ;
-int global_match_character_pointer_begin ;
-int global_match_character_pointer_end ;
+int global_character_pointer_begin_for_text_one ;
+int global_character_pointer_end_for_text_one ;
+int global_character_pointer_begin_for_text_two ;
+int global_character_pointer_end_for_text_two ;
 int global_count_of_words_handled ;
 int global_distance_between_item_begin_and_end ;
 int global_current_target_text_item_begin ;
@@ -1273,7 +1279,9 @@ void assign_storage_for_new_text_item( )
 //  number of sub-items, reduce the allocation
 //  size.  If the text item type is
 //  list_of_text_item_ids, allocate an extra
-//  position for future extension.
+//  position for future extension.  Also allow for
+//  a case where the text extends beyond what was
+//  originally allocated.
 
 void recover_memory_from_top_text_item( )
 {
@@ -2515,7 +2523,7 @@ void initialize_get_next_character_from_text_item( )
 void initialize_get_previous_character_from_text_item( )
 {
     initialize_get_next_character_from_text_item( ) ;
-    global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+    global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
     global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
     global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
     global_direction_next_or_previous = global_direction_previous ;
@@ -2567,11 +2575,11 @@ void copy_pointer_stack( )
         global_target_stack_item_current_original = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
         if ( global_target_stack_item_current_original == 0 )
         {
-        	break ;
+            break ;
         }
-	    push_target_pointer_stack( ) ;
-	    global_target_stack_item_current_copy = global_target_stack_item_bottom ;
-	    global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
+        push_target_pointer_stack( ) ;
+        global_target_stack_item_current_copy = global_target_stack_item_bottom ;
+        global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
     }
     global_storage_all_text[ global_text_pointer_begin_for_item[ global_id_for_copy_of_target_pointer_stack ] + global_offset_for_target_stack_item_top ] = global_target_stack_item_current_copy ;
     return ;
@@ -2632,45 +2640,45 @@ void get_next_or_previous_character_from_text_item( )
 
         if ( global_direction_next_or_previous == global_direction_next )
         {
-	        if ( global_current_target_character_position > global_distance_between_item_begin_and_end )
-	        {
-	            global_yes_or_no_reached_end_of_current_text_item = global_yes ;
-	        } else
-	        {
-	            global_yes_or_no_reached_end_of_current_text_item = global_no ;
-	        }
+            if ( global_current_target_character_position > global_distance_between_item_begin_and_end )
+            {
+                global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+            } else
+            {
+                global_yes_or_no_reached_end_of_current_text_item = global_no ;
+            }
         } else
         {
             if ( global_current_target_character_position < 1 )
-	        {
-	            global_yes_or_no_reached_end_of_current_text_item = global_yes ;
-	        } else
-	        {
-	            global_yes_or_no_reached_end_of_current_text_item = global_no ;
-	        }
+            {
+                global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+            } else
+            {
+                global_yes_or_no_reached_end_of_current_text_item = global_no ;
+            }
         }
         if ( global_text_category_for_item[ global_current_target_text_item ] == global_category_contains_pointer_pair )
         {
-            global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin + global_current_target_character_position - 1 ] ;
+            global_character_pointer_if_category_pointer_pair = global_storage_all_text[ global_current_target_text_item_begin ] + global_current_target_character_position - 1 ;
             if ( global_direction_next_or_previous == global_direction_next )
             {
-	            if ( global_character_pointer_if_category_pointer_pair > global_storage_all_text[ global_current_target_text_item_end ] )
-	            {
-	                global_yes_or_no_reached_end_of_current_text_item = global_yes ;
-	            } else
-	            {
-	                global_yes_or_no_reached_end_of_current_text_item = global_no ;
-	            }
-	        } else
-	        {
-	            if ( global_character_pointer_if_category_pointer_pair < global_storage_all_text[ global_current_target_text_item_begin ] )
-	            {
-	                global_yes_or_no_reached_end_of_current_text_item = global_yes ;
-	            } else
-	            {
-	                global_yes_or_no_reached_end_of_current_text_item = global_no ;
-	            }
-	        }
+                if ( global_character_pointer_if_category_pointer_pair > global_storage_all_text[ global_current_target_text_item_end ] )
+                {
+                    global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+                } else
+                {
+                    global_yes_or_no_reached_end_of_current_text_item = global_no ;
+                }
+            } else
+            {
+                if ( global_character_pointer_if_category_pointer_pair < global_storage_all_text[ global_current_target_text_item_begin ] )
+                {
+                    global_yes_or_no_reached_end_of_current_text_item = global_yes ;
+                } else
+                {
+                    global_yes_or_no_reached_end_of_current_text_item = global_no ;
+                }
+            }
         }
 
 
@@ -2727,7 +2735,7 @@ void get_next_or_previous_character_from_text_item( )
         {
             if ( global_yes_or_no_inserted_character == global_no )
             {
-                if ( ( ( global_current_target_character_position >= ( global_current_target_text_item_begin + 1 ) ) && ( global_current_target_character_position <= ( global_current_target_text_item_end - 1 ) ) ) || ( ( global_text_item_category == global_category_contains_hyphenated_phrase_name ) && ( global_text_category_for_item[ global_target_stack_item_prior ] == global_category_contains_hyphenated_phrase_name ) ) )
+                if ( ( ( global_current_target_character_position > 1 ) && ( global_current_target_character_position < ( global_current_target_text_item_end - global_current_target_text_item_begin + 1 ) ) ) || ( ( global_text_item_category == global_category_contains_hyphenated_phrase_name ) && ( global_text_category_for_item[ global_target_stack_item_prior ] == global_category_contains_hyphenated_phrase_name ) ) )
                 {
                     global_single_character_as_integer = global_character_to_insert_between_subitems ;
                     global_yes_or_no_inserted_character = global_yes ;
@@ -2781,7 +2789,7 @@ void get_next_or_previous_character_from_text_item( )
                 global_current_target_character_position = 1 ;
             } else
             {
-                global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+                global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
             }
             global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
             global_text_item_category = global_text_category_for_item[ global_current_target_text_item ] ;
@@ -2821,7 +2829,7 @@ void get_next_or_previous_character_from_text_item( )
                 global_current_target_character_position = 1 ;
             } else
             {
-                global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] ;
+                global_current_target_character_position = global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
             }
             global_pointer_to_within_target_stack_item_top = global_text_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
             global_storage_all_text[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
@@ -2931,7 +2939,7 @@ void truncate_text_item_using_target_pointer_stack( )
             global_target_stack_item_current = global_storage_all_text[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_prior ] ;
             if ( ( global_target_stack_item_current == 0 ) || ( global_target_stack_item_current == global_target_stack_item_bottom ) )
             {
-            	break ;
+                break ;
             }
             log_out << "truncate, stack shift needed" << std::endl ;
         } else
@@ -2995,7 +3003,7 @@ void remove_leading_or_trailing_delimiters( )
         check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-        	break ;
+            break ;
         }
     }
 
@@ -3072,14 +3080,16 @@ void initialize_point_to_next_word_in_text_item( )
 //  pointer stacks, which are pointed to by
 //  "global_text_item_id_for_next_word_begin" and
 //  "global_text_item_id_for_next_word_end".
-//  "global_text_item_id_for_next_word".  Before
-//  using this function the initialization
+//  Before using this function the initialization
 //  function
 //  "initialize_get_next_word_from_text_item"
-//  should be used.  It uses
+//  must be used.  It uses
 //  "global_text_item_id" and creates a
 //  target pointer stack that is referred to by
 //  "global_target_stack_item_bottom".
+//  The text item
+//  "global_text_item_id_for_next_word" is
+//  created to point to the word.
 
 void point_to_next_word_in_text_item( )
 {
@@ -3108,6 +3118,73 @@ void point_to_next_word_in_text_item( )
             global_text_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
         }
     }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_text_by_character_offset_and_length
+//
+//  Gets text for specified text item, using
+//  character offset and length.  Equivalent to
+//  standard "substr" function but uses Dashrep
+//  runtime text storage conventions.  The result
+//  is a global_text_item_id that indicates the
+//  matching text.
+//  The source text is pointed to by
+//  "global_text_item_id_to_copy" and the offset is
+//  specified by "global_character_offset" and
+//  "global_character_length" specifies the
+//  length, and "global_text_item_id_for_copy"
+//  is the created copy of the specified
+//  characters.
+
+void get_text_by_character_offset_and_length( )
+{
+    global_length_requested_for_next_text_item_storage = 1000 ;
+    assign_storage_for_new_text_item( ) ;
+    global_text_item_id_for_copy = global_new_storage_text_item_id ;
+    initialize_get_next_character_from_text_item( ) ;
+    global_next_character_position_count = 0 ;
+    global_character_count = 0 ;
+    while ( global_single_character_as_integer != 0 )
+    {
+        global_next_character_position_count ++ ;
+        get_next_or_previous_character_from_text_item( ) ;
+        if ( global_next_character_position_count >= global_character_offset )
+        {
+            global_character_count ++ ;
+            global_text_pointer_end_for_item[ global_text_item_id_for_copy ] ++ ;
+            global_storage_all_text[ global_text_pointer_end_for_item[ global_text_item_id_for_copy ] ] = global_single_character_as_integer ;
+        }
+        if ( ( global_character_count >= global_character_length ) || ( global_single_character_as_integer == 0 ) )
+        {
+            break ;
+        }
+    }
+    if ( global_text_item_id_for_copy == global_new_storage_text_item_id )
+    {
+        log_out << "BUG: unexpectedly a new text item was created while getting text based on offset and length" << std::endl ;
+        exit ( EXIT_FAILURE ) ;
+    }
+    recover_memory_from_top_text_item( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function text_replace
+
+
+void text_replace( )
+{
+
+//  todo: write this code
+//  if shorter, pad with zeros
+//  if longer, insert branching ...
+
     return ;
 }
 
@@ -3792,77 +3869,114 @@ void parse_one_character_of_folder_name( )
 //  sequences are numbers because the end digits
 //  are more likely to be different.  The
 //  characters are in "global_storage_all_text",
-//  and the character pointers are:
-//  "global_search_character_pointer_begin"
-//  "global_search_character_pointer_end"
-//  "global_match_character_pointer_begin"
-//  "global_match_character_pointer_end".
-//  If the lengths are different, there is no
-//  match.
+//  and the initial character pointers are:
+//  "global_character_pointer_begin_for_text_one"
+//  "global_character_pointer_end_for_text_one"
+//  "global_character_pointer_begin_for_text_two"
+//  "global_character_pointer_end_for_text_two".
+//  These character pointers are modified by this
+//  function.
 
 void yes_or_no_matching_text( )
 {
-    if ( ( global_search_character_pointer_end - global_search_character_pointer_begin ) != ( global_match_character_pointer_end - global_match_character_pointer_begin ) )
+
+
+// -----------------------------------------------
+//  If the lengths are different, there is no
+//  match.
+
+    if ( ( global_character_pointer_end_for_text_one - global_character_pointer_begin_for_text_one ) != ( global_character_pointer_end_for_text_two - global_character_pointer_begin_for_text_two ) )
     {
-        global_yes_or_no_same_unicode_characters = global_no ;
+        global_yes_or_no_same_text = global_no ;
         return ;
     }
-    global_yes_or_no_same_unicode_characters = global_yes ;
+
+
+// -----------------------------------------------
+//  Begin a loop that returns when a difference is
+//  found, or when all the characters have been
+//  checked.
+
     while ( 1 == 1 )
     {
-        if ( global_storage_all_text[ global_search_character_pointer_begin ] != global_storage_all_text[ global_match_character_pointer_begin ] )
+
+
+// -----------------------------------------------
+//  Check the next character at or near the
+//  beginning of the two character sequences.
+
+        if ( global_storage_all_text[ global_character_pointer_begin_for_text_one ] != global_storage_all_text[ global_character_pointer_begin_for_text_two ] )
         {
-            global_yes_or_no_same_unicode_characters = global_no ;
+            global_yes_or_no_same_text = global_no ;
             return ;
         }
-        global_search_character_pointer_begin ++ ;
-        global_match_character_pointer_begin ++ ;
-        if ( global_search_character_pointer_begin > global_search_character_pointer_end )
+        global_character_pointer_begin_for_text_one ++ ;
+        global_character_pointer_begin_for_text_two ++ ;
+        if ( global_character_pointer_begin_for_text_one > global_character_pointer_end_for_text_one )
         {
+            global_yes_or_no_same_text = global_yes ;
             return ;
         }
-        if ( global_storage_all_text[ global_search_character_pointer_end ] != global_storage_all_text[ global_match_character_pointer_end ] )
+
+
+// -----------------------------------------------
+//  Check the next character at or near the end of
+//  the two character sequences.
+
+        if ( global_storage_all_text[ global_character_pointer_end_for_text_one ] != global_storage_all_text[ global_character_pointer_end_for_text_two ] )
         {
-            global_yes_or_no_same_unicode_characters = global_no ;
+            global_yes_or_no_same_text = global_no ;
             return ;
         }
-        global_search_character_pointer_end -- ;
-        global_match_character_pointer_end -- ;
-        if ( global_search_character_pointer_begin > global_search_character_pointer_end )
+        global_character_pointer_end_for_text_one -- ;
+        global_character_pointer_end_for_text_two -- ;
+        if ( global_character_pointer_begin_for_text_one > global_character_pointer_end_for_text_one )
         {
+            global_yes_or_no_same_text = global_yes ;
             return ;
         }
+
+
+// -----------------------------------------------
+//  Repeat the loop.
+
     }
+
+
+// -----------------------------------------------
+//  End of yes_or_no_matching_text.
+
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_word_match_in_parsed_hyphenated_phrase_name
+//  Function check_same_text_in_two_text_items
 //
-//  Checks if the text item
-//  "global_text_item_id_to_find" is the same
-//  word as a word in the
-//  "global_parsed_hyphenated_phrase_name" area.
+//  Checks if the unicode text item
+//  "global_text_item_one" contains the
+//  same unicode text as in 
+//  "global_text_item_two".
 //  The result is indicated by the yes or no value
-//  in "global_yes_or_no_same_unicode_characters".
+//  in "global_yes_or_no_same_text".
 
-//  todo: code needs editing
-
-void check_word_match_in_parsed_hyphenated_phrase_name( )
+void check_same_text_in_two_text_items( )
 {
-    global_search_character_pointer_begin = global_text_pointer_begin_for_item[ global_text_item_id_to_find ] ;
-    global_search_character_pointer_end = global_text_pointer_end_for_item[ global_text_item_id_to_find ] ;
-    global_match_character_pointer_begin = global_parsed_hyphenated_phrase_name_pointer_begin_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
-    global_match_character_pointer_end = global_parsed_hyphenated_phrase_name_pointer_end_for_word[ global_word_count_parsed_hyphenated_phrase_name ] ;
+
+//  todo: avoid the need for this function
+
+    global_character_pointer_begin_for_text_one = global_text_pointer_begin_for_item[ global_text_item_one ] ;
+    global_character_pointer_end_for_text_one = global_text_pointer_end_for_item[ global_text_item_one ] ;
+    global_character_pointer_begin_for_text_two = global_text_pointer_begin_for_item[ global_text_item_two ] ;
+    global_character_pointer_end_for_text_two = global_text_pointer_end_for_item[ global_text_item_two ] ;
     yes_or_no_matching_text( ) ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_yes_or_no_same_hyphenated_phrase
+//  Function check_yes_or_no_same_phrase_name
 //
 //  Checks if the text item
 //  "global_looking_at_hyphenated_phrase_name_in_text_item_id"
@@ -3873,16 +3987,18 @@ void check_word_match_in_parsed_hyphenated_phrase_name( )
 //  category "contains_hyphenated_phrase_name",
 //  but this assumption is not checked here.  The
 //  comparison result is in
-//  "global_yes_or_no_same_hyphenated_phrase_name".
+//  "global_yes_or_no_same_phrase_name".
 
-void check_yes_or_no_same_hyphenated_phrase( )
+void check_yes_or_no_same_phrase_name( )
 {
+
+//  todo: refine this code
 
 
 // -----------------------------------------------
 //  Initialization.
 
-    global_yes_or_no_same_hyphenated_phrase_name = global_yes ;
+    global_yes_or_no_same_phrase_name = global_yes ;
 
 
 // -----------------------------------------------
@@ -3892,7 +4008,7 @@ void check_yes_or_no_same_hyphenated_phrase( )
     global_word_count_hyphenated_phrase_name = global_text_pointer_end_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] - global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] + 1 ;
     if ( global_word_count_hyphenated_phrase_name == global_word_count_parsed_hyphenated_phrase_name )
     {
-        global_yes_or_no_same_hyphenated_phrase_name = global_no ;
+        global_yes_or_no_same_phrase_name = global_no ;
     }
 
 
@@ -3920,10 +4036,10 @@ void check_yes_or_no_same_hyphenated_phrase( )
     {
         global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
         global_text_item_id_to_find = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
-        check_word_match_in_parsed_hyphenated_phrase_name( ) ;
-        if ( global_yes_or_no_same_unicode_characters == global_no )
+        check_same_text_in_two_text_items( ) ;
+        if ( global_yes_or_no_same_text == global_no )
         {
-            global_yes_or_no_same_hyphenated_phrase_name = global_no ;
+            global_yes_or_no_same_phrase_name = global_no ;
             return ;
         }
         global_text_item_intended_next_word_in_hyphenated_phrase ++ ;
@@ -3932,7 +4048,7 @@ void check_yes_or_no_same_hyphenated_phrase( )
 
 
 // -----------------------------------------------
-//  End of function check_yes_or_no_same_hyphenated_phrase.
+//  End of function check_yes_or_no_same_phrase_name.
 
 }
 
@@ -3967,8 +4083,8 @@ void lookup_hyphenated_phrase_name( )
     for ( global_position_in_list_of_hyphenated_phrase_text_items = 1 ; global_position_in_list_of_hyphenated_phrase_text_items <= global_number_of_hyphenated_phrase_names_in_text_items ; global_position_in_list_of_hyphenated_phrase_text_items ++ )
     {
         global_looking_at_hyphenated_phrase_name_in_text_item_id = global_list_of_hyphenated_phrase_text_items[ global_position_in_list_of_hyphenated_phrase_text_items ] ;
-        check_yes_or_no_same_hyphenated_phrase( ) ;
-        if ( global_yes_or_no_same_hyphenated_phrase_name == global_yes )
+        check_yes_or_no_same_phrase_name( ) ;
+        if ( global_yes_or_no_same_phrase_name == global_yes )
         {
             global_text_item_id_of_matching_hyphenated_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
             return ;
@@ -4110,7 +4226,7 @@ void scan_text_item_for_character_usage( )
 // -----------------------------------------------
 //  Initialization.
 
-	log_out << "global_text_item_id " << global_text_item_id << std::endl ;
+    log_out << "global_text_item_id " << global_text_item_id << std::endl ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
     {
         global_usage_count_for_character[ global_single_character_as_integer ] = 0 ;
@@ -4184,7 +4300,7 @@ void scan_searched_text_before_doing_find_text( )
 
 void initialize_track_recent_position_of_each_character( )
 {
-	log_out << "global_text_item_id " << global_text_item_id << std::endl ;
+    log_out << "global_text_item_id " << global_text_item_id << std::endl ;
     global_next_character_position_count = 0 ;
     initialize_get_next_character_from_text_item( ) ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
@@ -4249,24 +4365,24 @@ void track_recent_position_of_each_character( )
 //  Also track the last appearance of any
 //  delimiter.
 
-	    switch ( global_single_character_as_integer )
-	    {
-	        case global_ascii_code_for_space :
+        switch ( global_single_character_as_integer )
+        {
+            case global_ascii_code_for_space :
                 global_recent_position_of_any_delimiter = global_next_character_position_count ;
-	            break ;
-	        case global_ascii_code_for_tab :
+                break ;
+            case global_ascii_code_for_tab :
                 global_recent_position_of_any_delimiter = global_next_character_position_count ;
-	            break ;
-	        case global_ascii_code_for_newline :
+                break ;
+            case global_ascii_code_for_newline :
                 global_recent_position_of_any_delimiter = global_next_character_position_count ;
-	            break ;
-	        case global_ascii_code_for_formfeed :
+                break ;
+            case global_ascii_code_for_formfeed :
                 global_recent_position_of_any_delimiter = global_next_character_position_count ;
-	            break ;
-	        case global_ascii_code_for_carriage_return :
+                break ;
+            case global_ascii_code_for_carriage_return :
                 global_recent_position_of_any_delimiter = global_next_character_position_count ;
-	            break ;
-	    }
+                break ;
+        }
 
 
 // -----------------------------------------------
@@ -4465,7 +4581,7 @@ void find_matching_text( )
         if ( global_single_character_as_integer == 0 )
         {
             global_yes_or_no_matching_text = 0 ;
-        	return ;
+            return ;
         }
         if ( global_single_character_as_integer == global_optimum_character_for_find_pause )
         {
@@ -4499,18 +4615,18 @@ void find_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function find_next_angle_bracketed_phrase_name
+//  Function replace_angle_bracketed_phrase_names
 //
-//  This function finds the next occurance of a
-//  phrase name in angle brackets, with
-//  underscores where the hyphens would otherwise
-//  appear, such as "<character_hyphen>".  It does
-//  not check whether the phrase name is defined.
-//  It only checks that the characters between the
-//  angle brackets include at least one underscore
-//  and does not include a hyphen.
+//  This function finds each occurance of a phrase
+//  name in angle brackets, with underscores where
+//  the hyphens would otherwise appear, such as
+//  "<character_hyphen>".  It does not check
+//  whether the phrase name is defined.  It only
+//  checks that the characters between the angle
+//  brackets include at least one underscore and
+//  does not include a hyphen.
 
-void find_next_angle_bracketed_phrase_name( )
+void replace_angle_bracketed_phrase_names( )
 {
 
 
@@ -4520,13 +4636,13 @@ void find_next_angle_bracketed_phrase_name( )
 // todo: still need to handle pointer to stack for recent copy of stack
 
     global_text_item_id = global_text_item_id_to_edit ;
-	initialize_get_next_character_from_text_item( ) ;
+    initialize_get_next_character_from_text_item( ) ;
     initialize_track_recent_position_of_each_character( ) ;
 
 
 // -----------------------------------------------
-//  Begin a loop that looks for the desired
-//  sequence of a delimiter, an open angle
+//  Begin a loop that repeatedly looks for the
+//  desired sequence of a delimiter, an open angle
 //  bracket, an underscore, and then a close angle
 //  bracket.
 
@@ -4535,13 +4651,13 @@ void find_next_angle_bracketed_phrase_name( )
 
 
 // -----------------------------------------------
-//  If the pattern was not found, return without
-//  a pointer to the found text.
+//  When the end of the text is encountered,
+//  return.
 
         if ( global_single_character_as_integer == 0 )
         {
-            log_out << "angle bracketed phrase not found" << std::endl ;
-        	return ;
+            log_out << "angle bracketed phrases replaced, or were not found" << std::endl ;
+            return ;
         }
 
 
@@ -4550,27 +4666,26 @@ void find_next_angle_bracketed_phrase_name( )
 //  copy of the target pointer stack to keep track
 //  of this location.
 
-	    global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
-	    track_recent_position_of_each_character( ) ;
-	    copy_pointer_stack( ) ;
+        global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
+        track_recent_position_of_each_character( ) ;
+        copy_pointer_stack( ) ;
 
 
 // -----------------------------------------------
-//  If an open angle bracket was not found, return
-//  without a pointer to the found text.
+//  If an open angle bracket is not found, return.
 
         if ( global_single_character_as_integer == 0 )
         {
-            log_out << "angle bracketed phrase not found" << std::endl ;
-        	return ;
+            log_out << "open angle bracket not found" << std::endl ;
+            return ;
         }
 
 
 // -----------------------------------------------
 //  Find the next close angle bracket.
 
-	    global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
-	    track_recent_position_of_each_character( ) ;
+        global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
+        track_recent_position_of_each_character( ) ;
 
 
 // -----------------------------------------------
@@ -4579,8 +4694,8 @@ void find_next_angle_bracketed_phrase_name( )
 
         if ( global_single_character_as_integer == 0 )
         {
-            log_out << "angle bracketed phrase not found" << std::endl ;
-        	return ;
+            log_out << "close angle bracket not found" << std::endl ;
+            return ;
         }
 
 
@@ -4591,28 +4706,23 @@ void find_next_angle_bracketed_phrase_name( )
 //  angle bracket, underscore, then close angle
 //  bracket -- then repeat the search loop.
 
-	    global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
-	    global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
+        log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl ;
+
+        global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
+        global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
         global_position_of_close_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_close_angle_bracket ] ;
-	    if ( ( global_recent_position_of_any_delimiter < global_position_of_open_angle_bracket ) && ( global_position_of_open_angle_bracket < global_position_of_underscore ) && ( global_position_of_underscore < global_position_of_close_angle_bracket ) )
-	    {
-	    	break ;
-	    }
-
-
-// -----------------------------------------------
-//  Repeat the loop until the desired pattern has
-//  been found.
-
-    }
+        if ( ( global_recent_position_of_any_delimiter < global_position_of_open_angle_bracket ) && ( global_position_of_open_angle_bracket < global_position_of_underscore ) && ( global_position_of_underscore < global_position_of_close_angle_bracket ) )
+        {
+            continue ;
+        }
 
 
 // -----------------------------------------------
 //  Point to the found text that matches the
 //  pattern.
 
-    global_position_of_close_angle_bracket_within_text_item = global_current_target_character_position - 1 ;
-    global_position_of_open_angle_bracket_within_text_item = global_position_of_close_angle_bracket_within_text_item - ( global_position_of_close_angle_bracket - global_position_of_open_angle_bracket ) ;
+        global_position_of_close_angle_bracket_within_text_item = global_current_target_character_position - 1 ;
+        global_position_of_open_angle_bracket_within_text_item = global_position_of_close_angle_bracket_within_text_item - ( global_position_of_close_angle_bracket - global_position_of_open_angle_bracket ) ;
 
 
 // -----------------------------------------------
@@ -4623,15 +4733,17 @@ void find_next_angle_bracketed_phrase_name( )
 //  a single text item, and switch to using that
 //  instead.
 
-    if ( global_position_of_open_angle_bracket < 1 )
-    {
-        log_out << "angle bracketed phrase is not within a single text item and current code does not yet handle this situation" << std::endl ;
-        exit( EXIT_FAILURE ) ;
-    }
+        if ( global_position_of_open_angle_bracket < 1 )
+        {
+            log_out << "angle bracketed phrase is not within a single text item and current code does not yet handle this situation" << std::endl ;
+            exit( EXIT_FAILURE ) ;
+        }
 
 
 // -----------------------------------------------
 //  Find the hyphenated phrase name.
+
+//  todo: write this code
 
 
 // -----------------------------------------------
@@ -4639,53 +4751,19 @@ void find_next_angle_bracketed_phrase_name( )
 //  insert that text where the angle bracketed
 //  phrase name appears.
 
-
-
-    log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl ;
-
-
-// -----------------------------------------------
-//  End of find_next_angle_bracketed_phrase_name.
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function text_replace
-
-
-void text_replace( )
-{
-
-//  todo: write this code
-//  if shorter, pad with zeros
-//  if longer, insert branching ...
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_text_by_character_offset_and_length
-//
-//  Gets text for specified text item, using
-//  character offset and length.  Equivalent to
-//  standard "substr" function but uses Dashrep
-//  runtime text storage conventions.  The result
-//  is a global_text_item_id that indicates the
-//  matching text.
-
-
-void get_text_by_character_offset_and_length( )
-{
-
 //  todo: write this code
 
-// character_offset
-// characters_length
+
+
+// -----------------------------------------------
+//  Repeat the loop until the entire text has been
+//  searched and modified.
+
+    }
+
+
+// -----------------------------------------------
+//  End of replace_angle_bracketed_phrase_names.
 
     return ;
 }
@@ -5084,7 +5162,7 @@ void execute_loop_handler_based_on_handler_id( int local_text_item_id_for_next_w
 
 //  use switch statement
 
-	return ;
+    return ;
 }
 
 
@@ -5109,10 +5187,10 @@ void implement_loop( )
     while ( 1 == 1 )
     {
         point_to_next_word_in_text_item( ) ;
-	    if ( global_single_character_as_integer == 0 )
-	    {
-	    	return ;
-	    }
+        if ( global_single_character_as_integer == 0 )
+        {
+            return ;
+        }
         execute_loop_handler_based_on_handler_id( local_text_item_id_for_next_word , local_loop_handler ) ;
 // ... handler-name-with-underscores ...
     }
