@@ -137,6 +137,8 @@ int global_text_item_id_for_next_word ;
 int global_text_item_id_for_next_word_begin ;
 int global_text_item_id_for_next_word_end ;
 int global_text_item_id_last_predefined ;
+int global_text_item_id_for_phrase_word ;
+int global_text_item_id_for_phrase_name ;
 
 int global_text_item_with_next_character ;
 int global_text_item_with_previous_character ;
@@ -655,7 +657,7 @@ int global_number_of_hyphenated_phrase_names_in_text_items ;
 int global_list_of_hyphenated_phrase_text_items[ 5005 ] ;
 int global_position_in_list_of_hyphenated_phrase_text_items ;
 int global_looking_at_hyphenated_phrase_name_in_text_item_id ;
-int global_text_item_id_of_matching_hyphenated_phrase_name ;
+int global_text_item_id_of_matching_phrase_name ;
 
 
 // -----------------------------------------------
@@ -837,6 +839,11 @@ int global_length_of_matching_text ;
 int global_character_pointer_if_category_pointer_pair ;
 int global_character_offset ;
 int global_character_length ;
+int global_character_length_minus_one ;
+int global_character_begin_pointer_one ;
+int global_character_end_pointer_one ;
+int global_character_begin_pointer_two ;
+int global_character_end_pointer_two ;
 
 
 // -----------------------------------------------
@@ -973,6 +980,8 @@ int global_target_stack_pointer_for_copy_from ;
 int global_target_stack_pointer_for_copy_to ;
 int global_id_for_copy_of_target_pointer_stack ;
 int global_id_for_original_of_target_pointer_stack ;
+int global_target_stack_pointer_for_word_begin ;
+int global_target_stack_pointer_for_word_end ;
 
 
 // -----------------------------------------------
@@ -995,6 +1004,7 @@ int global_yes_or_no_transition_from_character_to_delimiter ;
 int global_yes_or_no_transition_from_delimiter_to_character ;
 int global_yes_or_no_begin_not_end ;
 int global_yes_or_no_matching_text ;
+int global_yes_or_no_phrase_words_match ;
 int global_direction_next_or_previous ;
 const int global_direction_next = 1 ;
 const int global_direction_previous = 2 ;
@@ -1014,6 +1024,16 @@ int global_position_of_open_angle_bracket ;
 int global_position_of_close_angle_bracket ;
 int global_position_of_open_angle_bracket_within_text_item ;
 int global_position_of_close_angle_bracket_within_text_item ;
+int global_check_from_begin_or_check_from_end ;
+int global_check_from_begin ;
+int global_check_from_end ;
+int global_phrase_word_length_minus_one ;
+int global_character_pointer_for_phrase_word_current ;
+int global_count_of_words_in_phrase_name ;
+int global_count_of_words_in_searched_phrase_name ;
+int global_phrase_word_number_to_check ;
+int global_phrase_word_number_near_beginning_to_check ;
+int global_phrase_word_number_near_end_to_check ;
 
 
 // -----------------------------------------------
@@ -1108,9 +1128,9 @@ int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
 int global_text_item_intended_next_word_in_hyphenated_phrase ;
 int global_word_count_hyphenated_phrase_name ;
 int global_character_pointer_begin_for_text_one ;
-int global_character_pointer_end_for_text_one ;
 int global_character_pointer_begin_for_text_two ;
-int global_character_pointer_end_for_text_two ;
+int global_character_pointer_one ;
+int global_character_pointer_two ;
 int global_count_of_words_handled ;
 int global_distance_between_item_begin_and_end ;
 int global_current_target_text_item_begin ;
@@ -2540,6 +2560,8 @@ void initialize_get_previous_character_from_text_item( )
 //  stacks are used to point to the beginning and
 //  end of a word or found (matching) text, even
 //  if it spans beyond a single sub text item.
+//  If ID for the copy already exists, it is used
+//  instead of creating a new stack.
 //  The copy is pointed to by
 //  "global_id_for_copy_of_target_pointer_stack".
 //  The original is pointed to by
@@ -2550,12 +2572,19 @@ void copy_pointer_stack( )
 
 
 // -----------------------------------------------
-//  Create a new, empty, target pointer stack
-//  item, and get its location.
+//  If the stack does not already exist, create a
+//  new, empty, target pointer stack, and get its
+//  location.  Otherwise use the existing stack.
 
-    global_target_stack_item_bottom = 0 ;
-    push_target_pointer_stack( ) ;
-    global_id_for_copy_of_target_pointer_stack = global_target_stack_item_bottom ;
+    if ( global_id_for_copy_of_target_pointer_stack == 0 )
+    {
+        global_target_stack_item_bottom = 0 ;
+        push_target_pointer_stack( ) ;
+        global_id_for_copy_of_target_pointer_stack = global_target_stack_item_bottom ;
+    } else
+    {
+        global_target_stack_item_bottom = global_id_for_copy_of_target_pointer_stack ;
+    }
     global_target_stack_item_current_copy = global_id_for_copy_of_target_pointer_stack ;
 
 
@@ -2598,14 +2627,32 @@ void copy_pointer_stack( )
 
 
 // -----------------------------------------------
-//  Create a new, empty, target pointer stack
-//  item that will store the pointers at the next
-//  higher stack level, and update the previous
-//  stack level to point to this new stack level.
+//  Get from the copy stack the next-higher stack
+//  level ID.
 
-        global_target_stack_item_bottom = 0 ;
-        push_target_pointer_stack( ) ;
-        global_target_stack_item_current_copy = global_target_stack_item_bottom ;
+        global_pointer_to_within_target_stack_item_current_copy = global_text_pointer_begin_for_item[ global_target_stack_item_current_copy ] ;
+        global_target_stack_item_current_copy = global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_next ] ;
+
+
+// -----------------------------------------------
+//  If the stack for the copy has run out of stack
+//  levels, create a new, empty, target pointer
+//  stack level.
+
+//  todo: needs more proofreading ...
+
+        if ( global_target_stack_item_current_copy == 0 )
+        {
+	        global_target_stack_item_bottom = 0 ;
+	        push_target_pointer_stack( ) ;
+            global_target_stack_item_current_copy = global_target_stack_item_bottom ;
+        }
+
+
+// -----------------------------------------------
+//  In the previous copy stack level, point to
+//  this next-higher stack level.
+
         global_storage_all_text[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_next ] = global_target_stack_item_current_copy ;
 
 
@@ -3133,46 +3180,84 @@ void initialize_point_to_next_word_in_text_item( )
 //  Before using this function the initialization
 //  function
 //  "initialize_get_next_word_from_text_item"
-//  must be used.  It uses
-//  "global_text_item_id" and creates a
-//  target pointer stack that is referred to by
-//  "global_target_stack_item_bottom".
-//  The text item
-//  "global_text_item_id_for_next_word" is
-//  created to point to the word.
+//  must be used.
+//  The beginning and end of the found word is
+//  pointed to by
+//  "global_target_stack_pointer_for_word_begin"
+//  and
+//  "global_target_stack_pointer_for_word_end".
 
 void point_to_next_word_in_text_item( )
 {
+
+
+// -----------------------------------------------
+//  Find the end of the current delimiter.
+
     global_yes_or_no_character_is_delimiter = global_yes ;
     while ( global_yes_or_no_character_is_delimiter == global_yes )
     {
         get_next_or_previous_character_from_text_item( ) ;
+        if ( global_single_character_as_integer == 0 )
+        {
+            break ;
+        }
         check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            global_direction_next_or_previous = global_direction_previous ;
-            get_next_or_previous_character_from_text_item( ) ;
-            copy_pointer_stack( ) ;
-            global_text_item_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
             break ;
         }
     }
+
+
+// -----------------------------------------------
+//  Point to the beginning of the word that
+//  follows the delimiter, then save this
+//  character position in a target pointer stack.
+
+    global_direction_next_or_previous = global_direction_previous ;
+    get_next_or_previous_character_from_text_item( ) ;
+    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_begin ;
+    copy_pointer_stack( ) ;
+    global_text_item_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
     global_target_stack_item_top_original = global_target_stack_item_top ;
     get_next_or_previous_character_from_text_item( ) ;
+
+
+// -----------------------------------------------
+//  Find the end of the non-delimiter text.
+
     global_direction_next_or_previous = global_direction_next ;
     while ( global_yes_or_no_character_is_delimiter == global_no )
     {
         get_next_or_previous_character_from_text_item( ) ;
+        if ( global_single_character_as_integer == 0 )
+        {
+            break ;
+        }
         check_yes_or_no_character_is_delimiter( ) ;
         if ( global_yes_or_no_character_is_delimiter == global_yes )
         {
-            global_direction_next_or_previous = global_direction_previous ;
-            get_next_or_previous_character_from_text_item( ) ;
-            copy_pointer_stack( ) ;
-            global_text_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
             break ;
         }
     }
+
+
+// -----------------------------------------------
+//  Point to the end of the word that precedes the
+//  next delimiter, then save this character
+//  position in a second target pointer stack.
+
+    global_direction_next_or_previous = global_direction_previous ;
+    get_next_or_previous_character_from_text_item( ) ;
+    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_end ;
+    copy_pointer_stack( ) ;
+    global_text_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
+
+
+// -----------------------------------------------
+//  End of point_to_next_word_in_text_item.
+
     return ;
 }
 
@@ -3181,12 +3266,10 @@ void point_to_next_word_in_text_item( )
 // -----------------------------------------------
 //  Function get_text_by_character_offset_and_length
 //
-//  Gets text for specified text item, using
+//  Gets text from the specified text item, using
 //  character offset and length.  Equivalent to
 //  standard "substr" function but uses Dashrep
-//  runtime text storage conventions.  The result
-//  is a global_text_item_id that indicates the
-//  matching text.
+//  runtime text storage conventions.
 //  The source text is pointed to by
 //  "global_text_item_id_to_copy" and the offset is
 //  specified by "global_character_offset" and
@@ -3915,7 +3998,33 @@ void parse_one_character_of_folder_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function yes_or_no_matching_text
+//  Function initialize_point_to_next_phrase_name_already_defined
+
+//  todo: use text items to create a linked list of already-defined phrase names
+
+void initialize_point_to_next_phrase_name_already_defined( )
+{
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function point_to_next_phrase_name_already_defined
+//
+//  The function
+//  "initialize_point_to_next_phrase_name_already_defined"
+//  must be used before this function.
+
+void point_to_next_phrase_name_already_defined( )
+{
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_matching_text
 //
 //  Checks if two sequences of text characters are
 //  the same.  It starts checking at both the
@@ -3926,25 +4035,22 @@ void parse_one_character_of_folder_name( )
 //  characters are in "global_storage_all_text",
 //  and the initial character pointers are:
 //  "global_character_pointer_begin_for_text_one"
-//  "global_character_pointer_end_for_text_one"
+//  and
 //  "global_character_pointer_begin_for_text_two"
-//  "global_character_pointer_end_for_text_two".
-//  These character pointers are modified by this
-//  function.
+//  and "global_character_length_minus_one" is the
+//  character length minus one.
 
-void yes_or_no_matching_text( )
+void check_yes_or_no_matching_text( )
 {
 
 
 // -----------------------------------------------
-//  If the lengths are different, there is no
-//  match.
+//  Initialization.
 
-    if ( ( global_character_pointer_end_for_text_one - global_character_pointer_begin_for_text_one ) != ( global_character_pointer_end_for_text_two - global_character_pointer_begin_for_text_two ) )
-    {
-        global_yes_or_no_same_text = global_no ;
-        return ;
-    }
+    global_character_begin_pointer_one = global_character_pointer_begin_for_text_one ;
+    global_character_begin_pointer_two = global_character_pointer_begin_for_text_two ;
+    global_character_end_pointer_one = global_character_pointer_begin_for_text_one + global_character_length_minus_one ;
+    global_character_end_pointer_two = global_character_pointer_begin_for_text_two + global_character_length_minus_one ;
 
 
 // -----------------------------------------------
@@ -3960,14 +4066,16 @@ void yes_or_no_matching_text( )
 //  Check the next character at or near the
 //  beginning of the two character sequences.
 
-        if ( global_storage_all_text[ global_character_pointer_begin_for_text_one ] != global_storage_all_text[ global_character_pointer_begin_for_text_two ] )
+        log_out << "character one: " << global_storage_all_text[ global_character_begin_pointer_one ] << "  character two: " << global_storage_all_text[ global_character_begin_pointer_two ] << std::endl ;
+
+        if ( global_storage_all_text[ global_character_begin_pointer_one ] != global_storage_all_text[ global_character_begin_pointer_two ] )
         {
             global_yes_or_no_same_text = global_no ;
             return ;
         }
-        global_character_pointer_begin_for_text_one ++ ;
-        global_character_pointer_begin_for_text_two ++ ;
-        if ( global_character_pointer_begin_for_text_one > global_character_pointer_end_for_text_one )
+        global_character_begin_pointer_one ++ ;
+        global_character_begin_pointer_two ++ ;
+        if ( global_character_begin_pointer_one > global_character_end_pointer_one )
         {
             global_yes_or_no_same_text = global_yes ;
             return ;
@@ -3978,14 +4086,15 @@ void yes_or_no_matching_text( )
 //  Check the next character at or near the end of
 //  the two character sequences.
 
-        if ( global_storage_all_text[ global_character_pointer_end_for_text_one ] != global_storage_all_text[ global_character_pointer_end_for_text_two ] )
+        log_out << "character one: " << global_storage_all_text[ global_character_begin_pointer_one ] << "  character two: " << global_storage_all_text[ global_character_begin_pointer_two ] << std::endl ;
+        if ( global_storage_all_text[ global_character_end_pointer_one ] != global_storage_all_text[ global_character_end_pointer_two ] )
         {
             global_yes_or_no_same_text = global_no ;
             return ;
         }
-        global_character_pointer_end_for_text_one -- ;
-        global_character_pointer_end_for_text_two -- ;
-        if ( global_character_pointer_begin_for_text_one > global_character_pointer_end_for_text_one )
+        global_character_end_pointer_one -- ;
+        global_character_end_pointer_two -- ;
+        if ( global_character_end_pointer_one < global_character_begin_pointer_one )
         {
             global_yes_or_no_same_text = global_yes ;
             return ;
@@ -3999,7 +4108,7 @@ void yes_or_no_matching_text( )
 
 
 // -----------------------------------------------
-//  End of yes_or_no_matching_text.
+//  End of check_yes_or_no_matching_text.
 
     return ;
 }
@@ -4007,103 +4116,157 @@ void yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_same_text_in_two_text_items
+//  Function find_matching_phrase_name
 //
-//  Checks if the unicode text item
-//  "global_text_item_one" contains the
-//  same unicode text as in 
-//  "global_text_item_two".
-//  The result is indicated by the yes or no value
-//  in "global_yes_or_no_same_text".
+//  Searches the already-defined phrase names
+//  looking for a match.  The text item
+//  "global_text_item_id_with_phrase_name_to_find"
+//  contains the phrase name to be found.  If a
+//  matching phrase name is found, its text item
+//  ID is returned in
+//  "global_found_matching_phrase_name".
 
-void check_same_text_in_two_text_items( )
+void find_matching_phrase_name( )
 {
-
-//  todo: avoid the need for this function
-
-    global_character_pointer_begin_for_text_one = global_text_pointer_begin_for_item[ global_text_item_one ] ;
-    global_character_pointer_end_for_text_one = global_text_pointer_end_for_item[ global_text_item_one ] ;
-    global_character_pointer_begin_for_text_two = global_text_pointer_begin_for_item[ global_text_item_two ] ;
-    global_character_pointer_end_for_text_two = global_text_pointer_end_for_item[ global_text_item_two ] ;
-    yes_or_no_matching_text( ) ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function check_yes_or_no_same_phrase_name
-//
-//  Checks if the text item
-//  "global_looking_at_hyphenated_phrase_name_in_text_item_id"
-//  contains the same hyphenated phrase name as
-//  the hyphenated phrase name stored in the
-//  "parsed_hyphenated_phrase_name" area.
-//  The text item is assumed to contain the
-//  category "contains_hyphenated_phrase_name",
-//  but this assumption is not checked here.  The
-//  comparison result is in
-//  "global_yes_or_no_same_phrase_name".
-
-void check_yes_or_no_same_phrase_name( )
-{
-
-//  todo: refine this code
 
 
 // -----------------------------------------------
 //  Initialization.
 
-    global_yes_or_no_same_phrase_name = global_yes ;
+    initialize_point_to_next_phrase_name_already_defined( ) ;
+    global_text_item_id_of_matching_phrase_name = 0 ;
+    global_check_from_begin_or_check_from_end = global_check_from_begin ;
+    global_phrase_word_number_near_beginning_to_check = 1 ;
+    global_phrase_word_number_near_end_to_check = 100 ;
+    global_phrase_word_number_to_check = global_phrase_word_number_near_beginning_to_check ;
+    global_yes_or_no_phrase_words_match = global_no ;
 
 
 // -----------------------------------------------
-//  If the number of words in the two hyphenated
-//  phrase names are different, there is no match.
+//  Determine the number of phrase words within
+//  the phrase name.
 
-    global_word_count_hyphenated_phrase_name = global_text_pointer_end_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] - global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] + 1 ;
-    if ( global_word_count_hyphenated_phrase_name == global_word_count_parsed_hyphenated_phrase_name )
+//  todo: fix
+
+    global_count_of_words_in_phrase_name = 5 ;
+
+
+// -----------------------------------------------
+//  Begin a loop that does the search of each
+//  already-defined phrase name.
+
+    while ( 1 == 1 )
     {
-        global_yes_or_no_same_phrase_name = global_no ;
-    }
 
 
 // -----------------------------------------------
-//  Point to the text items that hold the first
-//  word in each phrase name.
+//  If any words in the already-defined phrase
+//  name being checked did not match, point to the
+//  next already-defined phrase name.
 
-    global_text_item_intended_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] ] ;
-    global_text_item_looking_at_next_word_in_hyphenated_phrase = global_storage_all_text[ global_text_pointer_begin_for_item[ global_looking_at_hyphenated_phrase_name_in_text_item_id ] ] ;
+        if ( global_yes_or_no_phrase_words_match == global_no )
+        {
+            point_to_next_phrase_name_already_defined( ) ;
+            log_out << "global_text_item_id_for_phrase_name " << global_text_item_id_for_phrase_name << std::endl ;
+        }
 
 
 // -----------------------------------------------
-//  Check each word for a match.  If they differ,
-//  the hyphenated phrase names do not match.
-//
-//  Later, alternate between checking at beginning
-//  and end.  This approach will increase speed
-//  in situations where the last word is an
-//  integer.
-//
-//  Later, when phrase words are not duplicated,
-//  just check if the text item ID numbers differ.
+//  If the text item ID numbers are the same, it
+//  is a match.
 
-    for ( global_word_position = 1 ; global_word_position <= global_word_count_hyphenated_phrase_name ; global_word_position ++ )
-    {
-        global_check_for_match_text_item_id = global_storage_all_text[ global_text_item_intended_next_word_in_hyphenated_phrase ] ;
-        global_text_item_id_to_find = global_storage_all_text[ global_text_item_looking_at_next_word_in_hyphenated_phrase ] ;
-        check_same_text_in_two_text_items( ) ;
+        if ( global_text_item_id_of_matching_phrase_name == global_text_item_id_for_phrase_name )
+        {
+        	global_text_item_id_of_matching_phrase_name = global_text_item_id_for_phrase_name ;
+        	return ;
+        }
+
+
+// -----------------------------------------------
+//  Point to the characters of the text item that
+//  contains the phrase word to be checked.
+
+        global_text_item_id_for_phrase_word = global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] ;
+
+
+// -----------------------------------------------
+//  If the number of words in the two phrase names
+//  are different, there is no match, so repeat
+//  the loop.
+
+        global_count_of_words_in_searched_phrase_name = global_text_pointer_end_for_item[ global_text_item_id_for_phrase_name ] - global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] + 1 ;
+        if ( global_count_of_words_in_searched_phrase_name != global_count_of_words_in_phrase_name )
+        {
+            continue ;
+        }
+
+
+//  todo:
+
+//  get: global_character_pointer_for_phrase_word_current
+
+//  calculate global_phrase_word_length_minus_one
+
+
+// -----------------------------------------------
+//  If the phrase words have different lengths,
+//  they do not match, so repeat the loop.
+
+        global_character_length_minus_one = global_text_pointer_end_for_item[ global_text_item_id_for_phrase_word ] - global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_word ] ;
+        if ( global_phrase_word_length_minus_one != global_character_length_minus_one )
+        {
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  If any of the characters in the phrase words
+//  do not match, repeat the loop.
+
+        global_character_pointer_begin_for_text_one = global_character_pointer_for_phrase_word_current ;
+        global_character_pointer_begin_for_text_two = global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_word ] ;
+        check_yes_or_no_matching_text( ) ;
         if ( global_yes_or_no_same_text == global_no )
         {
-            global_yes_or_no_same_phrase_name = global_no ;
-            return ;
+            continue ;
         }
-        global_text_item_intended_next_word_in_hyphenated_phrase ++ ;
-        global_text_item_looking_at_next_word_in_hyphenated_phrase ++ ;
+
+
+// -----------------------------------------------
+//  The phrase words match, so use the text item
+//  ID of the matching phrase word as the pointer
+//  to the current phrase word.
+
+        global_yes_or_no_phrase_words_match = global_yes ;
+
+//  todo: continue writing this code
+
+
+// -----------------------------------------------
+//  Alternate between checking a phrase word near
+//  the beginning and a phrase word near the end.
+
+        if ( global_check_from_begin_or_check_from_end == global_check_from_begin )
+        {
+            global_phrase_word_number_near_beginning_to_check ++ ;
+            global_phrase_word_number_to_check = global_phrase_word_number_near_beginning_to_check ;
+        	global_check_from_begin_or_check_from_end = global_check_from_end ;
+        } else
+        {
+            global_phrase_word_number_near_end_to_check -- ;
+            global_phrase_word_number_to_check = global_phrase_word_number_near_end_to_check ;
+        	global_check_from_begin_or_check_from_end == global_check_from_begin ;
+        }
+
+
+// -----------------------------------------------
+//  Repeat the loop to check the next phrase word.
+
     }
 
 
 // -----------------------------------------------
-//  End of function check_yes_or_no_same_phrase_name.
+//  End of function find_matching_phrase_name.
 
 }
 
@@ -4118,7 +4281,7 @@ void check_yes_or_no_same_phrase_name( )
 //  "parsed_hyphenated_phrase_name" area.
 //  Puts the text item ID of the matching
 //  hyphenated phrase name into the variable
-//  global_text_item_id_of_matching_hyphenated_phrase_name,
+//  global_text_item_id_of_matching_phrase_name,
 //  but that variable is zero if no match was
 //  found.
 //
@@ -4134,14 +4297,14 @@ void check_yes_or_no_same_phrase_name( )
 
 void lookup_hyphenated_phrase_name( )
 {
-    global_text_item_id_of_matching_hyphenated_phrase_name = 0 ;
+    global_text_item_id_of_matching_phrase_name = 0 ;
     for ( global_position_in_list_of_hyphenated_phrase_text_items = 1 ; global_position_in_list_of_hyphenated_phrase_text_items <= global_number_of_hyphenated_phrase_names_in_text_items ; global_position_in_list_of_hyphenated_phrase_text_items ++ )
     {
         global_looking_at_hyphenated_phrase_name_in_text_item_id = global_list_of_hyphenated_phrase_text_items[ global_position_in_list_of_hyphenated_phrase_text_items ] ;
-        check_yes_or_no_same_phrase_name( ) ;
+        find_matching_phrase_name( ) ;
         if ( global_yes_or_no_same_phrase_name == global_yes )
         {
-            global_text_item_id_of_matching_hyphenated_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
+            global_text_item_id_of_matching_phrase_name = global_looking_at_hyphenated_phrase_name_in_text_item_id ;
             return ;
         }
     }
