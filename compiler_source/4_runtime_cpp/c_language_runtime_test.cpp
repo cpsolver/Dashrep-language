@@ -548,6 +548,7 @@ int global_id_for_phrase_word_permission ;
 int global_id_for_phrase_word_phrase ;
 int global_id_for_phrase_word_phrases ;
 int global_id_for_phrase_word_pi ;
+int global_id_for_phrase_word_placeholder ;
 int global_id_for_phrase_word_pointers ;
 int global_id_for_phrase_word_position ;
 int global_id_for_phrase_word_positions ;
@@ -1266,12 +1267,14 @@ void measure_space_available_in_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function assign_storage_for_new_text_item
+//  Function assign_storage_for_new_item
 //
 //  Initialize the pointers that will keep track
-//  of a new text item.
+//  of a new item, which is usually a text item,
+//  yet also may be a linked list grouping item,
+//  or a level in a target pointer stack.
 
-void assign_storage_for_new_text_item( )
+void assign_storage_for_new_item( )
 {
     global_text_pointer_begin_for_item[ global_next_available_text_item_id ] = global_next_available_begin_pointer_for_next_available_text_item_id ;
     global_next_available_begin_pointer_for_next_available_text_item_id += global_length_requested_for_next_text_item_storage ;
@@ -1563,7 +1566,7 @@ int store_text_and_get_its_text_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  Create the storage for the text item.
 
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
 
 
 // -----------------------------------------------
@@ -1621,7 +1624,7 @@ int store_text_and_get_its_text_item_id( const char * local_this_word )
 int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
 {
     global_length_requested_for_next_text_item_storage = 12 ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_hyphenated_phrase_name ;
     global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
     global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = word_one ;
@@ -1831,6 +1834,12 @@ void do_main_initialization( )
 // -----------------------------------------------
 //  Create the text items for the Dashrep-defined
 //  phrase names.
+
+//  Reminder: put "space" and "no" and "one" and
+//  "hyphen" and "here" at the beginning of their
+//  linked lists because they are often
+//  encountered in "no-space" and "one-space" and
+//  "hyphen-here" directives.
 
     global_id_for_phrase_word_numeric = store_text_and_get_its_text_item_id( "numeric" ) ;
 
@@ -2065,12 +2074,12 @@ void do_main_initialization( )
     global_length_requested_for_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
 
     global_text_item_id_for_file_input = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_input ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_input ] -= 5 ;
 
     global_text_item_id_for_file_output = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_file_output ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_file_output ] -= 5 ;
 
@@ -2081,7 +2090,7 @@ void do_main_initialization( )
 
     global_length_requested_for_next_text_item_storage = 20 ;
     global_text_item_id_for_number_as_text = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_number_as_text ] = global_category_contains_unicode_anything ;
 
 
@@ -2101,12 +2110,12 @@ void do_main_initialization( )
     global_length_requested_for_next_text_item_storage = 200 ;
 
     global_text_item_id_for_valid_filename = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_valid_filename ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_valid_filename ] -= 5 ;
 
     global_text_item_id_for_valid_folder_name = global_next_available_text_item_id ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_category_for_item[ global_text_item_id_for_valid_folder_name ] = global_category_contains_unicode_anything ;
     global_text_pointer_allocation_end_for_item[ global_text_item_id_for_valid_folder_name ] -= 5 ;
 
@@ -2424,7 +2433,7 @@ void push_target_pointer_stack( )
     if ( ( global_target_stack_item_bottom == 0 ) || ( global_target_stack_item_next == 0 ) )
     {
         global_length_requested_for_next_text_item_storage = 5 ;
-        assign_storage_for_new_text_item( ) ;
+        assign_storage_for_new_item( ) ;
         log_out << "global_new_storage_text_item_id " << global_new_storage_text_item_id << std::endl ;
     }
 
@@ -3282,7 +3291,7 @@ void point_to_next_word_in_text_item( )
 void get_text_by_character_offset_and_length( )
 {
     global_length_requested_for_next_text_item_storage = 1000 ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_item_id_for_copy = global_new_storage_text_item_id ;
     initialize_get_next_character_from_text_item( ) ;
     global_next_character_position_count = 0 ;
@@ -3404,7 +3413,7 @@ void append_space_if_not_empty( )
         } else
         {
             global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
-            assign_storage_for_new_text_item( ) ;
+            assign_storage_for_new_item( ) ;
             global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
 //  insert the to and space IDs, but not the from ID
 //        global_storage_all_text
@@ -3522,7 +3531,7 @@ void append_linked_text( )
 //  points to both the "to" and "from".
 
     global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
     global_storage_all_text[ global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ] = global_text_item_id_to_edit ;
     global_text_category_for_item[ global_new_storage_text_item_id ] = global_category_contains_list_of_text_item_ids ;
@@ -3555,7 +3564,7 @@ void append_copied_text( )
 {
     global_text_pointer_end_for_item[ global_text_item_id_to_edit ] = global_text_pointer_begin_for_item[ global_text_item_id_to_edit ] - 1 ;
     global_length_requested_for_next_text_item_storage = global_text_pointer_end_for_item[ global_text_item_id_from_origin ] - global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] + 1 ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     for ( global_text_pointer = global_text_pointer_begin_for_item[ global_text_item_id_from_origin ] ; global_text_pointer <= global_text_pointer_end_for_item[ global_text_item_id_from_origin ] ; global_text_pointer ++ )
     {
         global_text_pointer_end_for_item[ global_new_storage_text_item_id ] ++ ;
@@ -4091,6 +4100,47 @@ void check_yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function create_linked_list
+//
+//  This function creates a linked list.  The ID
+//  that identifies the linked list is in
+//  "global_linked_list_grouping_id".
+
+void create_linked_list( )
+{
+    global_length_requested_for_next_text_item_storage = 30 ;
+    assign_storage_for_new_item( ) ;
+    global_linked_list_grouping_id = global_new_storage_text_item_id ;
+    global_text_pointer_end_for_item[ global_linked_list_grouping_id ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_linked_list_grouping_id ] ] = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function add_to_linked_list
+//
+//  This function adds a pointer to the end of a
+//  linked list.  The ID that identifies the
+//  linked list is in
+//  "global_linked_list_grouping_id".
+
+void add_to_linked_list( )
+{
+    if ( global_text_pointer_end_for_item[ global_linked_list_grouping_id ] >= global_text_pointer_allocation_end_for_item[ global_linked_list_grouping_id ] )
+    {
+        global_text_pointer_end_for_item[ global_linked_list_grouping_id ] = global_text_pointer_allocation_end_for_item[ global_linked_list_grouping_id ] ;
+        global_previous_linked_list_grouping_id = global_linked_list_grouping_id ;
+        create_linked_list( ) ;
+        global_storage_all_text[ global_text_pointer_end_for_item[ global_previous_linked_list_grouping_id ] ] = global_linked_list_grouping_id ;
+    }
+    global_text_pointer_end_for_item[ global_linked_list_grouping_id ] ++ ;
+    global_storage_all_text[ global_text_pointer_end_for_item[ global_linked_list_grouping_id ] ] = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function get_next_pointer_from_linked_list
 //
 //  This function gets the next text item ID from
@@ -4354,7 +4404,7 @@ void find_matching_phrase_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function add_new_hyphenated_phrase_name
+//  Function add_new_phrase_name
 //
 //  Adds the hyphenated phrase name in the
 //  "parsed_hyphenated_phrase_name" area.  This
@@ -4364,10 +4414,27 @@ void find_matching_phrase_name( )
 //  already used in other hyphenated phrase names.
 //
 
-void add_new_hyphenated_phrase_name( )
+void add_new_phrase_name( )
 {
 
 //  todo: write this code
+
+// -----------------------------------------------
+//  If any of the phrase words are not already
+//  listed, add them to the end of the linked list
+//  that lists other phrase words of the same
+//  length.
+
+
+// -----------------------------------------------
+//  Add the phrase name to the end of the linked
+//  list that lists other phrase names that have
+//  the same number of phrase words.
+
+
+
+// -----------------------------------------------
+//  End of add_new_phrase_name.
 
     return ;
 }
@@ -4386,7 +4453,7 @@ void convert_into_category_list_of_integers( )
     global_count_of_words_handled = 0 ;
     global_text_item_id_for_integers_as_text = global_text_item_id_from_origin ;
     global_length_requested_for_next_text_item_storage = 2 ;
-    assign_storage_for_new_text_item( ) ;
+    assign_storage_for_new_item( ) ;
     global_text_item_id_for_list_of_integers = global_new_storage_text_item_id ;
     initialize_point_to_next_word_in_text_item( ) ;
     while ( 1 == 1 )
@@ -5025,6 +5092,19 @@ void replace_angle_bracketed_phrase_names( )
 //  End of replace_angle_bracketed_phrase_names.
 
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function handle_directives
+//
+//  Handle the "hyphen-here" and "one-space" and
+//  "no-space" directives.
+
+void handle_directives( )
+{
+
 }
 
 
