@@ -1835,11 +1835,14 @@ void do_main_initialization( )
 //  Create the text items for the Dashrep-defined
 //  phrase names.
 
-//  Reminder: put "space" and "no" and "one" and
-//  "hyphen" and "here" at the beginning of their
-//  linked lists because they are often
-//  encountered in "no-space" and "one-space" and
-//  "hyphen-here" directives.
+//  Reminder: put the following phrase words at
+//  the beginning of their linked lists because
+//  they are often encountered in directives:
+//  "hyphen"
+//  "here"
+//  "hyphen-here"
+//  "placeholder"
+//  "for"
 
     global_id_for_phrase_word_numeric = store_text_and_get_its_text_item_id( "numeric" ) ;
 
@@ -4172,6 +4175,44 @@ void get_next_pointer_from_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function add_new_phrase_name
+//
+//  Adds the hyphenated phrase name in the
+//  "parsed_hyphenated_phrase_name" area.  This
+//  function assumes the hyphenated phrase name
+//  does not match any existing hyphenated phrase
+//  name.  Do not duplicate any words that are
+//  already used in other hyphenated phrase names.
+//
+
+void add_new_phrase_name( )
+{
+
+//  todo: write this code
+
+// -----------------------------------------------
+//  If any of the phrase words are not already
+//  listed, add them to the end of the linked list
+//  that lists other phrase words of the same
+//  length.
+
+
+// -----------------------------------------------
+//  Add the phrase name to the end of the linked
+//  list that lists other phrase names that have
+//  the same number of phrase words.
+
+
+
+// -----------------------------------------------
+//  End of add_new_phrase_name.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function find_matching_phrase_word
 //
 //  Find the already-defined phrase word that
@@ -4399,44 +4440,6 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  End of function find_matching_phrase_name.
 
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function add_new_phrase_name
-//
-//  Adds the hyphenated phrase name in the
-//  "parsed_hyphenated_phrase_name" area.  This
-//  function assumes the hyphenated phrase name
-//  does not match any existing hyphenated phrase
-//  name.  Do not duplicate any words that are
-//  already used in other hyphenated phrase names.
-//
-
-void add_new_phrase_name( )
-{
-
-//  todo: write this code
-
-// -----------------------------------------------
-//  If any of the phrase words are not already
-//  listed, add them to the end of the linked list
-//  that lists other phrase words of the same
-//  length.
-
-
-// -----------------------------------------------
-//  Add the phrase name to the end of the linked
-//  list that lists other phrase names that have
-//  the same number of phrase words.
-
-
-
-// -----------------------------------------------
-//  End of add_new_phrase_name.
-
-    return ;
 }
 
 
@@ -4941,6 +4944,85 @@ void find_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function save_position_of_first_hyphen
+//
+//  This function saves the position at which the
+//  first hyphen in a phrase name is encountered.
+
+void save_position_of_first_hyphen( )
+{
+    global_pointer_to_first_hyphen = global_recent_character_position_for_character_number[ global_ascii_code_for_hyphen ] ;
+    global_text_item_id_containing_first_hyphen = global_current_target_text_item ;
+    global_character_pointer_within_text_item_for_first_hyphen = global_current_target_character_position ;
+    global_pointer_to_leading_delimiter = global_recent_position_of_any_delimiter ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_phrase_name_when_at_trailing_delimiter
+//
+//  This function points to the phrase words in a
+//  phrase name, based on the current position
+//  being at the first delimiter that follows a
+//  hyphen.  If the entire phrase name is not
+//  within a single text item or is not specified
+//  as a text item that contains a phrase name,
+//  the phrase name is placed into a text item
+//  that contains a phrase name.
+
+void get_phrase_name_when_at_trailing_delimiter( )
+{
+
+
+// -----------------------------------------------
+//  Calculate some distances using information
+//  that is already available.
+
+    length_of_first_phrase_word_minus_one = global_pointer_to_first_hyphen - global_pointer_to_leading_delimiter ;
+    distance_from_first_hyphen_to_trailing_delimiter = global_recent_position_of_any_delimiter - global_pointer_to_first_hyphen ;
+
+
+// -----------------------------------------------
+//  If the entire phrase name is
+//  not within the same text item as the delimiter
+//  that follows the phrase name, indicate an
+//  error for now, and later modify the code to
+//  handle such other cases.
+
+    if ( ( global_text_item_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > length_of_first_phrase_word_minus_one ) && ( ( length_of_first_phrase_word_minus_one + distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
+    {
+    	log_out << "phrase name not within single text item, so modify code to handle this kind of situation " << std::endl ;
+    	exit( EXIT_FAILURE ) ;
+    }
+
+
+// -----------------------------------------------
+//  If the phrase name is in a text item of the
+//  type that contains a hyphenated phrase name,
+//  indicate an error and the need to modify this
+//  code.
+
+    if ( global_text_category_for_item[ global_current_target_text_item ] == global_category_contains_hyphenated_phrase_name )
+    {
+    	log_out << "phrase name is in a special hyphenated text item, so modify code to handle this kind of situation " << std::endl ;
+    	exit( EXIT_FAILURE ) ;
+
+    }
+
+
+
+
+// -----------------------------------------------
+//  End of get_phrase_name_when_at_trailing_delimiter.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function replace_angle_bracketed_phrase_names
 //
 //  This function finds each occurance of a phrase
@@ -5070,6 +5152,8 @@ void replace_angle_bracketed_phrase_names( )
 //  Find the hyphenated phrase name.
 
 //  todo: write this code
+
+        find_matching_phrase_name( ) ;
 
 
 // -----------------------------------------------
