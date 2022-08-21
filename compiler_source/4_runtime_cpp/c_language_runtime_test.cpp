@@ -60,6 +60,42 @@ const int global_yes = 1 ;
 
 
 // -----------------------------------------------
+//  Declarations that need to be moved ...
+
+int global_previous_character ;
+int global_pointer_to_first_hyphen ;
+int global_linked_list_grouping_id ;
+int global_found_matching_phrase_name ;
+int global_linked_list_current_pointer ;
+int global_number_of_phrase_words_found ;
+int global_text_item_id_for_phrase_word ;
+int global_pointer_to_leading_delimiter ;
+int global_previous_linked_list_grouping_id ;
+int global_character_position_in_phrase_name ;
+int global_text_item_id_containing_first_hyphen ;
+int global_length_of_first_phrase_word_minus_one ;
+int global_target_stack_pointer_for_phrase_name_end ;
+int global_distance_from_first_hyphen_to_trailing_delimiter ;
+int global_character_pointer_within_text_item_for_first_hyphen ;
+
+int global_text_item_id_from_linked_list_number[ 2000 ] ;
+int global_text_item_id_for_phrase_word_number[ 32 ] ;
+int global_id_for_list_of_phrase_names_of_length[ 32 ] ;
+int global_character_pointer_begin_for_phrase_word_in_position[ 32 ] ;
+int global_character_pointer_end_for_phrase_word_in_position[ 32 ] ;
+
+
+// -----------------------------------------------
+//  Declare the character storage area.
+
+int global_initialize_character_at[ ] = {
+	0,  // unused
+	32,73,63,  //  reminder here
+	16,5,37,60,  //  reminder here too
+} ;
+
+
+// -----------------------------------------------
 //  Declare the text storage list.  It contains
 //  all the text characters, and all the text item
 //  ID pointers that point to either other text
@@ -624,7 +660,6 @@ int global_id_for_phrase_word_year ;
 int global_id_for_phrase_word_yes ;
 int global_id_for_phrase_word_zero ;
 int global_id_for_phrase_word_zoom ;
-int global_id_for_phrase_word_placeholder ;
 
 int global_message_trace__expand_phrases__endless_loop ;
 
@@ -4232,7 +4267,7 @@ void find_matching_phrase_word( )
 //  calculate its length minus one.
 
     global_character_pointer_begin_for_text_two = global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] ;
-    global_character_length_of_phrase_word_minus_one = global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] - global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ]
+    global_character_length_of_phrase_word_minus_one = global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] - global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] ;
 
 
 // -----------------------------------------------
@@ -5105,8 +5140,8 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  Calculate some distances using information
 //  that is already available.
 
-    length_of_first_phrase_word_minus_one = global_pointer_to_first_hyphen - global_pointer_to_leading_delimiter ;
-    distance_from_first_hyphen_to_trailing_delimiter = global_recent_position_of_any_delimiter - global_pointer_to_first_hyphen ;
+    global_length_of_first_phrase_word_minus_one = global_pointer_to_first_hyphen - global_pointer_to_leading_delimiter ;
+    global_distance_from_first_hyphen_to_trailing_delimiter = global_recent_position_of_any_delimiter - global_pointer_to_first_hyphen ;
 
 
 // -----------------------------------------------
@@ -5116,7 +5151,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  error for now, and later modify the code to
 //  handle such other cases.
 
-    if ( ( global_text_item_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > length_of_first_phrase_word_minus_one ) && ( ( length_of_first_phrase_word_minus_one + distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
+    if ( ( global_text_item_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > global_length_of_first_phrase_word_minus_one ) && ( ( global_length_of_first_phrase_word_minus_one + global_distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_text_pointer_end_for_item[ global_current_target_text_item ] - global_text_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
     {
     	log_out << "phrase name not within single text item, so modify code to handle this kind of situation " << std::endl ;
     	exit( EXIT_FAILURE ) ;
