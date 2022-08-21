@@ -669,15 +669,16 @@ int global_text_item_id_of_matching_phrase_name ;
 //  Array position counting starts at 1, not zero.
 
 const int global_maximum_words_in_hyphenated_phrase_name = 30 ;
-int global_word_count_parsed_hyphenated_phrase_name ;
-int global_parsed_hyphenated_phrase_name_pointer_begin_for_word[ 32 ] ;
-int global_parsed_hyphenated_phrase_name_pointer_end_for_word[ 32 ] ;
-int global_word_position_in_parsed_hyphenated_phrase_name ;
+const int global_maximum_number_of_parsed_phrase_words = 30 ;
+int global_position_begin_for_phrase_word_number[ 32 ] ;
 int global_id_for_list_of_phrase_words_of_length[ 32 ] ;
 int global_pointer_begin_for_phrase_word_number[ 32 ] ;
 int global_pointer_end_for_phrase_word_number[ 32 ] ;
-int global_id_for_list_of_phrase_words_of_current_length ;
-int global_phrase_word_length ;
+int global_count_of_words_in_phrase_name ;
+int global_phrase_word_number_to_check ;
+int global_character_length_of_phrase_word ;
+int global_character_length_of_phrase_word_minus_one ;
+int global_character_pointer_for_phrase_word_current ;
 
 
 // -----------------------------------------------
@@ -1031,11 +1032,6 @@ int global_position_of_close_angle_bracket_within_text_item ;
 int global_check_from_begin_or_check_from_end ;
 int global_check_from_begin ;
 int global_check_from_end ;
-int global_phrase_word_length_minus_one ;
-int global_character_pointer_for_phrase_word_current ;
-int global_count_of_words_in_phrase_name ;
-int global_count_of_words_in_searched_phrase_name ;
-int global_phrase_word_number_to_check ;
 
 
 // -----------------------------------------------
@@ -4236,7 +4232,7 @@ void find_matching_phrase_word( )
 //  calculate its length minus one.
 
     global_character_pointer_begin_for_text_two = global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] ;
-    global_phrase_word_length_minus_one = global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] - global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ]
+    global_character_length_of_phrase_word_minus_one = global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] - global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ]
 
 
 // -----------------------------------------------
@@ -4247,7 +4243,7 @@ void find_matching_phrase_word( )
 
 //  todo: initialize global_id_for_list_of_phrase_words_of_length[ ] to zeros before adding phrase words
 
-    if ( global_id_for_list_of_phrase_words_of_length[ global_phrase_word_length_minus_one + 1 ] == 0 )
+    if ( global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word_minus_one + 1 ] == 0 )
     {
     	global_text_item_id_for_phrase_word = 0 ;
         return ;
@@ -4268,7 +4264,7 @@ void find_matching_phrase_word( )
 //  todo: finish writing, and proofreading, this code
 
     global_text_item_id_for_phrase_word = 0 ;
-    global_linked_list_grouping_id = global_id_for_list_of_phrase_words_of_length[ global_phrase_word_length ] ;
+    global_linked_list_grouping_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
     global_linked_list_current_pointer = global_text_pointer_begin_for_item[ global_linked_list_grouping_id ] - 1 ;
     while ( 1 == 1 )
     {
@@ -4324,7 +4320,7 @@ void find_matching_phrase_word( )
 //  Function find_matching_phrase_name
 //
 //  Searches all the already-defined phrase
-//  names to find a match with the  phrase name
+//  names to find a match with the phrase name
 //  defined by the pointers in the 
 //  "parsed_hyphenated_phrase_name" area.
 //  Puts the text item ID of the matching
@@ -4342,39 +4338,150 @@ void find_matching_phrase_name( )
 
 
 // -----------------------------------------------
-//  Determine the number of phrase words within
-//  the phrase name.
+//  Initialization.
 
-//  todo: fix
+    global_number_of_phrase_words_found = 0 ;
 
-    global_count_of_words_in_phrase_name = 5 ;
+
+// -----------------------------------------------
+//  Point to the last character of the last word
+//  in the phrase name, then save this position.
+
+    global_direction_next_or_previous = global_direction_previous ;
+    get_next_or_previous_character_from_text_item( ) ;
+    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_phrase_name_end ;
+    copy_pointer_stack( ) ;
+
+
+// -----------------------------------------------
+//  Access the characters in the phrase name in
+//  reverse sequence.
+
+    global_direction_next_or_previous = global_direction_previous ;
+    global_count_of_words_in_phrase_name = 1 ;
+    global_previous_character = 0 ;
+    global_yes_or_no_character_is_delimiter = global_no ;
+    while ( global_yes_or_no_character_is_delimiter == global_yes )
+    {
+
+
+// -----------------------------------------------
+//  If a delimiter or the beginning of the text
+//  item is encountered, exit the loop because all
+//  the phrase words have been encountered.
+
+        get_next_or_previous_character_from_text_item( ) ;
+        if ( global_single_character_as_integer == 0 )
+        {
+            break ;
+        }
+        check_yes_or_no_character_is_delimiter( ) ;
+        if ( global_yes_or_no_character_is_delimiter == global_no )
+        {
+            break ;
+        }
+
+
+// -----------------------------------------------
+//  If the character is a hyphen, and the previous
+//  character was not also a hyphen, increment the
+//  count of phrase words, store the pointer that
+//  points to the beginning of this phrase word,
+//  and repeat the loop.
+//  Reminder:  The hyphens are not stored, so the
+//  end of the previous word is one less than the
+//  beginning of the next word.
+
+        if ( global_single_character_as_integer == global_ascii_code_for_hyphen )
+        {
+        	if ( global_single_character_as_integer == global_previous_character )
+        	{
+                continue ;
+            }
+        	global_count_of_words_in_phrase_name ++ ;
+
+// todo:  finish writing this code
+
+        	global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - global_count_of_words_in_phrase_name ] = global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] ;
+
+
+
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  Put the current character into the text item,
+//  compensating for getting the characters in
+//  reverse sequence.  Check for the phrase name
+//  exceeding the length allowed.
+//  Reminder:  The text item ID minus one refers
+//  to the preceeding text item.
+
+        global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] ++ ;
+        if ( global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] <= global_text_pointer_allocation_end_for_item[ global_text_item_id_for_phrase_name - 1 ] )
+        {
+        	log_out << "BUG: Phrase name exceeds allowed length." << std::endl ;
+        	exit ( EXIT_FAILURE ) ;
+        }
+        global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] ] = global_single_character_as_integer ;
+
+        
+// -----------------------------------------------
+//  Save a copy of the current character, then
+//  repeat the loop to handle the "next"
+//  (backwards-direction) character in the phrase
+//  name.
+
+        global_previous_character = global_single_character_as_integer ;
+    }
+
+
+// -----------------------------------------------
+//  Point to the first character in the phrase
+//  name, and leave the target pointer stack
+//  pointing to this character.
+
+    global_direction_next_or_previous = global_direction_next ;
+    get_next_or_previous_character_from_text_item( ) ;
 
 
 // -----------------------------------------------
 //  Find each phrase word in the list of
-//  already-defined phrase words.  Also count how
+//  already-defined phrase words, and get its
+//  text item ID number.  Also count how
 //  many were found.
+//
+//  Reminder:  When using the array
+//  "global_position_begin_for_phrase_word_number",
+//  the index numbers are offset such that the
+//  last phrase word is indexed as one minus
+//  "global_maximum_number_of_parsed_phrase_words".
 
     global_number_of_phrase_words_found = 0 ;
     for ( global_phrase_word_number_to_check = 1 ; global_phrase_word_number_to_check <= global_count_of_words_in_phrase_name ; global_phrase_word_number_to_check ++ )
     {
 
-//  todo: finish writing this code
+//  todo: proofread this code
 
+        global_character_position_in_phrase_name = 
+        global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - global_phrase_word_number_to_check ] ;
+        global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - ( global_phrase_word_number_to_check + 1 ) ] ;
         global_text_item_id_from_linked_list_number[ global_phrase_word_number_to_check ] = global_text_item_id_from_linked_list ;
-
         find_matching_phrase_word( ) ;
-
-        global_number_of_phrase_words_found ++ ;
-
+        global_text_item_id_for_phrase_word_number[ global_phrase_word_number_to_check ] = global_text_item_id_for_phrase_word ;
+        if ( global_text_item_id_for_phrase_word > 0 )
+        {
+        	global_number_of_phrase_words_found ++ ;
+        }
     }
 
 
 // -----------------------------------------------
 //  If not all the phrase words within the phrase
 //  name were found, indicate the phrase name
-//  cannot match with any already-defined phrase
-//  name, then return.
+//  cannot match any already-defined phrase name,
+//  then return.
 
     if ( global_number_of_phrase_words_found < global_count_of_words_in_phrase_name )
     {
@@ -4408,17 +4515,34 @@ void find_matching_phrase_name( )
 
 
 // -----------------------------------------------
+//  If there are no more phrase names in the list,
+//  return without a match.
+
+//  todo: finish
+
+        return ;
+
+
+// -----------------------------------------------
 //  Compare the text item ID numbers in the phrase
 //  name to match and the ID numbers in the phrase
 //  name being considered.  If any of the ID
 //  numbers do not match, continue the search.
 
-//  todo: finish writing this code
-
-        if ( global_text_item_id_of_matching_phrase_name != global_text_item_id_for_phrase_name )
-        {
-        	continue ;
-        }
+	    global_number_of_phrase_words_found = 0 ;
+	    for ( global_phrase_word_number_to_check = 1 ; global_phrase_word_number_to_check <= global_count_of_words_in_phrase_name ; global_phrase_word_number_to_check ++ )
+	    {
+	        global_text_item_id_for_phrase_word = global_storage_all_text[ global_text_pointer_begin_for_item[ global_text_item_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] ;
+	        if ( global_text_item_id_for_phrase_word_number[ global_phrase_word_number_to_check ] != global_text_item_id_for_phrase_word )
+	        {
+	        	break ;
+	        }
+	        global_number_of_phrase_words_found ++ ;
+	    }
+	    if ( global_number_of_phrase_words_found < global_count_of_words_in_phrase_name )
+	    {
+	    	continue ;
+	    }
 
 
 // -----------------------------------------------
@@ -4426,9 +4550,9 @@ void find_matching_phrase_name( )
 //  item ID of the matching phrase word as the
 //  pointer to the current phrase word.
 
-        global_yes_or_no_phrase_words_match = global_yes ;
+// todo: finish ...
 
-//  todo: continue writing this code
+        global_yes_or_no_phrase_words_match = global_yes ;
 
 
 // -----------------------------------------------
@@ -4440,6 +4564,7 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  End of function find_matching_phrase_name.
 
+    return ;
 }
 
 
