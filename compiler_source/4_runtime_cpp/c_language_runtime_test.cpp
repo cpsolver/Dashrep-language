@@ -40,9 +40,11 @@
 //  to use -- is not relevant to this low-level
 //  "utility" software.
 //
-//  Function-specific variables are avoided for
-//  functions that are used frequently.  The
-//  result is faster execution.
+//  In particular, local (function-specific)
+//  variables are avoided to yield faster
+//  execution.  (Pushing and poping local
+//  variables on and off the function stack wastes
+//  time.)
 
 
 // -----------------------------------------------
@@ -60,36 +62,14 @@ const int global_yes = 1 ;
 
 
 // -----------------------------------------------
-//  Declarations that need to be moved ...
-
-int global_previous_character ;
-int global_pointer_to_first_hyphen ;
-int global_linked_list_grouping_id ;
-int global_found_matching_phrase_name ;
-int global_linked_list_current_pointer ;
-int global_number_of_phrase_words_found ;
-int global_item_id_for_phrase_word ;
-int global_pointer_to_leading_delimiter ;
-int global_previous_linked_list_grouping_id ;
-int global_character_position_in_phrase_name ;
-int global_item_id_containing_first_hyphen ;
-int global_length_of_first_phrase_word_minus_one ;
-int global_target_stack_pointer_for_phrase_name_end ;
-int global_distance_from_first_hyphen_to_trailing_delimiter ;
-int global_character_pointer_within_text_item_for_first_hyphen ;
-
-int global_item_id_from_linked_list_number[ 2000 ] ;
-int global_item_id_for_phrase_word_number[ 32 ] ;
-int global_id_for_list_of_phrase_names_of_length[ 32 ] ;
-int global_character_pointer_begin_for_phrase_word_in_position[ 32 ] ;
-int global_character_pointer_end_for_phrase_word_in_position[ 32 ] ;
-
-
-// -----------------------------------------------
-//  Declare item "contains" categories.
+//  Declare "container" categories.
 //
 //  An item can contain any of the following
 //  categories.
+//
+//  * "list_of_item_ids"
+//    Pointers to other text items that are
+//    handled as "sub text items".
 //
 //  * "text_characters"
 //    Characters of any kind, with each character
@@ -97,10 +77,6 @@ int global_character_pointer_end_for_phrase_word_in_position[ 32 ] ;
 //    Unicode characters.  In particular,
 //    each integer can represent one
 //    Chinese character.
-//
-//  * "list_of_item_ids"
-//    Pointers to other text items that are
-//    handled as "sub text items".
 //
 //  * "phrase_word_pointers"
 //    A list of text item IDs that only point to
@@ -148,22 +124,19 @@ int global_character_pointer_end_for_phrase_word_in_position[ 32 ] ;
 //    type and the "float" data type.
 //
 //  A list can contain just one item.
-//
-//  These categories are stored in the array named
-//  global_category_for_item.
 
-int global_container_category ;
-const int global_category_contains_text_characters = 1 ;
-const int global_category_contains_list_of_item_ids = 2 ;
-const int global_category_contains_phrase_word_pointers = 3 ;
-const int global_category_contains_list_of_integers = 4 ;
-const int global_category_contains_pointers_to_decimal_numbers = 5 ;
+const int global_container_category_text_characters = 1 ;
+const int global_container_category_list_of_item_ids = 2 ;
+const int global_container_category_phrase_word_pointers = 3 ;
+const int global_container_category_list_of_integers = 4 ;
+const int global_container_category_pointers_to_decimal_numbers = 5 ;
 
 
 // -----------------------------------------------
-//  Declare the character storage area.  The
-//  characters are stored here as INTEGERS, not as
-//  bytes!
+//  The characters are stored as short INTEGERS,
+//  not as bytes!  If support for
+//  Chinese characters is needed, the "short int"
+//  data type can be changed to "int".
 
 short int global_all_characters[ 100000 ] ;
 
@@ -182,213 +155,378 @@ short int global_initialize_character_at[ ] = {
 
 
 // -----------------------------------------------
-//  Declare the pointers and integers storage
-//  area.  It contains all the pointers and all
-//  the integers.
-
-int global_all_pointers_integers[ 100000 ] ;
-
-
-// -----------------------------------------------
-//  Declare the pointers, lengths, and other
-//  information that is needed for each text item.
+//  Declare the other lists for which initial
+//  values are supplied.
+//  Also declare the constants that should be used
+//  to ensure there are no attempts to write (or
+//  read) beyond the list lengths.
 //
-//  If the "begin" text pointer is incremented and
-//  there is a need to later move it back to the
-//  original beginning, simply point to the prior
-//  item of the same kind and get the
-//  "allocation_end" pointer and add one.
+//  The allocated length must be longer than the
+//  maximum length because position zero is not
+//  used.  All these lists use contents starting
+//  at array position 1.
 
 const int global_length_of_lists_for_items = 20000 ;
-
-int global_text_pointer_allocation_end_for_item[ 20005 ] ;
+int global_all_pointers_integers[ 20005 ] ;
+int global_category_for_item[ 20005 ] ;
 int global_pointer_begin_for_item[ 20005 ] ;
 int global_pointer_end_for_item[ 20005 ] ;
-int global_category_for_item[ 20005 ] ;
+int global_text_pointer_allocation_end_for_item[ 20005 ] ;
+int global_id_for_defined_phrase_name_number[ 20005 ] ;
 int global_id_of_item_containing_definition_for_item[ 20005 ] ;
 
+const int global_maximum_words_in_phrase_name = 30 ;
+int global_id_for_list_of_phrase_names_of_length[ 32 ] ;
+int global_id_for_list_of_phrase_words_of_length[ 32 ] ;
+
+const int global_minimum_usage_character_to_consider = 32 ;
+const int global_maximum_usage_character_to_consider = 125 ;
+const int global_length_of_list_of_character_numbers = 256 ;
+int global_character_category_number_for_character_number[ 260 ] ;
+
+int global_id_from_linked_list_number[ 2005 ] ;
+
 
 // -----------------------------------------------
-//  Declare how much of the text storage area is
-//  used for file input and output (each).  And
-//  declare the default size of a text item when
-//  the full needed size is unknown.
+//  Declare integer lists.
 
+int global_character_pointer_begin_for_phrase_word_in_position[ 32 ] ;
+int global_character_pointer_end_for_phrase_word_in_position[ 32 ] ;
+int global_pointer_begin_for_phrase_word_number[ 32 ] ;
+int global_position_begin_for_phrase_word_number[ 32 ] ;
+
+//  avoid conflict with variable name "global_id_for_phrase_word_number"
+int global_id_for_phrase_word_at_position_number[ 32 ] ;
+
+
+// -----------------------------------------------
+//  Declare "char" variables, and a C++ "string"
+//  variable.  These are used for input from, and
+//  output to, files.
+
+char global_c_format_string[ 50 ] ;
+char global_c_format_single_character ;
+char global_this_word[ 205 ] ;
+std::string global_cplusplus_string ;
+
+
+// -----------------------------------------------
+//  Declare the list and variables that hold
+//  decimal numbers.
+
+float global_all_decimal_numbers[ 2005 ] ;
+float global_single_decimal_number ;
+// const float global_pi = ?? ;
+
+
+// -----------------------------------------------
+//  Declare constants.
+
+const int gloal_maximum_number_of_text_items_unicode_no_delimiters = 2000 ;
 const int global_allocated_length_for_file_input_or_output = 2000 ;
+const int global_allocated_length_for_this_word = 200 ;
+const int global_ascii_code_for_ampersand = 38 ;
+const int global_ascii_code_for_apostrophe = 39 ;
+const int global_ascii_code_for_asterisk = 42 ;
+const int global_ascii_code_for_at_sign = 64 ;
+const int global_ascii_code_for_backslash = 92 ;
+const int global_ascii_code_for_caret = 94 ;
+const int global_ascii_code_for_carriage_return = 13 ;
+const int global_ascii_code_for_close_angle_bracket = 62 ;
+const int global_ascii_code_for_comma = 44 ;
+const int global_ascii_code_for_digit_0 = 48 ;
+const int global_ascii_code_for_digit_1 = 49 ;
+const int global_ascii_code_for_digit_2 = 50 ;
+const int global_ascii_code_for_digit_3 = 51 ;
+const int global_ascii_code_for_digit_4 = 52 ;
+const int global_ascii_code_for_digit_5 = 53 ;
+const int global_ascii_code_for_digit_6 = 54 ;
+const int global_ascii_code_for_digit_7 = 55 ;
+const int global_ascii_code_for_digit_8 = 56 ;
+const int global_ascii_code_for_digit_9 = 57 ;
+const int global_ascii_code_for_exclamation_point = 33 ;
+const int global_ascii_code_for_formfeed = 12 ;
+const int global_ascii_code_for_grave_accent = 96 ;
+const int global_ascii_code_for_hyphen = 45 ;
+const int global_ascii_code_for_left_curly_bracket = 123 ;
+const int global_ascii_code_for_left_parenthesis = 40 ;
+const int global_ascii_code_for_left_square_bracket = 91 ;
+const int global_ascii_code_for_letter_a = 65 ;
+const int global_ascii_code_for_letter_b = 66 ;
+const int global_ascii_code_for_letter_c = 67 ;
+const int global_ascii_code_for_letter_e = 69 ;
+const int global_ascii_code_for_letter_f = 70 ;
+const int global_ascii_code_for_letter_i = 73 ;
+const int global_ascii_code_for_letter_p = 80 ;
+const int global_ascii_code_for_letter_r = 82 ;
+const int global_ascii_code_for_letter_s = 83 ;
+const int global_ascii_code_for_letter_t = 84 ;
+const int global_ascii_code_for_letter_u = 85 ;
+const int global_ascii_code_for_letter_y = 89 ;
+const int global_ascii_code_for_newline = 10 ;
+const int global_ascii_code_for_open_angle_bracket = 60 ;
+const int global_ascii_code_for_percent = 37 ;
+const int global_ascii_code_for_period = 46 ;
+const int global_ascii_code_for_plus = 43 ;
+const int global_ascii_code_for_pound_sign = 35 ;
+const int global_ascii_code_for_question_mark = 63 ;
+const int global_ascii_code_for_quotation_mark = 34 ;
+const int global_ascii_code_for_right_curly_bracket = 125 ;
+const int global_ascii_code_for_right_parenthesis = 41 ;
+const int global_ascii_code_for_right_square_bracket = 93 ;
+const int global_ascii_code_for_slash = 47 ;
+const int global_ascii_code_for_space = 32 ;
+const int global_ascii_code_for_tab = 9 ;
+const int global_ascii_code_for_tilde = 126 ;
+const int global_ascii_code_for_underscore = 95 ;
+const int global_ascii_code_for_vertical_bar = 124 ;
+const int global_character_category_apostrophe = 39 ;  // also single quotation mark
+const int global_character_category_backslash = 92 ;
+const int global_character_category_close_angle_bracket = 62 ;
+const int global_character_category_digit = 57 ;  // 0 through 9
+const int global_character_category_empty = 0 ;
+const int global_character_category_hyphen = 45 ;  // also used as minus sign
+const int global_character_category_newline = 10 ;
+const int global_character_category_open_angle_bracket = 60 ;
+const int global_character_category_other = 1 ;
+const int global_character_category_period = 46 ;  // also used as decimal point
+const int global_character_category_plus_sign = 43 ;
+const int global_character_category_quotation_mark = 34 ;  // double quotation mark
+const int global_character_category_slash = 47 ;
+const int global_character_category_space = 32 ;
+const int global_character_category_symbol = 3 ;
+const int global_character_category_tab = 9 ;
+const int global_character_category_underscore = 95 ;
 const int global_default_length_for_text_item = 25 ;
+const int global_direction_next = 1 ;
+const int global_direction_previous = 2 ;
+const int global_insertion_character_hyphen = 3 ;
+const int global_insertion_character_none = 1 ;
+const int global_insertion_character_space = 2 ;
+const int global_offset_for_current_target_character_position = 5 ;
+const int global_offset_for_current_target_text_item = 4 ;
+const int global_offset_for_target_stack_item_bottom = 0 ;
+const int global_offset_for_target_stack_item_next = 3 ;
+const int global_offset_for_target_stack_item_prior = 2 ;
+const int global_offset_for_target_stack_item_top = 1 ;
+const int global_space_directive_none = 1 ;
+const int global_space_directive_one = 2 ;
+const int global_space_directive_one_requested = 3 ;
 
 
 // -----------------------------------------------
-//  Declare variables that keep track of the next
-//  available text item ID number, and the
-//  beginning location for storing each new text
-//  item, and the length of the storage allocated.
+//  Declare variables in alphabetical order.
 
-int global_next_available_item_id ;
-int global_next_available_begin_pointer_for_next_available_item_id ;
-int global_length_requested_for_next_text_item_storage ;
-
-int global_id_pointer_stack_for_getting_next_character ;
-
-
-// -----------------------------------------------
-//  Declare global variables that hold text item
-//  ID numbers.
-
-int global_new_storage_item_id ;
-int global_item_id ;
-int global_item_id_saved ;
-int global_item_id_from_origin ;
-int global_item_id_to_edit ;
-int global_item_id_to_truncate ;
-int global_item_id_to_find ;
-int global_item_id_to_search ;
-int global_item_id_for_copy ;
-int global_item_id_for_file_input ;
-int global_item_id_for_file_output ;
-int global_item_id_for_valid_filename ;
-int global_item_id_for_valid_folder_name ;
-int global_item_id_for_number_as_text ;
-int global_item_id_for_float_as_text ;
-int global_item_id_for_integers_as_text ;
-int global_item_id_for_list_of_integers ;
-int global_item_id_for_pointer_begin_end ;
-int global_item_id_for_next_word ;
-int global_item_id_for_next_word_begin ;
-int global_item_id_for_next_word_end ;
-int global_item_id_last_predefined ;
-int global_item_id_from_linked_list ;
-int global_item_id_for_phrase_name ;
-
-int global_text_item_with_next_character ;
-int global_text_item_with_previous_character ;
-int global_text_item_one ;
-int global_text_item_two ;
-
-int global_item_id_for_single_space ;
-int global_item_id_for_single_hyphen ;
-int global_item_id_for_single_underscore ;
-int global_item_id_for_single_newline ;
-int global_item_id_for_single_carriage_return ;
-int global_item_id_for_single_open_angle_bracket ;
-int global_item_id_for_single_close_angle_bracket ;
-int global_item_id_for_single_slash ;
-int global_item_id_for_single_backslash ;
-int global_item_id_for_single_plus ;
-int global_item_id_for_single_period ;
-int global_item_id_for_single_apostrophe ;
-int global_item_id_for_single_quotation_mark ;
-int global_item_id_for_single_tab ;
-int global_item_id_for_single_formfeed ;
-int global_item_id_for_empty_text ;
-int global_item_id_for_non_breaking_space ;
-int global_item_id_for_four_hyphens ;
-
-int global_item_id_for_word_character ;
-int global_item_id_for_word_space ;
-int global_item_id_for_word_hyphen ;
-int global_item_id_for_word_hyphens ;
-int global_item_id_for_word_newline ;
-int global_item_id_for_word_four ;
-int global_item_id_for_word_non ;
-int global_item_id_for_word_breaking ;
-int global_item_id_for_word_tab ;
-int global_item_id_for_word_empty ;
-int global_item_id_for_word_text ;
-int global_item_id_for_word_underscore ;
-
-int global_id_for_phrase_name_hyphen_here ;
-int global_id_for_phrase_name_character_hyphen ;
-int global_id_for_phrase_name_four_hyphens ;
-int global_id_for_phrase_name_no_space ;
-int global_id_for_phrase_name_empty_text ;
-int global_id_for_phrase_name_one_space ;
-int global_id_for_phrase_name_character_space ;
-int global_id_for_phrase_name_non_breaking_space ;
-int global_id_for_phrase_name_new_line ;
-int global_id_for_phrase_name_empty_line ;
-int global_id_for_phrase_name_line_break ;
-int global_id_for_phrase_name_character_newline ;
-int global_id_for_phrase_name_character_tab ;
-int global_id_for_phrase_name_character_underscore ;
-int global_id_for_phrase_name_expand_text ;
-int global_id_for_phrase_name_standard_output ;
-int global_id_for_phrase_name_copy_text ;
-int global_id_for_phrase_name_append_text ;
-int global_id_for_phrase_name_append_text_no_space ;
+int global_character_begin_pointer_one ;
+int global_character_begin_pointer_two ;
+int global_character_category ;
+int global_character_count ;
+int global_character_count_for_expand_text ;
+int global_character_distance_from_optimum_character_for_pause ;
+int global_character_end_pointer_one ;
+int global_character_end_pointer_two ;
+int global_character_length ;
+int global_character_length_minus_one ;
+int global_character_length_of_phrase_word ;
+int global_character_length_of_phrase_word_minus_one ;
+int global_character_offset ;
+int global_character_pointer ;
+int global_character_pointer_begin_for_text_one ;
+int global_character_pointer_begin_for_text_two ;
+int global_character_pointer_for_phrase_word_current ;
+int global_character_pointer_for_text_item ;
+int global_character_pointer_if_category_pointer_pair ;
+int global_character_pointer_one ;
+int global_character_pointer_two ;
+int global_character_pointer_within_text_item_for_first_hyphen ;
+int global_character_position_in_phrase_name ;
+int global_character_to_insert_between_subitems ;
+int global_check_for_match_item_id ;
+int global_check_from_begin ;
+int global_check_from_begin_or_check_from_end ;
+int global_check_from_end ;
+int global_container_category ;
+int global_count_of_words_handled ;
+int global_count_of_words_in_phrase_name ;
+int global_current_target_character_position ;
+int global_current_target_text_item ;
+int global_current_target_text_item_begin ;
+int global_current_target_text_item_end ;
+int global_decimal_number_divisor ;
+int global_defined_phrase_number ;
+int global_direction_next_or_previous ;
+int global_direction_opposite ;
+int global_distance_between_item_begin_and_end ;
+int global_distance_from_first_hyphen_to_trailing_delimiter ;
+int global_do_nothing ;
+int global_found_matching_phrase_name ;
+int global_from_text_contains_category ;
+int global_highest_score_for_optimum_character_for_find_pause ;
+int global_id_for_copy_of_target_pointer_stack ;
+int global_id_for_original_of_target_pointer_stack ;
+int global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int global_id_for_phrase_name_append_new_line ;
 int global_id_for_phrase_name_append_repeatedly_using_count ;
-int global_id_for_phrase_name_prepend_text ;
-int global_id_for_phrase_name_prepend_text_no_space ;
-int global_id_for_phrase_name_put_into_phrase ;
-int global_id_for_phrase_name_get_phrase_name_from_phrase ;
-int global_id_for_phrase_name_get_cgi_information ;
-int global_id_for_phrase_name_get_definitions_from_phrase ;
-int global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase ;
-int global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern ;
-int global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
-int global_id_for_phrase_name_clear_phrase ;
+int global_id_for_phrase_name_append_text ;
+int global_id_for_phrase_name_append_text_no_space ;
+int global_id_for_phrase_name_character_hyphen ;
+int global_id_for_phrase_name_character_newline ;
+int global_id_for_phrase_name_character_space ;
+int global_id_for_phrase_name_character_tab ;
+int global_id_for_phrase_name_character_underscore ;
 int global_id_for_phrase_name_clear_listed_phrases ;
-int global_id_for_phrase_name_delete_listed_phrases ;
-int global_id_for_phrase_name_if_yes_begin ;
-int global_id_for_phrase_name_if_no_begin ;
-int global_id_for_phrase_name_if_else ;
-int global_id_for_phrase_name_if_end ;
-int global_id_for_phrase_name_yes_or_no_empty_phrase ;
-int global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions ;
-int global_id_for_phrase_name_yes_or_no_same_two_words ;
-int global_id_for_phrase_name_yes_or_no_opposite ;
-int global_id_for_phrase_name_yes_if_all_yes ;
-int global_id_for_phrase_name_yes_if_any_yes ;
-int global_id_for_phrase_name_no_if_any_no ;
-int global_id_for_phrase_name_yes_if_not_no ;
-int global_id_for_phrase_name_no_if_not_yes ;
-int global_id_for_phrase_name_use_handler_with_each_word_in_phrase ;
-int global_id_for_phrase_name_word_to_use_in_handler ;
-int global_id_for_phrase_name_get_count_of_words ;
-int global_id_for_phrase_name_get_word_at_position ;
-int global_id_for_phrase_name_get_position_of_word ;
+int global_id_for_phrase_name_clear_phrase ;
+int global_id_for_phrase_name_convert_unicode_to_html_entities ;
+int global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags ;
+int global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags ;
+int global_id_for_phrase_name_copy_and_replace ;
+int global_id_for_phrase_name_copy_and_replace_using_paired_listed_words ;
+int global_id_for_phrase_name_copy_append_file_to_file ;
+int global_id_for_phrase_name_copy_characters_from_position_to_position ;
+int global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists ;
+int global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases ;
+int global_id_for_phrase_name_copy_from_file_to_phrase ;
+int global_id_for_phrase_name_copy_from_phrase_append_to_file ;
+int global_id_for_phrase_name_copy_initial_caps ;
+int global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern ;
+int global_id_for_phrase_name_copy_lowercase_only ;
+int global_id_for_phrase_name_copy_text ;
+int global_id_for_phrase_name_copy_uppercase_only ;
+int global_id_for_phrase_name_copy_without_extra_spaces ;
 int global_id_for_phrase_name_copy_word_at_position ;
-int global_id_for_phrase_name_copy_words_from_position_to_position ;
-int global_id_for_phrase_name_copy_words_offset_skip ;
 int global_id_for_phrase_name_copy_words_found_in_both_lists ;
 int global_id_for_phrase_name_copy_words_found_in_either_list ;
 int global_id_for_phrase_name_copy_words_found_only_in_first_list ;
-int global_id_for_phrase_name_copy_words_that_begin_with_text ;
-int global_id_for_phrase_name_copy_words_that_begin_with_listed_words ;
-int global_id_for_phrase_name_copy_words_that_contain_listed_words ;
-int global_id_for_phrase_name_copy_words_unique_only ;
-int global_id_for_phrase_name_list_of_unique_word_counts ;
-int global_id_for_phrase_name_list_of_pointers_to_unique_words ;
+int global_id_for_phrase_name_copy_words_from_position_to_position ;
+int global_id_for_phrase_name_copy_words_offset_skip ;
 int global_id_for_phrase_name_copy_words_order_reversed ;
-int global_id_for_phrase_name_copy_words_sort_numeric ;
+int global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic ;
 int global_id_for_phrase_name_copy_words_rearrange_using_order_sort_numeric ;
 int global_id_for_phrase_name_copy_words_sort_alphabetic ;
-int global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic ;
-int global_id_for_phrase_name_generate_counts_from_integer_to_integer ;
-int global_id_for_phrase_name_generate_every_pairwise_combination_of_words ;
-int global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words ;
-int global_id_for_phrase_name_generate_list_of_all_dashrep_phrases ;
-int global_id_for_phrase_name_get_count_of_characters ;
-int global_id_for_phrase_name_get_characters_from_position_to_position ;
-int global_id_for_phrase_name_copy_characters_from_position_to_position ;
-int global_id_for_phrase_name_copy_without_extra_spaces ;
-int global_id_for_phrase_name_copy_lowercase_only ;
-int global_id_for_phrase_name_copy_uppercase_only ;
-int global_id_for_phrase_name_copy_initial_caps ;
+int global_id_for_phrase_name_copy_words_sort_numeric ;
+int global_id_for_phrase_name_copy_words_that_begin_with_listed_words ;
+int global_id_for_phrase_name_copy_words_that_begin_with_text ;
+int global_id_for_phrase_name_copy_words_that_contain_listed_words ;
+int global_id_for_phrase_name_copy_words_unique_only ;
 int global_id_for_phrase_name_copy_zero_pad_left_to_length ;
-int global_id_for_phrase_name_encode_as_cgi_parameter ;
+int global_id_for_phrase_name_create_empty_sub_folder ;
+int global_id_for_phrase_name_dashrep_comments_ignored ;
+int global_id_for_phrase_name_dashrep_endless_loop_counter_limit ;
+int global_id_for_phrase_name_dashrep_file_name_if_read_file_missing ;
+int global_id_for_phrase_name_dashrep_gather_tag_begin ;
+int global_id_for_phrase_name_dashrep_gather_tag_delete ;
+int global_id_for_phrase_name_dashrep_gather_tag_end ;
+int global_id_for_phrase_name_dashrep_gather_tag_matching_id ;
+int global_id_for_phrase_name_dashrep_gather_tag_unique ;
+int global_id_for_phrase_name_dashrep_language_yes ;
+int global_id_for_phrase_name_dashrep_path_prefix_for_file_reading ;
+int global_id_for_phrase_name_dashrep_path_prefix_for_file_writing ;
+int global_id_for_phrase_name_dashrep_time_limit ;
+int global_id_for_phrase_name_dashrep_version ;
 int global_id_for_phrase_name_decode_from_cgi_parameter ;
-int global_id_for_phrase_name_convert_unicode_to_html_entities ;
-int global_id_for_phrase_name_get_position_of_matching_text ;
-int global_id_for_phrase_name_copy_and_replace ;
-int global_id_for_phrase_name_copy_and_replace_using_paired_listed_words ;
-int global_id_for_phrase_name_generate_positions_of_listed_words ;
+int global_id_for_phrase_name_delayed_newline ;
+int global_id_for_phrase_name_delayed_nospace ;
+int global_id_for_phrase_name_delete_file ;
+int global_id_for_phrase_name_delete_listed_phrases ;
+int global_id_for_phrase_name_empty_line ;
+int global_id_for_phrase_name_empty_text ;
+int global_id_for_phrase_name_encode_as_cgi_parameter ;
+int global_id_for_phrase_name_end_of_line_indicator ;
+int global_id_for_phrase_name_exit_from_dashrep ;
+int global_id_for_phrase_name_expand_text ;
+int global_id_for_phrase_name_find_line_in_file_that_begins_with_text ;
+int global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word ;
+int global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed ;
+int global_id_for_phrase_name_four_hyphens ;
+int global_id_for_phrase_name_gather_from_tagged_file_one_entry ;
+int global_id_for_phrase_name_gather_tagged_info_from_file ;
+int global_id_for_phrase_name_generate_counts_from_integer_to_integer ;
+int global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words ;
+int global_id_for_phrase_name_generate_every_pairwise_combination_of_words ;
+int global_id_for_phrase_name_generate_list_of_all_dashrep_phrases ;
+int global_id_for_phrase_name_generate_list_of_files_in_current_read_directory ;
+int global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory ;
+int global_id_for_phrase_name_generate_phrase_usage_counts ;
 int global_id_for_phrase_name_generate_positions_of_delimiter ;
 int global_id_for_phrase_name_generate_positions_of_first_matching_delimiter_after_listed_positions ;
+int global_id_for_phrase_name_generate_positions_of_listed_words ;
+int global_id_for_phrase_name_get_cgi_information ;
+int global_id_for_phrase_name_get_characters_from_position_to_position ;
+int global_id_for_phrase_name_get_count_of_characters ;
+int global_id_for_phrase_name_get_count_of_words ;
 int global_id_for_phrase_name_get_current_time_in_epoch_seconds ;
+int global_id_for_phrase_name_get_definitions_from_phrase ;
+int global_id_for_phrase_name_get_phrase_name_from_phrase ;
+int global_id_for_phrase_name_get_position_of_matching_text ;
+int global_id_for_phrase_name_get_position_of_word ;
+int global_id_for_phrase_name_get_url_resource ;
+int global_id_for_phrase_name_get_word_at_position ;
+int global_id_for_phrase_name_hyphen_here ;
+int global_id_for_phrase_name_if_else ;
+int global_id_for_phrase_name_if_end ;
+int global_id_for_phrase_name_if_no_begin ;
+int global_id_for_phrase_name_if_yes_begin ;
+int global_id_for_phrase_name_line_break ;
+int global_id_for_phrase_name_linewise_input_line_count ;
+int global_id_for_phrase_name_linewise_input_line_from_file ;
+int global_id_for_phrase_name_linewise_read_from_file_and_use_handler ;
+int global_id_for_phrase_name_linewise_read_from_standard_input ;
+int global_id_for_phrase_name_list_of_pointers_to_unique_words ;
+int global_id_for_phrase_name_list_of_unique_word_counts ;
+int global_id_for_phrase_name_modification_time_of_file ;
+int global_id_for_phrase_name_new_line ;
+int global_id_for_phrase_name_no_if_any_no ;
+int global_id_for_phrase_name_no_if_not_yes ;
+int global_id_for_phrase_name_no_space ;
+int global_id_for_phrase_name_non_breaking_space ;
+int global_id_for_phrase_name_numeric_absolute ;
+int global_id_for_phrase_name_numeric_add ;
+int global_id_for_phrase_name_numeric_cosine ;
+int global_id_for_phrase_name_numeric_decrement ;
+int global_id_for_phrase_name_numeric_divide_by ;
+int global_id_for_phrase_name_numeric_equal_greater_less_compare ;
+int global_id_for_phrase_name_numeric_increment ;
+int global_id_for_phrase_name_numeric_integer ;
+int global_id_for_phrase_name_numeric_logarithm_base_10 ;
+int global_id_for_phrase_name_numeric_logarithm_base_e ;
+int global_id_for_phrase_name_numeric_map_tile_zoom ;
+int global_id_for_phrase_name_numeric_maximum ;
+int global_id_for_phrase_name_numeric_minimum ;
+int global_id_for_phrase_name_numeric_minus ;
+int global_id_for_phrase_name_numeric_multiply ;
+int global_id_for_phrase_name_numeric_odd_or_even ;
+int global_id_for_phrase_name_numeric_pi ;
+int global_id_for_phrase_name_numeric_sine ;
+int global_id_for_phrase_name_numeric_square_root ;
+int global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows ;
+int global_id_for_phrase_name_numeric_vector_absolutes ;
+int global_id_for_phrase_name_numeric_vector_add_number ;
+int global_id_for_phrase_name_numeric_vector_integers ;
+int global_id_for_phrase_name_numeric_vector_multiply_by_number ;
+int global_id_for_phrase_name_numeric_vectors_add ;
+int global_id_for_phrase_name_numeric_vectors_divide_by ;
+int global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances ;
+int global_id_for_phrase_name_numeric_vectors_multiply ;
+int global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude ;
+int global_id_for_phrase_name_one_space ;
+int global_id_for_phrase_name_operating_system_slash_or_backslash ;
+int global_id_for_phrase_name_output_trace_file_name ;
+int global_id_for_phrase_name_placeholder_for_empty_line ;
+int global_id_for_phrase_name_placeholder_for_hyphen_here ;
+int global_id_for_phrase_name_placeholder_for_new_line ;
+int global_id_for_phrase_name_prepend_text ;
+int global_id_for_phrase_name_prepend_text_no_space ;
+int global_id_for_phrase_name_put_into_phrase ;
+int global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase ;
+int global_id_for_phrase_name_rename_file ;
+int global_id_for_phrase_name_set_file_permission_private ;
+int global_id_for_phrase_name_set_file_permission_private_but_executable ;
+int global_id_for_phrase_name_set_file_permission_public_read ;
+int global_id_for_phrase_name_size_of_file ;
 int global_id_for_phrase_name_split_epoch_seconds_into_named_components ;
 int global_id_for_phrase_name_split_epoch_seconds_into_named_components_for_zero_meridian ;
+int global_id_for_phrase_name_standard_output ;
+int global_id_for_phrase_name_text_end_of_line_here_space_delimited ;
 int global_id_for_phrase_name_time_day_of_month ;
 int global_id_for_phrase_name_time_day_of_week ;
 int global_id_for_phrase_name_time_day_of_year ;
@@ -397,102 +535,29 @@ int global_id_for_phrase_name_time_minute ;
 int global_id_for_phrase_name_time_month_number ;
 int global_id_for_phrase_name_time_second ;
 int global_id_for_phrase_name_time_year ;
-int global_id_for_phrase_name_zero_or_nonzero ;
-int global_id_for_phrase_name_zero_one_multiple ;
-int global_id_for_phrase_name_numeric_equal_greater_less_compare ;
-int global_id_for_phrase_name_numeric_add ;
-int global_id_for_phrase_name_numeric_minus ;
-int global_id_for_phrase_name_numeric_multiply ;
-int global_id_for_phrase_name_numeric_divide_by ;
-int global_id_for_phrase_name_numeric_maximum ;
-int global_id_for_phrase_name_numeric_minimum ;
-int global_id_for_phrase_name_numeric_increment ;
-int global_id_for_phrase_name_numeric_decrement ;
-int global_id_for_phrase_name_numeric_integer ;
-int global_id_for_phrase_name_numeric_absolute ;
-int global_id_for_phrase_name_numeric_odd_or_even ;
-int global_id_for_phrase_name_numeric_square_root ;
-int global_id_for_phrase_name_numeric_sine ;
-int global_id_for_phrase_name_numeric_cosine ;
-int global_id_for_phrase_name_numeric_logarithm_base_e ;
-int global_id_for_phrase_name_numeric_logarithm_base_10 ;
-int global_id_for_phrase_name_numeric_pi ;
-int global_id_for_phrase_name_numeric_vector_add_number ;
-int global_id_for_phrase_name_numeric_vector_multiply_by_number ;
-int global_id_for_phrase_name_numeric_vectors_add ;
-int global_id_for_phrase_name_numeric_vectors_multiply ;
-int global_id_for_phrase_name_numeric_vectors_divide_by ;
-int global_id_for_phrase_name_numeric_vector_integers ;
-int global_id_for_phrase_name_numeric_vector_absolutes ;
-int global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances ;
-int global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows ;
-int global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude ;
-int global_id_for_phrase_name_numeric_map_tile_zoom ;
-int global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags ;
-int global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags ;
-int global_id_for_phrase_name_yes_or_no_permission_to_append_to_files ;
-int global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files ;
-int global_id_for_phrase_name_dashrep_path_prefix_for_file_reading ;
-int global_id_for_phrase_name_dashrep_path_prefix_for_file_writing ;
-int global_id_for_phrase_name_operating_system_slash_or_backslash ;
-int global_id_for_phrase_name_dashrep_file_name_if_read_file_missing ;
-int global_id_for_phrase_name_generate_list_of_files_in_current_read_directory ;
-int global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory ;
-int global_id_for_phrase_name_yes_or_no_file_exists ;
-int global_id_for_phrase_name_yes_or_no_folder_exists ;
-int global_id_for_phrase_name_size_of_file ;
-int global_id_for_phrase_name_modification_time_of_file ;
-int global_id_for_phrase_name_set_file_permission_public_read ;
-int global_id_for_phrase_name_set_file_permission_private ;
-int global_id_for_phrase_name_set_file_permission_private_but_executable ;
-int global_id_for_phrase_name_rename_file ;
-int global_id_for_phrase_name_delete_file ;
-int global_id_for_phrase_name_create_empty_sub_folder ;
-int global_id_for_phrase_name_copy_from_file_to_phrase ;
-int global_id_for_phrase_name_end_of_line_indicator ;
-int global_id_for_phrase_name_text_end_of_line_here_space_delimited ;
-int global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file ;
-int global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file ;
-int global_id_for_phrase_name_copy_from_phrase_append_to_file ;
-int global_id_for_phrase_name_copy_append_file_to_file ;
-int global_id_for_phrase_name_linewise_read_from_file_and_use_handler ;
-int global_id_for_phrase_name_linewise_input_line_from_file ;
-int global_id_for_phrase_name_linewise_input_line_count ;
-int global_id_for_phrase_name_linewise_read_from_standard_input ;
-int global_id_for_phrase_name_get_url_resource ;
 int global_id_for_phrase_name_trace_from_get_url_resource ;
-int global_id_for_phrase_name_find_line_in_file_that_begins_with_text ;
-int global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word ;
-int global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed ;
-int global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases ;
-int global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists ;
-int global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter ;
-int global_id_for_phrase_name_gather_tagged_info_from_file ;
-int global_id_for_phrase_name_gather_from_tagged_file_one_entry ;
-int global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file ;
-int global_id_for_phrase_name_dashrep_gather_tag_begin ;
-int global_id_for_phrase_name_dashrep_gather_tag_end ;
-int global_id_for_phrase_name_dashrep_gather_tag_unique ;
-int global_id_for_phrase_name_dashrep_gather_tag_delete ;
-int global_id_for_phrase_name_dashrep_gather_tag_matching_id ;
 int global_id_for_phrase_name_trace_show ;
 int global_id_for_phrase_name_trace_show_where ;
-int global_id_for_phrase_name_output_trace_file_name ;
-int global_id_for_phrase_name_dashrep_comments_ignored ;
-int global_id_for_phrase_name_generate_phrase_usage_counts ;
-int global_id_for_phrase_name_exit_from_dashrep ;
-int global_id_for_phrase_name_dashrep_language_yes ;
-int global_id_for_phrase_name_dashrep_version ;
-int global_id_for_phrase_name_delayed_nospace ;
-int global_id_for_phrase_name_delayed_newline ;
+int global_id_for_phrase_name_use_handler_with_each_word_in_phrase ;
+int global_id_for_phrase_name_word_to_use_in_handler ;
+int global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file ;
+int global_id_for_phrase_name_yes_if_all_yes ;
+int global_id_for_phrase_name_yes_if_any_yes ;
+int global_id_for_phrase_name_yes_if_not_no ;
+int global_id_for_phrase_name_yes_or_no_empty_phrase ;
+int global_id_for_phrase_name_yes_or_no_file_exists ;
+int global_id_for_phrase_name_yes_or_no_folder_exists ;
+int global_id_for_phrase_name_yes_or_no_opposite ;
 int global_id_for_phrase_name_yes_or_no_permission_administrator ;
-int global_id_for_phrase_name_dashrep_endless_loop_counter_limit ;
-int global_id_for_phrase_name_dashrep_time_limit ;
-
-int global_id_for_phrase_name_placeholder_for_hyphen_here ;
-int global_id_for_phrase_name_placeholder_for_new_line ;
-int global_id_for_phrase_name_placeholder_for_empty_line ;
-
+int global_id_for_phrase_name_yes_or_no_permission_to_append_to_files ;
+int global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files ;
+int global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions ;
+int global_id_for_phrase_name_yes_or_no_same_two_words ;
+int global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file ;
+int global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file ;
+int global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter ;
+int global_id_for_phrase_name_zero_one_multiple ;
+int global_id_for_phrase_name_zero_or_nonzero ;
 int global_id_for_phrase_word_10 ;
 int global_id_for_phrase_word_absolute ;
 int global_id_for_phrase_word_absolutes ;
@@ -744,421 +809,186 @@ int global_id_for_phrase_word_year ;
 int global_id_for_phrase_word_yes ;
 int global_id_for_phrase_word_zero ;
 int global_id_for_phrase_word_zoom ;
-
-int global_message_trace__expand_phrases__endless_loop ;
-
-
-// -----------------------------------------------
-//  Declare pointers that point to portions of the
-//  text items.  These first-in-last-out stacks
-//  are overwritten when a new action begins (if
-//  the action needs these pointers).
-
-int global_text_id_number_for_action_stack_position[ 2005 ] ;
-int global_position_in_text_item_for_action_stack_position[ 2005 ] ;
-int global_next_action_stack_position_for_action_stack_position[ 2005 ] ;
-
-
-// -----------------------------------------------
-//  Declare some text pointers.
-
-int global_text_pointer_begin ;
-int global_text_pointer_end ;
-
-
-// -----------------------------------------------
-//  Declare lists and variable that are used to
-//  store and search phrase names, and the phrase
-//  words they contain.
-
-const int global_maximum_number_of_hyphenated_phrase_names_in_text_items = 5000 ;
-int global_number_of_hyphenated_phrase_names_in_text_items ;
-int global_list_of_hyphenated_phrase_text_items[ 5005 ] ;
-int global_position_in_list_of_hyphenated_phrase_text_items ;
-int global_looking_at_hyphenated_phrase_name_in_item_id ;
-int global_item_id_of_matching_phrase_name ;
-
-
-
-
-// -----------------------------------------------
-//  Declare lists and pointers that are used with
-//  hyphenated phrase names and phrase words.
-//  Allow 30 words for the longest phrase name.
-//  Array position counting starts at 1, not zero.
-
-const int global_maximum_words_in_hyphenated_phrase_name = 30 ;
-const int global_maximum_number_of_parsed_phrase_words = 30 ;
-int global_position_begin_for_phrase_word_number[ 32 ] ;
-int global_id_for_list_of_phrase_words_of_length[ 32 ] ;
-int global_pointer_begin_for_phrase_word_number[ 32 ] ;
-int global_pointer_end_for_phrase_word_number[ 32 ] ;
-int global_count_of_words_in_phrase_name ;
-int global_phrase_word_number_to_check ;
-int global_character_length_of_phrase_word ;
-int global_character_length_of_phrase_word_minus_one ;
-int global_character_pointer_for_phrase_word_current ;
-
-
-// -----------------------------------------------
-//  Declare a "char" data type that is used to
-//  access a double-quoted text word in this code.
-
-const int global_allocated_length_for_this_word = 200 ;
-char global_this_word[ 205 ] ;
-
-
-// -----------------------------------------------
-//  Declare a pointer that is used to store
-//  C language text into global_all_pointers_integers.
-
-int global_next_character_position_in_storage_all_text ;
-
-
-// -----------------------------------------------
-//  Declare lists that are used to more quickly
-//  find matching defined phrase names.  Only the
-//  hyphenated phrases that are defined are
-//  stored here, not all hyphenated phrases.
-
-int global_id_for_defined_phrase_name_number[ 20000 ] ;
-int global_first_word_id_for_defined_phrase_name_number[ 20000 ] ;
-int global_last_word_id_for_defined_phrase_name_number[ 20000 ] ;
-
-
-// -----------------------------------------------
-//  Declare variables that point to the lists that
-//  contain information about defined phrase
-//  names.
-
-int global_defined_phrase_number ;
-int global_next_available_defined_phrase_number ;
-
-
-// -----------------------------------------------
-//  Declare variables that store "text contains"
-//  category values.
-
-int global_text_contains_category ;
-int global_to_text_contains_category ;
-int global_from_text_contains_category ;
-
-
-// -----------------------------------------------
-//  Declare a list of the sub-items of category
-//  "unicode_no_delimiters" that hold words used
-//  hyphenated phrases.
-
-int gloal_pointer_to_text_item_unicode_no_delimiters ;
-const int gloal_maximum_number_of_text_items_unicode_no_delimiters = 2000 ;
-int global_list_of_text_items_unicode_no_delimiters[ 2005 ] ;
-
-
-// -----------------------------------------------
-//  Declare character numbers, character pointers,
-//  and character counts.
-
-int global_single_character ;
-int global_next_character_number ;
-int global_line_character_position ;
-int global_character_pointer ;
-int global_character_pointer_for_text_item ;
-int global_character_count ;
-int global_character_count_for_expand_text ;
+int global_id_pointer_stack_for_getting_next_character ;
+int global_item_id ;
+int global_id_containing_first_hyphen ;
+int global_id_for_copy ;
+int global_id_for_empty_text ;
+int global_id_for_file_input ;
+int global_id_for_file_output ;
+int global_id_for_float_as_text ;
+int global_id_for_four_hyphens ;
+int global_id_for_integers_as_text ;
+int global_id_for_list_of_integers ;
+int global_id_for_next_word ;
+int global_id_for_next_word_begin ;
+int global_id_for_next_word_end ;
+int global_id_for_non_breaking_space ;
+int global_id_for_number_as_text ;
+int global_id_for_phrase_name ;
+int global_id_for_phrase_word ;
+int global_id_for_pointer_begin_end ;
+int global_id_for_sample_filename ;
+int global_id_for_sample_folder_name ;
+int global_id_for_sample_numbers ;
+int global_id_for_sample_text_to_expand ;
+int global_id_for_single_apostrophe ;
+int global_id_for_single_backslash ;
+int global_id_for_single_carriage_return ;
+int global_id_for_single_close_angle_bracket ;
+int global_id_for_single_formfeed ;
+int global_id_for_single_hyphen ;
+int global_id_for_single_newline ;
+int global_id_for_single_open_angle_bracket ;
+int global_id_for_single_period ;
+int global_id_for_single_plus ;
+int global_id_for_single_quotation_mark ;
+int global_id_for_single_slash ;
+int global_id_for_single_space ;
+int global_id_for_single_tab ;
+int global_id_for_single_underscore ;
+int global_id_for_valid_filename ;
+int global_id_for_valid_folder_name ;
+int global_id_for_word_breaking ;
+int global_id_for_word_character ;
+int global_id_for_word_empty ;
+int global_id_for_word_four ;
+int global_id_for_word_hyphen ;
+int global_id_for_word_hyphens ;
+int global_id_for_word_newline ;
+int global_id_for_word_non ;
+int global_id_for_word_space ;
+int global_id_for_word_tab ;
+int global_id_for_word_text ;
+int global_id_for_word_underscore ;
+int global_id_from_linked_list ;
+int global_id_from_origin ;
+int global_id_text_to_edit ;
+int global_id_text_to_find ;
+int global_id_text_to_search ;
+int global_id_text_to_truncate ;
+int global_length_of_first_phrase_word_minus_one ;
 int global_length_of_matching_text ;
-int global_character_pointer_if_category_pointer_pair ;
-int global_character_offset ;
-int global_character_length ;
-int global_character_length_minus_one ;
-int global_character_begin_pointer_one ;
-int global_character_end_pointer_one ;
-int global_character_begin_pointer_two ;
-int global_character_end_pointer_two ;
-
-
-// -----------------------------------------------
-//  Declare character categories, and a list that
-//  converts a character's ASCII code into one of
-//  these character categories.
-
-const int global_length_of_list_of_character_numbers = 256 ;
-
-int global_character_category_number_for_character_number[ 260 ] ;
-int global_character_category ;
-
-const int global_character_category_empty = 0 ;
-const int global_character_category_other = 1 ;
-const int global_character_category_hyphen = 2 ;  // also used as minus sign
-const int global_character_category_space = 3 ;
-const int global_character_category_underscore = 4 ;
-const int global_character_category_newline = 5 ;
-const int global_character_category_tab = 6 ;
-const int global_character_category_slash = 7 ;
-const int global_character_category_backslash = 8 ;
-const int global_character_category_open_angle_bracket = 9 ;
-const int global_character_category_close_angle_bracket = 10 ;
-const int global_character_category_quotation_mark = 11 ;  // double quotation mark
-const int global_character_category_apostrophe = 12 ;  // also single quotation mark
-const int global_character_category_period = 13 ;  // also used as decimal point
-const int global_character_category_plus_sign = 14 ;
-const int global_character_category_digit = 15 ;  // 0 through 9
-const int global_character_category_symbol = 16 ;
-
-
-// -----------------------------------------------
-//  Define some ASCII codes.
-
-const int global_ascii_code_for_tab = 9 ;
-const int global_ascii_code_for_newline = 10 ;
-const int global_ascii_code_for_formfeed = 12 ;
-const int global_ascii_code_for_carriage_return = 13 ;
-const int global_ascii_code_for_space = 32 ;
-const int global_ascii_code_for_quotation_mark = 34 ;
-const int global_ascii_code_for_apostrophe = 39 ;
-const int global_ascii_code_for_plus = 43 ;
-const int global_ascii_code_for_hyphen = 45 ;
-const int global_ascii_code_for_period = 46 ;
-const int global_ascii_code_for_slash = 47 ;
-const int global_ascii_code_for_digit_0 = 48 ;
-const int global_ascii_code_for_digit_1 = 49 ;
-const int global_ascii_code_for_digit_2 = 50 ;
-const int global_ascii_code_for_digit_3 = 51 ;
-const int global_ascii_code_for_digit_4 = 52 ;
-const int global_ascii_code_for_digit_5 = 53 ;
-const int global_ascii_code_for_digit_6 = 54 ;
-const int global_ascii_code_for_digit_7 = 55 ;
-const int global_ascii_code_for_digit_8 = 56 ;
-const int global_ascii_code_for_digit_9 = 57 ;
-const int global_ascii_code_for_open_angle_bracket = 60 ;
-const int global_ascii_code_for_close_angle_bracket = 62 ;
-const int global_ascii_code_for_underscore = 95 ;
-const int global_ascii_code_for_comma = 44 ;
-const int global_ascii_code_for_backslash = 92 ;
-const int global_ascii_code_for_left_square_bracket = 91 ;
-const int global_ascii_code_for_right_square_bracket = 93 ;
-const int global_ascii_code_for_left_parenthesis = 40 ;
-const int global_ascii_code_for_right_parenthesis = 41 ;
-const int global_ascii_code_for_ampersand = 38 ;
-const int global_ascii_code_for_asterisk = 42 ;
-const int global_ascii_code_for_pound_sign = 35 ;
-const int global_ascii_code_for_exclamation_point = 33 ;
-const int global_ascii_code_for_question_mark = 63 ;
-const int global_ascii_code_for_at_sign = 64 ;
-const int global_ascii_code_for_percent = 37 ;
-const int global_ascii_code_for_caret = 94 ;
-const int global_ascii_code_for_grave_accent = 96 ;
-const int global_ascii_code_for_left_curly_bracket = 123 ;
-const int global_ascii_code_for_right_curly_bracket = 125 ;
-const int global_ascii_code_for_vertical_bar = 124 ;
-const int global_ascii_code_for_tilde = 126 ;
-
-
-// -----------------------------------------------
-//  Define the ASCII codes for the letters that
-//  appear in the words "attribute" and "specify".
-
-const int global_ascii_code_for_letter_a = 65 ;
-const int global_ascii_code_for_letter_b = 66 ;
-const int global_ascii_code_for_letter_c = 67 ;
-const int global_ascii_code_for_letter_e = 69 ;
-const int global_ascii_code_for_letter_f = 70 ;
-const int global_ascii_code_for_letter_i = 73 ;
-const int global_ascii_code_for_letter_p = 80 ;
-const int global_ascii_code_for_letter_r = 82 ;
-const int global_ascii_code_for_letter_s = 83 ;
-const int global_ascii_code_for_letter_t = 84 ;
-const int global_ascii_code_for_letter_u = 85 ;
-const int global_ascii_code_for_letter_y = 89 ;
-
-
-// -----------------------------------------------
-//  Declare the variables that implement the
-//  "target pointer stack".  Each stack
-//  collectively points to a single character.
-//  Each stack level applies to one text item.
-//  The variable
-//  "global_target_stack_item_prior"
-//  is zero for the bottom stack level.  The
-//  variable
-//  "global_target_stack_item_next"
-//  is zero if there has not yet been any need to
-//  create a higher-level stack item.
-
-const int global_offset_for_target_stack_item_bottom = 0 ;
-int global_target_stack_item_bottom ;
-const int global_offset_for_target_stack_item_top = 1 ;
-int global_target_stack_item_top ;
-const int global_offset_for_target_stack_item_prior = 2 ;
-int global_target_stack_item_prior ;
-const int global_offset_for_target_stack_item_next = 3 ;
-int global_target_stack_item_next ;
-const int global_offset_for_current_target_text_item = 4 ;
-int global_current_target_text_item ;
-const int global_offset_for_current_target_character_position = 5 ;
-int global_current_target_character_position ;
+int global_length_of_text_to_find ;
+int global_length_requested_for_next_text_item_storage ;
+int global_line_character_position ;
+int global_linked_list_current_pointer ;
+int global_linked_list_grouping_id ;
+int global_looking_at_hyphenated_phrase_name_in_item_id ;
+int global_message_trace__expand_phrases__endless_loop ;
+int global_new_storage_item_id ;
+int global_next_available_begin_pointer_for_next_available_item_id ;
+int global_next_available_defined_phrase_number ;
+int global_next_available_item_id ;
+int global_next_character_number ;
+int global_next_character_position_count ;
+int global_next_character_position_in_storage_all_text ;
+int global_number_of_digits_encountered ;
+int global_number_of_hyphenated_phrase_names_in_text_items ;
+int global_number_of_phrase_words_found ;
+int global_number_of_valid_characters_encountered ;
+int global_one_number_to_append ;
+int global_optimum_character_for_find_pause ;
+int global_phrase_word_number_to_check ;
+int global_pointer_for_debugging ;
+int global_pointer_next_word_begin ;
+int global_pointer_next_word_end ;
+int global_pointer_to_first_hyphen ;
+int global_pointer_to_leading_delimiter ;
+int global_pointer_to_text_item_unicode_no_delimiters ;
 int global_pointer_to_within_target_stack_item_bottom ;
-int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_target_stack_item_current ;
 int global_pointer_to_within_target_stack_item_current_copy ;
 int global_pointer_to_within_target_stack_item_current_original ;
-int global_target_stack_item_top_original ;
+int global_pointer_to_within_target_stack_item_top ;
+int global_pointer_to_within_text_item ;
+int global_position_in_list_of_hyphenated_phrase_text_items ;
+int global_position_of_close_angle_bracket ;
+int global_position_of_close_angle_bracket_within_text_item ;
+int global_position_of_found_character_for_find_pause ;
+int global_position_of_open_angle_bracket ;
+int global_position_of_open_angle_bracket_within_text_item ;
+int global_position_of_optimum_character_for_pause ;
+int global_position_of_underscore ;
+int global_position_within_text_to_find ;
+int global_possible_optimum_character_as_integer ;
+int global_previous_character ;
+int global_previous_linked_list_grouping_id ;
+int global_recent_character_position_for_character_number[ 260 ] ;
+int global_recent_position_of_any_delimiter ;
+int global_response_ignored ;
+int global_saved_single_character_as_integer ;
+int global_score_for_possible_optimum_character ;
+int global_searched_usage_count_for_character[ 155 ] ;
+int global_single_character ;
+int global_single_character_as_integer ;
+int global_single_integer ;
+int global_space_available_in_text_item ;
+int global_target_stack_item_bottom ;
 int global_target_stack_item_current ;
-int global_target_stack_item_current_original ;
 int global_target_stack_item_current_copy ;
-int global_target_stack_pointer_for_get_next_previous_character ;
+int global_target_stack_item_current_original ;
+int global_target_stack_item_next ;
+int global_target_stack_item_prior ;
+int global_target_stack_item_top ;
+int global_target_stack_item_top_original ;
 int global_target_stack_pointer_for_copy_from ;
 int global_target_stack_pointer_for_copy_to ;
-int global_id_for_copy_of_target_pointer_stack ;
-int global_id_for_original_of_target_pointer_stack ;
+int global_target_stack_pointer_for_get_next_previous_character ;
+int global_target_stack_pointer_for_phrase_name_end ;
 int global_target_stack_pointer_for_word_begin ;
 int global_target_stack_pointer_for_word_end ;
-
-
-// -----------------------------------------------
-//  Declare lists, flags, counters, and other
-//  variables that are used when finding matching
-//  text, matching patterns, expanding text, and
-//  otherwise parsing text.
-
-int global_recent_character_position_for_character_number[ 260 ] ;
-int global_searched_usage_count_for_character[ 155 ] ;
-int global_usage_count_for_character[ 155 ] ;
-const int global_minimum_usage_character_to_consider = 32 ;
-const int global_maximum_usage_character_to_consider = 125 ;
-int global_yes_or_no_looking_for_word_attribute_or_specify ;
-int global_yes_or_no_character_is_delimiter ;
-int global_yes_or_no_delimiter_encountered ;
-int global_yes_or_no_use_copy_when_appending ;
-int global_yes_or_no_inserted_character ;
-int global_yes_or_no_transition_from_character_to_delimiter ;
-int global_yes_or_no_transition_from_delimiter_to_character ;
-int global_yes_or_no_begin_not_end ;
-int global_yes_or_no_matching_text ;
-int global_yes_or_no_phrase_words_match ;
-int global_direction_next_or_previous ;
-const int global_direction_next = 1 ;
-const int global_direction_previous = 2 ;
-int global_direction_opposite ;
-int global_length_of_text_to_find ;
-int global_position_within_text_to_find ;
-int global_optimum_character_for_find_pause ;
-int global_possible_optimum_character_as_integer ;
-int global_score_for_possible_optimum_character ;
-int global_highest_score_for_optimum_character_for_find_pause ;
-int global_position_of_found_character_for_find_pause ;
-int global_position_of_optimum_character_for_pause ;
-int global_recent_position_of_any_delimiter ;
-int global_character_distance_from_optimum_character_for_pause ;
-int global_position_of_underscore ;
-int global_position_of_open_angle_bracket ;
-int global_position_of_close_angle_bracket ;
-int global_position_of_open_angle_bracket_within_text_item ;
-int global_position_of_close_angle_bracket_within_text_item ;
-int global_check_from_begin_or_check_from_end ;
-int global_check_from_begin ;
-int global_check_from_end ;
-
-
-// -----------------------------------------------
-//  Declare a variable that tracks which kind of
-//  delimiter -- if any -- is inserted between
-//  sub text items.  Also declare its allowed
-//  values.
-
-int global_character_to_insert_between_subitems ;
-const int global_insertion_character_none = 1 ;
-const int global_insertion_character_space = 2 ;
-const int global_insertion_character_hyphen = 3 ;
-
-
-// -----------------------------------------------
-//  Declare a storage area for decimal numbers.
-//  These are used when the text items contain
-//  the category:
-//  global_category_contains_pointers_to_decimal_numbers
-//  In that case, those pointers point to
-//  positions in this list.
-
-float global_decimal_number_at_position[ 2000 ] ;
-
-
-// -----------------------------------------------
-//  Declare pointers to words.  The first items
-//  are compared to determine whether the text
-//  begins with a delimiter or a word.
-
-int global_character_pointer_to_word_number[ 20000 ] ;
-int global_character_pointer_to_delimiter_number[ 20000 ] ;
-
-
-// -----------------------------------------------
-//  Declare text items related to operands.
-
+int global_test_loop_counter ;
+int global_text_contains_category ;
 int global_text_item_for_operand_one ;
-int global_text_item_for_operand_two ;
 int global_text_item_for_operand_three ;
+int global_text_item_for_operand_two ;
+int global_text_item_intended_next_word_in_hyphenated_phrase ;
+int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
+int global_text_item_one ;
+int global_text_item_pointer ;
+int global_text_item_two ;
+int global_text_item_with_next_character ;
+int global_text_item_with_previous_character ;
+int global_text_pointer ;
+int global_text_pointer_begin ;
+int global_text_pointer_end ;
+int global_to_text_contains_category ;
+int global_unused_string_length ;
+int global_usage_count_for_character[ 155 ] ;
+int global_word_count_hyphenated_phrase_name ;
 int global_word_count_operand_one ;
 int global_word_count_operand_two ;
-
-
-// -----------------------------------------------
-//  Declare pointers to within a text item.
-
-int global_pointer_to_within_text_item ;
-int global_text_item_pointer ;
-int global_pointer_next_word_begin ;
-int global_pointer_next_word_end ;
-int global_next_character_position_count ;
-
-
-// -----------------------------------------------
-//  Declare other pointers and character counters.
-
 int global_word_position ;
-int global_space_available_in_text_item ;
-
-
-// -----------------------------------------------
-//  Declare some flags.
-
 int global_yes_or_no ;
-int global_yes_or_no_text_item_changeable ;
-int global_yes_or_no_reached_begin_of_current_text_item ;
-int global_yes_or_no_reached_end_of_current_text_item ;
-int global_yes_or_no_same_text ;
-int global_yes_or_no_same_phrase_name ;
-int global_yes_or_no_same_phrase_word ;
-int global_yes_or_no_requesting_space_appended ;
-int global_yes_or_no_negative_number ;
+int global_yes_or_no_begin_not_end ;
+int global_yes_or_no_character_is_delimiter ;
+int global_yes_or_no_count_phrase_usage ;
 int global_yes_or_no_decimal_number ;
+int global_yes_or_no_delimiter_encountered ;
+int global_yes_or_no_filename_delimiter_encountered ;
+int global_yes_or_no_filename_is_valid ;
+int global_yes_or_no_folder_name_delimiter_encountered ;
+int global_yes_or_no_folder_name_is_valid ;
+int global_yes_or_no_in_filename_before_period ;
+int global_yes_or_no_in_folder_name_before_period ;
+int global_yes_or_no_inserted_character ;
+int global_yes_or_no_looking_for_word_attribute_or_specify ;
+int global_yes_or_no_matching_text ;
+int global_yes_or_no_negative_number ;
 int global_yes_or_no_number_is_valid ;
 int global_yes_or_no_numeric_delimiter_encountered ;
-int global_yes_or_no_filename_is_valid ;
-int global_yes_or_no_in_filename_before_period ;
-int global_yes_or_no_filename_delimiter_encountered ;
-int global_yes_or_no_folder_name_is_valid ;
-int global_yes_or_no_in_folder_name_before_period ;
-int global_yes_or_no_folder_name_delimiter_encountered ;
+int global_yes_or_no_phrase_words_match ;
+int global_yes_or_no_reached_begin_of_current_text_item ;
+int global_yes_or_no_reached_end_of_current_text_item ;
+int global_yes_or_no_requesting_space_appended ;
+int global_yes_or_no_same_phrase_name ;
+int global_yes_or_no_same_phrase_word ;
+int global_yes_or_no_same_text ;
+int global_yes_or_no_transition_from_character_to_delimiter ;
+int global_yes_or_no_transition_from_delimiter_to_character ;
+int global_yes_or_no_use_copy_when_appending ;
 int global_yes_or_no_use_slash_not_backslash ;
-int global_yes_or_no_count_phrase_usage ;
-
-
-// -----------------------------------------------
-//  Declare some variables.
-
-int global_check_for_match_item_id ;
-int global_text_item_looking_at_next_word_in_hyphenated_phrase ;
-int global_text_item_intended_next_word_in_hyphenated_phrase ;
-int global_word_count_hyphenated_phrase_name ;
-int global_character_pointer_begin_for_text_one ;
-int global_character_pointer_begin_for_text_two ;
-int global_character_pointer_one ;
-int global_character_pointer_two ;
-int global_count_of_words_handled ;
-int global_distance_between_item_begin_and_end ;
-int global_current_target_text_item_begin ;
-int global_current_target_text_item_end ;
-int global_test_loop_counter ;
 
 
 // -----------------------------------------------
@@ -1175,49 +1005,6 @@ FILE * global_outfile_connection ;
 //  or debugging intermediate calculations.
 
 std::ofstream log_out ;
-
-
-// -----------------------------------------------
-//  Declare some other global variables.
-
-int global_response_ignored ;
-int global_one_number_to_append ;
-int global_text_pointer ;
-int global_number_of_valid_characters_encountered ;
-int global_number_of_digits_encountered ;
-int global_single_integer ;
-int global_single_character_as_integer ;
-int global_saved_single_character_as_integer ;
-int global_decimal_number_divisor ;
-
-
-// -----------------------------------------------
-//  Declare some variables that are used to
-//  handle non-integers.
-
-float global_single_decimal_number ;
-std::string global_cplusplus_string ;
-char global_c_format_string[ 50 ] ;
-int global_unused_string_length ;
-char global_c_format_single_character ;
-
-
-// -----------------------------------------------
-//  Declare variables used for debugging purposes.
-
-int global_pointer_for_debugging ;
-int global_item_id_for_sample_numbers ;
-int global_item_id_for_sample_filename ;
-int global_item_id_for_sample_folder_name ;
-int global_item_id_for_sample_text_to_expand ;
-
-
-// -----------------------------------------------
-//  Declare global_do_nothing as an integer that
-//  is incremented where the code otherwise would
-//  be empty.  This is done for code readability.
-
-int global_do_nothing ;
 
 
 // -----------------------------------------------
@@ -1278,10 +1065,10 @@ void get_allocation_begin( )
     global_container_category = global_category_for_item[ global_item_id ] ;
     switch ( global_container_category )
     {
-        case global_category_contains_text_characters :
+        case global_container_category_text_characters :
 //  todo: write code
             break ;
-        case global_category_contains_pointers_to_decimal_numbers :
+        case global_container_category_pointers_to_decimal_numbers :
 //  todo: write code
             break ;
         default :
@@ -1359,7 +1146,7 @@ void recover_memory_from_top_text_item( )
         return ;
     }
     global_next_available_begin_pointer_for_next_available_item_id = global_pointer_end_for_item[ global_new_storage_item_id ] + 1 ;
-    if ( global_category_for_item[ global_new_storage_item_id ] == global_category_contains_list_of_item_ids )
+    if ( global_category_for_item[ global_new_storage_item_id ] == global_container_category_list_of_item_ids )
     {
         global_next_available_begin_pointer_for_next_available_item_id ++ ;
     }
@@ -1414,7 +1201,7 @@ void write_single_character_as_integer_to_file( )
 //  This function converts the integer stored in
 //  global_single_integer into text digits that
 //  are stored in text item
-//  global_item_id_for_number_as_text.
+//  "global_id_for_number_as_text".
 
 void convert_integer_to_text( )
 {
@@ -1424,7 +1211,7 @@ void convert_integer_to_text( )
 //  Point to where the first character (as an
 //  integer) will be stored.
 
-    global_character_pointer_for_text_item = global_pointer_begin_for_item[ global_item_id_for_number_as_text ] ;
+    global_character_pointer_for_text_item = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
 
 
 // -----------------------------------------------
@@ -1484,8 +1271,8 @@ void convert_integer_to_text( )
         global_character_pointer_for_text_item ++ ;
         log_out << "digit " << global_single_character_as_integer << std::endl ;
     }
-    global_pointer_end_for_item[ global_item_id_for_number_as_text ] = global_character_pointer_for_text_item - 1 ;
-    global_category_for_item[ global_item_id_for_number_as_text ] = global_category_contains_text_characters ;
+    global_pointer_end_for_item[ global_id_for_number_as_text ] = global_character_pointer_for_text_item - 1 ;
+    global_category_for_item[ global_id_for_number_as_text ] = global_container_category_text_characters ;
 
 
 // -----------------------------------------------
@@ -1502,7 +1289,7 @@ void convert_integer_to_text( )
 //  This function converts the decimal stored in
 //  global_single_decimal_number into text digits
 //  that are stored in text item
-//  global_item_id_for_number_as_text.
+//  global_id_for_number_as_text.
 
 void convert_decimal_to_text( )
 {
@@ -1512,7 +1299,7 @@ void convert_decimal_to_text( )
 //  Point to where the first character (as an
 //  integer) will be stored.
 
-    global_text_item_pointer = global_pointer_begin_for_item[ global_item_id_for_number_as_text ] ;
+    global_text_item_pointer = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
 
 
 // -----------------------------------------------
@@ -1647,7 +1434,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  Specify the category for this text item.
 
-    global_category_for_item[ global_new_storage_item_id ] = global_category_contains_text_characters ;
+    global_category_for_item[ global_new_storage_item_id ] = global_container_category_text_characters ;
 
 
 // -----------------------------------------------
@@ -1677,7 +1464,7 @@ int store_phrase_name_and_get_id( int word_one , int word_two , int word_three ,
 {
     global_length_requested_for_next_text_item_storage = 12 ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_new_storage_item_id ] = global_category_contains_phrase_word_pointers ;
+    global_category_for_item[ global_new_storage_item_id ] = global_container_category_phrase_word_pointers ;
     global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
     global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_one ;
     global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
@@ -1837,21 +1624,21 @@ void do_main_initialization( )
 //  and define text item ID numbers for these
 //  symbols.
 
-    global_item_id_for_single_space = store_text_and_get_its_item_id( " " ) ;
-    global_item_id_for_single_hyphen = store_text_and_get_its_item_id( "-" ) ;
-    global_item_id_for_single_underscore  = store_text_and_get_its_item_id( "_" ) ;
-    global_item_id_for_single_tab  = store_text_and_get_its_item_id( "\t" ) ;
-    global_item_id_for_single_newline  = store_text_and_get_its_item_id( "\n" ) ;
-    global_item_id_for_single_carriage_return  = store_text_and_get_its_item_id( "\r" ) ;
-    global_item_id_for_single_formfeed  = store_text_and_get_its_item_id( "\f" ) ;
-    global_item_id_for_single_slash  = store_text_and_get_its_item_id( "/" ) ;
-    global_item_id_for_single_backslash  = store_text_and_get_its_item_id( "\\" ) ;
-    global_item_id_for_single_quotation_mark  = store_text_and_get_its_item_id( "?" ) ;
-    global_item_id_for_single_apostrophe  = store_text_and_get_its_item_id( "'" ) ;
-    global_item_id_for_single_plus  = store_text_and_get_its_item_id( "+" ) ;
-    global_item_id_for_single_period  = store_text_and_get_its_item_id( "." ) ;
-    global_item_id_for_single_open_angle_bracket  = store_text_and_get_its_item_id( "<" ) ;
-    global_item_id_for_single_close_angle_bracket  = store_text_and_get_its_item_id( ">" ) ;
+    global_id_for_single_space = store_text_and_get_its_item_id( " " ) ;
+    global_id_for_single_hyphen = store_text_and_get_its_item_id( "-" ) ;
+    global_id_for_single_underscore  = store_text_and_get_its_item_id( "_" ) ;
+    global_id_for_single_tab  = store_text_and_get_its_item_id( "\t" ) ;
+    global_id_for_single_newline  = store_text_and_get_its_item_id( "\n" ) ;
+    global_id_for_single_carriage_return  = store_text_and_get_its_item_id( "\r" ) ;
+    global_id_for_single_formfeed  = store_text_and_get_its_item_id( "\f" ) ;
+    global_id_for_single_slash  = store_text_and_get_its_item_id( "/" ) ;
+    global_id_for_single_backslash  = store_text_and_get_its_item_id( "\\" ) ;
+    global_id_for_single_quotation_mark  = store_text_and_get_its_item_id( "?" ) ;
+    global_id_for_single_apostrophe  = store_text_and_get_its_item_id( "'" ) ;
+    global_id_for_single_plus  = store_text_and_get_its_item_id( "+" ) ;
+    global_id_for_single_period  = store_text_and_get_its_item_id( "." ) ;
+    global_id_for_single_open_angle_bracket  = store_text_and_get_its_item_id( "<" ) ;
+    global_id_for_single_close_angle_bracket  = store_text_and_get_its_item_id( ">" ) ;
 
 
 // -----------------------------------------------
@@ -1865,22 +1652,22 @@ void do_main_initialization( )
 
 //  todo: generate this code from a template
 
-    global_item_id_for_word_character = store_text_and_get_its_item_id( "character" ) ;
-    global_item_id_for_sample_numbers = store_text_and_get_its_item_id( " 123 , 72.3 , -4399 , -88.6666 " ) ;
-    global_item_id_for_sample_filename = store_text_and_get_its_item_id( "  , xyz !@#$%^&*(){}:;?<> yes_name.txt , " ) ;
-    global_item_id_for_sample_folder_name = store_text_and_get_its_item_id( "  , xyz !@#$%/^&\\*(){}:;?<> /yes_name/txt/ , " ) ;
-    global_item_id_for_sample_text_to_expand = store_text_and_get_its_item_id( "   _ hyphenated-phrase   <specify 123>  <attribute 123> " ) ;
-    global_item_id_for_word_hyphen = store_text_and_get_its_item_id( "hyphen" ) ;
-    global_item_id_for_word_space = store_text_and_get_its_item_id( "space" ) ;
-    global_item_id_for_word_newline = store_text_and_get_its_item_id( "newline" ) ;
-    global_item_id_for_word_underscore = store_text_and_get_its_item_id( "underscore" ) ;
-    global_item_id_for_word_tab = store_text_and_get_its_item_id( "tab" ) ;
-    global_item_id_for_word_four = store_text_and_get_its_item_id( "four" ) ;
-    global_item_id_for_word_hyphens = store_text_and_get_its_item_id( "hyphens" ) ;
-    global_item_id_for_word_non = store_text_and_get_its_item_id( "non" ) ;
-    global_item_id_for_word_breaking = store_text_and_get_its_item_id( "breaking" ) ;
-    global_item_id_for_word_empty = store_text_and_get_its_item_id( "empty" ) ;
-    global_item_id_for_word_text = store_text_and_get_its_item_id( "text" ) ;
+    global_id_for_word_character = store_text_and_get_its_item_id( "character" ) ;
+    global_id_for_sample_numbers = store_text_and_get_its_item_id( " 123 , 72.3 , -4399 , -88.6666 " ) ;
+    global_id_for_sample_filename = store_text_and_get_its_item_id( "  , xyz !@#$%^&*(){}:;?<> yes_name.txt , " ) ;
+    global_id_for_sample_folder_name = store_text_and_get_its_item_id( "  , xyz !@#$%/^&\\*(){}:;?<> /yes_name/txt/ , " ) ;
+    global_id_for_sample_text_to_expand = store_text_and_get_its_item_id( "   _ hyphenated-phrase   <specify 123>  <attribute 123> " ) ;
+    global_id_for_word_hyphen = store_text_and_get_its_item_id( "hyphen" ) ;
+    global_id_for_word_space = store_text_and_get_its_item_id( "space" ) ;
+    global_id_for_word_newline = store_text_and_get_its_item_id( "newline" ) ;
+    global_id_for_word_underscore = store_text_and_get_its_item_id( "underscore" ) ;
+    global_id_for_word_tab = store_text_and_get_its_item_id( "tab" ) ;
+    global_id_for_word_four = store_text_and_get_its_item_id( "four" ) ;
+    global_id_for_word_hyphens = store_text_and_get_its_item_id( "hyphens" ) ;
+    global_id_for_word_non = store_text_and_get_its_item_id( "non" ) ;
+    global_id_for_word_breaking = store_text_and_get_its_item_id( "breaking" ) ;
+    global_id_for_word_empty = store_text_and_get_its_item_id( "empty" ) ;
+    global_id_for_word_text = store_text_and_get_its_item_id( "text" ) ;
 
 
 // -----------------------------------------------
@@ -2105,20 +1892,20 @@ void do_main_initialization( )
 //  Connect the Dashrep-defined static phrase
 //  names with their definitions.
 
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_hyphen ] = global_item_id_for_single_hyphen ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_space ] = global_item_id_for_single_space ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_newline ] = global_item_id_for_single_newline ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_tab ] = global_item_id_for_single_tab ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_underscore ] = global_item_id_for_single_underscore ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_hyphen ] = global_id_for_single_hyphen ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_space ] = global_id_for_single_space ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_newline ] = global_id_for_single_newline ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_tab ] = global_id_for_single_tab ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_underscore ] = global_id_for_single_underscore ;
 
-    global_item_id_for_empty_text = store_text_and_get_its_item_id( "" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_empty_text ] = global_item_id_for_empty_text ;
+    global_id_for_empty_text = store_text_and_get_its_item_id( "" ) ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_empty_text ] = global_id_for_empty_text ;
 
-    global_item_id_for_four_hyphens = store_text_and_get_its_item_id( "----" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_four_hyphens ] = global_item_id_for_four_hyphens ;
+    global_id_for_four_hyphens = store_text_and_get_its_item_id( "----" ) ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_four_hyphens ] = global_id_for_four_hyphens ;
 
-    global_item_id_for_non_breaking_space = store_text_and_get_its_item_id( "&nbsp;" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_non_breaking_space ] = global_item_id_for_non_breaking_space ;
+    global_id_for_non_breaking_space = store_text_and_get_its_item_id( "&nbsp;" ) ;
+    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_non_breaking_space ] = global_id_for_non_breaking_space ;
 
 
 // -----------------------------------------------
@@ -2128,15 +1915,15 @@ void do_main_initialization( )
 
     global_length_requested_for_next_text_item_storage = global_allocated_length_for_file_input_or_output ;
 
-    global_item_id_for_file_input = global_next_available_item_id ;
+    global_id_for_file_input = global_next_available_item_id ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_item_id_for_file_input ] = global_category_contains_text_characters ;
-    global_text_pointer_allocation_end_for_item[ global_item_id_for_file_input ] -= 5 ;
+    global_category_for_item[ global_id_for_file_input ] = global_container_category_text_characters ;
+    global_text_pointer_allocation_end_for_item[ global_id_for_file_input ] -= 5 ;
 
-    global_item_id_for_file_output = global_next_available_item_id ;
+    global_id_for_file_output = global_next_available_item_id ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_item_id_for_file_output ] = global_category_contains_text_characters ;
-    global_text_pointer_allocation_end_for_item[ global_item_id_for_file_output ] -= 5 ;
+    global_category_for_item[ global_id_for_file_output ] = global_container_category_text_characters ;
+    global_text_pointer_allocation_end_for_item[ global_id_for_file_output ] -= 5 ;
 
 
 // -----------------------------------------------
@@ -2144,9 +1931,9 @@ void do_main_initialization( )
 //  of converting a number into text.
 
     global_length_requested_for_next_text_item_storage = 20 ;
-    global_item_id_for_number_as_text = global_next_available_item_id ;
+    global_id_for_number_as_text = global_next_available_item_id ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_item_id_for_number_as_text ] = global_category_contains_text_characters ;
+    global_category_for_item[ global_id_for_number_as_text ] = global_container_category_text_characters ;
 
 
 // -----------------------------------------------
@@ -2164,15 +1951,15 @@ void do_main_initialization( )
 
     global_length_requested_for_next_text_item_storage = 200 ;
 
-    global_item_id_for_valid_filename = global_next_available_item_id ;
+    global_id_for_valid_filename = global_next_available_item_id ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_item_id_for_valid_filename ] = global_category_contains_text_characters ;
-    global_text_pointer_allocation_end_for_item[ global_item_id_for_valid_filename ] -= 5 ;
+    global_category_for_item[ global_id_for_valid_filename ] = global_container_category_text_characters ;
+    global_text_pointer_allocation_end_for_item[ global_id_for_valid_filename ] -= 5 ;
 
-    global_item_id_for_valid_folder_name = global_next_available_item_id ;
+    global_id_for_valid_folder_name = global_next_available_item_id ;
     assign_storage_for_new_item( ) ;
-    global_category_for_item[ global_item_id_for_valid_folder_name ] = global_category_contains_text_characters ;
-    global_text_pointer_allocation_end_for_item[ global_item_id_for_valid_folder_name ] -= 5 ;
+    global_category_for_item[ global_id_for_valid_folder_name ] = global_container_category_text_characters ;
+    global_text_pointer_allocation_end_for_item[ global_id_for_valid_folder_name ] -= 5 ;
 
 
 // -----------------------------------------------
@@ -2190,14 +1977,6 @@ void do_main_initialization( )
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
     global_target_stack_pointer_for_get_next_previous_character = 0 ;
     global_target_stack_item_bottom = 0 ;
-
-
-// -----------------------------------------------
-//  Now that initialization is done, do not allow
-//  text items to have their contents changed.
-
-    global_yes_or_no_text_item_changeable = global_no ;
-    global_item_id_last_predefined = global_next_available_item_id - 1 ;
 
 
 // -----------------------------------------------
@@ -2265,7 +2044,7 @@ void check_yes_or_no_character_is_delimiter( )
 //
 //  Reads one line of text from a file and puts
 //  the text into the text item ID numbered
-//  global_item_id_for_file_input.
+//  global_id_for_file_input.
 //
 //  Later, replace "fgetc" function with C++ code
 //  that reads unicode characters.  Test with
@@ -2273,17 +2052,17 @@ void check_yes_or_no_character_is_delimiter( )
 
 void read_text_line_from_file( )
 {
-    global_pointer_end_for_item[ global_item_id_for_file_input ] = global_pointer_begin_for_item[ global_item_id_for_file_input ] - 1 ;
-    global_category_for_item[ global_item_id_for_file_input ] = global_category_contains_text_characters ;
+    global_pointer_end_for_item[ global_id_for_file_input ] = global_pointer_begin_for_item[ global_id_for_file_input ] - 1 ;
+    global_category_for_item[ global_id_for_file_input ] = global_container_category_text_characters ;
     while ( 1 == 1 )
     {
         global_next_character_number = fgetc( global_infile_connection ) ;
-        global_item_id_to_edit = global_item_id_for_file_input ;
+        global_id_text_to_edit = global_id_for_file_input ;
         measure_space_available_in_text_item( ) ;
         if ( global_space_available_in_text_item > 1 )
         {
-            global_pointer_end_for_item[ global_item_id_to_edit ] ++ ;
-            global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_to_edit ] ] = global_next_character_number ;
+            global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+            global_all_pointers_integers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_next_character_number ;
         } else
         {
             log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
@@ -2296,10 +2075,10 @@ void read_text_line_from_file( )
             global_next_character_number = 0 ;
             return ;
         }
-        if ( global_pointer_end_for_item[ global_item_id_for_file_input ] < global_text_pointer_allocation_end_for_item[ global_item_id_for_file_input ] )
+        if ( global_pointer_end_for_item[ global_id_for_file_input ] < global_text_pointer_allocation_end_for_item[ global_id_for_file_input ] )
         {
-            global_pointer_end_for_item[ global_item_id_for_file_input ] ++ ;
-            global_pointer_end_for_item[ global_item_id_for_file_input ] = global_next_character_number ;
+            global_pointer_end_for_item[ global_id_for_file_input ] ++ ;
+            global_pointer_end_for_item[ global_id_for_file_input ] = global_next_character_number ;
         } else
         {
             log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
@@ -2335,13 +2114,13 @@ void specify_character_to_insert_between_subitems( )
     global_text_item_with_next_character = global_all_pointers_integers[ global_pointer_begin_for_item[ global_target_stack_item_top ] ] ;
     switch ( global_category_for_item[ global_text_item_with_next_character ] )
     {
-        global_category_contains_phrase_word_pointers :
+        global_container_category_phrase_word_pointers :
             global_character_to_insert_between_subitems = global_insertion_character_hyphen ;
             break ;
-        global_category_contains_list_of_integers :
+        global_container_category_list_of_integers :
             global_character_to_insert_between_subitems = global_insertion_character_space ;
             break ;
-        global_category_contains_pointers_to_decimal_numbers :
+        global_container_category_pointers_to_decimal_numbers :
             global_character_to_insert_between_subitems = global_insertion_character_space ;
             break ;
         default :
@@ -2874,7 +2653,7 @@ void get_next_or_previous_character_from_text_item( )
         {
             if ( global_yes_or_no_inserted_character == global_no )
             {
-                if ( ( ( global_current_target_character_position > 1 ) && ( global_current_target_character_position < ( global_current_target_text_item_end - global_current_target_text_item_begin + 1 ) ) ) || ( ( global_container_category == global_category_contains_phrase_word_pointers ) && ( global_category_for_item[ global_target_stack_item_prior ] == global_category_contains_phrase_word_pointers ) ) )
+                if ( ( ( global_current_target_character_position > 1 ) && ( global_current_target_character_position < ( global_current_target_text_item_end - global_current_target_text_item_begin + 1 ) ) ) || ( ( global_container_category == global_container_category_phrase_word_pointers ) && ( global_category_for_item[ global_target_stack_item_prior ] == global_container_category_phrase_word_pointers ) ) )
                 {
                     global_single_character_as_integer = global_character_to_insert_between_subitems ;
                     global_yes_or_no_inserted_character = global_yes ;
@@ -2890,7 +2669,7 @@ void get_next_or_previous_character_from_text_item( )
 //  previous) character, increment the pointer,
 //  and return.
 
-        if ( global_container_category == global_category_contains_text_characters )
+        if ( global_container_category == global_container_category_text_characters )
         {
             global_single_character_as_integer = global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
             log_out << "character " << global_single_character_as_integer << std::endl ;
@@ -2915,7 +2694,7 @@ void get_next_or_previous_character_from_text_item( )
 //  the first (or last) item within that
 //  subordinate text item, then repeat the loop.
 
-        if ( ( global_container_category == global_category_contains_list_of_item_ids ) || ( global_container_category == global_category_contains_phrase_word_pointers ) )
+        if ( ( global_container_category == global_container_category_list_of_item_ids ) || ( global_container_category == global_container_category_phrase_word_pointers ) )
         {
             put_info_into_target_pointer_stack_item( ) ;
             push_target_pointer_stack( ) ;
@@ -2949,20 +2728,20 @@ void get_next_or_previous_character_from_text_item( )
 //  increment (or decrement) the pointer, and then
 //  return.
 
-        if ( ( global_container_category == global_category_contains_list_of_integers ) || ( global_container_category == global_category_contains_pointers_to_decimal_numbers ) )
+        if ( ( global_container_category == global_container_category_list_of_integers ) || ( global_container_category == global_container_category_pointers_to_decimal_numbers ) )
         {
-            if ( global_container_category == global_category_contains_list_of_integers )
+            if ( global_container_category == global_container_category_list_of_integers )
             {
                 global_single_integer = global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
                 convert_integer_to_text( ) ;
             } else
             {
-                global_single_decimal_number = global_decimal_number_at_position[ global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ] ;
+                global_single_decimal_number = global_all_decimal_numbers[ global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ] ;
                 convert_decimal_to_text( ) ;
             }
             push_target_pointer_stack( ) ;
             get_info_from_target_pointer_stack_item( ) ;
-            global_current_target_text_item = global_item_id_for_number_as_text ;
+            global_current_target_text_item = global_id_for_number_as_text ;
             if ( global_direction_next_or_previous == global_direction_next )
             {
                 global_current_target_character_position = 1 ;
@@ -3009,7 +2788,7 @@ void get_next_or_previous_character_from_text_item( )
 //  This function changes the "begin" or "end"
 //  pointers of a text item and any sub text items
 //  to match the target pointer stack that is
-//  pointed to by "global_item_id_to_edit".  This
+//  pointed to by "global_id_text_to_edit".  This
 //  function truncates the beginning if the flag
 //  "global_yes_or_no_begin_not_end" is
 //  "global_yes" or else truncates the ending.
@@ -3020,13 +2799,13 @@ void get_next_or_previous_character_from_text_item( )
 
 void truncate_text_item_using_target_pointer_stack( )
 {
-    log_out << "truncate item " << global_item_id_to_edit << std::endl ;
+    log_out << "truncate item " << global_id_text_to_edit << std::endl ;
 
 
 // -----------------------------------------------
 //  Initialization.
 
-    global_item_id_to_truncate = global_item_id_to_edit ;
+    global_id_text_to_truncate = global_id_text_to_edit ;
     global_pointer_to_within_target_stack_item_current = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
     global_target_stack_item_current = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
     write_to_log( ) ;
@@ -3038,19 +2817,19 @@ void truncate_text_item_using_target_pointer_stack( )
 
     while ( global_target_stack_item_current > 0 )
     {
-        global_container_category = global_category_for_item[ global_item_id_to_truncate ] ;
+        global_container_category = global_category_for_item[ global_id_text_to_truncate ] ;
         write_to_log( ) ;
-        if ( ( global_container_category == global_category_contains_text_characters ) || ( global_container_category == global_category_contains_list_of_item_ids ) )
+        if ( ( global_container_category == global_container_category_text_characters ) || ( global_container_category == global_container_category_list_of_item_ids ) )
         {
             global_pointer_to_within_target_stack_item_current = global_pointer_begin_for_item[ global_target_stack_item_current ] ;
             if ( global_yes_or_no_begin_not_end == global_yes )
             {
-                global_pointer_begin_for_item[ global_item_id_to_truncate ] = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
-                log_out << "truncated beginning of " << global_item_id_to_truncate << " to " << global_pointer_begin_for_item[ global_item_id_to_truncate ] << std::endl ;
+                global_pointer_begin_for_item[ global_id_text_to_truncate ] = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
+                log_out << "truncated beginning of " << global_id_text_to_truncate << " to " << global_pointer_begin_for_item[ global_id_text_to_truncate ] << std::endl ;
             } else
             {
-                global_pointer_end_for_item[ global_item_id_to_truncate ] = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
-                log_out << "truncated end of " << global_item_id_to_truncate << " to " << global_pointer_end_for_item[ global_item_id_to_truncate ] << std::endl ;
+                global_pointer_end_for_item[ global_id_text_to_truncate ] = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
+                log_out << "truncated end of " << global_id_text_to_truncate << " to " << global_pointer_end_for_item[ global_id_text_to_truncate ] << std::endl ;
             }
             global_target_stack_item_current = global_all_pointers_integers[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_prior ] ;
             if ( ( global_target_stack_item_current == 0 ) || ( global_target_stack_item_current == global_target_stack_item_bottom ) )
@@ -3095,7 +2874,7 @@ void remove_leading_or_trailing_delimiters( )
 //  Specify whether to remove leading or trailing
 //  delimiters.
 
-    global_item_id = global_item_id_to_edit ;
+    global_item_id = global_id_text_to_edit ;
     if ( global_direction_next_or_previous == global_direction_next )
     {
         initialize_get_next_character_from_text_item( ) ;
@@ -3194,8 +2973,8 @@ void initialize_point_to_next_word_in_text_item( )
 //  Identifies the next word from the text item
 //  and points to the word using a pair of target
 //  pointer stacks, which are pointed to by
-//  "global_item_id_for_next_word_begin" and
-//  "global_item_id_for_next_word_end".
+//  "global_id_for_next_word_begin" and
+//  "global_id_for_next_word_end".
 //  Before using this function the initialization
 //  function
 //  "initialize_get_next_word_from_text_item"
@@ -3238,7 +3017,7 @@ void point_to_next_word_in_text_item( )
     get_next_or_previous_character_from_text_item( ) ;
     global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_begin ;
     copy_pointer_stack( ) ;
-    global_item_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
+    global_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
     global_target_stack_item_top_original = global_target_stack_item_top ;
     get_next_or_previous_character_from_text_item( ) ;
 
@@ -3271,7 +3050,7 @@ void point_to_next_word_in_text_item( )
     get_next_or_previous_character_from_text_item( ) ;
     global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_end ;
     copy_pointer_stack( ) ;
-    global_item_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
+    global_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
 
 
 // -----------------------------------------------
@@ -3290,10 +3069,10 @@ void point_to_next_word_in_text_item( )
 //  standard "substr" function but uses Dashrep
 //  runtime text storage conventions.
 //  The source text is pointed to by
-//  "global_item_id_to_copy" and the offset is
+//  "global_id_text_to_copy" and the offset is
 //  specified by "global_character_offset" and
 //  "global_character_length" specifies the
-//  length, and "global_item_id_for_copy"
+//  length, and "global_id_for_copy"
 //  is the created copy of the specified
 //  characters.
 
@@ -3301,7 +3080,7 @@ void get_text_by_character_offset_and_length( )
 {
     global_length_requested_for_next_text_item_storage = 1000 ;
     assign_storage_for_new_item( ) ;
-    global_item_id_for_copy = global_new_storage_item_id ;
+    global_id_for_copy = global_new_storage_item_id ;
     initialize_get_next_character_from_text_item( ) ;
     global_next_character_position_count = 0 ;
     global_character_count = 0 ;
@@ -3312,15 +3091,15 @@ void get_text_by_character_offset_and_length( )
         if ( global_next_character_position_count >= global_character_offset )
         {
             global_character_count ++ ;
-            global_pointer_end_for_item[ global_item_id_for_copy ] ++ ;
-            global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_for_copy ] ] = global_single_character_as_integer ;
+            global_pointer_end_for_item[ global_id_for_copy ] ++ ;
+            global_all_pointers_integers[ global_pointer_end_for_item[ global_id_for_copy ] ] = global_single_character_as_integer ;
         }
         if ( ( global_character_count >= global_character_length ) || ( global_single_character_as_integer == 0 ) )
         {
             break ;
         }
     }
-    if ( global_item_id_for_copy == global_new_storage_item_id )
+    if ( global_id_for_copy == global_new_storage_item_id )
     {
         log_out << "BUG: unexpectedly a new text item was created while getting text based on offset and length" << std::endl ;
         exit ( EXIT_FAILURE ) ;
@@ -3386,7 +3165,7 @@ void write_text_item_to_file( )
 
 void text_item_clear( )
 {
-    global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] - 1 ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
     return ;
 }
 
@@ -3396,7 +3175,7 @@ void text_item_clear( )
 //  Function append_space_if_not_empty
 //
 //  Appends a space to
-//  "global_item_id_to_edit"
+//  "global_id_text_to_edit"
 //  if it is not empty.
 //  If the text item is categorized as a list of
 //  numbers (integer or decimal), must convert
@@ -3404,15 +3183,15 @@ void text_item_clear( )
 
 void append_space_if_not_empty( )
 {
-    if ( global_pointer_end_for_item[ global_item_id_to_edit ] < global_pointer_begin_for_item[ global_item_id_to_edit ] )
+    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
     {
-        if ( global_category_for_item[ global_item_id_to_edit ] == global_category_contains_list_of_item_ids )
+        if ( global_category_for_item[ global_id_text_to_edit ] == global_container_category_list_of_item_ids )
         {
             measure_space_available_in_text_item( ) ;
             if ( global_space_available_in_text_item >= 2 )
             {
-                global_pointer_end_for_item[ global_item_id_to_edit ] ++ ;
-                global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_to_edit ] ] = global_item_id_for_single_space ;
+                global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+                global_all_pointers_integers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_for_single_space ;
             } else
             {
                 global_item_id = 111 ;
@@ -3423,10 +3202,10 @@ void append_space_if_not_empty( )
         {
             global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
             assign_storage_for_new_item( ) ;
-            global_category_for_item[ global_new_storage_item_id ] = global_category_contains_list_of_item_ids ;
+            global_category_for_item[ global_new_storage_item_id ] = global_container_category_list_of_item_ids ;
 //  insert the to and space IDs, but not the from ID
 //        global_all_pointers_integers
-            global_item_id_to_edit = global_new_storage_item_id ;
+            global_id_text_to_edit = global_new_storage_item_id ;
         }
     }
     return ;
@@ -3441,10 +3220,10 @@ void append_space_if_not_empty( )
 //  appended will not change, so just add a link
 //  to the text being appended.  The text item
 //  to be appended is specified by the text item
-//  ID number in "global_item_id_from_origin",
+//  ID number in "global_id_from_origin",
 //  and the text item being extended is specified
 //  by the text item ID number in
-//  "global_item_id_to_edit".  The value in
+//  "global_id_text_to_edit".  The value in
 //  "global_yes_or_no_requesting_space_appended"
 //  indicates whether to insert a space between
 //  non-empty text being extended and non-empty
@@ -3467,7 +3246,7 @@ void append_linked_text( )
 //  If the text being appended is empty, there is
 //  nothing to do.
 
-    if ( global_pointer_end_for_item[ global_item_id_from_origin ] < global_pointer_begin_for_item[ global_item_id_from_origin ] )
+    if ( global_pointer_end_for_item[ global_id_from_origin ] < global_pointer_begin_for_item[ global_id_from_origin ] )
     {
         return ;
     }
@@ -3480,18 +3259,18 @@ void append_linked_text( )
 //  regardless of what it was before.  The
 //  pointer points to the text being appended.
 
-    if ( global_pointer_end_for_item[ global_item_id_to_edit ] < global_pointer_begin_for_item[ global_item_id_to_edit ] )
+    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
     {
-        global_to_text_contains_category = global_category_for_item[ global_item_id_to_edit ] ;
-        if ( global_to_text_contains_category == global_category_contains_list_of_item_ids )
+        global_to_text_contains_category = global_category_for_item[ global_id_text_to_edit ] ;
+        if ( global_to_text_contains_category == global_container_category_list_of_item_ids )
         {
-            global_pointer_begin_for_item[ global_item_id_to_edit ] = global_item_id_from_origin ;
-            global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] ;
+            global_pointer_begin_for_item[ global_id_text_to_edit ] = global_id_from_origin ;
+            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
         } else
         {
-            global_all_pointers_integers[ global_pointer_begin_for_item[ global_item_id_to_edit ] ] = global_item_id_from_origin ;
-            global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] ;
-            global_category_for_item[ global_item_id_to_edit ] = global_category_contains_list_of_item_ids ;
+            global_all_pointers_integers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
+            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
+            global_category_for_item[ global_id_text_to_edit ] = global_container_category_list_of_item_ids ;
         }
         return ;
     }
@@ -3513,8 +3292,8 @@ void append_linked_text( )
 //  Get the categories of the "from" and "to" text
 //  items.
 
-    global_from_text_contains_category = global_category_for_item[ global_item_id_from_origin ] ;
-    global_to_text_contains_category = global_category_for_item[ global_item_id_to_edit ] ;
+    global_from_text_contains_category = global_category_for_item[ global_id_from_origin ] ;
+    global_to_text_contains_category = global_category_for_item[ global_id_text_to_edit ] ;
 
 
 // -----------------------------------------------
@@ -3523,10 +3302,10 @@ void append_linked_text( )
 //  "contains_list_of_item_ids", add the
 //  pointer.
 
-    if ( ( global_from_text_contains_category == global_category_contains_list_of_item_ids ) && ( global_to_text_contains_category == global_category_contains_list_of_item_ids ) )
+    if ( ( global_from_text_contains_category == global_container_category_list_of_item_ids ) && ( global_to_text_contains_category == global_container_category_list_of_item_ids ) )
     {
-        global_pointer_end_for_item[ global_item_id_to_edit ] ++ ;
-        global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_to_edit ] ] = global_item_id_from_origin ;
+        global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+        global_all_pointers_integers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
         return ;
     }
 
@@ -3542,11 +3321,11 @@ void append_linked_text( )
     global_length_requested_for_next_text_item_storage = global_default_length_for_text_item ;
     assign_storage_for_new_item( ) ;
     global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_item_id_to_edit ;
-    global_category_for_item[ global_new_storage_item_id ] = global_category_contains_list_of_item_ids ;
+    global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_id_text_to_edit ;
+    global_category_for_item[ global_new_storage_item_id ] = global_container_category_list_of_item_ids ;
     global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_item_id_from_origin ;
-    global_item_id_to_edit = global_new_storage_item_id ;
+    global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_id_from_origin ;
+    global_id_text_to_edit = global_new_storage_item_id ;
     return ;
 
 
@@ -3564,24 +3343,24 @@ void append_linked_text( )
 //  appended will change, so a copy of that text
 //  must be stored.  The text item to be appended
 //  is specified by the text item ID number in
-//  global_item_id_from_origin, and the text
+//  global_id_from_origin, and the text
 //  item being extended is specified by the text
 //  item ID number in
-//  global_item_id_to_edit.
+//  global_id_text_to_edit.
 
 void append_copied_text( )
 {
-    global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] - 1 ;
-    global_length_requested_for_next_text_item_storage = global_pointer_end_for_item[ global_item_id_from_origin ] - global_pointer_begin_for_item[ global_item_id_from_origin ] + 1 ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+    global_length_requested_for_next_text_item_storage = global_pointer_end_for_item[ global_id_from_origin ] - global_pointer_begin_for_item[ global_id_from_origin ] + 1 ;
     assign_storage_for_new_item( ) ;
-    for ( global_text_pointer = global_pointer_begin_for_item[ global_item_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_item_id_from_origin ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
     {
         global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-        global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_from_origin ] ]
+        global_all_pointers_integers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_all_pointers_integers[ global_pointer_end_for_item[ global_id_from_origin ] ]
          ;
     }
-    global_category_for_item[ global_new_storage_item_id ] = global_category_for_item[ global_item_id_from_origin ] ;
-    global_item_id_from_origin = global_new_storage_item_id ;
+    global_category_for_item[ global_new_storage_item_id ] = global_category_for_item[ global_id_from_origin ] ;
+    global_id_from_origin = global_new_storage_item_id ;
     append_linked_text( ) ;
 }
 
@@ -3591,19 +3370,19 @@ void append_copied_text( )
 //  Function append_text
 //
 //  Appends text from the text item
-//  "global_item_id_from_origin" to the text item
-//  "global_item_id_to_edit".
+//  "global_id_from_origin" to the text item
+//  "global_id_text_to_edit".
 //  Allow the two text item IDs to be the same.
+//
+//  Later, allow a Dashrep directive to determine
+//  whether the definition of a specific phrase
+//  name can be modified.  For now, do not allow
+//  modification
 
 void append_text( )
 {
-    if ( global_item_id_from_origin > global_item_id_last_predefined )
-    {
-        append_copied_text( ) ;
-    } else
-    {
-        append_linked_text( ) ;
-    }
+    append_copied_text( ) ;
+//    append_linked_text( ) ;
     return ;
 }
 
@@ -3614,7 +3393,7 @@ void append_text( )
 
 void copy_linked_text( )
 {
-    global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] - 1 ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
     append_linked_text( ) ;
     return ;
 }
@@ -3626,7 +3405,7 @@ void copy_linked_text( )
 
 void copy_copied_text( )
 {
-    global_pointer_end_for_item[ global_item_id_to_edit ] = global_pointer_begin_for_item[ global_item_id_to_edit ] - 1 ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
     append_copied_text( ) ;
     return ;
 }
@@ -3635,16 +3414,16 @@ void copy_copied_text( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function copy_text
+//
+//  Later, allow a Dashrep directive to determine
+//  whether the definition of a specific phrase
+//  name can be modified.  For now, do not allow
+//  modification
 
 void copy_text( )
 {
-    if ( global_item_id_from_origin > global_item_id_last_predefined )
-    {
-        copy_copied_text( ) ;
-    } else
-    {
-        copy_linked_text( ) ;
-    }
+    copy_copied_text( ) ;
+//    copy_linked_text( ) ;
     return ;
 }
 
@@ -3861,13 +3640,13 @@ void finish_parse_characters_of_number( )
 
 void test_parsing_numeric_characters( )
 {
-    global_item_id_from_origin = global_item_id_for_sample_numbers ;
+    global_id_from_origin = global_id_for_sample_numbers ;
     initialize_parse_characters_of_number( ) ;
-    for ( global_text_pointer = global_pointer_begin_for_item[ global_item_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_item_id_from_origin ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
     {
         global_single_character_as_integer = global_all_pointers_integers[ global_text_pointer ] ;
         parse_one_character_of_number( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_item_id_from_origin ] ) )
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
         {
             if ( global_number_of_digits_encountered > 0 )
             {
@@ -4152,14 +3931,14 @@ void add_to_linked_list( )
 // -----------------------------------------------
 //  Function get_next_pointer_from_linked_list
 //
-//  This function gets the next text item ID from
+//  This function gets the next item ID from
 //  the linked list that is pointed to by
 //  "global_linked_list_grouping_id".  The pointer
 //  "global_linked_list_current_pointer"
 //  points to the current position in
-//  "global_all_pointers_integers" that contains the
-//  next text item ID, which is supplied as
-//  "global_item_id_from_linked_list".
+//  "global_all_pointers_integers" that contains
+//  the next item ID, which is supplied as
+//  "global_id_from_linked_list".
 //  The last integer in each text-item-like
 //  grouping points to the next grouping.
 
@@ -4173,7 +3952,7 @@ void get_next_pointer_from_linked_list( )
         global_linked_list_grouping_id = global_all_pointers_integers[ global_pointer_end_for_item[ global_linked_list_grouping_id ] ] ;
         global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_grouping_id ] ;
     }
-    global_item_id_from_linked_list = global_all_pointers_integers[ global_linked_list_current_pointer ] ;
+    global_id_from_linked_list = global_all_pointers_integers[ global_linked_list_current_pointer ] ;
     global_linked_list_current_pointer ++ ;
 	return ;
 }
@@ -4225,7 +4004,7 @@ void add_new_phrase_name( )
 //  matches the phrase word specified by ....
 //  The text item ID of the matching phrase word
 //  is supplied in
-//  "global_item_id_for_phrase_word".  A
+//  "global_id_for_phrase_word".  A
 //  zero value indicates the phrase word was not
 //  found.
 //
@@ -4248,14 +4027,14 @@ void find_matching_phrase_word( )
 // -----------------------------------------------
 //  If there are no phrase words that have this
 //  length, put zero into
-//  "global_item_id_for_phrase_word", then
+//  "global_id_for_phrase_word", then
 //  return.
 
 //  todo: initialize global_id_for_list_of_phrase_words_of_length[ ] to zeros before adding phrase words
 
     if ( global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word_minus_one + 1 ] == 0 )
     {
-    	global_item_id_for_phrase_word = 0 ;
+    	global_id_for_phrase_word = 0 ;
         return ;
     }
 
@@ -4273,7 +4052,7 @@ void find_matching_phrase_word( )
 
 //  todo: finish writing, and proofreading, this code
 
-    global_item_id_for_phrase_word = 0 ;
+    global_id_for_phrase_word = 0 ;
     global_linked_list_grouping_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
     global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_grouping_id ] - 1 ;
     while ( 1 == 1 )
@@ -4286,7 +4065,7 @@ void find_matching_phrase_word( )
 //  indication that there was no match.
 
         get_next_pointer_from_linked_list( ) ;
-        global_character_pointer_begin_for_text_one = 1 ;global_pointer_begin_for_item[ global_item_id_from_linked_list ] ;
+        global_character_pointer_begin_for_text_one = 1 ;global_pointer_begin_for_item[ global_id_from_linked_list ] ;
         if ( global_character_pointer_begin_for_text_one == 0 )
         {
         	global_yes_or_no_matching_text = global_no ;
@@ -4300,11 +4079,11 @@ void find_matching_phrase_word( )
 //  If the phrase words match, return with the
 //  text item ID of the matching phrase word.
 
-        global_item_id = global_item_id_from_linked_list ;
+        global_item_id = global_id_from_linked_list ;
         check_yes_or_no_matching_text( ) ;
         if ( global_yes_or_no_matching_text == global_yes )
         {
-        	global_item_id_for_phrase_word = global_item_id_from_linked_list ;
+        	global_id_for_phrase_word = global_id_from_linked_list ;
 	        return ;
         }
 
@@ -4314,7 +4093,7 @@ void find_matching_phrase_word( )
 //  phrase word.
 
     }
-    global_item_id_for_phrase_word = 0 ;
+    global_id_for_phrase_word = 0 ;
 
 
 // -----------------------------------------------
@@ -4412,7 +4191,7 @@ void find_matching_phrase_name( )
 
 // todo:  finish writing this code
 
-        	global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - global_count_of_words_in_phrase_name ] = global_pointer_begin_for_item[ global_item_id_for_phrase_name ] ;
+        	global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - global_count_of_words_in_phrase_name ] = global_pointer_begin_for_item[ global_id_for_phrase_name ] ;
 
 
 
@@ -4428,13 +4207,13 @@ void find_matching_phrase_name( )
 //  Reminder:  The text item ID minus one refers
 //  to the preceeding text item.
 
-        global_pointer_begin_for_item[ global_item_id_for_phrase_name ] ++ ;
-        if ( global_pointer_begin_for_item[ global_item_id_for_phrase_name ] <= global_text_pointer_allocation_end_for_item[ global_item_id_for_phrase_name - 1 ] )
+        global_pointer_begin_for_item[ global_id_for_phrase_name ] ++ ;
+        if ( global_pointer_begin_for_item[ global_id_for_phrase_name ] <= global_text_pointer_allocation_end_for_item[ global_id_for_phrase_name - 1 ] )
         {
         	log_out << "BUG: Phrase name exceeds allowed length." << std::endl ;
         	exit ( EXIT_FAILURE ) ;
         }
-        global_all_pointers_integers[ global_pointer_begin_for_item[ global_item_id_for_phrase_name ] ] = global_single_character_as_integer ;
+        global_all_pointers_integers[ global_pointer_begin_for_item[ global_id_for_phrase_name ] ] = global_single_character_as_integer ;
 
         
 // -----------------------------------------------
@@ -4466,7 +4245,7 @@ void find_matching_phrase_name( )
 //  "global_position_begin_for_phrase_word_number",
 //  the index numbers are offset such that the
 //  last phrase word is indexed as one minus
-//  "global_maximum_number_of_parsed_phrase_words".
+//  "global_maximum_words_in_phrase_name".
 
     global_number_of_phrase_words_found = 0 ;
     for ( global_phrase_word_number_to_check = 1 ; global_phrase_word_number_to_check <= global_count_of_words_in_phrase_name ; global_phrase_word_number_to_check ++ )
@@ -4475,12 +4254,15 @@ void find_matching_phrase_name( )
 //  todo: proofread this code
 
         global_character_position_in_phrase_name = 
-        global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - global_phrase_word_number_to_check ] ;
-        global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_number_of_parsed_phrase_words - ( global_phrase_word_number_to_check + 1 ) ] ;
-        global_item_id_from_linked_list_number[ global_phrase_word_number_to_check ] = global_item_id_from_linked_list ;
+        global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - global_phrase_word_number_to_check ] ;
+        global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - ( global_phrase_word_number_to_check + 1 ) ] ;
+
+//  array only used once:
+        global_id_from_linked_list_number[ global_phrase_word_number_to_check ] = global_id_from_linked_list ;
+
         find_matching_phrase_word( ) ;
-        global_item_id_for_phrase_word_number[ global_phrase_word_number_to_check ] = global_item_id_for_phrase_word ;
-        if ( global_item_id_for_phrase_word > 0 )
+        global_id_for_phrase_word_at_position_number[ global_phrase_word_number_to_check ] = global_id_for_phrase_word ;
+        if ( global_id_for_phrase_word > 0 )
         {
         	global_number_of_phrase_words_found ++ ;
         }
@@ -4521,7 +4303,7 @@ void find_matching_phrase_name( )
 //  Point to the next already-defined phrase name.
 
         get_next_pointer_from_linked_list( ) ;
-        log_out << "global_item_id_for_phrase_name " << global_item_id_for_phrase_name << std::endl ;
+        log_out << "global_id_for_phrase_name " << global_id_for_phrase_name << std::endl ;
 
 
 // -----------------------------------------------
@@ -4542,8 +4324,8 @@ void find_matching_phrase_name( )
 	    global_number_of_phrase_words_found = 0 ;
 	    for ( global_phrase_word_number_to_check = 1 ; global_phrase_word_number_to_check <= global_count_of_words_in_phrase_name ; global_phrase_word_number_to_check ++ )
 	    {
-	        global_item_id_for_phrase_word = global_all_pointers_integers[ global_pointer_begin_for_item[ global_item_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] ;
-	        if ( global_item_id_for_phrase_word_number[ global_phrase_word_number_to_check ] != global_item_id_for_phrase_word )
+	        global_id_for_phrase_word = global_all_pointers_integers[ global_pointer_begin_for_item[ global_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] ;
+	        if ( global_id_for_phrase_word_at_position_number[ global_phrase_word_number_to_check ] != global_id_for_phrase_word )
 	        {
 	        	break ;
 	        }
@@ -4589,10 +4371,10 @@ void find_matching_phrase_name( )
 void convert_into_category_list_of_integers( )
 {
     global_count_of_words_handled = 0 ;
-    global_item_id_for_integers_as_text = global_item_id_from_origin ;
+    global_id_for_integers_as_text = global_id_from_origin ;
     global_length_requested_for_next_text_item_storage = 2 ;
     assign_storage_for_new_item( ) ;
-    global_item_id_for_list_of_integers = global_new_storage_item_id ;
+    global_id_for_list_of_integers = global_new_storage_item_id ;
     initialize_point_to_next_word_in_text_item( ) ;
     while ( 1 == 1 )
     {
@@ -4602,22 +4384,22 @@ void convert_into_category_list_of_integers( )
             log_out << "no more words" << std::endl ;
             break ;
         }
-        global_pointer_begin_for_item[ global_item_id_for_pointer_begin_end ] = global_pointer_next_word_begin ;
-        global_pointer_end_for_item[ global_item_id_for_pointer_begin_end ] = global_pointer_next_word_end ;
+        global_pointer_begin_for_item[ global_id_for_pointer_begin_end ] = global_pointer_next_word_begin ;
+        global_pointer_end_for_item[ global_id_for_pointer_begin_end ] = global_pointer_next_word_end ;
         measure_space_available_in_text_item( ) ;
         if ( global_space_available_in_text_item < 1 )
         {
             extend_length_of_top_text_item( ) ;
         }
 
-        global_item_id_for_integers_as_text = global_item_id_for_pointer_begin_end ;
+        global_id_for_integers_as_text = global_id_for_pointer_begin_end ;
 
         while ( 1 == 1 )
         {
             initialize_parse_characters_of_number( ) ;
             global_single_character_as_integer = global_all_pointers_integers[ global_text_pointer ] ;
             parse_one_character_of_number( ) ;
-            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_item_id_from_origin ] ) )
+            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
             {
                 if ( global_number_of_digits_encountered > 0 )
                 {
@@ -4626,22 +4408,22 @@ void convert_into_category_list_of_integers( )
                         finish_parse_characters_of_number( ) ;
                         if ( global_yes_or_no_decimal_number == global_no )
                         {
-                            global_pointer_end_for_item[ global_item_id_for_list_of_integers ] ++ ;
-                            global_all_pointers_integers[ global_pointer_end_for_item[ global_item_id_for_list_of_integers ] ] = global_single_integer ;
+                            global_pointer_end_for_item[ global_id_for_list_of_integers ] ++ ;
+                            global_all_pointers_integers[ global_pointer_end_for_item[ global_id_for_list_of_integers ] ] = global_single_integer ;
                             log_out << "integer number = " << global_single_integer << std::endl ;
                             break ;
                         } else
                         {
-                            global_item_id_for_list_of_integers = 0 ;
-                            global_item_id_to_edit = 0 ;
+                            global_id_for_list_of_integers = 0 ;
+                            global_id_text_to_edit = 0 ;
                             recover_memory_from_top_text_item( ) ;
                             log_out << "number is not integer, is decimal" << std::endl ;
                             return ;
                         }
                     } else
                     {
-                        global_item_id_for_list_of_integers = 0 ;
-                        global_item_id_to_edit = 0 ;
+                        global_id_for_list_of_integers = 0 ;
+                        global_id_text_to_edit = 0 ;
                         recover_memory_from_top_text_item( ) ;
                         log_out << "invalid number" << std::endl ;
                         return ;
@@ -4652,8 +4434,8 @@ void convert_into_category_list_of_integers( )
         }
     }
     recover_memory_from_top_text_item( ) ;
-    global_item_id_to_edit = global_item_id_for_list_of_integers ;
-    global_category_for_item[ global_item_id_for_list_of_integers ] = global_category_contains_list_of_integers ;
+    global_id_text_to_edit = global_id_for_list_of_integers ;
+    global_category_for_item[ global_id_for_list_of_integers ] = global_container_category_list_of_integers ;
     return ;
 }
 
@@ -4669,7 +4451,7 @@ void convert_into_category_pointers_to_decimal_numbers( )
 
 //  todo: copy code from integer version -- after it has been debugged
 
-    global_category_for_item[ global_item_id_from_origin ] = global_category_contains_pointers_to_decimal_numbers ;
+    global_category_for_item[ global_id_from_origin ] = global_container_category_pointers_to_decimal_numbers ;
     return ;
 }
 
@@ -4742,14 +4524,14 @@ void scan_text_item_for_character_usage( )
 //  Function scan_searched_text_before_doing_find_text
 //
 //  This function scans the text item indicated by
-//  "global_item_id_to_search" and copies
+//  "global_id_text_to_search" and copies
 //  into the
 //  "global_searched_usage_count_for_character"
 //  array the character usage counts.
 
 void scan_searched_text_before_doing_find_text( )
 {
-    global_item_id = global_item_id_to_search ;
+    global_item_id = global_id_text_to_search ;
     scan_text_item_for_character_usage( ) ;
     for ( global_single_character_as_integer = global_minimum_usage_character_to_consider ; global_single_character_as_integer <= global_maximum_usage_character_to_consider ; global_single_character_as_integer ++ )
     {
@@ -4896,8 +4678,8 @@ void track_recent_position_of_each_character( )
 void find_optimum_character_for_find_pause( )
 {
     global_optimum_character_for_find_pause = 0 ;
-    global_length_of_text_to_find = global_pointer_end_for_item[ global_item_id_from_origin ] - global_pointer_begin_for_item[ global_item_id_from_origin ] + 1 ;
-    global_text_pointer = global_pointer_begin_for_item[ global_item_id_from_origin ] ;
+    global_length_of_text_to_find = global_pointer_end_for_item[ global_id_from_origin ] - global_pointer_begin_for_item[ global_id_from_origin ] + 1 ;
+    global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ;
     global_highest_score_for_optimum_character_for_find_pause = 0 ;
     for ( global_position_within_text_to_find = 1 ; global_position_within_text_to_find <= global_length_of_text_to_find ; global_position_within_text_to_find ++ )
     {
@@ -4931,7 +4713,7 @@ void find_optimum_character_for_find_pause( )
 //  check is done when the target pointer stack is
 //  pointing to an occurance of the optimum
 //  character that triggers this check.  The text
-//  item "global_item_id_to_find" is the text
+//  item "global_id_text_to_find" is the text
 //  to find.  The text item being searched is
 //  ...
 
@@ -4943,7 +4725,7 @@ void check_for_match_where_paused( )
 
     global_position_of_found_character_for_find_pause = global_recent_character_position_for_character_number[ global_optimum_character_for_find_pause ] ;
     global_character_distance_from_optimum_character_for_pause = 0 ;
-    for ( global_text_pointer = global_pointer_end_for_item[ global_item_id_to_find ] ; global_text_pointer >= global_pointer_begin_for_item[ global_item_id_to_find ] ; global_text_pointer -- )
+    for ( global_text_pointer = global_pointer_end_for_item[ global_id_text_to_find ] ; global_text_pointer >= global_pointer_begin_for_item[ global_id_text_to_find ] ; global_text_pointer -- )
     {
         global_single_character_as_integer = global_all_pointers_integers[ global_text_pointer ] ;
         if ( ( global_recent_character_position_for_character_number[ global_single_character_as_integer ] + global_character_distance_from_optimum_character_for_pause ) != global_position_of_found_character_for_find_pause )
@@ -4963,9 +4745,9 @@ void check_for_match_where_paused( )
 //
 //  This function finds some "matched" text
 //  within some text to be searched.  The text to
-//  match must be in "global_item_id_to_find"
+//  match must be in "global_id_text_to_find"
 //  The text to be searched must be in
-//  "global_item_id_to_search" and that text
+//  "global_id_text_to_search" and that text
 //  must be the same text that was scanned using
 //  the function
 //  "scan_searched_text_before_doing_find_text".
@@ -5006,7 +4788,7 @@ void find_matching_text( )
 //  Get the character usage counts for the text to
 //  be found.
 
-    global_item_id_from_origin = global_item_id_to_find ;
+    global_id_from_origin = global_id_text_to_find ;
     scan_text_item_for_character_usage( ) ;
 
 
@@ -5087,7 +4869,7 @@ void find_matching_text( )
 void save_position_of_first_hyphen( )
 {
     global_pointer_to_first_hyphen = global_recent_character_position_for_character_number[ global_ascii_code_for_hyphen ] ;
-    global_item_id_containing_first_hyphen = global_current_target_text_item ;
+    global_id_containing_first_hyphen = global_current_target_text_item ;
     global_character_pointer_within_text_item_for_first_hyphen = global_current_target_character_position ;
     global_pointer_to_leading_delimiter = global_recent_position_of_any_delimiter ;
     return ;
@@ -5126,7 +4908,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  error for now, and later modify the code to
 //  handle such other cases.
 
-    if ( ( global_item_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > global_length_of_first_phrase_word_minus_one ) && ( ( global_length_of_first_phrase_word_minus_one + global_distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
+    if ( ( global_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > global_length_of_first_phrase_word_minus_one ) && ( ( global_length_of_first_phrase_word_minus_one + global_distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
     {
     	log_out << "phrase name not within single text item, so modify code to handle this kind of situation " << std::endl ;
     	exit( EXIT_FAILURE ) ;
@@ -5139,7 +4921,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  indicate an error and the need to modify this
 //  code.
 
-    if ( global_category_for_item[ global_current_target_text_item ] == global_category_contains_phrase_word_pointers )
+    if ( global_category_for_item[ global_current_target_text_item ] == global_container_category_phrase_word_pointers )
     {
     	log_out << "phrase name is in a special hyphenated text item, so modify code to handle this kind of situation " << std::endl ;
     	exit( EXIT_FAILURE ) ;
@@ -5178,7 +4960,7 @@ void replace_angle_bracketed_phrase_names( )
 
 // todo: still need to handle pointer to stack for recent copy of stack
 
-    global_item_id = global_item_id_to_edit ;
+    global_item_id = global_id_text_to_edit ;
     initialize_get_next_character_from_text_item( ) ;
     initialize_track_recent_position_of_each_character( ) ;
 
@@ -5332,7 +5114,7 @@ void handle_directives( )
 //  Function expand_text
 //
 //  Expands the text item indicated in
-//  global_item_id_from_origin.
+//  global_id_from_origin.
 
 //  Local variables are used because this function
 //  can be used recursively.
@@ -5378,15 +5160,12 @@ void expand_text( )
 
     int expand_buffer_item_id ;
 
-    const int space_directive_none = 1 ;
-    const int space_directive_one = 2 ;
-    const int space_directive_one_requested = 3 ;
 
 
 // -----------------------------------------------
 //  Specify the text item being expanded.
 
-    global_id_for_phrase_name_expand_text = global_item_id_to_edit ;
+    global_id_for_phrase_name_expand_text = global_id_text_to_edit ;
 
 
 // -----------------------------------------------
@@ -5403,7 +5182,7 @@ void expand_text( )
     text_item_clear( ) ;
 
 // output_buffer = '' ;
-    space_directive = space_directive_none ;
+    space_directive = global_space_directive_none ;
 // new_output_buffer = '' ;
 // possible_phrase_name_with_underscores = '' ;
 
@@ -5426,7 +5205,7 @@ void expand_text( )
 //  Begin a loop that handles each space delimited
 //  string in the phrase definition.
 
-// code_at_recursion_level[ 1 ] = global_item_id_from_origin ;
+// code_at_recursion_level[ 1 ] = global_id_from_origin ;
 // pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
 // length_of_code_at_recursion_level[ 1 ] = length( code_at_recursion_level[ 1 ] ) ;
 
@@ -5526,50 +5305,50 @@ void expand_text( )
         if ( current_phrase_item_id == global_id_for_phrase_name_hyphen_here )
         {
 // output_buffer .= '-' ;
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
         }
         if ( current_phrase_item_id == global_id_for_phrase_name_no_space )
         {
-            if ( space_directive = space_directive_one_requested )
+            if ( space_directive = global_space_directive_one_requested )
             {
-                space_directive = space_directive_none ;
+                space_directive = global_space_directive_none ;
             }
             continue ;
         }
 // if ( current_phrase_item_id eq ( '<' . 'no_space' . '>' ) ) {
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
 // }
         if ( current_phrase_item_id == global_id_for_phrase_name_one_space )
         {
-            space_directive = space_directive_one_requested ;
+            space_directive = global_space_directive_one_requested ;
             continue ;
         }
 // if ( current_phrase_item_id eq ( '<' . 'one_space' . '>' ) ) {
-            space_directive = space_directive_one_requested ;
+            space_directive = global_space_directive_one_requested ;
             continue ;
 // }
         if ( current_phrase_item_id == global_id_for_phrase_name_new_line )
         {
 // output_buffer .= "\n" ;
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
         }
 // if ( current_phrase_item_id eq ( '<' . 'new_line' . '>' ) ) {
 // output_buffer .= "\n" ;
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
 // }
         if ( current_phrase_item_id == global_id_for_phrase_name_empty_line )
         {
 // output_buffer .= "\n\n" ;
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
         }
 // if ( current_phrase_item_id eq ( '<' . 'empty_line' . '>' ) ) {
 // output_buffer .= "\n\n" ;
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
             continue ;
 // }
 
@@ -5595,11 +5374,11 @@ void expand_text( )
 //  Specify a default of inserting one space after
 //  the next phrase insertion.
 
-        if ( ( space_directive == space_directive_one ) || ( space_directive == space_directive_one_requested ) )
+        if ( ( space_directive == global_space_directive_one ) || ( space_directive == global_space_directive_one_requested ) )
         {
 // output_buffer .= ' ' ;
         }
-        space_directive = space_directive_one ;
+        space_directive = global_space_directive_one ;
 
 
 // -----------------------------------------------
@@ -5646,7 +5425,7 @@ void expand_text( )
 // output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
 
 // if ( output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ ) {
-            space_directive = space_directive_none ;
+            space_directive = global_space_directive_none ;
 // }
             length_of_output_buffer = -1 ;
             pointer_to_remainder_of_output_buffer = 0 ;
@@ -5740,7 +5519,7 @@ void implement_loop( )
     int local_item_id_contains_word_list ;
     int local_item_id_for_next_word ;
     int local_loop_handler ;
-    local_item_id_contains_word_list = global_item_id_from_origin ;
+    local_item_id_contains_word_list = global_id_from_origin ;
     initialize_point_to_next_word_in_text_item( ) ;
     while ( 1 == 1 )
     {
@@ -5764,7 +5543,7 @@ void implement_loop( )
 
 int parameterized_use_handler_with_each_word_in_phrase( int local_item_id )
 {
-    global_item_id_from_origin = local_item_id ;
+    global_id_from_origin = local_item_id ;
     implement_loop( ) ;
     int expand_result_item_id ;  // temporary, to avoid compiler error
     return expand_result_item_id ;
@@ -5772,7 +5551,7 @@ int parameterized_use_handler_with_each_word_in_phrase( int local_item_id )
 
 int parameterized_dashrep_expand_text( int local_item_id )
 {
-    global_item_id_from_origin = local_item_id ;
+    global_id_from_origin = local_item_id ;
     expand_text( ) ;
     int expand_result_item_id ;  // temporary, to avoid compiler error
     return expand_result_item_id ;
@@ -5780,7 +5559,7 @@ int parameterized_dashrep_expand_text( int local_item_id )
 
 void parameterized_append_text( int local_item_id )
 {
-    global_item_id_from_origin = local_item_id ;
+    global_id_from_origin = local_item_id ;
     append_copied_text( ) ;
     return ;
 }
@@ -5942,11 +5721,11 @@ int parameterized_yes_or_no_file_name( int local_item_id )
 {
     global_item_id = local_item_id ;
     initialize_parse_characters_of_filename( ) ;
-    for ( global_text_pointer = global_pointer_begin_for_item[ global_item_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_item_id_from_origin ] ; global_text_pointer ++ )
+    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
     {
         global_character_category = global_all_pointers_integers[ global_text_pointer ] ;
         parse_one_character_of_filename( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_item_id_from_origin ] ) )
+        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
         {
             if ( global_yes_or_no_filename_is_valid == global_yes )
             {
@@ -6093,18 +5872,18 @@ void do_everything( )
 
 //    log_out << "next test" << std::endl ;
 
-//    global_item_id_from_origin = global_item_id_for_number_as_text ;
+//    global_id_from_origin = global_id_for_number_as_text ;
 //    write_text_item_to_file( ) ;
 
 //    log_out << "next test" << std::endl ;
 
-    global_item_id_to_edit = global_item_id_for_sample_numbers ;
+    global_id_text_to_edit = global_id_for_sample_numbers ;
     remove_leading_and_trailing_delimiters( ) ;
-    global_item_id = global_item_id_for_sample_numbers ;
+    global_item_id = global_id_for_sample_numbers ;
     write_text_item_to_file( ) ;
 
-//    global_item_id_from_origin = global_item_id_for_sample_numbers ;
-//    global_item_id_to_edit = global_item_id_for_sample_numbers ;
+//    global_id_from_origin = global_id_for_sample_numbers ;
+//    global_id_text_to_edit = global_id_for_sample_numbers ;
 //    append_text( ) ;
 
     log_out << "done testing" << std::endl ;
