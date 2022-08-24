@@ -374,6 +374,7 @@ int global_found_matching_phrase_name ;
 int global_from_text_contains_category ;
 int global_highest_score_for_optimum_character_for_find_pause ;
 int global_id_for_copy_of_target_pointer_stack ;
+int global_id_for_character_position ;
 int global_id_for_original_of_target_pointer_stack ;
 int global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int global_id_for_phrase_name_append_new_line ;
@@ -2323,16 +2324,16 @@ void append_copied_text( )
 //  "global_id_from_origin" to the text item
 //  "global_id_text_to_edit".
 //  Allow the two text item IDs to be the same.
-//
-//  Later, allow a Dashrep directive to determine
-//  whether the definition of a specific phrase
-//  name can be modified.  For now, do not allow
-//  modification
 
 void append_text( )
 {
-    append_copied_text( ) ;
-//    append_linked_text( ) ;
+	if ( ( global_yes_or_no_can_edit_item[ global_id_from_origin ] == global_yes ) && ( global_yes_or_no_can_edit_item[ global_id_text_to_edit ] == global_yes ) )
+	{
+        append_linked_text( ) ;
+    } else
+    {
+        append_copied_text( ) ;
+    }
     return ;
 }
 
@@ -2365,15 +2366,18 @@ void copy_copied_text( )
 // -----------------------------------------------
 //  Function copy_text
 //
-//  Later, allow a Dashrep directive to determine
-//  whether the definition of a specific phrase
-//  name can be modified.  For now, do not allow
-//  modification
+//  Copy the text item, either by modifying the
+//  original text, or by making a copy.
 
 void copy_text( )
 {
-    copy_copied_text( ) ;
-//    copy_linked_text( ) ;
+	if ( ( global_yes_or_no_can_edit_item[ global_id_from_origin ] == global_yes ) && ( global_yes_or_no_can_edit_item[ global_id_text_to_edit ] == global_yes ) )
+	{
+        copy_copied_text( ) ;
+    } else
+    {
+        copy_linked_text( ) ;
+    }
     return ;
 }
 
@@ -3672,6 +3676,61 @@ void remove_leading_and_trailing_delimiters( )
 {
     remove_leading_delimiters( ) ;
     remove_trailing_delimiters( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function jump_to_character_position
+//
+//  Within the text item
+//  "global_id_for_character_position"
+//  jump to the character indicated by
+//  "global_character_position_desired".  If that
+//  position is specified as zero, count the
+//  number of characters in the text item.  The
+//  text item can contain pointers to other text
+//  items.
+
+void skip_to_character_position( )
+{
+    global_id_current = global_id_for_character_position ;
+    global_character_position_current = 0 ;
+    global_offset = 0 ;
+    while ( global_character_position_current < global_character_position_desired )
+    {
+        global_container_category = global_category_for_item[ global_id_current ] ;
+        switch ( global_container_category )
+        {
+            case global_container_category_text_characters :
+                global_length_of_text_item = global_pointer_end_for_item[ global_id_current ] - global_pointer_begin_for_item[ global_id_current ] ;
+
+//  todo: write this code
+
+                break ;
+            case global_container_category_list_of_item_ids :
+                global_offset_within_list_of_pointers ++ ;
+                global_id_current = global_all_pointers_integers[ global_pointer_begin_for_item[ global_id_current ] + global_offset_within_list_of_pointers ] ;
+                if ( global_category_for_item[ global_id_current ] == global_container_category_phrase_word_pointers )
+                {
+                	global_character_insertion_count = 0 ;
+                }
+                break ;
+            case global_container_category_phrase_word_pointers :
+               	global_character_position_current ++ ;
+
+                break ;
+            default :
+                log_out << "error, encountered list of integers or list of pointers to decimal numbers that have not been converted to text" << std::endl ;
+                global_character_position_current = global_character_position_desired + 1 ;
+                break ;
+        }
+    }
+    if ( global_character_position_current > global_character_position_desired )
+    {
+        log_out << "error, encountered list of integers or list of pointers to decimal numbers that have not been converted to text" << std::endl ;
+    }
     return ;
 }
 
