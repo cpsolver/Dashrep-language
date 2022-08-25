@@ -328,6 +328,7 @@ const int global_space_directive_one_requested = 3 ;
 // -----------------------------------------------
 //  Declare variables in alphabetical order.
 
+int global_allocation_begin ;
 int global_character_begin_pointer_one ;
 int global_character_begin_pointer_two ;
 int global_character_category ;
@@ -336,6 +337,7 @@ int global_character_count_for_expand_text ;
 int global_character_distance_from_optimum_character_for_pause ;
 int global_character_end_pointer_one ;
 int global_character_end_pointer_two ;
+int global_character_insertion_count ;
 int global_character_length ;
 int global_character_length_minus_one ;
 int global_character_length_of_phrase_word ;
@@ -373,6 +375,7 @@ int global_do_nothing ;
 int global_found_matching_phrase_name ;
 int global_from_text_contains_category ;
 int global_highest_score_for_optimum_character_for_find_pause ;
+int global_id_current ;
 int global_id_for_copy_of_target_pointer_stack ;
 int global_id_for_character_position ;
 int global_id_for_original_of_target_pointer_stack ;
@@ -880,6 +883,8 @@ int global_id_text_to_edit ;
 int global_id_text_to_find ;
 int global_id_text_to_search ;
 int global_id_text_to_truncate ;
+int global_item_id_to_consider ;
+int global_length_of_text_item ;
 int global_length_of_first_phrase_word_minus_one ;
 int global_length_of_matching_text ;
 int global_length_of_text_to_find ;
@@ -900,6 +905,8 @@ int global_number_of_digits_encountered ;
 int global_number_of_hyphenated_phrase_names_in_text_items ;
 int global_number_of_phrase_words_found ;
 int global_number_of_valid_characters_encountered ;
+int global_offset ;
+int global_offset_within_list_of_pointers ;
 int global_one_number_to_append ;
 int global_optimum_character_for_find_pause ;
 int global_phrase_word_number_to_check ;
@@ -915,6 +922,8 @@ int global_pointer_to_within_target_stack_item_current_copy ;
 int global_pointer_to_within_target_stack_item_current_original ;
 int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_text_item ;
+int global_character_position_current ;
+int global_character_position_desired ;
 int global_position_in_list_of_hyphenated_phrase_text_items ;
 int global_position_of_close_angle_bracket ;
 int global_position_of_close_angle_bracket_within_text_item ;
@@ -1081,23 +1090,25 @@ void measure_space_available_in_item( )
 //  must be considered because the allocation end
 //  of the previous item is relevant only if that
 //  previous item is in the same list as the item
-//  for which the allocation end is desired.
+//  for which the allocation end is desired.  Each
+//  container category is separate, so the prior
+//  item must be in the same container category.
 
 void get_allocation_begin( )
 {
     global_container_category = global_category_for_item[ global_item_id ] ;
-    switch ( global_container_category )
+    global_item_id_to_consider = global_item_id - 1 ;
+    while ( global_item_id_to_consider > 0 )
     {
-        case global_container_category_text_characters :
-//  todo: write code
-            break ;
-        case global_container_category_pointers_to_decimal_numbers :
-//  write code
-            break ;
-        default :
-//  write code
-            break ;
+    	if ( global_category_for_item[ global_item_id_to_consider ] == global_container_category )
+    	{
+    		global_allocation_begin = global_pointer_allocation_end_for_item[ global_item_id_to_consider ] + 1 ;
+    		return ;
+    	}
+        global_item_id_to_consider -- ;
     }
+    global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] ;
+    return ;
 }
 
 
@@ -2648,13 +2659,16 @@ void convert_into_category_list_of_integers( )
     global_length_requested_for_next_text_item_storage = 2 ;
     assign_storage_for_new_item( ) ;
     global_id_for_list_of_integers = global_new_storage_item_id ;
-
-//  todo: use version without target pointer stack
-//    initialize_point_to_next_word_in_text_item( ) ;
-
+    global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_integers_as_text ] ;
+    global_character_pointer_end = global_pointer_end_for_item[ global_id_for_integers_as_text ] ;
     while ( 1 == 1 )
     {
 
+        while ( global_yes_or_no_character_is_delimiter == global_yes )
+        {
+        }
+
+// global_character_pointer_current
 //  todo: use version without target pointer stack
 //        point_to_next_word_in_text_item( ) ;
 
@@ -3682,7 +3696,23 @@ void remove_leading_and_trailing_delimiters( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function initalize_skip_to_character_position
+//
+//  This function does initialization for the
+//  function "skip_to_character_position".
+
+void initalize_skip_to_character_position( ) ;
+{
+    global_item_id_current = global_id_for_character_position ;
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function jump_to_character_position
+//
+//  todo: change to use pointer, as output
 //
 //  Within the text item
 //  "global_id_for_character_position"
@@ -3691,13 +3721,18 @@ void remove_leading_and_trailing_delimiters( )
 //  position is specified as zero, count the
 //  number of characters in the text item.  The
 //  text item can contain pointers to other text
-//  items.
+//  items.  This function calls itself recursively
+//  so that the position within each subordinate
+//  item is tracked with a local variable that
+//  automatically implements a stack.
+//
+//  Before calling this function, use the function
+//  "initalize_skip_to_character_position".
 
-void skip_to_character_position( )
+void skip_to_character_position( int local_item_id )
 {
-    global_id_current = global_id_for_character_position ;
-    global_character_position_current = 0 ;
-    global_offset = 0 ;
+	int local_character_position_for_current_item = 1 ;
+    int local_item_id = global_id_for_character_position ;
     while ( global_character_position_current < global_character_position_desired )
     {
         global_container_category = global_category_for_item[ global_id_current ] ;
@@ -3710,6 +3745,9 @@ void skip_to_character_position( )
 
                 break ;
             case global_container_category_list_of_item_ids :
+
+                skip_to_character_position( int local_item_id ) ;
+
                 global_offset_within_list_of_pointers ++ ;
                 global_id_current = global_all_pointers_integers[ global_pointer_begin_for_item[ global_id_current ] + global_offset_within_list_of_pointers ] ;
                 if ( global_category_for_item[ global_id_current ] == global_container_category_phrase_word_pointers )
@@ -3718,6 +3756,7 @@ void skip_to_character_position( )
                 }
                 break ;
             case global_container_category_phrase_word_pointers :
+
                	global_character_position_current ++ ;
 
                 break ;
