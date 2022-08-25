@@ -2661,33 +2661,17 @@ void convert_into_category_list_of_integers( )
     global_id_for_list_of_integers = global_new_storage_item_id ;
     global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_integers_as_text ] ;
     global_character_pointer_end = global_pointer_end_for_item[ global_id_for_integers_as_text ] ;
-    while ( 1 == 1 )
+    global_yes_or_no_character_is_delimiter = global_yes ;
+    while ( global_character_pointer_current <= global_character_pointer_end )
     {
-
+        global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
+        check_yes_or_no_character_is_delimiter( ) ;
         while ( global_yes_or_no_character_is_delimiter == global_yes )
         {
+        	continue ;
         }
-
-// global_character_pointer_current
-//  todo: use version without target pointer stack
-//        point_to_next_word_in_text_item( ) ;
-
-        if ( global_pointer_next_word_begin == 0 )
-        {
-            log_out << "no more words" << std::endl ;
-            break ;
-        }
-        global_pointer_begin_for_item[ global_id_for_pointer_begin_end ] = global_pointer_next_word_begin ;
-        global_pointer_end_for_item[ global_id_for_pointer_begin_end ] = global_pointer_next_word_end ;
-        measure_space_available_in_item( ) ;
-        if ( global_space_available_in_item < 1 )
-        {
-            extend_length_of_top_text_item( ) ;
-        }
-
-        global_id_for_integers_as_text = global_id_for_pointer_begin_end ;
-
-        while ( 1 == 1 )
+        global_character_pointer_begin_for_number = global_character_pointer_current ;
+        while ( global_yes_or_no_character_is_delimiter == global_no )
         {
             initialize_parse_characters_of_number( ) ;
             global_single_character_as_integer = global_all_characters[ global_text_pointer ] ;
@@ -2725,6 +2709,12 @@ void convert_into_category_list_of_integers( )
                 initialize_parse_characters_of_number( ) ;
             }
         }
+        measure_space_available_in_item( ) ;
+        if ( global_space_available_in_item < 1 )
+        {
+            extend_length_of_top_text_item( ) ;
+        }
+        global_character_pointer_current ++ ;
     }
     recover_memory_from_top_text_item( ) ;
     global_id_text_to_edit = global_id_for_list_of_integers ;
@@ -2742,9 +2732,10 @@ void convert_into_category_list_of_integers( )
 void convert_into_category_pointers_to_decimal_numbers( )
 {
 
-//  todo: copy code from integer version -- after it has been debugged
+//  later, after integer version debugged, copy code from integer version and modify for decimal numbers
 
-    global_category_for_item[ global_id_from_origin ] = global_container_category_pointers_to_decimal_numbers ;
+//  global_container_category_pointers_to_decimal_numbers ;
+
     return ;
 }
 
@@ -2754,7 +2745,7 @@ void convert_into_category_pointers_to_decimal_numbers( )
 //  Function convert_list_of_integers_into_text_item
 //
 //  Convert the text item at
-// "global_id_for_list_of_integers", which is
+//  "global_id_for_list_of_integers", which is
 //  assumed to be a list of integers, into a text
 //  item that contains only integers, with one
 //  space between each adjacent pair of numbers.
@@ -2773,23 +2764,30 @@ void convert_list_of_integers_into_text_item( )
 
 
 // -----------------------------------------------
+//  Begin a loop that handles each integer.
 
-//  todo: write this code
-//  todo: as needed move code from test_parsing_numeric_characters
 
     while ( global_current_target_character_position < 0 )
     {
 
+
+// todo: finish writing this code
+
+//  global_id_for_list_of_integers
+
         global_single_integer = global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
         convert_integer_to_text( ) ;
 
-        global_current_target_text_item = global_id_for_number_as_text ;
-        global_current_target_character_position = 1 ;
-        global_current_target_character_position = global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
 
-        global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-        global_all_pointers_integers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
-        global_all_pointers_integers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+// -----------------------------------------------
+//  Append the digits to the text item.
+
+        append_copied_text( ) ;
+
+
+// -----------------------------------------------
+//  Repeat the loop for the next integer.
+
 
     }
 
@@ -2812,49 +2810,11 @@ void convert_list_of_integers_into_text_item( )
 void convert_pointers_to_decimal_numbers_into_text_item( )
 {
 
-//  todo: write this code
+//  later, after integer version debugged, copy code from integer version and modify for decimal numbers
 
-//    global_single_decimal_number = global_all_decimal_numbers[ global_all_pointers_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ] ;
-//    convert_decimal_to_text( ) ;
+//  global_container_category_pointers_to_decimal_numbers ;
+//  convert_decimal_to_text( ) ;
 
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function test_parsing_numeric_characters
-
-void test_parsing_numeric_characters( )
-{
-    global_id_from_origin = global_id_for_sample_numbers ;
-    initialize_parse_characters_of_number( ) ;
-    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
-    {
-        global_single_character_as_integer = global_all_characters[ global_text_pointer ] ;
-        parse_one_character_of_number( ) ;
-        if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
-        {
-            if ( global_number_of_digits_encountered > 0 )
-            {
-                if ( global_yes_or_no_number_is_valid == global_yes )
-                {
-                    finish_parse_characters_of_number( ) ;
-                    if ( global_yes_or_no_decimal_number == global_no )
-                    {
-                        log_out << "integer number = " << global_single_integer << std::endl ;
-                    } else
-                    {
-                        convert_decimal_to_text( ) ;
-                        log_out << "decimal number in text item " << std::endl ;
-                    }
-                } else
-                {
-                    log_out << "invalid number" << std::endl ;
-                }
-            }
-            initialize_parse_characters_of_number( ) ;
-        }
-    }
 }
 
 
