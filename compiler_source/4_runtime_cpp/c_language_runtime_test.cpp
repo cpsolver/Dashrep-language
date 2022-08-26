@@ -62,50 +62,53 @@ const int global_yes = 1 ;
 
 
 // -----------------------------------------------
-//  Declare "container" categories.
+//  Declare data type categories.
+//  These values are in the array
+//  "global_category_for_item".
+
+//  todo: refer to "data types" instead of container categories
+
 //
 //  An item can contain any of the following
-//  categories.
+//  data types.
 //
 //  * "list_of_item_ids"
-//    Pointers to other items.
+//    Pointers to other items.  These can be
+//    recursive, which means a pointer can point
+//    to yet another list of item ids.
 //
 //  * "text_characters"
-//    Text characters, with each character
-//    being stored as an integer.  This allows
-//    Unicode characters.  In particular,
-//    each integer can represent one
-//    Chinese character.
+//    A sequence of text characters.  Each
+//    character is stored as an integer, which is
+//    usually a Unicode character, whic means that
+//    Chinese characters are supported.
 //
 //  * "pointers_to_decimal_numbers"
 //    A list of pointers to decimal numbers.  The
-//    decimal numbers are stored separately in a
-//    "float" array.  Each pair of pointers is
-//    assumed to be separated by one space, without
-//    explicitly storing those spaces.  This
-//    convention increases speed by eliminating
-//    unneeded conversions of numbers between text
-//    type and the "float" data type.
+//    decimal numbers are stored separately in the
+//    array "global_all_decimal_numbers".  Each
+//    pair of pointers is assumed to be separated
+//    by one space, without explicitly storing
+//    those spaces.  This data type increases
+//    speed by reducing the need to convert
+//    between text type and "float" type every
+//    time a decimal-number calculation is done.
 //
 //  * "list_of_integers"
-//    A list of integers.  These are generated
-//    when an integer calculation is done, such as
-//    adding two vectors of integers.  And this
-//    list is generated prior to a request for
-//    integer math, such as incrementing.
-//    This convention regards the integers as
-//    being separated by one space between each
-//    pair of integers, without those spaces
-//    being explicitly stored.  If a list of
-//    numbers includes even one decimal number,
-//    the "pointers_to_decimal_numbers" category
-//    must be used.  This storage type increases
-//    speed by eliminating unneeded conversions
-//    of numbers between text type and the "int"
-//    data type.
+//    A list of integers.  The decimal numbers
+//    are stored separately in the same array --
+//    "global_all_pointers_integers" -- as
+//    pointers, but in different items (so that
+//    pointers and integers are not intemixed).
+//    Adjacent pairs of integers are assumed to be
+//    separated by one space, without explicitly
+//    storing those spaces.  This data type
+//    increases speed by reducing the need to
+//    convert between text type and integers every
+//    time a numeric calculation is done.
 //
 //  * "phrase_word_pointers"
-//    A list of text item IDs that only point to
+//    A list of item IDs that only point to
 //    "phrase_word" text items.  The result is
 //    a valid phrase name -- which is
 //    not necessarily a defined phrase name.  Each
@@ -122,13 +125,37 @@ const int global_yes = 1 ;
 //    and does not allow two or more adjacent
 //    hyphens.
 //
-//  A list can contain just one item.
+//  * "underscored"
+//    A pointer to phrase word pointers that
+//    change the delimiter from a hyphen to an
+//    underscore.  This extra layer allows a
+//    phrase name to also represent an underscored
+//    version for places where angle brackets
+//    enclose the underscored version.  For
+//    example, "<character_hyphen>" can be
+//    represented as a linked list that points to
+//    the text items "<" and ">" with an
+//    underscored item that points to the list of
+//    phrase names "character" and "hyphen".
+//
+//  Any kind of list can contain just one item.
 
 const int global_container_category_list_of_item_ids = 1 ;
 const int global_container_category_text_characters = 2 ;
 const int global_container_category_pointers_to_decimal_numbers = 3 ;
 const int global_container_category_list_of_integers = 4 ;
 const int global_container_category_phrase_word_pointers = 5 ;
+// todo: implement:
+const int global_container_category_underscored = 6 ;
+
+
+// -----------------------------------------------
+//  Access flags.  These values are in the array
+//  "global_yes_or_no_can_edit_item".
+
+const int global_access_flag_no_changes = 1 ;
+const int global_access_loop_access = 2 ;
+const int global_access_flag_can_change = 3 ;
 
 
 // -----------------------------------------------
