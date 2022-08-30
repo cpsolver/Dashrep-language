@@ -145,6 +145,14 @@ const int global_yes = 1 ;
 //    in turn, points to the list of phrase names
 //    "character" and "hyphen", and (3) a text
 //    character item that contains only ">".
+//
+//  The array "global_data_type_for_item" is also
+//  used to store "linked lists" and "target
+//  pointer stack levels" (which work together to
+//  create a "target pointer stack"), but these
+//  data types are not explicitly tracked because
+//  the Dashrep compiler does not generate code
+//  that uses an item for the wrong kind purpose.
 
 const int global_data_type_list_of_item_ids = 1 ;
 const int global_data_type_text_characters = 2 ;
@@ -1510,9 +1518,6 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  Creates a text item for a hyphenated phrase
 //  name, and supplies the text item ID number for
 //  the new text item.
-//
-//  Later, allow a variable number of phrase
-//  words.
 
 int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
 {
@@ -2356,6 +2361,8 @@ void append_copied_text( )
 //  "global_id_from_origin" to the text item
 //  "global_id_text_to_edit".
 //  Allow the two text item IDs to be the same.
+
+//  todo: if target item is read only, indicate error because compiler made a mistake
 
 void append_text( )
 {
@@ -3711,10 +3718,8 @@ void initalize_skip_to_character_position( )
 //  Before calling this function, use the function
 //  "initalize_skip_to_character_position".
 
-void skip_to_character_position( int local_item_id )
+void skip_to_character_position( )
 {
-	int local_character_position_for_current_item = 1 ;
-    local_item_id = global_id_for_character_position ;
     while ( global_character_position_current < global_character_position_desired )
     {
         global_data_type = global_data_type_for_item[ global_item_id_current ] ;
@@ -3728,7 +3733,6 @@ void skip_to_character_position( int local_item_id )
                 break ;
             case global_data_type_list_of_item_ids :
 
-                skip_to_character_position( local_item_id ) ;
 
                 global_offset_within_list_of_pointers ++ ;
                 global_item_id_current = global_all_pointers_integers[ global_pointer_begin_for_item[ global_item_id_current ] + global_offset_within_list_of_pointers ] ;
@@ -4261,7 +4265,7 @@ void add_to_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_pointer_from_linked_list
+//  Function get_next_pointer_in_linked_list
 //
 //  This function gets the next item ID from
 //  the linked list that is pointed to by
@@ -4274,7 +4278,7 @@ void add_to_linked_list( )
 //  The last integer in each text-item-like
 //  grouping points to the next grouping.
 
-void get_next_pointer_from_linked_list( )
+void get_next_pointer_in_linked_list( )
 {
 
 //  todo: proofread this code
@@ -4286,6 +4290,45 @@ void get_next_pointer_from_linked_list( )
     }
     global_id_from_linked_list = global_all_pointers_integers[ global_linked_list_current_pointer ] ;
     global_linked_list_current_pointer ++ ;
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_target_pointers_in_same_item
+//
+//  This function looks at two target pointers and
+//  determines whether the characters they point
+//  to are in within the same item.  If so, the
+//  contents of that item is simply the pointers
+//  or characters between that item's "begin" and
+//  "end" pointers.
+
+void check_yes_or_no_target_pointers_in_same_item( )
+{
+
+
+// -----------------------------------------------
+//  If the top level of both target pointer stacks
+//  are not the same item ID, indicate a "no"
+//  result.
+
+//  todo: write this code
+
+
+// -----------------------------------------------
+//  Verify that all the other stack levels have
+//  the same sequence of item ID numbers.  If not,
+//  it's possible that the item IDs are the same
+//  but they two target pointer stacks specify
+//  other text items between the two instances of
+//  the same item ID.
+
+
+// -----------------------------------------------
+//  End of check_yes_or_no_target_pointers_in_same_item.
+
 	return ;
 }
 
@@ -4396,7 +4439,7 @@ void find_matching_phrase_word( )
 //  there are no more to check, return with an
 //  indication that there was no match.
 
-        get_next_pointer_from_linked_list( ) ;
+        get_next_pointer_in_linked_list( ) ;
         global_character_pointer_begin_for_text_one = 1 ;global_pointer_begin_for_item[ global_id_from_linked_list ] ;
         if ( global_character_pointer_begin_for_text_one == 0 )
         {
@@ -4634,7 +4677,7 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  Point to the next already-defined phrase name.
 
-        get_next_pointer_from_linked_list( ) ;
+        get_next_pointer_in_linked_list( ) ;
         log_out << "global_id_for_phrase_name " << global_id_for_phrase_name << std::endl ;
 
 
