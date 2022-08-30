@@ -146,13 +146,14 @@ const int global_yes = 1 ;
 //    "character" and "hyphen", and (3) a text
 //    character item that contains only ">".
 //
-//  The array "global_data_type_for_item" is also
-//  used to store "linked lists" and "target
-//  pointer stack levels" (which work together to
-//  create a "target pointer stack"), but these
-//  data types are not explicitly tracked because
-//  the Dashrep compiler does not generate code
-//  that uses an item for the wrong kind purpose.
+//  The array "global_data_type_for_item" could
+//  also be used to store indicators for the data
+//  types "linked lists" and "target pointer stack
+//  levels" (which work together to create a
+//  "target pointer stack"), but these data types
+//  are not explicitly tracked because the Dashrep
+//  compiler does not generate code that uses an
+//  item for the wrong purpose.
 
 const int global_data_type_list_of_item_ids = 1 ;
 const int global_data_type_text_characters = 2 ;
@@ -165,7 +166,7 @@ const int global_data_type_switch_delimiter_to_underscore = 6 ;
 
 // -----------------------------------------------
 //  Declare access flags.  These values are in the
-//  array "global_yes_or_no_can_edit_item".
+//  array "global_access_flag_for_item".
 
 const int global_access_flag_no_changes = 1 ;
 const int global_access_flag_loop_access = 2 ;
@@ -210,9 +211,8 @@ int global_data_type_for_item[ 20005 ] ;
 int global_pointer_begin_for_item[ 20005 ] ;
 int global_pointer_end_for_item[ 20005 ] ;
 int global_pointer_allocation_end_for_item[ 20005 ] ;
-int global_id_for_defined_phrase_name_number[ 20005 ] ;
 int global_id_of_item_containing_definition_for_item[ 20005 ] ;
-int global_yes_or_no_can_edit_item[ 20005 ] ;
+int global_access_flag_for_item[ 20005 ] ;
 
 const int global_maximum_words_in_phrase_name = 30 ;
 int global_id_for_list_of_phrase_names_of_length[ 32 ] ;
@@ -363,6 +363,7 @@ const int global_space_directive_one_requested = 3 ;
 // -----------------------------------------------
 //  Declare variables in alphabetical order.
 
+int global_access_flag ;
 int global_allocation_begin ;
 int global_character_begin_pointer_one ;
 int global_character_begin_pointer_two ;
@@ -1182,7 +1183,7 @@ void assign_storage_for_new_item( )
     global_pointer_allocation_end_for_item[ global_next_available_item_id ] = global_next_available_begin_pointer_for_next_available_item_id - 1 ;
     global_pointer_end_for_item[ global_next_available_item_id ] =     global_pointer_begin_for_item[ global_next_available_item_id ] - 1 ;
     global_id_of_item_containing_definition_for_item[ global_next_available_item_id ] = 0 ;
-    global_yes_or_no_can_edit_item[ global_next_available_item_id ] = global_no ;
+    global_access_flag_for_item[ global_next_available_item_id ] = global_access_flag_can_change ;
     global_new_storage_item_id = global_next_available_item_id ;
     global_next_available_item_id ++ ;
     return ;
@@ -2161,6 +2162,45 @@ void text_item_clear( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function copy_item_to_new
+
+void copy_item_to_new( )
+{
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function replace_text_item_with_pointer_list
+
+//  use 35 as length
+
+void replace_text_item_with_pointer_list( )
+{
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function replace_text_characters_simple
+
+//  Check in calling function:
+//  id = target
+//    check_yes_or_no_target_pointers_in_same_item( ) ;
+//  id = source
+//    check_yes_or_no_target_pointers_in_same_item( ) ;
+//  verify gap length exceeds (or equals) insertion length
+
+void replace_text_characters_simple( )
+{
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function append_space_if_not_empty
 //
 //  Appends a space to
@@ -2362,18 +2402,44 @@ void append_copied_text( )
 //  "global_id_text_to_edit".
 //  Allow the two text item IDs to be the same.
 
-//  todo: if target item is read only, indicate error because compiler made a mistake
 
 void append_text( )
 {
-	if ( ( global_yes_or_no_can_edit_item[ global_id_from_origin ] == global_yes ) && ( global_yes_or_no_can_edit_item[ global_id_text_to_edit ] == global_yes ) )
+
+
+// -----------------------------------------------
+//  If the target item is read only, indicate
+//  an error because the compiler made a mistake.
+
+	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
+	{
+        log_out << "item to edit cannot change" << std::endl ;
+		exit( EXIT_FAILURE ) ;
+	}
+
+
+// -----------------------------------------------
+//  If the source item is not allowed to change,
+//  use the linked version of appending.
+
+	if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
 	{
         append_linked_text( ) ;
+
+
+// -----------------------------------------------
+//  If the source item can change, use the copied
+//  version of appending.
+
     } else
     {
         append_copied_text( ) ;
     }
+
+
+// -----------------------------------------------
     return ;
+
 }
 
 
@@ -2410,13 +2476,41 @@ void copy_copied_text( )
 
 void copy_text( )
 {
-	if ( ( global_yes_or_no_can_edit_item[ global_id_from_origin ] == global_yes ) && ( global_yes_or_no_can_edit_item[ global_id_text_to_edit ] == global_yes ) )
+
+
+// -----------------------------------------------
+//  If the target item is read only, indicate
+//  an error because the compiler made a mistake.
+
+	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
 	{
-        copy_copied_text( ) ;
+        log_out << "item to edit cannot change" << std::endl ;
+		exit( EXIT_FAILURE ) ;
+	}
+
+
+// -----------------------------------------------
+//  If the source item is not allowed to change,
+//  use the linked version of copying.
+
+	if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
+	{
+        copy_linked_text( ) ;
+
+
+// -----------------------------------------------
+//  If the source item can change, use the copied
+//  version of copying.
+
     } else
     {
-        copy_linked_text( ) ;
+        copy_copied_text( ) ;
     }
+
+
+// -----------------------------------------------
+//  End of copy_text.
+
     return ;
 }
 
@@ -3281,6 +3375,34 @@ void copy_pointer_stack( )
 
 // -----------------------------------------------
 //  End of copy_pointer_stack.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_or_previous_sub_text_item
+//
+//  This function changes the target pointer stack
+//  named "global_whatever"
+//  to point to the next (or previous) subordinate
+//  text item that contains text characters.  It
+//  supplies the following values so that
+//  characters can be accessed within the
+//  subordinate text item without otherwise
+//  checking for the end (or beginning) of a
+//  subordinate text item, and without explicitly
+//  checking for where delimiters should be
+//  inserted.
+
+void get_next_or_previous_sub_text_item( )
+{
+
+//  use code from next function, and these variables
+int global_pointer_to_next_or_previous_character_in_sub_text_item ;
+int global_count_of_characters_to_skip_before_inserting_delimiter ;
+int global_count_of_characters_remaining_in_sub_item ;
 
     return ;
 }
@@ -4632,8 +4754,7 @@ void find_matching_phrase_name( )
         global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - global_phrase_word_number_to_check ] ;
         global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - ( global_phrase_word_number_to_check + 1 ) ] ;
 
-//  array only used once:
-        global_id_from_linked_list_number[ global_phrase_word_number_to_check ] = global_id_from_linked_list ;
+//        ???[ global_phrase_word_number_to_check ] = global_id_from_linked_list ;
 
         find_matching_phrase_word( ) ;
         global_id_for_phrase_word_at_position_number[ global_phrase_word_number_to_check ] = global_id_for_phrase_word ;
