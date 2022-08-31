@@ -418,9 +418,22 @@ int global_do_nothing ;
 int global_found_matching_phrase_name ;
 int global_from_text_data_type ;
 int global_highest_score_for_optimum_character_for_find_pause ;
-int global_item_id_current ;
+int global_id_containing_first_hyphen ;
+int global_id_for_copy ;
 int global_id_for_copy_of_target_pointer_stack ;
 int global_id_for_character_position ;
+int global_id_for_empty_text ;
+int global_id_for_file_input ;
+int global_id_for_file_output ;
+int global_id_for_float_as_text ;
+int global_id_for_four_hyphens ;
+int global_id_for_integers_as_text ;
+int global_id_for_list_of_integers ;
+int global_id_for_next_word ;
+int global_id_for_next_word_begin ;
+int global_id_for_next_word_end ;
+int global_id_for_non_breaking_space ;
+int global_id_for_number_as_text ;
 int global_id_for_original_of_target_pointer_stack ;
 int global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int global_id_for_phrase_name_append_new_line ;
@@ -868,21 +881,6 @@ int global_id_for_phrase_word_yes ;
 int global_id_for_phrase_word_zero ;
 int global_id_for_phrase_word_zoom ;
 int global_id_for_pointers_to_decimal_numbers ;
-int global_id_pointer_stack_for_getting_next_character ;
-int global_id_containing_first_hyphen ;
-int global_id_for_copy ;
-int global_id_for_empty_text ;
-int global_id_for_file_input ;
-int global_id_for_file_output ;
-int global_id_for_float_as_text ;
-int global_id_for_four_hyphens ;
-int global_id_for_integers_as_text ;
-int global_id_for_list_of_integers ;
-int global_id_for_next_word ;
-int global_id_for_next_word_begin ;
-int global_id_for_next_word_end ;
-int global_id_for_non_breaking_space ;
-int global_id_for_number_as_text ;
 int global_id_for_phrase_name ;
 int global_id_for_phrase_word ;
 int global_id_for_pointer_begin_end ;
@@ -921,11 +919,15 @@ int global_id_for_word_text ;
 int global_id_for_word_underscore ;
 int global_id_from_linked_list ;
 int global_id_from_origin ;
+int global_id_pointer_stack_for_getting_next_character ;
 int global_id_text_to_edit ;
 int global_id_text_to_find ;
 int global_id_text_to_search ;
 int global_id_text_to_truncate ;
+int global_integer_position_current ;
+int global_integer_position_end ;
 int global_item_id ;
+int global_item_id_current ;
 int global_item_id_to_consider ;
 int global_length_of_text_item ;
 int global_length_of_first_phrase_word_minus_one ;
@@ -966,6 +968,10 @@ int global_pointer_to_within_target_stack_item_current_copy ;
 int global_pointer_to_within_target_stack_item_current_original ;
 int global_pointer_to_within_target_stack_item_top ;
 int global_pointer_to_within_text_item ;
+int global_pointer_copy_current ;
+int global_pointer_copy_end ;
+int global_pointer_origin_current ;
+int global_pointer_origin_end ;
 int global_character_position_current ;
 int global_character_position_desired ;
 int global_position_in_list_of_hyphenated_phrase_text_items ;
@@ -988,6 +994,7 @@ int global_single_character ;
 int global_single_character_as_integer ;
 int global_single_integer ;
 int global_space_available_in_item ;
+int global_space_directive ;
 int global_target_stack_item_bottom ;
 int global_target_stack_item_current ;
 int global_target_stack_item_current_copy ;
@@ -1185,6 +1192,9 @@ void check_yes_or_no_text_item_is_empty( )
 
 void assign_storage_for_new_item( )
 {
+
+// todo: handle different data types!
+
     global_pointer_begin_for_item[ global_next_available_item_id ] = global_next_available_begin_pointer_for_next_available_item_id ;
     global_next_available_begin_pointer_for_next_available_item_id += global_length_requested_for_next_item_storage ;
     global_pointer_allocation_end_for_item[ global_next_available_item_id ] = global_next_available_begin_pointer_for_next_available_item_id - 1 ;
@@ -2172,10 +2182,44 @@ void text_item_clear( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function copy_item_to_new
+//  Function copy_sub_text_item_to_new
+//
+//  Copy one subordinate (or possibly top-only)
+//  text item into a new storage area.  The copy
+//  is of the same data type, and length, as the
+//  original.
 
-void copy_item_to_new( )
+void copy_sub_text_item_to_new( )
 {
+    global_data_type = global_data_type_for_item[ global_id_from_origin ] ;
+	global_pointer_origin_current = global_pointer_begin_for_item[ global_id_from_origin ] ;
+	global_pointer_origin_end = global_pointer_end_for_item[ global_id_from_origin ] ;
+    global_length_of_text_item = global_pointer_origin_end - global_pointer_origin_current + 1 ;
+    global_length_requested_for_next_item_storage = global_length_of_text_item ;
+	assign_storage_for_new_item( ) ;
+	global_id_for_copy = global_new_storage_item_id ;
+	global_pointer_copy_current = global_pointer_begin_for_item[ global_id_for_copy ] ;
+	global_pointer_copy_end = global_pointer_end_for_item[ global_id_for_copy ] ;
+	while ( global_pointer_origin_current <= global_pointer_origin_end )
+	{
+        switch ( global_data_type )
+        {
+            global_data_type_text_characters :
+                global_all_characters[ global_pointer_copy_current ] = global_all_characters[ global_pointer_origin_current ] ;
+                break ;
+            global_data_type_list_of_item_ids :
+                global_all_pointers[ global_pointer_copy_current ] = global_all_pointers[ global_pointer_origin_current ] ;
+                break ;
+            global_data_type_list_of_integers :
+                global_all_integers[ global_pointer_copy_current ] = global_all_integers[ global_pointer_origin_current ] ;
+                break ;
+            global_data_type_list_of_decimal_numbers :
+                global_all_decimal_numbers[ global_pointer_copy_current ] = global_all_decimal_numbers[ global_pointer_origin_current ] ;
+                break ;
+        }
+        global_pointer_origin_current ++ ;
+        global_pointer_copy_current ++ ;
+    }
 	return ;
 }
 
@@ -2183,11 +2227,13 @@ void copy_item_to_new( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function replace_text_item_with_pointer_list
-
-//  use 35 as length
+//
+//  
 
 void replace_text_item_with_pointer_list( )
 {
+    copy_sub_text_item_to_new( ) ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_storage_item_id ;
 	return ;
 }
 
@@ -2552,20 +2598,13 @@ void write_to_log( )
 
 void specify_character_to_insert_between_subitems( )
 {
-    global_text_item_with_next_character = global_all_pointers[ global_pointer_begin_for_item[ global_target_stack_item_top ] ] ;
-    switch ( global_data_type_for_item[ global_text_item_with_next_character ] )
+    switch ( global_data_type )
     {
         global_data_type_phrase_word_pointers :
             global_character_to_insert_between_subitems = global_ascii_code_for_hyphen ;
             break ;
         global_data_type_switch_delimiter_to_underscore :
             global_character_to_insert_between_subitems = global_ascii_code_for_underscore ;
-            break ;
-        global_data_type_list_of_integers :
-            global_character_to_insert_between_subitems = global_ascii_code_for_space ;
-            break ;
-        global_data_type_pointers_to_decimal_numbers :
-            global_character_to_insert_between_subitems = global_ascii_code_for_space ;
             break ;
         default :
             global_character_to_insert_between_subitems = 0 ;
@@ -2900,18 +2939,25 @@ void convert_list_of_integers_into_text_item( )
 
 
 // -----------------------------------------------
+//  Request that a space be inserted between the
+//  text numbers.
+
+    global_space_directive = global_space_directive_one_requested ;
+
+
+// -----------------------------------------------
 //  Begin a loop that handles each integer.
 
-
-    while ( global_current_target_character_position < 0 )
+    global_integer_position_current = global_pointer_begin_for_item[ global_id_for_list_of_integers ] ;
+    global_integer_position_end = global_pointer_end_for_item[ global_id_for_list_of_integers ] ;
+    while ( global_integer_position_current <= global_integer_position_end )
     {
 
 
-// todo: finish writing this code
+// -----------------------------------------------
+//  Convert the integer into text.
 
-//  global_id_for_list_of_integers
-
-        global_single_integer = global_all_integers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
+        global_single_integer = global_all_integers[ global_integer_position_current ] ;
         convert_integer_to_text( ) ;
 
 
@@ -2924,13 +2970,14 @@ void convert_list_of_integers_into_text_item( )
 // -----------------------------------------------
 //  Repeat the loop for the next integer.
 
-
+        global_integer_position_current ++ ;
     }
 
 
 // -----------------------------------------------
 //  End of convert_list_of_integers_into_text_item.
 
+    return ;
 }
 
 
@@ -3492,18 +3539,16 @@ void get_next_or_previous_sub_text_item( )
 
 
 // -----------------------------------------------
-//  If a space or hyphen or underscore needs to be
-//  inserted here, insert it.  This applies to a
-//  list of integers, a list of pointers to
-//  decimal numbers, a hyphenated phrase name, or
-//  changing hyphens to underscores.  It also
-//  applies when there is a transition from one
-//  hyphenated phrase name to a subordinate
-//  hyphenated phrase name (which usually happens
-//  when "fenambee" or "amennfen" or similar
-//  directive is used).  If the text item is empty
-//  or contains only one sub text item, don't
-//  insert a character.
+//  If a hyphen or underscore needs to be
+//  inserted here, insert it.  This applies to the
+//  data type
+//  "global_data_type_phrase_word_pointers".  It
+//  also applies when there is a transition from
+//  one phrase name to a subordinate phrase name
+//  (which usually happens when "fenambee" or
+//  "amennfen" or similar directive is used).  If
+//  the text item is empty or contains only one
+//  sub text item, don't insert a character.
 
         if ( global_character_to_insert_between_subitems != 0 )
         {
