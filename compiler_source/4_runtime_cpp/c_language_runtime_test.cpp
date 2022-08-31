@@ -397,6 +397,7 @@ int global_check_from_begin ;
 int global_check_from_begin_or_check_from_end ;
 int global_check_from_end ;
 int global_data_type ;
+int global_count_of_characters_remaining_in_sub_item ;
 int global_count_of_words_handled ;
 int global_count_of_words_in_phrase_name ;
 int global_current_target_character_position ;
@@ -951,8 +952,10 @@ int global_phrase_word_number_to_check ;
 int global_pointer_for_debugging ;
 int global_pointer_next_word_begin ;
 int global_pointer_next_word_end ;
+int global_pointer_to_character_to_insert_between_subitems ;
 int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
+int global_pointer_to_next_or_previous_character_in_sub_text_item ;
 int global_pointer_to_within_target_stack_item_bottom ;
 int global_pointer_to_within_target_stack_item_current ;
 int global_pointer_to_within_target_stack_item_current_copy ;
@@ -3200,6 +3203,7 @@ void pop_target_pointer_stack_level( )
 void initialize_get_next_character_from_text_item( )
 {
 //	global_id_pointer_stack_for_getting_next_character ;
+	global_count_of_characters_remaining_in_sub_item = 0 ;
     global_current_target_text_item = global_item_id ;
     global_target_stack_item_bottom = 0 ;
     push_target_pointer_stack_level( ) ;
@@ -3388,53 +3392,20 @@ void copy_pointer_stack( )
 //  named "global_whatever"
 //  to point to the next (or previous) subordinate
 //  text item that contains text characters.  It
-//  supplies the following values so that
-//  characters can be accessed within the
-//  subordinate text item without otherwise
-//  checking for the end (or beginning) of a
-//  subordinate text item, and without explicitly
-//  checking for where delimiters should be
-//  inserted.
+//  supplies to the function
+//  get_next_or_previous_character_from_text_item
+//  a pointer to the next (or previous) character
+//  and the number of adjacent characters to get.
 
 void get_next_or_previous_sub_text_item( )
 {
 
-//  use code from next function, and these variables
-int global_pointer_to_next_or_previous_character_in_sub_text_item ;
-int global_count_of_characters_to_skip_before_inserting_delimiter ;
-int global_count_of_characters_remaining_in_sub_item ;
-
-    return ;
-}
-
 
 // -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_or_previous_character_from_text_item
-//
-//  Gets the next -- or previous -- character from
-//  the text item specified by
-//  "global_item_id" and  puts the character
-//  -- as an integer -- into
-//  "global_single_character_as_integer".  The
-//  direction -- "next" or "previous" -- is
-//  specified by "global_direction_next_or_previous".
-//  Before using this function the initialization
-//  function
-//  "initialize_get_next_character_from_text_item"
-//  or
-//  "initialize_get_previous_character_from_text_item"
-//  must be used.
-
-void get_next_or_previous_character_from_text_item( )
-{
-
-
-// -----------------------------------------------
-//  Begin a loop that points to the next
-//  character.  When needed, move up or down the
-//  stack, or sometimes both up and down.  This
-//  function exits within the loop as soon as the
+//  Begin a loop that points to the next (or
+//  previous) character.  When needed, move up or
+//  down the target pointer stack, or sometimes
+//  both up and down.  The loop exits when the
 //  next character is known.
 
     while ( 1 == 1 )
@@ -3492,7 +3463,8 @@ void get_next_or_previous_character_from_text_item( )
 
         if ( ( global_target_stack_item_prior == 0 ) && ( global_yes_or_no_reached_end_of_current_text_item == global_yes ) )
         {
-            global_single_character_as_integer = 0 ;
+            global_pointer_to_next_or_previous_character_in_sub_text_item = 0 ;
+            global_count_of_characters_remaining_in_sub_item = 0 ;
             log_out << "end of text" << std::endl ;
             return ;
         }
@@ -3531,8 +3503,10 @@ void get_next_or_previous_character_from_text_item( )
             {
                 if ( ( ( global_current_target_character_position > 1 ) && ( global_current_target_character_position < ( global_current_target_text_item_end - global_current_target_text_item_begin + 1 ) ) ) || ( ( global_data_type == global_data_type_phrase_word_pointers ) && ( global_data_type_for_item[ global_target_stack_item_prior ] == global_data_type_phrase_word_pointers ) ) )
                 {
-                    global_single_character_as_integer = global_character_to_insert_between_subitems ;
                     global_yes_or_no_inserted_character = global_yes ;
+                    global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_to_character_to_insert_between_subitems ;
+                    global_all_characters[ global_pointer_to_next_or_previous_character_in_sub_text_item ] = global_character_to_insert_between_subitems ;
+                    global_count_of_characters_remaining_in_sub_item = 1 ;
                     return ;
                 }
             }
@@ -3540,21 +3514,20 @@ void get_next_or_previous_character_from_text_item( )
 
 
 // -----------------------------------------------
-//  If the data type is "text_characters", supply
-//  the next (or previous) character, increment
-//  the pointer, and return.
+//  If the data type is "text_characters", point
+//  to the first (or last) character in the sub
+//  text item, and return.
 
         if ( global_data_type == global_data_type_text_characters )
         {
-            global_single_character_as_integer = global_all_characters[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
-            log_out << "character " << global_single_character_as_integer << std::endl ;
             if ( global_direction_next_or_previous == global_direction_next )
             {
-                global_current_target_character_position ++ ;
+                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_begin_for_item[ global_current_target_text_item ] ;
             } else
             {
-                global_current_target_character_position -- ;
+                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_end_for_item[ global_current_target_text_item ] ;
             }
+            global_count_of_characters_remaining_in_sub_item = global_distance_between_item_begin_and_end + 1 ;
             return ;
         }
 
@@ -3622,11 +3595,54 @@ void get_next_or_previous_character_from_text_item( )
 
 
 // -----------------------------------------------
-//  All done in function get_next_or_previous_character_from_text_item.
+//  End of get_next_or_previous_sub_text_item.
 
-    global_single_character_as_integer = 0 ;
+    global_pointer_to_next_or_previous_character_in_sub_text_item = 0 ;
+    global_count_of_characters_remaining_in_sub_item = 0 ;
     return ;
 
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_or_previous_character_from_text_item
+//
+//  Gets the next -- or previous -- character from
+//  the text item specified by
+//  "global_item_id" and  puts the character
+//  -- as an integer -- into
+//  "global_single_character_as_integer".  The
+//  direction -- "next" or "previous" -- is
+//  specified by "global_direction_next_or_previous".
+//  Before using this function the initialization
+//  function
+//  "initialize_get_next_character_from_text_item"
+//  or
+//  "initialize_get_previous_character_from_text_item"
+//  must be used.
+
+void get_next_or_previous_character_from_text_item( )
+{
+	if ( global_count_of_characters_remaining_in_sub_item < 1 )
+	{
+		get_next_or_previous_character_from_text_item( ) ;
+	}
+    if ( global_pointer_to_next_or_previous_character_in_sub_text_item < 1 )
+    {
+    	global_single_character_as_integer = 0 ;
+    	return ;
+    }
+    global_single_character_as_integer = global_all_characters[ global_pointer_to_next_or_previous_character_in_sub_text_item ] ;
+    global_count_of_characters_remaining_in_sub_item -- ;
+    if ( global_direction_next_or_previous == global_direction_next )
+    {
+        global_pointer_to_next_or_previous_character_in_sub_text_item ++ ;
+    } else
+    {
+        global_pointer_to_next_or_previous_character_in_sub_text_item -- ;
+    }
+    return ;
 }
 
 
