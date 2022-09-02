@@ -83,7 +83,7 @@ const int global_yes = 1 ;
 //    These characters are stored in the array
 //    "global_all_characters".
 //
-//  * "pointers_to_decimal_numbers"
+//  * "list_of_decimal_numbers"
 //    A list of decimal numbers.  The decimal
 //    numbers are stored in the array
 //    "global_all_decimal_numbers".  Each
@@ -149,22 +149,55 @@ const int global_yes = 1 ;
 //    These pointers are stored in the array
 //    "global_all_pointers".
 //
-//  The array "global_data_type_for_item" could
-//  also be used to store indicators for the data
-//  types "linked lists" and "target pointer stack
-//  levels" (which work together to create a
-//  "target pointer stack"), but these data types
-//  are not explicitly tracked because the Dashrep
-//  compiler does not generate code that uses one
-//  of these items for the wrong purpose.
+//  * "linked_list_grouping"
+//    A grouping within a linked list.  The last
+//    position in a linked list grouping is used
+//    to point to the next grouping item within
+//    the same linked list.  The groupings are
+//    stored in the array "global_all_pointers".
+//
+//  * "target_pointer_stack_level"
+//    A solo level within a target pointer stack.
+//    Each target pointer stack level stores the
+//    same sequence of values.  These values and
+//    positions are specified in the constants
+//    that are named to begin with the text
+//    "global_offset_for_".  Specifically the
+//    values are "bottom", "top", "prior", "next",
+//    "current_target_text_item", and 
+//    "current_target_character_position".  The
+//    values are stored in the array
+//    "global_all_pointers".
 
 const int global_data_type_list_of_item_ids = 1 ;
 const int global_data_type_text_characters = 2 ;
-const int global_data_type_pointers_to_decimal_numbers = 3 ;
-const int global_data_type_list_of_integers = 4 ;
+const int global_data_type_list_of_integers = 3 ;
+const int global_data_type_list_of_decimal_numbers = 4 ;
 const int global_data_type_phrase_word_pointers = 5 ;
+
 // todo: implement:
 const int global_data_type_switch_delimiter_to_underscore = 6 ;
+
+const int global_data_type_linked_list_grouping = 7 ;
+const int global_data_type_target_pointer_stack_level = 8 ;
+
+
+// -----------------------------------------------
+//  Declare constants that refer to each kind of
+//  storage area.
+
+const int global_storage_type_pointers = 1 ;
+const int global_storage_type_text_characters = 2 ;
+const int global_storage_type_integers = 3 ;
+const int global_storage_type_decimal_numbers = 4 ;
+
+
+// -----------------------------------------------
+//  Declare an array that specifies which storage
+//  type is used to store each data type.
+
+const int global_maximum_data_type = 10 ;
+int global_storage_type_for_data_type[ 15 ] ;
 
 
 // -----------------------------------------------
@@ -880,7 +913,7 @@ int global_id_for_phrase_word_year ;
 int global_id_for_phrase_word_yes ;
 int global_id_for_phrase_word_zero ;
 int global_id_for_phrase_word_zoom ;
-int global_id_for_pointers_to_decimal_numbers ;
+int global_id_for_list_of_decimal_numbers ;
 int global_id_for_phrase_name ;
 int global_id_for_phrase_word ;
 int global_id_for_pointer_begin_end ;
@@ -939,8 +972,11 @@ int global_linked_list_current_pointer ;
 int global_linked_list_grouping_id ;
 int global_looking_at_hyphenated_phrase_name_in_item_id ;
 int global_message_trace__expand_phrases__endless_loop ;
-int global_new_storage_item_id ;
-int global_next_available_begin_pointer_for_next_available_item_id ;
+int global_new_item_id ;
+int global_next_available_begin_pointer_for_data_type_list_of_pointers ;
+int global_next_available_begin_pointer_for_data_type_text_characters ;
+int global_next_available_begin_pointer_for_data_type_list_of_integers ;
+int global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers ;
 int global_next_available_defined_phrase_number ;
 int global_next_available_item_id ;
 int global_next_character_number ;
@@ -995,6 +1031,7 @@ int global_single_character_as_integer ;
 int global_single_integer ;
 int global_space_available_in_item ;
 int global_space_directive ;
+int global_storage_type ;
 int global_target_stack_item_bottom ;
 int global_target_stack_item_current ;
 int global_target_stack_item_current_copy ;
@@ -1119,14 +1156,105 @@ void choose_slash_or_backslash( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function create_new_item_id_and_assign_storage
+//
+//  Initialize the pointers that will keep track
+//  of a new item.  The new item ID is supplied in
+//  the variable "global_new_item_id".
+//  The variable
+//  "global_length_requested_for_next_item_storage"
+//  specifies how much storage is allocated.
+//  The data type must be specified in the
+//  variable "global_data_type" and it determines
+//  which storage area holds the item's contents.
+
+void create_new_item_id_and_assign_storage( )
+{
+    global_new_item_id = global_next_available_item_id ;
+    global_next_available_item_id ++ ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type ;
+    switch ( global_data_type )
+    {
+        case global_data_type_text_characters :
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_text_characters ;
+            global_next_available_begin_pointer_for_data_type_text_characters += global_length_requested_for_next_item_storage ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_text_characters - 1 ;
+            break ;
+        case global_data_type_list_of_integers :
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_integers ;
+            global_next_available_begin_pointer_for_data_type_list_of_integers += global_length_requested_for_next_item_storage ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_integers - 1 ;
+            break ;
+        case global_data_type_list_of_decimal_numbers :
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers ;
+            global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers += global_length_requested_for_next_item_storage ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers - 1 ;
+            break ;
+        default :
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_pointers ;
+            global_next_available_begin_pointer_for_data_type_list_of_pointers += global_length_requested_for_next_item_storage ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_pointers - 1 ;
+            break ;
+    }
+    global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
+    global_id_of_item_containing_definition_for_item[ global_new_item_id ] = 0 ;
+    global_access_flag_for_item[ global_new_item_id ] = global_access_flag_can_change ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function measure_space_available_in_item
 //
-//  Measure how much space is available in the
-//  specified item.
+//  Measure how much additional space is available
+//  in the specified item.
 
 void measure_space_available_in_item( )
 {
     global_space_available_in_item = global_pointer_allocation_end_for_item[ global_item_id ] - global_pointer_end_for_item[ global_item_id ] ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function adjust_storage_space_to_fit_newest_item
+//
+//  If the newest item does not fully occupy the
+//  allocated space, or it exceeds the storage
+//  space that was originally allocated, change
+//  the allocation size.  If the data type is
+//  "list_of_item_ids", allocate an extra position
+//  for future extension.
+
+void adjust_storage_space_to_fit_newest_item( )
+{
+    if ( global_new_item_id != ( global_next_available_item_id - 1 ) )
+    {
+        return ;
+    }
+    global_data_type = global_data_type_for_item[ global_new_item_id ] ;
+    global_pointer_allocation_end_for_item[ global_new_item_id ] = global_pointer_end_for_item[ global_new_item_id ] ;
+    switch ( global_data_type )
+    {
+        case global_data_type_list_of_item_ids :
+            global_pointer_allocation_end_for_item[ global_new_item_id ] ++ ;
+            global_next_available_begin_pointer_for_data_type_list_of_pointers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            break ;
+        case global_data_type_text_characters :
+            global_next_available_begin_pointer_for_data_type_text_characters = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            break ;
+        case global_data_type_list_of_integers :
+            global_next_available_begin_pointer_for_data_type_list_of_integers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            break ;
+        case global_data_type_list_of_decimal_numbers :
+            global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            break ;
+        default :
+            global_next_available_begin_pointer_for_data_type_list_of_pointers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            break ;
+    }
+    return ;
 }
 
 
@@ -1148,10 +1276,11 @@ void measure_space_available_in_item( )
 void get_allocation_begin( )
 {
     global_data_type = global_data_type_for_item[ global_item_id ] ;
+    global_storage_type = global_storage_type_for_data_type[ global_data_type ] ;
     global_item_id_to_consider = global_item_id - 1 ;
     while ( global_item_id_to_consider > 0 )
     {
-    	if ( global_data_type_for_item[ global_item_id_to_consider ] == global_data_type )
+    	if ( global_storage_type_for_data_type[ global_data_type_for_item[ global_item_id_to_consider ] ] == global_storage_type )
     	{
     		global_allocation_begin = global_pointer_allocation_end_for_item[ global_item_id_to_consider ] + 1 ;
     		return ;
@@ -1165,9 +1294,9 @@ void get_allocation_begin( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_yes_or_no_text_item_is_empty
+//  Function check_yes_or_no_solo_item_is_empty
 
-void check_yes_or_no_text_item_is_empty( )
+void check_yes_or_no_solo_item_is_empty( )
 {
     if ( global_pointer_end_for_item[ global_item_id ] < global_pointer_begin_for_item[ global_item_id ] )
     {
@@ -1178,78 +1307,6 @@ void check_yes_or_no_text_item_is_empty( )
     	global_yes_or_no_text_item_is_empty = global_no ;
         return ;
     }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function assign_storage_for_new_item
-//
-//  Initialize the pointers that will keep track
-//  of a new item, which is usually a text item,
-//  yet also may be a linked list grouping item,
-//  or a level in a target pointer stack.
-
-void assign_storage_for_new_item( )
-{
-
-// todo: handle different data types!
-
-    global_pointer_begin_for_item[ global_next_available_item_id ] = global_next_available_begin_pointer_for_next_available_item_id ;
-    global_next_available_begin_pointer_for_next_available_item_id += global_length_requested_for_next_item_storage ;
-    global_pointer_allocation_end_for_item[ global_next_available_item_id ] = global_next_available_begin_pointer_for_next_available_item_id - 1 ;
-    global_pointer_end_for_item[ global_next_available_item_id ] =     global_pointer_begin_for_item[ global_next_available_item_id ] - 1 ;
-    global_id_of_item_containing_definition_for_item[ global_next_available_item_id ] = 0 ;
-    global_access_flag_for_item[ global_next_available_item_id ] = global_access_flag_can_change ;
-    global_new_storage_item_id = global_next_available_item_id ;
-    global_next_available_item_id ++ ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function recover_memory_from_top_item
-//
-//  If the top-most text item contains text that
-//  does not fully occupy the allocated space,
-//  reduce the allocation size.  If the data type
-//  is "list_of_item_ids, allocate an extra
-//  position for future extension.  Also allow for
-//  a case where the text extends beyond what was
-//  originally allocated.
-
-void recover_memory_from_top_item( )
-{
-    if ( global_new_storage_item_id != ( global_next_available_item_id - 1 ) )
-    {
-        return ;
-    }
-    global_next_available_begin_pointer_for_next_available_item_id = global_pointer_end_for_item[ global_new_storage_item_id ] + 1 ;
-    if ( global_data_type_for_item[ global_new_storage_item_id ] == global_data_type_list_of_item_ids )
-    {
-        global_next_available_begin_pointer_for_next_available_item_id ++ ;
-    }
-    global_pointer_allocation_end_for_item[ global_new_storage_item_id ] = global_next_available_begin_pointer_for_next_available_item_id - 1 ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function extend_length_of_top_item
-//
-//  Extend the length of the top-most text item.
-
-void extend_length_of_top_item( )
-{
-    if ( global_new_storage_item_id != ( global_next_available_item_id - 1 ) )
-    {
-        return ;
-    }
-    global_pointer_allocation_end_for_item[ global_new_storage_item_id ] += global_default_length_for_text_item ;
-    global_next_available_begin_pointer_for_next_available_item_id = global_pointer_allocation_end_for_item[ global_new_storage_item_id ] + 1 ;
-    return ;
 }
 
 
@@ -1485,7 +1542,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  Create the storage for the text item.
 
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
 
 
 // -----------------------------------------------
@@ -1495,7 +1552,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  zero because this code handles text that
 //  is imported using the strcpy function.
 
-    global_next_character_position_in_storage_all_text = global_pointer_begin_for_item[ global_new_storage_item_id ] ;
+    global_next_character_position_in_storage_all_text = global_pointer_begin_for_item[ global_new_item_id ] ;
     for ( size_t character_pointer = 0 ; character_pointer < ( strlen( local_this_word ) ) ; character_pointer ++ )
     {
         global_single_character = (int) local_this_word[ character_pointer ] ;
@@ -1508,19 +1565,19 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  Update the pointer to the end of the
 //  just-stored text.
 
-    global_pointer_end_for_item[ global_new_storage_item_id ] = global_pointer_begin_for_item[ global_new_storage_item_id ] + global_character_count - 1 ;
+    global_pointer_end_for_item[ global_new_item_id ] = global_pointer_begin_for_item[ global_new_item_id ] + global_character_count - 1 ;
 
 
 // -----------------------------------------------
 //  Specify the data type for this text item.
 
-    global_data_type_for_item[ global_new_storage_item_id ] = global_data_type_text_characters ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_text_characters ;
 
 
 // -----------------------------------------------
 //  Return with the text item ID number
 
-    return global_new_storage_item_id ;
+    return global_new_item_id ;
 
 
 // -----------------------------------------------
@@ -1540,41 +1597,41 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
 {
     global_length_requested_for_next_item_storage = 12 ;
-    assign_storage_for_new_item( ) ;
-    global_data_type_for_item[ global_new_storage_item_id ] = global_data_type_phrase_word_pointers ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_one ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_two ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_three ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_four ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_five ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_six ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_seven ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_eight ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_nine ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_ten ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_eleven ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = word_twelve ;
-    for ( global_character_pointer = global_pointer_end_for_item[ global_new_storage_item_id ] ; global_character_pointer >= global_pointer_begin_for_item[ global_new_storage_item_id ] ; global_character_pointer -- )
+    create_new_item_id_and_assign_storage( ) ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_phrase_word_pointers ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_one ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_two ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_three ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_four ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_five ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_six ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_seven ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eight ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_nine ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_ten ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eleven ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_twelve ;
+    for ( global_character_pointer = global_pointer_end_for_item[ global_new_item_id ] ; global_character_pointer >= global_pointer_begin_for_item[ global_new_item_id ] ; global_character_pointer -- )
     {
-        if ( global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] > 0 )
+        if ( global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] > 0 )
         {
             break ;
         }
-        global_pointer_end_for_item[ global_new_storage_item_id ] -- ;
+        global_pointer_end_for_item[ global_new_item_id ] -- ;
     }
-    return global_new_storage_item_id ;
+    return global_new_item_id ;
 }
 
 
@@ -1599,6 +1656,19 @@ void do_main_initialization( )
 //  Open the output file that logs details.
 
     log_out.open ( "output_log_c_language_runtime_test.txt" , std::ios::out ) ;
+
+
+// -----------------------------------------------
+//  Initialize the list that associates each data
+//  type with the storage type it uses.
+
+    for ( global_data_type = 0 ; global_data_type <= global_maximum_data_type ; global_data_type ++ )
+    {
+        global_storage_type_for_data_type[ global_data_type ] = global_storage_type_pointers ;
+    }
+    global_storage_type_for_data_type[ global_data_type_text_characters ] = global_storage_type_text_characters ;
+    global_storage_type_for_data_type[ global_data_type_list_of_integers ] = global_storage_type_integers ;
+    global_storage_type_for_data_type[ global_data_type_list_of_decimal_numbers ] = global_storage_type_decimal_numbers ;
 
 
 // -----------------------------------------------
@@ -1684,11 +1754,16 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
-//  Initialize the pointer that keeps track of the
-//  beginning of the next available character
-//  positions in the list "global_all_pointers".
+//  Initialize the pointers that keep track of the
+//  beginning of each item ID.  Each of these data
+//  types is stored in a different array.  The
+//  "list_of_pointers" data type is used for
+//  multiple kinds of information.
 
-    global_next_available_begin_pointer_for_next_available_item_id = 1 ;
+    global_next_available_begin_pointer_for_data_type_list_of_pointers = 1 ;
+    global_next_available_begin_pointer_for_data_type_text_characters = 1 ;
+    global_next_available_begin_pointer_for_data_type_list_of_integers = 1 ;
+    global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers = 1 ;
 
 
 // -----------------------------------------------
@@ -1996,12 +2071,12 @@ void do_main_initialization( )
     global_length_requested_for_next_item_storage = global_allocated_length_for_file_input_or_output ;
 
     global_id_for_file_input = global_next_available_item_id ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_id_for_file_input ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_file_input ] -= 5 ;
 
     global_id_for_file_output = global_next_available_item_id ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_id_for_file_output ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_file_output ] -= 5 ;
 
@@ -2012,7 +2087,7 @@ void do_main_initialization( )
 
     global_length_requested_for_next_item_storage = 20 ;
     global_id_for_number_as_text = global_next_available_item_id ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_id_for_number_as_text ] = global_data_type_text_characters ;
 
 
@@ -2032,12 +2107,12 @@ void do_main_initialization( )
     global_length_requested_for_next_item_storage = 200 ;
 
     global_id_for_valid_filename = global_next_available_item_id ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_id_for_valid_filename ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_valid_filename ] -= 5 ;
 
     global_id_for_valid_folder_name = global_next_available_item_id ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_id_for_valid_folder_name ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_valid_folder_name ] -= 5 ;
 
@@ -2196,8 +2271,8 @@ void copy_sub_text_item_to_new( )
 	global_pointer_origin_end = global_pointer_end_for_item[ global_id_from_origin ] ;
     global_length_of_text_item = global_pointer_origin_end - global_pointer_origin_current + 1 ;
     global_length_requested_for_next_item_storage = global_length_of_text_item ;
-	assign_storage_for_new_item( ) ;
-	global_id_for_copy = global_new_storage_item_id ;
+	create_new_item_id_and_assign_storage( ) ;
+	global_id_for_copy = global_new_item_id ;
 	global_pointer_copy_current = global_pointer_begin_for_item[ global_id_for_copy ] ;
 	global_pointer_copy_end = global_pointer_end_for_item[ global_id_for_copy ] ;
 	while ( global_pointer_origin_current <= global_pointer_origin_end )
@@ -2233,7 +2308,7 @@ void copy_sub_text_item_to_new( )
 void replace_text_item_with_pointer_list( )
 {
     copy_sub_text_item_to_new( ) ;
-    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_storage_item_id ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_item_id ;
 	return ;
 }
 
@@ -2286,11 +2361,11 @@ void append_space_if_not_empty( )
         } else
         {
             global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
-            assign_storage_for_new_item( ) ;
-            global_data_type_for_item[ global_new_storage_item_id ] = global_data_type_list_of_item_ids ;
+            create_new_item_id_and_assign_storage( ) ;
+            global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
 //  insert the to and space IDs, but not the from ID
 //        global_all_pointers
-            global_id_text_to_edit = global_new_storage_item_id ;
+            global_id_text_to_edit = global_new_item_id ;
         }
     }
     return ;
@@ -2404,13 +2479,13 @@ void append_linked_text( )
 //  points to both the "to" and "from".
 
     global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
-    assign_storage_for_new_item( ) ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_id_text_to_edit ;
-    global_data_type_for_item[ global_new_storage_item_id ] = global_data_type_list_of_item_ids ;
-    global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_id_from_origin ;
-    global_id_text_to_edit = global_new_storage_item_id ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_text_to_edit ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_from_origin ;
+    global_id_text_to_edit = global_new_item_id ;
     return ;
 
 
@@ -2437,15 +2512,15 @@ void append_copied_text( )
 {
     global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
     global_length_requested_for_next_item_storage = global_pointer_end_for_item[ global_id_from_origin ] - global_pointer_begin_for_item[ global_id_from_origin ] + 1 ;
-    assign_storage_for_new_item( ) ;
+    create_new_item_id_and_assign_storage( ) ;
     for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
     {
-        global_pointer_end_for_item[ global_new_storage_item_id ] ++ ;
-        global_all_pointers[ global_pointer_end_for_item[ global_new_storage_item_id ] ] = global_all_pointers[ global_pointer_end_for_item[ global_id_from_origin ] ]
+        global_pointer_end_for_item[ global_new_item_id ] ++ ;
+        global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_all_pointers[ global_pointer_end_for_item[ global_id_from_origin ] ]
          ;
     }
-    global_data_type_for_item[ global_new_storage_item_id ] = global_data_type_for_item[ global_id_from_origin ] ;
-    global_id_from_origin = global_new_storage_item_id ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_for_item[ global_id_from_origin ] ;
+    global_id_from_origin = global_new_item_id ;
     append_linked_text( ) ;
 }
 
@@ -2832,8 +2907,8 @@ void convert_into_data_type_list_of_integers( )
     global_count_of_words_handled = 0 ;
     global_id_for_integers_as_text = global_id_from_origin ;
     global_length_requested_for_next_item_storage = 2 ;
-    assign_storage_for_new_item( ) ;
-    global_id_for_list_of_integers = global_new_storage_item_id ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_id_for_list_of_integers = global_new_item_id ;
     global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_integers_as_text ] ;
     global_character_pointer_end = global_pointer_end_for_item[ global_id_for_integers_as_text ] ;
     global_yes_or_no_character_is_delimiter = global_yes ;
@@ -2868,7 +2943,7 @@ void convert_into_data_type_list_of_integers( )
                         {
                             global_id_for_list_of_integers = 0 ;
                             global_id_text_to_edit = 0 ;
-                            recover_memory_from_top_item( ) ;
+                            adjust_storage_space_to_fit_newest_item( ) ;
                             log_out << "number is not integer, is decimal" << std::endl ;
                             return ;
                         }
@@ -2876,7 +2951,7 @@ void convert_into_data_type_list_of_integers( )
                     {
                         global_id_for_list_of_integers = 0 ;
                         global_id_text_to_edit = 0 ;
-                        recover_memory_from_top_item( ) ;
+                        adjust_storage_space_to_fit_newest_item( ) ;
                         log_out << "invalid number" << std::endl ;
                         return ;
                     }
@@ -2887,11 +2962,11 @@ void convert_into_data_type_list_of_integers( )
         measure_space_available_in_item( ) ;
         if ( global_space_available_in_item < 1 )
         {
-            extend_length_of_top_item( ) ;
+            adjust_storage_space_to_fit_newest_item( ) ;
         }
         global_character_pointer_current ++ ;
     }
-    recover_memory_from_top_item( ) ;
+    adjust_storage_space_to_fit_newest_item( ) ;
     global_id_text_to_edit = global_id_for_list_of_integers ;
     global_data_type_for_item[ global_id_for_list_of_integers ] = global_data_type_list_of_integers ;
     return ;
@@ -2900,16 +2975,16 @@ void convert_into_data_type_list_of_integers( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_into_data_type_pointers_to_decimal_numbers
+//  Function convert_into_data_type_list_of_decimal_numbers
 //
 //  Use function that parses decimal numbers.
 
-void convert_into_data_type_pointers_to_decimal_numbers( )
+void convert_into_data_type_list_of_decimal_numbers( )
 {
 
 //  later, after integer version debugged, copy code from integer version and modify for decimal numbers
 
-//  global_data_type_pointers_to_decimal_numbers ;
+//  global_data_type_list_of_decimal_numbers ;
 
     return ;
 }
@@ -2934,8 +3009,8 @@ void convert_list_of_integers_into_text_item( )
 //  text.
 
     global_length_requested_for_next_item_storage = 200 ;
-    assign_storage_for_new_item( ) ;
-    global_id_for_integers_as_text = global_new_storage_item_id ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_id_for_integers_as_text = global_new_item_id ;
 
 
 // -----------------------------------------------
@@ -2983,19 +3058,19 @@ void convert_list_of_integers_into_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_pointers_to_decimal_numbers_into_text_item
+//  Function convert_list_of_decimal_numbers_into_text_item
 //
 //  Convert a text item that is a list of decimal
 //  numbers into a text item that contains only
 //  decimal numbers as text, with one space
 //  between each adjacent pair of numbers.
 
-void convert_pointers_to_decimal_numbers_into_text_item( )
+void convert_list_of_decimal_numbers_into_text_item( )
 {
 
 //  later, after integer version debugged, copy code from integer version and modify for decimal numbers
 
-//  global_data_type_pointers_to_decimal_numbers ;
+//  global_data_type_list_of_decimal_numbers ;
 //  convert_decimal_to_text( ) ;
 
 }
@@ -3057,8 +3132,8 @@ void create_new_target_pointer_stack_level_top( )
 //  Create the new stack level.
 
     global_length_requested_for_next_item_storage = 5 ;
-    assign_storage_for_new_item( ) ;
-    log_out << "global_new_storage_item_id " << global_new_storage_item_id << std::endl ;
+    create_new_item_id_and_assign_storage( ) ;
+    log_out << "global_new_item_id " << global_new_item_id << std::endl ;
 
 
 // -----------------------------------------------
@@ -3068,7 +3143,7 @@ void create_new_target_pointer_stack_level_top( )
 
     if ( global_target_stack_item_bottom == 0 )
     {
-        global_target_stack_item_bottom = global_new_storage_item_id ;
+        global_target_stack_item_bottom = global_new_item_id ;
         global_target_stack_item_top = global_target_stack_item_bottom ;
         global_target_stack_item_prior = 0 ;
         global_target_stack_item_next = 0 ;
@@ -3083,7 +3158,7 @@ void create_new_target_pointer_stack_level_top( )
 
     } else
     {
-        global_target_stack_item_top = global_new_storage_item_id ;
+        global_target_stack_item_top = global_new_item_id ;
         global_pointer_to_within_target_stack_item_bottom = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
         global_all_pointers[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
         global_target_stack_item_next = 0 ;
@@ -3587,7 +3662,7 @@ void get_next_or_previous_sub_text_item( )
 
 // -----------------------------------------------
 //  If the data type is either "list_of_integers"
-//  or "pointers_to_decimal_numbers", convert the
+//  or "list_of_decimal_numbers", convert the
 //  numbers into a text item, with a space between
 //  each adjacent pair of numbers, and insert this
 //  new text item as a replacement for the list of
@@ -3603,8 +3678,8 @@ void get_next_or_previous_sub_text_item( )
 	            convert_list_of_integers_into_text_item( ) ;
 	        } else
 	        {
-	        	global_id_for_pointers_to_decimal_numbers = global_current_target_text_item ;
-	            convert_pointers_to_decimal_numbers_into_text_item( ) ;
+	        	global_id_for_list_of_decimal_numbers = global_current_target_text_item ;
+	            convert_list_of_decimal_numbers_into_text_item( ) ;
 	        }
 
 //  todo: move to function that inserts replacement text item id number
@@ -4076,8 +4151,8 @@ void point_to_next_word_in_text_item( )
 void get_text_by_character_offset_and_length( )
 {
     global_length_requested_for_next_item_storage = 1000 ;
-    assign_storage_for_new_item( ) ;
-    global_id_for_copy = global_new_storage_item_id ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_id_for_copy = global_new_item_id ;
     initialize_get_next_character_from_text_item( ) ;
     global_next_character_position_count = 0 ;
     global_character_count = 0 ;
@@ -4096,12 +4171,12 @@ void get_text_by_character_offset_and_length( )
             break ;
         }
     }
-    if ( global_id_for_copy == global_new_storage_item_id )
+    if ( global_id_for_copy == global_new_item_id )
     {
         log_out << "BUG: unexpectedly a new text item was created while getting text based on offset and length" << std::endl ;
         exit ( EXIT_FAILURE ) ;
     }
-    recover_memory_from_top_item( ) ;
+    adjust_storage_space_to_fit_newest_item( ) ;
     return ;
 }
 
@@ -4424,8 +4499,8 @@ void check_yes_or_no_matching_text( )
 void create_linked_list( )
 {
     global_length_requested_for_next_item_storage = 30 ;
-    assign_storage_for_new_item( ) ;
-    global_linked_list_grouping_id = global_new_storage_item_id ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_linked_list_grouping_id = global_new_item_id ;
     global_pointer_end_for_item[ global_linked_list_grouping_id ] ++ ;
     global_all_pointers[ global_pointer_end_for_item[ global_linked_list_grouping_id ] ] = 0 ;
 }
@@ -6082,7 +6157,7 @@ int parameterized_remove_leading_trailing_spaces( int local_item_id )
 int parameterized_yes_or_no_empty( int local_item_id )
 {
     global_item_id = local_item_id ;
-    check_yes_or_no_text_item_is_empty( ) ;
+    check_yes_or_no_solo_item_is_empty( ) ;
     return global_yes_or_no_text_item_is_empty ;
 }
 
@@ -6097,7 +6172,7 @@ int parameterized_yes_or_no_phrase_name( int local_item_id )
 int parameterized_yes_or_no_phrase_definition_not_empty( int local_item_id )
 {
     global_item_id = global_id_of_item_containing_definition_for_item[ local_item_id ] ;
-    check_yes_or_no_text_item_is_empty( ) ;
+    check_yes_or_no_solo_item_is_empty( ) ;
     return global_yes_or_no_text_item_is_empty ;
 }
 
