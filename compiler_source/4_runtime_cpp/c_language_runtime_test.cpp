@@ -437,6 +437,7 @@ int global_data_type ;
 int global_count_of_characters_remaining_in_sub_item ;
 int global_count_of_words_handled ;
 int global_count_of_words_in_phrase_name ;
+int global_counter ;
 int global_current_target_character_position ;
 int global_current_target_text_item ;
 int global_current_target_text_item_begin ;
@@ -962,7 +963,8 @@ int global_integer_position_end ;
 int global_item_id ;
 int global_item_id_current ;
 int global_item_id_to_consider ;
-int global_length_of_text_item ;
+int global_length_for_just_copy ;
+int global_length_of_item ;
 int global_length_of_first_phrase_word_minus_one ;
 int global_length_of_matching_text ;
 int global_length_of_text_to_find ;
@@ -991,9 +993,13 @@ int global_offset_within_list_of_pointers ;
 int global_one_number_to_append ;
 int global_optimum_character_for_find_pause ;
 int global_phrase_word_number_to_check ;
+int global_pointer_for_just_copy_source ;
+int global_pointer_for_just_copy_destination ;
 int global_pointer_for_debugging ;
+int global_pointer_from ;
 int global_pointer_next_word_begin ;
 int global_pointer_next_word_end ;
+int global_pointer_to ;
 int global_pointer_to_character_to_insert_between_subitems ;
 int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
@@ -1294,6 +1300,18 @@ void get_allocation_begin( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function get_length_of_item
+//
+//  Measure the length of the specified item.
+
+void get_length_of_item( )
+{
+    global_length_of_item = global_pointer_allocation_end_for_item[ global_item_id ] - global_pointer_end_for_item[ global_item_id ] + 1 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function check_yes_or_no_solo_item_is_empty
 
 void check_yes_or_no_solo_item_is_empty( )
@@ -1307,6 +1325,96 @@ void check_yes_or_no_solo_item_is_empty( )
     	global_yes_or_no_text_item_is_empty = global_no ;
         return ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function just_copy_simple
+//
+//  This function copies contents for the storage
+//  type specified by "global_storage_type",
+//  starting at "global_pointer_for_just_copy_source"
+//  for length "global_length_for_just_copy", with
+//  "global_pointer_for_just_copy_destination"
+//  specifying the first position of the copied
+//  contents.
+
+void just_copy_simple( )
+{
+	global_pointer_from = global_pointer_for_just_copy_source ;
+	global_pointer_to = global_pointer_for_just_copy_destination ;
+	global_counter = global_length_for_just_copy ;
+    if ( global_counter < 1 )
+    {
+    	return ;
+    }
+    switch ( global_storage_type )
+    {
+    	global_storage_type_pointers :
+		    while ( global_counter <= global_length_for_just_copy )
+		    {
+		    	global_all_pointers[ global_pointer_from ] = global_all_pointers[ global_pointer_to ] ;
+		    	global_pointer_from ++ ;
+		    	global_pointer_to ++ ;
+		    	global_counter -- ;
+		    }
+		    break ;
+    	global_storage_type_text_characters :
+		    while ( global_counter <= global_length_for_just_copy )
+		    {
+		    	global_all_characters[ global_pointer_from ] = global_all_characters[ global_pointer_to ] ;
+		    	global_pointer_from ++ ;
+		    	global_pointer_to ++ ;
+		    	global_counter -- ;
+		    }
+		    break ;
+    	global_storage_type_integers :
+		    while ( global_counter <= global_length_for_just_copy )
+		    {
+		    	global_all_integers[ global_pointer_from ] = global_all_integers[ global_pointer_to ] ;
+		    	global_pointer_from ++ ;
+		    	global_pointer_to ++ ;
+		    	global_counter -- ;
+		    }
+		    break ;
+    	global_storage_type_decimal_numbers :
+		    while ( global_counter <= global_length_for_just_copy )
+		    {
+		    	global_all_decimal_numbers[ global_pointer_from ] = global_all_decimal_numbers[ global_pointer_to ] ;
+		    	global_pointer_from ++ ;
+		    	global_pointer_to ++ ;
+		    	global_counter -- ;
+		    }
+		    break ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_solo_item_to_new
+//
+//  Copy one item into a new storage area.  The
+//  copy has the same data type and length as the
+//  original.  The original is specified by
+//  "global_item_id".  The copy is
+//  specified by "global_id_for_copy".
+
+void copy_solo_item_to_new( )
+{
+    get_length_of_item( ) ;
+    global_length_requested_for_next_item_storage = global_length_of_item ;
+    global_data_type = global_data_type_for_item[ global_item_id ] ;
+    global_storage_type = global_storage_type_for_data_type[ global_data_type ] ;
+	create_new_item_id_and_assign_storage( ) ;
+	global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_item_id ] ;
+	global_pointer_for_just_copy_destination = global_pointer_begin_for_item[ global_new_item_id ] ;
+    global_length_for_just_copy = global_length_requested_for_next_item_storage ;
+    just_copy_simple( ) ;
+    global_item_id = global_new_item_id ;
+	return ;
 }
 
 
@@ -2257,57 +2365,13 @@ void text_item_clear( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function copy_sub_text_item_to_new
-//
-//  Copy one subordinate (or possibly top-only)
-//  text item into a new storage area.  The copy
-//  is of the same data type, and length, as the
-//  original.
-
-void copy_sub_text_item_to_new( )
-{
-    global_data_type = global_data_type_for_item[ global_id_from_origin ] ;
-	global_pointer_origin_current = global_pointer_begin_for_item[ global_id_from_origin ] ;
-	global_pointer_origin_end = global_pointer_end_for_item[ global_id_from_origin ] ;
-    global_length_of_text_item = global_pointer_origin_end - global_pointer_origin_current + 1 ;
-    global_length_requested_for_next_item_storage = global_length_of_text_item ;
-	create_new_item_id_and_assign_storage( ) ;
-	global_id_for_copy = global_new_item_id ;
-	global_pointer_copy_current = global_pointer_begin_for_item[ global_id_for_copy ] ;
-	global_pointer_copy_end = global_pointer_end_for_item[ global_id_for_copy ] ;
-	while ( global_pointer_origin_current <= global_pointer_origin_end )
-	{
-        switch ( global_data_type )
-        {
-            global_data_type_text_characters :
-                global_all_characters[ global_pointer_copy_current ] = global_all_characters[ global_pointer_origin_current ] ;
-                break ;
-            global_data_type_list_of_item_ids :
-                global_all_pointers[ global_pointer_copy_current ] = global_all_pointers[ global_pointer_origin_current ] ;
-                break ;
-            global_data_type_list_of_integers :
-                global_all_integers[ global_pointer_copy_current ] = global_all_integers[ global_pointer_origin_current ] ;
-                break ;
-            global_data_type_list_of_decimal_numbers :
-                global_all_decimal_numbers[ global_pointer_copy_current ] = global_all_decimal_numbers[ global_pointer_origin_current ] ;
-                break ;
-        }
-        global_pointer_origin_current ++ ;
-        global_pointer_copy_current ++ ;
-    }
-	return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function replace_text_item_with_pointer_list
 //
 //  
 
 void replace_text_item_with_pointer_list( )
 {
-    copy_sub_text_item_to_new( ) ;
+    copy_solo_item_to_new( ) ;
     global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_item_id ;
 	return ;
 }
@@ -3992,7 +4056,7 @@ void skip_to_character_position( )
         switch ( global_data_type )
         {
             case global_data_type_text_characters :
-                global_length_of_text_item = global_pointer_end_for_item[ global_item_id_current ] - global_pointer_begin_for_item[ global_item_id_current ] ;
+                global_length_of_item = global_pointer_end_for_item[ global_item_id_current ] - global_pointer_begin_for_item[ global_item_id_current ] ;
 
 //  todo: write this code
 
