@@ -970,8 +970,12 @@ int global_length_of_matching_text ;
 int global_length_of_text_to_find ;
 int global_length_requested_for_next_item_storage ;
 int global_line_character_position ;
+int global_linked_list_current_grouping_id ;
 int global_linked_list_current_pointer ;
-int global_linked_list_grouping_id ;
+int global_linked_list_id ;
+int global_linked_list_id_saved ;
+int global_linked_list_last_grouping_id ;
+int global_linked_list_next_grouping_id ;
 int global_looking_at_hyphenated_phrase_name_in_item_id ;
 int global_message_trace__expand_phrases__endless_loop ;
 int global_new_item_id ;
@@ -997,9 +1001,11 @@ int global_pointer_for_just_copy_source ;
 int global_pointer_for_just_copy_destination ;
 int global_pointer_for_debugging ;
 int global_pointer_from ;
+int global_pointer_from_linked_list ;
 int global_pointer_next_word_begin ;
 int global_pointer_next_word_end ;
 int global_pointer_to ;
+int global_pointer_to_add_to_linked_list ;
 int global_pointer_to_character_to_insert_between_subitems ;
 int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
@@ -1951,6 +1957,117 @@ void copy_solo_item_to_new( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function create_linked_list
+//
+//  This function creates a linked list.  The ID
+//  that identifies the linked list is in
+//  "global_linked_list_id".
+
+void create_linked_list( )
+{
+    global_length_requested_for_next_item_storage = 30 ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_linked_list_id = global_new_item_id ;
+    global_pointer_end_for_item[ global_linked_list_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_id ] ] = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function add_to_linked_list
+//
+//  This function adds a pointer to the end of a
+//  linked list.  The ID that identifies the
+//  linked list is in "global_linked_list_id".
+//  The pointer to add is
+//  "global_pointer_to_add_to_linked_list".  If
+//  the last grouping is full, create a new
+//  grouping.
+
+void add_to_linked_list( )
+{
+
+
+// -----------------------------------------------
+//  Find the last grouping item in the linked
+//  list.
+
+    global_linked_list_last_grouping_id = global_linked_list_id ;
+    global_linked_list_next_grouping_id = global_linked_list_id ;
+    while ( global_linked_list_next_grouping_id > 0 )
+    {
+    	global_linked_list_last_grouping_id = global_linked_list_next_grouping_id ;
+        global_linked_list_next_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] ;
+    }
+
+
+// -----------------------------------------------
+//  If the last grouping item does not have
+//  available space to add the item ID, create a
+//  new grouping item and add the item ID to the
+//  beginning of that grouping item, and link the
+//  previous grouping item to the new grouping.
+
+    if ( global_pointer_end_for_item[ global_linked_list_last_grouping_id ] == global_pointer_allocation_end_for_item[ global_linked_list_last_grouping_id ] - 1 )
+    {
+    	global_linked_list_id_saved = global_linked_list_id ;
+        create_linked_list( ) ;
+    	global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
+        global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = global_linked_list_id ;
+        global_linked_list_last_grouping_id = global_linked_list_id ;
+        global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
+        global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = 0 ;
+        global_linked_list_id = global_linked_list_id_saved ;
+    }
+
+
+// -----------------------------------------------
+//  Append the item ID to the end of the last
+//  grouping item.
+
+    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = global_pointer_to_add_to_linked_list ;
+    global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = 0 ;
+
+
+// -----------------------------------------------
+//  End of add_to_linked_list.
+
+    return ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_pointer_in_linked_list
+//
+//  This function gets the next item ID from
+//  a linked list.  The current grouping ID
+//  is in
+//  "global_linked_list_current_grouping_id".
+//  The pointer
+//  "global_linked_list_current_pointer"
+//  points to the current position within
+//  that grouping ID.  The retrieved pointer is
+//  put into "global_pointer_from_linked_list".
+
+void get_next_pointer_in_linked_list( )
+{
+    if ( global_linked_list_current_pointer >= global_pointer_end_for_item[ global_linked_list_current_grouping_id ] )
+    {
+        global_linked_list_current_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_current_grouping_id ] ] ;
+        global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_current_grouping_id ] ;
+    }
+    global_pointer_from_linked_list = global_all_pointers[ global_linked_list_current_pointer ] ;
+    global_linked_list_current_pointer ++ ;
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function write_single_character_to_file
 //
 //  Write the the character -- expressed as an
@@ -2222,6 +2339,40 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  End of function store_text_and_get_its_item_id.
 
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function add_phrase_word_to_linked_list
+//
+//  
+
+void add_item_id_for_phrase_word_to_linked_list( )
+{
+    get_length_of_item( ) ;
+    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
+
+//  todo:
+
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function add_phrase_name_to_linked_list
+//
+//  
+
+void add_item_id_for_phrase_name_to_linked_list( )
+{
+    get_length_of_item( ) ;
+    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_length_of_item ] ;
+
+//  todo:
+
+	return ;
 }
 
 
@@ -4564,78 +4715,6 @@ void check_yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function create_linked_list
-//
-//  This function creates a linked list.  The ID
-//  that identifies the linked list is in
-//  "global_linked_list_grouping_id".
-
-void create_linked_list( )
-{
-    global_length_requested_for_next_item_storage = 30 ;
-    create_new_item_id_and_assign_storage( ) ;
-    global_linked_list_grouping_id = global_new_item_id ;
-    global_pointer_end_for_item[ global_linked_list_grouping_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_grouping_id ] ] = 0 ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function add_to_linked_list
-//
-//  This function adds a pointer to the end of a
-//  linked list.  The ID that identifies the
-//  linked list is in
-//  "global_linked_list_grouping_id".
-
-void add_to_linked_list( )
-{
-    if ( global_pointer_end_for_item[ global_linked_list_grouping_id ] >= global_pointer_allocation_end_for_item[ global_linked_list_grouping_id ] )
-    {
-        global_pointer_end_for_item[ global_linked_list_grouping_id ] = global_pointer_allocation_end_for_item[ global_linked_list_grouping_id ] ;
-        global_previous_linked_list_grouping_id = global_linked_list_grouping_id ;
-        create_linked_list( ) ;
-        global_all_pointers[ global_pointer_end_for_item[ global_previous_linked_list_grouping_id ] ] = global_linked_list_grouping_id ;
-    }
-    global_pointer_end_for_item[ global_linked_list_grouping_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_grouping_id ] ] = 0 ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_pointer_in_linked_list
-//
-//  This function gets the next item ID from
-//  the linked list that is pointed to by
-//  "global_linked_list_grouping_id".  The pointer
-//  "global_linked_list_current_pointer"
-//  points to the current position in
-//  "global_all_pointers" that contains
-//  the next item ID, which is supplied as
-//  "global_id_from_linked_list".
-//  The last integer in each text-item-like
-//  grouping points to the next grouping.
-
-void get_next_pointer_in_linked_list( )
-{
-
-//  todo: proofread this code
-
-    if ( global_linked_list_current_pointer == global_pointer_end_for_item[ global_linked_list_grouping_id ] )
-    {
-        global_linked_list_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_grouping_id ] ] ;
-        global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_grouping_id ] ;
-    }
-    global_id_from_linked_list = global_all_pointers[ global_linked_list_current_pointer ] ;
-    global_linked_list_current_pointer ++ ;
-	return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function check_yes_or_no_target_pointers_in_same_item
 //
 //  This function looks at two target pointers and
@@ -4768,8 +4847,8 @@ void find_matching_phrase_word( )
 //  todo: finish writing, and proofreading, this code
 
     global_id_for_phrase_word = 0 ;
-    global_linked_list_grouping_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
-    global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_grouping_id ] - 1 ;
+    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
+    global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_id ] - 1 ;
     while ( 1 == 1 )
     {
 
@@ -5000,7 +5079,7 @@ void find_matching_phrase_name( )
 //  Limit the search to the phrase names that have
 //  the same number of phrase words.
 
-    global_linked_list_grouping_id = global_id_for_list_of_phrase_names_of_length[ global_count_of_words_in_phrase_name ] ;
+    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_count_of_words_in_phrase_name ] ;
 
 //  reminder: put zeros into global_id_for_list_of_phrase_names_of_length before adding any phrase names
 
