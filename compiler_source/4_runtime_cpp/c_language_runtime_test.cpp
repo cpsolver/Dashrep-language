@@ -251,7 +251,9 @@ int global_access_flag_for_item[ 20005 ] ;
 
 const int global_maximum_words_in_phrase_name = 30 ;
 int global_id_for_list_of_phrase_names_of_length[ 32 ] ;
-int global_id_for_list_of_phrase_words_of_length[ 32 ] ;
+
+const int global_maximum_length_of_phrase_word = 40 ;
+int global_id_for_list_of_phrase_words_of_length[ 42 ] ;
 
 const int global_length_of_list_of_character_numbers = 256 ;
 int global_character_category_number_for_character_number[ 260 ] ;
@@ -1303,6 +1305,16 @@ void do_main_initialization( )
 
 
 // -----------------------------------------------
+//  Initialize the list that associates an item ID
+//  with each possible word length.
+
+    for ( global_length_of_item = 0 ; global_length_of_item <= global_maximum_length_of_phrase_word ; global_length_of_item ++ )
+    {
+        global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] = 0 ;
+    }
+
+
+// -----------------------------------------------
 //  Create the text items for words within the
 //  phrase names that have definitions -- rather
 //  than only having meaning between the words
@@ -2346,15 +2358,20 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 //  Function add_phrase_word_to_linked_list
 //
-//  
+//  Add the "global_item_id" pointer to the list
+//  of phrase words that have the same word
+//  length.
 
-void add_item_id_for_phrase_word_to_linked_list( )
+void add_phrase_word_to_linked_list( )
 {
+    global_pointer_to_add_to_linked_list = global_item_id ;
     get_length_of_item( ) ;
     global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
-
-//  todo:
-
+    if ( global_linked_list_id < 1 )
+    {
+    	create_linked_list( ) ;
+    }
+    add_to_linked_list( ) ;
 	return ;
 }
 
@@ -2363,15 +2380,20 @@ void add_item_id_for_phrase_word_to_linked_list( )
 // -----------------------------------------------
 //  Function add_phrase_name_to_linked_list
 //
-//  
+//  Add the "global_item_id" pointer to the list
+//  of phrase names that have the same word
+//  count.  The phrase word count must be in
+//  "global_number_of_phrase_words_found".
 
 void add_item_id_for_phrase_name_to_linked_list( )
 {
-    get_length_of_item( ) ;
-    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_length_of_item ] ;
-
-//  todo:
-
+    global_pointer_to_add_to_linked_list = global_item_id ;
+    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_number_of_phrase_words_found ] ;
+    if ( global_linked_list_id < 1 )
+    {
+    	create_linked_list( ) ;
+    }
+    add_to_linked_list( ) ;
 	return ;
 }
 
@@ -2532,6 +2554,9 @@ void text_item_clear( )
 
 void replace_text_item_with_pointer_list( )
 {
+
+//  todo:
+
     copy_solo_item_to_new( ) ;
     global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_item_id ;
 	return ;
@@ -2551,6 +2576,9 @@ void replace_text_item_with_pointer_list( )
 
 void replace_text_characters_simple( )
 {
+
+//  todo:
+
 	return ;
 }
 
