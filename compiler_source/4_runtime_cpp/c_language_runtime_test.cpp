@@ -1323,7 +1323,7 @@ void do_main_initialization( )
 //  Reminder: The strcpy function starts position
 //  counting at one, not zero.
 
-//  todo: generate this code from a template
+//  reminder: generate this code from a template
 
     global_id_for_word_character = store_text_and_get_its_item_id( "character" ) ;
     global_id_for_sample_numbers = store_text_and_get_its_item_id( " 123 , 72.3 , -4399 , -88.6666 " ) ;
@@ -1711,6 +1711,8 @@ void choose_slash_or_backslash( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function create_new_item_id_and_assign_storage
 //
 //  Initialize the pointers that will keep track
@@ -1900,7 +1902,7 @@ void just_copy_simple( )
     }
     switch ( global_storage_type )
     {
-    	global_storage_type_pointers :
+    	case global_storage_type_pointers :
 		    while ( global_counter <= global_length_for_just_copy )
 		    {
 		    	global_all_pointers[ global_pointer_from ] = global_all_pointers[ global_pointer_to ] ;
@@ -1918,7 +1920,7 @@ void just_copy_simple( )
 		    	global_counter -- ;
 		    }
 		    break ;
-    	global_storage_type_integers :
+    	case global_storage_type_integers :
 		    while ( global_counter <= global_length_for_just_copy )
 		    {
 		    	global_all_integers[ global_pointer_from ] = global_all_integers[ global_pointer_to ] ;
@@ -1927,7 +1929,7 @@ void just_copy_simple( )
 		    	global_counter -- ;
 		    }
 		    break ;
-    	global_storage_type_decimal_numbers :
+    	case global_storage_type_decimal_numbers :
 		    while ( global_counter <= global_length_for_just_copy )
 		    {
 		    	global_all_decimal_numbers[ global_pointer_from ] = global_all_decimal_numbers[ global_pointer_to ] ;
@@ -2078,6 +2080,8 @@ void get_next_pointer_in_linked_list( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function write_single_character_to_file
@@ -2273,6 +2277,8 @@ void convert_decimal_to_text( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function store_text_and_get_its_item_id
@@ -2530,6 +2536,8 @@ void read_text_line_from_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function text_item_clear
 //
 //  Changes a text item to contain nothing, but
@@ -2548,18 +2556,76 @@ void text_item_clear( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function replace_text_item_with_pointer_list
-//
-//  
+//  Function copy_linked_text
 
-void replace_text_item_with_pointer_list( )
+void copy_linked_text( )
 {
-
 //  todo:
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+    append_linked_text( ) ;
+    return ;
+}
 
-    copy_solo_item_to_new( ) ;
-    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_new_item_id ;
-	return ;
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_copied_text
+
+void copy_copied_text( )
+{
+//  todo:
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+    append_copied_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_text
+//
+//  Copy the text item, either by modifying the
+//  original text, or by making a copy.
+
+void copy_text( )
+{
+//  todo: proofread
+
+
+// -----------------------------------------------
+//  If the target item is read only, indicate
+//  an error because the compiler made a mistake.
+
+	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
+	{
+        log_out << "item to edit cannot change" << std::endl ;
+		exit( EXIT_FAILURE ) ;
+	}
+
+
+// -----------------------------------------------
+//  If the source item is not allowed to change,
+//  use the linked version of copying.
+
+	if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
+	{
+        copy_linked_text( ) ;
+
+
+// -----------------------------------------------
+//  If the source item can change, use the copied
+//  version of copying.
+
+    } else
+    {
+        copy_copied_text( ) ;
+    }
+
+
+// -----------------------------------------------
+//  End of copy_text.
+
+    return ;
 }
 
 
@@ -2585,40 +2651,74 @@ void replace_text_characters_simple( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function replace_text_item_with_pointer_list
+//
+//  This function creates a copy of the text item
+//  at "global_id_text_to_edit" and changes the
+//  data type of the original to become
+//  "list_of_item_ids" and replaces the previous
+//  contents (which are now copied) with a single
+//  pointer to the copy.  This function should not
+//  be used if the top-level text item already is
+//  of the "list_of_item_ids" type because that
+//  would be pointless.  The size of the item to
+//  edit is not checked, but it is assumed to be
+//  at least one unit in length.
+
+//  todo: proofread, make corrections
+
+void replace_text_item_with_pointer_list( )
+{
+    global_item_id = global_id_text_to_edit ;
+    copy_solo_item_to_new( ) ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_for_copy ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
+    global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
+	return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function append_space_if_not_empty
 //
-//  Appends a space to
-//  "global_id_text_to_edit"
-//  if it is not empty.
-//  If the text item is categorized as a list of
-//  numbers (integer or decimal), must convert
-//  text item into characters.
+//  Appends a space to "global_id_text_to_edit" if
+//  it is not empty.  If the text item's data type
+//  is a list of integers or a list of decimal
+//  numbers, first those numbers must be converted
+//  into a text item.
 
 void append_space_if_not_empty( )
 {
     if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
     {
-        if ( global_data_type_for_item[ global_id_text_to_edit ] == global_data_type_list_of_item_ids )
+        switch ( global_data_type_for_item[ global_id_text_to_edit ] )
         {
-            measure_space_available_in_item( ) ;
-            if ( global_space_available_in_item >= 2 )
-            {
-                global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
-                global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_for_single_space ;
-            } else
-            {
-                global_item_id = 111 ;
-                exit_not_yet_supported( ) ;
-                return ;
-            }
-        } else
-        {
-            global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
-            create_new_item_id_and_assign_storage( ) ;
-            global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
-//  insert the to and space IDs, but not the from ID
-//        global_all_pointers
-            global_id_text_to_edit = global_new_item_id ;
+            case global_data_type_list_of_item_ids :
+                measure_space_available_in_item( ) ;
+	            if ( global_space_available_in_item >= 2 )
+	            {
+	                global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+	                global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_for_single_space ;
+	            } else
+	            {
+                    global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
+                    create_new_item_id_and_assign_storage( ) ;
+                    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+	                return ;
+	            }
+	            break ;
+
+//  todo: still some work to do here
+
+            case global_data_type_list_of_integers :
+                convert_list_of_integers_into_text_item( ) ;
+                global_id_text_to_edit = global_new_item_id ;
+                break ;
+            case global_data_type_list_of_decimal_numbers :
+                convert_list_of_decimal_numbers_into_text_item( ) ;
+                global_id_text_to_edit = global_new_item_id ;
+                break ;
         }
     }
     return ;
@@ -2830,76 +2930,6 @@ void append_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function copy_linked_text
-
-void copy_linked_text( )
-{
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-    append_linked_text( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_copied_text
-
-void copy_copied_text( )
-{
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-    append_copied_text( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_text
-//
-//  Copy the text item, either by modifying the
-//  original text, or by making a copy.
-
-void copy_text( )
-{
-
-
-// -----------------------------------------------
-//  If the target item is read only, indicate
-//  an error because the compiler made a mistake.
-
-	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
-	{
-        log_out << "item to edit cannot change" << std::endl ;
-		exit( EXIT_FAILURE ) ;
-	}
-
-
-// -----------------------------------------------
-//  If the source item is not allowed to change,
-//  use the linked version of copying.
-
-	if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
-	{
-        copy_linked_text( ) ;
-
-
-// -----------------------------------------------
-//  If the source item can change, use the copied
-//  version of copying.
-
-    } else
-    {
-        copy_copied_text( ) ;
-    }
-
-
-// -----------------------------------------------
-//  End of copy_text.
-
-    return ;
-}
-
-
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function write_to_log
@@ -2941,6 +2971,8 @@ void specify_character_to_insert_between_subitems( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function initialize_parse_characters_of_number
@@ -3329,6 +3361,8 @@ void convert_list_of_decimal_numbers_into_text_item( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function put_info_into_target_pointer_stack_level
@@ -4204,6 +4238,8 @@ void remove_leading_and_trailing_delimiters( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function initalize_skip_to_character_position
 //
 //  This function does initialization for the
@@ -4502,6 +4538,8 @@ void text_replace( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function write_text_item_to_file
 //
 //  This function writes the contents of one text
@@ -4651,6 +4689,8 @@ void parse_one_character_of_folder_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function check_yes_or_no_matching_text
 //
 //  Checks if two sequences of text characters are
@@ -4780,6 +4820,8 @@ void check_yes_or_no_target_pointers_in_same_item( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function add_new_phrase_name
@@ -5194,6 +5236,8 @@ void store_phrase_name( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function scan_text_item_for_character_usage
@@ -5676,6 +5720,8 @@ void get_phrase_name_when_at_trailing_delimiter( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function replace_angle_bracketed_phrase_names
@@ -6272,6 +6318,8 @@ void implement_loop( )
 }
 
 
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Functions that call the above functions.
