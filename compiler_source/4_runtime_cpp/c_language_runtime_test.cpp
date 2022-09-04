@@ -445,6 +445,9 @@ int global_current_within_items_text_item ;
 int global_current_within_items_text_item_begin ;
 int global_current_within_items_text_item_end ;
 int global_decimal_number_divisor ;
+int global_decimal_number_position_begin ;
+int global_decimal_number_position_current ;
+int global_decimal_number_position_end ;
 int global_defined_phrase_number ;
 int global_direction_next_or_previous ;
 int global_direction_opposite ;
@@ -458,6 +461,7 @@ int global_id_containing_first_hyphen ;
 int global_id_for_copy ;
 int global_id_for_copy_of_within_items_pointer_stack ;
 int global_id_for_character_position ;
+int global_id_for_decimal_numbers_as_text ;
 int global_id_for_empty_text ;
 int global_id_for_file_input ;
 int global_id_for_file_output ;
@@ -960,6 +964,7 @@ int global_id_text_to_edit ;
 int global_id_text_to_find ;
 int global_id_text_to_search ;
 int global_id_text_to_truncate ;
+int global_integer_position_begin ;
 int global_integer_position_current ;
 int global_integer_position_end ;
 int global_item_id ;
@@ -1013,6 +1018,10 @@ int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
 int global_pointer_to_next_or_previous_character_in_sub_text_item ;
 int global_pointer_to_within_text_item ;
+
+int global_pointer_to_within_items_stack_level_bottom ;
+int global_pointer_to_within_items_stack_level_top ;
+
 int global_pointer_copy_current ;
 int global_pointer_copy_end ;
 int global_pointer_origin_current ;
@@ -2578,7 +2587,7 @@ void copy_linked_text( )
 {
 //  todo:
     global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-    append_linked_text( ) ;
+//    append_linked_text( ) ;
     return ;
 }
 
@@ -2591,7 +2600,7 @@ void copy_copied_text( )
 {
 //  todo:
     global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-    append_copied_text( ) ;
+//    append_copied_text( ) ;
     return ;
 }
 
@@ -2692,6 +2701,17 @@ void replace_text_item_with_pointer_list( )
     global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
     return ;
 }
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Allow function "append_space_if_not_empty" to
+//  access functions
+//  "convert_list_of_integers_into_text_item" and
+//  "convert_list_of_decimal_numbers_into_text_item".
+
+void convert_list_of_integers_into_text_item( ) ;
+void convert_list_of_decimal_numbers_into_text_item( ) ;
 
 
 // -----------------------------------------------
@@ -3305,6 +3325,7 @@ void convert_list_of_integers_into_text_item( )
         global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
         global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
         global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_integers_as_text ] + 1 ;
+        global_data_type = global_data_type_text_characters ;
         just_copy_simple( ) ;
         global_pointer_end_for_item[ global_id_for_integers_as_text ] += global_length_for_just_copy ;
 
@@ -3337,15 +3358,38 @@ void convert_list_of_integers_into_text_item( )
 //  numbers into a text item that contains only
 //  decimal numbers as text, with one space
 //  between each adjacent pair of numbers.
+//
+//  For comments, look at the function
+// "convert_list_of_decimal_numbers_into_text_item".
 
 void convert_list_of_decimal_numbers_into_text_item( )
 {
-
-//  later, after integer version debugged, copy code from integer version and modify for decimal numbers
-
-//  global_data_type_list_of_decimal_numbers ;
-//  convert_decimal_to_text( ) ;
-
+    global_data_type = global_data_type_text_characters ;
+    global_length_requested_for_next_item_storage = 200 ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_id_for_decimal_numbers_as_text = global_new_item_id ;
+    global_decimal_number_position_begin = global_pointer_begin_for_item[ global_id_for_list_of_decimal_numbers ] ;
+    global_decimal_number_position_current =  global_decimal_number_position_begin ;
+    global_decimal_number_position_end = global_pointer_end_for_item[ global_id_for_list_of_decimal_numbers ] ;
+    while ( global_decimal_number_position_current <= global_decimal_number_position_end )
+    {
+        global_single_decimal_number = global_all_decimal_numbers[ global_decimal_number_position_current ] ;
+        convert_decimal_to_text( ) ;
+        if ( global_decimal_number_position_current == global_decimal_number_position_begin )
+        {
+            global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ++ ;
+            global_all_characters[ global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ] = global_ascii_code_for_space ;
+        }
+        global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
+        global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
+        global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] + 1 ;
+        global_data_type = global_data_type_text_characters ;
+        just_copy_simple( ) ;
+        global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] += global_length_for_just_copy ;
+        global_decimal_number_position_current ++ ;
+    }
+    adjust_storage_space_to_fit_newest_item( ) ;
+    return ;
 }
 
 
@@ -3766,13 +3810,11 @@ void copy_pointer_stack( )
 //  levels, create a new, empty, within-items
 //  pointer stack level.
 
-//  todo: needs more proofreading ...
-
         if ( global_within_items_stack_level_current_copy == 0 )
         {
-            global_within_items_stack_level_bottom = 0 ;
-            push_within_items_pointer_stack_level( ) ;
-            global_within_items_stack_level_current_copy = global_within_items_stack_level_bottom ;
+            global_within_items_stack_level_bottom = global_id_for_copy_of_within_items_pointer_stack ;
+            create_new_within_items_pointer_stack_level_top( ) ;
+            global_within_items_stack_level_current_copy = global_id_for_copy_of_within_items_pointer_stack ;
         }
 
 
@@ -3799,6 +3841,8 @@ void copy_pointer_stack( )
 
 
 // -----------------------------------------------
+//  Copy the pointer to the top level into the
+//  bottom level.
 
     global_all_pointers[ global_pointer_begin_for_item[ global_id_for_copy_of_within_items_pointer_stack ] + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_current_copy ;
 
