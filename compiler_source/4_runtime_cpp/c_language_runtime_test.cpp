@@ -1,5 +1,7 @@
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //
 //  dashrep_c_language_runtime_in_development.cpp
 //
@@ -1902,6 +1904,110 @@ void check_yes_or_no_solo_item_is_empty( )
         global_yes_or_no_text_item_is_empty = global_no ;
         return ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function check_yes_or_no_matching_text
+//
+//  Checks if two sequences of text characters are
+//  the same.  It starts checking at both the
+//  beginning and the end.  This approach is often
+//  faster than going from beginning to end
+//  because there are many cases when a number or
+//  code appears at the end of the text, and where
+//  the beginning is the same for many items.  The
+//  characters are assumed to be in
+//  "global_all_characters", the initial character
+//  pointers are
+//  "global_character_pointer_begin_for_text_one"
+//  and
+//  "global_character_pointer_begin_for_text_two",
+//  and the character length minus one is in
+//  "global_character_length_minus_one".
+
+void check_yes_or_no_matching_text( )
+{
+
+
+// -----------------------------------------------
+//  Initialization.
+
+    global_character_begin_pointer_one = global_character_pointer_begin_for_text_one ;
+    global_character_begin_pointer_two = global_character_pointer_begin_for_text_two ;
+    global_character_end_pointer_one = global_character_pointer_begin_for_text_one + global_character_length_minus_one ;
+    global_character_end_pointer_two = global_character_pointer_begin_for_text_two + global_character_length_minus_one ;
+
+    global_character_count = global_character_length_minus_one + 1 ;
+
+
+// -----------------------------------------------
+//  Begin a loop that returns when a difference is
+//  found, or when all the characters have been
+//  checked.
+
+    while ( global_character_count > 0 )
+    {
+
+
+// -----------------------------------------------
+//  Check the next character at or near the
+//  beginning of the two character sequences.
+
+        log_out << "character one: " << global_all_characters[ global_character_begin_pointer_one ] << "  character two: " << global_all_characters[ global_character_begin_pointer_two ] << std::endl ;
+
+        if ( global_all_characters[ global_character_begin_pointer_one ] != global_all_characters[ global_character_begin_pointer_two ] )
+        {
+            global_yes_or_no_same_text = global_no ;
+            return ;
+        }
+        global_character_begin_pointer_one ++ ;
+        global_character_begin_pointer_two ++ ;
+        global_character_count -- ;
+
+
+// -----------------------------------------------
+//  If all the characters have been checked, exit
+//  the loop.
+
+        if ( global_character_count <= 0 )
+        {
+            break ;
+        }
+
+
+// -----------------------------------------------
+//  Check the next character at or near the end of
+//  the two character sequences.
+
+        log_out << "character one: " << global_all_characters[ global_character_begin_pointer_one ] << "  character two: " << global_all_characters[ global_character_begin_pointer_two ] << std::endl ;
+        if ( global_all_characters[ global_character_end_pointer_one ] != global_all_characters[ global_character_end_pointer_two ] )
+        {
+            global_yes_or_no_same_text = global_no ;
+            return ;
+        }
+        global_character_end_pointer_one -- ;
+        global_character_end_pointer_two -- ;
+        global_character_count -- ;
+
+
+// -----------------------------------------------
+//  Repeat the loop.
+
+    }
+
+
+// -----------------------------------------------
+//  Indicate a match.
+
+    global_yes_or_no_same_text = global_yes ;
+
+
+// -----------------------------------------------
+//  End of check_yes_or_no_matching_text.
+
+    return ;
 }
 
 
@@ -4745,98 +4851,6 @@ void parse_one_character_of_folder_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function check_yes_or_no_matching_text
-//
-//  Checks if two sequences of text characters are
-//  the same.  It starts checking at both the
-//  beginning and the end.  This approach is more
-//  often going to be faster when the two text
-//  sequences are numbers because the end digits
-//  are more likely to be different.  The
-//  characters are in "global_all_characters",
-//  and the initial character pointers are:
-//  "global_character_pointer_begin_for_text_one"
-//  and
-//  "global_character_pointer_begin_for_text_two"
-//  and "global_character_length_minus_one" is the
-//  character length minus one.
-
-void check_yes_or_no_matching_text( )
-{
-
-
-// -----------------------------------------------
-//  Initialization.
-
-    global_character_begin_pointer_one = global_character_pointer_begin_for_text_one ;
-    global_character_begin_pointer_two = global_character_pointer_begin_for_text_two ;
-    global_character_end_pointer_one = global_character_pointer_begin_for_text_one + global_character_length_minus_one ;
-    global_character_end_pointer_two = global_character_pointer_begin_for_text_two + global_character_length_minus_one ;
-
-
-// -----------------------------------------------
-//  Begin a loop that returns when a difference is
-//  found, or when all the characters have been
-//  checked.
-
-    while ( 1 == 1 )
-    {
-
-
-// -----------------------------------------------
-//  Check the next character at or near the
-//  beginning of the two character sequences.
-
-        log_out << "character one: " << global_all_characters[ global_character_begin_pointer_one ] << "  character two: " << global_all_characters[ global_character_begin_pointer_two ] << std::endl ;
-
-        if ( global_all_characters[ global_character_begin_pointer_one ] != global_all_characters[ global_character_begin_pointer_two ] )
-        {
-            global_yes_or_no_same_text = global_no ;
-            return ;
-        }
-        global_character_begin_pointer_one ++ ;
-        global_character_begin_pointer_two ++ ;
-        if ( global_character_begin_pointer_one > global_character_end_pointer_one )
-        {
-            global_yes_or_no_same_text = global_yes ;
-            return ;
-        }
-
-
-// -----------------------------------------------
-//  Check the next character at or near the end of
-//  the two character sequences.
-
-        log_out << "character one: " << global_all_characters[ global_character_begin_pointer_one ] << "  character two: " << global_all_characters[ global_character_begin_pointer_two ] << std::endl ;
-        if ( global_all_characters[ global_character_end_pointer_one ] != global_all_characters[ global_character_end_pointer_two ] )
-        {
-            global_yes_or_no_same_text = global_no ;
-            return ;
-        }
-        global_character_end_pointer_one -- ;
-        global_character_end_pointer_two -- ;
-        if ( global_character_end_pointer_one < global_character_begin_pointer_one )
-        {
-            global_yes_or_no_same_text = global_yes ;
-            return ;
-        }
-
-
-// -----------------------------------------------
-//  Repeat the loop.
-
-    }
-
-
-// -----------------------------------------------
-//  End of check_yes_or_no_matching_text.
-
-    return ;
-}
-
-
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function check_yes_or_no_within_items_pointers_in_same_item
