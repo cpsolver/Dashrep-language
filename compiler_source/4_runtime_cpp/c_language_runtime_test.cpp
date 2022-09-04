@@ -2214,22 +2214,31 @@ void get_next_pointer_in_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function write_single_character_to_file
-//
-//  Write the the character -- expressed as an
-//  integer -- to the output file.  The character
-//  integer is supplied in the variable
-//  global_single_character_as_integer.  Ignore
-//  any error responses.
-//
-//  Later, replace "fputc" function with C++ code
-//  that handles Unicode characters, including
-//  Chinese characters.
+//  Function check_yes_or_no_character_is_delimiter
 
-void write_single_character_as_integer_to_file( )
+void check_yes_or_no_character_is_delimiter( )
 {
-    global_response_ignored = fputc( char( global_single_character_as_integer ) , global_outfile_connection ) ;
-    return ;
+    switch ( global_single_character_as_integer )
+    {
+        case global_ascii_code_for_space :
+            global_yes_or_no_character_is_delimiter = global_yes ;
+            break ;
+        case global_ascii_code_for_tab :
+            global_yes_or_no_character_is_delimiter = global_yes ;
+            break ;
+        case global_ascii_code_for_newline :
+            global_yes_or_no_character_is_delimiter = global_yes ;
+            break ;
+        case global_ascii_code_for_formfeed :
+            global_yes_or_no_character_is_delimiter = global_yes ;
+            break ;
+        case global_ascii_code_for_carriage_return :
+            global_yes_or_no_character_is_delimiter = global_yes ;
+            break ;
+        default :
+            global_yes_or_no_character_is_delimiter = global_no ;
+            break ;
+    }
 }
 
 
@@ -2409,669 +2418,129 @@ void convert_decimal_to_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function store_text_and_get_its_item_id
+//  Function convert_list_of_integers_into_text_item
 //
-//  Gets the text word supplied as a function
-//  argument in C string format, stores it in
-//  global_all_characters, and returns the text
-//  item ID number for this text.
+//  Convert the text item at
+//  "global_id_for_list_of_integers", which is
+//  assumed to be a list of integers, into a text
+//  item that contains only integers, with one
+//  space between each adjacent pair of numbers.
 
-int store_text_and_get_its_item_id( const char * local_this_word )
+void convert_list_of_integers_into_text_item( )
 {
 
 
 // -----------------------------------------------
-//  Count the characters to be stored, and request
-//  this amount of storage space.
-//
-//  Reminder:  The first character position is
-//  zero because this code handles text that
-//  is imported using the strcpy function.
+//  Create a new text item to hold the generated
+//  text.
 
-    global_character_count = 0 ;
-    for ( size_t character_pointer = 0 ; character_pointer < ( strlen( local_this_word ) ) ; character_pointer ++ )
-    {
-        global_single_character = (int) local_this_word[ character_pointer ] ;
-        if ( global_single_character == 0 )
-        {
-            break ;
-        }
-        global_character_count ++ ;
-    }
-    global_length_requested_for_next_item_storage = global_character_count ;
-
-
-// -----------------------------------------------
-//  Create the storage for the text item.
-
+    global_data_type = global_data_type_text_characters ;
+    global_length_requested_for_next_item_storage = 200 ;
     create_new_item_id_and_assign_storage( ) ;
+    global_id_for_integers_as_text = global_new_item_id ;
 
 
 // -----------------------------------------------
-//  Store the characters in the new text item.
-//
-//  Reminder:  The first character position is
-//  zero because this code handles text that
-//  is imported using the strcpy function.
+//  Begin a loop that handles each integer.
 
-    global_next_character_position_in_storage_all_text = global_pointer_begin_for_item[ global_new_item_id ] ;
-    for ( size_t character_pointer = 0 ; character_pointer < ( strlen( local_this_word ) ) ; character_pointer ++ )
+    global_integer_position_begin = global_pointer_begin_for_item[ global_id_for_list_of_integers ] ;
+    global_integer_position_current =  global_integer_position_begin ;
+    global_integer_position_end = global_pointer_end_for_item[ global_id_for_list_of_integers ] ;
+    while ( global_integer_position_current <= global_integer_position_end )
     {
-        global_single_character = (int) local_this_word[ character_pointer ] ;
-        global_all_characters[ global_next_character_position_in_storage_all_text ] = global_single_character ;
-        global_next_character_position_in_storage_all_text ++ ;
+
+
+// -----------------------------------------------
+//  Convert the integer into text.
+
+        global_single_integer = global_all_integers[ global_integer_position_current ] ;
+        convert_integer_to_text( ) ;
+
+
+// -----------------------------------------------
+//  Insert a space between adjacent numbers.
+
+        if ( global_integer_position_current == global_integer_position_begin )
+        {
+            global_pointer_end_for_item[ global_id_for_integers_as_text ] ++ ;
+            global_all_characters[ global_pointer_end_for_item[ global_id_for_integers_as_text ] ] = global_ascii_code_for_space ;
+        }
+
+
+// -----------------------------------------------
+//  Append the digits to the text item.
+
+        global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
+        global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
+        global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_integers_as_text ] + 1 ;
+        global_data_type = global_data_type_text_characters ;
+        just_copy_simple( ) ;
+        global_pointer_end_for_item[ global_id_for_integers_as_text ] += global_length_for_just_copy ;
+
+
+// -----------------------------------------------
+//  Repeat the loop for the next integer.
+
+        global_integer_position_current ++ ;
     }
 
 
 // -----------------------------------------------
-//  Update the pointer to the end of the
-//  just-stored text.
+//  Adjust the storage size to fit the result.
 
-    global_pointer_end_for_item[ global_new_item_id ] = global_pointer_begin_for_item[ global_new_item_id ] + global_character_count - 1 ;
-
-
-// -----------------------------------------------
-//  Specify the data type for this text item.
-
-    global_data_type_for_item[ global_new_item_id ] = global_data_type_text_characters ;
+    adjust_storage_space_to_fit_newest_item( ) ;
 
 
 // -----------------------------------------------
-//  Return with the text item ID number
+//  End of convert_list_of_integers_into_text_item.
 
-    return global_new_item_id ;
-
-
-// -----------------------------------------------
-//  End of function store_text_and_get_its_item_id.
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function add_phrase_word_to_linked_list
-//
-//  Add the "global_item_id" pointer to the list
-//  of phrase words that have the same word
-//  length.
-
-void add_phrase_word_to_linked_list( )
-{
-    global_pointer_to_add_to_linked_list = global_item_id ;
-    get_length_of_item( ) ;
-    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
-    if ( global_linked_list_id < 1 )
-    {
-        create_linked_list( ) ;
-    }
-    add_to_linked_list( ) ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function add_phrase_name_to_linked_list
+//  Function convert_list_of_decimal_numbers_into_text_item
 //
-//  Add the "global_item_id" pointer to the list
-//  of phrase names that have the same word
-//  count.  The phrase word count must be in
-//  "global_number_of_phrase_words_found".
-
-void add_item_id_for_phrase_name_to_linked_list( )
-{
-    global_pointer_to_add_to_linked_list = global_item_id ;
-    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_number_of_phrase_words_found ] ;
-    if ( global_linked_list_id < 1 )
-    {
-        create_linked_list( ) ;
-    }
-    add_to_linked_list( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function store_phrase_name_and_get_id
+//  Convert a text item that is a list of decimal
+//  numbers into a text item that contains only
+//  decimal numbers as text, with one space
+//  between each adjacent pair of numbers.
 //
-//  Creates a text item for a hyphenated phrase
-//  name, and supplies the text item ID number for
-//  the new text item.
+//  For comments, look at the function
+// "convert_list_of_decimal_numbers_into_text_item".
 
-int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
+void convert_list_of_decimal_numbers_into_text_item( )
 {
-    global_length_requested_for_next_item_storage = 12 ;
+    global_data_type = global_data_type_text_characters ;
+    global_length_requested_for_next_item_storage = 200 ;
     create_new_item_id_and_assign_storage( ) ;
-    global_data_type_for_item[ global_new_item_id ] = global_data_type_phrase_word_pointers ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_one ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_two ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_three ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_four ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_five ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_six ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_seven ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eight ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_nine ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_ten ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eleven ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_twelve ;
-    for ( global_character_pointer = global_pointer_end_for_item[ global_new_item_id ] ; global_character_pointer >= global_pointer_begin_for_item[ global_new_item_id ] ; global_character_pointer -- )
+    global_id_for_decimal_numbers_as_text = global_new_item_id ;
+    global_decimal_number_position_begin = global_pointer_begin_for_item[ global_id_for_list_of_decimal_numbers ] ;
+    global_decimal_number_position_current =  global_decimal_number_position_begin ;
+    global_decimal_number_position_end = global_pointer_end_for_item[ global_id_for_list_of_decimal_numbers ] ;
+    while ( global_decimal_number_position_current <= global_decimal_number_position_end )
     {
-        if ( global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] > 0 )
+        global_single_decimal_number = global_all_decimal_numbers[ global_decimal_number_position_current ] ;
+        convert_decimal_to_text( ) ;
+        if ( global_decimal_number_position_current == global_decimal_number_position_begin )
         {
-            break ;
+            global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ++ ;
+            global_all_characters[ global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ] = global_ascii_code_for_space ;
         }
-        global_pointer_end_for_item[ global_new_item_id ] -- ;
+        global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
+        global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
+        global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] + 1 ;
+        global_data_type = global_data_type_text_characters ;
+        just_copy_simple( ) ;
+        global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] += global_length_for_just_copy ;
+        global_decimal_number_position_current ++ ;
     }
-    return global_new_item_id ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function check_yes_or_no_character_is_delimiter
-
-void check_yes_or_no_character_is_delimiter( )
-{
-    switch ( global_single_character_as_integer )
-    {
-        case global_ascii_code_for_space :
-            global_yes_or_no_character_is_delimiter = global_yes ;
-            break ;
-        case global_ascii_code_for_tab :
-            global_yes_or_no_character_is_delimiter = global_yes ;
-            break ;
-        case global_ascii_code_for_newline :
-            global_yes_or_no_character_is_delimiter = global_yes ;
-            break ;
-        case global_ascii_code_for_formfeed :
-            global_yes_or_no_character_is_delimiter = global_yes ;
-            break ;
-        case global_ascii_code_for_carriage_return :
-            global_yes_or_no_character_is_delimiter = global_yes ;
-            break ;
-        default :
-            global_yes_or_no_character_is_delimiter = global_no ;
-            break ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function read_text_line_from_file
-//
-//  Reads one line of text from a file and puts
-//  the text into the text item ID numbered
-//  global_id_for_file_input.
-//
-//  Later, replace "fgetc" function with C++ code
-//  that reads unicode characters.  Test with
-//  Chinese characters.
-
-void read_text_line_from_file( )
-{
-    global_pointer_end_for_item[ global_id_for_file_input ] = global_pointer_begin_for_item[ global_id_for_file_input ] - 1 ;
-    global_data_type_for_item[ global_id_for_file_input ] = global_data_type_text_characters ;
-    while ( 1 == 1 )
-    {
-        global_next_character_number = fgetc( global_infile_connection ) ;
-        global_id_text_to_edit = global_id_for_file_input ;
-        measure_space_available_in_item( ) ;
-        if ( global_space_available_in_item > 1 )
-        {
-            global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
-            global_all_characters[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_next_character_number ;
-        } else
-        {
-            log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
-            global_next_character_number = 0 ;
-            return ;
-        }
-        global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
-        if ( ( global_next_character_number == EOF ) || ( global_character_category == global_character_category_newline ) )
-        {
-            global_next_character_number = 0 ;
-            return ;
-        }
-        if ( global_pointer_end_for_item[ global_id_for_file_input ] < global_pointer_allocation_end_for_item[ global_id_for_file_input ] )
-        {
-            global_pointer_end_for_item[ global_id_for_file_input ] ++ ;
-            global_pointer_end_for_item[ global_id_for_file_input ] = global_next_character_number ;
-        } else
-        {
-            log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
-            exit( EXIT_FAILURE ) ;
-        }
-    }
+    adjust_storage_space_to_fit_newest_item( ) ;
     return ;
 }
 
 
-// -----------------------------------------------
-// -----------------------------------------------
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function specify_character_to_insert_between_subitems
-
-void specify_character_to_insert_between_subitems( )
-{
-    switch ( global_data_type )
-    {
-        global_data_type_phrase_word_pointers :
-            global_character_to_insert_between_subitems = global_ascii_code_for_hyphen ;
-            break ;
-        global_data_type_switch_delimiter_to_underscore :
-            global_character_to_insert_between_subitems = global_ascii_code_for_underscore ;
-            break ;
-        default :
-            global_character_to_insert_between_subitems = 0 ;
-            break ;
-    }
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_linked_text
-
-void copy_linked_text( )
-{
-//  todo:
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-//    append_linked_text( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_copied_text
-
-void copy_copied_text( )
-{
-//  todo:
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-//    append_copied_text( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_text
-//
-//  Copy the text item, either by modifying the
-//  original text, or by making a copy.
-
-void copy_text( )
-{
-//  todo: proofread
-
-
-// -----------------------------------------------
-//  If the text item is read only, indicate an
-//  error because the compiler made a mistake.
-
-    if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
-    {
-        log_out << "item to edit cannot change" << std::endl ;
-        exit( EXIT_FAILURE ) ;
-    }
-
-
-// -----------------------------------------------
-//  If the source item is not allowed to change,
-//  use the linked version of copying.
-
-    if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
-    {
-        copy_linked_text( ) ;
-
-
-// -----------------------------------------------
-//  If the source item can change, use the copied
-//  version of copying.
-
-    } else
-    {
-        copy_copied_text( ) ;
-    }
-
-
-// -----------------------------------------------
-//  End of copy_text.
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function replace_text_characters_simple
-
-//  Check in calling function:
-//  id = within_items
-//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
-//  id = source
-//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
-//  verify gap length exceeds (or equals) insertion length
-
-void replace_text_characters_simple( )
-{
-
-//  todo:
-
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function replace_text_item_with_pointer_list
-//
-//  This function creates a copy of the text item
-//  at "global_id_text_to_edit" and changes the
-//  data type of the original to become
-//  "list_of_item_ids" and replaces the previous
-//  contents (which are now copied) with a single
-//  pointer to the copy.  This function should not
-//  be used if the top-level text item already is
-//  of the "list_of_item_ids" type because that
-//  would be pointless.  The size of the item to
-//  edit is not checked, but it is assumed to be
-//  at least one unit in length.
-
-//  todo: proofread, make corrections
-
-void replace_text_item_with_pointer_list( )
-{
-    global_item_id = global_id_text_to_edit ;
-    copy_solo_item_to_new( ) ;
-    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_for_copy ;
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
-    global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Allow function "append_space_if_not_empty" to
-//  access functions
-//  "convert_list_of_integers_into_text_item" and
-//  "convert_list_of_decimal_numbers_into_text_item".
-
-void convert_list_of_integers_into_text_item( ) ;
-void convert_list_of_decimal_numbers_into_text_item( ) ;
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_space_if_not_empty
-//
-//  Appends a space to "global_id_text_to_edit" if
-//  it is not empty.  If the text item's data type
-//  is a list of integers or a list of decimal
-//  numbers, first those numbers must be converted
-//  into a text item.
-
-void append_space_if_not_empty( )
-{
-    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
-    {
-        switch ( global_data_type_for_item[ global_id_text_to_edit ] )
-        {
-            case global_data_type_list_of_item_ids :
-                measure_space_available_in_item( ) ;
-                if ( global_space_available_in_item >= 2 )
-                {
-                    global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
-                    global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_for_single_space ;
-                } else
-                {
-                    global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
-                    create_new_item_id_and_assign_storage( ) ;
-                    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
-                    return ;
-                }
-                break ;
-
-//  todo: still some work to do here
-
-            case global_data_type_list_of_integers :
-                convert_list_of_integers_into_text_item( ) ;
-                global_id_text_to_edit = global_new_item_id ;
-                break ;
-            case global_data_type_list_of_decimal_numbers :
-                convert_list_of_decimal_numbers_into_text_item( ) ;
-                global_id_text_to_edit = global_new_item_id ;
-                break ;
-        }
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_linked_text
-//
-//  Appends text assuming that the text being
-//  appended will not change, so just add a link
-//  to the text being appended.  The text item
-//  to be appended is specified by the text item
-//  ID number in "global_id_from_origin",
-//  and the text item being extended is specified
-//  by the text item ID number in
-//  "global_id_text_to_edit".  The value in
-//  "global_yes_or_no_requesting_space_appended"
-//  indicates whether to insert a space between
-//  non-empty text being extended and non-empty
-//  text being appended.
-//
-//  If the text item is almost full, create a new
-//  sub text item and point to it with the last
-//  available linked-list position, and append
-//  the linked text item to the beginning of the
-//  new sub text item.  The result leaves room
-//  for more sub text items to be appended
-//  without needing to add a new sub text item
-//  for every appended text item.
-
-void append_linked_text( )
-{
-
-
-// -----------------------------------------------
-//  If the text being appended is empty, there is
-//  nothing to do.
-
-    if ( global_pointer_end_for_item[ global_id_from_origin ] < global_pointer_begin_for_item[ global_id_from_origin ] )
-    {
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  If the text being extended is empty, just put
-//  a pointer into the text being extended, and
-//  specify a category of "list_of_text_items"
-//  regardless of what it was before.  The
-//  pointer points to the text being appended.
-
-    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
-    {
-        global_to_text_data_type = global_data_type_for_item[ global_id_text_to_edit ] ;
-        if ( global_to_text_data_type == global_data_type_list_of_item_ids )
-        {
-            global_pointer_begin_for_item[ global_id_text_to_edit ] = global_id_from_origin ;
-            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
-        } else
-        {
-//  todo: proofread, verify data type usage
-            global_all_characters[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
-            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
-            global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
-        }
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  If the text being extended is not empty and
-//  there is a request to insert a space between
-//  the extended text and the appended text,
-//  insert a space.
-
-    if ( global_yes_or_no_requesting_space_appended == global_yes )
-    {
-        append_space_if_not_empty( ) ;
-    }
-
-
-// -----------------------------------------------
-//  Get the categories of the "from" and "to" text
-//  items.
-
-    global_from_text_data_type = global_data_type_for_item[ global_id_from_origin ] ;
-    global_to_text_data_type = global_data_type_for_item[ global_id_text_to_edit ] ;
-
-
-// -----------------------------------------------
-//  If the data types of the "from" and "to" text
-//  items are both "list_of_item_ids", add the
-//  pointer.
-
-    if ( ( global_from_text_data_type == global_data_type_list_of_item_ids ) && ( global_to_text_data_type == global_data_type_list_of_item_ids ) )
-    {
-        global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
-        global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
-        return ;
-    }
-
-
-// -----------------------------------------------
-//  Create a new text item of data type
-//  "list_of_item_ids" and into it put
-//  pointers that point to the "to" and "from"
-//  text items, and change the text item ID of the
-//  "to" text item so that the new top-level item
-//  points to both the "to" and "from".
-
-    global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
-    create_new_item_id_and_assign_storage( ) ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_text_to_edit ;
-    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
-    global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_from_origin ;
-    global_id_text_to_edit = global_new_item_id ;
-    return ;
-
-
-// -----------------------------------------------
-//  End of function append_linked_text.
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_copied_text
-
-//  Appends text assuming that the text being
-//  appended will change, so a copy of that text
-//  must be stored.  The text item to be appended
-//  is specified by the text item ID number in
-//  global_id_from_origin, and the text
-//  item being extended is specified by the text
-//  item ID number in
-//  global_id_text_to_edit.
-
-void append_copied_text( )
-{
-    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
-    global_length_requested_for_next_item_storage = global_pointer_end_for_item[ global_id_from_origin ] - global_pointer_begin_for_item[ global_id_from_origin ] + 1 ;
-    create_new_item_id_and_assign_storage( ) ;
-    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
-    {
-        global_pointer_end_for_item[ global_new_item_id ] ++ ;
-        global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_all_pointers[ global_pointer_end_for_item[ global_id_from_origin ] ]
-         ;
-    }
-    global_data_type_for_item[ global_new_item_id ] = global_data_type_for_item[ global_id_from_origin ] ;
-    global_id_from_origin = global_new_item_id ;
-    append_linked_text( ) ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function append_text
-//
-//  Appends text from the text item
-//  "global_id_from_origin" to the text item
-//  "global_id_text_to_edit".
-//  Allow the two text item IDs to be the same.
-
-
-void append_text( )
-{
-
-
-// -----------------------------------------------
-//  If the text item is read only, indicate an
-//  error because the compiler made a mistake.
-
-    if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
-    {
-        log_out << "item to edit cannot change" << std::endl ;
-        exit( EXIT_FAILURE ) ;
-    }
-
-
-// -----------------------------------------------
-//  If the source item is not allowed to change,
-//  use the linked version of appending.
-
-    if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
-    {
-        append_linked_text( ) ;
-
-
-// -----------------------------------------------
-//  If the source item can change, use the copied
-//  version of appending.
-
-    } else
-    {
-        append_copied_text( ) ;
-    }
-
-
-// -----------------------------------------------
-    return ;
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function initialize_parse_characters_of_number
@@ -3361,146 +2830,868 @@ void convert_into_data_type_list_of_integers( )
 // -----------------------------------------------
 //  Function convert_into_data_type_list_of_decimal_numbers
 //
-//  Use function that parses decimal numbers.
+//  Convert a text item that contains only decimal
+//  numbers -- in text format -- into a text item
+//  that is a list of decimal numbers.
+//
+//  For comments, look at function 
+//  "convert_into_data_type_list_of_integers".
 
 void convert_into_data_type_list_of_decimal_numbers( )
 {
-
-//  later, after integer version debugged, copy code from integer version and modify for decimal numbers
-
-//  global_data_type_list_of_decimal_numbers ;
-
+    global_count_of_words_handled = 0 ;
+    global_id_for_decimal_numbers_as_text = global_id_from_origin ;
+    global_length_requested_for_next_item_storage = 2 ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_id_for_list_of_decimal_numbers = global_new_item_id ;
+    global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_decimal_numbers_as_text ] ;
+    global_character_pointer_end = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ;
+    global_yes_or_no_character_is_delimiter = global_yes ;
+    while ( global_character_pointer_current <= global_character_pointer_end )
+    {
+        global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
+        check_yes_or_no_character_is_delimiter( ) ;
+        if ( global_yes_or_no_character_is_delimiter == global_yes )
+        {
+            continue ;
+        }
+        global_character_pointer_begin_for_number = global_character_pointer_current ;
+        if ( global_yes_or_no_character_is_delimiter == global_no )
+        {
+            initialize_parse_characters_of_number( ) ;
+            global_single_character_as_integer = global_all_characters[ global_text_pointer ] ;
+            parse_one_character_of_number( ) ;
+            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
+            {
+                if ( global_number_of_digits_encountered > 0 )
+                {
+                    if ( global_yes_or_no_number_is_valid == global_yes )
+                    {
+                        finish_parse_characters_of_number( ) ;
+                        if ( global_yes_or_no_decimal_number == global_no )
+                        {
+                            global_pointer_end_for_item[ global_id_for_list_of_decimal_numbers ] ++ ;
+                            global_all_decimal_numbers[ global_pointer_end_for_item[ global_id_for_list_of_decimal_numbers ] ] = global_single_decimal_number ;
+                            log_out << "decimal_number number = " << global_single_decimal_number << std::endl ;
+                            break ;
+                        } else
+                        {
+                            global_id_for_list_of_decimal_numbers = 0 ;
+                            global_id_text_to_edit = 0 ;
+                            adjust_storage_space_to_fit_newest_item( ) ;
+                            log_out << "number is not decimal_number, is integer" << std::endl ;
+                            return ;
+                        }
+                    } else
+                    {
+                        global_id_for_list_of_decimal_numbers = 0 ;
+                        global_id_text_to_edit = 0 ;
+                        adjust_storage_space_to_fit_newest_item( ) ;
+                        log_out << "invalid number" << std::endl ;
+                        return ;
+                    }
+                }
+                initialize_parse_characters_of_number( ) ;
+            }
+        }
+        measure_space_available_in_item( ) ;
+        if ( global_space_available_in_item < 1 )
+        {
+            adjust_storage_space_to_fit_newest_item( ) ;
+        }
+        global_character_pointer_current ++ ;
+    }
+    adjust_storage_space_to_fit_newest_item( ) ;
+    global_id_text_to_edit = global_id_for_list_of_decimal_numbers ;
+    global_data_type_for_item[ global_id_for_list_of_decimal_numbers ] = global_data_type_list_of_decimal_numbers ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_list_of_integers_into_text_item
-//
-//  Convert the text item at
-//  "global_id_for_list_of_integers", which is
-//  assumed to be a list of integers, into a text
-//  item that contains only integers, with one
-//  space between each adjacent pair of numbers.
+//  Function initialize_parse_characters_of_filename
 
-void convert_list_of_integers_into_text_item( )
+void initialize_parse_characters_of_filename( )
+{
+    global_yes_or_no_filename_is_valid = global_yes ;
+    global_yes_or_no_in_filename_before_period = global_yes ;
+    global_number_of_valid_characters_encountered = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_of_filename
+
+void parse_one_character_of_filename( )
+{
+    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
+    switch ( global_character_category )
+    {
+        case global_character_category_period :
+            global_yes_or_no_in_filename_before_period = global_no ;
+            if ( global_number_of_valid_characters_encountered < 1 )
+            {
+                global_yes_or_no_filename_is_valid = global_no ;
+            }
+            log_out << "period" << std::endl ;
+            break ;
+        case global_character_category_other :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_digit :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_hyphen :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_underscore :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        default :
+            global_yes_or_no_filename_delimiter_encountered = global_yes ;
+            log_out << "delimiter" << std::endl ;
+            break ;
+    }
+    if ( global_yes_or_no_filename_delimiter_encountered == global_yes )
+    {
+        if ( ( global_yes_or_no_in_filename_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
+        {
+           global_yes_or_no_filename_is_valid = global_no ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function initialize_parse_characters_of_folder_name
+
+void initialize_parse_characters_of_folder_name( )
+{
+    global_yes_or_no_folder_name_is_valid = global_yes ;
+    global_yes_or_no_in_folder_name_before_period = global_yes ;
+    global_number_of_valid_characters_encountered = 0 ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function parse_one_character_of_folder_name
+
+void parse_one_character_of_folder_name( )
+{
+    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
+    switch ( global_character_category )
+    {
+        case global_character_category_other :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_digit :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_hyphen :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_underscore :
+            global_number_of_valid_characters_encountered ++ ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_slash :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        case global_character_category_backslash :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "valid character" << std::endl ;
+            break ;
+        default :
+            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
+            log_out << "delimiter" << std::endl ;
+            break ;
+    }
+    if ( global_yes_or_no_folder_name_delimiter_encountered == global_yes )
+    {
+        if ( ( global_yes_or_no_in_folder_name_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
+        {
+           global_yes_or_no_folder_name_is_valid = global_no ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_single_character_to_file
+//
+//  Write the the character -- expressed as an
+//  integer -- to the output file.  The character
+//  integer is supplied in the variable
+//  global_single_character_as_integer.  Ignore
+//  any error responses.
+//
+//  Later, replace "fputc" function with C++ code
+//  that handles Unicode characters, including
+//  Chinese characters.
+
+void write_single_character_as_integer_to_file( )
+{
+    global_response_ignored = fputc( char( global_single_character_as_integer ) , global_outfile_connection ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_text_and_get_its_item_id
+//
+//  Gets the text word supplied as a function
+//  argument in C string format, stores it in
+//  global_all_characters, and returns the text
+//  item ID number for this text.
+
+int store_text_and_get_its_item_id( const char * local_this_word )
 {
 
 
 // -----------------------------------------------
-//  Create a new text item to hold the generated
-//  text.
+//  Count the characters to be stored, and request
+//  this amount of storage space.
+//
+//  Reminder:  The first character position is
+//  zero because this code handles text that
+//  is imported using the strcpy function.
 
-    global_data_type = global_data_type_text_characters ;
-    global_length_requested_for_next_item_storage = 200 ;
-    create_new_item_id_and_assign_storage( ) ;
-    global_id_for_integers_as_text = global_new_item_id ;
-
-
-// -----------------------------------------------
-//  Begin a loop that handles each integer.
-
-    global_integer_position_begin = global_pointer_begin_for_item[ global_id_for_list_of_integers ] ;
-    global_integer_position_current =  global_integer_position_begin ;
-    global_integer_position_end = global_pointer_end_for_item[ global_id_for_list_of_integers ] ;
-    while ( global_integer_position_current <= global_integer_position_end )
+    global_character_count = 0 ;
+    for ( size_t character_pointer = 0 ; character_pointer < ( strlen( local_this_word ) ) ; character_pointer ++ )
     {
-
-
-// -----------------------------------------------
-//  Convert the integer into text.
-
-        global_single_integer = global_all_integers[ global_integer_position_current ] ;
-        convert_integer_to_text( ) ;
-
-
-// -----------------------------------------------
-//  Insert a space between adjacent numbers.
-
-        if ( global_integer_position_current == global_integer_position_begin )
+        global_single_character = (int) local_this_word[ character_pointer ] ;
+        if ( global_single_character == 0 )
         {
-            global_pointer_end_for_item[ global_id_for_integers_as_text ] ++ ;
-            global_all_characters[ global_pointer_end_for_item[ global_id_for_integers_as_text ] ] = global_ascii_code_for_space ;
+            break ;
         }
+        global_character_count ++ ;
+    }
+    global_length_requested_for_next_item_storage = global_character_count ;
 
 
 // -----------------------------------------------
-//  Append the digits to the text item.
+//  Create the storage for the text item.
 
-        global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
-        global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
-        global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_integers_as_text ] + 1 ;
-        global_data_type = global_data_type_text_characters ;
-        just_copy_simple( ) ;
-        global_pointer_end_for_item[ global_id_for_integers_as_text ] += global_length_for_just_copy ;
+    create_new_item_id_and_assign_storage( ) ;
 
 
 // -----------------------------------------------
-//  Repeat the loop for the next integer.
+//  Store the characters in the new text item.
+//
+//  Reminder:  The first character position is
+//  zero because this code handles text that
+//  is imported using the strcpy function.
 
-        global_integer_position_current ++ ;
+    global_next_character_position_in_storage_all_text = global_pointer_begin_for_item[ global_new_item_id ] ;
+    for ( size_t character_pointer = 0 ; character_pointer < ( strlen( local_this_word ) ) ; character_pointer ++ )
+    {
+        global_single_character = (int) local_this_word[ character_pointer ] ;
+        global_all_characters[ global_next_character_position_in_storage_all_text ] = global_single_character ;
+        global_next_character_position_in_storage_all_text ++ ;
     }
 
 
 // -----------------------------------------------
-//  Adjust the storage size to fit the result.
+//  Update the pointer to the end of the
+//  just-stored text.
 
-    adjust_storage_space_to_fit_newest_item( ) ;
+    global_pointer_end_for_item[ global_new_item_id ] = global_pointer_begin_for_item[ global_new_item_id ] + global_character_count - 1 ;
 
 
 // -----------------------------------------------
-//  End of convert_list_of_integers_into_text_item.
+//  Specify the data type for this text item.
 
-    return ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_text_characters ;
+
+
+// -----------------------------------------------
+//  Return with the text item ID number
+
+    return global_new_item_id ;
+
+
+// -----------------------------------------------
+//  End of function store_text_and_get_its_item_id.
+
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function convert_list_of_decimal_numbers_into_text_item
+//  Function add_phrase_word_to_linked_list
 //
-//  Convert a text item that is a list of decimal
-//  numbers into a text item that contains only
-//  decimal numbers as text, with one space
-//  between each adjacent pair of numbers.
-//
-//  For comments, look at the function
-// "convert_list_of_decimal_numbers_into_text_item".
+//  Add the "global_item_id" pointer to the list
+//  of phrase words that have the same word
+//  length.
 
-void convert_list_of_decimal_numbers_into_text_item( )
+void add_phrase_word_to_linked_list( )
 {
-    global_data_type = global_data_type_text_characters ;
-    global_length_requested_for_next_item_storage = 200 ;
-    create_new_item_id_and_assign_storage( ) ;
-    global_id_for_decimal_numbers_as_text = global_new_item_id ;
-    global_decimal_number_position_begin = global_pointer_begin_for_item[ global_id_for_list_of_decimal_numbers ] ;
-    global_decimal_number_position_current =  global_decimal_number_position_begin ;
-    global_decimal_number_position_end = global_pointer_end_for_item[ global_id_for_list_of_decimal_numbers ] ;
-    while ( global_decimal_number_position_current <= global_decimal_number_position_end )
+    global_pointer_to_add_to_linked_list = global_item_id ;
+    get_length_of_item( ) ;
+    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
+    if ( global_linked_list_id < 1 )
     {
-        global_single_decimal_number = global_all_decimal_numbers[ global_decimal_number_position_current ] ;
-        convert_decimal_to_text( ) ;
-        if ( global_decimal_number_position_current == global_decimal_number_position_begin )
-        {
-            global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ++ ;
-            global_all_characters[ global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ] = global_ascii_code_for_space ;
-        }
-        global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
-        global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
-        global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] + 1 ;
-        global_data_type = global_data_type_text_characters ;
-        just_copy_simple( ) ;
-        global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] += global_length_for_just_copy ;
-        global_decimal_number_position_current ++ ;
+        create_linked_list( ) ;
     }
-    adjust_storage_space_to_fit_newest_item( ) ;
+    add_to_linked_list( ) ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function add_phrase_name_to_linked_list
+//
+//  Add the "global_item_id" pointer to the list
+//  of phrase names that have the same word
+//  count.  The phrase word count must be in
+//  "global_number_of_phrase_words_found".
+
+void add_item_id_for_phrase_name_to_linked_list( )
+{
+    global_pointer_to_add_to_linked_list = global_item_id ;
+    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_number_of_phrase_words_found ] ;
+    if ( global_linked_list_id < 1 )
+    {
+        create_linked_list( ) ;
+    }
+    add_to_linked_list( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function store_phrase_name_and_get_id
+//
+//  Creates a text item for a hyphenated phrase
+//  name, and supplies the text item ID number for
+//  the new text item.
+
+int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
+{
+    global_length_requested_for_next_item_storage = 12 ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_phrase_word_pointers ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_one ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_two ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_three ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_four ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_five ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_six ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_seven ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eight ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_nine ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_ten ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eleven ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_twelve ;
+    for ( global_character_pointer = global_pointer_end_for_item[ global_new_item_id ] ; global_character_pointer >= global_pointer_begin_for_item[ global_new_item_id ] ; global_character_pointer -- )
+    {
+        if ( global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] > 0 )
+        {
+            break ;
+        }
+        global_pointer_end_for_item[ global_new_item_id ] -- ;
+    }
+    return global_new_item_id ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function read_text_line_from_file
+//
+//  Reads one line of text from a file and puts
+//  the text into the text item ID numbered
+//  global_id_for_file_input.
+//
+//  Later, replace "fgetc" function with C++ code
+//  that reads unicode characters.  Test with
+//  Chinese characters.
+
+void read_text_line_from_file( )
+{
+    global_pointer_end_for_item[ global_id_for_file_input ] = global_pointer_begin_for_item[ global_id_for_file_input ] - 1 ;
+    global_data_type_for_item[ global_id_for_file_input ] = global_data_type_text_characters ;
+    while ( 1 == 1 )
+    {
+        global_next_character_number = fgetc( global_infile_connection ) ;
+        global_id_text_to_edit = global_id_for_file_input ;
+        measure_space_available_in_item( ) ;
+        if ( global_space_available_in_item > 1 )
+        {
+            global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+            global_all_characters[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_next_character_number ;
+        } else
+        {
+            log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
+            global_next_character_number = 0 ;
+            return ;
+        }
+        global_character_category = global_character_category_number_for_character_number[ global_next_character_number ] ;
+        if ( ( global_next_character_number == EOF ) || ( global_character_category == global_character_category_newline ) )
+        {
+            global_next_character_number = 0 ;
+            return ;
+        }
+        if ( global_pointer_end_for_item[ global_id_for_file_input ] < global_pointer_allocation_end_for_item[ global_id_for_file_input ] )
+        {
+            global_pointer_end_for_item[ global_id_for_file_input ] ++ ;
+            global_pointer_end_for_item[ global_id_for_file_input ] = global_next_character_number ;
+        } else
+        {
+            log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
+            exit( EXIT_FAILURE ) ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_linked_text
+
+void copy_linked_text( )
+{
+//  todo:
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+//    append_linked_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_copied_text
+
+void copy_copied_text( )
+{
+//  todo:
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+//    append_copied_text( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_text
+//
+//  Copy the text item, either by modifying the
+//  original text, or by making a copy.
+
+void copy_text( )
+{
+//  todo: proofread
+
+
+// -----------------------------------------------
+//  If the text item is read only, indicate an
+//  error because the compiler made a mistake.
+
+    if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
+    {
+        log_out << "item to edit cannot change" << std::endl ;
+        exit( EXIT_FAILURE ) ;
+    }
+
+
+// -----------------------------------------------
+//  If the source item is not allowed to change,
+//  use the linked version of copying.
+
+    if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
+    {
+        copy_linked_text( ) ;
+
+
+// -----------------------------------------------
+//  If the source item can change, use the copied
+//  version of copying.
+
+    } else
+    {
+        copy_copied_text( ) ;
+    }
+
+
+// -----------------------------------------------
+//  End of copy_text.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function replace_text_characters_simple
+
+//  Check in calling function:
+//  id = within_items
+//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
+//  id = source
+//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
+//  verify gap length exceeds (or equals) insertion length
+
+void replace_text_characters_simple( )
+{
+
+//  todo:
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function replace_text_item_with_pointer_list
+//
+//  This function creates a copy of the text item
+//  at "global_id_text_to_edit" and changes the
+//  data type of the original to become
+//  "list_of_item_ids" and replaces the previous
+//  contents (which are now copied) with a single
+//  pointer to the copy.  This function should not
+//  be used if the top-level text item already is
+//  of the "list_of_item_ids" type because that
+//  would be pointless.  The size of the item to
+//  edit is not checked, but it is assumed to be
+//  at least one unit in length.
+
+//  todo: proofread, make corrections
+
+void replace_text_item_with_pointer_list( )
+{
+    global_item_id = global_id_text_to_edit ;
+    copy_solo_item_to_new( ) ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_for_copy ;
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
+    global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Allow function "append_space_if_not_empty" to
+//  access functions
+//  "convert_list_of_integers_into_text_item" and
+//  "convert_list_of_decimal_numbers_into_text_item".
+
+void convert_list_of_integers_into_text_item( ) ;
+void convert_list_of_decimal_numbers_into_text_item( ) ;
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_space_if_not_empty
+//
+//  Appends a space to "global_id_text_to_edit" if
+//  it is not empty.  If the text item's data type
+//  is a list of integers or a list of decimal
+//  numbers, first those numbers must be converted
+//  into a text item.
+
+void append_space_if_not_empty( )
+{
+    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
+    {
+        switch ( global_data_type_for_item[ global_id_text_to_edit ] )
+        {
+            case global_data_type_list_of_item_ids :
+                measure_space_available_in_item( ) ;
+                if ( global_space_available_in_item >= 2 )
+                {
+                    global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+                    global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_for_single_space ;
+                } else
+                {
+                    global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
+                    create_new_item_id_and_assign_storage( ) ;
+                    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+                    return ;
+                }
+                break ;
+
+//  todo: still some work to do here
+
+            case global_data_type_list_of_integers :
+                convert_list_of_integers_into_text_item( ) ;
+                global_id_text_to_edit = global_new_item_id ;
+                break ;
+            case global_data_type_list_of_decimal_numbers :
+                convert_list_of_decimal_numbers_into_text_item( ) ;
+                global_id_text_to_edit = global_new_item_id ;
+                break ;
+        }
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_linked_text
+//
+//  Appends text assuming that the text being
+//  appended will not change, so just add a link
+//  to the text being appended.  The text item
+//  to be appended is specified by the text item
+//  ID number in "global_id_from_origin",
+//  and the text item being extended is specified
+//  by the text item ID number in
+//  "global_id_text_to_edit".  The value in
+//  "global_yes_or_no_requesting_space_appended"
+//  indicates whether to insert a space between
+//  non-empty text being extended and non-empty
+//  text being appended.
+//
+//  If the text item is almost full, create a new
+//  sub text item and point to it with the last
+//  available linked-list position, and append
+//  the linked text item to the beginning of the
+//  new sub text item.  The result leaves room
+//  for more sub text items to be appended
+//  without needing to add a new sub text item
+//  for every appended text item.
+
+void append_linked_text( )
+{
+
+
+// -----------------------------------------------
+//  If the text being appended is empty, there is
+//  nothing to do.
+
+    if ( global_pointer_end_for_item[ global_id_from_origin ] < global_pointer_begin_for_item[ global_id_from_origin ] )
+    {
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the text being extended is empty, just put
+//  a pointer into the text being extended, and
+//  specify a category of "list_of_text_items"
+//  regardless of what it was before.  The
+//  pointer points to the text being appended.
+
+    if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
+    {
+        global_to_text_data_type = global_data_type_for_item[ global_id_text_to_edit ] ;
+        if ( global_to_text_data_type == global_data_type_list_of_item_ids )
+        {
+            global_pointer_begin_for_item[ global_id_text_to_edit ] = global_id_from_origin ;
+            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
+        } else
+        {
+//  todo: proofread, verify data type usage
+            global_all_characters[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
+            global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
+            global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
+        }
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  If the text being extended is not empty and
+//  there is a request to insert a space between
+//  the extended text and the appended text,
+//  insert a space.
+
+    if ( global_yes_or_no_requesting_space_appended == global_yes )
+    {
+        append_space_if_not_empty( ) ;
+    }
+
+
+// -----------------------------------------------
+//  Get the categories of the "from" and "to" text
+//  items.
+
+    global_from_text_data_type = global_data_type_for_item[ global_id_from_origin ] ;
+    global_to_text_data_type = global_data_type_for_item[ global_id_text_to_edit ] ;
+
+
+// -----------------------------------------------
+//  If the data types of the "from" and "to" text
+//  items are both "list_of_item_ids", add the
+//  pointer.
+
+    if ( ( global_from_text_data_type == global_data_type_list_of_item_ids ) && ( global_to_text_data_type == global_data_type_list_of_item_ids ) )
+    {
+        global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
+        global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  Create a new text item of data type
+//  "list_of_item_ids" and into it put
+//  pointers that point to the "to" and "from"
+//  text items, and change the text item ID of the
+//  "to" text item so that the new top-level item
+//  points to both the "to" and "from".
+
+    global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_text_to_edit ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+    global_pointer_end_for_item[ global_new_item_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_from_origin ;
+    global_id_text_to_edit = global_new_item_id ;
+    return ;
+
+
+// -----------------------------------------------
+//  End of function append_linked_text.
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_copied_text
+
+//  Appends text assuming that the text being
+//  appended will change, so a copy of that text
+//  must be stored.  The text item to be appended
+//  is specified by the text item ID number in
+//  global_id_from_origin, and the text
+//  item being extended is specified by the text
+//  item ID number in
+//  global_id_text_to_edit.
+
+void append_copied_text( )
+{
+    global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] - 1 ;
+    global_length_requested_for_next_item_storage = global_pointer_end_for_item[ global_id_from_origin ] - global_pointer_begin_for_item[ global_id_from_origin ] + 1 ;
+    create_new_item_id_and_assign_storage( ) ;
+    for ( global_text_pointer = global_pointer_begin_for_item[ global_id_from_origin ] ; global_text_pointer <= global_pointer_end_for_item[ global_id_from_origin ] ; global_text_pointer ++ )
+    {
+        global_pointer_end_for_item[ global_new_item_id ] ++ ;
+        global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_all_pointers[ global_pointer_end_for_item[ global_id_from_origin ] ]
+         ;
+    }
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_for_item[ global_id_from_origin ] ;
+    global_id_from_origin = global_new_item_id ;
+    append_linked_text( ) ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_text
+//
+//  Appends text from the text item
+//  "global_id_from_origin" to the text item
+//  "global_id_text_to_edit".
+//  Allow the two text item IDs to be the same.
+
+
+void append_text( )
+{
+
+
+// -----------------------------------------------
+//  If the text item is read only, indicate an
+//  error because the compiler made a mistake.
+
+    if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
+    {
+        log_out << "item to edit cannot change" << std::endl ;
+        exit( EXIT_FAILURE ) ;
+    }
+
+
+// -----------------------------------------------
+//  If the source item is not allowed to change,
+//  use the linked version of appending.
+
+    if ( global_access_flag_for_item[ global_id_from_origin ] == global_access_flag_no_changes )
+    {
+        append_linked_text( ) ;
+
+
+// -----------------------------------------------
+//  If the source item can change, use the copied
+//  version of appending.
+
+    } else
+    {
+        append_copied_text( ) ;
+    }
+
+
+// -----------------------------------------------
+    return ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function specify_character_to_insert_between_subitems
+
+void specify_character_to_insert_between_subitems( )
+{
+    switch ( global_data_type )
+    {
+        global_data_type_phrase_word_pointers :
+            global_character_to_insert_between_subitems = global_ascii_code_for_hyphen ;
+            break ;
+        global_data_type_switch_delimiter_to_underscore :
+            global_character_to_insert_between_subitems = global_ascii_code_for_underscore ;
+            break ;
+        default :
+            global_character_to_insert_between_subitems = 0 ;
+            break ;
+    }
+}
+
+
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function write_to_log
@@ -4722,128 +4913,6 @@ void write_text_item_to_file( )
             return ;
         }
         write_single_character_as_integer_to_file( ) ;
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function initialize_parse_characters_of_filename
-
-void initialize_parse_characters_of_filename( )
-{
-    global_yes_or_no_filename_is_valid = global_yes ;
-    global_yes_or_no_in_filename_before_period = global_yes ;
-    global_number_of_valid_characters_encountered = 0 ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function parse_one_character_of_filename
-
-void parse_one_character_of_filename( )
-{
-    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
-    switch ( global_character_category )
-    {
-        case global_character_category_period :
-            global_yes_or_no_in_filename_before_period = global_no ;
-            if ( global_number_of_valid_characters_encountered < 1 )
-            {
-                global_yes_or_no_filename_is_valid = global_no ;
-            }
-            log_out << "period" << std::endl ;
-            break ;
-        case global_character_category_other :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_digit :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_hyphen :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_underscore :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        default :
-            global_yes_or_no_filename_delimiter_encountered = global_yes ;
-            log_out << "delimiter" << std::endl ;
-            break ;
-    }
-    if ( global_yes_or_no_filename_delimiter_encountered == global_yes )
-    {
-        if ( ( global_yes_or_no_in_filename_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
-        {
-           global_yes_or_no_filename_is_valid = global_no ;
-        }
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function initialize_parse_characters_of_folder_name
-
-void initialize_parse_characters_of_folder_name( )
-{
-    global_yes_or_no_folder_name_is_valid = global_yes ;
-    global_yes_or_no_in_folder_name_before_period = global_yes ;
-    global_number_of_valid_characters_encountered = 0 ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function parse_one_character_of_folder_name
-
-void parse_one_character_of_folder_name( )
-{
-    global_character_category = global_character_category_number_for_character_number[ global_single_character_as_integer ] ;
-    switch ( global_character_category )
-    {
-        case global_character_category_other :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_digit :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_hyphen :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_underscore :
-            global_number_of_valid_characters_encountered ++ ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_slash :
-            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        case global_character_category_backslash :
-            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-            log_out << "valid character" << std::endl ;
-            break ;
-        default :
-            global_yes_or_no_folder_name_delimiter_encountered = global_yes ;
-            log_out << "delimiter" << std::endl ;
-            break ;
-    }
-    if ( global_yes_or_no_folder_name_delimiter_encountered == global_yes )
-    {
-        if ( ( global_yes_or_no_in_folder_name_before_period == global_no ) && ( global_number_of_valid_characters_encountered < 1 ) )
-        {
-           global_yes_or_no_folder_name_is_valid = global_no ;
-        }
     }
     return ;
 }
