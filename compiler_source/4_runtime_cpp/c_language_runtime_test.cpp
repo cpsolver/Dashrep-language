@@ -156,16 +156,16 @@ const int global_yes = 1 ;
 //    the same linked list.  The groupings are
 //    stored in the array "global_all_pointers".
 //
-//  * "target_pointer_stack_level"
-//    A solo level within a target pointer stack.
-//    Each target pointer stack level stores the
-//    same sequence of values.  These values and
-//    positions are specified in the constants
-//    that are named to begin with the text
+//  * "within_items_pointer_stack_level"
+//    One level within a within-items pointer
+//    stack.  Each of these stack levels stores
+//    the same sequence of values, the sequence of
+//    which are specified in the constants that
+//    are named to begin with the text
 //    "global_offset_for_".  Specifically the
 //    values are "bottom", "top", "prior", "next",
-//    "current_target_text_item", and 
-//    "current_target_character_position".  The
+//    "current_within_items_text_item", and 
+//    "current_within_items_character_position".  The
 //    values are stored in the array
 //    "global_all_pointers".
 
@@ -179,7 +179,7 @@ const int global_data_type_phrase_word_pointers = 5 ;
 const int global_data_type_switch_delimiter_to_underscore = 6 ;
 
 const int global_data_type_linked_list_grouping = 7 ;
-const int global_data_type_target_pointer_stack_level = 8 ;
+const int global_data_type_within_items_pointer_stack_level = 8 ;
 
 
 // -----------------------------------------------
@@ -388,12 +388,12 @@ const int global_character_category_underscore = 95 ;
 const int global_default_length_for_text_item = 25 ;
 const int global_direction_next = 1 ;
 const int global_direction_previous = 2 ;
-const int global_offset_for_current_target_character_position = 5 ;
-const int global_offset_for_current_target_text_item = 4 ;
-const int global_offset_for_target_stack_item_bottom = 0 ;
-const int global_offset_for_target_stack_item_next = 3 ;
-const int global_offset_for_target_stack_item_prior = 2 ;
-const int global_offset_for_target_stack_item_top = 1 ;
+const int global_offset_for_current_within_items_character_position = 5 ;
+const int global_offset_for_current_within_items_text_item = 4 ;
+const int global_offset_for_within_items_stack_level_bottom = 0 ;
+const int global_offset_for_within_items_stack_level_next = 3 ;
+const int global_offset_for_within_items_stack_level_prior = 2 ;
+const int global_offset_for_within_items_stack_level_top = 1 ;
 const int global_space_directive_none = 1 ;
 const int global_space_directive_one = 2 ;
 const int global_space_directive_one_requested = 3 ;
@@ -440,10 +440,10 @@ int global_count_of_characters_remaining_in_sub_item ;
 int global_count_of_words_handled ;
 int global_count_of_words_in_phrase_name ;
 int global_counter ;
-int global_current_target_character_position ;
-int global_current_target_text_item ;
-int global_current_target_text_item_begin ;
-int global_current_target_text_item_end ;
+int global_current_within_items_character_position ;
+int global_current_within_items_text_item ;
+int global_current_within_items_text_item_begin ;
+int global_current_within_items_text_item_end ;
 int global_decimal_number_divisor ;
 int global_defined_phrase_number ;
 int global_direction_next_or_previous ;
@@ -456,7 +456,7 @@ int global_from_text_data_type ;
 int global_highest_score_for_optimum_character_for_find_pause ;
 int global_id_containing_first_hyphen ;
 int global_id_for_copy ;
-int global_id_for_copy_of_target_pointer_stack ;
+int global_id_for_copy_of_within_items_pointer_stack ;
 int global_id_for_character_position ;
 int global_id_for_empty_text ;
 int global_id_for_file_input ;
@@ -470,7 +470,7 @@ int global_id_for_next_word_begin ;
 int global_id_for_next_word_end ;
 int global_id_for_non_breaking_space ;
 int global_id_for_number_as_text ;
-int global_id_for_original_of_target_pointer_stack ;
+int global_id_for_original_of_within_items_pointer_stack ;
 int global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int global_id_for_phrase_name_append_new_line ;
 int global_id_for_phrase_name_append_repeatedly_using_count ;
@@ -1012,11 +1012,11 @@ int global_pointer_to_character_to_insert_between_subitems ;
 int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
 int global_pointer_to_next_or_previous_character_in_sub_text_item ;
-int global_pointer_to_within_target_stack_item_bottom ;
-int global_pointer_to_within_target_stack_item_current ;
-int global_pointer_to_within_target_stack_item_current_copy ;
-int global_pointer_to_within_target_stack_item_current_original ;
-int global_pointer_to_within_target_stack_item_top ;
+int global_pointer_to_within_within_items_stack_level_bottom ;
+int global_pointer_to_within_within_items_stack_level_current ;
+int global_pointer_to_within_within_items_stack_level_current_copy ;
+int global_pointer_to_within_within_items_stack_level_current_original ;
+int global_pointer_to_within_within_items_stack_level_top ;
 int global_pointer_to_within_text_item ;
 int global_pointer_copy_current ;
 int global_pointer_copy_end ;
@@ -1046,20 +1046,20 @@ int global_single_integer ;
 int global_space_available_in_item ;
 int global_space_directive ;
 int global_storage_type ;
-int global_target_stack_item_bottom ;
-int global_target_stack_item_current ;
-int global_target_stack_item_current_copy ;
-int global_target_stack_item_current_original ;
-int global_target_stack_item_next ;
-int global_target_stack_item_prior ;
-int global_target_stack_item_top ;
-int global_target_stack_item_top_original ;
-int global_target_stack_pointer_for_copy_from ;
-int global_target_stack_pointer_for_copy_to ;
-int global_target_stack_pointer_for_get_next_previous_character ;
-int global_target_stack_pointer_for_phrase_name_end ;
-int global_target_stack_pointer_for_word_begin ;
-int global_target_stack_pointer_for_word_end ;
+int global_within_items_stack_level_bottom ;
+int global_within_items_stack_level_current ;
+int global_within_items_stack_level_current_copy ;
+int global_within_items_stack_level_current_original ;
+int global_within_items_stack_level_next ;
+int global_within_items_stack_level_prior ;
+int global_within_items_stack_level_top ;
+int global_within_items_stack_level_top_original ;
+int global_within_items_stack_pointer_for_copy_from ;
+int global_within_items_stack_pointer_for_copy_to ;
+int global_within_items_stack_pointer_for_get_next_previous_character ;
+int global_within_items_stack_pointer_for_phrase_name_end ;
+int global_within_items_stack_pointer_for_word_begin ;
+int global_within_items_stack_pointer_for_word_end ;
 int global_test_loop_counter ;
 int global_text_item_for_operand_one ;
 int global_text_item_for_operand_three ;
@@ -1648,8 +1648,8 @@ void do_main_initialization( )
     global_yes_or_no = global_yes ;
     global_yes_or_no_requesting_space_appended = global_yes ;
     global_number_of_hyphenated_phrase_names_in_text_items = 0 ;
-    global_target_stack_pointer_for_get_next_previous_character = 0 ;
-    global_target_stack_item_bottom = 0 ;
+    global_within_items_stack_pointer_for_get_next_previous_character = 0 ;
+    global_within_items_stack_level_bottom = 0 ;
 
 
 // -----------------------------------------------
@@ -2593,8 +2593,8 @@ void copy_text( )
 
 
 // -----------------------------------------------
-//  If the target item is read only, indicate
-//  an error because the compiler made a mistake.
+//  If the text item is read only, indicate an
+//  error because the compiler made a mistake.
 
 	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
 	{
@@ -2634,10 +2634,10 @@ void copy_text( )
 //  Function replace_text_characters_simple
 
 //  Check in calling function:
-//  id = target
-//    check_yes_or_no_target_pointers_in_same_item( ) ;
+//  id = within_items
+//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
 //  id = source
-//    check_yes_or_no_target_pointers_in_same_item( ) ;
+//    check_yes_or_no_within_items_pointers_in_same_item( ) ;
 //  verify gap length exceeds (or equals) insertion length
 
 void replace_text_characters_simple( )
@@ -2893,8 +2893,8 @@ void append_text( )
 
 
 // -----------------------------------------------
-//  If the target item is read only, indicate
-//  an error because the compiler made a mistake.
+//  If the text item is read only, indicate an
+//  error because the compiler made a mistake.
 
 	if ( global_access_flag_for_item[ global_id_text_to_edit ] == global_access_flag_no_changes )
 	{
@@ -2934,12 +2934,12 @@ void append_text( )
 // -----------------------------------------------
 //  Function write_to_log
 //
-//  This function can be used when debugging target
+//  This function can be used when debugging within_items
 //  pointer usage.
 
 void write_to_log( )
 {
-    log_out << "global_direction_next_or_previous " << global_direction_next_or_previous << std::endl << "global_target_stack_item_bottom " << global_target_stack_item_bottom << std::endl << "global_target_stack_item_top " << global_target_stack_item_top << std::endl << "global_target_stack_item_prior " << global_target_stack_item_prior << std::endl << "global_target_stack_item_next " << global_target_stack_item_next << std::endl << "global_target_stack_pointer_for_get_next_previous_character " << global_target_stack_pointer_for_get_next_previous_character << std::endl << "global_pointer_to_within_target_stack_item_top " << global_pointer_to_within_target_stack_item_top << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl << "global_current_target_character_position " << global_current_target_character_position << std::endl << "global_pointer_begin_for_item[ " << global_current_target_text_item << " ] " << global_pointer_begin_for_item[ global_current_target_text_item ] << std::endl << "global_pointer_end_for_item[ " << global_current_target_text_item << " ] " << global_pointer_end_for_item[ global_current_target_text_item ] << std::endl << "global_current_target_text_item_begin " << global_current_target_text_item_begin << std::endl << "global_current_target_text_item_end " << global_current_target_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_data_type_for_item " << global_data_type_for_item[ global_current_target_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+    log_out << "global_direction_next_or_previous " << global_direction_next_or_previous << std::endl << "global_within_items_stack_level_bottom " << global_within_items_stack_level_bottom << std::endl << "global_within_items_stack_level_top " << global_within_items_stack_level_top << std::endl << "global_within_items_stack_level_prior " << global_within_items_stack_level_prior << std::endl << "global_within_items_stack_level_next " << global_within_items_stack_level_next << std::endl << "global_within_items_stack_pointer_for_get_next_previous_character " << global_within_items_stack_pointer_for_get_next_previous_character << std::endl << "global_pointer_to_within_within_items_stack_level_top " << global_pointer_to_within_within_items_stack_level_top << std::endl << "global_current_within_items_text_item " << global_current_within_items_text_item << std::endl << "global_current_within_items_character_position " << global_current_within_items_character_position << std::endl << "global_pointer_begin_for_item[ " << global_current_within_items_text_item << " ] " << global_pointer_begin_for_item[ global_current_within_items_text_item ] << std::endl << "global_pointer_end_for_item[ " << global_current_within_items_text_item << " ] " << global_pointer_end_for_item[ global_current_within_items_text_item ] << std::endl << "global_current_within_items_text_item_begin " << global_current_within_items_text_item_begin << std::endl << "global_current_within_items_text_item_end " << global_current_within_items_text_item_end << std::endl << "global_distance_between_item_begin_and_end " << global_distance_between_item_begin_and_end << std::endl << "global_data_type_for_item " << global_data_type_for_item[ global_current_within_items_text_item ] << std::endl << "global_yes_or_no_reached_end_of_current_text_item " << global_yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
 
     global_test_loop_counter ++ ;
     if ( global_test_loop_counter > 200 )
@@ -3365,53 +3365,53 @@ void convert_list_of_decimal_numbers_into_text_item( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function put_info_into_target_pointer_stack_level
+//  Function put_info_into_within_items_pointer_stack_level
 
-void put_info_into_target_pointer_stack_level( )
+void put_info_into_within_items_pointer_stack_level( )
 {
-        global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+        global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_top ;
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] = global_target_stack_item_prior ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_prior ] = global_within_items_stack_level_prior ;
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_next ] = global_within_items_stack_level_next ;
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_text_item ] = global_current_within_items_text_item ;
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_character_position ] = global_current_within_items_character_position ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_info_from_target_pointer_stack_level
+//  Function get_info_from_within_items_pointer_stack_level
 
-void get_info_from_target_pointer_stack_level( )
+void get_info_from_within_items_pointer_stack_level( )
 {
-    global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+    global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
 
-    global_target_stack_item_top = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_top ] ;
+    global_within_items_stack_level_top = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_top ] ;
 
-    global_target_stack_item_prior = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] ;
+    global_within_items_stack_level_prior = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_prior ] ;
 
-    global_target_stack_item_next = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
+    global_within_items_stack_level_next = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_next ] ;
 
-    global_current_target_text_item = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] ;
+    global_current_within_items_text_item = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_text_item ] ;
 
-    global_current_target_character_position = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] ;
+    global_current_within_items_character_position = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_character_position ] ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function create_new_target_pointer_stack_level_top
+//  Function create_new_within_items_pointer_stack_level_top
 //
-//  Create a new target pointer stack level.  The
+//  Create a new within-items pointer stack level.  The
 //  pointer stack is specified by the ID number in
-//  "global_target_stack_item_bottom".
+//  "global_within_items_stack_level_bottom".
 
-void create_new_target_pointer_stack_level_top( )
+void create_new_within_items_pointer_stack_level_top( )
 {
 
 
@@ -3428,12 +3428,12 @@ void create_new_target_pointer_stack_level_top( )
 //  initialize the pointers that will be put into
 //  the new stack level.
 
-    if ( global_target_stack_item_bottom == 0 )
+    if ( global_within_items_stack_level_bottom == 0 )
     {
-        global_target_stack_item_bottom = global_new_item_id ;
-        global_target_stack_item_top = global_target_stack_item_bottom ;
-        global_target_stack_item_prior = 0 ;
-        global_target_stack_item_next = 0 ;
+        global_within_items_stack_level_bottom = global_new_item_id ;
+        global_within_items_stack_level_top = global_within_items_stack_level_bottom ;
+        global_within_items_stack_level_prior = 0 ;
+        global_within_items_stack_level_next = 0 ;
 
 
 // -----------------------------------------------
@@ -3445,12 +3445,12 @@ void create_new_target_pointer_stack_level_top( )
 
     } else
     {
-        global_target_stack_item_top = global_new_item_id ;
-        global_pointer_to_within_target_stack_item_bottom = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-        global_all_pointers[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
-        global_target_stack_item_next = 0 ;
-        global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_top ] ;
-        global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] = global_target_stack_item_next ;
+        global_within_items_stack_level_top = global_new_item_id ;
+        global_pointer_to_within_within_items_stack_level_bottom = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_bottom + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_top ;
+        global_within_items_stack_level_next = 0 ;
+        global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_top ] ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_next ] = global_within_items_stack_level_next ;
     }
 
 
@@ -3459,47 +3459,47 @@ void create_new_target_pointer_stack_level_top( )
 //  point to the text item and character position
 //  that is stored in this new stack level.
 
-    global_current_target_text_item = 0 ;
-    global_current_target_character_position = 0 ;
+    global_current_within_items_text_item = 0 ;
+    global_current_within_items_character_position = 0 ;
 
 
 // -----------------------------------------------
 //  Put the pointers into the new stack level.
 
-    put_info_into_target_pointer_stack_level( ) ;
+    put_info_into_within_items_pointer_stack_level( ) ;
     log_out << "new stack level" << std::endl ;
     write_to_log( ) ;
     return ;
 
 
 // -----------------------------------------------
-//  End of create_new_target_pointer_stack_level_top.
+//  End of create_new_within_items_pointer_stack_level_top.
 
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function push_target_pointer_stack_level
+//  Function push_within_items_pointer_stack_level
 //
-//  Move up to the next higher target pointer
+//  Move up to the next higher within-items pointer
 //  stack level.  If this is the first use of this
 //  pointer stack -- as indicated by a value of
 //  zero -- create the bottom level of the stack.
 //  The pointer stack is specified by the ID
-//  number in "global_target_stack_item_bottom".
+//  number in "global_within_items_stack_level_bottom".
 
-void push_target_pointer_stack_level( )
+void push_within_items_pointer_stack_level( )
 {
 
 
 // -----------------------------------------------
-//  If a new target pointer stack item needs to be
-//  created, create it.
+//  If a new within-items pointer stack level
+//  needs to be created, create it.
 
-    if ( ( global_target_stack_item_bottom == 0 ) || ( global_target_stack_item_next == 0 ) )
+    if ( ( global_within_items_stack_level_bottom == 0 ) || ( global_within_items_stack_level_next == 0 ) )
     {
-    	create_new_target_pointer_stack_level_top( ) ;
+    	create_new_within_items_pointer_stack_level_top( ) ;
     }
 
 
@@ -3508,25 +3508,25 @@ void push_target_pointer_stack_level( )
 
 
 //  todo: finish editing this code
-    global_pointer_to_within_target_stack_item_bottom = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_top ] ;
+    global_pointer_to_within_within_items_stack_level_bottom = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
+    global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_top ] ;
 
-    global_all_pointers[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+    global_all_pointers[ global_pointer_to_within_within_items_stack_level_bottom + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_top ;
 
-    global_target_stack_item_next = 0 ;
+    global_within_items_stack_level_next = 0 ;
 
 
 
-    global_target_stack_item_top = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_next ] ;
-    global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_top ] ;
-    global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = 0 ;
-    global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = 0 ;
+    global_within_items_stack_level_top = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_next ] ;
+    global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_top ] ;
+    global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_text_item ] = 0 ;
+    global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_character_position ] = 0 ;
     log_out << "new bottom" << std::endl ;
     write_to_log( ) ;
 
 
 // -----------------------------------------------
-//  End of function push_target_pointer_stack_level.
+//  End of function push_within_items_pointer_stack_level.
 
     return ;
 }
@@ -3534,44 +3534,44 @@ void push_target_pointer_stack_level( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function pop_target_pointer_stack_level
+//  Function pop_within_items_pointer_stack_level
 //
-//  Move down one level in the target pointer
+//  Move down one level in the within-items pointer
 //  stack.
 
-void pop_target_pointer_stack_level( )
+void pop_within_items_pointer_stack_level( )
 {
 
 
 // -----------------------------------------------
 //  Identify the stack's top item.
 
-    global_pointer_to_within_target_stack_item_bottom = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
+    global_pointer_to_within_within_items_stack_level_bottom = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
 
-    global_target_stack_item_top = global_all_pointers[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] ;
+    global_within_items_stack_level_top = global_all_pointers[ global_pointer_to_within_within_items_stack_level_bottom + global_offset_for_within_items_stack_level_top ] ;
 
 
 // -----------------------------------------------
 //  Identify the prior item, one stack level
 //  lower.
 
-    global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_top ] ;
+    global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_top ] ;
 
-    global_target_stack_item_prior = global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_target_stack_item_prior ] ;
+    global_within_items_stack_level_prior = global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_within_items_stack_level_prior ] ;
 
 
 // -----------------------------------------------
 //  Use the prior item as the new top item.
 
-    global_target_stack_item_top = global_target_stack_item_prior ;
+    global_within_items_stack_level_top = global_within_items_stack_level_prior ;
 
-    global_all_pointers[ global_pointer_to_within_target_stack_item_bottom + global_offset_for_target_stack_item_top ] = global_target_stack_item_top ;
+    global_all_pointers[ global_pointer_to_within_within_items_stack_level_bottom + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_top ;
 
 
 // -----------------------------------------------
 //  Get the info from the new top item.
 
-    get_info_from_target_pointer_stack_level( ) ;
+    get_info_from_within_items_pointer_stack_level( ) ;
 
 
 // -----------------------------------------------
@@ -3584,7 +3584,7 @@ void pop_target_pointer_stack_level( )
 //  Get the information from this lower stack
 //  level.
 
-    get_info_from_target_pointer_stack_level( ) ;
+    get_info_from_within_items_pointer_stack_level( ) ;
 
 
 // -----------------------------------------------
@@ -3600,7 +3600,7 @@ void pop_target_pointer_stack_level( )
 
 
 // -----------------------------------------------
-//  End of function pop_target_pointer_stack_level.
+//  End of function pop_within_items_pointer_stack_level.
 
     return ;
 }
@@ -3621,16 +3621,16 @@ void initialize_get_next_character_from_text_item( )
 {
 //	global_id_pointer_stack_for_getting_next_character ;
 	global_count_of_characters_remaining_in_sub_item = 0 ;
-    global_current_target_text_item = global_item_id ;
-    global_target_stack_item_bottom = 0 ;
-    push_target_pointer_stack_level( ) ;
-    global_target_stack_pointer_for_get_next_previous_character = global_target_stack_item_bottom ;
-    get_info_from_target_pointer_stack_level( ) ;
-    global_current_target_text_item = global_item_id ;
-    global_current_target_character_position = 1 ;
-    global_target_stack_item_top = global_target_stack_item_bottom ;
-    put_info_into_target_pointer_stack_level( ) ;
-    global_data_type = global_data_type_for_item[ global_current_target_text_item ] ;
+    global_current_within_items_text_item = global_item_id ;
+    global_within_items_stack_level_bottom = 0 ;
+    push_within_items_pointer_stack_level( ) ;
+    global_within_items_stack_pointer_for_get_next_previous_character = global_within_items_stack_level_bottom ;
+    get_info_from_within_items_pointer_stack_level( ) ;
+    global_current_within_items_text_item = global_item_id ;
+    global_current_within_items_character_position = 1 ;
+    global_within_items_stack_level_top = global_within_items_stack_level_bottom ;
+    put_info_into_within_items_pointer_stack_level( ) ;
+    global_data_type = global_data_type_for_item[ global_current_within_items_text_item ] ;
     specify_character_to_insert_between_subitems( ) ;
     global_yes_or_no_inserted_character = global_no ;
     global_direction_next_or_previous = global_direction_next ;
@@ -3654,9 +3654,9 @@ void initialize_get_next_character_from_text_item( )
 void initialize_get_previous_character_from_text_item( )
 {
     initialize_get_next_character_from_text_item( ) ;
-    global_current_target_character_position = global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
-    global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+    global_current_within_items_character_position = global_pointer_end_for_item[ global_current_within_items_text_item ] - global_pointer_begin_for_item[ global_current_within_items_text_item ] + 1 ;
+    global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
+    global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_character_position ] = global_current_within_items_character_position ;
     global_direction_next_or_previous = global_direction_previous ;
     log_out << "init get previous char" << std::endl ;
     write_to_log( ) ;
@@ -3681,9 +3681,9 @@ void initialize_get_previous_character_from_text_item( )
 //  If the stack for the copy already exists, it
 //  is used instead of creating a new stack.  The
 //  copy is pointed to by
-//  "global_id_for_copy_of_target_pointer_stack".
+//  "global_id_for_copy_of_within_items_pointer_stack".
 //  The original is pointed to by
-//  "global_id_for_original_of_target_pointer_stack".
+//  "global_id_for_original_of_within_items_pointer_stack".
 
 void copy_pointer_stack( )
 {
@@ -3691,54 +3691,55 @@ void copy_pointer_stack( )
 
 // -----------------------------------------------
 //  If the stack does not already exist, create a
-//  new, empty, target pointer stack, and get its
-//  location.  Otherwise use the existing stack.
+//  new, empty, within-items pointer stack, and
+//  get its location.  Otherwise use the existing
+//  stack.
 
-    if ( global_id_for_copy_of_target_pointer_stack == 0 )
+    if ( global_id_for_copy_of_within_items_pointer_stack == 0 )
     {
-        global_target_stack_item_bottom = 0 ;
-        push_target_pointer_stack_level( ) ;
-        global_id_for_copy_of_target_pointer_stack = global_target_stack_item_bottom ;
+        global_within_items_stack_level_bottom = 0 ;
+        push_within_items_pointer_stack_level( ) ;
+        global_id_for_copy_of_within_items_pointer_stack = global_within_items_stack_level_bottom ;
     } else
     {
-        global_target_stack_item_bottom = global_id_for_copy_of_target_pointer_stack ;
+        global_within_items_stack_level_bottom = global_id_for_copy_of_within_items_pointer_stack ;
     }
-    global_target_stack_item_current_copy = global_id_for_copy_of_target_pointer_stack ;
+    global_within_items_stack_level_current_copy = global_id_for_copy_of_within_items_pointer_stack ;
 
 
 // -----------------------------------------------
-//  Get the location of the target pointer stack
-//  being copied, and get the location of the top
-//  item in that stack.
+//  Get the location of the within-items pointer
+//  stack being copied, and get the location of
+//  the top item in that stack.
 
-    global_target_stack_item_current_original = global_id_for_original_of_target_pointer_stack ;
-    global_pointer_to_within_target_stack_item_current_original = global_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
-    global_target_stack_item_top_original = global_all_pointers[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_top ] ;
+    global_within_items_stack_level_current_original = global_id_for_original_of_within_items_pointer_stack ;
+    global_pointer_to_within_within_items_stack_level_current_original = global_pointer_begin_for_item[ global_within_items_stack_level_current_original ] ;
+    global_within_items_stack_level_top_original = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_original + global_offset_for_within_items_stack_level_top ] ;
 
 
 // -----------------------------------------------
 //  Begin a loop that handles each stack level.
 
-    while ( global_target_stack_item_current_original > 0 )
+    while ( global_within_items_stack_level_current_original > 0 )
     {
 
 
 // -----------------------------------------------
 //  Copy the pointer information.
 
-        global_pointer_to_within_target_stack_item_current_copy = global_pointer_begin_for_item[ global_target_stack_item_current_copy ] ;
-        global_pointer_to_within_target_stack_item_current_original = global_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
-        global_all_pointers[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_text_item ] = global_all_pointers[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_text_item ] ;
-        global_all_pointers[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_current_target_character_position ] = global_all_pointers[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_current_target_character_position ] ;
-        global_all_pointers[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_top ] = 0 ;
-        global_target_stack_item_current_original = global_all_pointers[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
+        global_pointer_to_within_within_items_stack_level_current_copy = global_pointer_begin_for_item[ global_within_items_stack_level_current_copy ] ;
+        global_pointer_to_within_within_items_stack_level_current_original = global_pointer_begin_for_item[ global_within_items_stack_level_current_original ] ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_copy + global_offset_for_current_within_items_text_item ] = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_original + global_offset_for_current_within_items_text_item ] ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_copy + global_offset_for_current_within_items_character_position ] = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_original + global_offset_for_current_within_items_character_position ] ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_copy + global_offset_for_within_items_stack_level_top ] = 0 ;
+        global_within_items_stack_level_current_original = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_original + global_offset_for_within_items_stack_level_next ] ;
 
 
 // -----------------------------------------------
 //  If the top stack level has been reached, exit
 //  the loop.
 
-        if ( ( global_target_stack_item_current_original == 0 ) || ( global_target_stack_item_current_original == global_target_stack_item_top_original ) )
+        if ( ( global_within_items_stack_level_current_original == 0 ) || ( global_within_items_stack_level_current_original == global_within_items_stack_level_top_original ) )
         {
             break ;
         }
@@ -3748,22 +3749,22 @@ void copy_pointer_stack( )
 //  Get from the copy stack the next-higher stack
 //  level ID.
 
-        global_pointer_to_within_target_stack_item_current_copy = global_pointer_begin_for_item[ global_target_stack_item_current_copy ] ;
-        global_target_stack_item_current_copy = global_all_pointers[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_next ] ;
+        global_pointer_to_within_within_items_stack_level_current_copy = global_pointer_begin_for_item[ global_within_items_stack_level_current_copy ] ;
+        global_within_items_stack_level_current_copy = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_copy + global_offset_for_within_items_stack_level_next ] ;
 
 
 // -----------------------------------------------
 //  If the stack for the copy has run out of stack
-//  levels, create a new, empty, target pointer
-//  stack level.
+//  levels, create a new, empty, within-items
+//  pointer stack level.
 
 //  todo: needs more proofreading ...
 
-        if ( global_target_stack_item_current_copy == 0 )
+        if ( global_within_items_stack_level_current_copy == 0 )
         {
-	        global_target_stack_item_bottom = 0 ;
-	        push_target_pointer_stack_level( ) ;
-            global_target_stack_item_current_copy = global_target_stack_item_bottom ;
+	        global_within_items_stack_level_bottom = 0 ;
+	        push_within_items_pointer_stack_level( ) ;
+            global_within_items_stack_level_current_copy = global_within_items_stack_level_bottom ;
         }
 
 
@@ -3771,15 +3772,15 @@ void copy_pointer_stack( )
 //  In the previous copy stack level, point to
 //  this next-higher stack level.
 
-        global_all_pointers[ global_pointer_to_within_target_stack_item_current_copy + global_offset_for_target_stack_item_next ] = global_target_stack_item_current_copy ;
+        global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_copy + global_offset_for_within_items_stack_level_next ] = global_within_items_stack_level_current_copy ;
 
 
 // -----------------------------------------------
 //  Get from the original stack item the "next"
 //  higher stack item ID.
 
-        global_pointer_to_within_target_stack_item_current_original = global_pointer_begin_for_item[ global_target_stack_item_current_original ] ;
-        global_target_stack_item_current_original = global_all_pointers[ global_pointer_to_within_target_stack_item_current_original + global_offset_for_target_stack_item_next ] ;
+        global_pointer_to_within_within_items_stack_level_current_original = global_pointer_begin_for_item[ global_within_items_stack_level_current_original ] ;
+        global_within_items_stack_level_current_original = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current_original + global_offset_for_within_items_stack_level_next ] ;
 
 
 // -----------------------------------------------
@@ -3791,7 +3792,7 @@ void copy_pointer_stack( )
 
 // -----------------------------------------------
 
-    global_all_pointers[ global_pointer_begin_for_item[ global_id_for_copy_of_target_pointer_stack ] + global_offset_for_target_stack_item_top ] = global_target_stack_item_current_copy ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_id_for_copy_of_within_items_pointer_stack ] + global_offset_for_within_items_stack_level_top ] = global_within_items_stack_level_current_copy ;
 
 
 // -----------------------------------------------
@@ -3805,8 +3806,8 @@ void copy_pointer_stack( )
 // -----------------------------------------------
 //  Function get_next_or_previous_sub_text_item
 //
-//  This function changes the target pointer stack
-//  named "global_whatever"
+//  This function changes the within-items pointer
+//  stack named "..."
 //  to point to the next (or previous) subordinate
 //  text item that contains text characters.  It
 //  supplies to the function
@@ -3821,9 +3822,9 @@ void get_next_or_previous_sub_text_item( )
 // -----------------------------------------------
 //  Begin a loop that points to the next (or
 //  previous) character.  When needed, move up or
-//  down the target pointer stack, or sometimes
-//  both up and down.  The loop exits when the
-//  next character is known.
+//  down the within-items pointer stack, or
+//  sometimes both up and down.  The loop exits
+//  when the next character is known.
 
     while ( 1 == 1 )
     {
@@ -3834,9 +3835,9 @@ void get_next_or_previous_sub_text_item( )
 //  text item, and calculate the distance between
 //  them.
 
-        global_current_target_text_item_begin = global_pointer_begin_for_item[ global_current_target_text_item ] ;
-        global_current_target_text_item_end = global_pointer_end_for_item[ global_current_target_text_item ] ;
-        global_distance_between_item_begin_and_end = global_current_target_text_item_end - global_current_target_text_item_begin ;
+        global_current_within_items_text_item_begin = global_pointer_begin_for_item[ global_current_within_items_text_item ] ;
+        global_current_within_items_text_item_end = global_pointer_end_for_item[ global_current_within_items_text_item ] ;
+        global_distance_between_item_begin_and_end = global_current_within_items_text_item_end - global_current_within_items_text_item_begin ;
 
 
 // -----------------------------------------------
@@ -3847,7 +3848,7 @@ void get_next_or_previous_sub_text_item( )
 
         if ( global_direction_next_or_previous == global_direction_next )
         {
-            if ( global_current_target_character_position > global_distance_between_item_begin_and_end )
+            if ( global_current_within_items_character_position > global_distance_between_item_begin_and_end )
             {
                 global_yes_or_no_reached_end_of_current_text_item = global_yes ;
             } else
@@ -3856,7 +3857,7 @@ void get_next_or_previous_sub_text_item( )
             }
         } else
         {
-            if ( global_current_target_character_position < 1 )
+            if ( global_current_within_items_character_position < 1 )
             {
                 global_yes_or_no_reached_end_of_current_text_item = global_yes ;
             } else
@@ -3878,7 +3879,7 @@ void get_next_or_previous_sub_text_item( )
 //  been supplied, supply the character number as
 //  zero.
 
-        if ( ( global_target_stack_item_prior == 0 ) && ( global_yes_or_no_reached_end_of_current_text_item == global_yes ) )
+        if ( ( global_within_items_stack_level_prior == 0 ) && ( global_yes_or_no_reached_end_of_current_text_item == global_yes ) )
         {
             global_pointer_to_next_or_previous_character_in_sub_text_item = 0 ;
             global_count_of_characters_remaining_in_sub_item = 0 ;
@@ -3895,7 +3896,7 @@ void get_next_or_previous_sub_text_item( )
 
         if ( global_yes_or_no_reached_end_of_current_text_item == global_yes )
         {
-            pop_target_pointer_stack_level( ) ;
+            pop_within_items_pointer_stack_level( ) ;
             continue ;
         }
 
@@ -3916,7 +3917,7 @@ void get_next_or_previous_sub_text_item( )
         {
             if ( global_yes_or_no_inserted_character == global_no )
             {
-                if ( ( ( global_current_target_character_position > 1 ) && ( global_current_target_character_position < ( global_current_target_text_item_end - global_current_target_text_item_begin + 1 ) ) ) || ( ( global_data_type == global_data_type_phrase_word_pointers ) && ( global_data_type_for_item[ global_target_stack_item_prior ] == global_data_type_phrase_word_pointers ) ) )
+                if ( ( ( global_current_within_items_character_position > 1 ) && ( global_current_within_items_character_position < ( global_current_within_items_text_item_end - global_current_within_items_text_item_begin + 1 ) ) ) || ( ( global_data_type == global_data_type_phrase_word_pointers ) && ( global_data_type_for_item[ global_within_items_stack_level_prior ] == global_data_type_phrase_word_pointers ) ) )
                 {
                     global_yes_or_no_inserted_character = global_yes ;
                     global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_to_character_to_insert_between_subitems ;
@@ -3937,10 +3938,10 @@ void get_next_or_previous_sub_text_item( )
         {
             if ( global_direction_next_or_previous == global_direction_next )
             {
-                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_begin_for_item[ global_current_target_text_item ] ;
+                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_begin_for_item[ global_current_within_items_text_item ] ;
             } else
             {
-                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_end_for_item[ global_current_target_text_item ] ;
+                global_pointer_to_next_or_previous_character_in_sub_text_item = global_pointer_end_for_item[ global_current_within_items_text_item ] ;
             }
             global_count_of_characters_remaining_in_sub_item = global_distance_between_item_begin_and_end + 1 ;
             return ;
@@ -3961,33 +3962,33 @@ void get_next_or_previous_sub_text_item( )
         {
 	        if ( global_data_type == global_data_type_list_of_integers )
 	        {
-	        	global_id_for_list_of_integers = global_current_target_text_item ;
+	        	global_id_for_list_of_integers = global_current_within_items_text_item ;
 	            convert_list_of_integers_into_text_item( ) ;
 	        } else
 	        {
-	        	global_id_for_list_of_decimal_numbers = global_current_target_text_item ;
+	        	global_id_for_list_of_decimal_numbers = global_current_within_items_text_item ;
 	            convert_list_of_decimal_numbers_into_text_item( ) ;
 	        }
 
 //  todo: move to function that inserts replacement text item id number
 
-            put_info_into_target_pointer_stack_level( ) ;
-            push_target_pointer_stack_level( ) ;
-            get_info_from_target_pointer_stack_level( ) ;
-            global_current_target_text_item = global_all_pointers[ global_pointer_begin_for_item[ global_current_target_text_item ] + global_current_target_character_position - 1 ] ;
-            global_pointer_to_within_target_stack_item_top = global_pointer_begin_for_item[ global_target_stack_item_top ] ;
-            global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_text_item ] = global_current_target_text_item ;
-            global_data_type = global_data_type_for_item[ global_current_target_text_item ] ;
+            put_info_into_within_items_pointer_stack_level( ) ;
+            push_within_items_pointer_stack_level( ) ;
+            get_info_from_within_items_pointer_stack_level( ) ;
+            global_current_within_items_text_item = global_all_pointers[ global_pointer_begin_for_item[ global_current_within_items_text_item ] + global_current_within_items_character_position - 1 ] ;
+            global_pointer_to_within_within_items_stack_level_top = global_pointer_begin_for_item[ global_within_items_stack_level_top ] ;
+            global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_text_item ] = global_current_within_items_text_item ;
+            global_data_type = global_data_type_for_item[ global_current_within_items_text_item ] ;
 
 
             if ( global_direction_next_or_previous == global_direction_next )
             {
-                global_current_target_character_position = 1 ;
+                global_current_within_items_character_position = 1 ;
             } else
             {
-                global_current_target_character_position = global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] + 1 ;
+                global_current_within_items_character_position = global_pointer_end_for_item[ global_current_within_items_text_item ] - global_pointer_begin_for_item[ global_current_within_items_text_item ] + 1 ;
             }
-            global_all_pointers[ global_pointer_to_within_target_stack_item_top + global_offset_for_current_target_character_position ] = global_current_target_character_position ;
+            global_all_pointers[ global_pointer_to_within_within_items_stack_level_top + global_offset_for_current_within_items_character_position ] = global_current_within_items_character_position ;
             global_yes_or_no_inserted_character = global_no ;
             continue ;
         }
@@ -4063,11 +4064,11 @@ void get_next_or_previous_character_from_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function truncate_text_item_using_target_pointer_stack
+//  Function truncate_text_item_using_within_items_pointer_stack
 //
 //  This function changes the "begin" or "end"
 //  pointers of a text item and any sub text items
-//  to match the target pointer stack that is
+//  to match the within-items pointer that is
 //  pointed to by "global_id_text_to_edit".  This
 //  function truncates the beginning if the flag
 //  "global_yes_or_no_begin_not_end" is
@@ -4077,7 +4078,7 @@ void get_next_or_previous_character_from_text_item( )
 //  text item types (categories) cannot be
 //  truncated using this function.
 
-void truncate_text_item_using_target_pointer_stack( )
+void truncate_text_item_using_within_items_pointer_stack( )
 {
     log_out << "truncate item " << global_id_text_to_edit << std::endl ;
 
@@ -4086,33 +4087,34 @@ void truncate_text_item_using_target_pointer_stack( )
 //  Initialization.
 
     global_id_text_to_truncate = global_id_text_to_edit ;
-    global_pointer_to_within_target_stack_item_current = global_pointer_begin_for_item[ global_target_stack_item_bottom ] ;
-    global_target_stack_item_current = global_all_pointers[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_top ] ;
+    global_pointer_to_within_within_items_stack_level_current = global_pointer_begin_for_item[ global_within_items_stack_level_bottom ] ;
+    global_within_items_stack_level_current = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current + global_offset_for_within_items_stack_level_top ] ;
     write_to_log( ) ;
 
 
 // -----------------------------------------------
-//  For each stack level within the target pointer
-//  stack, truncate the text item at that level.
+//  For each stack level within the within-items
+//  pointer stack, truncate the text item at that
+//  level.
 
-    while ( global_target_stack_item_current > 0 )
+    while ( global_within_items_stack_level_current > 0 )
     {
         global_data_type = global_data_type_for_item[ global_id_text_to_truncate ] ;
         write_to_log( ) ;
         if ( ( global_data_type == global_data_type_text_characters ) || ( global_data_type == global_data_type_list_of_item_ids ) )
         {
-            global_pointer_to_within_target_stack_item_current = global_pointer_begin_for_item[ global_target_stack_item_current ] ;
+            global_pointer_to_within_within_items_stack_level_current = global_pointer_begin_for_item[ global_within_items_stack_level_current ] ;
             if ( global_yes_or_no_begin_not_end == global_yes )
             {
-                global_pointer_begin_for_item[ global_id_text_to_truncate ] = global_all_pointers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
+                global_pointer_begin_for_item[ global_id_text_to_truncate ] = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current + global_offset_for_current_within_items_character_position ] ;
                 log_out << "truncated beginning of " << global_id_text_to_truncate << " to " << global_pointer_begin_for_item[ global_id_text_to_truncate ] << std::endl ;
             } else
             {
-                global_pointer_end_for_item[ global_id_text_to_truncate ] = global_all_pointers[ global_pointer_to_within_target_stack_item_current + global_offset_for_current_target_character_position ] ;
+                global_pointer_end_for_item[ global_id_text_to_truncate ] = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current + global_offset_for_current_within_items_character_position ] ;
                 log_out << "truncated end of " << global_id_text_to_truncate << " to " << global_pointer_end_for_item[ global_id_text_to_truncate ] << std::endl ;
             }
-            global_target_stack_item_current = global_all_pointers[ global_pointer_to_within_target_stack_item_current + global_offset_for_target_stack_item_prior ] ;
-            if ( ( global_target_stack_item_current == 0 ) || ( global_target_stack_item_current == global_target_stack_item_bottom ) )
+            global_within_items_stack_level_current = global_all_pointers[ global_pointer_to_within_within_items_stack_level_current + global_offset_for_within_items_stack_level_prior ] ;
+            if ( ( global_within_items_stack_level_current == 0 ) || ( global_within_items_stack_level_current == global_within_items_stack_level_bottom ) )
             {
                 break ;
             }
@@ -4127,7 +4129,7 @@ void truncate_text_item_using_target_pointer_stack( )
 
 // -----------------------------------------------
 //  End of function
-//  truncate_text_item_using_target_pointer_stack.
+//  truncate_text_item_using_within_items_pointer_stack.
 
     log_out << "truncation done" << std::endl ;
     return ;
@@ -4190,7 +4192,7 @@ void remove_leading_or_trailing_delimiters( )
 
     global_direction_next_or_previous = global_direction_opposite ;
     get_next_or_previous_character_from_text_item( ) ;
-    truncate_text_item_using_target_pointer_stack( ) ;
+    truncate_text_item_using_within_items_pointer_stack( ) ;
 
 
 // -----------------------------------------------
@@ -4330,7 +4332,7 @@ void initialize_point_to_next_word_in_text_item( )
 //  Function point_to_next_word_in_text_item
 //
 //  Identifies the next word from the text item
-//  and points to the word using a pair of target
+//  and points to the word using a pair of within_items
 //  pointer stacks, which are pointed to by
 //  "global_id_for_next_word_begin" and
 //  "global_id_for_next_word_end".
@@ -4340,9 +4342,9 @@ void initialize_point_to_next_word_in_text_item( )
 //  must be used.
 //  The beginning and end of the found word is
 //  pointed to by
-//  "global_target_stack_pointer_for_word_begin"
+//  "global_within_items_stack_pointer_for_word_begin"
 //  and
-//  "global_target_stack_pointer_for_word_end".
+//  "global_within_items_stack_pointer_for_word_end".
 
 void point_to_next_word_in_text_item( )
 {
@@ -4370,14 +4372,15 @@ void point_to_next_word_in_text_item( )
 // -----------------------------------------------
 //  Point to the beginning of the word that
 //  follows the delimiter, then save this
-//  character position in a target pointer stack.
+//  character position in a within-items pointer
+//  stack.
 
     global_direction_next_or_previous = global_direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_begin ;
+    global_id_for_copy_of_within_items_pointer_stack = global_within_items_stack_pointer_for_word_begin ;
     copy_pointer_stack( ) ;
-    global_id_for_next_word_begin = global_id_for_copy_of_target_pointer_stack ;
-    global_target_stack_item_top_original = global_target_stack_item_top ;
+    global_id_for_next_word_begin = global_id_for_copy_of_within_items_pointer_stack ;
+    global_within_items_stack_level_top_original = global_within_items_stack_level_top ;
     get_next_or_previous_character_from_text_item( ) ;
 
 
@@ -4403,13 +4406,14 @@ void point_to_next_word_in_text_item( )
 // -----------------------------------------------
 //  Point to the end of the word that precedes the
 //  next delimiter, then save this character
-//  position in a second target pointer stack.
+//  position in a second within-items pointer
+//  stack.
 
     global_direction_next_or_previous = global_direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_word_end ;
+    global_id_for_copy_of_within_items_pointer_stack = global_within_items_stack_pointer_for_word_end ;
     copy_pointer_stack( ) ;
-    global_id_for_next_word_end = global_id_for_copy_of_target_pointer_stack ;
+    global_id_for_next_word_end = global_id_for_copy_of_within_items_pointer_stack ;
 
 
 // -----------------------------------------------
@@ -4475,8 +4479,8 @@ void get_text_by_character_offset_and_length( )
 //  Function text_replace
 //
 //  Replaces text.  The pointers
-//  "global_target_begin_gap" and
-//  "global_target_end_gap" point to the gap
+//  "global_within_items_begin_gap" and
+//  "global_within_items_end_gap" point to the gap
 //  into which the text in item
 //  "global_id_for_insertion_into_gap" is
 //  inserted.
@@ -4490,8 +4494,8 @@ void text_replace( )
 // -----------------------------------------------
 //  Calculate the gap size.
 
-//  global_target_begin_gap
-//  global_target_end_gap
+//  global_within_items_begin_gap
+//  global_within_items_end_gap
 
 
 // -----------------------------------------------
@@ -4783,23 +4787,23 @@ void check_yes_or_no_matching_text( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function check_yes_or_no_target_pointers_in_same_item
+//  Function check_yes_or_no_within_items_pointers_in_same_item
 //
-//  This function looks at two target pointers and
-//  determines whether the characters they point
-//  to are in within the same item.  If so, the
-//  contents of that item is simply the pointers
-//  or characters between that item's "begin" and
-//  "end" pointers.
+//  This function looks at two within-items
+//  pointers and determines whether the characters
+//  they point to are in within the same item.  If
+//  so, the contents of that item is simply the
+//  pointers or characters between that item's
+//  "begin" and "end" pointers.
 
-void check_yes_or_no_target_pointers_in_same_item( )
+void check_yes_or_no_within_items_pointers_in_same_item( )
 {
 
 
 // -----------------------------------------------
-//  If the top level of both target pointer stacks
-//  are not the same item ID, indicate a "no"
-//  result.
+//  If the top level of both within-items pointer
+//  stacks are not the same item ID, indicate a
+//  "no" result.
 
 //  todo: write this code
 
@@ -4808,13 +4812,13 @@ void check_yes_or_no_target_pointers_in_same_item( )
 //  Verify that all the other stack levels have
 //  the same sequence of item ID numbers.  If not,
 //  it's possible that the item IDs are the same
-//  but they two target pointer stacks specify
-//  other text items between the two instances of
-//  the same item ID.
+//  but they two within-items pointer stacks
+//  specify other text items between the two
+//  instances of the same item ID.
 
 
 // -----------------------------------------------
-//  End of check_yes_or_no_target_pointers_in_same_item.
+//  End of check_yes_or_no_within_items_pointers_in_same_item.
 
 	return ;
 }
@@ -5002,7 +5006,7 @@ void find_matching_phrase_name( )
 
     global_direction_next_or_previous = global_direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    global_id_for_copy_of_target_pointer_stack = global_target_stack_pointer_for_phrase_name_end ;
+    global_id_for_copy_of_within_items_pointer_stack = global_within_items_stack_pointer_for_phrase_name_end ;
     copy_pointer_stack( ) ;
 
 
@@ -5092,7 +5096,7 @@ void find_matching_phrase_name( )
 
 // -----------------------------------------------
 //  Point to the first character in the phrase
-//  name, and leave the target pointer stack
+//  name, and leave the within-items pointer stack
 //  pointing to this character.
 
     global_direction_next_or_previous = global_direction_next ;
@@ -5492,11 +5496,11 @@ void find_optimum_character_for_find_pause( )
 //
 //  This function determines whether the text
 //  being searched matches the text to find.  This
-//  check is done when the target pointer stack is
-//  pointing to an occurance of the optimum
-//  character that triggers this check.  The text
-//  item "global_id_text_to_find" is the text
-//  to find.  The text item being searched is
+//  check is done when the within-items pointer
+//  stack is pointing to an occurance of the
+//  optimum character that triggers this check.
+//  The text item "global_id_text_to_find" is the
+//  text to find.  The text item being searched is
 //  ...
 
 //  todo: proofread this code
@@ -5651,8 +5655,8 @@ void find_matching_text( )
 void save_position_of_first_hyphen( )
 {
     global_pointer_to_first_hyphen = global_recent_character_position_for_character_number[ global_ascii_code_for_hyphen ] ;
-    global_id_containing_first_hyphen = global_current_target_text_item ;
-    global_character_pointer_within_text_item_for_first_hyphen = global_current_target_character_position ;
+    global_id_containing_first_hyphen = global_current_within_items_text_item ;
+    global_character_pointer_within_text_item_for_first_hyphen = global_current_within_items_character_position ;
     global_pointer_to_leading_delimiter = global_recent_position_of_any_delimiter ;
     return ;
 }
@@ -5690,7 +5694,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  error for now, and later modify the code to
 //  handle such other cases.
 
-    if ( ( global_id_containing_first_hyphen == global_current_target_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > global_length_of_first_phrase_word_minus_one ) && ( ( global_length_of_first_phrase_word_minus_one + global_distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_pointer_end_for_item[ global_current_target_text_item ] - global_pointer_begin_for_item[ global_current_target_text_item ] ) ) )
+    if ( ( global_id_containing_first_hyphen == global_current_within_items_text_item ) && ( global_character_pointer_within_text_item_for_first_hyphen > global_length_of_first_phrase_word_minus_one ) && ( ( global_length_of_first_phrase_word_minus_one + global_distance_from_first_hyphen_to_trailing_delimiter ) <= ( global_pointer_end_for_item[ global_current_within_items_text_item ] - global_pointer_begin_for_item[ global_current_within_items_text_item ] ) ) )
     {
     	log_out << "phrase name not within single text item, so modify code to handle this kind of situation " << std::endl ;
     	exit( EXIT_FAILURE ) ;
@@ -5703,7 +5707,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  indicate an error and the need to modify this
 //  code.
 
-    if ( global_data_type_for_item[ global_current_target_text_item ] == global_data_type_phrase_word_pointers )
+    if ( global_data_type_for_item[ global_current_within_items_text_item ] == global_data_type_phrase_word_pointers )
     {
     	log_out << "phrase name is in a special hyphenated text item, so modify code to handle this kind of situation " << std::endl ;
     	exit( EXIT_FAILURE ) ;
@@ -5772,8 +5776,8 @@ void replace_angle_bracketed_phrase_names( )
 
 // -----------------------------------------------
 //  Find the next open angle bracket, and save a
-//  copy of the target pointer stack to keep track
-//  of this location.
+//  copy of the within-items pointer stack to keep
+//  track of this location.
 
         global_optimum_character_for_find_pause = global_ascii_code_for_open_angle_bracket ;
         track_recent_position_of_each_character( ) ;
@@ -5815,7 +5819,7 @@ void replace_angle_bracketed_phrase_names( )
 //  angle bracket, underscore, then close angle
 //  bracket -- then repeat the search loop.
 
-        log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_target_text_item " << global_current_target_text_item << std::endl ;
+        log_out << "global_recent_position_of_any_delimiter " << global_recent_position_of_any_delimiter << std::endl << "global_position_of_open_angle_bracket " << global_position_of_open_angle_bracket << std::endl << "global_position_of_underscore " << global_position_of_underscore << std::endl << "global_position_of_close_angle_bracket " << global_position_of_close_angle_bracket << std::endl << "global_current_within_items_text_item " << global_current_within_items_text_item << std::endl ;
 
         global_position_of_open_angle_bracket = global_recent_character_position_for_character_number[ global_ascii_code_for_open_angle_bracket ] ;
         global_position_of_underscore = global_recent_character_position_for_character_number[ global_ascii_code_for_underscore ] ;
@@ -5830,7 +5834,7 @@ void replace_angle_bracketed_phrase_names( )
 //  Point to the found text that matches the
 //  pattern.
 
-        global_position_of_close_angle_bracket_within_text_item = global_current_target_character_position - 1 ;
+        global_position_of_close_angle_bracket_within_text_item = global_current_within_items_character_position - 1 ;
         global_position_of_open_angle_bracket_within_text_item = global_position_of_close_angle_bracket_within_text_item - ( global_position_of_close_angle_bracket - global_position_of_open_angle_bracket ) ;
 
 
@@ -6292,8 +6296,8 @@ void execute_loop_handler_based_on_handler_id( int local_item_id_for_next_word ,
 //  Function implement_loop
 //
 //  This function points to the next word using a
-//  pair of target pointer stacks, then executes
-//  the requested action.
+//  pair of within-items pointer stacks, then
+//  executes the requested action.
 //
 //  Local variables are used because this function
 //  can be used recursively.
