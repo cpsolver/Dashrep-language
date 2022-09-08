@@ -2663,6 +2663,7 @@ void convert_into_data_type_list_of_integers( )
     global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_integers_as_text ] ;
     global_character_pointer_end = global_pointer_end_for_item[ global_id_for_integers_as_text ] ;
     global_yes_or_no_character_is_delimiter = global_yes ;
+    initialize_parse_characters_of_number( ) ;
     while ( global_character_pointer_current <= global_character_pointer_end )
     {
         global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
@@ -2674,10 +2675,9 @@ void convert_into_data_type_list_of_integers( )
         global_character_pointer_begin_for_number = global_character_pointer_current ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            initialize_parse_characters_of_number( ) ;
-            global_single_character_as_integer = global_all_characters[ global_text_pointer ] ;
+            global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
             parse_one_character_of_number( ) ;
-            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
+            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_character_pointer_current == global_pointer_end_for_item[ global_id_from_origin ] ) )
             {
                 if ( global_number_of_digits_encountered > 0 )
                 {
@@ -2710,12 +2710,12 @@ void convert_into_data_type_list_of_integers( )
                 initialize_parse_characters_of_number( ) ;
             }
         }
+        global_character_pointer_current ++ ;
         measure_space_available_in_item( ) ;
         if ( global_space_available_in_item < 1 )
         {
             adjust_storage_space_to_fit_newest_item( ) ;
         }
-        global_character_pointer_current ++ ;
     }
     adjust_storage_space_to_fit_newest_item( ) ;
     global_id_text_to_edit = global_id_for_list_of_integers ;
@@ -2742,6 +2742,7 @@ void convert_into_data_type_list_of_decimal_numbers( )
     global_character_pointer_current = global_pointer_begin_for_item[ global_id_for_decimal_numbers_as_text ] ;
     global_character_pointer_end = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] ;
     global_yes_or_no_character_is_delimiter = global_yes ;
+    initialize_parse_characters_of_number( ) ;
     while ( global_character_pointer_current <= global_character_pointer_end )
     {
         global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
@@ -2753,10 +2754,9 @@ void convert_into_data_type_list_of_decimal_numbers( )
         global_character_pointer_begin_for_number = global_character_pointer_current ;
         if ( global_yes_or_no_character_is_delimiter == global_no )
         {
-            initialize_parse_characters_of_number( ) ;
-            global_single_character_as_integer = global_all_characters[ global_text_pointer ] ;
+            global_single_character_as_integer = global_all_characters[ global_character_pointer_current ] ;
             parse_one_character_of_number( ) ;
-            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_text_pointer == global_pointer_end_for_item[ global_id_from_origin ] ) )
+            if ( ( global_yes_or_no_numeric_delimiter_encountered == global_yes ) || ( global_character_pointer_current == global_pointer_end_for_item[ global_id_from_origin ] ) )
             {
                 if ( global_number_of_digits_encountered > 0 )
                 {
@@ -2789,12 +2789,12 @@ void convert_into_data_type_list_of_decimal_numbers( )
                 initialize_parse_characters_of_number( ) ;
             }
         }
+        global_character_pointer_current ++ ;
         measure_space_available_in_item( ) ;
         if ( global_space_available_in_item < 1 )
         {
             adjust_storage_space_to_fit_newest_item( ) ;
         }
-        global_character_pointer_current ++ ;
     }
     adjust_storage_space_to_fit_newest_item( ) ;
     global_id_text_to_edit = global_id_for_list_of_decimal_numbers ;
