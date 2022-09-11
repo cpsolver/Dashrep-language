@@ -400,6 +400,17 @@ const int global_space_directive_one_requested = 3 ;
 // -----------------------------------------------
 //  Declare variables in alphabetical order.
 
+//  sort these new ones later:
+int global_position_within_linked_list_desired ;
+int global_position_within_linked_list ;
+int global_position_within_linked_list_actual ;
+int global_linked_list_begin_of_grouping ;
+int global_linked_list_end_of_grouping ;
+int global_length_of_linked_list_grouping ;
+int global_offset_for_within_items_stack_level_prior ;
+int global_offset_for_within_items_stack_level_next ;
+
+
 int global_access_flag ;
 int global_allocation_begin ;
 int global_character_begin_pointer_one ;
@@ -975,7 +986,6 @@ int global_length_of_matching_text ;
 int global_length_of_text_to_find ;
 int global_length_requested_for_next_item_storage ;
 int global_line_character_position ;
-int global_linked_list_current_grouping_id ;
 int global_linked_list_current_pointer ;
 int global_linked_list_id ;
 int global_linked_list_id_saved ;
@@ -985,7 +995,7 @@ int global_linked_list_next_grouping_id ;
 int global_looking_at_hyphenated_phrase_name_in_item_id ;
 int global_message_trace__expand_phrases__endless_loop ;
 int global_new_item_id ;
-int global_next_available_begin_pointer_for_data_type_list_of_pointers ;
+int global_next_available_begin_pointer_for_data_type_pointers_linked ;
 int global_next_available_begin_pointer_for_data_type_text_characters ;
 int global_next_available_begin_pointer_for_data_type_list_of_integers ;
 int global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers ;
@@ -1276,7 +1286,7 @@ void do_main_initialization( )
 //  "list_of_pointers" data type is used for
 //  multiple kinds of information.
 
-    global_next_available_begin_pointer_for_data_type_list_of_pointers = 1 ;
+    global_next_available_begin_pointer_for_data_type_pointers_linked = 1 ;
     global_next_available_begin_pointer_for_data_type_text_characters = 1 ;
     global_next_available_begin_pointer_for_data_type_list_of_integers = 1 ;
     global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers = 1 ;
@@ -1732,6 +1742,10 @@ void choose_slash_or_backslash( )
 //  The data type must be specified in the
 //  variable "global_data_type" and it determines
 //  which storage area holds the item's contents.
+//  If the data type is "pointers_linked" then an
+//  extra two pointer positions are added for
+//  pointing to the "next" and "prior" items in
+//  the same list.
 
 void create_new_item_id_and_assign_storage( )
 {
@@ -1744,24 +1758,35 @@ void create_new_item_id_and_assign_storage( )
             global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_text_characters ;
             global_next_available_begin_pointer_for_data_type_text_characters += global_length_requested_for_next_item_storage ;
             global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_text_characters - 1 ;
+            global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
             break ;
         case global_data_type_list_of_integers :
             global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_integers ;
             global_next_available_begin_pointer_for_data_type_list_of_integers += global_length_requested_for_next_item_storage ;
             global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_integers - 1 ;
+            global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
             break ;
         case global_data_type_list_of_decimal_numbers :
             global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers ;
             global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers += global_length_requested_for_next_item_storage ;
             global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers - 1 ;
+            global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
+            break ;
+        case global_data_type_pointers_linked :
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_pointers_linked + 1 ;
+            global_next_available_begin_pointer_for_data_type_pointers_linked += global_length_requested_for_next_item_storage + 2 ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_pointers_linked - 2 ;
+            global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] + global_length_requested_for_next_item_storage - 1 ;
+            global_all_pointers[ global_pointer_begin_for_item[ global_new_item_id ] - 1 ] = 0 ;
+            global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] + 1 ] = 0 ;
             break ;
         default :
-            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_pointers ;
-            global_next_available_begin_pointer_for_data_type_list_of_pointers += global_length_requested_for_next_item_storage ;
-            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_list_of_pointers - 1 ;
+            global_pointer_begin_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_pointers_linked ;
+            global_next_available_begin_pointer_for_data_type_pointers_linked += global_length_requested_for_next_item_storage ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] = global_next_available_begin_pointer_for_data_type_pointers_linked - 1 ;
+            global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
             break ;
     }
-    global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
     global_id_of_item_containing_definition_for_item[ global_new_item_id ] = 0 ;
     global_access_flag_for_item[ global_new_item_id ] = global_access_flag_can_change ;
     return ;
@@ -1778,6 +1803,11 @@ void create_new_item_id_and_assign_storage( )
 void measure_space_available_in_item( )
 {
     global_space_available_in_item = global_pointer_allocation_end_for_item[ global_item_id ] - global_pointer_end_for_item[ global_item_id ] ;
+    if ( global_data_type_for_item[ global_item_id ] == global_data_type_pointers_linked )
+    {
+        global_space_available_in_item -- ;
+    }
+    return ;
 }
 
 
@@ -1789,8 +1819,8 @@ void measure_space_available_in_item( )
 //  allocated space, or it exceeds the storage
 //  space that was originally allocated, change
 //  the allocation size.  If the data type is
-//  "pointers_linked", allocate an extra position
-//  for future extension.
+//  "pointers_linked", allow space for the "next"
+//  pointer.
 
 void adjust_storage_space_to_fit_newest_item( )
 {
@@ -1803,8 +1833,8 @@ void adjust_storage_space_to_fit_newest_item( )
     switch ( global_data_type )
     {
         case global_data_type_pointers_linked :
-            global_pointer_allocation_end_for_item[ global_new_item_id ] ++ ;
-            global_next_available_begin_pointer_for_data_type_list_of_pointers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            global_pointer_allocation_end_for_item[ global_new_item_id ] += 2 ;
+            global_next_available_begin_pointer_for_data_type_pointers_linked = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
             break ;
         case global_data_type_text_characters :
             global_next_available_begin_pointer_for_data_type_text_characters = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
@@ -1816,7 +1846,7 @@ void adjust_storage_space_to_fit_newest_item( )
             global_next_available_begin_pointer_for_data_type_list_of_decimal_numbers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
             break ;
         default :
-            global_next_available_begin_pointer_for_data_type_list_of_pointers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
+            global_next_available_begin_pointer_for_data_type_pointers_linked = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
             break ;
     }
     return ;
@@ -1836,7 +1866,9 @@ void adjust_storage_space_to_fit_newest_item( )
 //  previous item is in the same list as the item
 //  for which the allocation end is desired.  Each
 //  data type is separate, so the prior item must
-//  be in the same data type.
+//  be in the same data type.  If the data type is
+//  "pointers_linked" then allow for the "next"
+//  and "prior" pointers.
 
 void get_allocation_begin( )
 {
@@ -1852,7 +1884,13 @@ void get_allocation_begin( )
         }
         global_item_id_to_consider -- ;
     }
-    global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] ;
+    if ( global_data_type != global_data_type_pointers_linked )
+    {
+        global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] ;
+    } else
+    {
+        global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] - 2 ;
+    }
     return ;
 }
 
@@ -1861,11 +1899,20 @@ void get_allocation_begin( )
 // -----------------------------------------------
 //  Function get_length_of_item
 //
-//  Measure the length of the specified item.
+//  Measure the length of the specified item.  Do
+//  not measure the length of the contents
+//  currently stored in the item.  If the item is
+//  of type "pointers_linked" allow for the "next"
+//  and "prior" pointers.
 
 void get_length_of_item( )
 {
-    global_length_of_item = global_pointer_allocation_end_for_item[ global_item_id ] - global_pointer_end_for_item[ global_item_id ] + 1 ;
+    global_length_of_item = global_pointer_allocation_end_for_item[ global_item_id ] - global_pointer_begin_for_item[ global_item_id ] + 1 ;
+    if ( global_data_type_for_item[ global_item_id ] == global_data_type_pointers_linked )
+    {
+        global_length_of_item -= 2 ;
+    }
+    return ;
 }
 
 
@@ -1912,9 +1959,8 @@ void check_yes_or_no_solo_item_is_empty( )
 //  the same.  It starts checking at both the
 //  beginning and the end.  This approach is often
 //  faster than going from beginning to end
-//  because there are many cases when a number or
-//  code appears at the end of the text, and where
-//  the beginning is the same for many items.  The
+//  because there are many cases when the
+//  beginning is the same for many items.  The
 //  characters are assumed to be in
 //  "global_all_characters", the initial character
 //  pointers are
@@ -1979,6 +2025,7 @@ void check_yes_or_no_matching_text( )
 //  the two character sequences.
 
         log_out << "character one: " << global_all_characters[ global_character_begin_pointer_one ] << "  character two: " << global_all_characters[ global_character_begin_pointer_two ] << std::endl ;
+
         if ( global_all_characters[ global_character_end_pointer_one ] != global_all_characters[ global_character_end_pointer_two ] )
         {
             global_yes_or_no_same_text = global_no ;
@@ -2013,12 +2060,15 @@ void check_yes_or_no_matching_text( )
 //  Function just_copy_simple
 //
 //  This function copies contents for the storage
-//  type specified by "global_storage_type",
-//  starting at "global_pointer_for_just_copy_source"
+//  type specified by "global_storage_type" (not
+//  "global_data_type"), starting at
+//  "global_pointer_for_just_copy_source"
 //  for length "global_length_for_just_copy", with
 //  "global_pointer_for_just_copy_destination"
 //  specifying the first position of the copied
-//  contents.
+//  contents.  This function does not do anything
+//  special for data type "pointers_list" because
+//  that is not a "storage type".
 
 void just_copy_simple( )
 {
@@ -2089,20 +2139,22 @@ void just_copy_simple( )
 //  copy has the same data type and length as the
 //  original.  The original is specified by
 //  "global_item_id".  The copy is
-//  specified by "global_id_for_copy".
+//  specified by "global_id_for_copy".  If the
+//  data type is "pointers_linked" the "next" and
+//  "prior" pointers are set to zeros.
 
 void copy_solo_item_to_new( )
 {
     get_length_of_item( ) ;
     global_length_requested_for_next_item_storage = global_length_of_item ;
     global_data_type = global_data_type_for_item[ global_item_id ] ;
-    global_storage_type = global_storage_type_for_data_type[ global_data_type ] ;
     create_new_item_id_and_assign_storage( ) ;
+    global_id_for_copy = global_new_item_id ;
     global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_item_id ] ;
-    global_pointer_for_just_copy_destination = global_pointer_begin_for_item[ global_new_item_id ] ;
+    global_pointer_for_just_copy_destination = global_pointer_begin_for_item[ global_id_for_copy ] ;
     global_length_for_just_copy = global_length_requested_for_next_item_storage ;
+    global_storage_type = global_storage_type_for_data_type[ global_storage_type ] ;
     just_copy_simple( ) ;
-    global_item_id = global_new_item_id ;
     return ;
 }
 
@@ -2368,7 +2420,7 @@ void convert_list_of_integers_into_text_item( )
         global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
         global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
         global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_integers_as_text ] + 1 ;
-        global_data_type = global_data_type_text_characters ;
+        global_storage_type = global_data_type_text_characters ;
         just_copy_simple( ) ;
         global_pointer_end_for_item[ global_id_for_integers_as_text ] += global_length_for_just_copy ;
 
@@ -2426,7 +2478,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
         global_pointer_for_just_copy_source = global_pointer_begin_for_item[ global_id_for_number_as_text ] ;
         global_length_for_just_copy = global_pointer_end_for_item[ global_id_for_number_as_text ] - global_pointer_for_just_copy_source + 1 ;
         global_pointer_for_just_copy_destination = global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] + 1 ;
-        global_data_type = global_data_type_text_characters ;
+        global_storage_type = global_data_type_text_characters ;
         just_copy_simple( ) ;
         global_pointer_end_for_item[ global_id_for_decimal_numbers_as_text ] += global_length_for_just_copy ;
         global_decimal_number_position_current ++ ;
@@ -3034,6 +3086,8 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  that identifies the linked list is in
 //  "global_linked_list_id".
 
+//  todo: use the new pointers_linked data type ...
+
 void create_linked_list( )
 {
     global_length_requested_for_next_item_storage = 35 ;
@@ -3060,6 +3114,8 @@ void create_linked_list( )
 //  in "global_linked_list_id" is actually a
 //  linked list, so the Dashrep compiler must
 //  never specify the wrong ID.
+
+//  todo: use the new pointers_linked data type ...
 
 void append_to_linked_list( )
 {
@@ -3166,6 +3222,8 @@ void from_linked_list_get_pointer_at_position( )
 // -----------------------------------------------
 //  Within the linked list, find the grouping item
 //  that contains the specified position.
+
+// todo: restart writing of this new function
 
     global_position_within_linked_list_desired = global_position_within_linked_list ;
     global_position_within_linked_list_actual = 0 ;
