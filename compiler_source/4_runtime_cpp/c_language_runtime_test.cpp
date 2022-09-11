@@ -70,12 +70,34 @@ const int global_yes = 1 ;
 //  A list (of any kind) can contain just one
 //  item.
 //
-//  * "list_of_item_ids"
+//  * "pointers_linked"
 //    Pointers to other items.  These can be
 //    recursive, which means a pointer can point
 //    to yet another list of item ids.
-//    These pointers are stored in the array
+//    The first position in the item, if it is not
+//    zero, points to the prior item in the same
+//    linked list of pointers.  The last position
+//    in the item, if it is not zero, points to
+//    the next item in the same linked list of
+//    pointers.  A zero value indicates there is
+//    not a prior or next item in the linked list.
+//    The pointers are stored in the array
 //    "global_all_pointers".
+//
+//    "Pointer stack level" is a special use of
+//    the "pointers_linked" data type.  In this
+//    case each "pointers linked" item is one
+//    level in the stack, and each item has three
+//    pointers (besides the "prior" and "next
+//    pointers):  a pointer to the item ID at
+//    that stack level, a character pointer to
+//    the position within that item at that ID,
+//    and a pointer to the top item in the stack.
+//    The pointer to the top item is only
+//    significant at the lowest stack level,
+//    where the "prior" pointer is zero.  The
+//    offsets for these three pointers are named
+//    to begin with the text "global_offset_for_".
 //
 //  * "text_characters"
 //    A sequence of text characters.  Each
@@ -150,28 +172,8 @@ const int global_yes = 1 ;
 //    character item that contains only ">".
 //    These pointers are stored in the array
 //    "global_all_pointers".
-//
-//  * "linked_list_grouping"
-//    A grouping within a linked list.  The last
-//    position in a linked list grouping is used
-//    to point to the next grouping item within
-//    the same linked list.  The groupings are
-//    stored in the array "global_all_pointers".
-//
-//  * "within_items_pointer_stack_level"
-//    One level within a within-items pointer
-//    stack.  Each of these stack levels stores
-//    the same sequence of values, the sequence of
-//    which are specified in the constants that
-//    are named to begin with the text
-//    "global_offset_for_".  Specifically the
-//    values are "bottom", "top", "prior", "next",
-//    "current_within_items_text_item", and 
-//    "current_within_items_character_position".  The
-//    values are stored in the array
-//    "global_all_pointers".
 
-const int global_data_type_list_of_item_ids = 1 ;
+const int global_data_type_pointers_linked = 1 ;
 const int global_data_type_text_characters = 2 ;
 const int global_data_type_list_of_integers = 3 ;
 const int global_data_type_list_of_decimal_numbers = 4 ;
@@ -179,9 +181,6 @@ const int global_data_type_phrase_word_pointers = 5 ;
 
 // todo: implement:
 const int global_data_type_switch_delimiter_to_underscore = 6 ;
-
-const int global_data_type_linked_list_grouping = 7 ;
-const int global_data_type_within_items_pointer_stack_level = 8 ;
 
 
 // -----------------------------------------------
@@ -390,12 +389,9 @@ const int global_character_category_underscore = 95 ;
 const int global_default_length_for_text_item = 25 ;
 const int global_direction_next = 1 ;
 const int global_direction_previous = 2 ;
-const int global_offset_for_current_within_items_character_position = 5 ;
-const int global_offset_for_current_within_items_text_item = 4 ;
-const int global_offset_for_within_items_stack_level_bottom = 0 ;
-const int global_offset_for_within_items_stack_level_next = 3 ;
-const int global_offset_for_within_items_stack_level_prior = 2 ;
-const int global_offset_for_within_items_stack_level_top = 1 ;
+const int global_offset_for_current_within_items_character_position = 2 ;
+const int global_offset_for_current_within_items_text_item = 1 ;
+const int global_offset_for_within_items_stack_level_top = 3 ;
 const int global_space_directive_none = 1 ;
 const int global_space_directive_one = 2 ;
 const int global_space_directive_one_requested = 3 ;
@@ -1793,7 +1789,7 @@ void measure_space_available_in_item( )
 //  allocated space, or it exceeds the storage
 //  space that was originally allocated, change
 //  the allocation size.  If the data type is
-//  "list_of_item_ids", allocate an extra position
+//  "pointers_linked", allocate an extra position
 //  for future extension.
 
 void adjust_storage_space_to_fit_newest_item( )
@@ -1806,7 +1802,7 @@ void adjust_storage_space_to_fit_newest_item( )
     global_pointer_allocation_end_for_item[ global_new_item_id ] = global_pointer_end_for_item[ global_new_item_id ] ;
     switch ( global_data_type )
     {
-        case global_data_type_list_of_item_ids :
+        case global_data_type_pointers_linked :
             global_pointer_allocation_end_for_item[ global_new_item_id ] ++ ;
             global_next_available_begin_pointer_for_data_type_list_of_pointers = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
             break ;
@@ -3041,7 +3037,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 void create_linked_list( )
 {
     global_length_requested_for_next_item_storage = 35 ;
-    global_data_type = global_data_type_linked_list_grouping ;
+    global_data_type = global_data_type_pointers_linked ;
     create_new_item_id_and_assign_storage( ) ;
     global_linked_list_id = global_new_item_id ;
     global_pointer_end_for_item[ global_linked_list_id ] ++ ;
@@ -3747,7 +3743,7 @@ void append_space_if_not_empty( )
     {
         switch ( global_data_type_for_item[ global_id_text_to_edit ] )
         {
-            case global_data_type_list_of_item_ids :
+            case global_data_type_pointers_linked :
                 measure_space_available_in_item( ) ;
                 if ( global_space_available_in_item >= 2 )
                 {
@@ -3757,7 +3753,7 @@ void append_space_if_not_empty( )
                 {
                     global_length_requested_for_next_item_storage = global_default_length_for_text_item ;
                     create_new_item_id_and_assign_storage( ) ;
-                    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+                    global_data_type_for_item[ global_new_item_id ] = global_data_type_pointers_linked ;
                     return ;
                 }
                 break ;
@@ -3828,7 +3824,7 @@ void append_linked_text( )
     if ( global_pointer_end_for_item[ global_id_text_to_edit ] < global_pointer_begin_for_item[ global_id_text_to_edit ] )
     {
         global_to_text_data_type = global_data_type_for_item[ global_id_text_to_edit ] ;
-        if ( global_to_text_data_type == global_data_type_list_of_item_ids )
+        if ( global_to_text_data_type == global_data_type_pointers_linked )
         {
             global_pointer_begin_for_item[ global_id_text_to_edit ] = global_id_from_origin ;
             global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
@@ -3837,7 +3833,7 @@ void append_linked_text( )
 //  todo: proofread, verify data type usage
             global_all_characters[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
             global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
-            global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
+            global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_pointers_linked ;
         }
         return ;
     }
@@ -3865,10 +3861,10 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  If the data types of the "from" and "to" text
-//  items are both "list_of_item_ids", add the
+//  items are both "pointers_linked", add the
 //  pointer.
 
-    if ( ( global_from_text_data_type == global_data_type_list_of_item_ids ) && ( global_to_text_data_type == global_data_type_list_of_item_ids ) )
+    if ( ( global_from_text_data_type == global_data_type_pointers_linked ) && ( global_to_text_data_type == global_data_type_pointers_linked ) )
     {
         global_pointer_end_for_item[ global_id_text_to_edit ] ++ ;
         global_all_pointers[ global_pointer_end_for_item[ global_id_text_to_edit ] ] = global_id_from_origin ;
@@ -3878,7 +3874,7 @@ void append_linked_text( )
 
 // -----------------------------------------------
 //  Create a new text item of data type
-//  "list_of_item_ids" and into it put
+//  "pointers_linked" and into it put
 //  pointers that point to the "to" and "from"
 //  text items, and change the text item ID of the
 //  "to" text item so that the new top-level item
@@ -3888,7 +3884,7 @@ void append_linked_text( )
     create_new_item_id_and_assign_storage( ) ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
     global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_text_to_edit ;
-    global_data_type_for_item[ global_new_item_id ] = global_data_type_list_of_item_ids ;
+    global_data_type_for_item[ global_new_item_id ] = global_data_type_pointers_linked ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
     global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = global_id_from_origin ;
     global_id_text_to_edit = global_new_item_id ;
@@ -4010,11 +4006,11 @@ void replace_text_characters_simple( )
 //  This function creates a copy of the text item
 //  at "global_id_text_to_edit" and changes the
 //  data type of the original to become
-//  "list_of_item_ids" and replaces the previous
+//  "pointers_linked" and replaces the previous
 //  contents (which are now copied) with a single
 //  pointer to the copy.  This function should not
 //  be used if the top-level text item already is
-//  of the "list_of_item_ids" type because that
+//  of the "pointers_linked" type because that
 //  would be pointless.  The size of the item to
 //  edit is not checked, but it is assumed to be
 //  at least one unit in length.
@@ -4027,7 +4023,7 @@ void replace_text_item_with_pointer_list( )
     copy_solo_item_to_new( ) ;
     global_all_pointers[ global_pointer_begin_for_item[ global_id_text_to_edit ] ] = global_id_for_copy ;
     global_pointer_end_for_item[ global_id_text_to_edit ] = global_pointer_begin_for_item[ global_id_text_to_edit ] ;
-    global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_list_of_item_ids ;
+    global_data_type_for_item[ global_id_text_to_edit ] = global_data_type_pointers_linked ;
     return ;
 }
 
@@ -4670,7 +4666,7 @@ void get_next_or_previous_sub_text_item( )
 //  numbers, and point to the beginning (or end)
 //  of the new text item.
 
-        if ( ( global_data_type == global_data_type_list_of_item_ids ) || ( global_data_type == global_data_type_phrase_word_pointers ) )
+        if ( ( global_data_type == global_data_type_pointers_linked ) || ( global_data_type == global_data_type_phrase_word_pointers ) )
         {
             if ( global_data_type == global_data_type_list_of_integers )
             {
@@ -4942,7 +4938,7 @@ void truncate_text_item_using_within_items_pointer_stack( )
     {
         global_data_type = global_data_type_for_item[ global_id_text_to_truncate ] ;
         write_to_log( ) ;
-        if ( ( global_data_type == global_data_type_text_characters ) || ( global_data_type == global_data_type_list_of_item_ids ) )
+        if ( ( global_data_type == global_data_type_text_characters ) || ( global_data_type == global_data_type_pointers_linked ) )
         {
             global_zero_offset_in_stack_level_current = global_pointer_begin_for_item[ global_within_items_stack_level_current ] ;
             if ( global_yes_or_no_begin_not_end == global_yes )
@@ -5129,7 +5125,7 @@ void skip_to_character_position( )
 //  todo: write this code
 
                 break ;
-            case global_data_type_list_of_item_ids :
+            case global_data_type_pointers_linked :
 
 
                 global_offset_within_list_of_pointers ++ ;
