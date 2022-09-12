@@ -259,7 +259,7 @@ int global_id_for_list_of_phrase_words_of_length[ 42 ] ;
 const int global_length_of_list_of_character_numbers = 256 ;
 int global_character_category_number_for_character_number[ 260 ] ;
 
-int global_id_from_linked_list_number[ 2005 ] ;
+int global_id_from_indexed_pointer_list_number[ 2005 ] ;
 
 
 // -----------------------------------------------
@@ -401,12 +401,12 @@ const int global_space_directive_one_requested = 3 ;
 //  Declare variables in alphabetical order.
 
 //  sort these new ones later:
-int global_position_within_linked_list_desired ;
-int global_position_within_linked_list ;
-int global_position_within_linked_list_actual ;
-int global_linked_list_begin_of_grouping ;
-int global_linked_list_end_of_grouping ;
-int global_length_of_linked_list_grouping ;
+int global_position_within_indexed_pointer_list_desired ;
+int global_position_within_indexed_pointer_list ;
+int global_position_within_indexed_pointer_list_actual ;
+int global_indexed_pointer_list_begin_of_grouping ;
+int global_indexed_pointer_list_end_of_grouping ;
+int global_length_of_grouping_within_indexed_pointer_list ;
 int global_offset_for_within_items_stack_level_prior ;
 int global_offset_for_within_items_stack_level_next ;
 
@@ -966,7 +966,7 @@ int global_id_for_word_space ;
 int global_id_for_word_tab ;
 int global_id_for_word_text ;
 int global_id_for_word_underscore ;
-int global_id_from_linked_list ;
+int global_id_from_indexed_pointer_list ;
 int global_id_from_origin ;
 int global_id_pointer_stack_for_getting_next_character ;
 int global_id_text_to_edit ;
@@ -986,12 +986,12 @@ int global_length_of_matching_text ;
 int global_length_of_text_to_find ;
 int global_length_requested_for_next_item_storage ;
 int global_line_character_position ;
-int global_linked_list_current_pointer ;
-int global_linked_list_id ;
-int global_linked_list_id_saved ;
-int global_linked_list_last_grouping_id ;
-int global_linked_list_current_grouping_id ;
-int global_linked_list_next_grouping_id ;
+int global_indexed_pointer_list_current_pointer ;
+int global_indexed_pointer_list_id ;
+int global_indexed_pointer_list_id_saved ;
+int global_indexed_pointer_list_last_grouping_id ;
+int global_indexed_pointer_list_current_grouping_id ;
+int global_indexed_pointer_list_next_grouping_id ;
 int global_looking_at_hyphenated_phrase_name_in_item_id ;
 int global_message_trace__expand_phrases__endless_loop ;
 int global_new_item_id ;
@@ -1017,11 +1017,11 @@ int global_pointer_for_just_copy_source ;
 int global_pointer_for_just_copy_destination ;
 int global_pointer_for_debugging ;
 int global_pointer_from ;
-int global_pointer_from_linked_list ;
+int global_pointer_from_indexed_pointer_list ;
 int global_pointer_next_word_begin ;
 int global_pointer_next_word_end ;
 int global_pointer_to ;
-int global_pointer_to_append_to_linked_list ;
+int global_pointer_to_append_to_indexed_pointer_list ;
 int global_pointer_to_character_to_insert_between_subitems ;
 int global_pointer_to_first_hyphen ;
 int global_pointer_to_leading_delimiter ;
@@ -1048,7 +1048,7 @@ int global_position_of_underscore ;
 int global_position_within_text_to_find ;
 int global_possible_optimum_character_as_integer ;
 int global_previous_character ;
-int global_previous_linked_list_grouping_id ;
+int global_previous_indexed_pointer_list_grouping_id ;
 int global_recent_position_of_any_delimiter ;
 int global_response_ignored ;
 int global_saved_single_character_as_integer ;
@@ -3080,91 +3080,184 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function create_linked_list
+//  Function create_indexed_pointer_list
 //
-//  This function creates a linked list.  The ID
-//  that identifies the linked list is in
-//  "global_linked_list_id".
+//  Creates an indexed pointer list in which the
+//  pointers can be indexed by their position in
+//  the list.  The list is identified by the ID
+//  in "global_indexed_pointer_list_id".
 
-//  todo: use the new pointers_linked data type ...
-
-void create_linked_list( )
+void create_indexed_pointer_list( )
 {
     global_length_requested_for_next_item_storage = 35 ;
     global_data_type = global_data_type_pointers_linked ;
     create_new_item_id_and_assign_storage( ) ;
-    global_linked_list_id = global_new_item_id ;
-    global_pointer_end_for_item[ global_linked_list_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_id ] ] = 0 ;
+    global_indexed_pointer_list_id = global_new_item_id ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_to_linked_list
+//  Function get_pointer_from_position_within_indexed_pointer_list
 //
-//  This function adds a pointer to the end of a
-//  linked list.  The ID that identifies the
-//  linked list is in "global_linked_list_id".
-//  The pointer to add is
-//  "global_pointer_to_append_to_linked_list".  If
-//  the last grouping is full, create a new
-//  grouping.
+//  Within the indexed pointer list specified by
+//  "global_indexed_pointer_list_id", find the
+//  index position specified by
+//  "global_position_within_indexed_pointer_list_desired".
+//  The retrieved pointer is put into
+//  "global_pointer_from_indexed_pointer_list".
 //  This function does not check whether the value
-//  in "global_linked_list_id" is actually a
+//  in "global_indexed_pointer_list_id" is actually a
 //  linked list, so the Dashrep compiler must
 //  never specify the wrong ID.
 
-//  todo: use the new pointers_linked data type ...
+void get_pointer_from_position_within_indexed_pointer_list( )
+{
+    global_position_within_indexed_pointer_list_actual = 0 ;
+    global_indexed_pointer_list_current_grouping_id = global_indexed_pointer_list_id ;
+    global_indexed_pointer_list_current_pointer = 0 ;
+    while ( ( global_position_within_indexed_pointer_list_actual <= global_position_within_indexed_pointer_list_desired ) && ( global_indexed_pointer_list_current_grouping_id > 0 ) )
+    {
+        global_indexed_pointer_list_begin_of_grouping = global_pointer_begin_for_item[ global_indexed_pointer_list_current_grouping_id ] ;
+        global_indexed_pointer_list_end_of_grouping = global_pointer_end_for_item[ global_indexed_pointer_list_current_grouping_id ] ;
+        global_length_of_grouping_within_indexed_pointer_list = global_indexed_pointer_list_end_of_grouping - global_indexed_pointer_list_begin_of_grouping + 1 ;
+        if ( global_position_within_indexed_pointer_list_actual + global_length_of_grouping_within_indexed_pointer_list > global_position_within_indexed_pointer_list_desired )
+        {
+            global_indexed_pointer_list_current_pointer += global_position_within_indexed_pointer_list_desired - global_position_within_indexed_pointer_list_actual + 1 ;
+            break ;
+        }
+        global_position_within_indexed_pointer_list_actual += global_length_of_grouping_within_indexed_pointer_list ;
+        global_indexed_pointer_list_current_grouping_id = global_all_pointers[ global_indexed_pointer_list_end_of_grouping + 1 ] ;
+        global_indexed_pointer_list_current_pointer += global_length_of_grouping_within_indexed_pointer_list ;
+        if ( global_position_within_indexed_pointer_list_desired == 0 )
+        {
+            global_position_within_indexed_pointer_list_actual = global_position_within_indexed_pointer_list_desired - 99 ;
+        }
+    }
+    if ( global_indexed_pointer_list_current_pointer > 0 )
+    {
+        global_pointer_from_indexed_pointer_list = global_all_pointers[ global_indexed_pointer_list_current_pointer ] ;
+    } else
+    {
+        global_pointer_from_indexed_pointer_list = 0 ;
+    }
+    return ;
+}
 
-void append_to_linked_list( )
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function extend_indexed_pointer_list
+//
+//  Create a new item that extends the length of
+//  an existing indexed pointer list.
+
+void extend_indexed_pointer_list( )
+{
+    global_indexed_pointer_list_last_grouping_id_saved = global_indexed_pointer_list_last_grouping_id ;
+    global_data_type = global_data_type_pointers_linked ;
+    create_new_item_id_and_assign_storage( ) ;
+    global_indexed_pointer_list_last_grouping_id = global_new_item_id ;
+    global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_last_grouping_id_saved ] + 1 ] = global_indexed_pointer_list_last_grouping_id ;
+    global_all_pointers[ global_pointer_begin_for_item[ global_indexed_pointer_list_last_grouping_id ] - 1 ] = global_indexed_pointer_list_last_grouping_id_saved ;
+    global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_last_grouping_id ] ] = 0 ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function put_pointer_into_position_within_indexed_pointer_list
+//
+//  Within the indexed pointer list specified by
+//  "global_indexed_pointer_list_id", put into the
+//  index position specified by
+//  "global_position_within_indexed_pointer_list_desired"
+//  the pointer value in
+//  "global_pointer_to_put_into_indexed_pointer_list".
+//  If the last grouping is not long enough to
+//  reach the desired position, create a new
+//  grouping that is long enough to reach the
+//  desired position.
+//  This function does not check whether the value
+//  in "global_indexed_pointer_list_id" is actually a
+//  linked list, so the Dashrep compiler must
+//  never specify the wrong ID.
+
+void put_pointer_into_position_within_indexed_pointer_list( )
+{
+    get_pointer_from_position_within_indexed_pointer_list( ) ;
+    if ( global_indexed_pointer_list_current_pointer > 0 )
+    {
+
+// todo: write this code
+
+        global_length_requested_for_next_item_storage = int( 3 * global_length_of_grouping_within_indexed_pointer_list ) ;
+        extend_indexed_pointer_list( ) ;
+
+// global_indexed_pointer_list_current_grouping_id ;
+// global_position_within_indexed_pointer_list_desired
+
+    }
+    global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_current_pointer ] ] = global_pointer_to_put_into_indexed_pointer_list ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_pointer_to_indexed_pointer_list
+//
+//  This function adds a pointer to the end of an
+//  indexed pointer list.  The ID that identifies
+//  the indexed pointer list is in
+//  "global_indexed_pointer_list_id".
+//  The pointer to add is
+//  "global_pointer_to_append_to_indexed_pointer_list".
+//  If the last grouping is full, create a new
+//  grouping.
+//  This function does not check whether the value
+//  in "global_indexed_pointer_list_id" is
+//  actually a linked list, so the Dashrep
+//  compiler must never specify the wrong ID.
+
+void append_pointer_to_indexed_pointer_list( )
 {
 
 
 // -----------------------------------------------
-//  Find the last grouping item in the linked
-//  list.
+//  Find the last grouping item in the indexed
+//  pointer list list.
 
-    global_linked_list_next_grouping_id = global_linked_list_id ;
-    global_linked_list_last_grouping_id = global_linked_list_id ;
-    while ( global_linked_list_next_grouping_id > 0 )
-    {
-        global_linked_list_last_grouping_id = global_linked_list_next_grouping_id ;
-        global_linked_list_next_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] ;
-    }
+    global_position_within_indexed_pointer_list_desired = 0 ;
+    get_pointer_from_position_within_indexed_pointer_list( ) ;
 
 
 // -----------------------------------------------
 //  If the last grouping item does not have
-//  available space to add the item ID, create a
-//  new grouping item and add the item ID to the
-//  beginning of that grouping item, and link the
-//  previous grouping item to the new grouping.
+//  available space to append the pointer, create
+//  a new grouping item for the indexed pointer
+//  list.
 
-    if ( global_pointer_end_for_item[ global_linked_list_last_grouping_id ] == global_pointer_allocation_end_for_item[ global_linked_list_last_grouping_id ] - 1 )
+    global_item_id = global_indexed_pointer_list_current_grouping_id ;
+    measure_space_available_in_item( ) ;
+    if ( global_space_available_in_item < 1 )
     {
-        global_linked_list_id_saved = global_linked_list_id ;
-        create_linked_list( ) ;
-        global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
-        global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = global_linked_list_id ;
-        global_linked_list_last_grouping_id = global_linked_list_id ;
-        global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
-        global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = 0 ;
-        global_linked_list_id = global_linked_list_id_saved ;
+        extend_indexed_pointer_list( ) ;
     }
 
 
 // -----------------------------------------------
-//  Append the item ID to the end of the last
+//  Append the pointer to the end of the last
 //  grouping item.
 
-    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = global_pointer_to_append_to_linked_list ;
-    global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_linked_list_last_grouping_id ] ] = 0 ;
+    global_pointer_end_for_item[ global_indexed_pointer_list_last_grouping_id ] ++ ;
+    global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_last_grouping_id ] ] = global_pointer_to_append_to_indexed_pointer_list ;
+    global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_last_grouping_id ] + 1 ] = 0 ;
 
 
 // -----------------------------------------------
-//  End of append_to_linked_list.
+//  End of append_pointer_to_indexed_pointer_list.
 
     return ;
 
@@ -3173,88 +3266,27 @@ void append_to_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_pointer_in_linked_list
+//  Function get_next_pointer_from_indexed_pointer_list
 //
-//  This function gets the next item ID from
-//  a linked list.  The current grouping ID
+//  This function gets the next pointer from an
+//  indexed pointer list.  The current grouping ID
 //  is in
-//  "global_linked_list_current_grouping_id".
+//  "global_indexed_pointer_list_current_grouping_id".
 //  The pointer
-//  "global_linked_list_current_pointer"
+//  "global_indexed_pointer_list_current_pointer"
 //  points to the current position within
 //  that grouping ID.  The retrieved pointer is
-//  put into "global_pointer_from_linked_list".
+//  put into "global_pointer_from_indexed_pointer_list".
 
-void get_next_pointer_in_linked_list( )
+void get_next_pointer_from_indexed_pointer_list( )
 {
-    if ( global_linked_list_current_pointer >= global_pointer_end_for_item[ global_linked_list_current_grouping_id ] )
+    if ( global_indexed_pointer_list_current_pointer > global_pointer_end_for_item[ global_indexed_pointer_list_current_grouping_id ] )
     {
-        global_linked_list_current_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_current_grouping_id ] ] ;
-        global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_current_grouping_id ] ;
+        global_indexed_pointer_list_current_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_indexed_pointer_list_current_grouping_id ] + 1 ] ;
+        global_indexed_pointer_list_current_pointer = global_pointer_begin_for_item[ global_indexed_pointer_list_current_grouping_id ] ;
     }
-    global_pointer_from_linked_list = global_all_pointers[ global_linked_list_current_pointer ] ;
-    global_linked_list_current_pointer ++ ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function from_linked_list_get_pointer_at_position
-//
-//  This function gets the pointer at the
-//  specified position in the linked list.  The
-//  ID of the initial grouping must be in
-//  "global_linked_list_id".  The position must be
-//  specified in
-//  "global_position_within_linked_list".
-//  The retrieved pointer is put into
-//  "global_pointer_from_linked_list".
-//  This function does not check whether the value
-//  in "global_linked_list_id" is actually a
-//  linked list, so the Dashrep compiler must
-//  never specify the wrong ID.
-
-void from_linked_list_get_pointer_at_position( )
-{
-
-
-// -----------------------------------------------
-//  Within the linked list, find the grouping item
-//  that contains the specified position.
-
-// todo: restart writing of this new function
-
-    global_position_within_linked_list_desired = global_position_within_linked_list ;
-    global_position_within_linked_list_actual = 0 ;
-    global_linked_list_current_grouping_id = global_linked_list_id ;
-    while ( ( global_position_within_linked_list_actual <= global_position_within_linked_list_desired ) && ( global_linked_list_current_grouping_id > 0 ) )
-    {
-        global_linked_list_begin_of_grouping = global_pointer_begin_for_item[ global_linked_list_current_grouping_id ] ;
-        global_linked_list_end_of_grouping = global_pointer_end_for_item[ global_linked_list_current_grouping_id ] ;
-        global_length_of_linked_list_grouping = global_linked_list_end_of_grouping - global_linked_list_begin_of_grouping ;
-            if ( global_position_within_linked_list_actual + global_length_of_linked_list_grouping > global_position_within_linked_list_desired )
-            {
-
-                global_linked_list_current_pointer = global_position_within_linked_list_actual + ( global_position_within_linked_list_desired - global_length_of_linked_list_grouping ) ;
-
-                break ;
-            }
-
-// todo: resume editing here
-            global_linked_list_current_grouping_id = global_linked_list_next_grouping_id ;
-            global_position_within_linked_list_actual += global_linked_list_end_of_grouping - global_pointer_end_for_item[ global_linked_list_current_grouping_id ] ;
-            global_linked_list_next_grouping_id = global_all_pointers[ global_linked_list_end_of_grouping ] ;
-            global_linked_list_current_grouping_id = global_all_pointers[ global_pointer_end_for_item[ global_linked_list_current_grouping_id ] ] ;
-            global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_current_grouping_id ] ;
-
-    }
-
-
-// -----------------------------------------------
-
-
-    global_pointer_from_linked_list = global_all_pointers[ global_linked_list_current_pointer ] ;
+    global_pointer_from_indexed_pointer_list = global_all_pointers[ global_indexed_pointer_list_current_pointer ] ;
+    global_indexed_pointer_list_current_pointer ++ ;
     return ;
 }
 
@@ -3263,22 +3295,27 @@ void from_linked_list_get_pointer_at_position( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function add_phrase_word_to_linked_list
+//  Function add_phrase_word_to_indexed_pointer_list
 //
 //  Add the "global_item_id" pointer to the list
 //  of phrase words that have the same word
 //  length.
 
-void add_phrase_word_to_linked_list( )
+
+// todo: continue allowing for new "prior" pointer in each "pointer_list" item
+
+
+
+void add_phrase_word_to_indexed_pointer_list( )
 {
-    global_pointer_to_append_to_linked_list = global_item_id ;
+    global_pointer_to_append_to_indexed_pointer_list = global_item_id ;
     get_length_of_item( ) ;
-    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
-    if ( global_linked_list_id < 1 )
+    global_indexed_pointer_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
+    if ( global_indexed_pointer_list_id < 1 )
     {
-        create_linked_list( ) ;
+        create_indexed_pointer_list( ) ;
     }
-    append_to_linked_list( ) ;
+    append_pointer_to_indexed_pointer_list( ) ;
     return ;
 }
 
@@ -3338,8 +3375,8 @@ void find_matching_phrase_word( )
 //  todo: finish writing, and proofreading, this code
 
     global_id_for_phrase_word = 0 ;
-    global_linked_list_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
-    global_linked_list_current_pointer = global_pointer_begin_for_item[ global_linked_list_id ] - 1 ;
+    global_indexed_pointer_list_id = global_id_for_list_of_phrase_words_of_length[ global_character_length_of_phrase_word ] ;
+    global_indexed_pointer_list_current_pointer = global_pointer_begin_for_item[ global_indexed_pointer_list_id ] - 1 ;
     while ( 1 == 1 )
     {
 
@@ -3349,8 +3386,8 @@ void find_matching_phrase_word( )
 //  there are no more to check, return with an
 //  indication that there was no match.
 
-        get_next_pointer_in_linked_list( ) ;
-        global_character_pointer_begin_for_text_one = 1 ;global_pointer_begin_for_item[ global_id_from_linked_list ] ;
+        get_next_pointer_from_indexed_pointer_list( ) ;
+        global_character_pointer_begin_for_text_one = 1 ;global_pointer_begin_for_item[ global_id_from_indexed_pointer_list ] ;
         if ( global_character_pointer_begin_for_text_one == 0 )
         {
             global_yes_or_no_matching_text = global_no ;
@@ -3364,11 +3401,11 @@ void find_matching_phrase_word( )
 //  If the phrase words match, return with the
 //  text item ID of the matching phrase word.
 
-        global_item_id = global_id_from_linked_list ;
+        global_item_id = global_id_from_indexed_pointer_list ;
         check_yes_or_no_matching_text( ) ;
         if ( global_yes_or_no_matching_text == global_yes )
         {
-            global_id_for_phrase_word = global_id_from_linked_list ;
+            global_id_for_phrase_word = global_id_from_indexed_pointer_list ;
             return ;
         }
 
@@ -3434,7 +3471,7 @@ void find_matching_phrase_name( )
         global_character_pointer_begin_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - global_phrase_word_number_to_check ] ;
         global_character_pointer_end_for_phrase_word_in_position[ global_phrase_word_number_to_check ] = global_position_begin_for_phrase_word_number[ global_maximum_words_in_phrase_name - ( global_phrase_word_number_to_check + 1 ) ] ;
 
-//        ???[ global_phrase_word_number_to_check ] = global_id_from_linked_list ;
+//        ???[ global_phrase_word_number_to_check ] = global_id_from_indexed_pointer_list ;
 
         global_id_for_phrase_word_at_position_number[ global_phrase_word_number_to_check ] = global_id_for_phrase_word ;
         if ( global_id_for_phrase_word > 0 )
@@ -3448,7 +3485,7 @@ void find_matching_phrase_name( )
 //  Limit the search to the phrase names that have
 //  the same number of phrase words.
 
-    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_count_of_words_in_phrase_name ] ;
+    global_indexed_pointer_list_id = global_id_for_list_of_phrase_names_of_length[ global_count_of_words_in_phrase_name ] ;
 
 //  reminder: put zeros into global_id_for_list_of_phrase_names_of_length before adding any phrase names
 
@@ -3464,7 +3501,7 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  Point to the next already-defined phrase name.
 
-        get_next_pointer_in_linked_list( ) ;
+        get_next_pointer_from_indexed_pointer_list( ) ;
         log_out << "global_id_for_phrase_name " << global_id_for_phrase_name << std::endl ;
 
 
@@ -3567,7 +3604,7 @@ void add_new_phrase_name( )
         if ( global_all_pointers[ global_pointer_begin_for_item[ global_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] < 1 )
         {
             // something here
-            add_phrase_word_to_linked_list( ) ;
+            add_phrase_word_to_indexed_pointer_list( ) ;
         }
     }
 
@@ -3577,13 +3614,13 @@ void add_new_phrase_name( )
 //  list that lists other phrase names that have
 //  the same number of phrase words.
 
-    global_pointer_to_append_to_linked_list = global_item_id ;
-    global_linked_list_id = global_id_for_list_of_phrase_names_of_length[ global_number_of_phrase_words_found ] ;
-    if ( global_linked_list_id < 1 )
+    global_pointer_to_append_to_indexed_pointer_list = global_item_id ;
+    global_indexed_pointer_list_id = global_id_for_list_of_phrase_names_of_length[ global_number_of_phrase_words_found ] ;
+    if ( global_indexed_pointer_list_id < 1 )
     {
-        create_linked_list( ) ;
+        create_indexed_pointer_list( ) ;
     }
-    append_to_linked_list( ) ;
+    append_pointer_to_indexed_pointer_list( ) ;
 
 
 // -----------------------------------------------
