@@ -108,8 +108,9 @@ const int global_yes = 1 ;
 //    "global_all_characters".
 //
 //  * "list_of_decimal_numbers"
-//    A list of decimal numbers.  The decimal
-//    numbers are stored in the array
+//    A list of decimal numbers -- which includes the
+//    possibility of being a single decimal number.
+//    The decimal numbers are stored in the array
 //    "global_all_decimal_numbers".  Each
 //    adjacent pair of numbers is assumed to be
 //    separated by one space, without explicitly
@@ -133,7 +134,7 @@ const int global_yes = 1 ;
 //  * "phrase_word_pointers"
 //    A list of item IDs that only point to
 //    "phrase_word" text items.  A phrase word
-//    text item is a text character data type that
+//    text item is a "text_characters" data type that
 //    has added significance because it is a
 //    single word -- with no delimiter -- and the
 //    word is used in at least one phrase name.
@@ -147,7 +148,7 @@ const int global_yes = 1 ;
 //    any other hyphenated phrase name that
 //    includes that same word.  This convention
 //    allows searching for a phrase name just by
-//    looking at the text item IDs of the words in
+//    looking at the item IDs of the words in
 //    the phrase name.  Note that this convention
 //    does not allow a leading or trailing hyphen,
 //    and does not allow two or more adjacent
@@ -167,7 +168,7 @@ const int global_yes = 1 ;
 //    to three items:  (1) a text character item
 //    that contains only "<", (2) a
 //    "switch delimiter to underscore" item that,
-//    in turn, points to the list of phrase names
+//    in turn, points to the list of phrase words
 //    "character" and "hyphen", and (3) a text
 //    character item that contains only ">".
 //    These pointers are stored in the array
@@ -247,7 +248,7 @@ int global_data_type_for_item[ 20005 ] ;
 int global_pointer_begin_for_item[ 20005 ] ;
 int global_pointer_end_for_item[ 20005 ] ;
 int global_pointer_allocation_end_for_item[ 20005 ] ;
-int global_id_of_item_containing_definition_for_item[ 20005 ] ;
+int global_pointer_to_definition_of_item[ 20005 ] ;
 int global_access_flag_for_item[ 20005 ] ;
 
 const int global_maximum_words_in_phrase_name = 30 ;
@@ -258,8 +259,6 @@ int global_id_for_list_of_phrase_words_of_length[ 42 ] ;
 
 const int global_length_of_list_of_character_numbers = 256 ;
 int global_character_category_number_for_character_number[ 260 ] ;
-
-int global_id_from_indexed_pointer_list_number[ 2005 ] ;
 
 
 // -----------------------------------------------
@@ -340,18 +339,6 @@ const int global_ascii_code_for_hyphen = 45 ;
 const int global_ascii_code_for_left_curly_bracket = 123 ;
 const int global_ascii_code_for_left_parenthesis = 40 ;
 const int global_ascii_code_for_left_square_bracket = 91 ;
-const int global_ascii_code_for_letter_a = 65 ;
-const int global_ascii_code_for_letter_b = 66 ;
-const int global_ascii_code_for_letter_c = 67 ;
-const int global_ascii_code_for_letter_e = 69 ;
-const int global_ascii_code_for_letter_f = 70 ;
-const int global_ascii_code_for_letter_i = 73 ;
-const int global_ascii_code_for_letter_p = 80 ;
-const int global_ascii_code_for_letter_r = 82 ;
-const int global_ascii_code_for_letter_s = 83 ;
-const int global_ascii_code_for_letter_t = 84 ;
-const int global_ascii_code_for_letter_u = 85 ;
-const int global_ascii_code_for_letter_y = 89 ;
 const int global_ascii_code_for_newline = 10 ;
 const int global_ascii_code_for_open_angle_bracket = 60 ;
 const int global_ascii_code_for_percent = 37 ;
@@ -401,6 +388,7 @@ const int global_space_directive_one_requested = 3 ;
 //  Declare variables in alphabetical order.
 
 //  sort these new ones later:
+int global_pointer_to_put_into_indexed_pointer_list ;
 int global_position_within_indexed_pointer_list_desired ;
 int global_position_within_indexed_pointer_list ;
 int global_position_within_indexed_pointer_list_actual ;
@@ -990,6 +978,7 @@ int global_indexed_pointer_list_current_pointer ;
 int global_indexed_pointer_list_id ;
 int global_indexed_pointer_list_id_saved ;
 int global_indexed_pointer_list_last_grouping_id ;
+int global_indexed_pointer_list_last_grouping_id_saved ;
 int global_indexed_pointer_list_current_grouping_id ;
 int global_indexed_pointer_list_next_grouping_id ;
 int global_looking_at_hyphenated_phrase_name_in_item_id ;
@@ -1158,7 +1147,7 @@ std::ofstream log_out ;
 
 void create_new_item_id_and_assign_storage( ) ;
 int store_text_and_get_its_item_id( const char * local_this_word ) ;
-int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve ) ;
+int during_initialization_store_phrase_name( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve ) ;
 
 
 // -----------------------------------------------
@@ -1257,8 +1246,8 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 //  Initialize the counter that indicates the next
-//  available text ID number.  (Zero is not used.)
-//  It must be incremented after each text item ID
+//  available item ID number.  (Zero is not used.)
+//  It must be incremented after each item ID
 //  number is assigned.
 
     global_next_available_item_id = 1 ;
@@ -1266,7 +1255,7 @@ void do_main_initialization( )
 
 // -----------------------------------------------
 //  Put zeros into the lists that are indexed by
-//  text item ID number because those ID numbers
+//  item ID number because those ID numbers
 //  start at one, not zero.
 
     global_all_characters[ 0 ] = 0 ;
@@ -1283,7 +1272,7 @@ void do_main_initialization( )
 //  Initialize the pointers that keep track of the
 //  beginning of each item ID.  Each of these data
 //  types is stored in a different array.  The
-//  "list_of_pointers" data type is used for
+//  "pointers_linked" data type is used for
 //  multiple kinds of information.
 
     global_next_available_begin_pointer_for_data_type_pointers_linked = 1 ;
@@ -1295,14 +1284,14 @@ void do_main_initialization( )
 // -----------------------------------------------
 //  Initialize the pointer that keeps track of the
 //  end of the list:
-//  global_id_of_item_containing_definition_for_item
+//  global_pointer_to_definition_of_item
 
     global_next_available_defined_phrase_number = 1 ;
 
 
 // -----------------------------------------------
 //  Create text items that each hold one symbol,
-//  and define text item ID numbers for these
+//  and define item ID numbers for these
 //  symbols.
 
     global_id_for_single_space = store_text_and_get_its_item_id( " " ) ;
@@ -1376,227 +1365,227 @@ void do_main_initialization( )
 
     global_id_for_phrase_word_numeric = store_text_and_get_its_item_id( "numeric" ) ;
 
-    global_id_for_phrase_name_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_character_hyphen = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_hyphen , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_four_hyphens = store_phrase_name_and_get_id( global_id_for_phrase_word_four , global_id_for_phrase_word_hyphens , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_empty_text = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_one_space = store_phrase_name_and_get_id( global_id_for_phrase_word_one , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_character_space = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_non_breaking_space = store_phrase_name_and_get_id( global_id_for_phrase_word_non , global_id_for_phrase_word_breaking , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_empty_line = store_phrase_name_and_get_id( global_id_for_phrase_word_empty , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_line_break = store_phrase_name_and_get_id( global_id_for_phrase_word_line , global_id_for_phrase_word_break , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_character_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_newline , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_character_tab = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_tab , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_character_underscore = store_phrase_name_and_get_id( global_id_for_phrase_word_character , global_id_for_phrase_word_underscore , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_expand_text = store_phrase_name_and_get_id( global_id_for_phrase_word_expand , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_standard_output = store_phrase_name_and_get_id( global_id_for_phrase_word_standard , global_id_for_phrase_word_output , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_append_text = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_append_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_append_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_append_repeatedly_using_count = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_repeatedly , global_id_for_phrase_word_using , global_id_for_phrase_word_count , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_prepend_text = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_prepend_text_no_space = store_phrase_name_and_get_id( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_put_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_phrase_name_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_phrase , global_id_for_phrase_word_name , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_cgi_information = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_cgi , global_id_for_phrase_word_information , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_definitions_from_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_definitions , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_put , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , global_id_for_phrase_word_to , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern = store_phrase_name_and_get_id( global_id_for_phrase_word_append , global_id_for_phrase_word_multiple , global_id_for_phrase_word_from , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_clear_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_clear_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_clear , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_delete_listed_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_if_yes_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_yes , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_if_no_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_no , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_if_else = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_else , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_if_end = store_phrase_name_and_get_id( global_id_for_phrase_word_if , global_id_for_phrase_word_end , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_empty_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_empty , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_same_two_words = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_opposite = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_opposite , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_if_all_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_all , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_if_any_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_no_if_any_no = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_no , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_if_not_no = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_no , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_no_if_not_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_use_handler_with_each_word_in_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_use , global_id_for_phrase_word_handler , global_id_for_phrase_word_with , global_id_for_phrase_word_each , global_id_for_phrase_word_word , global_id_for_phrase_word_in , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_word_to_use_in_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_word , global_id_for_phrase_word_to , global_id_for_phrase_word_use , global_id_for_phrase_word_in , global_id_for_phrase_word_handler , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_count_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_position_of_word = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_word , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_word_at_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_offset_skip = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_offset , global_id_for_phrase_word_skip , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_found_in_both_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_both , global_id_for_phrase_word_lists , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_found_in_either_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_either , global_id_for_phrase_word_list , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_found_only_in_first_list = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_only , global_id_for_phrase_word_in , global_id_for_phrase_word_first , global_id_for_phrase_word_list , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_that_begin_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_that_begin_with_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_that_contain_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_contain , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_unique_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_unique , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_list_of_unique_word_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_unique , global_id_for_phrase_word_word , global_id_for_phrase_word_counts , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_list_of_pointers_to_unique_words = store_phrase_name_and_get_id( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_pointers , global_id_for_phrase_word_to , global_id_for_phrase_word_unique , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_order_reversed = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_order , global_id_for_phrase_word_reversed , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_numeric = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_counts_from_integer_to_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_counts , global_id_for_phrase_word_from , global_id_for_phrase_word_integer , global_id_for_phrase_word_to , global_id_for_phrase_word_integer , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_every_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_ordered , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_list_of_all_dashrep_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_all , global_id_for_phrase_word_dashrep , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_count_of_characters = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_characters , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_characters_from_position_to_position = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_without_extra_spaces = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_without , global_id_for_phrase_word_extra , global_id_for_phrase_word_spaces , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_lowercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_lowercase , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_uppercase_only = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_uppercase , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_initial_caps = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_initial , global_id_for_phrase_word_caps , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_zero_pad_left_to_length = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_zero , global_id_for_phrase_word_pad , global_id_for_phrase_word_left , global_id_for_phrase_word_to , global_id_for_phrase_word_length , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_encode_as_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_encode , global_id_for_phrase_word_as , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_decode_from_cgi_parameter = store_phrase_name_and_get_id( global_id_for_phrase_word_decode , global_id_for_phrase_word_from , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_convert_unicode_to_html_entities = store_phrase_name_and_get_id( global_id_for_phrase_word_convert , global_id_for_phrase_word_unicode , global_id_for_phrase_word_to , global_id_for_phrase_word_html , global_id_for_phrase_word_entities , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_position_of_matching_text = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_matching , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_and_replace = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_and_replace_using_paired_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , global_id_for_phrase_word_using , global_id_for_phrase_word_paired , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_positions_of_listed_words = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_positions_of_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_delimiter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_positions_of_first_matching_delimiter_after_listed_positions = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_first , global_id_for_phrase_word_matching , global_id_for_phrase_word_delimiter , global_id_for_phrase_word_after , global_id_for_phrase_word_listed , global_id_for_phrase_word_positions , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_current_time_in_epoch_seconds = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_current , global_id_for_phrase_word_time , global_id_for_phrase_word_in , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_split_epoch_seconds_into_named_components = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_split_epoch_seconds_into_named_components_for_zero_meridian = store_phrase_name_and_get_id( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , global_id_for_phrase_word_for , global_id_for_phrase_word_zero , global_id_for_phrase_word_meridian , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_day_of_month = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_month , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_day_of_week = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_week , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_day_of_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_year , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_hour = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_hour , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_minute = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_minute , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_month_number = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_month , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_second = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_second , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_time_year = store_phrase_name_and_get_id( global_id_for_phrase_word_time , global_id_for_phrase_word_year , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_zero_or_nonzero = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_or , global_id_for_phrase_word_nonzero , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_zero_one_multiple = store_phrase_name_and_get_id( global_id_for_phrase_word_zero , global_id_for_phrase_word_one , global_id_for_phrase_word_multiple , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_equal_greater_less_compare = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_equal , global_id_for_phrase_word_greater , global_id_for_phrase_word_less , global_id_for_phrase_word_compare , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_add , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_minus = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minus , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_multiply , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_divide , global_id_for_phrase_word_by , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_maximum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_maximum , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_minimum = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minimum , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_increment = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_increment , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_decrement = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_decrement , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_integer = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_integer , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_absolute = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_absolute , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_odd_or_even = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_odd , global_id_for_phrase_word_or , global_id_for_phrase_word_even , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_square_root = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_square , global_id_for_phrase_word_root , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_sine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_sine , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_cosine = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_cosine , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_logarithm_base_e = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_e , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_logarithm_base_10 = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_10 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_pi = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_pi , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vector_add_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_add , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vector_multiply_by_number = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_multiply , global_id_for_phrase_word_by , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vectors_add = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_add , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vectors_multiply = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_multiply , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vectors_divide_by = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_divide , global_id_for_phrase_word_by , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vector_integers = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_integers , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vector_absolutes = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_absolutes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_from , global_id_for_phrase_word_delta , global_id_for_phrase_word_values , global_id_for_phrase_word_calculate , global_id_for_phrase_word_distances , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_two , global_id_for_phrase_word_dimensional , global_id_for_phrase_word_sort , global_id_for_phrase_word_into , global_id_for_phrase_word_columns , global_id_for_phrase_word_and , global_id_for_phrase_word_rows , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_y , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_number , global_id_for_phrase_word_based , global_id_for_phrase_word_on , global_id_for_phrase_word_latitude , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_numeric_map_tile_zoom = store_phrase_name_and_get_id( global_id_for_phrase_word_numeric , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_zoom , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_move , global_id_for_phrase_word_attributes , global_id_for_phrase_word_into , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_remove , global_id_for_phrase_word_attributes , global_id_for_phrase_word_from , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_permission_to_append_to_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_files , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_delete , global_id_for_phrase_word_or , global_id_for_phrase_word_overwrite , global_id_for_phrase_word_files , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_path_prefix_for_file_reading = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_reading , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_path_prefix_for_file_writing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_writing , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_operating_system_slash_or_backslash = store_phrase_name_and_get_id( global_id_for_phrase_word_operating , global_id_for_phrase_word_system , global_id_for_phrase_word_slash , global_id_for_phrase_word_or , global_id_for_phrase_word_backslash , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_file_name_if_read_file_missing = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_file , global_id_for_phrase_word_name , global_id_for_phrase_word_if , global_id_for_phrase_word_read , global_id_for_phrase_word_file , global_id_for_phrase_word_missing , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_list_of_files_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_files , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_folders , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_file_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_file , global_id_for_phrase_word_exists , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_folder_exists = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_folder , global_id_for_phrase_word_exists , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_size_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_size , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_modification_time_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_modification , global_id_for_phrase_word_time , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_set_file_permission_public_read = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_public , global_id_for_phrase_word_read , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_set_file_permission_private = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_set_file_permission_private_but_executable = store_phrase_name_and_get_id( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , global_id_for_phrase_word_but , global_id_for_phrase_word_executable , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_rename_file = store_phrase_name_and_get_id( global_id_for_phrase_word_rename , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_delete_file = store_phrase_name_and_get_id( global_id_for_phrase_word_delete , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_create_empty_sub_folder = store_phrase_name_and_get_id( global_id_for_phrase_word_create , global_id_for_phrase_word_empty , global_id_for_phrase_word_sub , global_id_for_phrase_word_folder , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_from_file_to_phrase = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_end_of_line_indicator = store_phrase_name_and_get_id( global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_indicator , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_text_end_of_line_here_space_delimited = store_phrase_name_and_get_id( global_id_for_phrase_word_text , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_here , global_id_for_phrase_word_space , global_id_for_phrase_word_delimited , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_trim , global_id_for_phrase_word_spaces , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_skip , global_id_for_phrase_word_empty , global_id_for_phrase_word_lines , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_from_phrase_append_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_append_file_to_file = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_append , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_linewise_read_from_file_and_use_handler = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_and , global_id_for_phrase_word_use , global_id_for_phrase_word_handler , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_linewise_input_line_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_linewise_input_line_count = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_count , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_linewise_read_from_standard_input = store_phrase_name_and_get_id( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_standard , global_id_for_phrase_word_input , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_trace_from_get_url_resource = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_from , global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_find_line_in_file_that_begins_with_text = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_line , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begins , global_id_for_phrase_word_with , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_listed , global_id_for_phrase_word_word , 0 , 0 ) ;
-    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed = store_phrase_name_and_get_id( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_two , global_id_for_phrase_word_words , global_id_for_phrase_word_listed , 0 ) ;
-    global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_named , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists = store_phrase_name_and_get_id( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_column , global_id_for_phrase_word_lists , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_use , global_id_for_phrase_word_two , global_id_for_phrase_word_spaces , global_id_for_phrase_word_as , global_id_for_phrase_word_column , global_id_for_phrase_word_delimiter , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_gather_tagged_info_from_file = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_tagged , global_id_for_phrase_word_info , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_gather_from_tagged_file_one_entry = store_phrase_name_and_get_id( global_id_for_phrase_word_gather , global_id_for_phrase_word_from , global_id_for_phrase_word_tagged , global_id_for_phrase_word_file , global_id_for_phrase_word_one , global_id_for_phrase_word_entry , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file = store_phrase_name_and_get_id( global_id_for_phrase_word_write , global_id_for_phrase_word_gathered , global_id_for_phrase_word_listed , global_id_for_phrase_word_items , global_id_for_phrase_word_to , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_begin = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_end = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_end , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_unique = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_unique , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_delete = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_delete , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_gather_tag_matching_id = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_matching , global_id_for_phrase_word_id , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_trace_show = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_trace_show_where = store_phrase_name_and_get_id( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , global_id_for_phrase_word_where , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_output_trace_file_name = store_phrase_name_and_get_id( global_id_for_phrase_word_output , global_id_for_phrase_word_trace , global_id_for_phrase_word_file , global_id_for_phrase_word_name , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_comments_ignored = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_comments , global_id_for_phrase_word_ignored , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_generate_phrase_usage_counts = store_phrase_name_and_get_id( global_id_for_phrase_word_generate , global_id_for_phrase_word_phrase , global_id_for_phrase_word_usage , global_id_for_phrase_word_counts , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_exit_from_dashrep = store_phrase_name_and_get_id( global_id_for_phrase_word_exit , global_id_for_phrase_word_from , global_id_for_phrase_word_dashrep , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_language_yes = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_language , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_version = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_version , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_delayed_nospace = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_nospace , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_delayed_newline = store_phrase_name_and_get_id( global_id_for_phrase_word_delayed , global_id_for_phrase_word_newline , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_yes_or_no_permission_administrator = store_phrase_name_and_get_id( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_administrator , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_endless_loop_counter_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_endless , global_id_for_phrase_word_loop , global_id_for_phrase_word_counter , global_id_for_phrase_word_limit , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
-    global_id_for_phrase_name_dashrep_time_limit = store_phrase_name_and_get_id( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_time , global_id_for_phrase_word_limit , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_hyphen_here = during_initialization_store_phrase_name( global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_character_hyphen = during_initialization_store_phrase_name( global_id_for_phrase_word_character , global_id_for_phrase_word_hyphen , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_four_hyphens = during_initialization_store_phrase_name( global_id_for_phrase_word_four , global_id_for_phrase_word_hyphens , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_no_space = during_initialization_store_phrase_name( global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_empty_text = during_initialization_store_phrase_name( global_id_for_phrase_word_empty , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_one_space = during_initialization_store_phrase_name( global_id_for_phrase_word_one , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_character_space = during_initialization_store_phrase_name( global_id_for_phrase_word_character , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_non_breaking_space = during_initialization_store_phrase_name( global_id_for_phrase_word_non , global_id_for_phrase_word_breaking , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_new_line = during_initialization_store_phrase_name( global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_empty_line = during_initialization_store_phrase_name( global_id_for_phrase_word_empty , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_line_break = during_initialization_store_phrase_name( global_id_for_phrase_word_line , global_id_for_phrase_word_break , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_character_newline = during_initialization_store_phrase_name( global_id_for_phrase_word_character , global_id_for_phrase_word_newline , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_character_tab = during_initialization_store_phrase_name( global_id_for_phrase_word_character , global_id_for_phrase_word_tab , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_character_underscore = during_initialization_store_phrase_name( global_id_for_phrase_word_character , global_id_for_phrase_word_underscore , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_expand_text = during_initialization_store_phrase_name( global_id_for_phrase_word_expand , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_standard_output = during_initialization_store_phrase_name( global_id_for_phrase_word_standard , global_id_for_phrase_word_output , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_text = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_append_text = during_initialization_store_phrase_name( global_id_for_phrase_word_append , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_append_text_no_space = during_initialization_store_phrase_name( global_id_for_phrase_word_append , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_append_new_line = during_initialization_store_phrase_name( global_id_for_phrase_word_append , global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_append_repeatedly_using_count = during_initialization_store_phrase_name( global_id_for_phrase_word_append , global_id_for_phrase_word_repeatedly , global_id_for_phrase_word_using , global_id_for_phrase_word_count , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_prepend_text = during_initialization_store_phrase_name( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_prepend_text_no_space = during_initialization_store_phrase_name( global_id_for_phrase_word_prepend , global_id_for_phrase_word_text , global_id_for_phrase_word_no , global_id_for_phrase_word_space , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_put_into_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_put , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_phrase_name_from_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_phrase , global_id_for_phrase_word_name , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_cgi_information = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_cgi , global_id_for_phrase_word_information , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_definitions_from_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_definitions , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_put_listed_phrase_definitions_into_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_put , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , global_id_for_phrase_word_into , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_listed_words_to_phrases_named_in_pattern = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , global_id_for_phrase_word_to , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_append_multiple_from_phrases_named_in_pattern = during_initialization_store_phrase_name( global_id_for_phrase_word_append , global_id_for_phrase_word_multiple , global_id_for_phrase_word_from , global_id_for_phrase_word_phrases , global_id_for_phrase_word_named , global_id_for_phrase_word_in , global_id_for_phrase_word_pattern , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_clear_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_clear , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_clear_listed_phrases = during_initialization_store_phrase_name( global_id_for_phrase_word_clear , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_delete_listed_phrases = during_initialization_store_phrase_name( global_id_for_phrase_word_delete , global_id_for_phrase_word_listed , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_if_yes_begin = during_initialization_store_phrase_name( global_id_for_phrase_word_if , global_id_for_phrase_word_yes , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_if_no_begin = during_initialization_store_phrase_name( global_id_for_phrase_word_if , global_id_for_phrase_word_no , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_if_else = during_initialization_store_phrase_name( global_id_for_phrase_word_if , global_id_for_phrase_word_else , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_if_end = during_initialization_store_phrase_name( global_id_for_phrase_word_if , global_id_for_phrase_word_end , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_empty_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_empty , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_same_two_phrase_definitions = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_phrase , global_id_for_phrase_word_definitions , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_same_two_words = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_same , global_id_for_phrase_word_two , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_opposite = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_opposite , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_if_all_yes = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_all , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_if_any_yes = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_no_if_any_no = during_initialization_store_phrase_name( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_any , global_id_for_phrase_word_no , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_if_not_no = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_no , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_no_if_not_yes = during_initialization_store_phrase_name( global_id_for_phrase_word_no , global_id_for_phrase_word_if , global_id_for_phrase_word_not , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_use_handler_with_each_word_in_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_use , global_id_for_phrase_word_handler , global_id_for_phrase_word_with , global_id_for_phrase_word_each , global_id_for_phrase_word_word , global_id_for_phrase_word_in , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_word_to_use_in_handler = during_initialization_store_phrase_name( global_id_for_phrase_word_word , global_id_for_phrase_word_to , global_id_for_phrase_word_use , global_id_for_phrase_word_in , global_id_for_phrase_word_handler , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_count_of_words = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_word_at_position = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_position_of_word = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_word , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_word_at_position = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_word , global_id_for_phrase_word_at , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_from_position_to_position = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_offset_skip = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_offset , global_id_for_phrase_word_skip , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_found_in_both_lists = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_both , global_id_for_phrase_word_lists , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_found_in_either_list = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_in , global_id_for_phrase_word_either , global_id_for_phrase_word_list , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_found_only_in_first_list = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_found , global_id_for_phrase_word_only , global_id_for_phrase_word_in , global_id_for_phrase_word_first , global_id_for_phrase_word_list , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_that_begin_with_text = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_that_begin_with_listed_words = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_that_contain_listed_words = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_that , global_id_for_phrase_word_contain , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_unique_only = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_unique , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_list_of_unique_word_counts = during_initialization_store_phrase_name( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_unique , global_id_for_phrase_word_word , global_id_for_phrase_word_counts , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_list_of_pointers_to_unique_words = during_initialization_store_phrase_name( global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_pointers , global_id_for_phrase_word_to , global_id_for_phrase_word_unique , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_order_reversed = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_order , global_id_for_phrase_word_reversed , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_sort_numeric = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_numeric = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_numeric , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_sort_alphabetic = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_words_rearrange_using_order_sort_alphabetic = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_words , global_id_for_phrase_word_rearrange , global_id_for_phrase_word_using , global_id_for_phrase_word_order , global_id_for_phrase_word_sort , global_id_for_phrase_word_alphabetic , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_counts_from_integer_to_integer = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_counts , global_id_for_phrase_word_from , global_id_for_phrase_word_integer , global_id_for_phrase_word_to , global_id_for_phrase_word_integer , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_every_pairwise_combination_of_words = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_every_ordered_pairwise_combination_of_words = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_every , global_id_for_phrase_word_ordered , global_id_for_phrase_word_pairwise , global_id_for_phrase_word_combination , global_id_for_phrase_word_of , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_list_of_all_dashrep_phrases = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_all , global_id_for_phrase_word_dashrep , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_count_of_characters = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_count , global_id_for_phrase_word_of , global_id_for_phrase_word_characters , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_characters_from_position_to_position = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_characters_from_position_to_position = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_characters , global_id_for_phrase_word_from , global_id_for_phrase_word_position , global_id_for_phrase_word_to , global_id_for_phrase_word_position , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_without_extra_spaces = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_without , global_id_for_phrase_word_extra , global_id_for_phrase_word_spaces , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_lowercase_only = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_lowercase , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_uppercase_only = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_uppercase , global_id_for_phrase_word_only , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_initial_caps = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_initial , global_id_for_phrase_word_caps , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_zero_pad_left_to_length = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_zero , global_id_for_phrase_word_pad , global_id_for_phrase_word_left , global_id_for_phrase_word_to , global_id_for_phrase_word_length , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_encode_as_cgi_parameter = during_initialization_store_phrase_name( global_id_for_phrase_word_encode , global_id_for_phrase_word_as , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_decode_from_cgi_parameter = during_initialization_store_phrase_name( global_id_for_phrase_word_decode , global_id_for_phrase_word_from , global_id_for_phrase_word_cgi , global_id_for_phrase_word_parameter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_convert_unicode_to_html_entities = during_initialization_store_phrase_name( global_id_for_phrase_word_convert , global_id_for_phrase_word_unicode , global_id_for_phrase_word_to , global_id_for_phrase_word_html , global_id_for_phrase_word_entities , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_position_of_matching_text = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_position , global_id_for_phrase_word_of , global_id_for_phrase_word_matching , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_and_replace = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_and_replace_using_paired_listed_words = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_replace , global_id_for_phrase_word_using , global_id_for_phrase_word_paired , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_positions_of_listed_words = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_listed , global_id_for_phrase_word_words , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_positions_of_delimiter = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_delimiter , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_positions_of_first_matching_delimiter_after_listed_positions = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_positions , global_id_for_phrase_word_of , global_id_for_phrase_word_first , global_id_for_phrase_word_matching , global_id_for_phrase_word_delimiter , global_id_for_phrase_word_after , global_id_for_phrase_word_listed , global_id_for_phrase_word_positions , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_current_time_in_epoch_seconds = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_current , global_id_for_phrase_word_time , global_id_for_phrase_word_in , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_split_epoch_seconds_into_named_components = during_initialization_store_phrase_name( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_split_epoch_seconds_into_named_components_for_zero_meridian = during_initialization_store_phrase_name( global_id_for_phrase_word_split , global_id_for_phrase_word_epoch , global_id_for_phrase_word_seconds , global_id_for_phrase_word_into , global_id_for_phrase_word_named , global_id_for_phrase_word_components , global_id_for_phrase_word_for , global_id_for_phrase_word_zero , global_id_for_phrase_word_meridian , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_day_of_month = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_month , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_day_of_week = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_week , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_day_of_year = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_day , global_id_for_phrase_word_of , global_id_for_phrase_word_year , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_hour = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_hour , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_minute = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_minute , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_month_number = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_month , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_second = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_second , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_time_year = during_initialization_store_phrase_name( global_id_for_phrase_word_time , global_id_for_phrase_word_year , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_zero_or_nonzero = during_initialization_store_phrase_name( global_id_for_phrase_word_zero , global_id_for_phrase_word_or , global_id_for_phrase_word_nonzero , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_zero_one_multiple = during_initialization_store_phrase_name( global_id_for_phrase_word_zero , global_id_for_phrase_word_one , global_id_for_phrase_word_multiple , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_equal_greater_less_compare = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_equal , global_id_for_phrase_word_greater , global_id_for_phrase_word_less , global_id_for_phrase_word_compare , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_add = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_add , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_minus = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minus , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_multiply = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_multiply , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_divide_by = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_divide , global_id_for_phrase_word_by , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_maximum = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_maximum , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_minimum = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_minimum , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_increment = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_increment , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_decrement = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_decrement , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_integer = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_integer , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_absolute = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_absolute , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_odd_or_even = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_odd , global_id_for_phrase_word_or , global_id_for_phrase_word_even , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_square_root = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_square , global_id_for_phrase_word_root , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_sine = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_sine , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_cosine = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_cosine , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_logarithm_base_e = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_e , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_logarithm_base_10 = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_logarithm , global_id_for_phrase_word_base , global_id_for_phrase_word_10 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_pi = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_pi , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vector_add_number = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_add , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vector_multiply_by_number = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_multiply , global_id_for_phrase_word_by , global_id_for_phrase_word_number , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vectors_add = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_add , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vectors_multiply = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_multiply , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vectors_divide_by = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_divide , global_id_for_phrase_word_by , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vector_integers = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_integers , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vector_absolutes = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vector , global_id_for_phrase_word_absolutes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_vectors_from_delta_values_calculate_distances = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_vectors , global_id_for_phrase_word_from , global_id_for_phrase_word_delta , global_id_for_phrase_word_values , global_id_for_phrase_word_calculate , global_id_for_phrase_word_distances , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_two_dimensional_sort_into_columns_and_rows = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_two , global_id_for_phrase_word_dimensional , global_id_for_phrase_word_sort , global_id_for_phrase_word_into , global_id_for_phrase_word_columns , global_id_for_phrase_word_and , global_id_for_phrase_word_rows , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_y_map_tile_number_based_on_latitude = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_y , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_number , global_id_for_phrase_word_based , global_id_for_phrase_word_on , global_id_for_phrase_word_latitude , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_numeric_map_tile_zoom = during_initialization_store_phrase_name( global_id_for_phrase_word_numeric , global_id_for_phrase_word_map , global_id_for_phrase_word_tile , global_id_for_phrase_word_zoom , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_and_move_attributes_into_xml_tags = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_move , global_id_for_phrase_word_attributes , global_id_for_phrase_word_into , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_and_remove_attributes_from_xml_tags = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_and , global_id_for_phrase_word_remove , global_id_for_phrase_word_attributes , global_id_for_phrase_word_from , global_id_for_phrase_word_xml , global_id_for_phrase_word_tags , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_permission_to_append_to_files = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_files , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_permission_to_delete_or_overwrite_files = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_to , global_id_for_phrase_word_delete , global_id_for_phrase_word_or , global_id_for_phrase_word_overwrite , global_id_for_phrase_word_files , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_path_prefix_for_file_reading = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_reading , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_path_prefix_for_file_writing = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_path , global_id_for_phrase_word_prefix , global_id_for_phrase_word_for , global_id_for_phrase_word_file , global_id_for_phrase_word_writing , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_operating_system_slash_or_backslash = during_initialization_store_phrase_name( global_id_for_phrase_word_operating , global_id_for_phrase_word_system , global_id_for_phrase_word_slash , global_id_for_phrase_word_or , global_id_for_phrase_word_backslash , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_file_name_if_read_file_missing = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_file , global_id_for_phrase_word_name , global_id_for_phrase_word_if , global_id_for_phrase_word_read , global_id_for_phrase_word_file , global_id_for_phrase_word_missing , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_list_of_files_in_current_read_directory = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_files , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_list_of_folders_in_current_read_directory = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_list , global_id_for_phrase_word_of , global_id_for_phrase_word_folders , global_id_for_phrase_word_in , global_id_for_phrase_word_current , global_id_for_phrase_word_read , global_id_for_phrase_word_directory , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_file_exists = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_file , global_id_for_phrase_word_exists , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_folder_exists = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_folder , global_id_for_phrase_word_exists , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_size_of_file = during_initialization_store_phrase_name( global_id_for_phrase_word_size , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_modification_time_of_file = during_initialization_store_phrase_name( global_id_for_phrase_word_modification , global_id_for_phrase_word_time , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_set_file_permission_public_read = during_initialization_store_phrase_name( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_public , global_id_for_phrase_word_read , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_set_file_permission_private = during_initialization_store_phrase_name( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_set_file_permission_private_but_executable = during_initialization_store_phrase_name( global_id_for_phrase_word_set , global_id_for_phrase_word_file , global_id_for_phrase_word_permission , global_id_for_phrase_word_private , global_id_for_phrase_word_but , global_id_for_phrase_word_executable , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_rename_file = during_initialization_store_phrase_name( global_id_for_phrase_word_rename , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_delete_file = during_initialization_store_phrase_name( global_id_for_phrase_word_delete , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_create_empty_sub_folder = during_initialization_store_phrase_name( global_id_for_phrase_word_create , global_id_for_phrase_word_empty , global_id_for_phrase_word_sub , global_id_for_phrase_word_folder , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_from_file_to_phrase = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_phrase , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_end_of_line_indicator = during_initialization_store_phrase_name( global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_indicator , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_text_end_of_line_here_space_delimited = during_initialization_store_phrase_name( global_id_for_phrase_word_text , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_line , global_id_for_phrase_word_here , global_id_for_phrase_word_space , global_id_for_phrase_word_delimited , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_trim_spaces_when_copy_from_file = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_trim , global_id_for_phrase_word_spaces , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_skip_empty_lines_when_copy_from_file = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_skip , global_id_for_phrase_word_empty , global_id_for_phrase_word_lines , global_id_for_phrase_word_when , global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_from_phrase_append_to_file = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_phrase , global_id_for_phrase_word_append , global_id_for_phrase_word_to , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_append_file_to_file = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_append , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_linewise_read_from_file_and_use_handler = during_initialization_store_phrase_name( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_file , global_id_for_phrase_word_and , global_id_for_phrase_word_use , global_id_for_phrase_word_handler , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_linewise_input_line_from_file = during_initialization_store_phrase_name( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_linewise_input_line_count = during_initialization_store_phrase_name( global_id_for_phrase_word_linewise , global_id_for_phrase_word_input , global_id_for_phrase_word_line , global_id_for_phrase_word_count , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_linewise_read_from_standard_input = during_initialization_store_phrase_name( global_id_for_phrase_word_linewise , global_id_for_phrase_word_read , global_id_for_phrase_word_from , global_id_for_phrase_word_standard , global_id_for_phrase_word_input , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_get_url_resource = during_initialization_store_phrase_name( global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_trace_from_get_url_resource = during_initialization_store_phrase_name( global_id_for_phrase_word_trace , global_id_for_phrase_word_from , global_id_for_phrase_word_get , global_id_for_phrase_word_url , global_id_for_phrase_word_resource , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_find_line_in_file_that_begins_with_text = during_initialization_store_phrase_name( global_id_for_phrase_word_find , global_id_for_phrase_word_line , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begins , global_id_for_phrase_word_with , global_id_for_phrase_word_text , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_listed_word = during_initialization_store_phrase_name( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_listed , global_id_for_phrase_word_word , 0 , 0 ) ;
+    global_id_for_phrase_name_find_lines_in_file_that_begin_with_any_two_words_listed = during_initialization_store_phrase_name( global_id_for_phrase_word_find , global_id_for_phrase_word_lines , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_that , global_id_for_phrase_word_begin , global_id_for_phrase_word_with , global_id_for_phrase_word_any , global_id_for_phrase_word_two , global_id_for_phrase_word_words , global_id_for_phrase_word_listed , 0 ) ;
+    global_id_for_phrase_name_copy_from_columns_in_file_to_named_phrases = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_named , global_id_for_phrase_word_phrases , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_copy_from_columns_in_file_to_column_lists = during_initialization_store_phrase_name( global_id_for_phrase_word_copy , global_id_for_phrase_word_from , global_id_for_phrase_word_columns , global_id_for_phrase_word_in , global_id_for_phrase_word_file , global_id_for_phrase_word_to , global_id_for_phrase_word_column , global_id_for_phrase_word_lists , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_use_two_spaces_as_column_delimiter = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_use , global_id_for_phrase_word_two , global_id_for_phrase_word_spaces , global_id_for_phrase_word_as , global_id_for_phrase_word_column , global_id_for_phrase_word_delimiter , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_gather_tagged_info_from_file = during_initialization_store_phrase_name( global_id_for_phrase_word_gather , global_id_for_phrase_word_tagged , global_id_for_phrase_word_info , global_id_for_phrase_word_from , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_gather_from_tagged_file_one_entry = during_initialization_store_phrase_name( global_id_for_phrase_word_gather , global_id_for_phrase_word_from , global_id_for_phrase_word_tagged , global_id_for_phrase_word_file , global_id_for_phrase_word_one , global_id_for_phrase_word_entry , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_write_gathered_listed_items_to_end_of_file = during_initialization_store_phrase_name( global_id_for_phrase_word_write , global_id_for_phrase_word_gathered , global_id_for_phrase_word_listed , global_id_for_phrase_word_items , global_id_for_phrase_word_to , global_id_for_phrase_word_end , global_id_for_phrase_word_of , global_id_for_phrase_word_file , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_gather_tag_begin = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_begin , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_gather_tag_end = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_end , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_gather_tag_unique = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_unique , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_gather_tag_delete = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_delete , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_gather_tag_matching_id = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_gather , global_id_for_phrase_word_tag , global_id_for_phrase_word_matching , global_id_for_phrase_word_id , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_trace_show = during_initialization_store_phrase_name( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_trace_show_where = during_initialization_store_phrase_name( global_id_for_phrase_word_trace , global_id_for_phrase_word_show , global_id_for_phrase_word_where , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_output_trace_file_name = during_initialization_store_phrase_name( global_id_for_phrase_word_output , global_id_for_phrase_word_trace , global_id_for_phrase_word_file , global_id_for_phrase_word_name , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_comments_ignored = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_comments , global_id_for_phrase_word_ignored , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_generate_phrase_usage_counts = during_initialization_store_phrase_name( global_id_for_phrase_word_generate , global_id_for_phrase_word_phrase , global_id_for_phrase_word_usage , global_id_for_phrase_word_counts , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_exit_from_dashrep = during_initialization_store_phrase_name( global_id_for_phrase_word_exit , global_id_for_phrase_word_from , global_id_for_phrase_word_dashrep , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_language_yes = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_language , global_id_for_phrase_word_yes , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_version = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_version , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_delayed_nospace = during_initialization_store_phrase_name( global_id_for_phrase_word_delayed , global_id_for_phrase_word_nospace , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_delayed_newline = during_initialization_store_phrase_name( global_id_for_phrase_word_delayed , global_id_for_phrase_word_newline , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_yes_or_no_permission_administrator = during_initialization_store_phrase_name( global_id_for_phrase_word_yes , global_id_for_phrase_word_or , global_id_for_phrase_word_no , global_id_for_phrase_word_permission , global_id_for_phrase_word_administrator , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_endless_loop_counter_limit = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_endless , global_id_for_phrase_word_loop , global_id_for_phrase_word_counter , global_id_for_phrase_word_limit , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_dashrep_time_limit = during_initialization_store_phrase_name( global_id_for_phrase_word_dashrep , global_id_for_phrase_word_time , global_id_for_phrase_word_limit , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
 
 
 // -----------------------------------------------
 //  Create some special hyphenated phrase names.
 
-    global_id_for_phrase_name_placeholder_for_hyphen_here = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_placeholder_for_hyphen_here = during_initialization_store_phrase_name( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_hyphen , global_id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
 
-    global_id_for_phrase_name_placeholder_for_new_line = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_placeholder_for_new_line = during_initialization_store_phrase_name( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_new , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
 
-    global_id_for_phrase_name_placeholder_for_empty_line = store_phrase_name_and_get_id( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_empty , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
+    global_id_for_phrase_name_placeholder_for_empty_line = during_initialization_store_phrase_name( global_id_for_phrase_word_placeholder , global_id_for_phrase_word_for , global_id_for_phrase_word_empty , global_id_for_phrase_word_line , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
 
 
 // -----------------------------------------------
 //  Connect the Dashrep-defined static phrase
 //  names with their definitions.
 
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_hyphen ] = global_id_for_single_hyphen ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_space ] = global_id_for_single_space ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_newline ] = global_id_for_single_newline ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_tab ] = global_id_for_single_tab ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_character_underscore ] = global_id_for_single_underscore ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_character_hyphen ] = global_id_for_single_hyphen ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_character_space ] = global_id_for_single_space ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_character_newline ] = global_id_for_single_newline ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_character_tab ] = global_id_for_single_tab ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_character_underscore ] = global_id_for_single_underscore ;
 
     global_id_for_empty_text = store_text_and_get_its_item_id( "" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_empty_text ] = global_id_for_empty_text ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_empty_text ] = global_id_for_empty_text ;
 
     global_id_for_four_hyphens = store_text_and_get_its_item_id( "----" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_four_hyphens ] = global_id_for_four_hyphens ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_four_hyphens ] = global_id_for_four_hyphens ;
 
     global_id_for_non_breaking_space = store_text_and_get_its_item_id( "&nbsp;" ) ;
-    global_id_of_item_containing_definition_for_item[ global_id_for_phrase_name_non_breaking_space ] = global_id_for_non_breaking_space ;
+    global_pointer_to_definition_of_item[ global_id_for_phrase_name_non_breaking_space ] = global_id_for_non_breaking_space ;
 
 
 // -----------------------------------------------
@@ -1642,13 +1631,13 @@ void do_main_initialization( )
 
     global_length_requested_for_next_item_storage = 200 ;
 
-    global_id_for_valid_filename = global_next_available_item_id ;
     create_new_item_id_and_assign_storage( ) ;
+    global_id_for_valid_filename = global_new_item_id ;
     global_data_type_for_item[ global_id_for_valid_filename ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_valid_filename ] -= 5 ;
 
-    global_id_for_valid_folder_name = global_next_available_item_id ;
     create_new_item_id_and_assign_storage( ) ;
+    global_id_for_valid_folder_name = global_new_item_id ;
     global_data_type_for_item[ global_id_for_valid_folder_name ] = global_data_type_text_characters ;
     global_pointer_allocation_end_for_item[ global_id_for_valid_folder_name ] -= 5 ;
 
@@ -1707,7 +1696,7 @@ void exit_not_yet_supported( )
 // -----------------------------------------------
 //  Function choose_slash_or_backslash
 //
-//  This function checks the operating system to
+//  Checks the operating system to
 //  determine whether slashes or backslashes
 //  should be used in folder names.
 //
@@ -1787,7 +1776,7 @@ void create_new_item_id_and_assign_storage( )
             global_pointer_end_for_item[ global_new_item_id ] =     global_pointer_begin_for_item[ global_new_item_id ] - 1 ;
             break ;
     }
-    global_id_of_item_containing_definition_for_item[ global_new_item_id ] = 0 ;
+    global_pointer_to_definition_of_item[ global_new_item_id ] = 0 ;
     global_access_flag_for_item[ global_new_item_id ] = global_access_flag_can_change ;
     return ;
 }
@@ -1820,7 +1809,7 @@ void measure_space_available_in_item( )
 //  space that was originally allocated, change
 //  the allocation size.  If the data type is
 //  "pointers_linked", allow space for the "next"
-//  pointer.
+//  and "prior" pointers.
 
 void adjust_storage_space_to_fit_newest_item( )
 {
@@ -1848,48 +1837,6 @@ void adjust_storage_space_to_fit_newest_item( )
         default :
             global_next_available_begin_pointer_for_data_type_pointers_linked = global_pointer_allocation_end_for_item[ global_new_item_id ] + 1 ;
             break ;
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_allocation_begin
-//
-//  Get the allocation begin value that indicates
-//  the first available position for the specified
-//  item.  This is needed when the "begin" pointer
-//  has been changed.  The data type must be
-//  considered because the allocation end of the
-//  previous item is relevant only if that
-//  previous item is in the same list as the item
-//  for which the allocation end is desired.  Each
-//  data type is separate, so the prior item must
-//  be in the same data type.  If the data type is
-//  "pointers_linked" then allow for the "next"
-//  and "prior" pointers.
-
-void get_allocation_begin( )
-{
-    global_data_type = global_data_type_for_item[ global_item_id ] ;
-    global_storage_type = global_storage_type_for_data_type[ global_data_type ] ;
-    global_item_id_to_consider = global_item_id - 1 ;
-    while ( global_item_id_to_consider > 0 )
-    {
-        if ( global_storage_type_for_data_type[ global_data_type_for_item[ global_item_id_to_consider ] ] == global_storage_type )
-        {
-            global_allocation_begin = global_pointer_allocation_end_for_item[ global_item_id_to_consider ] + 1 ;
-            return ;
-        }
-        global_item_id_to_consider -- ;
-    }
-    if ( global_data_type != global_data_type_pointers_linked )
-    {
-        global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] ;
-    } else
-    {
-        global_allocation_begin = global_pointer_begin_for_item[ global_item_id ] - 2 ;
     }
     return ;
 }
@@ -2059,7 +2006,7 @@ void check_yes_or_no_matching_text( )
 // -----------------------------------------------
 //  Function just_copy_simple
 //
-//  This function copies contents for the storage
+//  Copies contents for the storage
 //  type specified by "global_storage_type" (not
 //  "global_data_type"), starting at
 //  "global_pointer_for_just_copy_source"
@@ -2082,7 +2029,7 @@ void just_copy_simple( )
     switch ( global_storage_type )
     {
         case global_storage_type_pointers :
-            while ( global_counter <= global_length_for_just_copy )
+            while ( global_counter < 0 )
             {
                 global_all_pointers[ global_pointer_from ] = global_all_pointers[ global_pointer_to ] ;
                 global_pointer_from ++ ;
@@ -2091,7 +2038,7 @@ void just_copy_simple( )
             }
             break ;
         global_storage_type_text_characters :
-            while ( global_counter <= global_length_for_just_copy )
+            while ( global_counter < 0 )
             {
                 global_all_characters[ global_pointer_from ] = global_all_characters[ global_pointer_to ] ;
                 global_pointer_from ++ ;
@@ -2100,7 +2047,7 @@ void just_copy_simple( )
             }
             break ;
         case global_storage_type_integers :
-            while ( global_counter <= global_length_for_just_copy )
+            while ( global_counter < 0 )
             {
                 global_all_integers[ global_pointer_from ] = global_all_integers[ global_pointer_to ] ;
                 global_pointer_from ++ ;
@@ -2109,7 +2056,7 @@ void just_copy_simple( )
             }
             break ;
         case global_storage_type_decimal_numbers :
-            while ( global_counter <= global_length_for_just_copy )
+            while ( global_counter < 0 )
             {
                 global_all_decimal_numbers[ global_pointer_from ] = global_all_decimal_numbers[ global_pointer_to ] ;
                 global_pointer_from ++ ;
@@ -2118,7 +2065,7 @@ void just_copy_simple( )
             }
             break ;
         default :
-            while ( global_counter <= global_length_for_just_copy )
+            while ( global_counter < 0 )
             {
                 global_all_pointers[ global_pointer_from ] = global_all_pointers[ global_pointer_to ] ;
                 global_pointer_from ++ ;
@@ -2193,7 +2140,7 @@ void check_yes_or_no_character_is_delimiter( )
 // -----------------------------------------------
 //  convert_integer_to_text
 //
-//  This function converts the integer stored in
+//  Converts the integer stored in
 //  global_single_integer into text digits that
 //  are stored in text item
 //  "global_id_for_number_as_text".
@@ -2281,7 +2228,7 @@ void convert_integer_to_text( )
 // -----------------------------------------------
 //  convert_decimal_to_text
 //
-//  This function converts the decimal stored in
+//  Converts the decimal stored in
 //  global_single_decimal_number into text digits
 //  that are stored in text item
 //  global_id_for_number_as_text.
@@ -3065,7 +3012,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 
 
 // -----------------------------------------------
-//  Return with the text item ID number
+//  Return with the item ID number
 
     return global_new_item_id ;
 
@@ -3208,7 +3155,7 @@ void put_pointer_into_position_within_indexed_pointer_list( )
 // -----------------------------------------------
 //  Function append_pointer_to_indexed_pointer_list
 //
-//  This function adds a pointer to the end of an
+//  Adds a pointer to the end of an
 //  indexed pointer list.  The ID that identifies
 //  the indexed pointer list is in
 //  "global_indexed_pointer_list_id".
@@ -3268,7 +3215,7 @@ void append_pointer_to_indexed_pointer_list( )
 // -----------------------------------------------
 //  Function get_next_pointer_from_indexed_pointer_list
 //
-//  This function gets the next pointer from an
+//  Gets the next pointer from an
 //  indexed pointer list.  The current grouping ID
 //  is in
 //  "global_indexed_pointer_list_current_grouping_id".
@@ -3297,18 +3244,18 @@ void get_next_pointer_from_indexed_pointer_list( )
 // -----------------------------------------------
 //  Function add_phrase_word_to_indexed_pointer_list
 //
-//  Add the "global_item_id" pointer to the list
+//  Add the "global_id_for_phrase_word" pointer to the list
 //  of phrase words that have the same word
 //  length.
 
 
-// todo: continue allowing for new "prior" pointer in each "pointer_list" item
+// todo: continue editing that allows for new "prior" pointer in each "pointer_list" item
 
 
 
 void add_phrase_word_to_indexed_pointer_list( )
 {
-    global_pointer_to_append_to_indexed_pointer_list = global_item_id ;
+    global_pointer_to_append_to_indexed_pointer_list = global_id_for_phrase_word ;
     get_length_of_item( ) ;
     global_indexed_pointer_list_id = global_id_for_list_of_phrase_words_of_length[ global_length_of_item ] ;
     if ( global_indexed_pointer_list_id < 1 )
@@ -3325,8 +3272,9 @@ void add_phrase_word_to_indexed_pointer_list( )
 //  Function find_matching_phrase_word
 //
 //  Find the already-defined phrase word that
-//  matches the phrase word specified by ....
-//  The text item ID of the matching phrase word
+//  matches the phrase word specified by
+//  "global_id_for_phrase_word".
+//  The item ID of the matching phrase word
 //  is supplied in
 //  "global_id_for_phrase_word".  A
 //  zero value indicates the phrase word was not
@@ -3399,7 +3347,7 @@ void find_matching_phrase_word( )
 //  Compare the already-defined phrase word with
 //  the phrase word being searched for.
 //  If the phrase words match, return with the
-//  text item ID of the matching phrase word.
+//  item ID of the matching phrase word.
 
         global_item_id = global_id_from_indexed_pointer_list ;
         check_yes_or_no_matching_text( ) ;
@@ -3433,7 +3381,7 @@ void find_matching_phrase_word( )
 //  Searches all the already-defined phrase
 //  names to find a match with the phrase name
 //  in the item ID "global_id_for_phrase_name".
-//  Puts the text item ID of the matching
+//  Puts the item ID of the matching
 //  phrase name into the variable
 //  "global_found_matching_phrase_name"
 //  but that variable is zero if no match was
@@ -3450,9 +3398,11 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  Find each phrase word in the list of
 //  already-defined phrase words, and get its
-//  text item ID number.  Also count how
+//  item ID number.  Also count how
 //  many were found.
 //
+
+//  todo: needed?
 //  Reminder:  When using the array
 //  "global_position_begin_for_phrase_word_number",
 //  the index numbers are offset such that the
@@ -3515,7 +3465,7 @@ void find_matching_phrase_name( )
 
 
 // -----------------------------------------------
-//  Compare the text item ID numbers in the phrase
+//  Compare the item ID numbers in the phrase
 //  name to match and the ID numbers in the phrase
 //  name being considered.  If any of the ID
 //  numbers do not match, continue the search.
@@ -3577,12 +3527,13 @@ void find_matching_phrase_name( )
 //  Function add_new_phrase_name
 //
 //  Adds a new phrase name to the list of phrase
-//  names.  This
-//  function assumes the hyphenated phrase name
+//  names.  The ID for the phrase name is in
+//  "global_id_for_phrase_name".  This function
+//  assumes the hyphenated phrase name
 //  does not match any existing hyphenated phrase
 //  name.  Do not duplicate any words that are
 //  already used in other hyphenated phrase names.
-//  Add the "global_item_id" pointer to the list
+//  Add the "global_id_for_phrase_name" pointer to the list
 //  of phrase names that have the same word
 //  count.  The phrase word count must be in
 //  "global_number_of_phrase_words_found".
@@ -3596,14 +3547,15 @@ void add_new_phrase_name( )
 //  listed, add them to the end of the linked list
 //  that lists other phrase words of the same
 //  length.
-//  Adds the "global_item_id" pointer.
 
 //  todo: write this code
     for ( global_phrase_word_number_to_check = 1 ; global_phrase_word_number_to_check <= global_count_of_words_in_phrase_name ; global_phrase_word_number_to_check ++ )
     {
         if ( global_all_pointers[ global_pointer_begin_for_item[ global_id_for_phrase_name ] + global_phrase_word_number_to_check - 1 ] < 1 )
         {
-            // something here
+
+            // todo: copy pointer to phrase w
+            global_id_for_phrase_word = global_id_for_phrase_word ;
             add_phrase_word_to_indexed_pointer_list( ) ;
         }
     }
@@ -3632,13 +3584,16 @@ void add_new_phrase_name( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function store_phrase_name_and_get_id
+//  Function during_initialization_store_phrase_name
 //
 //  Creates a text item for a hyphenated phrase
-//  name, and supplies the text item ID number for
-//  the new text item.
+//  name, and supplies the item ID number for
+//  the new text item.  This function is only used
+//  during initialization, and will be eliminated
+//  when the initialization is done using Dashrep
+//  code.
 
-int store_phrase_name_and_get_id( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
+int during_initialization_store_phrase_name( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
 {
     global_length_requested_for_next_item_storage = 12 ;
     create_new_item_id_and_assign_storage( ) ;
@@ -3686,7 +3641,7 @@ int store_phrase_name_and_get_id( int word_one , int word_two , int word_three ,
 //  Function read_text_line_from_file
 //
 //  Reads one line of text from a file and puts
-//  the text into the text item ID numbered
+//  the text into the item ID numbered
 //  global_id_for_file_input.
 //
 //  Later, replace "fgetc" function with C++ code
@@ -3813,17 +3768,6 @@ void copy_text( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Allow function "append_space_if_not_empty" to
-//  access functions
-//  "convert_list_of_integers_into_text_item" and
-//  "convert_list_of_decimal_numbers_into_text_item".
-
-void convert_list_of_integers_into_text_item( ) ;
-void convert_list_of_decimal_numbers_into_text_item( ) ;
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function append_space_if_not_empty
 //
 //  Appends a space to "global_id_text_to_edit" if
@@ -3879,7 +3823,7 @@ void append_space_if_not_empty( )
 //  to be appended is specified by the text item
 //  ID number in "global_id_from_origin",
 //  and the text item being extended is specified
-//  by the text item ID number in
+//  by the item ID number in
 //  "global_id_text_to_edit".  The value in
 //  "global_yes_or_no_requesting_space_appended"
 //  indicates whether to insert a space between
@@ -3971,7 +3915,7 @@ void append_linked_text( )
 //  Create a new text item of data type
 //  "pointers_linked" and into it put
 //  pointers that point to the "to" and "from"
-//  text items, and change the text item ID of the
+//  text items, and change the item ID of the
 //  "to" text item so that the new top-level item
 //  points to both the "to" and "from".
 
@@ -3999,7 +3943,7 @@ void append_linked_text( )
 //  Appends text assuming that the text being
 //  appended will change, so a copy of that text
 //  must be stored.  The text item to be appended
-//  is specified by the text item ID number in
+//  is specified by the item ID number in
 //  global_id_from_origin, and the text
 //  item being extended is specified by the text
 //  item ID number in
@@ -4029,7 +3973,7 @@ void append_copied_text( )
 //  Appends text from the text item
 //  "global_id_from_origin" to the text item
 //  "global_id_text_to_edit".
-//  Allow the two text item IDs to be the same.
+//  Allow the two item IDs to be the same.
 
 
 void append_text( )
@@ -4098,7 +4042,7 @@ void replace_text_characters_simple( )
 // -----------------------------------------------
 //  Function replace_text_item_with_pointer_list
 //
-//  This function creates a copy of the text item
+//  Creates a copy of the text item
 //  at "global_id_text_to_edit" and changes the
 //  data type of the original to become
 //  "pointers_linked" and replaces the previous
@@ -4150,7 +4094,7 @@ void specify_character_to_insert_between_subitems( )
 // -----------------------------------------------
 //  Function write_to_log
 //
-//  This function can be used when debugging
+//  Can be used when debugging
 //  within-items pointers.
 
 void write_to_log( )
@@ -4417,7 +4361,7 @@ void pop_within_items_pointer_stack_level( )
 //  the function
 //  "get_next_or_previous_character_from_text_item"
 //  and specify the "next" (not "previous"
-//  direction).  The starting text item ID is
+//  direction).  The starting item ID is
 //  specified in "global_item_id".
 
 void initialize_get_next_character_from_text_item( )
@@ -4451,7 +4395,7 @@ void initialize_get_next_character_from_text_item( )
 //  the function
 //  "get_next_or_previous_character_from_text_item"
 //  and specify the "previous" (not "next"
-//  direction).  The starting text item ID is
+//  direction).  The starting item ID is
 //  specified in "global_item_id".
 
 void initialize_get_previous_character_from_text_item( )
@@ -4609,7 +4553,7 @@ void copy_pointer_stack( )
 // -----------------------------------------------
 //  Function get_next_or_previous_sub_text_item
 //
-//  This function changes the within-items pointer
+//  Changes the within-items pointer
 //  stack named "..."
 //  to point to the next (or previous) subordinate
 //  text item that contains text characters.  It
@@ -4773,7 +4717,7 @@ void get_next_or_previous_sub_text_item( )
                 convert_list_of_decimal_numbers_into_text_item( ) ;
             }
 
-//  todo: move to function that inserts replacement text item id number
+//  todo: move to function that inserts replacement item ID number
 
             put_info_into_within_items_pointer_stack_level( ) ;
             push_within_items_pointer_stack_level( ) ;
@@ -4954,7 +4898,7 @@ void parse_phrase_name( )
 //  compensating for getting the characters in
 //  reverse sequence.  Check for the phrase name
 //  exceeding the length allowed.
-//  Reminder:  The text item ID minus one refers
+//  Reminder:  The item ID minus one refers
 //  to the preceeding text item.
 
         global_pointer_begin_for_item[ global_id_for_phrase_name ] ++ ;
@@ -4998,7 +4942,7 @@ void parse_phrase_name( )
 // -----------------------------------------------
 //  Function truncate_text_item_using_within_items_pointer_stack
 //
-//  This function changes the "begin" or "end"
+//  Changes the "begin" or "end"
 //  pointers of a text item and any sub text items
 //  to match the within-items pointer that is
 //  pointed to by "global_id_text_to_edit".  This
@@ -5072,7 +5016,7 @@ void truncate_text_item_using_within_items_pointer_stack( )
 // -----------------------------------------------
 //  Function remove_leading_or_trailing_delimiters
 //
-//  This function changes the "begin" (or "end")
+//  Changes the "begin" (or "end")
 //  pointer of a text item to skip over leading
 //  (or trailing) delimiters.  If the text item
 //  points to sub text items, those "begin" (or
@@ -5476,7 +5420,7 @@ void text_replace( )
 // -----------------------------------------------
 //  Function write_text_item_to_file
 //
-//  This function writes the contents of one text
+//  Writes the contents of one text
 //  item to the output file.  If that text item
 //  points to any sub text items, those sub text
 //  items also are written to the file.  The text
@@ -5503,7 +5447,7 @@ void write_text_item_to_file( )
 // -----------------------------------------------
 //  Function check_yes_or_no_within_items_pointers_in_same_item
 //
-//  This function looks at two within-items
+//  Looks at two within-items
 //  pointers and determines whether the characters
 //  they point to are in within the same item.  If
 //  so, the contents of that item is simply the
@@ -5544,7 +5488,7 @@ void check_yes_or_no_within_items_pointers_in_same_item( )
 // -----------------------------------------------
 //  Function scan_text_item_for_character_usage
 //
-//  This function scans the text item indicated by
+//  Scans the text item indicated by
 //  "global_item_id" and counts how
 //  many times each character appears within that
 //  text.
@@ -5607,7 +5551,7 @@ void scan_text_item_for_character_usage( )
 // -----------------------------------------------
 //  Function scan_searched_text_before_doing_find_text
 //
-//  This function scans the text item indicated by
+//  Scans the text item indicated by
 //  "global_id_text_to_search" and copies
 //  into the
 //  "global_searched_usage_count_for_character"
@@ -5644,7 +5588,7 @@ void initialize_track_recent_position_of_each_character( )
 // -----------------------------------------------
 //  Function track_recent_position_of_each_character
 //
-//  This function keeps track of the position
+//  Keeps track of the position
 //  where each character was last encountered.
 //  The function
 //  "initialize_track_recent_position_of_each_character"
@@ -5743,7 +5687,7 @@ void track_recent_position_of_each_character( )
 // -----------------------------------------------
 //  Function find_optimum_character_for_find_pause
 //
-//  This function finds which character should be
+//  Finds which character should be
 //  used as a trigger for pausing the find process
 //  to fully check for a match.  The optimum
 //  character is one that is at or near the end of
@@ -5792,7 +5736,7 @@ void find_optimum_character_for_find_pause( )
 // -----------------------------------------------
 //  Function check_for_match_where_paused
 //
-//  This function determines whether the text
+//  Determines whether the text
 //  being searched matches the text to find.  This
 //  check is done when the within-items pointer
 //  stack is pointing to an occurance of the
@@ -5827,7 +5771,7 @@ void check_for_match_where_paused( )
 // -----------------------------------------------
 //  Function find_matching_text
 //
-//  This function finds some "matched" text
+//  Finds some "matched" text
 //  within some text to be searched.  The text to
 //  match must be in "global_id_text_to_find"
 //  The text to be searched must be in
@@ -5947,7 +5891,7 @@ void find_matching_text( )
 // -----------------------------------------------
 //  Function save_position_of_first_hyphen
 //
-//  This function saves the position at which the
+//  Saves the position at which the
 //  first hyphen in a phrase name is encountered.
 
 void save_position_of_first_hyphen( )
@@ -5964,7 +5908,7 @@ void save_position_of_first_hyphen( )
 // -----------------------------------------------
 //  Function get_phrase_name_when_at_trailing_delimiter
 //
-//  This function points to the phrase words in a
+//  Points to the phrase words in a
 //  phrase name, based on the current position
 //  being at the first delimiter that follows a
 //  hyphen.  If the entire phrase name is not
@@ -6028,7 +5972,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 // -----------------------------------------------
 //  Function replace_angle_bracketed_phrase_names
 //
-//  This function finds each occurance of a phrase
+//  Finds each occurance of a phrase
 //  name in angle brackets, with underscores where
 //  the hyphens would otherwise appear, such as
 //  "<character_hyphen>".  It does not check
@@ -6593,7 +6537,7 @@ void execute_loop_handler_based_on_handler_id( int local_item_id_for_next_word ,
 // -----------------------------------------------
 //  Function implement_loop
 //
-//  This function points to the next word using a
+//  Points to the next word using a
 //  pair of within-items pointer stacks, then
 //  executes the requested action.
 //
@@ -6654,13 +6598,13 @@ void parameterized_append_text( int local_item_id )
 
 void parameterized_get_phrase_definition( int local_to_item_id , int local_from_item_id )
 {
-    local_to_item_id = global_id_of_item_containing_definition_for_item[ local_from_item_id ] ;
+    local_to_item_id = global_pointer_to_definition_of_item[ local_from_item_id ] ;
     return ;
 }
 
 void parameterized_put_phrase_definition( int local_from_item_id , int local_to_item_id )
 {
-    global_id_of_item_containing_definition_for_item[ local_to_item_id ] = local_from_item_id ;
+    global_pointer_to_definition_of_item[ local_to_item_id ] = local_from_item_id ;
     return ;
 }
 
@@ -6702,7 +6646,7 @@ int parameterized_yes_or_no_phrase_name( int local_item_id )
 
 int parameterized_yes_or_no_phrase_definition_not_empty( int local_item_id )
 {
-    global_item_id = global_id_of_item_containing_definition_for_item[ local_item_id ] ;
+    global_item_id = global_pointer_to_definition_of_item[ local_item_id ] ;
     check_yes_or_no_solo_item_is_empty( ) ;
     return global_yes_or_no_text_item_is_empty ;
 }
