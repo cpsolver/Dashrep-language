@@ -1147,7 +1147,7 @@ std::ofstream log_out ;
 
 void create_new_item_id_and_assign_storage( ) ;
 int store_text_and_get_its_item_id( const char * local_this_word ) ;
-int during_initialization_store_phrase_name( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve ) ;
+int during_initialization_store_phrase_name( int local_word_one , int local_word_two , int local_word_three , int local_word_four , int local_word_five , int local_word_six , int local_word_seven , int local_word_eight , int local_word_nine , int local_word_ten , int local_word_eleven , int local_word_twelve ) ;
 
 
 // -----------------------------------------------
@@ -3593,35 +3593,35 @@ void add_new_phrase_name( )
 //  when the initialization is done using Dashrep
 //  code.
 
-int during_initialization_store_phrase_name( int word_one , int word_two , int word_three , int word_four , int word_five , int word_six , int word_seven , int word_eight , int word_nine , int word_ten , int word_eleven , int word_twelve )
+int during_initialization_store_phrase_name( int local_word_one , int local_word_two , int local_word_three , int local_word_four , int local_word_five , int local_word_six , int local_word_seven , int local_word_eight , int local_word_nine , int local_word_ten , int local_word_eleven , int local_word_twelve )
 {
     global_length_requested_for_next_item_storage = 12 ;
     create_new_item_id_and_assign_storage( ) ;
     global_data_type_for_item[ global_new_item_id ] = global_data_type_phrase_word_pointers ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_one ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_one ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_two ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_two ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_three ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_three ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_four ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_four ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_five ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_five ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_six ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_six ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_seven ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_seven ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eight ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_eight ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_nine ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_nine ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_ten ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_ten ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_eleven ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_eleven ;
     global_pointer_end_for_item[ global_new_item_id ] ++ ;
-    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = word_twelve ;
+    global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] = local_word_twelve ;
     for ( global_character_pointer = global_pointer_end_for_item[ global_new_item_id ] ; global_character_pointer >= global_pointer_begin_for_item[ global_new_item_id ] ; global_character_pointer -- )
     {
         if ( global_all_pointers[ global_pointer_end_for_item[ global_new_item_id ] ] > 0 )
@@ -6158,38 +6158,36 @@ void expand_text( )
 // -----------------------------------------------
 //  Declarations.
 
-    int expand_endless_cycle_count_maximum ;
-    int current_phrase_item_id ;
-    int expand_result_item_id ;
-    int output_buffer ;
-    int space_directive ;
-    int expand_endless_loop_counter ;
-    int expand_endless_loop_counter_maximum ;
-    int recursion_level ;
-    int pointer_to_phrase_begin ;
-    int pointer_to_next_space ;
-    int pointer_to_phrase_end ;
-    int prior_length ;
-    int prefix ;
-    int possible_phrase_name_with_underscores ;
-    int length_of_tag ;
-    int new_output_buffer ;
-    int pointer_to_remainder_of_output_buffer ;
-    int possible_phrase_name_with_hyphens ;
-    int pointer_to_close_angle_bracket ;
-    int length_of_output_buffer ;
-    int maximum_cycle_count ;
-    int phrase_name ;
-    int cycle_count ;
-    int phrase_name_with_highest_cycle_count ;
-    int length_of_code_at_recursion_level_current ;
+    int local_expand_endless_cycle_count_maximum ;
+    int local_current_phrase_item_id ;
+    int local_expand_result_item_id ;
+    int local_output_buffer ;
+    int local_space_directive ;
+    int local_expand_endless_loop_counter ;
+    int local_expand_endless_loop_counter_maximum ;
+    int local_recursion_level ;
+    int local_pointer_to_phrase_begin ;
+    int local_pointer_to_next_space ;
+    int local_pointer_to_phrase_end ;
+    int local_prior_length ;
+    int local_prefix ;
+    int local_possible_phrase_name_with_underscores ;
+    int local_length_of_tag ;
+    int local_new_output_buffer ;
+    int local_pointer_to_remainder_of_output_buffer ;
+    int local_possible_phrase_name_with_hyphens ;
+    int local_pointer_to_close_angle_bracket ;
+    int local_length_of_output_buffer ;
+    int local_maximum_cycle_count ;
+    int local_phrase_name ;
+    int local_cycle_count ;
+    int local_phrase_name_with_highest_cycle_count ;
+    int local_length_of_code_at_recursion_level_current ;
+    int local_expand_buffer_item_id ;
 
-    int code_at_recursion_level[ 105 ] ;
-    int length_of_code_at_recursion_level[ 105 ] ;
-    int pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
-
-    int expand_buffer_item_id ;
-
+    int local_code_at_recursion_level[ 105 ] ;
+    int local_length_of_code_at_recursion_level[ 105 ] ;
+    int local_pointer_to_remainder_of_code_at_recursion_level[ 105 ] ;
 
 
 // -----------------------------------------------
@@ -6208,26 +6206,26 @@ void expand_text( )
 // -----------------------------------------------
 //  Initialization.
 
-    global_item_id = expand_buffer_item_id ;
+    global_item_id = local_expand_buffer_item_id ;
     clear_item( ) ;
 
-// output_buffer = '' ;
-    space_directive = global_space_directive_none ;
-// new_output_buffer = '' ;
-// possible_phrase_name_with_underscores = '' ;
+// local_output_buffer = '' ;
+    local_space_directive = global_space_directive_none ;
+// local_new_output_buffer = '' ;
+// local_possible_phrase_name_with_underscores = '' ;
 
-    pointer_to_remainder_of_output_buffer = 0 ;
-    expand_endless_loop_counter = 0 ;
-    expand_endless_loop_counter_maximum = 100000 ;
-    expand_endless_cycle_count_maximum = 100000 ;
+    local_pointer_to_remainder_of_output_buffer = 0 ;
+    local_expand_endless_loop_counter = 0 ;
+    local_expand_endless_loop_counter_maximum = 100000 ;
+    local_expand_endless_cycle_count_maximum = 100000 ;
 
 // @code_at_recursion_level = ( ) ;
 // @length_of_code_at_recursion_level = ( ) ;
 // @pointer_to_remainder_of_code_at_recursion_level = ( ) ;
 
-// code_at_recursion_level[ 0 ] = 'unused' ;
-// pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;
-// length_of_code_at_recursion_level[ 0 ] = 0 ;
+// local_code_at_recursion_level[ 0 ] = 'unused' ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;
+// local_length_of_code_at_recursion_level[ 0 ] = 0 ;
 
 
 
@@ -6235,57 +6233,57 @@ void expand_text( )
 //  Begin a loop that handles each space delimited
 //  string in the phrase definition.
 
-// code_at_recursion_level[ 1 ] = global_id_from_origin ;
-// pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
-// length_of_code_at_recursion_level[ 1 ] = length( code_at_recursion_level[ 1 ] ) ;
+// local_code_at_recursion_level[ 1 ] = global_id_from_origin ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
+// local_length_of_code_at_recursion_level[ 1 ] = length( local_code_at_recursion_level[ 1 ] ) ;
 
-    recursion_level = 1 ;
+    local_recursion_level = 1 ;
 
-    while ( ( recursion_level > 0 ) && ( expand_endless_loop_counter <= expand_endless_loop_counter_maximum ) )
+    while ( ( local_recursion_level > 0 ) && ( local_expand_endless_loop_counter <= local_expand_endless_loop_counter_maximum ) )
     {
-        expand_endless_loop_counter ++ ;
+        local_expand_endless_loop_counter ++ ;
 
 
 // -----------------------------------------------
 //  Get the next phrase name.  If there is no more
 //  code at the current recursion level, shift
 //  back to the previous recursion level.  When
-//  the recursion_level reaches zero, the loop
+//  the local_recursion_level reaches zero, the loop
 //  will end.
 
-// length_of_code_at_recursion_level_current = length_of_code_at_recursion_level[ recursion_level ] ;
-        if ( length_of_code_at_recursion_level_current == 0 )
+// local_length_of_code_at_recursion_level_current = local_length_of_code_at_recursion_level[ local_recursion_level ] ;
+        if ( local_length_of_code_at_recursion_level_current == 0 )
         {
-            recursion_level -- ;
+            local_recursion_level -- ;
             continue ;
         }
-// pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;
-// while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq ' ' ) ) {
-        pointer_to_phrase_begin ++ ;
+// local_pointer_to_phrase_begin = local_pointer_to_remainder_of_code_at_recursion_level[ local_recursion_level ] ;
+// while ( ( local_pointer_to_phrase_begin < local_length_of_code_at_recursion_level_current ) && ( substr( local_code_at_recursion_level[ local_recursion_level ] , local_pointer_to_phrase_begin , 1 ) eq ' ' ) ) {
+        local_pointer_to_phrase_begin ++ ;
 // }
-// pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-        if ( pointer_to_next_space == -1 )
+// local_pointer_to_next_space = index( local_code_at_recursion_level[ local_recursion_level ] , ' ' , local_pointer_to_phrase_begin ) ;
+        if ( local_pointer_to_next_space == -1 )
         {
-// pointer_to_phrase_end = length_of_code_at_recursion_level_current - 1 ;
-// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = length_of_code_at_recursion_level_current ;
+// local_pointer_to_phrase_end = local_length_of_code_at_recursion_level_current - 1 ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ local_recursion_level ] = local_length_of_code_at_recursion_level_current ;
         } else
         {
-// pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , ' ' , pointer_to_phrase_begin ) ;
-            if ( pointer_to_next_space > pointer_to_phrase_begin )
+// local_pointer_to_next_space = index( local_code_at_recursion_level[ local_recursion_level ] , ' ' , local_pointer_to_phrase_begin ) ;
+            if ( local_pointer_to_next_space > local_pointer_to_phrase_begin )
             {
-                pointer_to_phrase_end = pointer_to_next_space - 1 ;
-// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_next_space ;
+                local_pointer_to_phrase_end = local_pointer_to_next_space - 1 ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ local_recursion_level ] = local_pointer_to_next_space ;
             } else
             {
-                pointer_to_phrase_end = -2 ;
+                local_pointer_to_phrase_end = -2 ;
             }
         }
-        if ( pointer_to_phrase_begin > pointer_to_phrase_end )
+        if ( local_pointer_to_phrase_begin > local_pointer_to_phrase_end )
         {
-            recursion_level -- ;
+            local_recursion_level -- ;
             continue ;
         }
-// current_phrase_item_id = substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , ( pointer_to_phrase_end - pointer_to_phrase_begin + 1 ) ) ;
+// local_current_phrase_item_id = substr( local_code_at_recursion_level[ local_recursion_level ] , local_pointer_to_phrase_begin , ( local_pointer_to_phrase_end - local_pointer_to_phrase_begin + 1 ) ) ;
 
 
 // -----------------------------------------------
@@ -6295,18 +6293,18 @@ void expand_text( )
 
         if ( global_yes_or_no_count_phrase_usage == global_yes )
         {
-// global_number_of_times_encountered_phrase_named{ current_phrase_item_id } ++ ;
-// if ( global_number_of_times_encountered_phrase_named{ current_phrase_item_id } >= expand_endless_cycle_count_maximum ) {
-            maximum_cycle_count = 0 ;
-// foreach phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {
-// cycle_count = global_number_of_times_encountered_phrase_named{ phrase_name } ;
-        if ( cycle_count > maximum_cycle_count )
+// global_number_of_times_encountered_phrase_named{ local_current_phrase_item_id } ++ ;
+// if ( global_number_of_times_encountered_phrase_named{ local_current_phrase_item_id } >= local_expand_endless_cycle_count_maximum ) {
+            local_maximum_cycle_count = 0 ;
+// foreach local_phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {
+// local_cycle_count = global_number_of_times_encountered_phrase_named{ local_phrase_name } ;
+        if ( local_cycle_count > local_maximum_cycle_count )
         {
-           maximum_cycle_count = cycle_count ;
-// phrase_name = phrase_name_with_highest_cycle_count ;
+           local_maximum_cycle_count = local_cycle_count ;
+// local_phrase_name = local_phrase_name_with_highest_cycle_count ;
         }
 // }
-// global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . phrase_name_with_highest_cycle_count . ' ' . maximum_cycle_count . "\n" ;
+// global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . local_phrase_name_with_highest_cycle_count . ' ' . local_maximum_cycle_count . "\n" ;
 // print global_action_result . "\n" ;
 // return '' ;
 // }
@@ -6332,53 +6330,53 @@ void expand_text( )
 //  space directive, or a line directive, handle
 //  it.
 
-        if ( current_phrase_item_id == global_id_for_phrase_name_hyphen_here )
+        if ( local_current_phrase_item_id == global_id_for_phrase_name_hyphen_here )
         {
-// output_buffer .= '-' ;
-            space_directive = global_space_directive_none ;
+// local_output_buffer .= '-' ;
+            local_space_directive = global_space_directive_none ;
             continue ;
         }
-        if ( current_phrase_item_id == global_id_for_phrase_name_no_space )
+        if ( local_current_phrase_item_id == global_id_for_phrase_name_no_space )
         {
-            if ( space_directive = global_space_directive_one_requested )
+            if ( local_space_directive = global_space_directive_one_requested )
             {
-                space_directive = global_space_directive_none ;
+                local_space_directive = global_space_directive_none ;
             }
             continue ;
         }
-// if ( current_phrase_item_id eq ( '<' . 'no_space' . '>' ) ) {
-            space_directive = global_space_directive_none ;
+// if ( local_current_phrase_item_id eq ( '<' . 'no_space' . '>' ) ) {
+            local_space_directive = global_space_directive_none ;
             continue ;
 // }
-        if ( current_phrase_item_id == global_id_for_phrase_name_one_space )
+        if ( local_current_phrase_item_id == global_id_for_phrase_name_one_space )
         {
-            space_directive = global_space_directive_one_requested ;
+            local_space_directive = global_space_directive_one_requested ;
             continue ;
         }
-// if ( current_phrase_item_id eq ( '<' . 'one_space' . '>' ) ) {
-            space_directive = global_space_directive_one_requested ;
+// if ( local_current_phrase_item_id eq ( '<' . 'one_space' . '>' ) ) {
+            local_space_directive = global_space_directive_one_requested ;
             continue ;
 // }
-        if ( current_phrase_item_id == global_id_for_phrase_name_new_line )
+        if ( local_current_phrase_item_id == global_id_for_phrase_name_new_line )
         {
-// output_buffer .= "\n" ;
-            space_directive = global_space_directive_none ;
+// local_output_buffer .= "\n" ;
+            local_space_directive = global_space_directive_none ;
             continue ;
         }
-// if ( current_phrase_item_id eq ( '<' . 'new_line' . '>' ) ) {
-// output_buffer .= "\n" ;
-            space_directive = global_space_directive_none ;
+// if ( local_current_phrase_item_id eq ( '<' . 'new_line' . '>' ) ) {
+// local_output_buffer .= "\n" ;
+            local_space_directive = global_space_directive_none ;
             continue ;
 // }
-        if ( current_phrase_item_id == global_id_for_phrase_name_empty_line )
+        if ( local_current_phrase_item_id == global_id_for_phrase_name_empty_line )
         {
-// output_buffer .= "\n\n" ;
-            space_directive = global_space_directive_none ;
+// local_output_buffer .= "\n\n" ;
+            local_space_directive = global_space_directive_none ;
             continue ;
         }
-// if ( current_phrase_item_id eq ( '<' . 'empty_line' . '>' ) ) {
-// output_buffer .= "\n\n" ;
-            space_directive = global_space_directive_none ;
+// if ( local_current_phrase_item_id eq ( '<' . 'empty_line' . '>' ) ) {
+// local_output_buffer .= "\n\n" ;
+            local_space_directive = global_space_directive_none ;
             continue ;
 // }
 
@@ -6390,11 +6388,11 @@ void expand_text( )
 //  the text being expanded, and remove the phrase
 //  name.
 
-// if ( ( current_phrase_item_id =~ /[^ \-]\-[^ \-]/ ) && ( exists( global_dashrep_replacement{ current_phrase_item_id } ) ) ) {
-            recursion_level ++ ;
-// code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase_item_id } ;
-// length_of_code_at_recursion_level[ recursion_level ] = length( code_at_recursion_level[ recursion_level ] ) ;
-// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = 0 ;
+// if ( ( local_current_phrase_item_id =~ /[^ \-]\-[^ \-]/ ) && ( exists( global_dashrep_replacement{ local_current_phrase_item_id } ) ) ) {
+            local_recursion_level ++ ;
+// local_code_at_recursion_level[ local_recursion_level ] = global_dashrep_replacement{ local_current_phrase_item_id } ;
+// local_length_of_code_at_recursion_level[ local_recursion_level ] = length( local_code_at_recursion_level[ local_recursion_level ] ) ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ local_recursion_level ] = 0 ;
             continue ;
 // }
 
@@ -6404,11 +6402,11 @@ void expand_text( )
 //  Specify a default of inserting one space after
 //  the next phrase insertion.
 
-        if ( ( space_directive == global_space_directive_one ) || ( space_directive == global_space_directive_one_requested ) )
+        if ( ( local_space_directive == global_space_directive_one ) || ( local_space_directive == global_space_directive_one_requested ) )
         {
-// output_buffer .= ' ' ;
+// local_output_buffer .= ' ' ;
         }
-        space_directive = global_space_directive_one ;
+        local_space_directive = global_space_directive_one ;
 
 
 // -----------------------------------------------
@@ -6416,8 +6414,8 @@ void expand_text( )
 //  the name of a defined phrase, so just use the
 //  text string.
 
-// output_buffer .= current_phrase_item_id ;
-// pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_phrase_end + 1 ;
+// local_output_buffer .= local_current_phrase_item_id ;
+// local_pointer_to_remainder_of_code_at_recursion_level[ local_recursion_level ] = local_pointer_to_phrase_end + 1 ;
 
 
 // -----------------------------------------------
@@ -6427,17 +6425,17 @@ void expand_text( )
 //  single XML or HTML tag.  Handle tags of type
 //  "<xyz />" as well as "<xyz>".
 
-// if ( index( output_buffer , '<specify ' ) > 0 ) {
-        prior_length = 0 ;
-// while ( length( output_buffer ) != prior_length ) {
-// prior_length = length( output_buffer ) ;
-// output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
+// if ( index( local_output_buffer , '<specify ' ) > 0 ) {
+        local_prior_length = 0 ;
+// while ( length( local_output_buffer ) != local_prior_length ) {
+// local_prior_length = length( local_output_buffer ) ;
+// local_output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
 // }
-// if ( index( output_buffer , '<specify ' ) > 0 ) {
-        prior_length = 0 ;
-// while ( length( output_buffer ) != prior_length ) {
-// prior_length = length( output_buffer ) ;
-// output_buffer =~ s/ *> *<specify +/ / ;
+// if ( index( local_output_buffer , '<specify ' ) > 0 ) {
+        local_prior_length = 0 ;
+// while ( length( local_output_buffer ) != local_prior_length ) {
+// local_prior_length = length( local_output_buffer ) ;
+// local_output_buffer =~ s/ *> *<specify +/ / ;
 // }
 // }
 // }
@@ -6450,37 +6448,37 @@ void expand_text( )
 //  (with no spaces), then replace that text with
 //  the definition of the specified phrase.
 
-// output_buffer =~ s/ *<placeholder_for_hyphen_here> */-/sg ;
-// output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;
-// output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
+// local_output_buffer =~ s/ *<placeholder_for_hyphen_here> */-/sg ;
+// local_output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;
+// local_output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;
 
-// if ( output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ ) {
-            space_directive = global_space_directive_none ;
+// if ( local_output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ ) {
+            local_space_directive = global_space_directive_none ;
 // }
-            length_of_output_buffer = -1 ;
-            pointer_to_remainder_of_output_buffer = 0 ;
-// new_output_buffer = '' ;
-// while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s ) {
-// prefix = $1 ;
-// possible_phrase_name_with_underscores = $2 ;
-// length_of_output_buffer = length( output_buffer ) ;
-// new_output_buffer .= prefix ;
-// length_of_tag = length( possible_phrase_name_with_underscores ) ;
-// pointer_to_remainder_of_output_buffer += length( prefix ) + length_of_tag + 2 ;
+            local_length_of_output_buffer = -1 ;
+            local_pointer_to_remainder_of_output_buffer = 0 ;
+// local_new_output_buffer = '' ;
+// while ( substr( local_output_buffer , local_pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s ) {
+// local_prefix = $1 ;
+// local_possible_phrase_name_with_underscores = $2 ;
+// local_length_of_output_buffer = length( local_output_buffer ) ;
+// local_new_output_buffer .= local_prefix ;
+// local_length_of_tag = length( local_possible_phrase_name_with_underscores ) ;
+// local_pointer_to_remainder_of_output_buffer += length( local_prefix ) + local_length_of_tag + 2 ;
 
-// possible_phrase_name_with_hyphens = possible_phrase_name_with_underscores ;
-// possible_phrase_name_with_hyphens =~ s/_/-/g ;
-// if ( exists( global_dashrep_replacement{ possible_phrase_name_with_hyphens } ) ) {
-// new_output_buffer .= global_dashrep_replacement{ possible_phrase_name_with_hyphens } ;
+// local_possible_phrase_name_with_hyphens = local_possible_phrase_name_with_underscores ;
+// local_possible_phrase_name_with_hyphens =~ s/_/-/g ;
+// if ( exists( global_dashrep_replacement{ local_possible_phrase_name_with_hyphens } ) ) {
+// local_new_output_buffer .= global_dashrep_replacement{ local_possible_phrase_name_with_hyphens } ;
 // } else {
-// new_output_buffer .= '<' . possible_phrase_name_with_underscores . '>' ;
+// local_new_output_buffer .= '<' . local_possible_phrase_name_with_underscores . '>' ;
 // }
 // }
-            if ( length_of_output_buffer != -1 )
+            if ( local_length_of_output_buffer != -1 )
             {
-// output_buffer = new_output_buffer . substr( output_buffer , pointer_to_remainder_of_output_buffer ) ;
-// new_output_buffer = '' ;
-// possible_phrase_name_with_underscores = '' ;
+// local_output_buffer = local_new_output_buffer . substr( local_output_buffer , local_pointer_to_remainder_of_output_buffer ) ;
+// local_new_output_buffer = '' ;
+// local_possible_phrase_name_with_underscores = '' ;
             }
 
 
@@ -6489,13 +6487,13 @@ void expand_text( )
 //  that might need to be revised, then append it
 //  to the result text.
 
-// pointer_to_close_angle_bracket = index( output_buffer , '>' ) ;
-// if ( pointer_to_close_angle_bracket < 0 ) {
-// expand_result_item_id .= output_buffer ;
-// output_buffer = '' ;
-// } elsif ( length( output_buffer ) > 1000 ) {
-// expand_result_item_id .= substr( output_buffer , 0 , 500 ) ;
-// output_buffer = substr( output_buffer , 500 ) ;
+// local_pointer_to_close_angle_bracket = index( local_output_buffer , '>' ) ;
+// if ( local_pointer_to_close_angle_bracket < 0 ) {
+// local_expand_result_item_id .= local_output_buffer ;
+// local_output_buffer = '' ;
+// } elsif ( length( local_output_buffer ) > 1000 ) {
+// local_expand_result_item_id .= substr( local_output_buffer , 0 , 500 ) ;
+// local_output_buffer = substr( local_output_buffer , 500 ) ;
 // }
 
 
@@ -6509,7 +6507,7 @@ void expand_text( )
 // -----------------------------------------------
 //  Supply the results.
 
-// expand_result_item_id .= output_buffer ;
+// local_expand_result_item_id .= local_output_buffer ;
 // return: global_expand_result_item_id ;
     return ;
 
@@ -6577,16 +6575,16 @@ int parameterized_use_handler_with_each_word_in_phrase( int local_item_id )
 {
     global_id_from_origin = local_item_id ;
     implement_loop( ) ;
-    int expand_result_item_id ;  // temporary, to avoid compiler error
-    return expand_result_item_id ;
+    int local_expand_result_item_id ;  // temporary, to avoid compiler error
+    return local_expand_result_item_id ;
 }
 
 int parameterized_dashrep_expand_text( int local_item_id )
 {
     global_id_from_origin = local_item_id ;
     expand_text( ) ;
-    int expand_result_item_id ;  // temporary, to avoid compiler error
-    return expand_result_item_id ;
+    int local_expand_result_item_id ;  // temporary, to avoid compiler error
+    return local_expand_result_item_id ;
 }
 
 void parameterized_append_text( int local_item_id )
@@ -6934,16 +6932,16 @@ void do_everything( )
 int main( int argc, char *argv[] )
 {
 
-    int argv_pointer ;
+    int local_argv_pointer ;
 
 
 // -----------------------------------------------
 //  Get environment variable values that include
 //  CGI info.
 
-    for ( int argv_pointer = 0 ; argv_pointer < argc ; argv_pointer ++ )
+    for ( int local_argv_pointer = 0 ; local_argv_pointer < argc ; local_argv_pointer ++ )
     {
-        printf( "argv[ %d ] = %s\n", argv_pointer, argv[ argv_pointer ] ) ;
+        printf( "argv[ %d ] = %s\n", local_argv_pointer, argv[ local_argv_pointer ] ) ;
     }
 
 
