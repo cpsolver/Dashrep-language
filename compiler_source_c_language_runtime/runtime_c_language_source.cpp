@@ -33,6 +33,15 @@
 
 
 // -----------------------------------------------
+//  IMPORTANT:
+//  The names of local variables and arrays begin
+//  with the text "local_".  All other variables
+//  and arrays are GLOBAL variables and arrays!
+//  An exception is that the standard names
+//  "argv" and "argc" refer to local variables.
+
+
+// -----------------------------------------------
 //  Reminder:  This software is not an
 //  "application" that involves a "user interface"
 //  that enables a user to control this software.
@@ -44,16 +53,15 @@
 //
 //  In particular, local (function-specific)
 //  variables are avoided to yield faster
-//  execution.  (Pushing and popping local
+//  execution.  This speed increase occurs
+//  because pushing and popping local
 //  variables on and off the function stack wastes
-//  time.)
+//  time.
 //
-//  IMPORTANT:
-//  The names of local variables and arrays begin
-//  with the text "local_".  All other variables
-//  and arrays are global variables and arrays!
-//  (An exception is that the standard names
-//  "argv" and "argc" refer to local variables.)
+//  Also, this code does not check for "user" errors
+//  because the Dashrep compiler does not "use"
+//  this code in unexpected ways.  Any other uses
+//  of this code are not supported.
 
 
 // -----------------------------------------------
@@ -382,6 +390,9 @@ const int space_directive_one_requested = 3 ;
 //  Declare variables in alphabetical order.
 
 //  sort these new ones later:
+int pointer ;
+int id_for_pointer_stack_being_followed ;
+int new_current_pointer_stack_text_item ;
 int count_of_numbers_supplied_to_array_all_characters ;
 int count_of_numbers_supplied_to_array_all_pointers ;
 int count_of_numbers_supplied_to_array_all_integers ;
@@ -431,7 +442,7 @@ int check_from_begin ;
 int check_from_begin_or_check_from_end ;
 int check_from_end ;
 int data_type ;
-int count_of_characters_remaining_in_sub_item ;
+int count_of_characters_remaining_in_item ;
 int count_of_words_handled ;
 int count_of_words_in_phrase_name ;
 int counter ;
@@ -446,7 +457,7 @@ int decimal_number_position_end ;
 int defined_phrase_number ;
 int direction_next_or_previous ;
 int direction_opposite ;
-int distance_between_item_begin_and_end ;
+int length_from_item_begin_to_end_minus_one ;
 int distance_from_first_hyphen_to_trailing_delimiter ;
 int do_nothing ;
 int found_matching_phrase_name ;
@@ -454,7 +465,7 @@ int from_text_data_type ;
 int highest_score_for_optimum_character_for_find_pause ;
 int id_containing_first_hyphen ;
 int id_for_copy ;
-int id_for_copy_of_within_items_pointer_stack ;
+int id_for_copy_of_pointer_stack ;
 int id_for_character_position ;
 int id_for_decimal_numbers_as_text ;
 int id_for_empty_text ;
@@ -469,7 +480,7 @@ int id_for_next_word_begin ;
 int id_for_next_word_end ;
 int id_for_non_breaking_space ;
 int id_for_number_as_text ;
-int id_for_original_of_within_items_pointer_stack ;
+int id_for_original_of_pointer_stack ;
 int id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int id_for_phrase_name_append_new_line ;
 int id_for_phrase_name_append_repeatedly_using_count ;
@@ -1012,7 +1023,7 @@ int pointer_to_append_to_indexed_pointer_list ;
 int pointer_to_character_to_insert_between_subitems ;
 int pointer_to_first_hyphen ;
 int pointer_to_leading_delimiter ;
-int pointer_to_next_or_previous_character_in_sub_text_item ;
+int pointer_to_next_or_previous_character ;
 int pointer_to_within_text_item ;
 
 int pointer_to_pointer_stack_level_bottom ;
@@ -1045,7 +1056,7 @@ int single_character_as_integer ;
 int single_integer ;
 int space_available_in_item ;
 int space_directive ;
-int storage_type ;
+int storage_array ;
 int pointer_stack_level_bottom ;
 int pointer_stack_level_current ;
 int pointer_stack_level_current_copy ;
@@ -1944,11 +1955,64 @@ void check_yes_or_no_solo_item_is_empty( )
     {
         yes_or_no_text_item_is_empty = yes_yes ;
         return ;
-    } else
-    {
-        yes_or_no_text_item_is_empty = no_no ;
-        return ;
     }
+    data_type = data_type_for_item[ item_id ] ;
+    storage_array = storage_array_for_data_type[ data_type ] ;
+    switch ( storage_array )
+    {
+        case storage_array_all_pointers :
+            for ( pointer = pointer_begin_for_item[ item_id ] ; pointer <= pointer_end_for_item[ item_id ] ; pointer ++ )
+            {
+                if ( all_pointers[ pointer ] > 0 )
+                {
+                    yes_or_no_text_item_is_empty = no_no ;
+                    return ;
+                }
+            }
+            break ;
+        case storage_array_all_characters :
+            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            {
+                if ( all_characters[ pointer ] > 0 )
+                {
+                    yes_or_no_text_item_is_empty = no_no ;
+                    return ;
+                }
+            }
+            break ;
+        case storage_array_all_integers :
+            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            {
+                if ( all_integers[ pointer ] > 0 )
+                {
+                    yes_or_no_text_item_is_empty = no_no ;
+                    return ;
+                }
+            }
+            break ;
+        case storage_array_all_decimal_numbers :
+            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            {
+                if ( all_decimal_numbers[ pointer ] > 0 )
+                {
+                    yes_or_no_text_item_is_empty = no_no ;
+                    return ;
+                }
+            }
+            break ;
+        default :
+            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            {
+                if ( all_pointers[ pointer ] > 0 )
+                {
+                    yes_or_no_text_item_is_empty = no_no ;
+                    return ;
+                }
+            }
+            break ;
+    }
+    yes_or_no_text_item_is_empty = yes_yes ;
+    return ;
 }
 
 
@@ -2061,7 +2125,7 @@ void check_yes_or_no_matching_text( )
 //  Function just_copy_simple
 //
 //  Copies contents for the storage
-//  type specified by "storage_type" (not
+//  type specified by "storage_array" (not
 //  "data_type"), starting at
 //  "pointer_for_just_copy_source"
 //  for length "length_for_just_copy", with
@@ -2080,7 +2144,7 @@ void just_copy_simple( )
     {
         return ;
     }
-    switch ( storage_type )
+    switch ( storage_array )
     {
         case storage_array_all_pointers :
             while ( counter < 0 )
@@ -2091,7 +2155,7 @@ void just_copy_simple( )
                 counter -- ;
             }
             break ;
-        storage_array_all_characters :
+        case storage_array_all_characters :
             while ( counter < 0 )
             {
                 all_characters[ pointer_from ] = all_characters[ pointer_to ] ;
@@ -2154,7 +2218,7 @@ void copy_solo_item_to_new( )
     pointer_for_just_copy_source = pointer_begin_for_item[ item_id ] ;
     pointer_for_just_copy_destination = pointer_begin_for_item[ id_for_copy ] ;
     length_for_just_copy = length_requested_for_next_item_storage ;
-    storage_type = storage_array_for_data_type[ storage_type ] ;
+    storage_array = storage_array_for_data_type[ data_type ] ;
     just_copy_simple( ) ;
     return ;
 }
@@ -2421,7 +2485,7 @@ void convert_list_of_integers_into_text_item( )
         pointer_for_just_copy_source = pointer_begin_for_item[ id_for_number_as_text ] ;
         length_for_just_copy = pointer_end_for_item[ id_for_number_as_text ] - pointer_for_just_copy_source + 1 ;
         pointer_for_just_copy_destination = pointer_end_for_item[ id_for_integers_as_text ] + 1 ;
-        storage_type = data_type_text_characters ;
+        storage_array = storage_array_all_characters ;
         just_copy_simple( ) ;
         pointer_end_for_item[ id_for_integers_as_text ] += length_for_just_copy ;
 
@@ -2479,7 +2543,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
         pointer_for_just_copy_source = pointer_begin_for_item[ id_for_number_as_text ] ;
         length_for_just_copy = pointer_end_for_item[ id_for_number_as_text ] - pointer_for_just_copy_source + 1 ;
         pointer_for_just_copy_destination = pointer_end_for_item[ id_for_decimal_numbers_as_text ] + 1 ;
-        storage_type = data_type_text_characters ;
+        storage_array = storage_array_all_characters ;
         just_copy_simple( ) ;
         pointer_end_for_item[ id_for_decimal_numbers_as_text ] += length_for_just_copy ;
         decimal_number_position_current ++ ;
@@ -4152,7 +4216,7 @@ void specify_character_to_insert_between_subitems( )
 
 void write_to_log( )
 {
-    log_out << "direction_next_or_previous " << direction_next_or_previous << std::endl << "pointer_stack_level_bottom " << pointer_stack_level_bottom << std::endl << "pointer_stack_level_top " << pointer_stack_level_top << std::endl << "pointer_stack_level_prior " << pointer_stack_level_prior << std::endl << "pointer_stack_level_next " << pointer_stack_level_next << std::endl << "pointer_stack_pointer_for_get_next_previous_character " << pointer_stack_pointer_for_get_next_previous_character << std::endl << "zero_offset_in_stack_level_top " << zero_offset_in_stack_level_top << std::endl << "current_pointer_stack_text_item " << current_pointer_stack_text_item << std::endl << "current_pointer_stack_character_position " << current_pointer_stack_character_position << std::endl << "pointer_begin_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_begin_for_item[ current_pointer_stack_text_item ] << std::endl << "pointer_end_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_end_for_item[ current_pointer_stack_text_item ] << std::endl << "current_pointer_stack_text_item_begin " << current_pointer_stack_text_item_begin << std::endl << "current_pointer_stack_text_item_end " << current_pointer_stack_text_item_end << std::endl << "distance_between_item_begin_and_end " << distance_between_item_begin_and_end << std::endl << "data_type_for_item " << data_type_for_item[ current_pointer_stack_text_item ] << std::endl << "yes_or_no_reached_end_of_current_text_item " << yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
+    log_out << "direction_next_or_previous " << direction_next_or_previous << std::endl << "pointer_stack_level_bottom " << pointer_stack_level_bottom << std::endl << "pointer_stack_level_top " << pointer_stack_level_top << std::endl << "pointer_stack_level_prior " << pointer_stack_level_prior << std::endl << "pointer_stack_level_next " << pointer_stack_level_next << std::endl << "pointer_stack_pointer_for_get_next_previous_character " << pointer_stack_pointer_for_get_next_previous_character << std::endl << "zero_offset_in_stack_level_top " << zero_offset_in_stack_level_top << std::endl << "current_pointer_stack_text_item " << current_pointer_stack_text_item << std::endl << "current_pointer_stack_character_position " << current_pointer_stack_character_position << std::endl << "pointer_begin_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_begin_for_item[ current_pointer_stack_text_item ] << std::endl << "pointer_end_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_end_for_item[ current_pointer_stack_text_item ] << std::endl << "current_pointer_stack_text_item_begin " << current_pointer_stack_text_item_begin << std::endl << "current_pointer_stack_text_item_end " << current_pointer_stack_text_item_end << std::endl << "length_from_item_begin_to_end_minus_one " << length_from_item_begin_to_end_minus_one << std::endl << "data_type_for_item " << data_type_for_item[ current_pointer_stack_text_item ] << std::endl << "yes_or_no_reached_end_of_current_text_item " << yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
 
     test_loop_counter ++ ;
     if ( test_loop_counter > 200 )
@@ -4169,17 +4233,19 @@ void write_to_log( )
 
 void put_info_into_pointer_stack_level( )
 {
-        zero_offset_in_stack_level_top = pointer_begin_for_item[ pointer_stack_level_bottom ] ;
+    zero_offset_in_stack_level_current = pointer_begin_for_item[ pointer_stack_level_current ] ;
 
-        all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_top ] = pointer_stack_level_top ;
+    all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_prior ] = pointer_stack_level_prior ;
 
-        all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_prior ] = pointer_stack_level_prior ;
+    all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_next ] = pointer_stack_level_next ;
 
-        all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_next ] = pointer_stack_level_next ;
+    all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_text_item ] = current_pointer_stack_text_item ;
 
-        all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_text_item ] = current_pointer_stack_text_item ;
+    all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_character_position ] = current_pointer_stack_character_position ;
 
-        all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_character_position ] = current_pointer_stack_character_position ;
+    all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_top ] = pointer_stack_level_top ;
+
+    return ;
 }
 
 
@@ -4189,17 +4255,22 @@ void put_info_into_pointer_stack_level( )
 
 void get_info_from_pointer_stack_level( )
 {
-    zero_offset_in_stack_level_top = pointer_begin_for_item[ pointer_stack_level_bottom ] ;
+    zero_offset_in_stack_level_current = pointer_begin_for_item[ pointer_stack_level_current ] ;
 
-    pointer_stack_level_top = all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_top ] ;
+    pointer_stack_level_prior = all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_prior ] ;
 
-    pointer_stack_level_prior = all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_prior ] ;
+    pointer_stack_level_next = all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_next ] ;
 
-    pointer_stack_level_next = all_pointers[ zero_offset_in_stack_level_top + offset_for_pointer_stack_level_next ] ;
+    current_pointer_stack_text_item = all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_text_item ] ;
 
-    current_pointer_stack_text_item = all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_text_item ] ;
+    current_pointer_stack_character_position = all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_character_position ] ;
 
-    current_pointer_stack_character_position = all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_character_position ] ;
+    if ( pointer_stack_level_current == pointer_stack_level_bottom )
+    {
+        pointer_stack_level_top = all_pointers[ zero_offset_in_stack_level_current + offset_for_pointer_stack_level_top ] ;
+    }
+
+    return ;
 }
 
 
@@ -4419,8 +4490,8 @@ void pop_pointer_stack_level( )
 
 void initialize_get_next_character_from_text_item( )
 {
-//    id_pointer_stack_for_getting_next_character ;
-    count_of_characters_remaining_in_sub_item = 0 ;
+    id_pointer_stack_for_getting_next_character = item_id ;
+    count_of_characters_remaining_in_item = 0 ;
     current_pointer_stack_text_item = item_id ;
     pointer_stack_level_bottom = 0 ;
     push_pointer_stack_level( ) ;
@@ -4466,6 +4537,336 @@ void initialize_get_previous_character_from_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function get_next_or_previous_non_pointer_text_item
+//
+//  Changes the pointer stack named
+//  "id_for_pointer_stack_being_followed"
+//  to point to the next (or previous)
+//  non-pointer text item.  Before using this
+//  function, use the function
+//  "initialize_get_next_character_from_text_item" or
+//  "initialize_get_previous_character_from_text_item".
+
+void get_next_or_previous_non_pointer_text_item( )
+{
+
+
+// -----------------------------------------------
+//  Begin a loop that points to the next (or
+//  previous) text item -- of any type other than
+//  "pointers_linked".  When needed, move up or
+//  down the pointer stack levels, or
+//  sometimes both up and down.  The loop exits
+//  when the next non-pointer text item has been
+//  found.
+
+    while ( id_for_pointer_stack_being_followed > 0 )
+    {
+
+
+// -----------------------------------------------
+//  Put the ID of the top pointer stack level into
+//  "pointer_stack_level_top".
+
+        pointer_stack_level_current = id_for_pointer_stack_being_followed ;
+        get_info_from_pointer_stack_level( ) ;
+
+
+// -----------------------------------------------
+//  Get the following info from the top pointer
+//  stack level:  "pointer_stack_level_prior" and
+//  "pointer_stack_level_next" and
+//  "current_pointer_stack_text_item" and
+//  "current_pointer_stack_character_position".
+//  If there is only one pointer stack level,
+//  this information is already available.
+
+        if ( pointer_stack_level_top != id_for_pointer_stack_being_followed )
+        {
+            pointer_stack_level_current = pointer_stack_level_top ;
+            get_info_from_pointer_stack_level( ) ;
+        }
+
+
+// -----------------------------------------------
+//  Write debugging info.
+
+        log_out << "get next item" << std::endl ;
+        write_to_log( ) ;
+
+
+// -----------------------------------------------
+//  Point to the beginning and end of the item
+//  that is pointed to by the pointer stack, and
+//  calculate the length of the item, minus one.
+
+        current_pointer_stack_text_item_begin = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
+        current_pointer_stack_text_item_end = pointer_end_for_item[ current_pointer_stack_text_item ] ;
+        length_from_item_begin_to_end_minus_one = current_pointer_stack_text_item_end - current_pointer_stack_text_item_begin ;
+
+
+// -----------------------------------------------
+//  If the "character" pointer in
+//  "current_pointer_stack_character_position" --
+//  which also can point to pointers -- is pointing
+//  beyond the range of the top item, indicate that
+//  the end (or beginning) of the item has been
+//  reached.  Allow for the
+//  possibility that the item is empty.
+
+        if ( direction_next_or_previous == direction_next )
+        {
+            if ( current_pointer_stack_character_position > length_from_item_begin_to_end_minus_one )
+            {
+                yes_or_no_reached_end_of_current_text_item = yes_yes ;
+            } else
+            {
+                yes_or_no_reached_end_of_current_text_item = no_no ;
+            }
+        } else
+        {
+            if ( current_pointer_stack_character_position < 1 )
+            {
+                yes_or_no_reached_end_of_current_text_item = yes_yes ;
+            } else
+            {
+                yes_or_no_reached_end_of_current_text_item = no_no ;
+            }
+        }
+
+
+// -----------------------------------------------
+//  If the end (or beginning) of an item within a
+//  linked list has been reached, follow the
+//  linked list to the next item.
+
+        if ( yes_or_no_reached_end_of_current_text_item == yes_yes )
+        {
+
+// todo: write this code
+
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  If the end (or beginning) of the linked list
+//  has been reached, pop the pointer stack to get
+//  get back to the item that pointed to that
+//  linked list, point to the next position, then
+//  repeat the loop.
+
+        if ( yes_or_no_reached_end_of_current_text_item == yes_yes )
+        {
+            pop_pointer_stack_level( ) ;
+            zero_offset_in_stack_level_current = pointer_begin_for_item[ pointer_stack_level_top ] ;
+            if ( direction_next_or_previous == direction_next )
+            {
+                all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_character_position ] ++ ;
+            } else
+            {
+                all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_character_position ] -- ;
+            }
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  If the top item pointed to by the pointer
+//  stack is of data type "pointers_linked" then
+//  push a new level onto the pointer stack, point
+//  to the first (or last) position within that
+//  new-top item, and then return.
+
+        data_type = data_type_for_item[ current_pointer_stack_text_item ] ;
+        if ( data_type == data_type_pointers_linked )
+        {
+        	zero_offset_in_stack_level_current = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
+            new_current_pointer_stack_text_item = all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_text_item ] ;
+            push_pointer_stack_level( ) ;
+
+//  todo: finish writing this code
+
+        	zero_offset_in_stack_level_current = pointer_begin_for_item[ item_id ] ;
+
+            all_pointers[ zero_offset_in_stack_level_current ] = new_current_pointer_stack_text_item ;
+
+            if ( direction_next_or_previous == direction_next )
+            {
+                zero_offset_in_stack_level_top = pointer_begin_for_item[ pointer_stack_level_top ] ;
+                all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_character_position ] = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
+            } else
+            {
+                zero_offset_in_stack_level_top = pointer_begin_for_item[ pointer_stack_level_top ] ;
+                all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_character_position ] = pointer_end_for_item[ current_pointer_stack_text_item ] ;
+            }
+            return ;
+        }
+
+
+// -----------------------------------------------
+//  Repeat the loop for the next pointer.
+
+    }
+
+
+// -----------------------------------------------
+//  End of get_next_or_previous_non_pointer_text_item.
+
+    return ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_next_or_previous_character_from_text_item
+//
+//  Gets the next -- or previous -- character from
+//  the text item specified by
+//  "item_id" and  puts the character
+//  -- as an integer -- into
+//  "single_character_as_integer".  The
+//  direction -- "next" or "previous" -- is
+//  specified by "direction_next_or_previous".
+//  Before using this function the initialization
+//  function
+//  "initialize_get_next_character_from_text_item"
+//  or
+//  "initialize_get_previous_character_from_text_item"
+//  must be used.
+
+void get_next_or_previous_character_from_text_item( )
+{
+
+
+// -----------------------------------------------
+//  Begin a loop that points to the next (or
+//  previous) character.  When needed, move up or
+//  down the pointer stack levels, or
+//  sometimes both up and down.  The loop exits
+//  when the next character is known.
+
+    while ( 1 == 1 )
+    {
+
+
+// -----------------------------------------------
+//  If the previous character was the last (or
+//  previous) character in the current-level text
+//  item, track this situation.  Allow for the
+//  possibility that the text item is empty.
+
+        if ( direction_next_or_previous == direction_next )
+        {
+            if ( current_pointer_stack_character_position > length_from_item_begin_to_end_minus_one )
+            {
+                yes_or_no_reached_end_of_current_text_item = yes_yes ;
+            } else
+            {
+                yes_or_no_reached_end_of_current_text_item = no_no ;
+            }
+        } else
+        {
+            if ( current_pointer_stack_character_position < 1 )
+            {
+                yes_or_no_reached_end_of_current_text_item = yes_yes ;
+            } else
+            {
+                yes_or_no_reached_end_of_current_text_item = no_no ;
+            }
+        }
+
+
+// -----------------------------------------------
+//  Write debugging info.
+
+        log_out << "get next item" << std::endl ;
+        write_to_log( ) ;
+
+
+// -----------------------------------------------
+//  If the last (or first) character has already
+//  been supplied, supply the character number as
+//  zero.
+
+        if ( ( pointer_stack_level_prior == 0 ) && ( yes_or_no_reached_end_of_current_text_item == yes_yes ) )
+        {
+            pointer_to_next_or_previous_character = 0 ;
+            count_of_characters_remaining_in_item = 0 ;
+            log_out << "end of text" << std::endl ;
+            return ;
+        }
+
+
+// -----------------------------------------------
+//  If the end (or beginning) of a text item
+//  has been reached, get the next (or previous)
+//  text item, then repeat the loop.
+
+        if ( yes_or_no_reached_end_of_current_text_item == yes_yes )
+        {
+            get_next_or_previous_non_pointer_text_item( ) ;
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  If a hyphen or underscore needs to be
+//  inserted here, insert it.  This applies to the
+//  data type
+//  "data_type_phrase_word_pointers".  It
+//  also applies when there is a transition from
+//  one phrase name to a subordinate phrase name
+//  (which usually happens when "fenambee" or
+//  "amennfen" or similar directive is used).  If
+//  the text item is empty or contains only one
+//  sub text item, don't insert a character.
+
+        if ( character_to_insert_between_subitems != 0 )
+        {
+            if ( yes_or_no_inserted_character == no_no )
+            {
+                if ( ( ( current_pointer_stack_character_position > 1 ) && ( current_pointer_stack_character_position < ( current_pointer_stack_text_item_end - current_pointer_stack_text_item_begin + 1 ) ) ) || ( ( data_type == data_type_phrase_word_pointers ) && ( data_type_for_item[ pointer_stack_level_prior ] == data_type_phrase_word_pointers ) ) )
+                {
+                    yes_or_no_inserted_character = yes_yes ;
+                    pointer_to_next_or_previous_character = pointer_to_character_to_insert_between_subitems ;
+                    all_characters[ pointer_to_next_or_previous_character ] = character_to_insert_between_subitems ;
+                    count_of_characters_remaining_in_item = 1 ;
+                    return ;
+                }
+            }
+        }
+
+
+// -----------------------------------------------
+//  If the character number is zero, skip it and
+//  repeat the loop.
+
+        if ( single_character_as_integer == 0 )
+        {
+            continue ;
+        }
+
+
+// -----------------------------------------------
+//  Repeat the loop that gets the next character.
+
+    }
+
+
+// -----------------------------------------------
+//  End of get_next_or_previous_character_from_text_item.
+
+    pointer_to_next_or_previous_character = 0 ;
+    count_of_characters_remaining_in_item = 0 ;
+    return ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function copy_pointer_stack
 //
 //  Copies the information needed to point to a
@@ -4481,9 +4882,9 @@ void initialize_get_previous_character_from_text_item( )
 //  If the stack for the copy already exists, it
 //  is used instead of creating a new stack.  The
 //  copy is pointed to by
-//  "id_for_copy_of_within_items_pointer_stack".
+//  "id_for_copy_of_pointer_stack".
 //  The original is pointed to by
-//  "id_for_original_of_within_items_pointer_stack".
+//  "id_for_original_of_pointer_stack".
 
 void copy_pointer_stack( )
 {
@@ -4495,16 +4896,16 @@ void copy_pointer_stack( )
 //  get its location.  Otherwise use the existing
 //  stack.
 
-    if ( id_for_copy_of_within_items_pointer_stack == 0 )
+    if ( id_for_copy_of_pointer_stack == 0 )
     {
         pointer_stack_level_bottom = 0 ;
         push_pointer_stack_level( ) ;
-        id_for_copy_of_within_items_pointer_stack = pointer_stack_level_bottom ;
+        id_for_copy_of_pointer_stack = pointer_stack_level_bottom ;
     } else
     {
-        pointer_stack_level_bottom = id_for_copy_of_within_items_pointer_stack ;
+        pointer_stack_level_bottom = id_for_copy_of_pointer_stack ;
     }
-    pointer_stack_level_current_copy = id_for_copy_of_within_items_pointer_stack ;
+    pointer_stack_level_current_copy = id_for_copy_of_pointer_stack ;
 
 
 // -----------------------------------------------
@@ -4512,7 +4913,7 @@ void copy_pointer_stack( )
 //  stack being copied, and get the location of
 //  the top item in that stack.
 
-    pointer_stack_level_current_original = id_for_original_of_within_items_pointer_stack ;
+    pointer_stack_level_current_original = id_for_original_of_pointer_stack ;
     zero_offset_in_stack_level_current_original = pointer_begin_for_item[ pointer_stack_level_current_original ] ;
     pointer_stack_level_top_original = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_pointer_stack_level_top ] ;
 
@@ -4559,9 +4960,9 @@ void copy_pointer_stack( )
 
         if ( pointer_stack_level_current_copy == 0 )
         {
-            pointer_stack_level_bottom = id_for_copy_of_within_items_pointer_stack ;
+            pointer_stack_level_bottom = id_for_copy_of_pointer_stack ;
             create_new_pointer_stack_level_top( ) ;
-            pointer_stack_level_current_copy = id_for_copy_of_within_items_pointer_stack ;
+            pointer_stack_level_current_copy = id_for_copy_of_pointer_stack ;
         }
 
 
@@ -4591,271 +4992,12 @@ void copy_pointer_stack( )
 //  Copy the pointer to the top level into the
 //  bottom level.
 
-    all_pointers[ pointer_begin_for_item[ id_for_copy_of_within_items_pointer_stack ] + offset_for_pointer_stack_level_top ] = pointer_stack_level_current_copy ;
+    all_pointers[ pointer_begin_for_item[ id_for_copy_of_pointer_stack ] + offset_for_pointer_stack_level_top ] = pointer_stack_level_current_copy ;
 
 
 // -----------------------------------------------
 //  End of copy_pointer_stack.
 
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_or_previous_sub_text_item
-//
-//  Changes the pointer stack named "..."
-//  to point to the next (or previous) subordinate
-//  text item that contains text characters.  It
-//  supplies to the function
-//  get_next_or_previous_character_from_text_item
-//  a pointer to the next (or previous) character
-//  and the number of adjacent characters to get.
-
-void get_next_or_previous_sub_text_item( )
-{
-
-
-// -----------------------------------------------
-//  Begin a loop that points to the next (or
-//  previous) character.  When needed, move up or
-//  down the pointer stack levels, or
-//  sometimes both up and down.  The loop exits
-//  when the next character is known.
-
-    while ( 1 == 1 )
-    {
-
-
-// -----------------------------------------------
-//  Point to the beginning and end of the current
-//  text item, and calculate the distance between
-//  them.
-
-        current_pointer_stack_text_item_begin = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
-        current_pointer_stack_text_item_end = pointer_end_for_item[ current_pointer_stack_text_item ] ;
-        distance_between_item_begin_and_end = current_pointer_stack_text_item_end - current_pointer_stack_text_item_begin ;
-
-
-// -----------------------------------------------
-//  If the previous character was the last (or
-//  previous) character in the current-level text
-//  item, track this situation.  Allow for the
-//  possibility that the text item is empty.
-
-        if ( direction_next_or_previous == direction_next )
-        {
-            if ( current_pointer_stack_character_position > distance_between_item_begin_and_end )
-            {
-                yes_or_no_reached_end_of_current_text_item = yes_yes ;
-            } else
-            {
-                yes_or_no_reached_end_of_current_text_item = no_no ;
-            }
-        } else
-        {
-            if ( current_pointer_stack_character_position < 1 )
-            {
-                yes_or_no_reached_end_of_current_text_item = yes_yes ;
-            } else
-            {
-                yes_or_no_reached_end_of_current_text_item = no_no ;
-            }
-        }
-
-
-// -----------------------------------------------
-//  Write debugging info.
-
-        log_out << "get char" << std::endl ;
-        write_to_log( ) ;
-
-
-// -----------------------------------------------
-//  If the last (or first) character has already
-//  been supplied, supply the character number as
-//  zero.
-
-        if ( ( pointer_stack_level_prior == 0 ) && ( yes_or_no_reached_end_of_current_text_item == yes_yes ) )
-        {
-            pointer_to_next_or_previous_character_in_sub_text_item = 0 ;
-            count_of_characters_remaining_in_sub_item = 0 ;
-            log_out << "end of text" << std::endl ;
-            return ;
-        }
-
-
-// -----------------------------------------------
-//  If the end (or beginning) of a sub text item
-//  has been reached, move back to the text item
-//  that pointed to that text item, then repeat
-//  the loop.
-
-        if ( yes_or_no_reached_end_of_current_text_item == yes_yes )
-        {
-            pop_pointer_stack_level( ) ;
-            continue ;
-        }
-
-
-// -----------------------------------------------
-//  If a hyphen or underscore needs to be
-//  inserted here, insert it.  This applies to the
-//  data type
-//  "data_type_phrase_word_pointers".  It
-//  also applies when there is a transition from
-//  one phrase name to a subordinate phrase name
-//  (which usually happens when "fenambee" or
-//  "amennfen" or similar directive is used).  If
-//  the text item is empty or contains only one
-//  sub text item, don't insert a character.
-
-        if ( character_to_insert_between_subitems != 0 )
-        {
-            if ( yes_or_no_inserted_character == no_no )
-            {
-                if ( ( ( current_pointer_stack_character_position > 1 ) && ( current_pointer_stack_character_position < ( current_pointer_stack_text_item_end - current_pointer_stack_text_item_begin + 1 ) ) ) || ( ( data_type == data_type_phrase_word_pointers ) && ( data_type_for_item[ pointer_stack_level_prior ] == data_type_phrase_word_pointers ) ) )
-                {
-                    yes_or_no_inserted_character = yes_yes ;
-                    pointer_to_next_or_previous_character_in_sub_text_item = pointer_to_character_to_insert_between_subitems ;
-                    all_characters[ pointer_to_next_or_previous_character_in_sub_text_item ] = character_to_insert_between_subitems ;
-                    count_of_characters_remaining_in_sub_item = 1 ;
-                    return ;
-                }
-            }
-        }
-
-
-// -----------------------------------------------
-//  If the data type is "text_characters", point
-//  to the first (or last) character in the sub
-//  text item, and return.
-
-        if ( data_type == data_type_text_characters )
-        {
-            if ( direction_next_or_previous == direction_next )
-            {
-                pointer_to_next_or_previous_character_in_sub_text_item = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
-            } else
-            {
-                pointer_to_next_or_previous_character_in_sub_text_item = pointer_end_for_item[ current_pointer_stack_text_item ] ;
-            }
-            count_of_characters_remaining_in_sub_item = distance_between_item_begin_and_end + 1 ;
-            return ;
-        }
-
-
-// -----------------------------------------------
-//  If the data type is either "list_of_integers"
-//  or "list_of_decimal_numbers", convert the
-//  numbers into a text item, with a space between
-//  each adjacent pair of numbers, and insert this
-//  new text item as a replacement for the list of
-//  integers or list of pointers to decimal
-//  numbers, and point to the beginning (or end)
-//  of the new text item.
-
-        if ( ( data_type == data_type_pointers_linked ) || ( data_type == data_type_phrase_word_pointers ) )
-        {
-            if ( data_type == data_type_list_of_integers )
-            {
-                id_for_list_of_integers = current_pointer_stack_text_item ;
-                convert_list_of_integers_into_text_item( ) ;
-            } else
-            {
-                id_for_list_of_decimal_numbers = current_pointer_stack_text_item ;
-                convert_list_of_decimal_numbers_into_text_item( ) ;
-            }
-
-//  todo: move to function that inserts replacement item ID number
-
-            put_info_into_pointer_stack_level( ) ;
-            push_pointer_stack_level( ) ;
-            get_info_from_pointer_stack_level( ) ;
-            current_pointer_stack_text_item = all_pointers[ pointer_begin_for_item[ current_pointer_stack_text_item ] + current_pointer_stack_character_position - 1 ] ;
-            zero_offset_in_stack_level_top = pointer_begin_for_item[ pointer_stack_level_top ] ;
-            all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_text_item ] = current_pointer_stack_text_item ;
-            data_type = data_type_for_item[ current_pointer_stack_text_item ] ;
-
-
-            if ( direction_next_or_previous == direction_next )
-            {
-                current_pointer_stack_character_position = 1 ;
-            } else
-            {
-                current_pointer_stack_character_position = pointer_end_for_item[ current_pointer_stack_text_item ] - pointer_begin_for_item[ current_pointer_stack_text_item ] + 1 ;
-            }
-            all_pointers[ zero_offset_in_stack_level_top + offset_for_current_pointer_stack_level_character_position ] = current_pointer_stack_character_position ;
-            yes_or_no_inserted_character = no_no ;
-            continue ;
-        }
-
-
-// -----------------------------------------------
-//  If the character number is zero, skip it and
-//  repeat the loop.
-
-        if ( single_character_as_integer == 0 )
-        {
-            continue ;
-        }
-
-
-// -----------------------------------------------
-//  Repeat the loop that gets the next character.
-
-    }
-
-
-// -----------------------------------------------
-//  End of get_next_or_previous_sub_text_item.
-
-    pointer_to_next_or_previous_character_in_sub_text_item = 0 ;
-    count_of_characters_remaining_in_sub_item = 0 ;
-    return ;
-
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_or_previous_character_from_text_item
-//
-//  Gets the next -- or previous -- character from
-//  the text item specified by
-//  "item_id" and  puts the character
-//  -- as an integer -- into
-//  "single_character_as_integer".  The
-//  direction -- "next" or "previous" -- is
-//  specified by "direction_next_or_previous".
-//  Before using this function the initialization
-//  function
-//  "initialize_get_next_character_from_text_item"
-//  or
-//  "initialize_get_previous_character_from_text_item"
-//  must be used.
-
-void get_next_or_previous_character_from_text_item( )
-{
-    if ( count_of_characters_remaining_in_sub_item < 1 )
-    {
-        get_next_or_previous_character_from_text_item( ) ;
-    }
-    if ( pointer_to_next_or_previous_character_in_sub_text_item < 1 )
-    {
-        single_character_as_integer = 0 ;
-        return ;
-    }
-    single_character_as_integer = all_characters[ pointer_to_next_or_previous_character_in_sub_text_item ] ;
-    count_of_characters_remaining_in_sub_item -- ;
-    if ( direction_next_or_previous == direction_next )
-    {
-        pointer_to_next_or_previous_character_in_sub_text_item ++ ;
-    } else
-    {
-        pointer_to_next_or_previous_character_in_sub_text_item -- ;
-    }
     return ;
 }
 
@@ -4883,7 +5025,7 @@ void parse_phrase_name( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_within_items_pointer_stack = pointer_stack_pointer_for_phrase_name_end ;
+    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_phrase_name_end ;
     copy_pointer_stack( ) ;
 
 
@@ -5304,9 +5446,9 @@ void point_to_next_word_in_text_item( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_within_items_pointer_stack = pointer_stack_pointer_for_word_begin ;
+    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_word_begin ;
     copy_pointer_stack( ) ;
-    id_for_next_word_begin = id_for_copy_of_within_items_pointer_stack ;
+    id_for_next_word_begin = id_for_copy_of_pointer_stack ;
     pointer_stack_level_top_original = pointer_stack_level_top ;
     get_next_or_previous_character_from_text_item( ) ;
 
@@ -5338,9 +5480,9 @@ void point_to_next_word_in_text_item( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_within_items_pointer_stack = pointer_stack_pointer_for_word_end ;
+    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_word_end ;
     copy_pointer_stack( ) ;
-    id_for_next_word_end = id_for_copy_of_within_items_pointer_stack ;
+    id_for_next_word_end = id_for_copy_of_pointer_stack ;
 
 
 // -----------------------------------------------
