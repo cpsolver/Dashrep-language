@@ -1,0 +1,15 @@
+comment-dashed-line  <new_line>
+// function__get_count_of_words  <new_line>
+//  <new_line>
+
+int function__get_count_of_words( ) {  <new_line>
+itemid_action_name_with_underscores = 'get_count_of_words' ; <new_line>
+template-check-operand-one-is-phrase-name
+
+itemid_source_text = code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+function__point_to_words( ) ;  <new_line>
+itemid_action_result = function_parameterized__normalize_calculated_value( itemid_number_of_words . '' ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,9 @@
+comment-dashed-line  <new_line>
+
+int function__get_definitions_from_phrase( ) {  <new_line>
+itemid_action_name_with_underscores = 'get_definitions_from_phrase' ; <new_line>
+
+itemid_action_result = 'todo__not_yet_written' ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

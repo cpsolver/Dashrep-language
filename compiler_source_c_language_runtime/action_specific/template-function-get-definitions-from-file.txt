@@ -1,0 +1,24 @@
+comment-dashed-line  <new_line>
+
+int function__get_definitions_from_file( ) {  <new_line>
+itemid_action_name_with_underscores = 'get_definitions_from_file' ; <new_line>
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+
+// todo: fix this code ...  <new_line>
+
+itemid_source_definitions = '' ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_input_line =~ s/[\n\r\f\t]+/ /g ;  <new_line>
+    if ( ( defined( itemid_input_line ) ) && ( itemid_input_line =~ /[^ ]/ ) ) {  <new_line>
+        itemid_source_definitions .= itemid_input_line . ' ' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

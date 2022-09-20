@@ -1,0 +1,29 @@
+comment-dashed-line  <new_line>
+// function__get_word_at_position  <new_line>
+//  <new_line>
+
+int function__get_word_at_position( ) {  <new_line>
+itemid_action_name_with_underscores = 'get_word_at_position' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-positive-integer
+
+itemid_action_result = '' ;  <new_line>
+
+itemid_source_text = code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+itemid_word_pointer_text = itemid_operand_two ;  <new_line>
+
+itemid_default_text = '' ;  <new_line>
+
+template-function-segment-if-zero-words-return-default-text
+
+itemid_word_pointer_numeric = function_parameterized__convert_numeric_text_into_numeric_value( itemid_word_pointer_text ) ;  <new_line>
+
+if ( itemid_number_of_words < itemid_word_pointer_numeric ) {  <new_line>
+itemid_word_pointer_numeric = itemid_number_of_words ;  <new_line>
+}  <new_line>
+
+itemid_action_result = runtime-code-word-within-source-text ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

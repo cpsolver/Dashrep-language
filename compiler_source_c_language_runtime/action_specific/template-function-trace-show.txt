@@ -1,0 +1,14 @@
+comment-dashed-line  <new_line>
+
+int function__trace_show( ) {  <new_line>
+// itemid_action_name_with_underscores = 'trace_show' ; <new_line>
+itemid_action_result = '' ;  <new_line>
+if ( function_parameterized__yes_or_no_phrase_name( itemid_operand_one ) == no_no ) {  <new_line>
+TRACE_OUT << 'trace text:' . "\n" . itemid_operand_one . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' << std::endl ;  <new_line>
+} else if ( exists( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ) ) {  <new_line>
+TRACE_OUT << itemid_operand_one . ':' . "\n" . code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' << std::endl ;  <new_line>
+} else {  <new_line>
+TRACE_OUT << itemid_operand_one . ':' . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' << std::endl ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,38 @@
+comment-dashed-line  <new_line>
+
+int function__numeric_vectors_from_delta_values_calculate_distances( ) {  <new_line>
+itemid_action_name_with_underscores = 'numeric_vectors_from_delta_values_calculate_distances' ; <new_line>
+template-check-operand-one-is-phrase-not-empty
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_single_value = 0 ;  <new_line>
+itemid_target_operand = itemid_operand_three ;  <new_line>
+if ( function_parameterized__get_dashrep_replacement( itemid_operand_one ) !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__numeric_vectors_from_delta_values_calculate_distances' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_list_of_x_values_as_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+itemid_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
+itemid_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
+@global_list_of_x_values = split( / +/ , itemid_list_of_x_values_as_text ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_target_operand } = '' ;  <new_line>
+itemid_list_of_y_values_as_text = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_list_of_y_values_as_text =~ s/\n/ /s ;  <new_line>
+itemid_list_of_y_values_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_y_values_as_text =~ s/ +$// ;  <new_line>
+@global_list_of_y_values = split( / +/ , itemid_list_of_y_values_as_text ) ;  <new_line>
+for( itemid_pair_pointer = 0 ; itemid_pair_pointer <= c_run_count_of_words_in_list_of_x_values ; itemid_pair_pointer ++ ) {  <new_line>
+    itemid_numeric_value =  int( sqrt( ( itemid_list_of_x_values[ itemid_pair_pointer ] ** 2 ) + ( itemid_list_of_y_values[ itemid_pair_pointer ] ** 2 ) ) + 0.5 ) ;  <new_line>
+    if ( itemid_numeric_value == 0 ) {  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_target_operand } .= '0 ' ;  <new_line>
+    } else {  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_target_operand } .= sprintf( "%d" , itemid_numeric_value ) . ' ' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

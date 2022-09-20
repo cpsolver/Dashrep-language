@@ -1,0 +1,16 @@
+comment-dashed-line  <new_line>
+
+int function__numeric_odd_or_even( ) {  <new_line>
+itemid_action_name_with_underscores = 'numeric_odd_or_even' ; <new_line>
+template-check-operand-one-is-real-number
+
+itemid_numeric_value_first = int( function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_one ) ) ;  <new_line>
+itemid_numeric_value_second = itemid_numeric_value_first - ( 2 * int( itemid_numeric_value_first / 2 ) ) ;  <new_line>
+if ( itemid_numeric_value_second == 0 ) {  <new_line>
+itemid_action_result = "even" ;  <new_line>
+} else {  <new_line>
+itemid_action_result = "odd" ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,19 @@
+comment-dashed-line  <new_line>
+
+int function__clear_listed_phrases( ) {  <new_line>
+itemid_action_name_with_underscores = 'clear_listed_phrases' ; <new_line>
+template-check-operand-one-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+if ( not ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) ) {  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+@global_list_of_phrase_names = split( / +/ , function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ;  <new_line>
+foreach itemid_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_line>
+    if ( exists( function_parameterized__get_dashrep_replacement( itemid_phrase_name_to_clear } ) ) {  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_phrase_name_to_clear } = '' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

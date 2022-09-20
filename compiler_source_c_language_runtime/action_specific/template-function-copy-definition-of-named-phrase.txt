@@ -1,0 +1,24 @@
+comment-dashed-line  <new_line>
+
+int function__copy_definition_of_named_phrase( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_definition_of_named_phrase' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+
+itemid_phrase_name = function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( function_parameterized__yes_or_no_phrase_name( itemid_phrase_name ) == yes_yes ) {  <new_line>
+    if ( exists( code-get-or-put-phrase-definition-begin itemid_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
+        code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin itemid_phrase_name code-get-or-put-phrase-definition-end  <new_line>
+    } else {  <new_line>
+        code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+    }  <new_line>
+} else {  <new_line>
+    code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

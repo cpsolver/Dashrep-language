@@ -1,0 +1,34 @@
+comment-dashed-line  <new_line>
+
+int function__copy_words_that_contain_listed_words( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_words_that_contain_listed_words' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_list_of_words_as_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+itemid_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+itemid_list_of_words_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_words_as_text =~ s/ +$// ;  <new_line>
+@global_list_of_words_to_check = split( / +/ , itemid_list_of_words_as_text ) ;  <new_line>
+itemid_list_of_words_as_text = function_parameterized__get_dashrep_replacement( itemid_operand_three } ;  <new_line>
+itemid_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+itemid_list_of_words_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_words_as_text =~ s/ +$// ;  <new_line>
+@global_list_of_strings_to_match = split( / +/ , itemid_list_of_words_as_text ) ;  <new_line>
+itemid_generated_list = '' ;  <new_line>
+foreach itemid_word_to_check ( @global_list_of_words_to_check ) {  <new_line>
+    foreach itemid_string_to_match ( @global_list_of_strings_to_match ) {  <new_line>
+        itemid_pointer_to_matching_text = index( itemid_word_to_check , itemid_string_to_match ) ;  <new_line>
+        if ( itemid_pointer_to_matching_text >= 0 ) {  <new_line>
+            itemid_generated_list .= itemid_word_to_check . ' ' ;  <new_line>
+            last ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_generated_list =~ s/ +$// ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_two ) = itemid_generated_list ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

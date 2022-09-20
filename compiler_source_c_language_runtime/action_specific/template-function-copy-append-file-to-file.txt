@@ -1,0 +1,27 @@
+comment-dashed-line  <new_line>
+
+int function__copy_append_file_to_file( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_append_file_to_file' ; <new_line>
+
+combee template-return-if-no-permission-to-append-to-files comenn
+
+itemid_target_file_name = itemid_operand_two ;  <new_line>
+template-open-file-for-appending
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    OUTFILE << itemid_input_line << std::endl ;  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+itemid_yes_or_no_file_opened_for_writing = no_no ;  <new_line>
+close( OUTFILE ) ;  <new_line>
+
+template-runtime-code-protect-target-file
+
+return '' ;  <new_line>
+
+template-function-segment-ending

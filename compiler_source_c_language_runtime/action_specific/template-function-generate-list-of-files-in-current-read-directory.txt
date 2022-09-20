@@ -1,0 +1,35 @@
+comment-dashed-line  <new_line>
+
+int function__generate_list_of_files_in_current_read_directory( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_list_of_files_in_current_read_directory' ; <new_line>
+template-check-operand-one-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_source_path_prefix = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
+if ( ( itemid_source_path_prefix eq '' ) || ( itemid_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
+
+    itemid_source_path_prefix = './' ;  <new_line>
+
+combee ****
+todo: allow backslash as needed for windows OS
+itemid_source_path_prefix = "\.\\" ;  <new_line>
+**** comenn
+
+}  <new_line>
+itemid_list_of_file_names = '' ;  <new_line>
+if ( opendir( READDIR , itemid_source_path_prefix ) ) {  <new_line>
+    while ( defined( itemid_file_name = readdir( READDIR ) ) ) {  <new_line>
+        if ( itemid_file_name !~ /^\./ ) {  <new_line>
+            itemid_source_file_full_path = itemid_source_path_prefix . itemid_file_name ;  <new_line>
+            if ( <character_hyphen>f itemid_source_file_full_path ) {  <new_line>
+                itemid_list_of_file_names .= itemid_file_name . ' ' ;  <new_line>
+            }  <new_line>
+        }  <new_line>
+    }  <new_line>
+    itemid_list_of_file_names =~ s / +$// ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_one ) = itemid_list_of_file_names ;  <new_line>
+    closedir( READDIR ) ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

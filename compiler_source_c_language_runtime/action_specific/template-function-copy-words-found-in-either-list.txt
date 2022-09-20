@@ -1,0 +1,29 @@
+comment-dashed-line  <new_line>
+
+int function__copy_words_found_in_either_list( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_words_found_in_either_list' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_text_list_key = function_parameterized__get_dashrep_replacement( itemid_operand_one ) . ' ' . function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_text_list_key =~ s/\n/ /sg ;  <new_line>
+itemid_text_list_key =~ s/^ +// ;  <new_line>
+itemid_text_list_key =~ s/ +$// ;  <new_line>
+itemid_result_word_list = '' ;  <new_line>
+if ( itemid_text_list_key ne '' ) {  <new_line>
+    @global_list_of_key_values = split( / +/ , itemid_text_list_key ) ;  <new_line>
+    %global_listed_word = ( ) ;  <new_line>
+    foreach itemid_word ( @global_list_of_key_values ) {  <new_line>
+        itemid_listed_word{ itemid_word } = 'exists' ;  <new_line>
+    }  <new_line>
+    foreach itemid_word ( keys( %global_listed_word ) ) {  <new_line>
+        itemid_result_word_list .= itemid_word . ' ' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_result_word_list =~ s/ +$// ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_three } = itemid_result_word_list ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

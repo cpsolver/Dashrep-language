@@ -1,0 +1,29 @@
+comment-dashed-line  <new_line>
+
+int function__set_file_permission_private_but_executable( ) {  <new_line>
+itemid_action_name_with_underscores = 'set_file_permission_private_but_executable' ; <new_line>
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
+template-check-operand-one-is-file-name
+
+if ( function_parameterized__yes_or_no_file_name( itemid_operand_one ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__set_file_permission_private_but_executable__case_invalid_file_name [' . itemid_operand_one . '] ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+itemid_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
+
+if ( function_parameterized__yes_or_no_valid_path_prefix( itemid_target_path_prefix ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__set_file_permission_private_but_executable__case_invalid_path_prefix' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+itemid_target_file_full_path = itemid_target_path_prefix . itemid_operand_one ;  <new_line>
+
+itemid_action_result = '' ;  <new_line>
+if ( not( chmod( itemid_file_private_but_executable_protection_mode , itemid_target_file_full_path ) ) ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__set_file_permission_private_but_executable__case_not_successful ' . itemid_target_file_full_path ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

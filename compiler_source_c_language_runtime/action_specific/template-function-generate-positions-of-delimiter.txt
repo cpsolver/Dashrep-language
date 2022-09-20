@@ -1,0 +1,32 @@
+comment-dashed-line  <new_line>
+
+int function__generate_positions_of_delimiter( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_positions_of_delimiter' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_string_to_find = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+itemid_string_to_search = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_search_starting_position = 0 ;  <new_line>
+itemid_list_of_positions = '' ;  <new_line>
+itemid_phrase_length = length( itemid_string_to_search ) + 1 ;  <new_line>
+if ( itemid_phrase_length > 0 ) {  <new_line>
+    itemid_local_endless_loop_counter = 0 ;  <new_line>
+    itemid_local_endless_loop_counter_maximum = 10000 ;  <new_line>
+    itemid_position = index( itemid_string_to_search , itemid_string_to_find , itemid_search_starting_position ) ;  <new_line>
+    while ( ( itemid_position > -1 ) && ( itemid_local_endless_loop_counter <= itemid_local_endless_loop_counter_maximum ) ) {  <new_line>
+        if ( itemid_list_of_positions ne '' ) {  <new_line>
+            itemid_list_of_positions .= ' ' ;  <new_line>
+        }  <new_line>
+        itemid_list_of_positions .= sprintf( "%d" , ( itemid_position + 1 ) ) ;  <new_line>
+        itemid_search_starting_position = itemid_position + 1 ;  <new_line>
+        itemid_position = index( itemid_string_to_search , itemid_string_to_find , itemid_search_starting_position ) ;  <new_line>
+        itemid_local_endless_loop_counter ++ ;  <new_line>
+    }  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_three } = itemid_list_of_positions ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

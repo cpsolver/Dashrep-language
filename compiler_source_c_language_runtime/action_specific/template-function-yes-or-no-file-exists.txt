@@ -1,0 +1,33 @@
+comment-dashed-line  <new_line>
+
+int function__yes_or_no_file_exists( ) {  <new_line>
+itemid_action_name_with_underscores = 'yes_or_no_file_exists' ; <new_line>
+itemid_action_result = 'no' ;  <new_line>
+
+if ( function_parameterized__yes_or_no_file_name( itemid_operand_one ) == no_no ) {  <new_line>
+    itemid_action_result = 'no' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+itemid_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
+
+if ( function_parameterized__yes_or_no_valid_path_prefix( itemid_source_path_prefix ) == no_no ) {  <new_line>
+    itemid_action_result = 'no' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+itemid_source_file_full_path = itemid_source_path_prefix . itemid_operand_one ;  <new_line>
+
+if ( itemid_yes_or_no_file_opened_for_reading == yes_yes ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__yes_or_no_file_exists__case_another_file_already_open_for_reading ' . itemid_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( open( INFILE , '<' . itemid_source_file_full_path ) ) {  <new_line>
+    itemid_action_result = 'yes' ;  <new_line>
+}  <new_line>
+close( INFILE ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

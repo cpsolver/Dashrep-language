@@ -1,0 +1,7 @@
+// begin code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>
+function__point_to_words( ) ;  <new_line>
+if ( itemid_number_of_words == 0 ) {  <new_line>
+itemid_target_text = itemid_default_text ;  <new_line>
+return itemid_default_text ;  <new_line>
+}  <new_line>
+// end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>

@@ -1,0 +1,16 @@
+combee **** todo: fix bug in this function, then delete associated inline template to switch to standardized template **** comenn
+
+comment-dashed-line  <new_line>
+
+int function__yes_or_no_same_two_phrase_definitions( ) {  <new_line>
+itemid_action_name_with_underscores = 'yes_or_no_same_two_phrase_definitions' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+if ( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end ) {  <new_line>
+runtime-code-storage-item-result = 'yes' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'no' ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

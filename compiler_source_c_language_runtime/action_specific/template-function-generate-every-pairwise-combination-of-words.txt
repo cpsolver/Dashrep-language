@@ -1,0 +1,53 @@
+comment-dashed-line  <new_line>
+
+int function__generate_every_pairwise_combination_of_words( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_every_pairwise_combination_of_words' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_input_list_one_phrase_name = itemid_operand_one ;  <new_line>
+itemid_input_list_two_phrase_name = itemid_operand_two ;  <new_line>
+itemid_output_list_one_phrase_name = itemid_operand_three ;  <new_line>
+itemid_output_list_two_phrase_name = itemid_operand_four ;  <new_line>
+itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_input_list_one_phrase_name } ;  <new_line>
+itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+itemid_temp_text =~ s/^ +// ;  <new_line>
+itemid_temp_text =~ s/ +$// ;  <new_line>
+@global_input_list_one = split( / +/ , itemid_temp_text ) ;  <new_line>
+itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_input_list_two_phrase_name } ;  <new_line>
+itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+itemid_temp_text =~ s/^ +// ;  <new_line>
+itemid_temp_text =~ s/ +$// ;  <new_line>
+@global_input_list_two = split( / +/ , itemid_temp_text ) ;  <new_line>
+itemid_count_list_one = c_run_count_of_words_in_input_list_one + 1 ;  <new_line>
+itemid_count_list_two = c_run_count_of_words_in_input_list_two + 1 ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_output_list_one_phrase_name } = "" ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_output_list_two_phrase_name } = "" ;  <new_line>
+if ( ( itemid_count_list_one < 1 ) || ( itemid_count_list_two < 1 ) ) {  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_separator_one = " " ;  <new_line>
+itemid_separator_two = " " ;  <new_line>
+itemid_ending_first_count = itemid_count_list_one ;  <new_line>
+itemid_starting_second_count = 1 ;  <new_line>
+for ( itemid_counter_one = 1 ; itemid_counter_one <= itemid_ending_first_count ; itemid_counter_one ++ ) {  <new_line>
+    itemid_value_one = itemid_input_list_one[ itemid_counter_one <character_hyphen> 1 ] ;  <new_line>
+    if ( itemid_ending_first_count != itemid_count_list_one ) {  <new_line>
+        itemid_starting_second_count = itemid_counter_one + 1 ;  <new_line>
+    }  <new_line>
+    for ( itemid_counter_two = itemid_starting_second_count ; itemid_counter_two <= itemid_count_list_two ; itemid_counter_two ++ ) {  <new_line>
+        itemid_value_two = itemid_input_list_two[ itemid_counter_two <character_hyphen> 1 ] ;  <new_line>
+        if ( ( itemid_counter_one == itemid_ending_first_count ) && ( itemid_counter_two == itemid_count_list_two ) ) {  <new_line>
+            itemid_separator_one = "" ;  <new_line>
+            itemid_separator_two = "" ;  <new_line>
+        }  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_output_list_one_phrase_name } .= itemid_value_one . itemid_separator_one ;  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_output_list_two_phrase_name } .= itemid_value_two . itemid_separator_two ;  <new_line>
+    }  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,21 @@
+comment-dashed-line  <new_line>
+// function__open_trace_output_file_if_not_open  <new_line>
+//  <new_line>
+
+int function__open_trace_output_file_if_not_open( ) {  <new_line>
+
+if ( itemid_yes_or_no_trace_output_file_is_open == no_no ) {  <new_line>
+
+if ( ( exists( function_parameterized__get_dashrep_replacement( itemid_output_trace_file_name ) ) ) && ( function_parameterized__get_dashrep_replacement( itemid_output_trace_file_name } ne '' ) ) {  <new_line>
+itemid_trace_file_name = function_parameterized__get_dashrep_replacement( itemid_output_trace_file_name } ;  <new_line>
+} else {  <new_line>
+itemid_trace_file_name = 'output_trace.txt' ;  <new_line>
+}  <new_line>
+
+open( TRACE_OUT , '>' . itemid_trace_file_name ) ;  <new_line>
+itemid_yes_or_no_trace_output_file_is_open = yes_yes ;  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

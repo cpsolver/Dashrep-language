@@ -1,0 +1,20 @@
+comment-dashed-line  <new_line>
+
+int function__split_epoch_seconds_into_named_components_for_zero_meridian( ) {  <new_line>
+itemid_action_name_with_underscores = 'split_epoch_seconds_into_named_components_for_zero_meridian' ; <new_line>
+template-check-operand-one-is-positive-integer
+
+itemid_action_result = '' ;  <new_line>
+( itemid_second_time , itemid_minute , itemid_hour , itemid_day_of_month , itemid_month_number , itemid_year , itemid_weekday , itemid_day_of_year , itemid_extra_info ) = gmtime( itemid_operand_one ) ;  <new_line>
+itemid_month_number ++ ;  <new_line>
+itemid_year += 1900 ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_second" } = sprintf( "%d" , itemid_second_time ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_minute ) = sprintf( "%d" , itemid_minute ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_hour ) = sprintf( "%d" , itemid_hour ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_day_of_month ) = sprintf( "%d" , itemid_day_of_month ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_month_number ) = sprintf( "%d" , itemid_month_number ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_year ) = sprintf( "%d" , itemid_year ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_day_of_week ) = sprintf( "%d" , itemid_weekday ) ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_time_day_of_year ) = sprintf( "%d" , itemid_day_of_year ) ;  <new_line>
+
+template-function-segment-ending

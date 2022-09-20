@@ -1,0 +1,68 @@
+comment-dashed-line  <new_line>
+
+int function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_listed_words_to_phrases_named_in_pattern' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_phrase_name_containing_source_words = itemid_operand_one ;  <new_line>
+itemid_phrase_name_containing_pattern = itemid_operand_two ;  <new_line>
+itemid_phrase_name_containing_parameter_list = '' ;  <new_line>
+itemid_target_phrase_name = '' ;  <new_line>
+if ( ( defined( function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_pattern } ) ) && ( function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_pattern } =~ /^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$/ ) ) {  <new_line>
+    itemid_prefix = $1 ;  <new_line>
+    itemid_phrase_name_containing_parameter_list = $2 ;  <new_line>
+    itemid_suffix = $3 ;  <new_line>
+} else {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . itemid_phrase_name_containing_pattern ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_prefix =~ s/[ \n]+//g ;  <new_line>
+itemid_prefix =~ s/^<character_hyphen>+// ;  <new_line>
+itemid_suffix =~ s/[ \n]+//g ;  <new_line>
+itemid_suffix =~ s/<character_hyphen>+$// ;  <new_line>
+itemid_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
+itemid_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
+itemid_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
+if ( not( defined( function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_parameter_list } ) ) ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . itemid_phrase_name_containing_parameter_list ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_list_of_words_as_text = function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_parameter_list } ;  <new_line>
+itemid_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+itemid_list_of_words_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_words_as_text =~ s/ +$// ;  <new_line>
+if ( itemid_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . itemid_phrase_name_containing_parameter_list ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+@global_list_of_parameter_words = split( / +/ , itemid_list_of_words_as_text ) ;  <new_line>
+itemid_phrase_name_containing_source_words =~ s/[ \n]+//sg ;  <new_line>
+itemid_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
+itemid_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
+if ( not( defined( function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_source_words } ) ) ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . itemid_phrase_name_containing_source_words ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_list_of_words_as_text = function_parameterized__get_dashrep_replacement( itemid_phrase_name_containing_source_words } ;  <new_line>
+itemid_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+itemid_list_of_words_as_text =~ s/^ +// ;  <new_line>
+itemid_list_of_words_as_text =~ s/ +$// ;  <new_line>
+if ( itemid_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty ' . itemid_phrase_name_containing_source_words ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+@global_list_of_source_words = split( / +/ , itemid_list_of_words_as_text ) ;  <new_line>
+if ( c_run_count_of_words_in_list_of_source_words <= c_run_count_of_words_in_list_of_parameter_words ) {  <new_line>
+    itemid_count = c_run_count_of_words_in_list_of_source_words ;  <new_line>
+} else {  <new_line>
+    itemid_count = c_run_count_of_words_in_list_of_parameter_words ;  <new_line>
+}  <new_line>
+for ( itemid_pointer = 0 ; itemid_pointer <= itemid_count ; itemid_pointer ++ ) {  <new_line>
+    itemid_target_phrase_name = itemid_prefix . itemid_list_of_parameter_words[ itemid_pointer ] . itemid_suffix ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_target_phrase_name } .= itemid_list_of_source_words[ itemid_pointer ] ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

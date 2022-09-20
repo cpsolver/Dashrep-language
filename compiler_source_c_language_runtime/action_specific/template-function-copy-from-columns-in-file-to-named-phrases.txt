@@ -1,0 +1,81 @@
+comment-dashed-line  <new_line>
+
+int function__copy_from_columns_in_file_to_named_phrases( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_from_columns_in_file_to_named_phrases' ; <new_line>
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_temp_text =~ s/^ +// ;  <new_line>
+itemid_temp_text =~ s/ +$//s ;  <new_line>
+if ( itemid_temp_text =~ / / ) {  <new_line>
+    @global_phrase_naming_convention_for_column = split( /[ \n\r]+/ , itemid_temp_text ) ;  <new_line>
+    itemid_number_of_column_names = scalar( @global_phrase_naming_convention_for_column ) ;  <new_line>
+    itemid_prefix_text = itemid_phrase_naming_convention_for_column[ 0 ] ;  <new_line>
+} else {  <new_line>
+    itemid_phrase_naming_convention_for_column[ 1 ] = '' ;  <new_line>
+    itemid_number_of_column_names = 2 ;  <new_line>
+    itemid_prefix_text = itemid_temp_text ;  <new_line>
+}  <new_line>
+if ( itemid_prefix_text !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . itemid_prefix_text ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_name_of_phrase_that_contains_list_of_index_values = itemid_operand_three ;  <new_line>
+if ( itemid_name_of_phrase_that_contains_list_of_index_values !~ /^[a hyphen-here z0<character_hyphen>9_\<character_hyphen>]+$/i ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . itemid_name_of_phrase_that_contains_list_of_index_values ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+itemid_list_of_unique_values = '' ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_name_of_phrase_that_contains_list_of_index_values } = itemid_list_of_unique_values ;  <new_line>
+if ( ( exists( function_parameterized__get_dashrep_replacement( itemid_ no-space yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter ) ) ) && ( function_parameterized__get_dashrep_replacement( itemid_ no-space yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter' } eq 'yes' ) ) {  <new_line>
+    itemid_use_two_spaces_as_delimiter = 'yes' ;  <new_line>
+} else {  <new_line>
+    itemid_use_two_spaces_as_delimiter = 'no' ;  <new_line>
+}  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_input_line =~ s/[ \n\t]+$// ;  <new_line>
+    if ( itemid_use_two_spaces_as_delimiter eq 'yes' ) {  <new_line>
+        @global_text_item_in_column = split( /<character_space> +/ , itemid_input_line ) ;  <new_line>
+    } else {  <new_line>
+        @global_text_item_in_column = split( /[\t ]/ , itemid_input_line ) ;  <new_line>
+    }  <new_line>
+    itemid_number_of_columns = scalar( @global_text_item_in_column ) ;  <new_line>
+    if ( itemid_number_of_columns < 2 ) {  <new_line>
+        next ;  <new_line>
+    }  <new_line>
+    itemid_unique_value = itemid_text_item_in_column[ 0 ] ;  <new_line>
+    if ( itemid_unique_value =~ / / ) {  <new_line>
+        itemid_unique_value =~ s/ +/_/g ;  <new_line>
+    }  <new_line>
+    itemid_number_of_columns = scalar( @global_text_item_in_column ) ;  <new_line>
+    if ( itemid_number_of_columns > itemid_number_of_column_names ) {  <new_line>
+        itemid_number_of_columns = itemid_number_of_column_names ;  <new_line>
+    }  <new_line>
+    if ( itemid_number_of_columns > 0 ) {  <new_line>
+        itemid_list_of_unique_values .= ' ' . itemid_unique_value ;  <new_line>
+        for ( itemid_column_pointer = 2 ; itemid_column_pointer <= itemid_number_of_column_names ; itemid_column_pointer ++ ) {  <new_line>
+            if ( itemid_phrase_naming_convention_for_column[ itemid_column_pointer <character_hyphen> 1 ] ne '' ) {  <new_line>
+                itemid_phrase_naming_convention_for_this_column = itemid_prefix_text . '<character_hyphen>' . itemid_unique_value . '<character_hyphen>' . itemid_phrase_naming_convention_for_column[ itemid_column_pointer <character_hyphen> 1 ] ;  <new_line>
+            } else {  <new_line>
+                itemid_phrase_naming_convention_for_this_column = itemid_prefix_text . '<character_hyphen>' . itemid_unique_value ;  <new_line>
+            }  <new_line>
+            if ( itemid_column_pointer <= itemid_number_of_columns ) {  <new_line>
+                function_parameterized__get_dashrep_replacement( itemid_phrase_naming_convention_for_this_column } = itemid_text_item_in_column[ itemid_column_pointer <character_hyphen> 1 ] ;  <new_line>
+            } else {  <new_line>
+                function_parameterized__get_dashrep_replacement( itemid_phrase_naming_convention_for_this_column } = '' ;  <new_line>
+            }  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_list_of_unique_values =~ s/^ +// ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_name_of_phrase_that_contains_list_of_index_values } = itemid_list_of_unique_values ;  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

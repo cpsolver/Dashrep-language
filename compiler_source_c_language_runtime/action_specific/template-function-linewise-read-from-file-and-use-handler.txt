@@ -1,0 +1,39 @@
+comment-dashed-line  <new_line>
+
+int function__linewise_read_from_file_and_use_handler( ) {  <new_line>
+int itemid_local_line_count ;  <new_line>
+int itemid_local_target_phrase_name ;  <new_line>
+itemid_action_result = '' ;  <new_line>
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+$local_target_phrase_name = itemid_operand_two ;  <new_line>
+
+if ( function_parameterized__yes_or_no_file_name( itemid_source_file_name ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__linewise_read_from_file_and_use_handler__case_file_name_invalid [' . itemid_source_file_name . '] ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__open_file_for_reading( itemid_source_file_name ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading [' . $local_target_phrase_name . '] ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__yes_or_no_phrase_definition_not_empty( $local_target_phrase_name ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $local_target_phrase_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+$local_line_count = 1 ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_ no-space "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = itemid_input_line ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_ no-space "linewise hyphen-here input hyphen-here line hyphen-here count" } = $local_line_count ;  <new_line>
+    itemid_phrase_name_to_match = $local_target_phrase_name ;  <new_line>
+    &function_branch_based_on_phrase_name( );  <new_line>
+    itemid_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
+    $local_line_count ++ ;  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

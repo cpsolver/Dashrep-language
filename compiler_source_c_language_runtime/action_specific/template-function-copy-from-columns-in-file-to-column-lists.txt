@@ -1,0 +1,39 @@
+comment-dashed-line  <new_line>
+
+int function__copy_from_columns_in_file_to_column_lists( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_from_columns_in_file_to_column_lists' ; <new_line>
+template-check-operand-two-is-phrase-name
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+itemid_list_name_prefix = itemid_operand_two ;  <new_line>
+@global_list_of_values_in_column = ( ) ;  <new_line>
+itemid_minimum_number_of_columns = 999 ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_input_line =~ s/[\n\t]+/ /g ;  <new_line>
+    itemid_input_line =~ s/^ +// ;  <new_line>
+    itemid_input_line =~ s/ +$// ;  <new_line>
+    @global_value_in_column = split( / +/ , itemid_input_line ) ;  <new_line>
+    itemid_number_of_columns = scalar( @global_value_in_column ) ;  <new_line>
+    if ( itemid_number_of_columns < 2 ) {  <new_line>
+        next ;  <new_line>
+    } else if ( itemid_number_of_columns < itemid_minimum_number_of_columns ) {  <new_line>
+        itemid_minimum_number_of_columns = itemid_number_of_columns ;  <new_line>
+    }  <new_line>
+    if ( itemid_number_of_columns > 0 ) {  <new_line>
+        for ( itemid_column_pointer = 1 ; itemid_column_pointer <= itemid_minimum_number_of_columns ; itemid_column_pointer ++ ) {  <new_line>
+            itemid_list_of_values_in_column[ itemid_column_pointer ] .= itemid_value_in_column[ itemid_column_pointer <character_hyphen> 1 ] . " " ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+for ( itemid_column_pointer = 1 ; itemid_column_pointer <= itemid_minimum_number_of_columns ; itemid_column_pointer ++ ) {  <new_line>
+    itemid_list_of_values_in_column[ itemid_column_pointer ] =~ s/ +$// ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_list_name_prefix . "<character_hyphen>" . itemid_column_pointer } = itemid_list_of_values_in_column[ itemid_column_pointer ] ;  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,28 @@
+comment-dashed-line  <new_line>
+// function__numeric_multiply  <new_line>
+//  <new_line>
+
+combee ****
+//  Input is itemid_source_text  <new_line>
+//  Output is itemid_action_result  <new_line>
+<new_line>
+**** comenn
+
+int function__numeric_multiply( ) {  <new_line>
+itemid_action_result = '1' ;  <new_line>
+itemid_default_text = '1' ;  <new_line>
+
+template-function-segment-if-zero-words-return-default-text
+
+itemid_calculated_value = 1 ;  <new_line>
+for ( itemid_word_pointer_numeric = 1 ; itemid_word_pointer_numeric <= itemid_number_of_words ; itemid_word_pointer_numeric ++ ) {  <new_line>
+itemid_current_word = runtime-code-word-within-source-text ;  <new_line>
+if ( yes_yes == function_parameterized__yes_or_no_real_number( itemid_current_word ) ) {  <new_line>
+itemid_calculated_value = itemid_calculated_value * function_parameterized__convert_numeric_text_into_numeric_value( itemid_current_word ) ;  <new_line>
+}  <new_line>
+}  <new_line>
+itemid_action_result = function_parameterized__normalize_calculated_value( itemid_calculated_value ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

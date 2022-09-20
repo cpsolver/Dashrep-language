@@ -1,0 +1,16 @@
+comment-dashed-line  <new_line>
+
+int function__numeric_increment( ) {  <new_line>
+itemid_action_name_with_underscores = 'numeric_increment' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+
+itemid_action_result = ' ' ;  <new_line>
+
+template-get-phrase-contents-from-operand-one-and-check-contains-integer
+
+code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end = function_parameterized__convert_numeric_value_into_numeric_text( 1 + function_parameterized__convert_numeric_text_into_numeric_value( itemid_phrase_contents ) ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,18 @@
+comment-dashed-line  <new_line>
+
+int function__prepend_text_no_space( ) {  <new_line>
+itemid_action_name_with_underscores = 'prepend_text_no_space' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_source_text = function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = itemid_source_text . ' ' . code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end ;  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = itemid_source_text ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

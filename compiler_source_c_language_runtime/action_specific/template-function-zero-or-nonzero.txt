@@ -1,0 +1,12 @@
+comment-dashed-line  <new_line>
+
+int function__zero_or_nonzero( ) {  <new_line>
+itemid_action_name_with_underscores = 'zero_or_nonzero' ; <new_line>
+template-check-operand-one-is-integer
+
+itemid_action_result = 'nonzero' ;  <new_line>
+if ( function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_one ) == 0 ) {  <new_line>
+    itemid_action_result = 'zero' ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

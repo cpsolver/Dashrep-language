@@ -1,0 +1,51 @@
+comment-dashed-line  <new_line>
+
+int function__copy_and_replace_using_paired_listed_words( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_and_replace_using_paired_listed_words' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-not-empty
+
+itemid_action_result = '' ;  <new_line>
+
+if ( not( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) ) {  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_one ) = '' ;  <new_line>
+}  <new_line>
+
+itemid_result_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+
+if ( not( exists( function_parameterized__get_dashrep_replacement( itemid_operand_three } ) ) ) {  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_three } = '' ;  <new_line>
+}  <new_line>
+
+itemid_paired_words_as_text = function_parameterized__get_dashrep_replacement( itemid_operand_three } ;  <new_line>
+itemid_paired_words_as_text =~ s/\n/ /sg ;  <new_line>
+itemid_paired_words_as_text =~ s/^ +// ;  <new_line>
+itemid_paired_words_as_text =~ s/ +$// ;  <new_line>
+@global_list_of_paired_words = split( / +/ , itemid_paired_words_as_text ) ;  <new_line>
+itemid_pair_status = 'search' ;  <new_line>
+for ( itemid_pair_pointer_offset_zero = 0 ; itemid_pair_pointer_offset_zero <= c_run_count_of_words_in_list_of_paired_words ; itemid_pair_pointer_offset_zero ++ ) {  <new_line>
+    if ( itemid_pair_status eq 'search' ) {  <new_line>
+        itemid_string_to_be_replaced = itemid_list_of_paired_words[ itemid_pair_pointer_offset_zero ] ;  <new_line>
+        itemid_pair_status = 'replace' ;  <new_line>
+    } else {  <new_line>
+        itemid_string_to_insert = itemid_list_of_paired_words[ itemid_pair_pointer_offset_zero ] ;  <new_line>
+        itemid_remaining_text = itemid_result_text ;  <new_line>
+        itemid_result_text = '' ;  <new_line>
+        itemid_pointer_to_matching_text = index( itemid_remaining_text , itemid_string_to_be_replaced ) ;  <new_line>
+        while ( itemid_pointer_to_matching_text >= 0 ) {  <new_line>
+            if ( itemid_pointer_to_matching_text > 0 ) {  <new_line>
+                itemid_result_text .= substr( itemid_remaining_text , 0 , itemid_pointer_to_matching_text ) ;  <new_line>
+            }  <new_line>
+            itemid_result_text .= itemid_string_to_insert ;  <new_line>
+            itemid_remaining_text = substr( itemid_remaining_text , ( itemid_pointer_to_matching_text + length( itemid_string_to_be_replaced ) ) ) ;  <new_line>
+            itemid_pointer_to_matching_text = index( itemid_remaining_text , itemid_string_to_be_replaced ) ;  <new_line>
+        }  <new_line>
+        itemid_result_text .= itemid_remaining_text ;  <new_line>
+        itemid_pair_status = 'search' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_two ) = itemid_result_text ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

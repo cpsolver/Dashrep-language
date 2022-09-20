@@ -1,0 +1,21 @@
+comment-dashed-line  <new_line>
+
+int function__copy_zero_pad_left_to_length( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_zero_pad_left_to_length' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+
+itemid_action_result = ' ' ;  <new_line>
+itemid_source_text = function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+itemid_count_number = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_three ) ;  <new_line>
+itemid_counter = itemid_count_number - length( itemid_source_text ) ;  <new_line>
+itemid_text_to_insert = '' ;  <new_line>
+while ( ( itemid_counter > 0 ) && ( itemid_counter < 99 ) ) {  <new_line>
+    itemid_text_to_insert .= '0' ;  <new_line>
+    itemid_counter -- ;  <new_line>
+}  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = itemid_text_to_insert . itemid_source_text ;
+return '' ;  <new_line>
+
+template-function-segment-ending

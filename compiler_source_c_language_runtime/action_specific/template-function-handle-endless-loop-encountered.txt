@@ -1,0 +1,13 @@
+comment-dashed-line  <new_line>
+// handle_endless_loop_encountered  <new_line>
+<new_line>
+
+void handle_endless_loop_encountered( ) {  <new_line>
+
+OUT_PIPE << 'Exceeded endless hyphen-here loop count of ' . itemid_endless_loop_counter_limit << std::endl ;  <new_line>
+itemid_action_result = 'trace_diagnostic__handle_endless_loop_encountered' . "\n" ;  <new_line>
+OUT_PIPE << itemid_global_action_result << std::endl ;  <new_line>
+
+exit ;  <new_line>
+
+template-function-segment-ending

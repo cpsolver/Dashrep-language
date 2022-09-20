@@ -1,0 +1,65 @@
+comment-dashed-line  <new_line>
+
+int function__insert_codeview_tags( ) {  <new_line>
+itemid_action_name_with_underscores = 'insert_codeview_tags' ; <new_line>
+template-check-operand-one-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+if ( not( exists( itemid_action_name_exists{ 'no<character_hyphen>space' } ) ) || ( itemid_action_name_exists{ 'no<character_hyphen>space' } ne 'yes' ) ) {  <new_line>
+    @global_list_of_action_names = split( / / , itemid_dashrep_text_list_of_phrase_names ) ;  <new_line>
+    foreach itemid_action_name ( @global_list_of_action_names ) {  <new_line>
+        itemid_action_name_exists{ itemid_action_name } = 'yes' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+if ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) {  <new_line>
+    itemid_string_in_phrase = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+    itemid_string_in_phrase =~ s/\n/<dashrep_codeview_newline>/sg ;  <new_line>
+    itemid_string_in_phrase =~ s/=/<dashrep_codeview_equal_sign>/sg ;  <new_line>
+    itemid_parameter_level = 1 ;  <new_line>
+    itemid_odd_or_even_based_on_zero_or_one[ 0 ] = 'even' ;  <new_line>
+    itemid_odd_or_even_based_on_zero_or_one[ 1 ] = 'odd' ;  <new_line>
+    itemid_accumulated_text = '' ;  <new_line>
+    itemid_remaining_text = itemid_string_in_phrase ;  <new_line>
+    while ( itemid_remaining_text =~ /^(.*?)((\[<character_hyphen>)|(<character_hyphen>\]))(.*)$/ ) {  <new_line>
+        itemid_prefix_text = $1 ;  <new_line>
+        itemid_parameter_begin_or_end_string = $2 ;  <new_line>
+        itemid_remaining_text = $5 ;  <new_line>
+        itemid_accumulated_text = itemid_accumulated_text . itemid_prefix_text ;  <new_line>
+        if ( itemid_parameter_begin_or_end_string eq '[<character_hyphen>' ) {  <new_line>
+            if ( itemid_parameter_level >= 1 ) {  <new_line>
+                itemid_accumulated_text = itemid_accumulated_text . '<dashrep_codeview_tag_param_' . itemid_odd_or_even_based_on_zero_or_one[ itemid_parameter_level % 2 ] . '_begin>' ;  <new_line>
+            } else {  <new_line>
+                itemid_accumulated_text = itemid_accumulated_text . '<dashrep_codeview_tag_param_unmatched_begin>' ;  <new_line>
+            }  <new_line>
+            itemid_parameter_level ++ ;  <new_line>
+        } else if ( itemid_parameter_begin_or_end_string eq '<character_hyphen>]' ) {  <new_line>
+            itemid_parameter_level <character_hyphen><character_hyphen> ;  <new_line>
+            if ( itemid_parameter_level >= 1 ) {  <new_line>
+                itemid_accumulated_text = itemid_accumulated_text . '<dashrep_codeview_tag_param_' . itemid_odd_or_even_based_on_zero_or_one[ itemid_parameter_level % 2 ] . '_end>' ;  <new_line>
+            } else {  <new_line>
+                itemid_accumulated_text = itemid_accumulated_text . '<dashrep_codeview_tag_param_unmatched_end>' ;  <new_line>
+            }  <new_line>
+        }  <new_line>
+    }  <new_line>
+    itemid_string_in_phrase = itemid_accumulated_text . itemid_remaining_text ;  <new_line>
+    itemid_accumulated_text = '' ;  <new_line>
+    itemid_remaining_text = itemid_string_in_phrase ;  <new_line>
+    while ( itemid_remaining_text =~ /^(.*?)([^ <>]+<character_hyphen>[^ <>]+)(([ <]).*)$/ ) {  <new_line>
+        itemid_prefix_text = $1 ;  <new_line>
+        itemid_phrase_name = $2 ;  <new_line>
+        itemid_remaining_text = $3 ;  <new_line>
+        if ( exists( itemid_action_name_exists{ itemid_phrase_name } ) && ( itemid_action_name_exists{ itemid_phrase_name } eq 'yes' ) ) {  <new_line>
+            itemid_phrase_type = 'action' ;  <new_line>
+        } else if ( exists( function_parameterized__get_dashrep_replacement( itemid_phrase_name } ) && ( function_parameterized__get_dashrep_replacement( itemid_phrase_name } ne '' ) ) {  <new_line>
+            itemid_phrase_type = 'phrase_defined' ;  <new_line>
+        } else {  <new_line>
+            itemid_phrase_type = 'phrase' ;  <new_line>
+        }  <new_line>
+        itemid_accumulated_text = itemid_accumulated_text . itemid_prefix_text . '<dashrep_codeview_tag_' . itemid_phrase_type . '_begin>' . itemid_phrase_name . '<dashrep_codeview_tag_' . itemid_phrase_type . '_middle_1>' . itemid_phrase_name . '<dashrep_codeview_tag_' . itemid_phrase_type . '_middle_2>' . itemid_phrase_name . '<dashrep_codeview_tag_' . itemid_phrase_type . '_end>' ;  <new_line>
+    }  <new_line>
+    itemid_string_in_phrase = itemid_accumulated_text . itemid_remaining_text ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_one ) = itemid_string_in_phrase ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

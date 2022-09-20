@@ -1,0 +1,59 @@
+comment-dashed-line  <new_line>
+
+int function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_positions_of_first_matching_delimiter_after_listed_positions' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
+
+if ( function_parameterized__yes_or_no_phrase_name( itemid_operand_one ) == no_no ) {
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . itemid_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__yes_or_no_phrase_name( itemid_operand_two ) == no_no ) {
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . itemid_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__yes_or_no_phrase_name( itemid_operand_three ) == no_no ) {
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . itemid_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__yes_or_no_phrase_name( itemid_operand_four ) == no_no ) {
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . itemid_operand_four . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+itemid_action_result = '' ;  <new_line>
+itemid_string_to_find = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+itemid_string_to_search = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_list_of_positions = '' ;  <new_line>
+itemid_phrase_length = length( itemid_string_to_search ) + 1 ;  <new_line>
+if ( ( itemid_phrase_length > 0 ) && ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_three } ) ) ) {  <new_line>
+    itemid_text_list_of_start_matching_positions = function_parameterized__get_dashrep_replacement( itemid_operand_three } ;  <new_line>
+    itemid_text_list_of_start_matching_positions =~ s/\n/ /sg ;  <new_line>
+    itemid_text_list_of_start_matching_positions =~ s/^ +// ;  <new_line>
+    itemid_text_list_of_start_matching_positions =~ s/ +$// ;  <new_line>
+    if ( itemid_text_list_of_start_matching_positions =~ /[0<character_hyphen>9 ]+/ ) {  <new_line>
+        @global_list_of_start_matching_positions = split( / +/ , itemid_text_list_of_start_matching_positions ) ;  <new_line>
+    } else {  <new_line>
+        @global_list_of_start_matching_positions = ( ) ;  <new_line>
+    }  <new_line>
+    foreach itemid_search_starting_position ( @global_list_of_start_matching_positions ) {  <new_line>
+        itemid_position = index( itemid_string_to_search , itemid_string_to_find , itemid_search_starting_position ) ;  <new_line>
+        if ( itemid_position < 0 ) {  <new_line>
+            itemid_position = -1 ;  <new_line>
+        }  <new_line>
+        if ( itemid_list_of_positions ne '' ) {  <new_line>
+            itemid_list_of_positions .= ' ' ;  <new_line>
+        }  <new_line>
+        itemid_list_of_positions .= sprintf( "%d" , ( itemid_position + 1 ) ) ;  <new_line>
+    }  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_four } = itemid_list_of_positions ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

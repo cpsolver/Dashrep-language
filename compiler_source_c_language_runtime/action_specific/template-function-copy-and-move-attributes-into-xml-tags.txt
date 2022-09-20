@@ -1,0 +1,29 @@
+comment-dashed-line  <new_line>
+
+int function__copy_and_move_attributes_into_xml_tags( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_and_move_attributes_into_xml_tags' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_text_being_edited = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+while( itemid_text_being_edited =~ / *\/> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+    itemid_text_being_edited =~ s/ *\/> *<((attribute)|(specify)) (([^"<>]*"[^"]*"[^"<>]*)+?)>/ $4 \/>/sg ;  <new_line>
+    if ( itemid_endless_loop_counter > itemid_endless_loop_counter_limit <character_hyphen> 100 ) {  <new_line>
+        itemid_action_result = 'error_endless_loop_within_action_copy_and_move_attributes_into_xml_tags';  <new_line>
+        last ;  <new_line>
+    }  <new_line>
+    itemid_endless_loop_counter ++ ;  <new_line>
+}  <new_line>
+while( itemid_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+    itemid_text_being_edited =~ s/ *> *<((attribute)|(specify)) (([^"<>]*"[^"]*"[^"<>]*)+?)>/ $4>/sg ;  <new_line>
+    if ( itemid_endless_loop_counter > itemid_endless_loop_counter_limit <character_hyphen> 100 ) {  <new_line>
+        itemid_action_result = 'error_endless_loop_within_action_copy_and_move_attributes_into_xml_tags';  <new_line>
+        last ;  <new_line>
+    }  <new_line>
+    itemid_endless_loop_counter ++ ;  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_two ) = itemid_text_being_edited ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

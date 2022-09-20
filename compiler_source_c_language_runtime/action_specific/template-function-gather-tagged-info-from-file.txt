@@ -1,0 +1,127 @@
+comment-dashed-line  <new_line>
+
+int function__gather_tagged_info_from_file( ) {  <new_line>
+itemid_action_name_with_underscores = 'gather_tagged_info_from_file' ; <new_line>
+template-check-operand-two-is-phrase-name
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+itemid_entry_begin = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here begin' } ;  <new_line>
+if ( itemid_entry_begin !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_begin = 'entry_begin' ;  <new_line>
+}  <new_line>
+itemid_entry_end = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here end' } ;  <new_line>
+if ( itemid_entry_end !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_end = 'entry_end' ;  <new_line>
+}  <new_line>
+itemid_entry_unique = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here unique' } ;  <new_line>
+if ( itemid_entry_unique !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_unique = 'url' ;  <new_line>
+}  <new_line>
+itemid_entry_delete = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here delete' } ;  <new_line>
+if ( itemid_entry_delete !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_delete = 'delete_id' ;  <new_line>
+}  <new_line>
+itemid_unique_value = '' ;  <new_line>
+itemid_list_of_tag_values_in_sequence_encountered = '' ;  <new_line>
+%global_content_for_tag = ( ) ;  <new_line>
+%global_found_unique_value = ( ) ;  <new_line>
+%global_exists_tag_name = ( ) ;  <new_line>
+itemid_line_status = 'between' ;  <new_line>
+itemid_count_of_items_with_missing_unique_id = 0 ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_pointer = index( itemid_input_line , "\r" ) ;  <new_line>
+    if ( itemid_pointer >= 0 ) {  <new_line>
+        itemid_input_line =~ s/[\r\n]+//gs ;  <new_line>
+    }  <new_line>
+    if ( itemid_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
+        itemid_first_word = $1 ;  <new_line>
+        if ( itemid_first_word eq 'multi_line_end' ) {  <new_line>
+            itemid_line_status = 'within' ;  <new_line>
+        } else if ( ( itemid_first_word eq itemid_entry_end ) || ( itemid_first_word eq itemid_entry_begin ) ) {  <new_line>
+            if ( itemid_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+                foreach itemid_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
+                    function_parameterized__get_dashrep_replacement( itemid_tag_name . '<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>' . itemid_unique_value } = itemid_content_for_tag{ itemid_tag_name } ;  <new_line>
+                }  <new_line>
+            } else if ( itemid_first_word eq itemid_entry_end ) {  <new_line>
+                itemid_count_of_items_with_missing_unique_id ++ ;  <new_line>
+            }  <new_line>
+            itemid_unique_value = '' ;  <new_line>
+            %global_content_for_tag = ( ) ;  <new_line>
+            if ( itemid_first_word eq itemid_entry_begin ) {  <new_line>
+                itemid_line_status = 'within' ;  <new_line>
+            } else {  <new_line>
+                itemid_line_status = 'between' ;  <new_line>
+            }  <new_line>
+        } else if ( itemid_line_status eq 'within_multiline' ) {  <new_line>
+            itemid_content_for_tag{ itemid_multiline_value_name } .= itemid_input_line . ' ' ;  <new_line>
+        } else {  <new_line>
+            itemid_content_for_tag{ itemid_first_word } = '' ;  <new_line>
+        }  <new_line>
+    } else if ( itemid_line_status eq 'within_multiline' ) {  <new_line>
+        itemid_content_for_tag{ itemid_multiline_value_name } .= itemid_input_line . ' ' ;  <new_line>
+    } else if ( itemid_input_line =~ /^ *([^ ]+) +([^ ].*)$/ ) {  <new_line>
+        itemid_first_word = $1 ;  <new_line>
+        itemid_remainder_of_line = $2 ;  <new_line>
+        if ( itemid_first_word eq itemid_entry_unique ) {  <new_line>
+            itemid_unique_value = itemid_remainder_of_line ;  <new_line>
+            itemid_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+            if ( not( exists( itemid_found_unique_value{ itemid_unique_value } ) ) ) {  <new_line>
+                itemid_found_unique_value{ itemid_unique_value } = 'found' ;  <new_line>
+            }  <new_line>
+        } else if ( itemid_first_word eq itemid_entry_delete ) {  <new_line>
+            itemid_unique_value = itemid_remainder_of_line ;  <new_line>
+            itemid_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+            itemid_found_unique_value{ itemid_unique_value } = 'delete' ;  <new_line>
+        } else if ( itemid_remainder_of_line =~ /^ *multi_line_begin/ ) {  <new_line>
+            itemid_line_status = 'within_multiline' ;  <new_line>
+            itemid_multiline_value_name = itemid_first_word ;  <new_line>
+            itemid_content_for_tag{ itemid_multiline_value_name } = '' ;  <new_line>
+        } else {  <new_line>
+            itemid_content_for_tag{ itemid_first_word } = itemid_remainder_of_line ;  <new_line>
+            if ( not( exists( itemid_exists_tag_name{ itemid_first_word } ) ) ) {  <new_line>
+                itemid_exists_tag_name{ itemid_first_word } = 'yes' ;  <new_line>
+                if ( itemid_list_of_tag_values_in_sequence_encountered eq '' ) {  <new_line>
+                    itemid_list_of_tag_values_in_sequence_encountered = itemid_entry_unique . ' ' ;  <new_line>
+                } else {  <new_line>
+                    itemid_list_of_tag_values_in_sequence_encountered .= ' ' ;  <new_line>
+                }  <new_line>
+                itemid_list_of_tag_values_in_sequence_encountered .= itemid_first_word ;  <new_line>
+            }  <new_line>
+        }  <new_line>
+    }  <new_line>
+    if ( itemid_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+        foreach itemid_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
+            function_parameterized__get_dashrep_replacement( itemid_tag_name . '<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>' . itemid_unique_value } = itemid_content_for_tag{ itemid_tag_name } ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+    itemid_list_of_unique_values = '' ;  <new_line>
+    foreach itemid_unique_value ( keys( %global_found_unique_value ) ) {  <new_line>
+        if ( itemid_found_unique_value{ itemid_unique_value } ne 'delete' ) {  <new_line>
+            if ( itemid_list_of_unique_values ne '' ) {  <new_line>
+                itemid_list_of_unique_values .= ' ' ;  <new_line>
+            }  <new_line>
+            itemid_list_of_unique_values .= itemid_unique_value ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_two ) = itemid_list_of_unique_values ;  <new_line>
+    itemid_list_of_tag_names = '' ;  <new_line>
+    foreach itemid_tag_name ( keys( %global_exists_tag_name ) ) {  <new_line>
+        if ( itemid_list_of_tag_names ne '' ) {  <new_line>
+            itemid_list_of_tag_names .= ' ' ;  <new_line>
+        }  <new_line>
+        itemid_list_of_tag_names .= itemid_tag_name ;  <new_line>
+    }  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gathered hyphen-here tag hyphen-here names ) = itemid_list_of_tag_names ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence ) = itemid_list_of_tag_values_in_sequence_encountered ;  <new_line>
+}  <new_line>
+if ( itemid_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
+    itemid_action_result = 'dashrep_runtime_error__gather_tagged_info_from_file__case_missing_unique_values ' . itemid_count_of_items_with_missing_unique_id . "\n" ;  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

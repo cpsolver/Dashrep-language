@@ -1,0 +1,29 @@
+comment-dashed-line  <new_line>
+
+int function__copy_words_order_reversed( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_words_order_reversed' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+if ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) {  <new_line>
+    itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+    itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+    itemid_temp_text =~ s/^ +// ;  <new_line>
+    itemid_temp_text =~ s/ +$// ;  <new_line>
+    @global_list = split( / +/ , itemid_temp_text ) ;  <new_line>
+} else {  <new_line>
+    @global_list = ( ) ;  <new_line>
+}  <new_line>
+itemid_count = c_run_count_of_words_in_list + 1 ;  <new_line>
+itemid_temp_text = '' ;  <new_line>
+if ( itemid_count > 0 ) {  <new_line>
+    for ( itemid_word_number = itemid_count ; itemid_word_number >= 1 ; itemid_word_number <character_hyphen><character_hyphen> ) {  <new_line>
+        itemid_temp_text .= itemid_list[ itemid_word_number - 1 ] . ' ' ;  <new_line>
+    }  <new_line>
+    itemid_temp_text =~ s/ +$// ;  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_two ) = itemid_temp_text ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

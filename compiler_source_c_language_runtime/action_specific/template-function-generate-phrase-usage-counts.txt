@@ -1,0 +1,45 @@
+comment-dashed-line  <new_line>
+
+int function__generate_phrase_usage_counts( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_phrase_usage_counts' ; <new_line>
+template-check-operand-one-is-phrase-name
+
+
+itemid_action_result = '' ;  <new_line>
+
+
+// do sorting subroutine with 0000000175_phrase_name where 175 is usage count  <new_line>
+// edits involve code-compiled-funtion-part-3  <new_line>
+
+
+
+// for ( itemid_phrase_number = 1 ; itemid_phrase_number <= itemid_number_of_unique_phrases ; itemid_phrase_number ++ ) {  <new_line>
+// itemid_phrase_usage_count_for_phrase_number[ itemid_phrase_number ] ++ ;  <new_line>
+// itemid_phrase_name = itemid_phrase_name_for_phrase_number[ itemid_phrase_number ] ;  <new_line>
+
+
+////foreach itemid_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
+////    itemid_replacement_count = itemid_replacement_count_for_item_name{ itemid_phrase_name } ;  <new_line>
+
+
+// edited 2017may25  <new_line>
+//    if ( ( exists( itemid_endless_loop_replacements_with_count{ sprintf( "%08d" , itemid_replacement_count ) } ) ) && ( itemid_endless_loop_replacements_with_count{ sprintf( "%08d" , itemid_replacement_count ) } ne '' ) ) {  <new_line>
+
+
+//    {  <new_line>
+//        itemid_endless_loop_replacements_with_count{ sprintf( "%08d" , itemid_replacement_count ) } .= "\n" ;  <new_line>
+//    }  <new_line>
+//    itemid_endless_loop_replacements_with_count{ sprintf( "%08d" , itemid_replacement_count ) } .= itemid_phrase_name ;  <new_line>
+//}  <new_line>
+
+// foreach itemid_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
+//     @global_list_of_phrase_names = sort( split( /\n/ , itemid_endless_loop_replacements_with_count{ itemid_replacement_count_text } ) ) ;  <new_line>
+//     foreach itemid_phrase_name ( @global_list_of_phrase_names ) {  <new_line>
+//         itemid_action_result .= itemid_replacement_count_text . ' ' . itemid_phrase_name  . "\n" ;  <new_line>
+//     }  <new_line>
+// }  <new_line>
+
+function_parameterized__put_dashrep_replacement( itemid_operand_one ) = itemid_action_result ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

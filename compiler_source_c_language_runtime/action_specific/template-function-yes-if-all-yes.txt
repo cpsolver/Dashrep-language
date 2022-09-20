@@ -1,0 +1,24 @@
+comment-dashed-line  <new_line>
+
+int function__yes_if_all_yes( ) {  <new_line>
+// itemid_action_name_with_underscores = 'yes_if_all_yes' ; <new_line>
+itemid_concatenated_all_operands_modified = ' ' . itemid_source_text . ' ' ;  <new_line>
+$accumulated_remaining_text = '' ;  <new_line>
+$pointer_to_next_match = index( itemid_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+
+while ( $pointer_to_next_match > 0 ) {  <new_line>
+$accumulated_remaining_text .= substr( itemid_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ;  <new_line>
+itemid_concatenated_all_operands_modified = substr( itemid_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ;  <new_line>
+$pointer_to_next_match = index( itemid_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+}  <new_line>
+
+$accumulated_remaining_text .= ' ' . itemid_concatenated_all_operands_modified ;  <new_line>
+$accumulated_remaining_text = function_parameterized__remove_leading_trailing_spaces( $accumulated_remaining_text ) ;  <new_line>
+
+if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>
+itemid_action_result = 'yes' ;  <new_line>
+} else {  <new_line>
+itemid_action_result = 'no' ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

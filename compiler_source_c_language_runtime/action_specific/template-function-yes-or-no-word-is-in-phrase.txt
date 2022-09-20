@@ -1,0 +1,27 @@
+comment-dashed-line  <new_line>
+
+int function__yes_or_no_word_is_in_phrase( ) {  <new_line>
+itemid_action_name_with_underscores = 'yes_or_no_word_is_in_phrase' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = ' ' ;  <new_line>
+itemid_word_to_find = itemid_operand_one ;  <new_line>
+itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+itemid_temp_text =~ s/^ +// ;  <new_line>
+itemid_temp_text =~ s/ +$// ;  <new_line>
+@global_list = split( / +/ , itemid_temp_text ) ;  <new_line>
+itemid_list_length = c_run_count_of_words_in_list + 1 ;  <new_line>
+itemid_action_result = 'no' ;  <new_line>
+if ( itemid_list_length >= 1 ) {  <new_line>
+    itemid_last_pointer = 0 ;  <new_line>
+    for ( itemid_pointer = 1 ; itemid_pointer <= itemid_list_length ; itemid_pointer ++ ) {  <new_line>
+        if ( itemid_list[ itemid_pointer - 1 ] eq itemid_word_to_find ) {  <new_line>
+            itemid_action_result = 'yes' ;  <new_line>
+            last ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+
+template-function-segment-ending

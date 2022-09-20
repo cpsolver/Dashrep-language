@@ -1,0 +1,66 @@
+comment-dashed-line  <new_line>
+
+int function__generate_positions_of_listed_words( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_positions_of_listed_words' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_words_to_find = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+itemid_string_to_search = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_list_of_positions = '' ;  <new_line>
+itemid_words_to_find =~ s/\n/ /sg ;  <new_line>
+itemid_words_to_find =~ s/^ +// ;  <new_line>
+itemid_words_to_find =~ s/ +$// ;  <new_line>
+if ( itemid_words_to_find =~ / / ) {  <new_line>
+    @global_list_of_text_items_to_find = split( / +/ , itemid_words_to_find ) ;  <new_line>
+    itemid_number_of_items_to_find = c_run_count_of_words_in_list_of_text_items_to_find + 1 ;  <new_line>
+} else if ( itemid_words_to_find =~ /^[^ ]+$/ ) {  <new_line>
+    @global_list_of_text_items_to_find = ( ) ;  <new_line>
+    itemid_list_of_text_items_to_find[ 0 ] = itemid_words_to_find ;  <new_line>
+    itemid_number_of_items_to_find = 1 ;  <new_line>
+} else {  <new_line>
+    @global_list_of_text_items_to_find = ( ) ;  <new_line>
+    itemid_number_of_items_to_find = 0 ;  <new_line>
+}  <new_line>
+%global_text_to_find_at_position = ( ) ;  <new_line>
+if ( itemid_number_of_items_to_find > 0 ) {  <new_line>
+    for ( itemid_item_number = 1 ; itemid_item_number <= itemid_number_of_items_to_find ; itemid_item_number ++ ) {  <new_line>
+        itemid_text_to_find = itemid_list_of_text_items_to_find[ itemid_item_number - 1 ] ;  <new_line>
+        itemid_search_starting_position = 0 ;  <new_line>
+        itemid_local_endless_loop_counter = 0 ;  <new_line>
+        itemid_local_endless_loop_counter_maximum = 10000 ;  <new_line>
+        itemid_position_of_text_found = index( itemid_string_to_search , itemid_text_to_find , itemid_search_starting_position ) ;  <new_line>
+        while ( ( itemid_position_of_text_found > -1 ) && ( itemid_local_endless_loop_counter <= itemid_local_endless_loop_counter_maximum ) ) {  <new_line>
+            itemid_position_as_string = sprintf( "%05d" , itemid_position_of_text_found ) ;  <new_line>
+            if ( exists( itemid_text_to_find_at_position{ itemid_position_as_string } ) ) {  <new_line>
+                if ( length( itemid_text_to_find ) > length( itemid_text_to_find_at_position{ itemid_position_as_string } ) ) {  <new_line>
+                    itemid_text_to_find_at_position{ itemid_position_as_string } = itemid_text_to_find ;  <new_line>
+                    itemid_item_number_found_at_position{ itemid_position_as_string } = itemid_item_number ;  <new_line>
+                }  <new_line>
+            } else {  <new_line>
+                itemid_text_to_find_at_position{ itemid_position_as_string } = itemid_text_to_find ;  <new_line>
+                itemid_item_number_found_at_position{ itemid_position_as_string } = itemid_item_number ;  <new_line>
+            }  <new_line>
+            itemid_search_starting_position = itemid_position_of_text_found + 1 ;  <new_line>
+            itemid_position_of_text_found = index( itemid_string_to_search , itemid_text_to_find , itemid_search_starting_position ) ;  <new_line>
+            itemid_local_endless_loop_counter ++ ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_position_end = -1 ;  <new_line>
+foreach itemid_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {  <new_line>
+    if ( ( itemid_position_of_text_found + 1 ) >= itemid_position_end ) {  <new_line>
+        if ( itemid_list_of_positions ne '' ) {  <new_line>
+            itemid_list_of_positions .= ' ' ;  <new_line>
+        }  <new_line>
+        itemid_list_of_positions .= itemid_position_of_text_found + 1 ;  <new_line>
+        itemid_position_end = ( itemid_position_of_text_found + length( itemid_list_of_text_items_to_find[ itemid_item_number_found_at_position{ itemid_position_of_text_found } - 1 ] ) ) ;  <new_line>
+        itemid_list_of_positions .= ' ' . itemid_position_end  ;  <new_line>
+    }  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_three } = itemid_list_of_positions ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

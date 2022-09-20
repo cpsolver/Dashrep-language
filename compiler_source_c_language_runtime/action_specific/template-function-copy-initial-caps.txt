@@ -1,0 +1,35 @@
+comment-dashed-line  <new_line>
+
+int function__copy_initial_caps( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_initial_caps' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+itemid_source_phrase_name = itemid_operand_one ;  <new_line>
+itemid_target_phrase_name = itemid_operand_two ;  <new_line>
+if ( not( exists( function_parameterized__get_dashrep_replacement( itemid_source_phrase_name } ) ) ) {  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_source_phrase_name } = '' ;  <new_line>
+}  <new_line>
+itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_source_phrase_name } ;  <new_line>
+itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+itemid_temp_text =~ s/^ +// ;  <new_line>
+itemid_temp_text =~ s/ +$// ;  <new_line>
+itemid_remaining_text = itemid_temp_text ;  <new_line>
+itemid_accumulated_text = '' ;  <new_line>
+if ( itemid_remaining_text =~ /^([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+    itemid_character_to_capitalize = $1 ;  <new_line>
+    itemid_remaining_text = $2 ;  <new_line>
+    itemid_accumulated_text .= uc( itemid_character_to_capitalize ) ;  <new_line>
+}  <new_line>
+while ( itemid_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+    itemid_accumulated_text .= $1 ;  <new_line>
+    itemid_character_to_capitalize = $2 ;  <new_line>
+    itemid_remaining_text = $3 ;  <new_line>
+    itemid_accumulated_text .= ' ' . uc( itemid_character_to_capitalize ) ;  <new_line>
+}  <new_line>
+itemid_accumulated_text .= itemid_remaining_text ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_target_phrase_name } = itemid_accumulated_text ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

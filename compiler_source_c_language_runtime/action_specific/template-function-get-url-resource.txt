@@ -1,0 +1,77 @@
+comment-dashed-line  <new_line>
+// function__get_url_resource  <new_line>
+//  <new_line>
+
+combee ****
+//  In addition to the input supplied as operand one, and the output specificed by operand two  <new_line>
+//  (plus the path specified by "dashrep-path-prefix-for-file-writing"),  <new_line>
+//  messages from the CURL command (plus diagnostic info) are put into the phrase  <new_line>
+//  "trace-from-get-url-resource" <new_line>
+//  <new_line>
+//  The -k switch reqests ignoring any  <new_line>
+//  https certificate errors (which are not important  <new_line>
+//  because the downloaded resources are public).  <new_line>
+//  <new_line>
+//  The -s switch requests silent mode, which turns  <new_line>
+//  off both errors and progress info that is  <new_line>
+//  otherwise written to standard output.  <new_line>
+//  <new_line>
+//  The -S switch requests that errors be shown.  <new_line>
+//  <new_line>
+**** comenn
+
+int function__get_url_resource( ) {  <new_line>
+
+// use local variables for command-related variables for added security  <new_line>
+int itemid_command_string_without_pipe ;  <new_line>
+int itemid_process_id ;  <new_line>
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
+if ( function_parameterized__yes_or_no_valid_url( itemid_operand_one ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__get_url_resource__invalid_url [' . itemid_operand_one . '] ' ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_ no-space trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource ) = itemid_action_result ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( function_parameterized__yes_or_no_file_name( itemid_operand_two ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__get_url_resource__invalid_file_name [' . itemid_operand_two . '] ' ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_ no-space trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource ) = itemid_action_result ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+itemid_target_path_prefix = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
+
+if ( function_parameterized__yes_or_no_valid_path_prefix( itemid_target_path_prefix ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__get_url_resource__invalid_path_prefix [' . itemid_target_path_prefix . '] ' ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_ no-space trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource ) = itemid_action_result ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+itemid_target_file_full_path = itemid_target_path_prefix . itemid_operand_two ;  <new_line>
+
+// todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator  <new_line>
+
+$command_string_without_pipe = 'curl -k -s -S -o ' . itemid_target_file_full_path . ' ' . itemid_operand_one ;  <new_line>
+
+itemid_accumulated_text = 'starting_get_url_resource' ;  <new_line>
+
+if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) {  <new_line>
+    itemid_accumulated_text .= ' cannot_run_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
+} else {  <new_line>
+    itemid_accumulated_text .= ' starting_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
+    while( itemid_input_line = <CURLCMD> ) {  <new_line>
+        itemid_accumulated_text .= ' ' . itemid_input_line ;  <new_line>
+    }  <new_line>
+    itemid_accumulated_text .= ' ending_curl_command' ;  <new_line>
+    if ( not( close( CURLCMD ) ) ) {  <new_line>
+        itemid_accumulated_text .= ' cannot_close_handle_that_runs_curl_command' ;  <new_line>
+    }  <new_line>
+    chmod( 0600 , itemid_target_file_full_path ) ;  <new_line>
+}  <new_line>
+itemid_accumulated_text .= ' ending_get_url_resource' ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_ no-space trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource ) = itemid_accumulated_text ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

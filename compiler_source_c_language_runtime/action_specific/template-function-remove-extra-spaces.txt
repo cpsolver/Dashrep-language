@@ -1,0 +1,24 @@
+comment-dashed-line  <new_line>
+// function__remove_extra_spaces  <new_line>
+//  <new_line>
+//  Input is itemid_source_text  <new_line>
+//  Output is itemid_target_text  <new_line>
+<new_line>
+
+int function__remove_extra_spaces( ) {  <new_line>
+itemid_default_text = itemid_source_text ;  <new_line>
+
+template-function-segment-if-zero-words-return-default-text
+
+itemid_target_text = substr( itemid_source_text , itemid_begin_position_for_word[ 1 ] , itemid_length_of_word[ 1 ] ) ;  <new_line>
+if ( itemid_number_of_words == 1 ) {  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+for ( itemid_word_pointer_numeric = 2 ; itemid_word_pointer_numeric <= itemid_number_of_words ; itemid_word_pointer_numeric ++ ) {  <new_line>
+itemid_target_text .= ' ' . runtime-code-word-within-source-text ;  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

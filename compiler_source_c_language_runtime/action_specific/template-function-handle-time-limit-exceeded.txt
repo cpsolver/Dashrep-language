@@ -1,0 +1,13 @@
+comment-dashed-line  <new_line>
+// handle_time_limit_exceeded  <new_line>
+<new_line>
+
+void handle_time_limit_exceeded( ) {  <new_line>
+
+OUT_PIPE << 'Exceeded time limit of ' . itemid_time_limit . ' seconds' << std::endl ;  <new_line>
+itemid_action_result = 'trace_diagnostic__handle_time_limit_exceeded ' . itemid_time_limit . "\n" ;  <new_line>
+OUT_PIPE << itemid_global_action_result << std::endl ;  <new_line>
+
+exit ;  <new_line>
+
+template-function-segment-ending

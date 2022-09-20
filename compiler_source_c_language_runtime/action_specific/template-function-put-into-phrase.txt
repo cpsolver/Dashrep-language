@@ -1,0 +1,17 @@
+comment-dashed-line  <new_line>
+// function__put_into_phrase  <new_line>
+//  <new_line>
+
+int function__put_into_phrase( ) {  <new_line>
+itemid_action_name_with_underscores = 'put_into_phrase' ; <new_line>
+itemid_action_result = '' ;  <new_line>
+itemid_pointer_to_first_space = index( itemid_source_text , ' ' ) ;  <new_line>
+itemid_phrase_name = substr( itemid_source_text , 0 , ( itemid_pointer_to_first_space - 1 ) ) ;  <new_line>
+if ( function_parameterized__yes_or_no_phrase_name( itemid_phrase_name ) == no_no ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__' . itemid_action_name_with_underscores . '__case_not_phrase_name ' . itemid_phrase_name . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+code-get-or-put-phrase-definition-begin itemid_phrase_name code-get-or-put-phrase-definition-end = substr( itemid_source_text , ( itemid_pointer_to_first_space + 1 ) ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

@@ -1,0 +1,39 @@
+comment-dashed-line  <new_line>
+
+int function__write_gathered_listed_items_to_end_of_file( ) {  <new_line>
+itemid_action_name_with_underscores = 'write_gathered_listed_items_to_end_of_file' ; <new_line>
+template-check-operand-one-is-phrase-not-empty
+itemid_target_file_name = itemid_operand_two ;  <new_line>
+template-open-file-for-appending
+
+itemid_action_result = '' ;  <new_line>
+itemid_accumulated_text = '' ;  <new_line>
+itemid_entry_begin = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here begin' } ;  <new_line>
+itemid_entry_end = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here end' } ;  <new_line>
+itemid_entry_unique = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here unique' } ;  <new_line>
+@global_list_of_tag_names = ( ) ;  <new_line>
+if ( ( exists( function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence ) ) ) && ( function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence' } =~ /[^ ]/ ) ) {  <new_line>
+    @global_list_of_tag_names = split( /[ \n\r]+/ , function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence' } ) ;  <new_line>
+}  <new_line>
+@global_list_of_unique_values = ( ) ;  <new_line>
+if ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) {  <new_line>
+    @global_list_of_unique_values = split( /[ \n\r]+/ , function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ;  <new_line>
+}  <new_line>
+foreach itemid_unique_value ( @global_list_of_unique_values ) {  <new_line>
+    itemid_accumulated_text .= itemid_entry_begin . "\n" ;  <new_line>
+    itemid_accumulated_text .= itemid_entry_unique . ' ' . itemid_unique_value . "\n" ;  <new_line>
+    foreach itemid_tag_name ( @global_list_of_tag_names ) {  <new_line>
+        itemid_phrase_name = itemid_tag_name . '<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>' . itemid_unique_value ;  <new_line>
+        if ( exists( function_parameterized__get_dashrep_replacement( itemid_phrase_name } ) ) {  <new_line>
+            itemid_accumulated_text .= itemid_tag_name . ' ' . function_parameterized__get_dashrep_replacement( itemid_phrase_name } . "\n" ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+    itemid_accumulated_text .= itemid_entry_end . "\n\n" ;  <new_line>
+}  <new_line>
+OUTFILE << itemid_accumulated_text << std::endl ;  <new_line>
+itemid_yes_or_no_file_opened_for_writing = no_no ;  <new_line>
+close( OUTFILE ) ;  <new_line>
+
+template-runtime-code-protect-target-file
+
+template-function-segment-ending

@@ -1,0 +1,39 @@
+comment-dashed-line  <new_line>
+
+int function__create_empty_sub_folder( ) {  <new_line>
+itemid_action_name_with_underscores = 'create-empty-sub-folder' ; <new_line>
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
+itemid_action_result = '' ;  <new_line>
+itemid_target_path_prefix = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
+
+if ( function_parameterized__yes_or_no_valid_path_prefix( itemid_target_path_prefix ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__invalid_path_prefix' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( itemid_target_path_prefix =~ /([\/\\])/ ) {  <new_line>
+    itemid_slash_or_backslash_for_path = $1 ;  <new_line>
+} else {  <new_line>
+    itemid_slash_or_backslash_for_path = '/' ;  <new_line>
+}  <new_line>
+itemid_target_sub_folder = itemid_target_path_prefix . itemid_operand_one . itemid_slash_or_backslash_for_path ;  <new_line>
+
+if ( function_parameterized__yes_or_no_valid_path( itemid_target_sub_folder ) == no_no ) {  <new_line>
+itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__invalid_full_path' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( <character_hyphen>d itemid_target_sub_folder ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__case_sub_folder_already_exists' ;  <new_line>
+} else {  <new_line>
+    umask( 0077 ) ;  <new_line>
+    if ( mkdir( itemid_target_sub_folder ) ) {  <new_line>
+    } else {  <new_line>
+        itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__case_creating_sub_folder_not_successful' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

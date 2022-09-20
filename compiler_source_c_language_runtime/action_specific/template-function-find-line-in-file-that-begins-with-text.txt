@@ -1,0 +1,26 @@
+comment-dashed-line  <new_line>
+
+int function__find_line_in_file_that_begins_with_text( ) {  <new_line>
+itemid_action_name_with_underscores = 'find_line_in_file_that_begins_with_text' ; <new_line>
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+itemid_list_of_storage_names = "" ;  <new_line>
+itemid_string_to_find = function_parameterized__get_dashrep_replacement( itemid_operand_two ) ;  <new_line>
+itemid_length_of_string = length( itemid_string_to_find ) ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_possible_match = substr( itemid_input_line , 0 , itemid_length_of_string ) ;  <new_line>
+    if ( itemid_possible_match eq itemid_string_to_find ) {  <new_line>
+        function_parameterized__get_dashrep_replacement( itemid_operand_three } = itemid_input_line ;  <new_line>
+        last ;  <new_line>
+    }  <new_line>
+}  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

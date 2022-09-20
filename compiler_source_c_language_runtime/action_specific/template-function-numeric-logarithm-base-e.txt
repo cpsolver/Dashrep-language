@@ -1,0 +1,11 @@
+comment-dashed-line  <new_line>
+
+int function__numeric_logarithm_base_e( ) {  <new_line>
+itemid_action_name_with_underscores = 'numeric_logarithm_base_e' ; <new_line>
+template-check-operand-one-is-real-number
+
+itemid_action_result = '' ;  <new_line>
+itemid_action_result = function_parameterized__convert_numeric_value_into_numeric_text( log( function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_one ) ) ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

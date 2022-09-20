@@ -1,0 +1,49 @@
+comment-dashed-line  <new_line>
+// function__generate_counts_from_integer_to_integer  <new_line>
+//  <new_line>
+
+int function__generate_counts_from_integer_to_integer( ) {  <new_line>
+itemid_action_name_with_underscores = 'generate_counts_from_integer_to_integer' ; <new_line>
+template-check-operand-one-is-integer
+template-check-operand-two-is-integer
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+
+itemid_numeric_value_first = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_one ) ;  <new_line>
+itemid_numeric_value_second = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_two ) ;  <new_line>
+
+if ( itemid_numeric_value_first > itemid_numeric_value_second ) {  <new_line>
+itemid_plus_or_minus_one = -1 ;  <new_line>
+itemid_count_range = itemid_numeric_value_first - itemid_numeric_value_second + 1 ;  <new_line>
+} else {  <new_line>
+itemid_plus_or_minus_one = 1 ;  <new_line>
+itemid_count_range = itemid_numeric_value_second - itemid_numeric_value_first + 1 ;  <new_line>
+}  <new_line>
+
+if ( itemid_count_range > 500000 ) {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end = 'dashrep_undefined_from_action_generate_counts_from_integer_to_integer_error_count_range_too_large' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end = '' ;  <new_line>
+
+for ( itemid_counter = 1 ; itemid_counter <= itemid_count_range ; itemid_counter ++ ) {  <new_line>
+itemid_count_number = itemid_numeric_value_first + ( itemid_plus_or_minus_one * ( itemid_counter - 1 ) );  <new_line>
+
+if ( itemid_counter > 1 ) {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end .= ' ' ;  <new_line>
+}  <new_line>
+
+if ( itemid_count_number == 0 ) {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end .= '0' ;  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end .= sprintf( "%d" , itemid_count_number ) ;  <new_line>
+}  <new_line>
+
+// end of loop  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

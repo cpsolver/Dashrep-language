@@ -1,0 +1,33 @@
+comment-dashed-line  <new_line>
+
+int function__get_characters_from_position_to_position( ) {  <new_line>
+itemid_action_name_with_underscores = 'get_characters_from_position_to_position' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-positive-integer
+template-check-operand-three-is-positive-integer
+
+itemid_action_result = '' ;  <new_line>
+if ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) {  <new_line>
+    itemid_string_in_phrase = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+    itemid_phrase_length = length( itemid_string_in_phrase ) ;  <new_line>
+    itemid_starting_character_position = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_two ) ;  <new_line>
+    if ( itemid_starting_character_position > itemid_phrase_length ) {  <new_line>
+        itemid_starting_character_position = itemid_phrase_length ;  <new_line>
+    } else if ( itemid_starting_character_position < 0 ) {  <new_line>
+        itemid_starting_character_position = itemid_phrase_length - itemid_starting_character_position + 1 ;  <new_line>
+    }  <new_line>
+    itemid_ending_character_position = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_three ) ;  <new_line>
+    if ( ( itemid_ending_character_position > itemid_phrase_length ) || ( itemid_ending_character_position == 0 ) ) {  <new_line>
+        itemid_ending_character_position = itemid_phrase_length ;  <new_line>
+    } else if ( itemid_ending_character_position < 0 ) {  <new_line>
+        itemid_ending_character_position = itemid_phrase_length - itemid_ending_character_position + 1 ;  <new_line>
+    }  <new_line>
+    itemid_number_of_characters_to_get = itemid_ending_character_position - itemid_starting_character_position + 1 ;  <new_line>
+    if ( itemid_number_of_characters_to_get < 1 ) {  <new_line>
+        itemid_number_of_characters_to_get = 1 ;  <new_line>
+    }  <new_line>
+    itemid_action_result = substr( itemid_string_in_phrase , ( itemid_starting_character_position - 1 ) , itemid_number_of_characters_to_get ) ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

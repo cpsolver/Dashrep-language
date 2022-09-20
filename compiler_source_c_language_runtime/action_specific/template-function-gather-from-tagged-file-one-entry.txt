@@ -1,0 +1,88 @@
+comment-dashed-line  <new_line>
+
+int function__gather_from_tagged_file_one_entry( ) {  <new_line>
+itemid_action_name_with_underscores = 'gather_from_tagged_file_one_entry' ; <new_line>
+template-check-operand-two-is-phrase-name
+itemid_source_file_name = itemid_operand_one ;  <new_line>
+template-open-file-for-reading
+
+itemid_action_result = '' ;  <new_line>
+itemid_accumulated_matching_entry_info = '' ;  <new_line>
+itemid_entry_begin = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here begin' } ;  <new_line>
+if ( itemid_entry_begin !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_begin = 'entry_begin' ;  <new_line>
+}  <new_line>
+itemid_entry_end = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here end' } ;  <new_line>
+if ( itemid_entry_end !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_end = 'entry_end' ;  <new_line>
+}  <new_line>
+itemid_entry_unique = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here unique' } ;  <new_line>
+if ( itemid_entry_unique !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_unique = 'url' ;  <new_line>
+}  <new_line>
+itemid_entry_delete = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here delete' } ;  <new_line>
+if ( itemid_entry_delete !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_delete = 'delete_id' ;  <new_line>
+}  <new_line>
+itemid_entry_matching_id = function_parameterized__get_dashrep_replacement( itemid_ no-space dashrep hyphen-here gather hyphen-here tag hyphen-here matching hyphen-here id' } ;  <new_line>
+if ( itemid_entry_matching_id !~ /^[^ ]+$/ ) {  <new_line>
+    itemid_entry_matching_id = '1' ;  <new_line>
+}  <new_line>
+itemid_possible_matching_entry_info = '' ;  <new_line>
+itemid_unique_value = '' ;  <new_line>
+itemid_list_of_tag_values_in_sequence_encountered = '' ;  <new_line>
+%global_content_for_tag = ( ) ;  <new_line>
+%global_found_unique_value = ( ) ;  <new_line>
+%global_exists_tag_name = ( ) ;  <new_line>
+itemid_line_status = 'between' ;  <new_line>
+while ( itemid_input_line = <INFILE> ) {  <new_line>
+    chomp( itemid_input_line ) ;  <new_line>
+    itemid_pointer = index( itemid_input_line , "\r" ) ;  <new_line>
+    if ( itemid_pointer >= 0 ) {  <new_line>
+        itemid_input_line =~ s/[\r\n]+//gs ;  <new_line>
+    }  <new_line>
+    if ( itemid_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
+        itemid_first_word = $1 ;  <new_line>
+        if ( itemid_first_word eq itemid_entry_begin ) {  <new_line>
+            itemid_line_status = 'within' ;  <new_line>
+            itemid_possible_matching_entry_info = '' ;  <new_line>
+        } else if ( itemid_first_word eq itemid_entry_end ) {  <new_line>
+            if ( itemid_line_status eq 'within hyphen-here matching' ) {  <new_line>
+                itemid_accumulated_matching_entry_info .= itemid_possible_matching_entry_info ;  <new_line>
+            }  <new_line>
+            itemid_possible_matching_entry_info = '' ;  <new_line>
+            itemid_line_status = 'between' ;  <new_line>
+        } else if ( ( itemid_line_status eq 'within' ) || ( itemid_line_status eq 'within hyphen-here matching' ) ) {  <new_line>
+            itemid_possible_matching_entry_info .= itemid_input_line . "\n" ;  <new_line>
+        }  <new_line>
+    } else if ( itemid_input_line =~ /^ *([^ ]+) +([^ \t\n\r]+) *$/ ) {  <new_line>
+        itemid_first_word = $1 ;  <new_line>
+        itemid_second_word = $2 ;  <new_line>
+        if ( itemid_first_word eq itemid_entry_unique ) {  <new_line>
+            if ( itemid_second_word eq itemid_entry_matching_id ) {  <new_line>
+                itemid_line_status = 'within hyphen-here matching' ;  <new_line>
+                itemid_possible_matching_entry_info .= itemid_input_line . "\n" ;  <new_line>
+            } else {  <new_line>
+                itemid_line_status = 'within hyphen-here not hyphen-here matching' ;  <new_line>
+                itemid_possible_matching_entry_info = '' ;  <new_line>
+            }  <new_line>
+        } else if ( itemid_first_word eq itemid_entry_delete ) {  <new_line>
+            if ( itemid_second_word eq itemid_entry_matching_id ) {  <new_line>
+                itemid_accumulated_matching_entry_info = '' ;  <new_line>
+            } else {  <new_line>
+                itemid_possible_matching_entry_info = '' ;  <new_line>
+                itemid_line_status = 'between' ;  <new_line>
+            }  <new_line>
+        } else if ( ( itemid_line_status eq 'within' ) || ( itemid_line_status eq 'within hyphen-here matching' ) ) {  <new_line>
+            itemid_possible_matching_entry_info .= itemid_input_line . "\n" ;  <new_line>
+        }  <new_line>
+    } else if ( ( itemid_line_status eq 'within' ) || ( itemid_line_status eq 'within hyphen-here matching' ) ) {  <new_line>
+        itemid_possible_matching_entry_info .= itemid_input_line . "\n" ;  <new_line>
+    }  <new_line>
+}  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_operand_two ) = itemid_accumulated_matching_entry_info ;  <new_line>
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

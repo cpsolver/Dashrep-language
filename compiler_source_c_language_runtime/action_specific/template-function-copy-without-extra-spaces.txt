@@ -1,0 +1,14 @@
+comment-dashed-line  <new_line>
+
+int function__copy_without_extra_spaces( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_without_extra_spaces' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = ' ' ;  <new_line>
+itemid_source_text = code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+function__remove_extra_spaces( ) ;  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = itemid_target_text ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

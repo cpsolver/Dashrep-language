@@ -1,0 +1,43 @@
+comment-dashed-line  <new_line>
+
+int function__copy_words_from_position_to_position( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_words_from_position_to_position' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+template-check-operand-four-is-positive-integer
+
+itemid_action_result = '' ;  <new_line>
+itemid_word_number_begin = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_three ) ;  <new_line>
+itemid_word_number_end = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_four ) ;  <new_line>
+if ( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) {  <new_line>
+    itemid_temp_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+    itemid_temp_text =~ s/\n/ /sg ;  <new_line>
+    itemid_temp_text =~ s/^ +// ;  <new_line>
+    itemid_temp_text =~ s/ +$// ;  <new_line>
+    @global_list = split( / +/ , itemid_temp_text ) ;  <new_line>
+} else  <new_line>
+{  <new_line>
+    @global_list = ( ) ;  <new_line>
+}  <new_line>
+itemid_word_count = c_run_count_of_words_in_list + 1 ;  <new_line>
+if ( itemid_word_number_end > itemid_word_count ) {  <new_line>
+    itemid_word_number_end = itemid_word_count ;  <new_line>
+}  <new_line>
+if ( ( itemid_word_count < 1 ) || ( itemid_word_number_begin < 1 ) || ( itemid_word_number_end < 1 ) || ( itemid_word_number_begin > itemid_word_count ) || ( itemid_word_number_end < itemid_word_number_begin ) ) {  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_two ) = '' ;  <new_line>
+} else  <new_line>
+{  <new_line>
+    itemid_result_text = '' ;  <new_line>
+    itemid_separator = '' ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_two ) = '' ;  <new_line>
+    for ( itemid_word_number = itemid_word_number_begin ; itemid_word_number <= itemid_word_number_end ; itemid_word_number ++ ) {  <new_line>
+        itemid_result_text .= itemid_separator . itemid_list[ itemid_word_number - 1 ] ;  <new_line>
+        itemid_separator = ' ' ;  <new_line>
+    }  <new_line>
+    itemid_result_text =~ s/ +$// ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_two ) = itemid_result_text ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

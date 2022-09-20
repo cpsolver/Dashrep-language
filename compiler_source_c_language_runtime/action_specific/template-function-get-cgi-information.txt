@@ -1,0 +1,137 @@
+comment-dashed-line  <new_line>
+// function__get_cgi_information  <new_line>
+//  <new_line>
+
+combee ****
+//  Input is standard input or standard environmental values  <new_line>
+//  Output are phrases that have names that begin with the text "input-" and otherwise are named using the cgi name  <new_line>
+<new_line>
+**** comenn
+
+int function__get_cgi_information( ) {  <new_line>
+
+itemid_action_result = '' ;  <new_line>
+itemid_raw_input = '' ;  <new_line>
+itemid_line_count = 0 ;  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_dashrep-list_of_input_cgi_phrase_names ) = '' ;  <new_line>
+
+if ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'GET' ) ) {  <new_line>
+
+if ( ( exists( $ENV{ 'CONTENT_LENGTH' } ) ) && ( $ENV{ 'CONTENT_LENGTH' } > itemid_cgi_string_length_limit ) ) {  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_dashrep_error_cgi_input_too_long ) = 'yes' ;  <new_line>
+itemid_accumulator[ itemid_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
+return ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'QUERY_STRING' } ) ) {  <new_line>
+itemid_raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
+}  <new_line>
+
+} else if ( ( exists( function_parameterized__get_dashrep_replacement( itemid_input_filename_for_cgi_information ) ) ) && ( function_parameterized__get_dashrep_replacement( input_filename_for_cgi_information ) =~ /^[^ ]+\.[^ ]+$/ ) && ( open( INFILE , function_parameterized__get_dashrep_replacement( itemid_input_filename_for_cgi_information ) ) ) ) {  <new_line>
+
+itemid_yes_or_no_file_opened_for_reading = yes_yes ;  <new_line>
+
+while( itemid_input_line = <INFILE> ) {  <new_line>
+chomp( itemid_input_line ) ;  <new_line>
+
+if ( itemid_line_count > 0 ) {  <new_line>
+itemid_raw_input .= ' ' ;  <new_line>
+}  <new_line>
+
+itemid_raw_input .= itemid_input_line ;  <new_line>
+itemid_line_count ++ ;  <new_line>
+
+// end of while loop  <new_line>
+}  <new_line>
+
+itemid_yes_or_no_file_opened_for_reading = no_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+
+} else if ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'POST' ) ) {  <new_line>
+
+while( itemid_input_line = <STDIN> ) {  <new_line>
+chomp( itemid_input_line ) ;  <new_line>
+
+if ( itemid_line_count > 0 ) {  <new_line>
+itemid_raw_input .= ' ' ;  <new_line>
+}  <new_line>
+
+itemid_raw_input .= itemid_input_line ;  <new_line>
+itemid_line_count ++ ;  <new_line>
+
+if ( itemid_line_count > itemid_cgi_line_length_limit ) {  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_dashrep_error_cgi_input_too_long ) = 'yes' ;  <new_line>
+itemid_accumulator[ itemid_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
+return ;  <new_line>
+}  <new_line>
+
+// end of while loop  <new_line>
+}  <new_line>
+
+// end of if branch  <new_line>
+}  <new_line>
+
+function_parameterized__put_dashrep_replacement( itemid_input_raw_cgi_string ) = itemid_raw_input ;  <new_line>
+
+if ( itemid_raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
+itemid_raw_input = $1 ;  <new_line>
+itemid_raw_input =~ tr/+/ / ;  <new_line>
+@global_name_value_pairs = split( /&/, itemid_raw_input ) ;  <new_line>
+
+foreach itemid_name_value ( @global_name_value_pairs ) {  <new_line>
+( itemid_name, itemid_value ) = split( /=/, itemid_name_value, 2 ) ;  <new_line>
+
+if ( not( defined( itemid_value ) ) ) {  <new_line>
+itemid_value = '' ;  <new_line>
+}  <new_line>
+
+itemid_name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+itemid_name  =~ s/[<>\/\\]+/_/g ;  <new_line>
+
+if ( itemid_name eq 'texttoimport' ) {  <new_line>
+//               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
+itemid_value =~ s/%0D//ig ;  <new_line>
+itemid_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+} else {  <new_line>
+itemid_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+itemid_value =~ s/[<>]+/_/gm ;  <new_line>
+itemid_value =~ s/\n/<eol\/>/gm ;  <new_line>
+}  <new_line>
+
+itemid_name = function_parameterized__remove_leading_trailing_spaces( itemid_name ) ;  <new_line>
+itemid_value = function_parameterized__remove_leading_trailing_spaces( itemid_value ) ;  <new_line>
+
+if ( itemid_name ne '' ) {  <new_line>
+//  Prepend "input-" to the phrase name  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_input_' . itemid_name ) = itemid_value ;  <new_line>
+
+if ( $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } ne '' ) {  <new_line>
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= ' ' ;  <new_line>
+}  <new_line>
+
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= 'input-' . itemid_name ;  <new_line>
+}  <new_line>
+
+// end of foreach loop  <new_line>
+}  <new_line>
+
+// end of if branch  <new_line>
+}  <new_line>
+
+itemid_raw_input = '' ;  <new_line>
+
+if ( exists( $ENV{ 'REMOTE_ADDR' } ) ) {  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_input_ip_address ) = $ENV{ 'REMOTE_ADDR' } ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'REMOTE_PORT' } ) ) {  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_input_port_number ) = $ENV{ 'REMOTE_PORT' } ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'HTTP_COOKIE' } ) ) {  <new_line>
+function_parameterized__put_dashrep_replacement( itemid_input_cookie_contents ) = $ENV{ 'HTTP_COOKIE' } ;  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending

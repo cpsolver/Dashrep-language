@@ -1,0 +1,20 @@
+comment-dashed-line  <new_line>
+
+int function__numeric_equal_greater_less_compare( ) {  <new_line>
+itemid_action_name_with_underscores = 'numeric_equal_greater_less_compare' ; <new_line>
+template-check-operand-one-is-real-number
+template-check-operand-two-is-real-number
+
+itemid_action_result = '' ;  <new_line>
+itemid_first_object_of_action = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_one ) ;  <new_line>
+itemid_second_object_of_action = function_parameterized__convert_numeric_text_into_numeric_value( itemid_operand_two ) ;  <new_line>
+if ( itemid_first_object_of_action == itemid_second_object_of_action ) {  <new_line>
+    itemid_action_result = 'equal' ;  <new_line>
+} else if ( itemid_first_object_of_action > itemid_second_object_of_action ) {  <new_line>
+    itemid_action_result = 'greater' ;  <new_line>
+} else {  <new_line>
+    itemid_action_result = 'less' ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

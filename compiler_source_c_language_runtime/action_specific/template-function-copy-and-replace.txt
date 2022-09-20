@@ -1,0 +1,34 @@
+comment-dashed-line  <new_line>
+
+int function__copy_and_replace( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_and_replace' ; <new_line>
+itemid_action_result = '' ;  <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
+
+itemid_source_text = code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+itemid_length_of_text_source = length( itemid_source_text ) ;  <new_line>
+itemid_string_to_be_replaced = code-get-or-put-phrase-definition-begin itemid_operand_three code-get-or-put-phrase-definition-end ;  <new_line>
+itemid_length_of_string_to_be_replaced = length( itemid_string_to_be_replaced ) ;  <new_line>
+itemid_text_to_insert = code-get-or-put-phrase-definition-begin itemid_operand_four code-get-or-put-phrase-definition-end ;  <new_line>
+itemid_character_pointer_begin = 0 ;  <new_line>
+itemid_character_pointer_end = index( itemid_source_text , itemid_string_to_be_replaced , itemid_character_pointer_begin ) - 1 ;  <new_line>
+itemid_target_text = '' ;  <new_line>
+while ( itemid_character_pointer_end >= -1 ) {  <new_line>
+    itemid_length_of_text_segment = itemid_character_pointer_end - itemid_character_pointer_begin + 1 ;  <new_line>
+    if ( itemid_length_of_text_segment > 0 ) {  <new_line>
+        itemid_target_text .= substr( itemid_source_text , itemid_character_pointer_begin , itemid_length_of_text_segment ) ;  <new_line>
+    }  <new_line>
+    itemid_target_text .= itemid_text_to_insert ;  <new_line>
+    itemid_character_pointer_begin = itemid_character_pointer_end + itemid_length_of_string_to_be_replaced + 1 ;  <new_line>
+    itemid_character_pointer_end = index( itemid_source_text , itemid_string_to_be_replaced , itemid_character_pointer_begin ) - 1 ;  <new_line>
+}  <new_line>
+if ( itemid_character_pointer_begin < itemid_length_of_text_source ) {  <new_line>
+    itemid_target_text .= substr( itemid_source_text , itemid_character_pointer_begin ) ;  <new_line>
+}  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = itemid_target_text ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

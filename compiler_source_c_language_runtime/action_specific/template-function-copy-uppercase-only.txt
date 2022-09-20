@@ -1,0 +1,12 @@
+comment-dashed-line  <new_line>
+
+int function__copy_uppercase_only( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_uppercase_only' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+itemid_action_result = ' ' ;  <new_line>
+code-get-or-put-phrase-definition-begin itemid_operand_two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin itemid_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending

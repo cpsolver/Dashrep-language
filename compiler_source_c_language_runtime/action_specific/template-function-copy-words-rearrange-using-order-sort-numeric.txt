@@ -1,0 +1,62 @@
+comment-dashed-line  <new_line>
+
+int function__copy_words_rearrange_using_order_sort_numeric( ) {  <new_line>
+itemid_action_name_with_underscores = 'copy_words_rearrange_using_order_sort_numeric' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+
+itemid_action_result = '' ;  <new_line>
+
+if ( function_parameterized__get_dashrep_replacement( itemid_operand_three } =~ /[^0<character_hyphen>9\.\<character_hyphen> ]/ ) {  <new_line>
+    itemid_action_result = 'dashrep_compiled_runtime_error__' . itemid_currently_executing_phrase_name_with_underscores . '__copy_words_rearrange_using_order_sort_numeric' ;  <new_line>
+    return ;  <new_line>
+}  <new_line>
+
+itemid_operand_one =~ s/\n/ /g ;  <new_line>
+
+if ( ( itemid_operand_one !~ /^[^ ]+$/ ) || ( not( exists( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) ) || ( not( defined( function_parameterized__get_dashrep_replacement( itemid_operand_one ) ) ) ) ) {  <new_line>
+} else {  <new_line>
+
+    itemid_source_text = function_parameterized__get_dashrep_replacement( itemid_operand_one ) ;  <new_line>
+    itemid_source_text =~ s/\n/ /sg ;  <new_line>
+    itemid_source_text =~ s/^ +// ;  <new_line>
+    itemid_source_text =~ s/ +$// ;  <new_line>
+    if ( itemid_source_text =~ / / ) {  <new_line>
+        @global_list_of_words = split( / +/ , itemid_source_text ) ;  <new_line>
+    } else {  <new_line>
+        @global_list_of_words = ( ) ;  <new_line>
+        itemid_list_of_words[ 0 ] = itemid_source_text ;  <new_line>
+    }  <new_line>
+    itemid_list_indicating_sort_order_text_string = function_parameterized__get_dashrep_replacement( itemid_operand_three } ;  <new_line>
+    itemid_list_indicating_sort_order_text_string =~ s/\n/ /s ;  <new_line>
+    itemid_list_indicating_sort_order_text_string =~ s/^ +// ;  <new_line>
+    itemid_list_indicating_sort_order_text_string =~ s/ +$// ;  <new_line>
+    @global_list_indicating_sort_order = split( / +/ , itemid_list_indicating_sort_order_text_string ) ;  <new_line>
+    @global_sort_order = sort { $a <=> $b } @global_list_indicating_sort_order ;  <new_line>
+    itemid_extra_words_without_sort_value = '' ;  <new_line>
+    if ( c_run_count_of_words_in_list_indicating_sort_order < c_run_count_of_words_in_list_of_words ) {  <new_line>
+        for ( itemid_word_position = ( c_run_count_of_words_in_list_indicating_sort_order + 2 ) ; itemid_word_position <= ( c_run_count_of_words_in_list_of_words + 1 ) ; itemid_word_position ++ ) {  <new_line>
+            itemid_extra_words_without_sort_value .= itemid_list_of_words[ itemid_word_position - 1 ] . ' ' ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+    %global_words_at_numeric_value = ( ) ;  <new_line>
+    for ( itemid_word_position = 1 ; itemid_word_position <= ( c_run_count_of_words_in_list_indicating_sort_order + 1 ) ; itemid_word_position ++ ) {  <new_line>
+        itemid_numeric_value = itemid_list_indicating_sort_order[ itemid_word_position - 1 ] ;  <new_line>
+        itemid_words_at_numeric_value{ itemid_numeric_value } .= itemid_list_of_words[ itemid_word_position - 1 ] . ' ' ;  <new_line>
+    }  <new_line>
+    itemid_text_string = '' ;  <new_line>
+    foreach itemid_numeric_value ( @global_sort_order ) {  <new_line>
+        if ( itemid_words_at_numeric_value{ itemid_numeric_value } =~ /[^ ]/ ) {  <new_line>
+            itemid_text_string .= itemid_words_at_numeric_value{ itemid_numeric_value } . ' ' ;  <new_line>
+            itemid_words_at_numeric_value{ itemid_numeric_value } = '' ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+    itemid_text_string .= ' ' . itemid_extra_words_without_sort_value ;  <new_line>
+    itemid_text_string =~ s/ +/ /g ;  <new_line>
+    itemid_text_string =~ s/ $// ;  <new_line>
+    function_parameterized__get_dashrep_replacement( itemid_operand_two ) = itemid_text_string ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+
+template-function-segment-ending
