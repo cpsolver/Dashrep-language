@@ -1132,11 +1132,85 @@ int zero_offset_in_stack_level_top ;
 //  Here is where the Dashrep compiler
 //  inserts the numbers that will be inserted
 //  into some of the "all" arrays.
+//  The unicode numbers for some characters and
+//  some special text strings are supplied here
+//  using their unicode numbers.  This avoids the
+//  complication of putting them into Dashrep
+//  code.
+//  Important:  Dashrep code should be used to
+//  determine the positions of these characters
+//  so that any changes here automatically change
+//  the numbers that indicate their positions.
 
 unsigned int initial_contents_for_all_characters[ ] = {
-    0,  // unused
+0,  // unused
+
+// "Dashrep"
+68, 97, 115, 104, 114, 101, 112,
+// four hyphens
+45, 45, 45, 45,
+// space
+32,
+// underscore
+95,
+// newline
+10,
+// open square bracket
+91,
+// close square bracket
+93,
+// "ambee"
+97, 109, 98, 101, 101,
+// "amenn"
+97, 109, 101, 110, 110,
+// "fen"
+102, 101, 110,
+// "fenambee"
+102, 101, 110, 97, 109, 98, 101, 101,
+// "amennfen"
+97, 109, 101, 110, 110, 102, 101, 110,
+// "amennfenambee"
+97, 109, 101, 110, 110, 102, 101, 110, 97, 109, 98, 101, 101,
+// "nospay"
+110, 111, 115, 112, 97, 121,
+// "combee"
+99, 111, 109, 98, 101, 101,
+// "comenn"
+99, 111, 109, 101, 110, 110,
+// "yes"
+121, 101, 115,
+// "no"
+110, 111,
+// "one"
+111, 110, 101,
+// "zero"
+122, 101, 114, 111,
+// "nonzero"
+110, 111, 110, 122, 101, 114, 111,
+// "multiple"
+109, 117, 108, 116, 105, 112, 108, 101,
+// "url"
+117, 114, 108,
+// "delete_id"
+100, 101, 108, 101, 116, 101, 95, 105, 100,
+// "multi_line_begin"
+109, 117, 108, 116, 105, 95, 108, 105, 110, 101, 95, 98, 101, 103, 105, 110,
+// "multi_line_end"
+109, 117, 108, 116, 105, 95, 108, 105, 110, 101, 95, 101, 110, 100,
+// "between"
+98, 101, 116, 119, 101, 101, 110,
+// "within"
+119, 105, 116, 104, 105, 110,
+// "within_multiline"
+119, 105, 116, 104, 105, 110, 95, 109, 117, 108, 116, 105, 108, 105, 110, 101,
+// "found"
+102, 111, 117, 110, 100,
+// "delete"
+100, 101, 108, 101, 116, 101,
+
 // <here_insert_code_into_array_all_charaters>
-    0  // last item, without comma
+
+0  // last item, without comma
 } ;
 
 int initial_contents_for_all_pointers[ ] = {
