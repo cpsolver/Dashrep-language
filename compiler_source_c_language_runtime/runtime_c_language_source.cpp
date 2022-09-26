@@ -267,7 +267,7 @@ int character_category_number_for_character_number[ 260 ] ;
 //  Declare lists for which the compiler does not
 //  supply initial values.
 //
-//  Reminder:  The ascii code for a space is 32,
+//  Reminder:  The unicode number for a space is 32,
 //  and the last printable ascii character is 125.
 
 int all_integers[ 20005 ] ;
@@ -315,49 +315,49 @@ const float pi = 245850922 / 78256779 ;
 
 const int allocated_length_for_file_input_or_output = 2000 ;
 const int allocated_length_for_this_word = 200 ;
-const int ascii_code_for_ampersand = 38 ;
-const int ascii_code_for_apostrophe = 39 ;
-const int ascii_code_for_asterisk = 42 ;
-const int ascii_code_for_at_sign = 64 ;
-const int ascii_code_for_backslash = 92 ;
-const int ascii_code_for_caret = 94 ;
-const int ascii_code_for_carriage_return = 13 ;
-const int ascii_code_for_close_angle_bracket = 62 ;
-const int ascii_code_for_comma = 44 ;
-const int ascii_code_for_digit_0 = 48 ;
-const int ascii_code_for_digit_1 = 49 ;
-const int ascii_code_for_digit_2 = 50 ;
-const int ascii_code_for_digit_3 = 51 ;
-const int ascii_code_for_digit_4 = 52 ;
-const int ascii_code_for_digit_5 = 53 ;
-const int ascii_code_for_digit_6 = 54 ;
-const int ascii_code_for_digit_7 = 55 ;
-const int ascii_code_for_digit_8 = 56 ;
-const int ascii_code_for_digit_9 = 57 ;
-const int ascii_code_for_exclamation_point = 33 ;
-const int ascii_code_for_formfeed = 12 ;
-const int ascii_code_for_grave_accent = 96 ;
-const int ascii_code_for_hyphen = 45 ;
-const int ascii_code_for_left_curly_bracket = 123 ;
-const int ascii_code_for_left_parenthesis = 40 ;
-const int ascii_code_for_left_square_bracket = 91 ;
-const int ascii_code_for_newline = 10 ;
-const int ascii_code_for_open_angle_bracket = 60 ;
-const int ascii_code_for_percent = 37 ;
-const int ascii_code_for_period = 46 ;
-const int ascii_code_for_plus = 43 ;
-const int ascii_code_for_pound_sign = 35 ;
-const int ascii_code_for_question_mark = 63 ;
-const int ascii_code_for_quotation_mark = 34 ;
-const int ascii_code_for_right_curly_bracket = 125 ;
-const int ascii_code_for_right_parenthesis = 41 ;
-const int ascii_code_for_right_square_bracket = 93 ;
-const int ascii_code_for_slash = 47 ;
-const int ascii_code_for_space = 32 ;
-const int ascii_code_for_tab = 9 ;
-const int ascii_code_for_tilde = 126 ;
-const int ascii_code_for_underscore = 95 ;
-const int ascii_code_for_vertical_bar = 124 ;
+const int unicode_for_ampersand = 38 ;
+const int unicode_for_apostrophe = 39 ;
+const int unicode_for_asterisk = 42 ;
+const int unicode_for_at_sign = 64 ;
+const int unicode_for_backslash = 92 ;
+const int unicode_for_caret = 94 ;
+const int unicode_for_carriage_return = 13 ;
+const int unicode_for_close_angle_bracket = 62 ;
+const int unicode_for_comma = 44 ;
+const int unicode_for_digit_0 = 48 ;
+const int unicode_for_digit_1 = 49 ;
+const int unicode_for_digit_2 = 50 ;
+const int unicode_for_digit_3 = 51 ;
+const int unicode_for_digit_4 = 52 ;
+const int unicode_for_digit_5 = 53 ;
+const int unicode_for_digit_6 = 54 ;
+const int unicode_for_digit_7 = 55 ;
+const int unicode_for_digit_8 = 56 ;
+const int unicode_for_digit_9 = 57 ;
+const int unicode_for_exclamation_point = 33 ;
+const int unicode_for_formfeed = 12 ;
+const int unicode_for_grave_accent = 96 ;
+const int unicode_for_hyphen = 45 ;
+const int unicode_for_left_curly_bracket = 123 ;
+const int unicode_for_left_parenthesis = 40 ;
+const int unicode_for_left_square_bracket = 91 ;
+const int unicode_for_newline = 10 ;
+const int unicode_for_open_angle_bracket = 60 ;
+const int unicode_for_percent = 37 ;
+const int unicode_for_period = 46 ;
+const int unicode_for_plus = 43 ;
+const int unicode_for_pound_sign = 35 ;
+const int unicode_for_question_mark = 63 ;
+const int unicode_for_quotation_mark = 34 ;
+const int unicode_for_right_curly_bracket = 125 ;
+const int unicode_for_right_parenthesis = 41 ;
+const int unicode_for_right_square_bracket = 93 ;
+const int unicode_for_slash = 47 ;
+const int unicode_for_space = 32 ;
+const int unicode_for_tab = 9 ;
+const int unicode_for_tilde = 126 ;
+const int unicode_for_underscore = 95 ;
+const int unicode_for_vertical_bar = 124 ;
 const int character_category_apostrophe = 39 ;  // also single quotation mark
 const int character_category_backslash = 92 ;
 const int character_category_close_angle_bracket = 62 ;
@@ -406,6 +406,12 @@ int indexed_pointer_list_end_of_grouping ;
 int length_of_grouping_within_indexed_pointer_list ;
 int offset_for_pointer_stack_level_prior ;
 int offset_for_pointer_stack_level_next ;
+int next_grouping_id_for_linked_list ;
+int not_enough_space ;
+int item_id_origin ;
+int current_pointer_to_append ;
+int id_pointer ;
+int pointer_to_append ;
 
 
 int access_flag ;
@@ -1145,69 +1151,6 @@ int zero_offset_in_stack_level_top ;
 unsigned int initial_contents_for_all_characters[ ] = {
 0,  // unused
 
-// "Dashrep"
-68, 97, 115, 104, 114, 101, 112,
-// four hyphens
-45, 45, 45, 45,
-// space
-32,
-// underscore
-95,
-// newline
-10,
-// open square bracket
-91,
-// close square bracket
-93,
-// "ambee"
-97, 109, 98, 101, 101,
-// "amenn"
-97, 109, 101, 110, 110,
-// "fen"
-102, 101, 110,
-// "fenambee"
-102, 101, 110, 97, 109, 98, 101, 101,
-// "amennfen"
-97, 109, 101, 110, 110, 102, 101, 110,
-// "amennfenambee"
-97, 109, 101, 110, 110, 102, 101, 110, 97, 109, 98, 101, 101,
-// "nospay"
-110, 111, 115, 112, 97, 121,
-// "combee"
-99, 111, 109, 98, 101, 101,
-// "comenn"
-99, 111, 109, 101, 110, 110,
-// "yes"
-121, 101, 115,
-// "no"
-110, 111,
-// "one"
-111, 110, 101,
-// "zero"
-122, 101, 114, 111,
-// "nonzero"
-110, 111, 110, 122, 101, 114, 111,
-// "multiple"
-109, 117, 108, 116, 105, 112, 108, 101,
-// "url"
-117, 114, 108,
-// "delete_id"
-100, 101, 108, 101, 116, 101, 95, 105, 100,
-// "multi_line_begin"
-109, 117, 108, 116, 105, 95, 108, 105, 110, 101, 95, 98, 101, 103, 105, 110,
-// "multi_line_end"
-109, 117, 108, 116, 105, 95, 108, 105, 110, 101, 95, 101, 110, 100,
-// "between"
-98, 101, 116, 119, 101, 101, 110,
-// "within"
-119, 105, 116, 104, 105, 110,
-// "within_multiline"
-119, 105, 116, 104, 105, 110, 95, 109, 117, 108, 116, 105, 108, 105, 110, 101,
-// "found"
-102, 111, 117, 110, 100,
-// "delete"
-100, 101, 108, 101, 116, 101,
-
 // <here_insert_code_into_array_all_charaters>
 
 0  // last item, without comma
@@ -1308,53 +1251,53 @@ void do_main_initialization( )
         character_category_number_for_character_number[ pointer ] = character_category_other ;
     }
 
-    character_category_number_for_character_number[ ascii_code_for_tab ] = character_category_tab ;
-    character_category_number_for_character_number[ ascii_code_for_newline ] = character_category_newline ;
+    character_category_number_for_character_number[ unicode_for_tab ] = character_category_tab ;
+    character_category_number_for_character_number[ unicode_for_newline ] = character_category_newline ;
 
 //  carriage return and formfeed treated as newline
-    character_category_number_for_character_number[ ascii_code_for_carriage_return ] = character_category_newline ;
-    character_category_number_for_character_number[ ascii_code_for_formfeed ] = character_category_newline ;
+    character_category_number_for_character_number[ unicode_for_carriage_return ] = character_category_newline ;
+    character_category_number_for_character_number[ unicode_for_formfeed ] = character_category_newline ;
 
-    character_category_number_for_character_number[ ascii_code_for_quotation_mark ] = character_category_quotation_mark ;
-    character_category_number_for_character_number[ ascii_code_for_apostrophe ] = character_category_apostrophe ;
-    character_category_number_for_character_number[ ascii_code_for_hyphen ] = character_category_hyphen ;
-    character_category_number_for_character_number[ ascii_code_for_space ] = character_category_space ;
-    character_category_number_for_character_number[ ascii_code_for_hyphen ] = character_category_hyphen ;
-    character_category_number_for_character_number[ ascii_code_for_underscore ] = character_category_underscore ;
-    character_category_number_for_character_number[ ascii_code_for_slash ] = character_category_slash ;
-    character_category_number_for_character_number[ ascii_code_for_open_angle_bracket ] = character_category_open_angle_bracket ;
-    character_category_number_for_character_number[ ascii_code_for_close_angle_bracket ] = character_category_close_angle_bracket ;
-    character_category_number_for_character_number[ ascii_code_for_period ] = character_category_period ;
-    character_category_number_for_character_number[ ascii_code_for_plus ] = character_category_plus_sign ;
-    character_category_number_for_character_number[ ascii_code_for_digit_0 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_1 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_2 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_3 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_4 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_5 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_6 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_7 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_8 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_digit_9 ] = character_category_digit ;
-    character_category_number_for_character_number[ ascii_code_for_comma ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_backslash ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_left_square_bracket ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_right_square_bracket ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_left_parenthesis ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_right_parenthesis ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_ampersand ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_asterisk ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_pound_sign ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_exclamation_point ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_question_mark ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_at_sign ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_percent ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_caret ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_grave_accent ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_left_curly_bracket ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_right_curly_bracket ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_vertical_bar ] = character_category_symbol ;
-    character_category_number_for_character_number[ ascii_code_for_tilde ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_quotation_mark ] = character_category_quotation_mark ;
+    character_category_number_for_character_number[ unicode_for_apostrophe ] = character_category_apostrophe ;
+    character_category_number_for_character_number[ unicode_for_hyphen ] = character_category_hyphen ;
+    character_category_number_for_character_number[ unicode_for_space ] = character_category_space ;
+    character_category_number_for_character_number[ unicode_for_hyphen ] = character_category_hyphen ;
+    character_category_number_for_character_number[ unicode_for_underscore ] = character_category_underscore ;
+    character_category_number_for_character_number[ unicode_for_slash ] = character_category_slash ;
+    character_category_number_for_character_number[ unicode_for_open_angle_bracket ] = character_category_open_angle_bracket ;
+    character_category_number_for_character_number[ unicode_for_close_angle_bracket ] = character_category_close_angle_bracket ;
+    character_category_number_for_character_number[ unicode_for_period ] = character_category_period ;
+    character_category_number_for_character_number[ unicode_for_plus ] = character_category_plus_sign ;
+    character_category_number_for_character_number[ unicode_for_digit_0 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_1 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_2 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_3 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_4 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_5 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_6 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_7 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_8 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_digit_9 ] = character_category_digit ;
+    character_category_number_for_character_number[ unicode_for_comma ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_backslash ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_left_square_bracket ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_right_square_bracket ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_left_parenthesis ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_right_parenthesis ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_ampersand ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_asterisk ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_pound_sign ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_exclamation_point ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_question_mark ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_at_sign ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_percent ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_caret ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_grave_accent ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_left_curly_bracket ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_right_curly_bracket ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_vertical_bar ] = character_category_symbol ;
+    character_category_number_for_character_number[ unicode_for_tilde ] = character_category_symbol ;
 
 
 // -----------------------------------------------
@@ -2306,19 +2249,19 @@ void check_yes_or_no_character_is_delimiter( )
 {
     switch ( single_character_as_integer )
     {
-        case ascii_code_for_space :
+        case unicode_for_space :
             yes_or_no_character_is_delimiter = yes_yes ;
             break ;
-        case ascii_code_for_tab :
+        case unicode_for_tab :
             yes_or_no_character_is_delimiter = yes_yes ;
             break ;
-        case ascii_code_for_newline :
+        case unicode_for_newline :
             yes_or_no_character_is_delimiter = yes_yes ;
             break ;
-        case ascii_code_for_formfeed :
+        case unicode_for_formfeed :
             yes_or_no_character_is_delimiter = yes_yes ;
             break ;
-        case ascii_code_for_carriage_return :
+        case unicode_for_carriage_return :
             yes_or_no_character_is_delimiter = yes_yes ;
             break ;
         default :
@@ -2549,7 +2492,7 @@ void convert_list_of_integers_into_text_item( )
         if ( integer_position_current == integer_position_begin )
         {
             pointer_end_for_item[ id_for_integers_as_text ] ++ ;
-            all_characters[ pointer_end_for_item[ id_for_integers_as_text ] ] = ascii_code_for_space ;
+            all_characters[ pointer_end_for_item[ id_for_integers_as_text ] ] = unicode_for_space ;
         }
 
 
@@ -2612,7 +2555,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
         if ( decimal_number_position_current == decimal_number_position_begin )
         {
             pointer_end_for_item[ id_for_decimal_numbers_as_text ] ++ ;
-            all_characters[ pointer_end_for_item[ id_for_decimal_numbers_as_text ] ] = ascii_code_for_space ;
+            all_characters[ pointer_end_for_item[ id_for_decimal_numbers_as_text ] ] = unicode_for_space ;
         }
         pointer_for_just_copy_source = pointer_begin_for_item[ id_for_number_as_text ] ;
         length_for_just_copy = pointer_end_for_item[ id_for_number_as_text ] - pointer_for_just_copy_source + 1 ;
@@ -2654,52 +2597,52 @@ void parse_one_character_of_number( )
     {
         switch ( single_character_as_integer )
         {
-            case ascii_code_for_period :
+            case unicode_for_period :
                 yes_or_no_decimal_number = yes_yes ;
                 single_decimal_number = float( single_integer ) ;
                 single_integer = 0 ;
                 break ;
-            case ascii_code_for_digit_0 :
+            case unicode_for_digit_0 :
                 single_integer = single_integer * 10 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_1 :
+            case unicode_for_digit_1 :
                 single_integer = ( single_integer * 10 ) + 1 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_2 :
+            case unicode_for_digit_2 :
                 single_integer = ( single_integer * 10 ) + 2 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_3 :
+            case unicode_for_digit_3 :
                 single_integer = ( single_integer * 10 ) + 3 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_4 :
+            case unicode_for_digit_4 :
                 single_integer = ( single_integer * 10 ) + 4 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_5 :
+            case unicode_for_digit_5 :
                 single_integer = ( single_integer * 10 ) + 5 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_6 :
+            case unicode_for_digit_6 :
                 single_integer = ( single_integer * 10 ) + 6 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_7 :
+            case unicode_for_digit_7 :
                 single_integer = ( single_integer * 10 ) + 7 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_8 :
+            case unicode_for_digit_8 :
                 single_integer = ( single_integer * 10 ) + 8 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_9 :
+            case unicode_for_digit_9 :
                 single_integer = ( single_integer * 10 ) + 9 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_hyphen :
+            case unicode_for_hyphen :
                 if ( single_integer == 0 )
                 {
                     yes_or_no_negative_number = yes_yes ;
@@ -2708,7 +2651,7 @@ void parse_one_character_of_number( )
                     log_out << "minus sign not at beginning" << std::endl ;
                 }
                 break ;
-            case ascii_code_for_plus :
+            case unicode_for_plus :
                 if ( single_integer > 0 )
                 {
                     log_out << "plus sign not at beginning" << std::endl ;
@@ -2722,61 +2665,61 @@ void parse_one_character_of_number( )
     {
         switch ( single_character_as_integer )
         {
-            case ascii_code_for_period :
+            case unicode_for_period :
                 yes_or_no_number_is_valid = no_no ;
                 log_out << "extra period" << std::endl ;
                 break ;
-            case ascii_code_for_digit_0 :
+            case unicode_for_digit_0 :
                 single_decimal_number = single_decimal_number * 10 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_1 :
+            case unicode_for_digit_1 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 1 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_2 :
+            case unicode_for_digit_2 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 2 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_3 :
+            case unicode_for_digit_3 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 3 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_4 :
+            case unicode_for_digit_4 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 4 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_5 :
+            case unicode_for_digit_5 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 5 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_6 :
+            case unicode_for_digit_6 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 6 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_7 :
+            case unicode_for_digit_7 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 7 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_8 :
+            case unicode_for_digit_8 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 8 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_digit_9 :
+            case unicode_for_digit_9 :
                 single_decimal_number = ( single_decimal_number * 10 ) + 9 ;
                 decimal_number_divisor *= 10.0 ;
                 number_of_digits_encountered ++ ;
                 break ;
-            case ascii_code_for_hyphen :
+            case unicode_for_hyphen :
                 if ( single_decimal_number == 0 )
                 {
                     yes_or_no_negative_number = yes_yes ;
@@ -2785,7 +2728,7 @@ void parse_one_character_of_number( )
                     log_out << "minus sign not at beginning" << std::endl ;
                 }
                 break ;
-            case ascii_code_for_plus :
+            case unicode_for_plus :
                 if ( single_decimal_number != 0 )
                 {
                     log_out << "minus sign not at beginning" << std::endl ;
@@ -3494,10 +3437,10 @@ void specify_character_to_insert_between_subitems( )
     switch ( data_type )
     {
         data_type_phrase_word_pointers :
-            character_to_insert_between_subitems = ascii_code_for_hyphen ;
+            character_to_insert_between_subitems = unicode_for_hyphen ;
             break ;
         data_type_switch_delimiter_to_underscore :
-            character_to_insert_between_subitems = ascii_code_for_underscore ;
+            character_to_insert_between_subitems = unicode_for_underscore ;
             break ;
         default :
             character_to_insert_between_subitems = 0 ;
@@ -5298,7 +5241,7 @@ void parse_phrase_name( )
 //  end of the previous word is one less than the
 //  beginning of the next word.
 
-        if ( single_character_as_integer == ascii_code_for_hyphen )
+        if ( single_character_as_integer == unicode_for_hyphen )
         {
             if ( single_character_as_integer == previous_character )
             {
@@ -5849,19 +5792,19 @@ void track_recent_position_of_each_character( )
 
         switch ( single_character_as_integer )
         {
-            case ascii_code_for_space :
+            case unicode_for_space :
                 recent_position_of_any_delimiter = next_character_position_count ;
                 break ;
-            case ascii_code_for_tab :
+            case unicode_for_tab :
                 recent_position_of_any_delimiter = next_character_position_count ;
                 break ;
-            case ascii_code_for_newline :
+            case unicode_for_newline :
                 recent_position_of_any_delimiter = next_character_position_count ;
                 break ;
-            case ascii_code_for_formfeed :
+            case unicode_for_formfeed :
                 recent_position_of_any_delimiter = next_character_position_count ;
                 break ;
-            case ascii_code_for_carriage_return :
+            case unicode_for_carriage_return :
                 recent_position_of_any_delimiter = next_character_position_count ;
                 break ;
         }
@@ -6104,7 +6047,7 @@ void find_matching_text( )
 
 void save_position_of_first_hyphen( )
 {
-    pointer_to_first_hyphen = recent_character_position_for_character_number[ ascii_code_for_hyphen ] ;
+    pointer_to_first_hyphen = recent_character_position_for_character_number[ unicode_for_hyphen ] ;
     id_containing_first_hyphen = current_pointer_stack_text_item ;
     character_pointer_within_text_item_for_first_hyphen = current_pointer_stack_character_position ;
     pointer_to_leading_delimiter = recent_position_of_any_delimiter ;
@@ -6229,7 +6172,7 @@ void replace_angle_bracketed_phrase_names( )
 //  copy of the pointer stack to keep
 //  track of this location.
 
-        optimum_character_for_find_pause = ascii_code_for_open_angle_bracket ;
+        optimum_character_for_find_pause = unicode_for_open_angle_bracket ;
         track_recent_position_of_each_character( ) ;
         copy_pointer_stack( ) ;
 
@@ -6247,7 +6190,7 @@ void replace_angle_bracketed_phrase_names( )
 // -----------------------------------------------
 //  Find the next close angle bracket.
 
-        optimum_character_for_find_pause = ascii_code_for_open_angle_bracket ;
+        optimum_character_for_find_pause = unicode_for_open_angle_bracket ;
         track_recent_position_of_each_character( ) ;
 
 
@@ -6271,9 +6214,9 @@ void replace_angle_bracketed_phrase_names( )
 
         log_out << "recent_position_of_any_delimiter " << recent_position_of_any_delimiter << std::endl << "position_of_open_angle_bracket " << position_of_open_angle_bracket << std::endl << "position_of_underscore " << position_of_underscore << std::endl << "position_of_close_angle_bracket " << position_of_close_angle_bracket << std::endl << "current_pointer_stack_text_item " << current_pointer_stack_text_item << std::endl ;
 
-        position_of_open_angle_bracket = recent_character_position_for_character_number[ ascii_code_for_open_angle_bracket ] ;
-        position_of_underscore = recent_character_position_for_character_number[ ascii_code_for_underscore ] ;
-        position_of_close_angle_bracket = recent_character_position_for_character_number[ ascii_code_for_close_angle_bracket ] ;
+        position_of_open_angle_bracket = recent_character_position_for_character_number[ unicode_for_open_angle_bracket ] ;
+        position_of_underscore = recent_character_position_for_character_number[ unicode_for_underscore ] ;
+        position_of_close_angle_bracket = recent_character_position_for_character_number[ unicode_for_close_angle_bracket ] ;
         if ( ( recent_position_of_any_delimiter < position_of_open_angle_bracket ) && ( position_of_open_angle_bracket < position_of_underscore ) && ( position_of_underscore < position_of_close_angle_bracket ) )
         {
             continue ;
@@ -6798,7 +6741,7 @@ int parameterized_dashrep_expand_text( int local_item_id )
 void parameterized_append_text( int local_item_id )
 {
     id_from_origin = local_item_id ;
-    append_copied_text( ) ;
+//    append_copied_text( ) ;
     return ;
 }
 
