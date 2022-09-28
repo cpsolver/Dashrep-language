@@ -3180,6 +3180,21 @@ void create_indexed_pointer_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function get_next_grouping_id_for_linked_list
+
+//  Gets ...
+
+// todo: write
+
+void get_next_grouping_id_for_linked_list( )
+{
+    next_grouping_id_for_linked_list = all_pointers[ pointer_end_for_item[ next_grouping_id_for_linked_list ] + 1 ] ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function get_pointer_from_position_within_indexed_pointer_list
 //
 //  Within the indexed pointer list specified by
@@ -4091,6 +4106,14 @@ void get_next_or_previous_character_from_text_item( )
 
 
 // -----------------------------------------------
+//  Get the character, then return.
+
+//  todo: write this code
+        single_character_as_integer = all_characters[ 123 ] ;
+        return ;
+
+
+// -----------------------------------------------
 //  Repeat the loop that gets the next character.
 
     }
@@ -4294,21 +4317,6 @@ void append_space_if_not_empty( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function get_next_grouping_id_for_linked_list
-
-//  Gets ...
-
-// todo: write
-
-void get_next_grouping_id_for_linked_list( )
-{
-    next_grouping_id_for_linked_list = all_pointers[ pointer_end_for_item[ next_grouping_id_for_linked_list ] + 1 ] ;
-    return ;
-}
-
-
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function append_one_pointer_to_pointers_linked
@@ -5320,7 +5328,7 @@ void initalize_skip_to_character_position( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function jump_to_character_position
+//  Function skip_to_character_position
 //
 //  todo: change to use pointer, as output
 //
