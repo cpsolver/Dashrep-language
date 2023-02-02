@@ -70,20 +70,6 @@ or a group of words delimited by b-i-b am no-space bee b-i-e and b-i-b am no-spa
 s-n
 An action uses the operands to determine exactly what to do.
 phrase-description-end
-phrase-heading-begin
-Analogies to spoken languages
-phrase-heading-end
-phrase-description-begin
-The word b-i-b am no-space bee b-i-e is analogous to saying &ldquo;begin sentence,&rdquo;
-an action is analogous to a verb (as if it were the first word in the sentence),
-an inner group of words that begins with
-b-i-b am no-space bee b-i-e
-and ends with
-b-i-b am no-space enn b-i-e
-is analogous to a &ldquo;clause,&rdquo;
-and the final word b-i-b am no-space enn b-i-e
-is analogous to saying &ldquo;period&rdquo; (or &ldquo;end sentence &rdquo;).
-phrase-description-end
 -----
 
 description-for-phrase-yes-or-no-skip-empty-lines-when-copy-from-file:
@@ -1265,6 +1251,25 @@ r-b c-b am no-space enn no-space fenam no-space bee c-n Indicates the continuati
 r-b c-b no no-space spay c-n This word is rarely needed. s-n It indicates that there should be no space to the right when it appears immediately before b-i-b am no-space bee b-i-e and no space to the left when it appears immediately after b-i-b am no-space enn b-i-e no-space . s-n This word has no special meaning when it is not adjacent to either of these other words. s-n For other places where spaces should be removed, the phrase b-i-b no h-h space b-i-e should be used instead. line-break line-break For example, b-i-b info h-h at h-h row h-h and h-h column fenam no-space bee row h-h number am no-space enn b-i-b red-b no no-space spay red-e b-i-e am no-space bee column h-h number am no-space enn b-i-e becomes b-i-b info h-h at h-h row h-h and h-h column h-h 002003 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 002 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 003 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b no b-i-e no-space . c-e r-e
 
 t-e
+
+phrase-heading-begin
+Analogies to spoken languages
+phrase-heading-end
+phrase-description-begin
+The word b-i-b am no-space bee b-i-e is analogous to saying &ldquo;begin sentence.&rdquo;
+sentence-next
+An &ldquo;action&rdquo; is analogous to a verb, as if it were the first word in the sentence.
+sentence-next
+An inner group of words that begins with
+b-i-b am no-space bee b-i-e
+and ends with
+b-i-b am no-space enn b-i-e
+is analogous to a &ldquo;clause.&rdquo;
+sentence-next
+The final word b-i-b am no-space enn b-i-e
+is analogous to saying &ldquo;period&rdquo; or &ldquo;end sentence.&rdquo;
+phrase-description-end
+
 ----
 
 
@@ -1319,6 +1324,7 @@ r-b c-b 10 c-n no h-h space c-n b-i-b no h-h space b-i-e c-n Explained below. c-
 r-b c-b 10 c-n one h-h space c-n b-i-b one h-h space b-i-e c-n Explained below. c-e r-e
 
 t-e
+
 ----
 
 
@@ -1687,6 +1693,7 @@ ambee append-new-line full-contents-final amenn
 ambee append-new-line full-contents-final amenn
 ambee expand-text table-of-fundamental-text-items expanded-table-of-fundamental-text-items amenn
 ambee append-text-no-space expanded-table-of-fundamental-text-items full-contents-final amenn
+
 ambee append-new-line full-contents-final amenn
 ambee append-new-line full-contents-final amenn
 ambee expand-text section-directive-phrase-action expanded-section-directive-phrase-action amenn
