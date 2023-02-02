@@ -56,9 +56,9 @@ classTableWithLines {
 <p>&nbsp;</p>
 
 <h2>Dashrep explainer video</h2>
-<p>This 30-second video animates the Dashrep language's step-by-step translation process.</p>
-<p><video src="http://www.dashrep.org/DashrepExplainerVideo.mp4" controls preload="none" poster="explainerframe.jpg" width="640" height="360"></p>
-</video>
+<p>This 30-second video animates the Dashrep language's step-by-step translation process.
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/795049220?h=7430bc91e3&title=0&byline=0&portrait=0&speed=0&badge=0&autopause=0&player_id=0&app_id=58479/embed" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+</p>
 
 <h2>Here's what some Dashrep code looks like:</h2>
 <table border="2" cellpadding="4">
@@ -407,7 +407,7 @@ should be updated, or else the compiler code should be debugged.</p>
 <tr><td>amennfenambee</td><td>Indicates the continuation of a phrase name that includes two adjacent action-or-replacement clauses as part of the phrase name. <br \> <br \> For example, <b><i>info-at-row-and-column fenambee row-number</i></b> <span style="color:red; font-weight:bold; font-style:italic;"> amennfenambee </span> <b><i>column-number amenn</i></b> becomes <b><i>info-at-row-and-column-2-3</i></b> if <b><i>row-number</i></b> equals <b><i>2</i></b> and <b><i>column-number</i></b> equals <b><i>3</i></b>. <br \> <br \> When spoken, the accent is on the characters <b><i>am</i></b> &mdash; in both places.</td></tr>
 <tr><td>nospay</td><td>This word is rarely needed.&nbsp; It indicates that there should be no space to the right when it appears immediately before <b><i>ambee</i></b> and no space to the left when it appears immediately after <b><i>amenn</i></b>.&nbsp; This word has no special meaning when it is not adjacent to either of these other words.&nbsp; For other places where spaces should be removed, the phrase <b><i>no-space</i></b> should be used instead. <br \> <br \> For example, <b><i>info-at-row-and-column fenambee row-number amenn <b><i><span style="color:red; font-weight:bold; font-style:italic;"> nospay </span></i></b> ambee column-number amenn</i></b> becomes <b><i>info-at-row-and-column-002003</i></b> if <b><i>row-number</i></b> equals <b><i>002</i></b> and <b><i>column-number</i></b> equals <b><i>003</i></b>. <br \> <br \> When spoken, the accent is on the characters <b><i>no</i></b>.</td></tr>
 </table>
-
+<h3> Analogies to spoken languages </h3> <p> The word <b><i>ambee</i></b> is analogous to saying &ldquo;begin sentence.&rdquo;&nbsp; An &ldquo;action&rdquo; is analogous to a verb, as if it were the first word in the sentence.&nbsp; An inner group of words that begins with <b><i>ambee</i></b> and ends with <b><i>amenn</i></b> is analogous to a &ldquo;clause.&rdquo;&nbsp; The final word <b><i>amenn</i></b> is analogous to saying &ldquo;period&rdquo; or &ldquo;end sentence.&rdquo; </p>
 
 <h2> Fundamental syntax conventions </h2> <table>
 <tr><th>Normal <br \> priority</th><th>Name</th><th>Appearance</th><th>Description</th></tr>
@@ -431,7 +431,7 @@ should be updated, or else the compiler code should be debugged.</p>
 </table>
 
 
-<h2> Directives versus actions versus phrases </h2> <h3> Phrase </h3> <p> The word <b>phrase</b> refers to the combination of a <b>phrase name</b> and its associated <b>phrase definition</b>. <br \> <br \> A <b>phrase name</b> is a hyphenated phrase, such as <b><i>animal-type</i></b>. <br \> <br \> A <b>phrase definition</b> is text that is associated with a phrase name.&nbsp; For example, the phrase name <b><i>animal-type</i></b> can have a current definition of <b><i>dolphin</i></b>. <br \> <br \> A <b>pre-defined phrase</b> is a special phrase name for which the Dashrep language supplies a default definition.&nbsp; Some pre-defined phrases can be re-defined, but others cannot be re-defined. <br \> <br \> If a phrase name is encountered within text being translated (or &ldquo;expanded&rdquo;), and if the phrase name has an associated definition, then the phrase definition is inserted where the phrase name appears. <br \> <br \> Normally a phrase name is recognized regardless of whether or not it appears within an action-or-replacement clause &mdash; which begins with the word <b><i>ambee</i></b> (or equivalent) and ends with the word <b><i>amenn</i></b> (or equivalent).&nbsp; An exception to this convention occurs when the action <b><i>put-into-phrase</i></b> is used. </p> <h3> Directive </h3> <p> A <b>directive</b> is a special Dashrep-defined phrase name that triggers a special functionality in the translation.&nbsp; Directives are not recognized if they appear between the paired words <b><i>ambee</i></b> (or equivalent) and <b><i>amenn</i></b> (or equivalent). </p> <h3> Action </h3> <p> An <b>action</b> is a special Dashrep-defined phrase name that has special significance when it immediately follows the word <b><i>ambee</i></b> (or equivalent).&nbsp; An action is not recognized if it does not immediately follow the word <b><i>ambee</i></b> (or equivalent). <br \> <br \> Most actions must be followed by one or more <b>operands</b>.&nbsp; Typically an operand is either a phrase name, or a space-delimited word, or a group of words delimited by <b><i>ambee</i></b> and <b><i>ambee</i></b> (or equivalents).&nbsp; An action uses the operands to determine exactly what to do. </p> <h3> Analogies to spoken languages </h3> <p> The word <b><i>ambee</i></b> is analogous to saying &ldquo;begin sentence,&rdquo; an action is analogous to a verb (as if it were the first word in the sentence), an inner group of words that begins with <b><i>ambee</i></b> and ends with <b><i>amenn</i></b> is analogous to a &ldquo;clause,&rdquo; and the final word <b><i>amenn</i></b> is analogous to saying &ldquo;period&rdquo; (or &ldquo;end sentence &rdquo;). </p><h2>Hyphens, spaces, lines, & special characters</h2>
+<h2> Directives versus actions versus phrases </h2> <h3> Phrase </h3> <p> The word <b>phrase</b> refers to the combination of a <b>phrase name</b> and its associated <b>phrase definition</b>. <br \> <br \> A <b>phrase name</b> is a hyphenated phrase, such as <b><i>animal-type</i></b>. <br \> <br \> A <b>phrase definition</b> is text that is associated with a phrase name.&nbsp; For example, the phrase name <b><i>animal-type</i></b> can have a current definition of <b><i>dolphin</i></b>. <br \> <br \> A <b>pre-defined phrase</b> is a special phrase name for which the Dashrep language supplies a default definition.&nbsp; Some pre-defined phrases can be re-defined, but others cannot be re-defined. <br \> <br \> If a phrase name is encountered within text being translated (or &ldquo;expanded&rdquo;), and if the phrase name has an associated definition, then the phrase definition is inserted where the phrase name appears. <br \> <br \> Normally a phrase name is recognized regardless of whether or not it appears within an action-or-replacement clause &mdash; which begins with the word <b><i>ambee</i></b> (or equivalent) and ends with the word <b><i>amenn</i></b> (or equivalent).&nbsp; An exception to this convention occurs when the action <b><i>put-into-phrase</i></b> is used. </p> <h3> Directive </h3> <p> A <b>directive</b> is a special Dashrep-defined phrase name that triggers a special functionality in the translation.&nbsp; Directives are not recognized if they appear between the paired words <b><i>ambee</i></b> (or equivalent) and <b><i>amenn</i></b> (or equivalent). </p> <h3> Action </h3> <p> An <b>action</b> is a special Dashrep-defined phrase name that has special significance when it immediately follows the word <b><i>ambee</i></b> (or equivalent).&nbsp; An action is not recognized if it does not immediately follow the word <b><i>ambee</i></b> (or equivalent). <br \> <br \> Most actions must be followed by one or more <b>operands</b>.&nbsp; Typically an operand is either a phrase name, or a space-delimited word, or a group of words delimited by <b><i>ambee</i></b> and <b><i>ambee</i></b> (or equivalents).&nbsp; An action uses the operands to determine exactly what to do. </p><h2>Hyphens, spaces, lines, & special characters</h2>
 
 <h3 id="hyphen-here">hyphen-here</h3>
 <p>This directive inserts a hyphen, with no adjacent spaces, where it appears within text that is expanded (translated).&nbsp; Internally this phrase is defined as <b><i>no-space - no-space</i></b>.</p>
@@ -510,7 +510,7 @@ should be updated, or else the compiler code should be debugged.</p>
 <p>This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the next (innermost) <b><i>amenn</i></b>.&nbsp; The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket.&nbsp; Trailing spaces and trailing hyphens are ignored. </p> <p> Example: After expanding the code <b><i>ambee put-into-phrase target-phrase whale dolphin starfish amenn</i></b> the phrase <b><i>target-phrase</i></b> will contain <b><i>whale dolphin starfish</i></b>.</p>
 
 <h3 id="get-phrase-name-from-phrase">get-phrase-name-from-phrase</h3>
-<p>This action gets the phrase name that is in the definition of the operand, and supplies that phrase name as its result.&nbsp; This action is useful when a phrase contains a phrase name and a different action needs to operate on the contained phrase, not the supplied phrase.&nbsp; For example it is useful when using the action <b><i>expand-text</i></b> and the text to be expanded can change according to the phrase name contained in a phrase.&nbsp; It is also useful with the action <b><i>trace-show</i></b>. </p> <p> Example:&nbsp; If the phrase <b><i>template-name</i></b> contains the text <b><i>animal-name</i></b> and <b><i>animal-name</i></b> contains the text <b><i>flipper</i></b> then the code <b><i>ambee expand-text ambee get-phrase-name-from-phrase template-name amenn expanded-text amenn</i></b> then the phrase <b><i>expanded-text</i></b> will contain the text <b><i>flipper</i></b>.</p>
+<p>This action gets the phrase name that is in the definition of the operand, and supplies that phrase name as its result.&nbsp; This action is useful when a phrase contains a phrase name and a different action needs to operate on the contained phrase, not the supplied phrase.&nbsp; For example it is useful when using the action <b><i>expand-text</i></b> and the text to be expanded can change according to the phrase name contained in a phrase.&nbsp; It is also useful with the action <b><i>trace-show</i></b>. </p> <p> Example:&nbsp; If the phrase <b><i>template-name</i></b> contains the text <b><i>animal-name</i></b> and <b><i>animal-name</i></b> contains the text <b><i>flipper</i></b> and some expandable text contains <b><i>ambee expand-text ambee get-phrase-name-from-phrase template-name amenn expanded-text amenn</i></b> then, after expansion, the phrase <b><i>expanded-text</i></b> will contain the text <b><i>flipper</i></b>.</p>
 
 <h3 id="get-cgi-information">get-cgi-information</h3>
 <p>This action gets the CGI (Common Gateway Interface) input information &mdash; which was sent from the browser to the server &mdash; and puts that information into phrases that begin their names with the prefix <b><i>input-</i></b> and use the supplied information names as the remainder of each name.&nbsp; In addition, the full raw CGI text in put into a phrase named <b><i>input-raw-cgi-string</i></b>. </p> <p> Example: If a user clicks a link that has the URL <b><i>www.example.org/cgi-bin/value%1Fone=123&value%2Dtwo=abc+def</i></b> then the new phrase <b><i>input-value_one</i></b> will contain the text <b><i>123</i></b> and <b><i>input-value-two</i></b> will contain the text <b><i>abc def</i></b> and <b><i>input-raw-cgi-string</i></b> will contain the text <b><i>value%1Fone=123&value%2Dtwo=abc+def</i></b>.&nbsp; As indicated by this example, the CGI conversion converts <b><i>%1F</i></b> into <b><i>_</i></b> (underscore) and converts <b><i>%20</i></b> into a hyphen and converts <b><i>+</i></b> into a space.</p>
@@ -1039,36 +1039,6 @@ should be updated, or else the compiler code should be debugged.</p>
 <h3 id="dashrep-time-limit">dashrep-time-limit</h3>
 <p>This phrase contains the current number of seconds for use as a time limit.&nbsp; When the time limit is exceeded, translation ends.&nbsp; The default value is 300 seconds, which equals 5 minutes.&nbsp; A different value can be specified, although the changed time limit may not take effect immediately.</p>
 
-<h2>Special Dashrep spoken words</h2>
-
-<h3 id="ambee">ambee</h3>
-<p>(described in table above)</p>
-
-<h3 id="amenn">amenn</h3>
-<p>(described in table above)</p>
-
-<h3 id="fen">fen</h3>
-<p>(described in table above)</p>
-
-<h3 id="fenambee">fenambee</h3>
-<p>(described in table above)</p>
-
-<h3 id="amennfen">amennfen</h3>
-<p>(described in table above)</p>
-
-<h3 id="amennfenambee">amennfenambee</h3>
-<p>(described in table above)</p>
-
-<h3 id="nospay">nospay</h3>
-<p>(described in table above)</p>
-
-<h3 id="combee">combee</h3>
-<p>(described in table above)</p>
-
-<h3 id="comenn">comenn</h3>
-<p>(described in table above)</p>
-
-
 
 
 <!-- The above content was generated, so DO NOT EDIT above text. Instead, edit the source code, which is written using Dashrep phrases to indicate hierarchy and which is generated using a Dashrep script. -->
@@ -1154,7 +1124,7 @@ should be updated, or else the compiler code should be debugged.</p>
 <p>&nbsp;</p>
 
 <p><a href="#top">Top of Page</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&copy; Copyright 2009-2022 by Richard Fobes at <a href="http://www.Dashrep.org">www.Dashrep.org</a>.</p>
+&copy; Copyright 2009-2023 by Richard Fobes at <a href="http://www.Dashrep.org">www.Dashrep.org</a>.</p>
 
 </body>
 </html>
