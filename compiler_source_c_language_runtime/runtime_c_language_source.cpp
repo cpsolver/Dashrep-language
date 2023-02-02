@@ -79,6 +79,54 @@ const int yes_yes = 1 ;
 
 
 // -----------------------------------------------
+//  Here is an overview of the data structure
+//  that is explained in the sections below.
+
+//  big storage arrays:
+//    all_pointers
+//    all_characters  (which holds all text)
+//    all_integers
+//    all_decimal_numbers
+
+//  array that associates array category with data type:
+//    storage_array_for_data_type
+
+//  data_types (not arrays):
+//    pointers_linked
+//    text_characters
+//    list_of_integers
+//    list_of_decimal_numbers
+//    phrase_word_pointers
+//    switch_delimiter_to_underscore
+
+//  item-specific arrays:
+//    data_type_for_item
+//    pointer_allocation_end_for_item
+//    pointer_begin_for_item
+//    pointer_end_for_item
+//    pointer_to_definition_of_item
+
+//  word-specific array:
+//    position_begin_for_phrase_word_number
+
+//  character-specific arrays:
+//    character_pointer_begin_for_phrase_word_in_position
+//    character_category_number_for_character_number
+//    recent_character_position_for_character_number
+//    usage_count_for_character
+//    searched_usage_count_for_character
+
+//  item-id-specific arrays:
+//    id_for_list_of_phrase_words_of_length
+//    id_for_list_of_phrase_names_of_length
+
+//  constants (not arrays) for offsets within stack items:
+//    offset_for_current_pointer_stack_level_text_item
+//    offset_for_current_pointer_stack_level_character_position
+//    offset_for_pointer_stack_level_top
+
+
+// -----------------------------------------------
 //  Declare the data types that can represent
 //  text.  The data type of each item is stored in
 //  the array "data_type_for_item".
@@ -2166,7 +2214,7 @@ void just_copy_simple( )
         case storage_array_all_pointers :
             while ( counter < 0 )
             {
-                all_pointers[ pointer_from ] = all_pointers[ pointer_to ] ;
+                all_pointers[ pointer_to ] = all_pointers[ pointer_from ] ;
                 pointer_from ++ ;
                 pointer_to ++ ;
                 counter -- ;
@@ -2175,7 +2223,7 @@ void just_copy_simple( )
         case storage_array_all_characters :
             while ( counter < 0 )
             {
-                all_characters[ pointer_from ] = all_characters[ pointer_to ] ;
+                all_characters[ pointer_to ] = all_characters[ pointer_from ] ;
                 pointer_from ++ ;
                 pointer_to ++ ;
                 counter -- ;
@@ -2184,7 +2232,7 @@ void just_copy_simple( )
         case storage_array_all_integers :
             while ( counter < 0 )
             {
-                all_integers[ pointer_from ] = all_integers[ pointer_to ] ;
+                all_integers[ pointer_to ] = all_integers[ pointer_from ] ;
                 pointer_from ++ ;
                 pointer_to ++ ;
                 counter -- ;
@@ -2193,7 +2241,7 @@ void just_copy_simple( )
         case storage_array_all_decimal_numbers :
             while ( counter < 0 )
             {
-                all_decimal_numbers[ pointer_from ] = all_decimal_numbers[ pointer_to ] ;
+                all_decimal_numbers[ pointer_to ] = all_decimal_numbers[ pointer_from ] ;
                 pointer_from ++ ;
                 pointer_to ++ ;
                 counter -- ;
@@ -2202,7 +2250,7 @@ void just_copy_simple( )
         default :
             while ( counter < 0 )
             {
-                all_pointers[ pointer_from ] = all_pointers[ pointer_to ] ;
+                all_pointers[ pointer_to ] = all_pointers[ pointer_from ] ;
                 pointer_from ++ ;
                 pointer_to ++ ;
                 counter -- ;
