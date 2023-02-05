@@ -984,6 +984,7 @@ int id_for_list_of_decimal_numbers ;
 int id_for_phrase_name ;
 int id_for_phrase_word ;
 int id_for_pointer_begin_end ;
+int id_for_reminder ;
 int id_for_sample_filename ;
 int id_for_sample_folder_name ;
 int id_for_sample_numbers ;
@@ -1427,6 +1428,7 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
     id_for_single_space = store_text_and_get_its_item_id( " " ) ;
     id_for_single_hyphen = store_text_and_get_its_item_id( "-" ) ;
     id_for_single_underscore  = store_text_and_get_its_item_id( "_" ) ;
+    id_for_reminder = store_text_and_get_its_item_id( "next are tab newline carriage_return formfeed" ) ;
     id_for_single_tab  = store_text_and_get_its_item_id( "\t" ) ;
     id_for_single_newline  = store_text_and_get_its_item_id( "\n" ) ;
     id_for_single_carriage_return  = store_text_and_get_its_item_id( "\r" ) ;
@@ -1452,6 +1454,16 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 
 
 // -----------------------------------------------
+//  Initialize some test text items for use during
+//  debugging.
+
+    id_for_sample_numbers = store_text_and_get_its_item_id( " 123 , 72.3 , -4399 , -88.6666 " ) ;
+    id_for_sample_filename = store_text_and_get_its_item_id( "  , xyz !@#$%^&*(){}:;?<> yes_name.txt , " ) ;
+    id_for_sample_folder_name = store_text_and_get_its_item_id( "  , xyz !@#$%/^&\\*(){}:;?<> /yes_name/txt/ , " ) ;
+    id_for_sample_text_to_expand = store_text_and_get_its_item_id( "   _ hyphenated-phrase   <specify 123>  <attribute 123> " ) ;
+
+
+// -----------------------------------------------
 //  Create the text items for words within the
 //  phrase names that have definitions -- rather
 //  than only having meaning between the words
@@ -1462,11 +1474,6 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 
 //  reminder: generate this code from a template
 
-    id_for_word_character = store_text_and_get_its_item_id( "character" ) ;
-    id_for_sample_numbers = store_text_and_get_its_item_id( " 123 , 72.3 , -4399 , -88.6666 " ) ;
-    id_for_sample_filename = store_text_and_get_its_item_id( "  , xyz !@#$%^&*(){}:;?<> yes_name.txt , " ) ;
-    id_for_sample_folder_name = store_text_and_get_its_item_id( "  , xyz !@#$%/^&\\*(){}:;?<> /yes_name/txt/ , " ) ;
-    id_for_sample_text_to_expand = store_text_and_get_its_item_id( "   _ hyphenated-phrase   <specify 123>  <attribute 123> " ) ;
     id_for_word_hyphen = store_text_and_get_its_item_id( "hyphen" ) ;
     id_for_word_space = store_text_and_get_its_item_id( "space" ) ;
     id_for_word_newline = store_text_and_get_its_item_id( "newline" ) ;
@@ -1489,11 +1496,13 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 //  they are often encountered in directives:
 //  "hyphen"
 //  "here"
-//  "hyphen-here"
 //  "placeholder"
 //  "for"
 
-    id_for_phrase_word_numeric = store_text_and_get_its_item_id( "numeric" ) ;
+    id_for_phrase_word_hyphen = store_text_and_get_its_item_id( "hyphen" ) ;
+    id_for_phrase_word_here = store_text_and_get_its_item_id( "here" ) ;
+    id_for_phrase_word_placeholder = store_text_and_get_its_item_id( "placeholder" ) ;
+    id_for_phrase_word_for = store_text_and_get_its_item_id( "for" ) ;
 
     id_for_phrase_name_hyphen_here = during_initialization_store_phrase_name( id_for_phrase_word_hyphen , id_for_phrase_word_here , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
     id_for_phrase_name_character_hyphen = during_initialization_store_phrase_name( id_for_phrase_word_character , id_for_phrase_word_hyphen , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
@@ -1753,7 +1762,6 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
     message_trace__expand_phrases__endless_loop = store_text_and_get_its_item_id( "trace_diagnostic__expand_phrases__error_endless_loop__highest_count " ) ;
 
 
-
 // -----------------------------------------------
 //  Create text items that hold one filename and
 //  one folder name after they have been changed
@@ -1790,20 +1798,6 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 
 
 // -----------------------------------------------
-//  For debugging, show the defined text items.
-
-    for ( item_id = 1 ; item_id < next_available_item_id ; item_id ++ )
-    {
-//        log_out << "[" << item_id << " spans " << pointer_begin_for_item[ item_id ] << " to " << pointer_end_for_item[ item_id ] << "]" ;
-        for ( character_pointer = pointer_begin_for_item[ item_id ] ; character_pointer <= pointer_end_for_item[ item_id ] ; character_pointer ++ )
-        {
-//            log_out << "[" << all_characters[ character_pointer ] << "]" ;
-        }
-//        log_out << std::endl ;
-    }
-
-
-// -----------------------------------------------
 //  End of function do_main_initialization.
 
     return ;
@@ -1813,7 +1807,43 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function show_one_defined_text_item
+//
+//  This function is intended for debugging.
+
+void show_one_defined_text_item( )
+{
+    log_out << "[item " << item_id << " spans " << pointer_begin_for_item[ item_id ] << " to " << pointer_end_for_item[ item_id ] << "]" ;
+    for ( character_pointer = pointer_begin_for_item[ item_id ] ; character_pointer <= pointer_end_for_item[ item_id ] ; character_pointer ++ )
+    {
+//        log_out << "[" << all_characters[ character_pointer ] << "]" ;
+        log_out << char( all_characters[ character_pointer ] ) ;
+    }
+    log_out << std::endl ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function show_defined_text_items
+//
+//  This function is intended for debugging.
+
+void show_defined_text_items( )
+{
+    for ( item_id = 1 ; item_id < next_available_item_id ; item_id ++ )
+    {
+        show_one_defined_text_item( ) ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function exit_not_yet_supported
+//
+//  Provide an exit for functionality that has not
+//  yet been written.
 
 void exit_not_yet_supported( )
 {
@@ -3444,7 +3474,11 @@ void get_next_pointer_from_indexed_pointer_list( )
 //
 //  Reads one line of text from a file and puts
 //  the text into the item ID numbered
-//  id_for_file_input.
+//  id_for_file_input.  If the end of file is
+//  encountered and nothing was written, put the
+//  EOF value into the next_character_number
+//  variable.  Otherwise next_character_number
+//  is set to zero.
 //
 //  Later, replace "fgetc" function with C++ code
 //  that reads unicode characters.  Test with
@@ -3454,37 +3488,38 @@ void read_text_line_from_file( )
 {
     pointer_end_for_item[ id_for_file_input ] = pointer_begin_for_item[ id_for_file_input ] - 1 ;
     data_type_for_item[ id_for_file_input ] = data_type_text_characters ;
-    while ( 1 == 1 )
+    item_id = id_for_file_input ;
+    measure_space_available_in_item( ) ;
+    next_character_number = 1 ;
+    while ( next_character_number != EOF )
     {
         next_character_number = fgetc( infile_connection ) ;
         id_text_to_edit = id_for_file_input ;
-        measure_space_available_in_item( ) ;
-        if ( space_available_in_item > 1 )
-        {
-            pointer_end_for_item[ id_text_to_edit ] ++ ;
-            all_characters[ pointer_end_for_item[ id_text_to_edit ] ] = next_character_number ;
-        } else
-        {
-            log_out << "[Error:  Out of space for storing text line from file]" << std::endl ;
-            next_character_number = 0 ;
-            return ;
-        }
-        character_category = character_category_number_for_character_number[ next_character_number ] ;
-        if ( ( next_character_number == EOF ) || ( character_category == character_category_newline ) )
-        {
-            next_character_number = 0 ;
-            return ;
-        }
-        if ( pointer_end_for_item[ id_for_file_input ] < pointer_allocation_end_for_item[ id_for_file_input ] )
+        if ( space_available_in_item >= 1 )
         {
             pointer_end_for_item[ id_for_file_input ] ++ ;
-            pointer_end_for_item[ id_for_file_input ] = next_character_number ;
+            all_characters[ pointer_end_for_item[ id_for_file_input ] ] = next_character_number ;
+            space_available_in_item -- ;
         } else
         {
             log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
-            exit( EXIT_FAILURE ) ;
+            next_character_number = 0 ;
+
+// c version of "last"
+            return ;
+
+        }
+        character_category = character_category_number_for_character_number[ next_character_number ] ;
+        if ( next_character_number == EOF )
+        {
+            return ;
+        } else if ( character_category == character_category_newline )
+        {
+            next_character_number = 0 ;
+            return ;
         }
     }
+    next_character_number = 0 ;
     return ;
 }
 
@@ -4575,6 +4610,8 @@ void append_text( )
 //  changed to indicate no content.
 //  This function does not check for protection
 //  against changes.
+
+//  test and debug, likely has errors
 
 void delete_text( )
 {
@@ -7111,6 +7148,16 @@ void do_everything( )
     infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
+    log_out << "id_for_file_input " << id_for_file_input << std::endl ;
+
+    next_character_number = 1 ;
+    while ( next_character_number > 0 )
+    {
+        read_text_line_from_file( ) ;
+    }
+
+    show_defined_text_items( ) ;
+
 //    single_integer = 170512 ;
 //    convert_integer_to_text( ) ;
 
@@ -7156,7 +7203,7 @@ int main( int argc, char *argv[] )
 
     for ( int local_argv_pointer = 0 ; local_argv_pointer < argc ; local_argv_pointer ++ )
     {
-        printf( "argv[ %d ] = %s\n", local_argv_pointer, argv[ local_argv_pointer ] ) ;
+//        printf( "argv[ %d ] = %s\n", local_argv_pointer, argv[ local_argv_pointer ] ) ;
     }
 
 
