@@ -1152,6 +1152,7 @@ int yes_or_no_character_is_delimiter ;
 int yes_or_no_count_phrase_usage ;
 int yes_or_no_decimal_number ;
 int yes_or_no_delimiter_encountered ;
+int yes_or_no_encountered_eof_flag ;
 int yes_or_no_filename_delimiter_encountered ;
 int yes_or_no_filename_is_valid ;
 int yes_or_no_folder_name_delimiter_encountered ;
@@ -1161,6 +1162,7 @@ int yes_or_no_in_folder_name_before_period ;
 int yes_or_no_inserted_character ;
 int yes_or_no_looking_for_word_attribute_or_specify ;
 int yes_or_no_matching_text ;
+int yes_or_no_more_text_in_file ;
 int yes_or_no_negative_number ;
 int yes_or_no_number_is_valid ;
 int yes_or_no_numeric_delimiter_encountered ;
@@ -2066,7 +2068,7 @@ void check_yes_or_no_solo_item_is_empty( )
             }
             break ;
         case storage_array_all_characters :
-            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            for ( pointer = pointer_begin_for_item[ item_id ] ; pointer <= pointer_end_for_item[ item_id ] ; pointer ++ )
             {
                 if ( all_characters[ pointer ] > 0 )
                 {
@@ -2076,7 +2078,7 @@ void check_yes_or_no_solo_item_is_empty( )
             }
             break ;
         case storage_array_all_integers :
-            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            for ( pointer = pointer_begin_for_item[ item_id ] ; pointer <= pointer_end_for_item[ item_id ] ; pointer ++ )
             {
                 if ( all_integers[ pointer ] > 0 )
                 {
@@ -2086,9 +2088,9 @@ void check_yes_or_no_solo_item_is_empty( )
             }
             break ;
         case storage_array_all_decimal_numbers :
-            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            for ( pointer = pointer_begin_for_item[ item_id ] ; pointer <= pointer_end_for_item[ item_id ] ; pointer ++ )
             {
-                if ( all_decimal_numbers[ pointer ] > 0 )
+                if ( all_decimal_numbers[ pointer ] > 0.0 )
                 {
                     yes_or_no_text_item_is_empty = no_no ;
                     return ;
@@ -2096,7 +2098,7 @@ void check_yes_or_no_solo_item_is_empty( )
             }
             break ;
         default :
-            for ( pointer = 1 ; pointer <= ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] ) ; pointer ++ )
+            for ( pointer = pointer_begin_for_item[ item_id ] ; pointer <= pointer_end_for_item[ item_id ] ; pointer ++ )
             {
                 if ( all_pointers[ pointer ] > 0 )
                 {
@@ -2184,7 +2186,7 @@ void check_yes_or_no_matching_text( )
 //  Check the next character at or near the end of
 //  the two character sequences.
 
-        log_out << "character one: " << all_characters[ character_begin_pointer_one ] << "  character two: " << all_characters[ character_begin_pointer_two ] << std::endl ;
+        log_out << "character one: " << all_characters[ character_end_pointer_one ] << "  character two: " << all_characters[ character_end_pointer_two ] << std::endl ;
 
         if ( all_characters[ character_end_pointer_one ] != all_characters[ character_end_pointer_two ] )
         {
@@ -2242,7 +2244,10 @@ void just_copy_simple( )
     switch ( storage_array )
     {
         case storage_array_all_pointers :
-            while ( counter < 0 )
+//          Yes this case would be handled by the "default" case,
+//          but this executes faster because this case
+//          occurs more often.
+            while ( counter > 0 )
             {
                 all_pointers[ pointer_to ] = all_pointers[ pointer_from ] ;
                 pointer_from ++ ;
@@ -2251,7 +2256,7 @@ void just_copy_simple( )
             }
             break ;
         case storage_array_all_characters :
-            while ( counter < 0 )
+            while ( counter > 0 )
             {
                 all_characters[ pointer_to ] = all_characters[ pointer_from ] ;
                 pointer_from ++ ;
@@ -2260,7 +2265,7 @@ void just_copy_simple( )
             }
             break ;
         case storage_array_all_integers :
-            while ( counter < 0 )
+            while ( counter > 0 )
             {
                 all_integers[ pointer_to ] = all_integers[ pointer_from ] ;
                 pointer_from ++ ;
@@ -2269,7 +2274,7 @@ void just_copy_simple( )
             }
             break ;
         case storage_array_all_decimal_numbers :
-            while ( counter < 0 )
+            while ( counter > 0 )
             {
                 all_decimal_numbers[ pointer_to ] = all_decimal_numbers[ pointer_from ] ;
                 pointer_from ++ ;
@@ -2278,7 +2283,7 @@ void just_copy_simple( )
             }
             break ;
         default :
-            while ( counter < 0 )
+            while ( counter > 0 )
             {
                 all_pointers[ pointer_to ] = all_pointers[ pointer_from ] ;
                 pointer_from ++ ;
@@ -2451,13 +2456,6 @@ void convert_decimal_to_text( )
 
 
 // -----------------------------------------------
-//  Point to where the first character (as an
-//  integer) will be stored.
-
-    text_item_pointer = pointer_begin_for_item[ id_for_number_as_text ] ;
-
-
-// -----------------------------------------------
 //  If the decimal number is zero, use the text
 //  "0.0".
 
@@ -2507,13 +2505,14 @@ void convert_decimal_to_text( )
 // -----------------------------------------------
 //  Store the text.
 
+    character_pointer_for_text_item = pointer_begin_for_item[ id_for_number_as_text ] ;
     for ( character_pointer = 0 ; character_pointer < character_count ; character_pointer ++ )
     {
         single_character_as_integer = (int) c_format_string[ character_pointer ] ;
-        all_characters[ text_item_pointer ] = single_character_as_integer ;
-        text_item_pointer ++ ;
-//        log_out << "digit " << single_character_as_integer << std::endl ;
+        all_characters[ character_pointer_for_text_item ] = single_character_as_integer ;
+        character_pointer_for_text_item ++ ;
     }
+    pointer_begin_for_item[ id_for_number_as_text ] = character_pointer_for_text_item - 1 ;
 
 
 // -----------------------------------------------
@@ -2567,7 +2566,7 @@ void convert_list_of_integers_into_text_item( )
 // -----------------------------------------------
 //  Insert a space between adjacent numbers.
 
-        if ( integer_position_current == integer_position_begin )
+        if ( integer_position_current != integer_position_begin )
         {
             pointer_end_for_item[ id_for_integers_as_text ] ++ ;
             all_characters[ pointer_end_for_item[ id_for_integers_as_text ] ] = unicode_for_space ;
@@ -2582,7 +2581,7 @@ void convert_list_of_integers_into_text_item( )
         pointer_for_just_copy_destination = pointer_end_for_item[ id_for_integers_as_text ] + 1 ;
         storage_array = storage_array_all_characters ;
         just_copy_simple( ) ;
-        pointer_end_for_item[ id_for_integers_as_text ] += length_for_just_copy ;
+        pointer_end_for_item[ id_for_integers_as_text ] += length_for_just_copy - 1 ;
 
 
 // -----------------------------------------------
@@ -2615,7 +2614,7 @@ void convert_list_of_integers_into_text_item( )
 //  between each adjacent pair of numbers.
 //
 //  For comments, look at the function
-//  "convert_list_of_decimal_numbers_into_text_item".
+//  "convert_list_of_integers_into_text_item".
 
 void convert_list_of_decimal_numbers_into_text_item( )
 {
@@ -2630,7 +2629,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
     {
         single_decimal_number = all_decimal_numbers[ decimal_number_position_current ] ;
         convert_decimal_to_text( ) ;
-        if ( decimal_number_position_current == decimal_number_position_begin )
+        if ( decimal_number_position_current != decimal_number_position_begin )
         {
             pointer_end_for_item[ id_for_decimal_numbers_as_text ] ++ ;
             all_characters[ pointer_end_for_item[ id_for_decimal_numbers_as_text ] ] = unicode_for_space ;
@@ -2640,7 +2639,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
         pointer_for_just_copy_destination = pointer_end_for_item[ id_for_decimal_numbers_as_text ] + 1 ;
         storage_array = storage_array_all_characters ;
         just_copy_simple( ) ;
-        pointer_end_for_item[ id_for_decimal_numbers_as_text ] += length_for_just_copy ;
+        pointer_end_for_item[ id_for_decimal_numbers_as_text ] += length_for_just_copy - 1 ;
         decimal_number_position_current ++ ;
     }
     adjust_storage_space_to_fit_newest_item( ) ;
@@ -2651,6 +2650,9 @@ void convert_list_of_decimal_numbers_into_text_item( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function initialize_parse_characters_of_number
+//
+//  Prepare to use the function named
+//  parse_one_character_of_number.
 
 void initialize_parse_characters_of_number( )
 {
@@ -2668,6 +2670,12 @@ void initialize_parse_characters_of_number( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function parse_one_character_of_number
+//
+//  Handle one character of text that is either an
+//  integer or a decimal number.  Gather the
+//  information needed to convert the text
+//  version of the number into an integer or
+//  decimal number.
 
 void parse_one_character_of_number( )
 {
@@ -3474,11 +3482,13 @@ void get_next_pointer_from_indexed_pointer_list( )
 //
 //  Reads one line of text from a file and puts
 //  the text into the item ID numbered
-//  id_for_file_input.  If the end of file is
-//  encountered and nothing was written, put the
-//  EOF value into the next_character_number
-//  variable.  Otherwise next_character_number
-//  is set to zero.
+//  id_for_file_input.  If the end of the file was
+//  encountered the previous time this function
+//  was executed, or if the end of the file is
+//  encountered this time and nothing has been
+//  written, then this situation is indicated by
+//  the flag "yes_or_no_more_text_in_file" being
+//  given a no value ("no_no").
 //
 //  Later, replace "fgetc" function with C++ code
 //  that reads unicode characters.  Test with
@@ -3486,6 +3496,11 @@ void get_next_pointer_from_indexed_pointer_list( )
 
 void read_text_line_from_file( )
 {
+    if ( yes_or_no_encountered_eof_flag == yes_yes )
+    {
+    	yes_or_no_more_text_in_file = no_no ;
+        return ;
+    }
     pointer_end_for_item[ id_for_file_input ] = pointer_begin_for_item[ id_for_file_input ] - 1 ;
     data_type_for_item[ id_for_file_input ] = data_type_text_characters ;
     item_id = id_for_file_input ;
@@ -3494,7 +3509,21 @@ void read_text_line_from_file( )
     while ( next_character_number != EOF )
     {
         next_character_number = fgetc( infile_connection ) ;
-        id_text_to_edit = id_for_file_input ;
+        if ( next_character_number == EOF )
+        {
+            yes_or_no_encountered_eof_flag == yes_yes ;
+            if ( pointer_end_for_item[ id_for_file_input ] < pointer_begin_for_item[ id_for_file_input ] )
+            {
+                yes_or_no_more_text_in_file = no_no ;
+                return ;
+            }
+            break ;
+        }
+        character_category = character_category_number_for_character_number[ next_character_number ] ;
+        if ( character_category == character_category_newline )
+        {
+            break ;
+        }
         if ( space_available_in_item >= 1 )
         {
             pointer_end_for_item[ id_for_file_input ] ++ ;
@@ -3502,25 +3531,30 @@ void read_text_line_from_file( )
             space_available_in_item -- ;
         } else
         {
-            log_out << "[Error: file input line exceeds buffer size]" << std::endl ;
-            next_character_number = 0 ;
-
-// c version of "last"
-            return ;
-
-        }
-        character_category = character_category_number_for_character_number[ next_character_number ] ;
-        if ( next_character_number == EOF )
-        {
-            return ;
-        } else if ( character_category == character_category_newline )
-        {
-            next_character_number = 0 ;
+            log_out << "[Error: file input line exceeds buffer size so modify code to allow length to be extended]" << std::endl ;
             return ;
         }
     }
-    next_character_number = 0 ;
     return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function write_simple_text_item_to_file
+//
+//  Write the simple text item indicated by
+//  "item_id" to the output file.  The simple text
+//  item must not involve any pointer or any
+//  linked list.
+
+void write_simple_text_item_to_file( )
+{
+    for ( character_pointer = pointer_begin_for_item[ item_id ] ; character_pointer <= pointer_end_for_item[ item_id ] ; character_pointer ++ )
+    {
+        single_character_as_integer = all_characters[ character_pointer ] ;
+        write_single_character_as_integer_to_file( ) ;
+    }
 }
 
 
@@ -7145,15 +7179,21 @@ void do_everything( )
     log_out << std::endl ;
     log_out << "doing testing" << std::endl ;
 
+    yes_or_no_more_text_in_file = yes_yes ;
+    yes_or_no_encountered_eof_flag = no_no ;
     infile_connection = fopen( "input_dashrep_example_menagerie_copy.txt" , "r" ) ;
     outfile_connection = fopen( "temp_output_from_c_language_runtime_test.txt" , "w" ) ;
 
     log_out << "id_for_file_input " << id_for_file_input << std::endl ;
 
     next_character_number = 1 ;
-    while ( next_character_number > 0 )
+    while ( yes_or_no_more_text_in_file != no_no )
     {
         read_text_line_from_file( ) ;
+        item_id = id_for_file_input ;
+        write_simple_text_item_to_file( ) ;
+        single_character_as_integer = unicode_for_newline ;
+        write_single_character_as_integer_to_file( ) ;
     }
 
     show_defined_text_items( ) ;
