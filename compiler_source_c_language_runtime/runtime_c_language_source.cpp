@@ -92,7 +92,7 @@ const int yes_yes = 1 ;
 //    storage_array_for_data_type
 
 //  data_types (not arrays):
-//    pointers_linked
+//    linked_list
 //    text_characters
 //    list_of_integers
 //    list_of_decimal_numbers
@@ -133,10 +133,11 @@ const int yes_yes = 1 ;
 //  A list (of any kind) can contain just one
 //  item.
 //
-//  * "pointers_linked"
-//    Pointers to other items.  These can be
-//    recursive, which means a pointer can point
-//    to yet another list of item ids.
+//  * "linked_list"
+//    A linked list is a sequence of "segments"
+//    where each "segment" is an item that has
+//    an item ID.  A linked list can be
+//    extended when more storage space is needed.
 //    The first position in the item, if it is not
 //    zero, points to the prior item in the same
 //    linked list of pointers.  The last position
@@ -144,15 +145,34 @@ const int yes_yes = 1 ;
 //    the next item in the same linked list of
 //    pointers.  A zero value indicates there is
 //    not a prior or next item in the linked list.
-//    The pointers are stored in the array
+//    Linked lists are stored in the array
 //    "all_pointers".
 //
+//    Text characters are NOT stored in linked
+//    lists.  Instead, text consists of a linked
+//    list that points to "text_characters" items,
+//    which are explained below.
+//
+//    Or a linked list can point to other linked
+//    lists, which means this pointing can be
+//    recursive, which means a list of pointers
+//    can point to yet other linked lists of
+//    pointers, and the final pointers point to
+//    items of the "text_characters" type.
+//
+//    "Indexed list" is a special use of the
+//    "linked_list" data type.  In this case the
+//    linked list acts as an array that can be
+//    indexed by position.  The resulting array
+//    can be extended as needed, without knowing
+//    in advance how long the array will be.
+//
 //    "Pointer stack level" is a special use of
-//    the "pointers_linked" data type.  In this
-//    case each "pointers linked" item is one
-//    level in the stack, and each item has three
-//    pointers (besides the "prior" and "next
-//    pointers):  a pointer to the item ID at
+//    the "linked_list" data type.  In this
+//    case each "linked_list" segment is one
+//    level in the stack, and each segment has
+//    three pointers (besides the "prior" and
+//    "next" pointers):  a pointer to the item at
 //    that stack level, a character pointer to
 //    the position within that item at that ID,
 //    and a pointer to the top item in the stack.
@@ -237,7 +257,7 @@ const int yes_yes = 1 ;
 //    These pointers are stored in the array
 //    "all_pointers".
 
-const int data_type_pointers_linked = 1 ;
+const int data_type_linked_list = 1 ;
 const int data_type_text_characters = 2 ;
 const int data_type_list_of_integers = 3 ;
 const int data_type_list_of_decimal_numbers = 4 ;
@@ -445,13 +465,13 @@ int count_of_numbers_supplied_to_array_all_characters ;
 int count_of_numbers_supplied_to_array_all_pointers ;
 int count_of_numbers_supplied_to_array_all_integers ;
 int count_of_numbers_supplied_to_array_all_decimal_numbers ;
-int pointer_to_put_into_indexed_pointer_list ;
-int position_within_indexed_pointer_list_desired ;
-int position_within_indexed_pointer_list ;
-int position_within_indexed_pointer_list_actual ;
-int indexed_pointer_list_begin_of_grouping ;
-int indexed_pointer_list_end_of_grouping ;
-int length_of_grouping_within_indexed_pointer_list ;
+int pointer_to_put_into_indexed_list ;
+int position_within_indexed_list_desired ;
+int position_within_indexed_list ;
+int position_within_indexed_list_actual ;
+int indexed_list_begin_of_grouping ;
+int indexed_list_end_of_grouping ;
+int length_of_grouping_within_indexed_list ;
 int offset_for_pointer_stack_level_prior ;
 int offset_for_pointer_stack_level_next ;
 int next_grouping_id_for_linked_list ;
@@ -980,6 +1000,7 @@ int id_for_phrase_word_year ;
 int id_for_phrase_word_yes ;
 int id_for_phrase_word_zero ;
 int id_for_phrase_word_zoom ;
+int id_for_linked_list ;
 int id_for_list_of_decimal_numbers ;
 int id_for_phrase_name ;
 int id_for_phrase_word ;
@@ -1004,6 +1025,7 @@ int id_for_single_slash ;
 int id_for_single_space ;
 int id_for_single_tab ;
 int id_for_single_underscore ;
+int id_for_testing ;
 int id_for_valid_filename ;
 int id_for_valid_folder_name ;
 int id_for_word_breaking ;
@@ -1018,7 +1040,7 @@ int id_for_word_space ;
 int id_for_word_tab ;
 int id_for_word_text ;
 int id_for_word_underscore ;
-int id_from_indexed_pointer_list ;
+int id_from_indexed_list ;
 int id_from_origin ;
 int id_pointer_stack_for_getting_next_character ;
 int id_text_to_edit ;
@@ -1038,17 +1060,16 @@ int length_of_matching_text ;
 int length_of_text_to_find ;
 int length_requested_for_next_item_storage ;
 int line_character_position ;
-int indexed_pointer_list_current_pointer ;
-int indexed_pointer_list_id ;
-int indexed_pointer_list_id_saved ;
-int indexed_pointer_list_last_grouping_id ;
-int indexed_pointer_list_last_grouping_id_saved ;
-int indexed_pointer_list_current_grouping_id ;
-int indexed_pointer_list_next_grouping_id ;
+int indexed_list_current_pointer ;
+int id_indexed_list ;
+int id_linked_list_segment_last_saved ;
+int id_linked_list_segment_last_saved_saved ;
+int indexed_list_current_grouping_id ;
+int indexed_list_next_grouping_id ;
 int looking_at_hyphenated_phrase_name_in_item_id ;
 int message_trace__expand_phrases__endless_loop ;
 int new_item_id ;
-int next_available_begin_pointer_for_data_type_pointers_linked ;
+int next_available_begin_pointer_for_data_type_linked_list ;
 int next_available_begin_pointer_for_data_type_text_characters ;
 int next_available_begin_pointer_for_data_type_list_of_integers ;
 int next_available_begin_pointer_for_data_type_list_of_decimal_numbers ;
@@ -1070,11 +1091,11 @@ int pointer_for_just_copy_source ;
 int pointer_for_just_copy_destination ;
 int pointer_for_debugging ;
 int pointer_from ;
-int pointer_from_indexed_pointer_list ;
+int pointer_from_indexed_list ;
 int pointer_next_word_begin ;
 int pointer_next_word_end ;
 int pointer_to ;
-int pointer_to_append_to_indexed_pointer_list ;
+int pointer_to_append_to_indexed_list ;
 int pointer_to_character_to_insert_between_subitems ;
 int pointer_to_first_hyphen ;
 int pointer_to_leading_delimiter ;
@@ -1101,7 +1122,7 @@ int position_of_underscore ;
 int position_within_text_to_find ;
 int possible_optimum_character_as_integer ;
 int previous_character ;
-int previous_indexed_pointer_list_grouping_id ;
+int previous_indexed_list_grouping_id ;
 int recent_position_of_any_delimiter ;
 int response_ignored ;
 int saved_single_character_as_integer ;
@@ -1160,6 +1181,7 @@ int yes_or_no_folder_name_is_valid ;
 int yes_or_no_in_filename_before_period ;
 int yes_or_no_in_folder_name_before_period ;
 int yes_or_no_inserted_character ;
+int yes_or_no_last_character_is_space ;
 int yes_or_no_looking_for_word_attribute_or_specify ;
 int yes_or_no_matching_text ;
 int yes_or_no_more_text_in_file ;
@@ -1405,10 +1427,10 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 //  Initialize the pointers that keep track of the
 //  beginning of each item ID.  Each of these data
 //  types is stored in a different array.  The
-//  "pointers_linked" data type is used for
+//  "linked_list" data type is used for
 //  multiple kinds of information.
 
-    next_available_begin_pointer_for_data_type_pointers_linked = 1 ;
+    next_available_begin_pointer_for_data_type_linked_list = 1 ;
     next_available_begin_pointer_for_data_type_text_characters = 1 ;
     next_available_begin_pointer_for_data_type_list_of_integers = 1 ;
     next_available_begin_pointer_for_data_type_list_of_decimal_numbers = 1 ;
@@ -1893,7 +1915,7 @@ void choose_slash_or_backslash( )
 //  The data type must be specified in the
 //  variable "data_type" and it determines
 //  which storage area holds the item's contents.
-//  If the data type is "pointers_linked" then an
+//  If the data type is "linked_list" then an
 //  extra two pointer positions are added for
 //  pointing to the "next" and "prior" items in
 //  the same list.
@@ -1923,18 +1945,18 @@ void create_new_item_id_and_assign_storage( )
             pointer_allocation_end_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_list_of_decimal_numbers - 1 ;
             pointer_end_for_item[ new_item_id ] =     pointer_begin_for_item[ new_item_id ] - 1 ;
             break ;
-        case data_type_pointers_linked :
-            pointer_begin_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_pointers_linked + 1 ;
-            next_available_begin_pointer_for_data_type_pointers_linked += length_requested_for_next_item_storage + 2 ;
-            pointer_allocation_end_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_pointers_linked - 2 ;
+        case data_type_linked_list :
+            pointer_begin_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_linked_list + 1 ;
+            next_available_begin_pointer_for_data_type_linked_list += length_requested_for_next_item_storage + 2 ;
+            pointer_allocation_end_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_linked_list - 2 ;
             pointer_end_for_item[ new_item_id ] =     pointer_begin_for_item[ new_item_id ] + length_requested_for_next_item_storage - 1 ;
             all_pointers[ pointer_begin_for_item[ new_item_id ] - 1 ] = 0 ;
             all_pointers[ pointer_end_for_item[ new_item_id ] + 1 ] = 0 ;
             break ;
         default :
-            pointer_begin_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_pointers_linked ;
-            next_available_begin_pointer_for_data_type_pointers_linked += length_requested_for_next_item_storage ;
-            pointer_allocation_end_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_pointers_linked - 1 ;
+            pointer_begin_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_linked_list ;
+            next_available_begin_pointer_for_data_type_linked_list += length_requested_for_next_item_storage ;
+            pointer_allocation_end_for_item[ new_item_id ] = next_available_begin_pointer_for_data_type_linked_list - 1 ;
             pointer_end_for_item[ new_item_id ] =     pointer_begin_for_item[ new_item_id ] - 1 ;
             break ;
     }
@@ -1954,7 +1976,7 @@ void create_new_item_id_and_assign_storage( )
 void measure_space_available_in_item( )
 {
     space_available_in_item = pointer_allocation_end_for_item[ item_id ] - pointer_end_for_item[ item_id ] ;
-    if ( data_type_for_item[ item_id ] == data_type_pointers_linked )
+    if ( data_type_for_item[ item_id ] == data_type_linked_list )
     {
         space_available_in_item -- ;
     }
@@ -1970,7 +1992,7 @@ void measure_space_available_in_item( )
 //  allocated space, or it exceeds the storage
 //  space that was originally allocated, change
 //  the allocation size.  If the data type is
-//  "pointers_linked", allow space for the "next"
+//  "linked_list", allow space for the "next"
 //  and "prior" pointers.
 
 void adjust_storage_space_to_fit_newest_item( )
@@ -1983,9 +2005,9 @@ void adjust_storage_space_to_fit_newest_item( )
     pointer_allocation_end_for_item[ new_item_id ] = pointer_end_for_item[ new_item_id ] ;
     switch ( data_type )
     {
-        case data_type_pointers_linked :
+        case data_type_linked_list :
             pointer_allocation_end_for_item[ new_item_id ] += 2 ;
-            next_available_begin_pointer_for_data_type_pointers_linked = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
+            next_available_begin_pointer_for_data_type_linked_list = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
             break ;
         case data_type_text_characters :
             next_available_begin_pointer_for_data_type_text_characters = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
@@ -1997,7 +2019,7 @@ void adjust_storage_space_to_fit_newest_item( )
             next_available_begin_pointer_for_data_type_list_of_decimal_numbers = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
             break ;
         default :
-            next_available_begin_pointer_for_data_type_pointers_linked = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
+            next_available_begin_pointer_for_data_type_linked_list = pointer_allocation_end_for_item[ new_item_id ] + 1 ;
             break ;
     }
     return ;
@@ -2011,13 +2033,13 @@ void adjust_storage_space_to_fit_newest_item( )
 //  Measure the length of the specified item.  Do
 //  not measure the length of the contents
 //  currently stored in the item.  If the item is
-//  of type "pointers_linked" allow for the "next"
+//  of type "linked_list" allow for the "next"
 //  and "prior" pointers.
 
 void get_length_of_item( )
 {
     length_of_item = pointer_allocation_end_for_item[ item_id ] - pointer_begin_for_item[ item_id ] + 1 ;
-    if ( data_type_for_item[ item_id ] == data_type_pointers_linked )
+    if ( data_type_for_item[ item_id ] == data_type_linked_list )
     {
         length_of_item -= 2 ;
     }
@@ -2305,7 +2327,7 @@ void just_copy_simple( )
 //  original.  The original is specified by
 //  "item_id".  The copy is
 //  specified by "id_for_copy".  If the
-//  data type is "pointers_linked" the "next" and
+//  data type is "linked_list" the "next" and
 //  "prior" pointers are set to zeros.
 
 void copy_solo_item_to_new( )
@@ -3170,7 +3192,8 @@ void write_single_character_as_integer_to_file( )
 //  Gets the text word supplied as a function
 //  argument in C string format, stores it in
 //  all_characters, and returns the text
-//  item ID number for this text.
+//  item ID number for this text.  This is needed
+//  during initialization.
 
 int store_text_and_get_its_item_id( const char * local_this_word )
 {
@@ -3248,81 +3271,173 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function create_indexed_pointer_list
+//  Function create_linked_list
 //
-//  Creates an indexed pointer list in which the
-//  pointers can be indexed by their position in
-//  the list.  The list is identified by the ID
-//  in "indexed_pointer_list_id".
+//  Creates a linked list.  The variable
+//  "id_for_linked_list" points to the new item.
+//  If the "requested_length" is zero then the
+//  default size of 35 is used.
 
-void create_indexed_pointer_list( )
+void create_linked_list( )
 {
-    length_requested_for_next_item_storage = 35 ;
-    data_type = data_type_pointers_linked ;
+	if ( requested_length > 0 )
+	{
+        length_requested_for_next_item_storage = requested_length ;
+    } else
+    {
+        length_requested_for_next_item_storage = 35 ;
+    }
+    data_type = data_type_linked_list ;
     create_new_item_id_and_assign_storage( ) ;
-    indexed_pointer_list_id = new_item_id ;
+    id_for_linked_list = new_item_id ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_grouping_id_for_linked_list
+//  Function get_id_linked_list_segment_next
 
-//  Gets ...
+//  Gets the item ID of the next segment in the
+//  linked list that is pointed to by
+//  "id_linked_list_segment_next" and updates
+//  "id_linked_list_segment_next" with that
+//  item ID.  If the result is a zero, that means
+//  the pointer already points to the end of the
+//  linked list.
+
+void get_id_linked_list_segment_next( )
+{
+    id_linked_list_segment_next = all_pointers[ pointer_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// Function get_id_linked_list_segment_last
+
+//  Gets the item ID of the last segment in the
+//  linked list that is pointed to by
+//  "id_linked_list".
+
+void get_id_linked_list_segment_last( )
+{
+    id_linked_list_segment_next = id_linked_list ;
+    while ( id_linked_list_segment_next != 0 )
+    {
+        get_id_linked_list_segment_next( ) ;
+    }
+    id_linked_list_segment_last = id_linked_list_segment_next ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_length_of_linked_list_segment_last
+//
+void get_length_of_linked_list_segment_last( )
+{
 
 // todo: write
 
-void get_next_grouping_id_for_linked_list( )
+	id_linked_list_segment_next = id_linked_list ;
+    get_id_linked_list_segment_last( ) ;
+    length_of_linked_list_segment_last = pointer_allocation_end_for_item[ id_linked_list_segment_last ] - pointer_begin_for_item[ id_linked_list_segment_last ] ;
+    id_linked_list_segment_last_former = id_linked_list_segment_last ;
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function extend_linked_list
+//
+//  Create a new item that is a segment that
+//  extends the length of the existing linked list
+//  pointed to by "id_linked_list".
+//  This new segment is three times longer than
+//  the size of the prior segment.
+
+void extend_linked_list( )
 {
-    next_grouping_id_for_linked_list = all_pointers[ pointer_end_for_item[ next_grouping_id_for_linked_list ] + 1 ] ;
+
+//  todo: use requested_length if specified, else:
+//    get_length_of_linked_list_segment_last( ) ;
+//    length_requested_for_next_item_storage = 3 * length_of_linked_list_segment_last ;
+
+    data_type = data_type_linked_list ;
+    create_new_item_id_and_assign_storage( ) ;
+    id_linked_list_segment_last = new_item_id ;
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last_former ] + 1 ] = id_linked_list_segment_last ;
+    all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last ] - 1 ] = id_linked_list_segment_last_former ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_pointer_from_position_within_indexed_pointer_list
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function create_indexed_list
+//
+//  Creates an indexed list in which a list of
+//  pointers are indexed by their position in
+//  the list.  The list is identified by the ID
+//  in "id_indexed_list".
+
+void create_indexed_list( )
+{
+    length_requested_for_next_item_storage = 35 ;
+    data_type = data_type_linked_list ;
+    create_new_item_id_and_assign_storage( ) ;
+    id_indexed_list = new_item_id ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_pointer_from_position_within_indexed_list
 //
 //  Within the indexed pointer list specified by
-//  "indexed_pointer_list_id", find the
+//  "id_indexed_list", find the
 //  index position specified by
-//  "position_within_indexed_pointer_list_desired".
+//  "position_within_indexed_list_desired".
 //  The retrieved pointer is put into
-//  "pointer_from_indexed_pointer_list".
+//  "pointer_from_indexed_list".
 //  This function does not check whether the value
-//  in "indexed_pointer_list_id" is actually a
+//  in "id_indexed_list" is actually a
 //  linked list, so the Dashrep compiler must
 //  never specify the wrong ID.
 
-void get_pointer_from_position_within_indexed_pointer_list( )
+void get_pointer_from_position_within_indexed_list( )
 {
-    position_within_indexed_pointer_list_actual = 0 ;
-    indexed_pointer_list_current_grouping_id = indexed_pointer_list_id ;
-    indexed_pointer_list_current_pointer = 0 ;
-    while ( ( position_within_indexed_pointer_list_actual <= position_within_indexed_pointer_list_desired ) && ( indexed_pointer_list_current_grouping_id > 0 ) )
+    position_within_indexed_list_actual = 0 ;
+    indexed_list_current_grouping_id = id_indexed_list ;
+    indexed_list_current_pointer = 0 ;
+    while ( ( position_within_indexed_list_actual <= position_within_indexed_list_desired ) && ( indexed_list_current_grouping_id > 0 ) )
     {
-        indexed_pointer_list_begin_of_grouping = pointer_begin_for_item[ indexed_pointer_list_current_grouping_id ] ;
-        indexed_pointer_list_end_of_grouping = pointer_end_for_item[ indexed_pointer_list_current_grouping_id ] ;
-        length_of_grouping_within_indexed_pointer_list = indexed_pointer_list_end_of_grouping - indexed_pointer_list_begin_of_grouping + 1 ;
-        if ( position_within_indexed_pointer_list_actual + length_of_grouping_within_indexed_pointer_list > position_within_indexed_pointer_list_desired )
+        indexed_list_begin_of_grouping = pointer_begin_for_item[ indexed_list_current_grouping_id ] ;
+        indexed_list_end_of_grouping = pointer_end_for_item[ indexed_list_current_grouping_id ] ;
+        length_of_grouping_within_indexed_list = indexed_list_end_of_grouping - indexed_list_begin_of_grouping + 1 ;
+        if ( position_within_indexed_list_actual + length_of_grouping_within_indexed_list > position_within_indexed_list_desired )
         {
-            indexed_pointer_list_current_pointer += position_within_indexed_pointer_list_desired - position_within_indexed_pointer_list_actual + 1 ;
+            indexed_list_current_pointer += position_within_indexed_list_desired - position_within_indexed_list_actual + 1 ;
             break ;
         }
-        position_within_indexed_pointer_list_actual += length_of_grouping_within_indexed_pointer_list ;
-        indexed_pointer_list_current_grouping_id = all_pointers[ indexed_pointer_list_end_of_grouping + 1 ] ;
-        indexed_pointer_list_current_pointer += length_of_grouping_within_indexed_pointer_list ;
-        if ( position_within_indexed_pointer_list_desired == 0 )
+        position_within_indexed_list_actual += length_of_grouping_within_indexed_list ;
+        indexed_list_current_grouping_id = all_pointers[ indexed_list_end_of_grouping + 1 ] ;
+        indexed_list_current_pointer += length_of_grouping_within_indexed_list ;
+        if ( position_within_indexed_list_desired == 0 )
         {
-            position_within_indexed_pointer_list_actual = position_within_indexed_pointer_list_desired - 99 ;
+            position_within_indexed_list_actual = position_within_indexed_list_desired - 99 ;
         }
     }
-    if ( indexed_pointer_list_current_pointer > 0 )
+    if ( indexed_list_current_pointer > 0 )
     {
-        pointer_from_indexed_pointer_list = all_pointers[ indexed_pointer_list_current_pointer ] ;
+        pointer_from_indexed_list = all_pointers[ indexed_list_current_pointer ] ;
     } else
     {
-        pointer_from_indexed_pointer_list = 0 ;
+        pointer_from_indexed_list = 0 ;
     }
     return ;
 }
@@ -3330,81 +3445,61 @@ void get_pointer_from_position_within_indexed_pointer_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function extend_indexed_pointer_list
-//
-//  Create a new item that extends the length of
-//  an existing indexed pointer list.
-
-void extend_indexed_pointer_list( )
-{
-    indexed_pointer_list_last_grouping_id_saved = indexed_pointer_list_last_grouping_id ;
-    data_type = data_type_pointers_linked ;
-    create_new_item_id_and_assign_storage( ) ;
-    indexed_pointer_list_last_grouping_id = new_item_id ;
-    all_pointers[ pointer_end_for_item[ indexed_pointer_list_last_grouping_id_saved ] + 1 ] = indexed_pointer_list_last_grouping_id ;
-    all_pointers[ pointer_begin_for_item[ indexed_pointer_list_last_grouping_id ] - 1 ] = indexed_pointer_list_last_grouping_id_saved ;
-    all_pointers[ pointer_end_for_item[ indexed_pointer_list_last_grouping_id ] ] = 0 ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function put_pointer_into_position_within_indexed_pointer_list
+//  Function put_pointer_into_position_within_indexed_list
 //
 //  Within the indexed pointer list specified by
-//  "indexed_pointer_list_id", put into the
+//  "id_indexed_list", put into the
 //  index position specified by
-//  "position_within_indexed_pointer_list_desired"
+//  "position_within_indexed_list_desired"
 //  the pointer value in
-//  "pointer_to_put_into_indexed_pointer_list".
+//  "pointer_to_put_into_indexed_list".
 //  If the last grouping is not long enough to
 //  reach the desired position, create a new
 //  grouping that is long enough to reach the
 //  desired position.
 //  This function does not check whether the value
-//  in "indexed_pointer_list_id" is actually a
+//  in "id_indexed_list" is actually a
 //  linked list, so the Dashrep compiler must
 //  never specify the wrong ID.
 
-void put_pointer_into_position_within_indexed_pointer_list( )
+void put_pointer_into_position_within_indexed_list( )
 {
-    get_pointer_from_position_within_indexed_pointer_list( ) ;
-    if ( indexed_pointer_list_current_pointer > 0 )
+    get_pointer_from_position_within_indexed_list( ) ;
+    if ( indexed_list_current_pointer > 0 )
     {
 
 // todo: write this code
 
-        length_requested_for_next_item_storage = int( 3 * length_of_grouping_within_indexed_pointer_list ) ;
-        extend_indexed_pointer_list( ) ;
+        length_requested_for_next_item_storage = int( 3 * length_of_grouping_within_indexed_list ) ;
+        extend_linked_list( ) ;
 
-// indexed_pointer_list_current_grouping_id ;
-// position_within_indexed_pointer_list_desired
+// indexed_list_current_grouping_id ;
+// position_within_indexed_list_desired
 
     }
-    all_pointers[ pointer_end_for_item[ indexed_pointer_list_current_pointer ] ] = pointer_to_put_into_indexed_pointer_list ;
+    all_pointers[ pointer_end_for_item[ indexed_list_current_pointer ] ] = pointer_to_put_into_indexed_list ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_pointer_to_indexed_pointer_list
+//  Function append_pointer_to_indexed_list
 //
 //  Adds a pointer to the end of an
 //  indexed pointer list.  The ID that identifies
 //  the indexed pointer list is in
-//  "indexed_pointer_list_id".
+//  "id_indexed_list".
 //  The pointer to add is
-//  "pointer_to_append_to_indexed_pointer_list".
+//  "pointer_to_append_to_indexed_list".
 //  If the last grouping is full, create a new
 //  grouping.
 //  This function does not check whether the value
-//  in "indexed_pointer_list_id" is
+//  in "id_indexed_list" is
 //  actually a linked list, so the Dashrep
 //  compiler must never specify the wrong ID.
 
-void append_pointer_to_indexed_pointer_list( )
+void append_pointer_to_indexed_list( )
 {
 
 
@@ -3412,8 +3507,8 @@ void append_pointer_to_indexed_pointer_list( )
 //  Find the last grouping item in the indexed
 //  pointer list.
 
-    position_within_indexed_pointer_list_desired = 0 ;
-    get_pointer_from_position_within_indexed_pointer_list( ) ;
+    position_within_indexed_list_desired = 0 ;
+    get_pointer_from_position_within_indexed_list( ) ;
 
 
 // -----------------------------------------------
@@ -3422,11 +3517,11 @@ void append_pointer_to_indexed_pointer_list( )
 //  a new grouping item for the indexed pointer
 //  list.
 
-    item_id = indexed_pointer_list_current_grouping_id ;
+    item_id = indexed_list_current_grouping_id ;
     measure_space_available_in_item( ) ;
     if ( space_available_in_item < 1 )
     {
-        extend_indexed_pointer_list( ) ;
+        extend_linked_list( ) ;
     }
 
 
@@ -3434,13 +3529,13 @@ void append_pointer_to_indexed_pointer_list( )
 //  Append the pointer to the end of the last
 //  grouping item.
 
-    pointer_end_for_item[ indexed_pointer_list_last_grouping_id ] ++ ;
-    all_pointers[ pointer_end_for_item[ indexed_pointer_list_last_grouping_id ] ] = pointer_to_append_to_indexed_pointer_list ;
-    all_pointers[ pointer_end_for_item[ indexed_pointer_list_last_grouping_id ] + 1 ] = 0 ;
+    pointer_end_for_item[ id_linked_list_segment_last ] ++ ;
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = pointer_to_append_to_indexed_list ;
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] + 1 ] = 0 ;
 
 
 // -----------------------------------------------
-//  End of append_pointer_to_indexed_pointer_list.
+//  End of append_pointer_to_indexed_list.
 
     return ;
 
@@ -3449,27 +3544,27 @@ void append_pointer_to_indexed_pointer_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_pointer_from_indexed_pointer_list
+//  Function get_next_pointer_from_indexed_list
 //
 //  Gets the next pointer from an
 //  indexed pointer list.  The current grouping ID
 //  is in
-//  "indexed_pointer_list_current_grouping_id".
+//  "indexed_list_current_grouping_id".
 //  The pointer
-//  "indexed_pointer_list_current_pointer"
+//  "indexed_list_current_pointer"
 //  points to the current position within
 //  that grouping ID.  The retrieved pointer is
-//  put into "pointer_from_indexed_pointer_list".
+//  put into "pointer_from_indexed_list".
 
-void get_next_pointer_from_indexed_pointer_list( )
+void get_next_pointer_from_indexed_list( )
 {
-    if ( indexed_pointer_list_current_pointer > pointer_end_for_item[ indexed_pointer_list_current_grouping_id ] )
+    if ( indexed_list_current_pointer > pointer_end_for_item[ indexed_list_current_grouping_id ] )
     {
-        indexed_pointer_list_current_grouping_id = all_pointers[ pointer_end_for_item[ indexed_pointer_list_current_grouping_id ] + 1 ] ;
-        indexed_pointer_list_current_pointer = pointer_begin_for_item[ indexed_pointer_list_current_grouping_id ] ;
+        indexed_list_current_grouping_id = all_pointers[ pointer_end_for_item[ indexed_list_current_grouping_id ] + 1 ] ;
+        indexed_list_current_pointer = pointer_begin_for_item[ indexed_list_current_grouping_id ] ;
     }
-    pointer_from_indexed_pointer_list = all_pointers[ indexed_pointer_list_current_pointer ] ;
-    indexed_pointer_list_current_pointer ++ ;
+    pointer_from_indexed_list = all_pointers[ indexed_list_current_pointer ] ;
+    indexed_list_current_pointer ++ ;
     return ;
 }
 
@@ -3560,8 +3655,6 @@ void write_simple_text_item_to_file( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function specify_character_to_insert_between_subitems
 
 void specify_character_to_insert_between_subitems( )
@@ -3583,9 +3676,11 @@ void specify_character_to_insert_between_subitems( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function write_to_log
 //
-//  Can be used when debugging a pointer stack.
+//  Can be used to debug a pointer stack.
 
 void write_to_log( )
 {
@@ -3869,7 +3964,7 @@ void get_next_or_previous_non_pointer_text_item( )
 // -----------------------------------------------
 //  Begin a loop that points to the next (or
 //  previous) text item -- of any type other than
-//  "pointers_linked".  When needed, move up or
+//  "linked_list".  When needed, move up or
 //  down the pointer stack levels, or
 //  sometimes both up and down.  The loop exits
 //  when the next non-pointer text item has been
@@ -3988,13 +4083,13 @@ void get_next_or_previous_non_pointer_text_item( )
 
 // -----------------------------------------------
 //  If the top item pointed to by the pointer
-//  stack is of data type "pointers_linked" then
+//  stack is of data type "linked_list" then
 //  push a new level onto the pointer stack, point
 //  to the first (or last) position within that
 //  new-top item, and then return.
 
         data_type = data_type_for_item[ current_pointer_stack_text_item ] ;
-        if ( data_type == data_type_pointers_linked )
+        if ( data_type == data_type_linked_list )
         {
             zero_offset_in_stack_level_current = pointer_begin_for_item[ current_pointer_stack_text_item ] ;
             new_current_pointer_stack_text_item = all_pointers[ zero_offset_in_stack_level_current + offset_for_current_pointer_stack_level_text_item ] ;
@@ -4387,21 +4482,39 @@ void copy_pointer_stack( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_space_if_not_empty
-//
-//  Appends a space to "id_text_to_edit" if
-//  it is not empty.  If the text item's data type
-//  is a list of integers or a list of decimal
-//  numbers, first those numbers must be converted
-//  into a text item.
+//  Function check_yes_or_no_text_item_is_empty
 
-void append_space_if_not_empty( )
+void check_yes_or_no_text_item_is_empty( )
 {
+	initialize_get_next_character_from_text_item( ) ;
+    get_next_or_previous_character_from_text_item( ) ;
+    if ( single_character_as_integer == 0 )
+    {
+    	yes_or_no_text_item_is_empty = yes_yes ;
+    } else
+    {
+    	yes_or_no_text_item_is_empty = no_no ;
+    }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_single_character
+
+void append_single_character( )
+{
+
+// todo: write
+
+
+// following code might be relevant, otherwise delete code below
+
     if ( pointer_end_for_item[ id_text_to_edit ] < pointer_begin_for_item[ id_text_to_edit ] )
     {
         switch ( data_type_for_item[ id_text_to_edit ] )
         {
-            case data_type_pointers_linked :
+            case data_type_linked_list :
                 measure_space_available_in_item( ) ;
                 if ( space_available_in_item >= 2 )
                 {
@@ -4411,7 +4524,7 @@ void append_space_if_not_empty( )
                 {
                     length_requested_for_next_item_storage = default_length_for_text_item ;
                     create_new_item_id_and_assign_storage( ) ;
-                    data_type_for_item[ new_item_id ] = data_type_pointers_linked ;
+                    data_type_for_item[ new_item_id ] = data_type_linked_list ;
                     return ;
                 }
                 break ;
@@ -4428,6 +4541,30 @@ void append_space_if_not_empty( )
                 break ;
         }
     }
+
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_space_if_not_empty
+//
+//  Appends a space to "id_text_to_edit" if
+//  it is not empty.  If the text item's data type
+//  is a list of integers or a list of decimal
+//  numbers, there is not a space at the end, so
+//  insert one.
+
+void append_space_if_not_empty( )
+{
+    item_id = id_text_to_edit ;
+    check_yes_or_no_text_item_is_empty( ) ;
+    if ( yes_or_no_text_item_is_empty == yes_yes )
+    {
+    	return ;
+    }
+    single_character_as_integer = unicode_for_space ;
+    append_single_character( ) ;
     return ;
 }
 
@@ -4436,12 +4573,12 @@ void append_space_if_not_empty( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_one_pointer_to_pointers_linked
+//  Function append_one_pointer_to_linked_list
 
 //  Append one pointer to the end of a linked list
-//  of items of data type "pointers_linked".
+//  of items of data type "linked_list".
 
-void append_one_pointer_to_pointers_linked( )
+void append_one_pointer_to_linked_list( )
 {
 
 
@@ -4460,7 +4597,7 @@ void append_one_pointer_to_pointers_linked( )
 
         if ( not_enough_space == yes_yes )
         {
-            data_type = data_type_pointers_linked ;
+            data_type = data_type_linked_list ;
             create_new_item_id_and_assign_storage( ) ;
             id_for_copy = new_item_id ;
         }
@@ -4474,13 +4611,13 @@ void append_one_pointer_to_pointers_linked( )
 
     pointer_end_for_item[ id_for_copy ] ++ ;
     all_pointers[ pointer_end_for_item[ id_for_copy ] ] = id_text_to_edit ;
-    data_type_for_item[ id_for_copy ] = data_type_pointers_linked ;
+    data_type_for_item[ id_for_copy ] = data_type_linked_list ;
     pointer_end_for_item[ id_for_copy ] ++ ;
     all_pointers[ pointer_end_for_item[ id_for_copy ] ] = id_from_origin ;
 
 
 // -----------------------------------------------
-//  End of append_one_pointer_to_pointers_linked.
+//  End of append_one_pointer_to_linked_list.
 
     return ;
 }
@@ -4496,10 +4633,10 @@ void append_one_pointer_to_pointers_linked( )
 //  destination text items can each span multiple
 //  linked items.  Each of the two item
 //  IDs must refer to the beginning of a data type
-//  "pointers_linked" but this is not checked.
+//  "linked_list" but this is not checked.
 //  If the destination does
 //  not have enough space, additional linked items of
-//  type "pointers_linked" are created and linked.
+//  type "linked_list" are created and linked.
 
 void append_text_item_pointers( )
 {
@@ -4538,7 +4675,7 @@ void append_text_item_pointers( )
 //  Append the pointer.
 
         pointer_to_append = current_pointer_to_append ;
-        append_one_pointer_to_pointers_linked( ) ;
+        append_one_pointer_to_linked_list( ) ;
 
 
 // -----------------------------------------------
@@ -4587,8 +4724,13 @@ void append_text( )
 
 
 // -----------------------------------------------
-//  If the text item is read only, indicate an
-//  error because the compiler made a mistake.
+//  If the text item being edited is read only,
+//  indicate an error because the compiler made a
+//  mistake.
+
+
+        log_out << "appending " << std::endl ;
+
 
     if ( access_flag_for_item[ id_text_to_edit ] == access_flag_no_changes )
     {
@@ -4617,13 +4759,25 @@ void append_text( )
 
 //  todo: write
 
+            log_out << "in for loop " << std::endl ;
+
+//  todo: endless loop
+
+  return ;
+
         	id_from_origin = all_pointers[ pointer_begin_for_item[ next_grouping_id_for_linked_list ] ] ;
 
 //  handle numbers too
 
         }
-        get_next_grouping_id_for_linked_list( ) ;
+        get_id_linked_list_segment_next( ) ;
     }
+
+
+// -----------------------------------------------
+//  If possible adjust ...
+
+    adjust_storage_space_to_fit_newest_item( ) ;
 
 
 // -----------------------------------------------
@@ -4638,7 +4792,7 @@ void append_text( )
 
 //  Delete the text in the item "id_text_to_edit".
 //  This function assumes the item uses a
-//  "pointers_linked" data type at the top level,
+//  "linked_list" data type at the top level,
 //  but this assumption is not checked.
 //  All the items within the linked list must be
 //  changed to indicate no content.
@@ -4653,7 +4807,7 @@ void delete_text( )
     while ( next_grouping_id_for_linked_list > 0 )
     {
     	pointer_begin_for_item[ next_grouping_id_for_linked_list ] = pointer_end_for_item[ next_grouping_id_for_linked_list ] - 1 ;
-        get_next_grouping_id_for_linked_list( ) ;
+        get_id_linked_list_segment_next( ) ;
     }
     return ;
 }
@@ -4701,7 +4855,7 @@ void copy_text( )
 // -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function add_phrase_word_to_indexed_pointer_list
+//  Function add_phrase_word_to_indexed_list
 //
 //  Add the "id_for_phrase_word" pointer to the list
 //  of phrase words that have the same word
@@ -4712,16 +4866,16 @@ void copy_text( )
 
 
 
-void add_phrase_word_to_indexed_pointer_list( )
+void add_phrase_word_to_indexed_list( )
 {
-    pointer_to_append_to_indexed_pointer_list = id_for_phrase_word ;
+    pointer_to_append_to_indexed_list = id_for_phrase_word ;
     get_length_of_item( ) ;
-    indexed_pointer_list_id = id_for_list_of_phrase_words_of_length[ length_of_item ] ;
-    if ( indexed_pointer_list_id < 1 )
+    id_indexed_list = id_for_list_of_phrase_words_of_length[ length_of_item ] ;
+    if ( id_indexed_list < 1 )
     {
-        create_indexed_pointer_list( ) ;
+        create_indexed_list( ) ;
     }
-    append_pointer_to_indexed_pointer_list( ) ;
+    append_pointer_to_indexed_list( ) ;
     return ;
 }
 
@@ -4782,8 +4936,8 @@ void find_matching_phrase_word( )
 //  todo: finish writing, and proofreading, this code
 
     id_for_phrase_word = 0 ;
-    indexed_pointer_list_id = id_for_list_of_phrase_words_of_length[ character_length_of_phrase_word ] ;
-    indexed_pointer_list_current_pointer = pointer_begin_for_item[ indexed_pointer_list_id ] - 1 ;
+    id_indexed_list = id_for_list_of_phrase_words_of_length[ character_length_of_phrase_word ] ;
+    indexed_list_current_pointer = pointer_begin_for_item[ id_indexed_list ] - 1 ;
     while ( 1 == 1 )
     {
 
@@ -4793,8 +4947,8 @@ void find_matching_phrase_word( )
 //  there are no more to check, return with an
 //  indication that there was no match.
 
-        get_next_pointer_from_indexed_pointer_list( ) ;
-        character_pointer_begin_for_text_one = 1 ;pointer_begin_for_item[ id_from_indexed_pointer_list ] ;
+        get_next_pointer_from_indexed_list( ) ;
+        character_pointer_begin_for_text_one = 1 ;pointer_begin_for_item[ id_from_indexed_list ] ;
         if ( character_pointer_begin_for_text_one == 0 )
         {
             yes_or_no_matching_text = no_no ;
@@ -4808,11 +4962,11 @@ void find_matching_phrase_word( )
 //  If the phrase words match, return with the
 //  item ID of the matching phrase word.
 
-        item_id = id_from_indexed_pointer_list ;
+        item_id = id_from_indexed_list ;
         check_yes_or_no_matching_text( ) ;
         if ( yes_or_no_matching_text == yes_yes )
         {
-            id_for_phrase_word = id_from_indexed_pointer_list ;
+            id_for_phrase_word = id_from_indexed_list ;
             return ;
         }
 
@@ -4880,7 +5034,7 @@ void find_matching_phrase_name( )
         character_pointer_begin_for_phrase_word_in_position[ phrase_word_number_to_check ] = position_begin_for_phrase_word_number[ maximum_words_in_phrase_name - phrase_word_number_to_check ] ;
         character_pointer_end_for_phrase_word_in_position[ phrase_word_number_to_check ] = position_begin_for_phrase_word_number[ maximum_words_in_phrase_name - ( phrase_word_number_to_check + 1 ) ] ;
 
-//        ???[ phrase_word_number_to_check ] = id_from_indexed_pointer_list ;
+//        ???[ phrase_word_number_to_check ] = id_from_indexed_list ;
 
         id_for_phrase_word_at_position_number[ phrase_word_number_to_check ] = id_for_phrase_word ;
         if ( id_for_phrase_word > 0 )
@@ -4894,7 +5048,7 @@ void find_matching_phrase_name( )
 //  Limit the search to the phrase names that have
 //  the same number of phrase words.
 
-    indexed_pointer_list_id = id_for_list_of_phrase_names_of_length[ count_of_words_in_phrase_name ] ;
+    id_indexed_list = id_for_list_of_phrase_names_of_length[ count_of_words_in_phrase_name ] ;
 
 //  reminder: put zeros into id_for_list_of_phrase_names_of_length before adding any phrase names
 
@@ -4910,7 +5064,7 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  Point to the next already-defined phrase name.
 
-        get_next_pointer_from_indexed_pointer_list( ) ;
+        get_next_pointer_from_indexed_list( ) ;
         log_out << "id_for_phrase_name " << id_for_phrase_name << std::endl ;
 
 
@@ -5015,7 +5169,7 @@ void add_new_phrase_name( )
 
             // todo: copy pointer to phrase w
             id_for_phrase_word = id_for_phrase_word ;
-            add_phrase_word_to_indexed_pointer_list( ) ;
+            add_phrase_word_to_indexed_list( ) ;
         }
     }
 
@@ -5025,13 +5179,13 @@ void add_new_phrase_name( )
 //  list that lists other phrase names that have
 //  the same number of phrase words.
 
-    pointer_to_append_to_indexed_pointer_list = item_id ;
-    indexed_pointer_list_id = id_for_list_of_phrase_names_of_length[ number_of_phrase_words_found ] ;
-    if ( indexed_pointer_list_id < 1 )
+    pointer_to_append_to_indexed_list = item_id ;
+    id_indexed_list = id_for_list_of_phrase_names_of_length[ number_of_phrase_words_found ] ;
+    if ( id_indexed_list < 1 )
     {
-        create_indexed_pointer_list( ) ;
+        create_indexed_list( ) ;
     }
-    append_pointer_to_indexed_pointer_list( ) ;
+    append_pointer_to_indexed_list( ) ;
 
 
 // -----------------------------------------------
@@ -5134,7 +5288,7 @@ void truncate_text_item_using_pointer_stack( )
     {
         data_type = data_type_for_item[ id_text_to_truncate ] ;
         write_to_log( ) ;
-        if ( ( data_type == data_type_text_characters ) || ( data_type == data_type_pointers_linked ) )
+        if ( ( data_type == data_type_text_characters ) || ( data_type == data_type_linked_list ) )
         {
             zero_offset_in_stack_level_current = pointer_begin_for_item[ pointer_stack_level_current ] ;
             if ( yes_or_no_begin_not_end == yes_yes )
@@ -5280,11 +5434,11 @@ void remove_leading_and_trailing_delimiters( )
 //  Creates a copy of the text item
 //  at "id_text_to_edit" and changes the
 //  data type of the original to become
-//  "pointers_linked" and replaces the previous
+//  "linked_list" and replaces the previous
 //  contents (which are now copied) with a single
 //  pointer to the copy.  This function should not
 //  be used if the top-level text item already is
-//  of the "pointers_linked" type because that
+//  of the "linked_list" type because that
 //  would be pointless.  The size of the item to
 //  edit is not checked, but it is assumed to be
 //  at least one unit in length.
@@ -5297,7 +5451,7 @@ void replace_text_item_with_pointer_list( )
     copy_solo_item_to_new( ) ;
     all_pointers[ pointer_begin_for_item[ id_text_to_edit ] ] = id_for_copy ;
     pointer_end_for_item[ id_text_to_edit ] = pointer_begin_for_item[ id_text_to_edit ] ;
-    data_type_for_item[ id_text_to_edit ] = data_type_pointers_linked ;
+    data_type_for_item[ id_text_to_edit ] = data_type_linked_list ;
     return ;
 }
 
@@ -5479,7 +5633,7 @@ void skip_to_character_position( )
 //  todo: write this code
 
                 break ;
-            case data_type_pointers_linked :
+            case data_type_linked_list :
 
 
                 offset_pointer_stack_level_list_of_pointers ++ ;
@@ -6419,6 +6573,56 @@ void handle_directives( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function check_yes_or_no_last_character_is_space
+//
+//  Check the last character in the text item
+//  indicated by "item_id".  If it is a space, or
+//  the item is empty, set
+//  "yes_or_no_last_character_is_space" to
+//  "yes_yes".  Otherwise set it to "no_no".
+
+//  todo: omit, not needed!!!  saved in case code is useful elsewhere
+
+void check_yes_or_no_last_character_is_space( )
+{
+    yes_or_no_last_character_is_space = no_no ;
+	item_id_current = item_id ;
+	while ( item_id_current > 0 )
+	{
+
+        log_out << "item id = " << item_id_current << std::endl ;
+
+		if ( pointer_end_for_item[ item_id_current ] < pointer_begin_for_item[ item_id_current ] )
+		{
+            item_id_current = all_pointers[ pointer_end_for_item[ item_id_current ] ] ;
+            return ;
+			break ;
+	    }
+	    data_type = data_type_for_item[ item_id_current ] ;
+	    switch ( data_type )
+	    {
+	        case data_type_text_characters :
+	            single_character_as_integer = all_characters[ pointer_end_for_item[ item_id_current ] ] ;
+	            if ( single_character_as_integer == unicode_for_space )
+	            {
+                    yes_or_no_last_character_is_space = yes_yes ;
+	            }
+                return ;
+	            break ;
+	        case data_type_linked_list :
+	            item_id_current = all_pointers[ pointer_end_for_item[ item_id_current ] ] ;
+	            break ;
+	        default :
+                return ;
+	            break ;
+	    }
+	}
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 //  Function expand_text
 //
 //  Expands the text item indicated in
@@ -7186,7 +7390,11 @@ void do_everything( )
 
     log_out << "id_for_file_input " << id_for_file_input << std::endl ;
 
-    next_character_number = 1 ;
+    data_type = data_type_linked_list ;
+    length_requested_for_next_item_storage = 20 ;
+    create_new_item_id_and_assign_storage( ) ;
+    id_for_testing = new_item_id ;
+
     while ( yes_or_no_more_text_in_file != no_no )
     {
         read_text_line_from_file( ) ;
@@ -7194,6 +7402,12 @@ void do_everything( )
         write_simple_text_item_to_file( ) ;
         single_character_as_integer = unicode_for_newline ;
         write_single_character_as_integer_to_file( ) ;
+
+        id_text_to_edit = id_for_testing ;
+        append_space_if_not_empty( ) ;
+        id_from_origin = id_for_file_input ;
+        id_text_to_edit = id_for_testing ;
+        append_text( ) ;
     }
 
     show_defined_text_items( ) ;
