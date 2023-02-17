@@ -1000,7 +1000,7 @@ int id_for_phrase_word_year ;
 int id_for_phrase_word_yes ;
 int id_for_phrase_word_zero ;
 int id_for_phrase_word_zoom ;
-int id_for_linked_list ;
+int id_linked_list ;
 int id_for_list_of_decimal_numbers ;
 int id_for_phrase_name ;
 int id_for_phrase_word ;
@@ -1154,7 +1154,6 @@ int text_item_for_operand_two ;
 int text_item_intended_next_word_in_hyphenated_phrase ;
 int text_item_looking_at_next_word_in_hyphenated_phrase ;
 int text_item_one ;
-int text_item_pointer ;
 int text_item_two ;
 int text_item_with_next_character ;
 int text_item_with_previous_character ;
@@ -1242,9 +1241,9 @@ int initial_contents_for_all_integers[ ] = {
 } ;
 
 int initial_contents_for_all_decimal_numbers[ ] = {
-    0,  // unused
+    0.0,  // unused
 // <here_insert_code_into_array_all_numbers>
-    0  // last item, without comma
+    0.0  // last item, without comma
 } ;
 
 
@@ -2038,27 +2037,6 @@ void adjust_storage_space_to_fit_newest_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_length_of_item
-//
-//  Measure the length of the specified item.  Do
-//  not measure the length of the contents
-//  currently stored in the item.  If the item is
-//  of type "linked_list" allow for the "next"
-//  and "prior" pointers.
-
-void get_length_of_item( )
-{
-    length_of_item = pointer_allocation_end_for_item[ item_id ] - pointer_begin_for_item[ item_id ] + 1 ;
-    if ( data_type_for_item[ item_id ] == data_type_linked_list )
-    {
-        length_of_item -= 2 ;
-    }
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
 //  Function clear_item
 //
 //  Changes the specified single item to contain
@@ -2342,7 +2320,7 @@ void just_copy_simple( )
 
 void copy_solo_item_to_new( )
 {
-    get_length_of_item( ) ;
+    length_of_item = pointer_allocation_end_for_item[ item_id ] - pointer_begin_for_item[ item_id ] + 1 ;
     length_requested_for_next_item_storage = length_of_item ;
     data_type = data_type_for_item[ item_id ] ;
     create_new_item_id_and_assign_storage( ) ;
@@ -2563,6 +2541,8 @@ void convert_decimal_to_text( )
 //  assumed to be a list of integers, into a text
 //  item that contains only integers, with one
 //  space between each adjacent pair of numbers.
+//  The result is put into the item specified by
+//  "id_for_integers_as_text".
 
 void convert_list_of_integers_into_text_item( )
 {
@@ -3284,7 +3264,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  Function create_linked_list
 //
 //  Creates a linked list.  The variable
-//  "id_for_linked_list" points to the new item.
+//  "id_linked_list" points to the new item.
 //  If the "requested_length" is zero then the
 //  default size of 35 is used.
 
@@ -3299,7 +3279,7 @@ void create_linked_list( )
     }
     data_type = data_type_linked_list ;
     create_new_item_id_and_assign_storage( ) ;
-    id_for_linked_list = new_item_id ;
+    id_linked_list = new_item_id ;
     return ;
 }
 
@@ -3315,12 +3295,12 @@ void create_linked_list( )
 
 void get_length_of_linked_list( )
 {
-    space_occupied_by_linked_list = pointer_end_for_item[ id_linked_list ] - pointer_begin_for_item[ id_linked_list ] + 1 ;
+    space_occupied_by_linked_list = 0 ;
     id_linked_list_segment_next = id_linked_list ;
     while ( id_linked_list_segment_next > 0 )
     {
+        space_occupied_by_linked_list += pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
-        space_occupied_by_linked_list += pointer_end_for_item[ id_linked_list ] - pointer_begin_for_item[ id_linked_list ] + 1 ;
     }
     id_linked_list_segment_last = id_linked_list_segment_next ;
     return ;
@@ -3346,8 +3326,7 @@ void extend_linked_list( )
     id_linked_list_segment_last_former = id_linked_list_segment_last ;
     if ( length_requested_for_next_item_storage < 1 )
     {
-	    item_id = id_linked_list_segment_last ;
-	    get_length_of_item( ) ;
+        length_of_item = pointer_allocation_end_for_item[ id_linked_list_segment_last ] - pointer_begin_for_item[ id_linked_list_segment_last ] + 1 ;
 	    length_requested_for_next_item_storage = 3 * length_of_item ;
     }
     data_type = data_type_linked_list ;
@@ -5059,8 +5038,6 @@ void copy_text( )
 void add_phrase_word_to_indexed_list( )
 {
     pointer_to_append_to_indexed_list = id_for_phrase_word ;
-    get_length_of_item( ) ;
-    id_indexed_list = id_for_list_of_phrase_words_of_length[ length_of_item ] ;
     if ( id_indexed_list < 1 )
     {
         create_indexed_list( ) ;
