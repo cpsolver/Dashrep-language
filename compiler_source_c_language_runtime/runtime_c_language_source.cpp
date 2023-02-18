@@ -3270,8 +3270,8 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 
 void create_linked_list( )
 {
-	if ( requested_length > 0 )
-	{
+    if ( requested_length > 0 )
+    {
         length_requested_for_next_item_storage = requested_length ;
     } else
     {
@@ -3288,18 +3288,18 @@ void create_linked_list( )
 // -----------------------------------------------
 //  Function get_length_of_linked_list
 //
-//  Measure the length of a full linked list,
+//  Measure the length of the full linked list,
 //  and measure the length of the last segment in
 //  the linked list, and get the item ID of the
 //  last segment.
 
 void get_length_of_linked_list( )
 {
-    space_occupied_by_linked_list = 0 ;
+    length_of_linked_list = 0 ;
     id_linked_list_segment_next = id_linked_list ;
     while ( id_linked_list_segment_next > 0 )
     {
-        space_occupied_by_linked_list += pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
+        length_of_linked_list += pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
     }
     id_linked_list_segment_last = id_linked_list_segment_next ;
@@ -3327,7 +3327,7 @@ void extend_linked_list( )
     if ( length_requested_for_next_item_storage < 1 )
     {
         length_of_item = pointer_allocation_end_for_item[ id_linked_list_segment_last ] - pointer_begin_for_item[ id_linked_list_segment_last ] + 1 ;
-	    length_requested_for_next_item_storage = 3 * length_of_item ;
+        length_requested_for_next_item_storage = 3 * length_of_item ;
     }
     data_type = data_type_linked_list ;
     create_new_item_id_and_assign_storage( ) ;
@@ -3404,7 +3404,7 @@ void get_last_pointer_in_linked_list( )
         if ( id_linked_list_segment_last < 1 )
         {
             single_pointer_to_get = 0 ;
-        	return ;
+            return ;
         }
     }
     single_pointer_to_get = all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] ;
@@ -3428,7 +3428,7 @@ void remove_last_pointer_from_linked_list( )
         id_linked_list_segment_last = all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last ] - 1 ] ;
         if ( id_linked_list_segment_last < 1 )
         {
-        	return ;
+            return ;
         }
     }
     pointer_end_for_item[ id_linked_list_segment_last ] -- ;
@@ -3479,7 +3479,8 @@ void append_pointer_to_indexed_list( )
 
 // -----------------------------------------------
 //  Find the item ID of the last segment in the
-//  indexed pointer list.
+//  linked list that functions as an indexed
+//  pointer list.
 
     get_length_of_linked_list( ) ;
 
@@ -3492,7 +3493,7 @@ void append_pointer_to_indexed_list( )
 
     if ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
     {
-	    length_requested_for_next_item_storage = 0 ;
+        length_requested_for_next_item_storage = 0 ;
         extend_linked_list( ) ;
     }
 
@@ -3517,24 +3518,17 @@ void append_pointer_to_indexed_list( )
 // -----------------------------------------------
 //  Function get_pointer_from_indexed_list_at_index_position
 //
-
-//  Within an indexed list, find the segment, and
-//  the position within that segment, that
-//  corresponds with the index location specified
-//  by "desired_index_position_within_indexed_list".
-
-//  Within the indexed pointer list specified by
+//  Within the indexed list specified by
 //  "id_indexed_list", find the
 //  index position specified by
 //  "indexed_list_position_desired".
 //  The retrieved pointer is put into
-//  "pointer_from_indexed_list".
+//  "pointer_from_indexed_list_at_index_position".
 //  The item ID of the segment that contains the
 //  desired indexed pointer is saved in
 //  "id_indexed_list_segment_containing_desired".
 //  If the index position is beyond the length of
-//  the indexed list, supply a pointer value of
-//  zero.
+//  the indexed list, supply values of zero.
 //  This function does not check whether the value
 //  in "id_indexed_list" is actually a
 //  linked list, so the Dashrep compiler must
@@ -3545,50 +3539,50 @@ void get_pointer_from_indexed_list_at_index_position( )
 
 
 // -----------------------------------------------
-//  Find the item ID of the last segment in the
-//  indexed pointer list.  It is put into
+//  Find the item ID of the segment that contains
+//  the desired index position.  It is put into
 //  "id_indexed_list_segment_containing_desired".
 
-    get_length_of_linked_list( ) ;
+    id_indexed_list_segment_containing_desired = id_indexed_list ;
+    index_position_at_end_of_current_segment = 0 ;
+    while ( ( index_position_at_end_of_current_segment <= indexed_list_position_desired ) && ( id_indexed_list_segment_containing_desired > 0 ) )
+    {
+        index_position_at_end_of_current_segment += pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - pointer_begin_for_item[ id_indexed_list_segment_containing_desired ] + 1 ;
+        id_indexed_list_segment_containing_desired = all_pointers[ pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] + 1 ] ;
+    }
+
+//  todo: verify edge cases when position is at end or beginning of segment
 
 
 // -----------------------------------------------
+//  If the current length of the indexed list is
+//  not long enough to include the desired index
+//  location, supply a pointer value of zero and
+//  return.
 
-
-// todo: write this code
-
-//    if ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
-
-    indexed_list_current_segment_id = id_indexed_list ;
-    indexed_list_current_position = 0 ;
-    indexed_list_index_current = 0 ;
-    id_indexed_list_segment_containing_desired = 0 ;
-    while ( ( indexed_list_index_current <= indexed_list_position_desired ) && ( indexed_list_current_segment_id > 0 ) )
+    if ( id_indexed_list_segment_containing_desired < 1 )
     {
-        indexed_list_segment_begin = pointer_begin_for_item[ indexed_list_current_segment_id ] ;
-        indexed_list_segment_end = pointer_end_for_item[ indexed_list_current_segment_id ] ;
-        length_of_segment_within_indexed_list = indexed_list_segment_end - indexed_list_segment_begin + 1 ;
-        if ( indexed_list_index_current + length_of_segment_within_indexed_list > indexed_list_position_desired )
-        {
-            indexed_list_current_position += indexed_list_position_desired - indexed_list_index_current + 1 ;
-            break ;
-        }
-        indexed_list_index_current += length_of_segment_within_indexed_list ;
-        indexed_list_current_segment_id = all_pointers[ indexed_list_segment_end + 1 ] ;
-        indexed_list_current_position += length_of_segment_within_indexed_list ;
-        if ( indexed_list_position_desired == 0 )
-        {
-            indexed_list_index_current = indexed_list_position_desired - 99 ;
-        }
-    }
-    if ( indexed_list_current_position > 0 )
-    {
-        pointer_from_indexed_list = all_pointers[ indexed_list_current_position ] ;
-    } else
-    {
-        pointer_from_indexed_list = 0 ;
+        pointer_from_indexed_list_at_index_position = 0 ;
+        segment_position_offset = 0 ;
+        return ;
     }
 
+
+// -----------------------------------------------
+//  Calculate the position of the desired pointer
+//  within that segment.
+
+    segment_position_offset = index_position_at_end_of_current_segment - indexed_list_position_desired ;
+
+
+// -----------------------------------------------
+//  Get the pointer at the specified index
+//  position.
+
+//  todo: test this code, including at edge cases
+
+    pointer_from_indexed_list_at_index_position = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+    
 
 // -----------------------------------------------
 //  End of get_pointer_from_indexed_list_at_index_position.
@@ -3603,28 +3597,56 @@ void get_pointer_from_indexed_list_at_index_position( )
 //  Function get_next_pointer_from_indexed_list
 //
 //  Gets the next pointer from an
-//  indexed pointer list.  The current segment ID
-//  is in
-//  "indexed_list_current_segment_id".
-//  The pointer
-//  "indexed_list_current_position"
-//  points to the current position within
-//  that segment ID.  The retrieved pointer is
-//  put into "pointer_from_indexed_list".
+//  indexed pointer list after the function
+//  "get_pointer_from_indexed_list_at_index_position"
+//  has very recently been used.
 
 void get_next_pointer_from_indexed_list( )
 {
 
-// todo: write this code
 
-    if ( indexed_list_current_position > pointer_end_for_item[ indexed_list_current_segment_id ] )
+// -----------------------------------------------
+//  If the next pointer is within the same segment
+//  as the previous pointer, update the offset
+//  position within the segment, get the pointer,
+//  then return.
+
+    segment_position_offset -- ;
+    if ( segment_position_offset > 0 )
     {
-        indexed_list_current_segment_id = all_pointers[ pointer_end_for_item[ indexed_list_current_segment_id ] + 1 ] ;
-        indexed_list_current_position = pointer_begin_for_item[ indexed_list_current_segment_id ] ;
+        next_pointer_from_indexed_list = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+        return ;
     }
-    pointer_from_indexed_list = all_pointers[ indexed_list_current_position ] ;
-    indexed_list_current_position ++ ;
+
+
+// -----------------------------------------------
+//  The new indexed position is in the next
+//  segment, so get the ID of the next segment,
+//  update the offset position, and get the
+//  pointer value from that position.
+
+
+//  todo: finish writing this code
+
+
+    id_indexed_list_segment_containing_desired = 123 ;
+
+// pointer_from_indexed_list_at_index_position
+
+// index_position_at_end_of_current_segment
+
+// indexed_list_position_desired ;
+
+    segment_position_offset = 0 ;
+    indexed_list_current_position = pointer_end_for_item[ id_indexed_list_segment_containing_desired ] ;
+    next_pointer_from_indexed_list = all_pointers[ indexed_list_current_position ] ;
+
+
+// -----------------------------------------------
+//  End of function get_next_pointer_from_indexed_list.
+
     return ;
+
 }
 
 
@@ -3659,64 +3681,51 @@ void put_pointer_into_position_within_indexed_list( )
 
 // -----------------------------------------------
 //  Get the item ID of the segment that contains
-//  the indexed location.
+//  the indexed location, and get the offset
+//  position within that segment.
 
     get_pointer_from_indexed_list_at_index_position( ) ;
 
 
 // -----------------------------------------------
+//  If the indexed location can be inserted into
+//  an existing segment, insert it, then return.
 
-
-// todo: write this code
-
-// indexed_list_current_segment_id ;
-// indexed_list_position_desired
-
-    all_pointers[ pointer_end_for_item[ indexed_list_current_position ] ] = pointer_to_put_into_indexed_list ;
-
-
-
-// -----------------------------------------------
-//  If needed, move through the segments to reach
-//  the segment that contains the desired index
-//  location.
-
-    while ( ( id_linked_list_segment_next != 0 ) && ( space_occupied_by_linked_list <= linked_list_index_desired ) )
+    if ( id_indexed_list_segment_containing_desired > 0 )
     {
-        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
-        item_id = id_linked_list_segment_next ; 
-        measure_space_occupied_by_item( ) ;
-        space_occupied_by_linked_list += space_occupied_by_item ;
+        pointer = pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset  ;
+        all_pointers[ pointer ] = pointer_to_put_into_indexed_list ;
+        return ;
     }
-    id_linked_list_segment_desired = id_linked_list_segment_next ;
 
 
 // -----------------------------------------------
-//  If the linked list is not long enough, append
+//  The linked list is not long enough so append
 //  one segment that is long enough to reach the
 //  desired index position plus some extra storage
 //  for further appending.
 
-//  todo: write ...
+    length_requested_for_next_item_storage = indexed_list_position_desired - index_position_at_end_of_current_segment ;
+    extend_linked_list( ) ;
+    pointer_end_for_item[ id_linked_list_segment_last ] = pointer_allocation_end_for_item[  id_linked_list_segment_last ] ;
 
 
 // -----------------------------------------------
-//  Calculate the desired index position.
+//  Pad the just-created space with zeros.  But
+//  do not pad the last position because it is
+//  about to be filled with the supplied pointer.
 
-// todo: proofread ...
-
-    linked_list_desired_offset_within_segment = pointer_end_for_item[ id_linked_list_segment_desired ] - pointer_begin_for_item[ id_linked_list_segment_desired ] - desired_index_position_within_indexed_list +space_occupied_by_linked_list ;
-
-
-// -----------------------------------------------
-//  Pad any new space with zeros.
-
-    pointer_whatever = 123 ;
-
-    for ( pointer = pointer_whatever ; pointer <= pointer_allocation_end_for_item[ id_linked_list_segment_last ] ; pointer ++ )
+    for ( pointer = pointer_begin_for_item[ id_linked_list_segment_last ] ; pointer <= pointer_allocation_end_for_item[ id_linked_list_segment_last ] - 1 ; pointer ++ )
     {
         all_pointers[ pointer ] = 0 ;
     }
+
+
+// -----------------------------------------------
+//  Put the supplied pointer value into the
+//  indexed list at the end of the new segment.
+
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = pointer_to_put_into_indexed_list ;
 
 
 // -----------------------------------------------
@@ -3762,7 +3771,7 @@ void read_text_line_from_file( )
 {
     if ( yes_or_no_encountered_eof_flag == yes_yes )
     {
-    	yes_or_no_more_text_in_file = no_no ;
+        yes_or_no_more_text_in_file = no_no ;
         return ;
     }
     pointer_end_for_item[ id_for_file_input ] = pointer_begin_for_item[ id_for_file_input ] - 1 ;
@@ -4655,14 +4664,14 @@ void copy_pointer_stack( )
 
 void check_yes_or_no_text_item_is_empty( )
 {
-	initialize_get_next_character_from_text_item( ) ;
+    initialize_get_next_character_from_text_item( ) ;
     get_next_or_previous_character_from_text_item( ) ;
     if ( single_character_as_integer == 0 )
     {
-    	yes_or_no_text_item_is_empty = yes_yes ;
+        yes_or_no_text_item_is_empty = yes_yes ;
     } else
     {
-    	yes_or_no_text_item_is_empty = no_no ;
+        yes_or_no_text_item_is_empty = no_no ;
     }
 }
 
@@ -4730,7 +4739,7 @@ void append_space_if_not_empty( )
     check_yes_or_no_text_item_is_empty( ) ;
     if ( yes_or_no_text_item_is_empty == yes_yes )
     {
-    	return ;
+        return ;
     }
     single_character_as_integer = unicode_for_space ;
     append_single_character( ) ;
@@ -4934,7 +4943,7 @@ void append_text( )
 
   return ;
 
-        	id_from_origin = all_pointers[ pointer_begin_for_item[ next_segment_id_for_linked_list ] ] ;
+            id_from_origin = all_pointers[ pointer_begin_for_item[ next_segment_id_for_linked_list ] ] ;
 
 //  handle numbers too
 
@@ -4975,7 +4984,7 @@ void delete_text( )
     next_segment_id_for_linked_list = id_text_to_edit ;
     while ( next_segment_id_for_linked_list > 0 )
     {
-    	pointer_begin_for_item[ next_segment_id_for_linked_list ] = pointer_end_for_item[ next_segment_id_for_linked_list ] - 1 ;
+        pointer_begin_for_item[ next_segment_id_for_linked_list ] = pointer_end_for_item[ next_segment_id_for_linked_list ] - 1 ;
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
     }
     return ;
@@ -6753,37 +6762,37 @@ void handle_directives( )
 void check_yes_or_no_last_character_is_space( )
 {
     yes_or_no_last_character_is_space = no_no ;
-	item_id_current = item_id ;
-	while ( item_id_current > 0 )
-	{
+    item_id_current = item_id ;
+    while ( item_id_current > 0 )
+    {
 
         log_out << "item id = " << item_id_current << std::endl ;
 
-		if ( pointer_end_for_item[ item_id_current ] < pointer_begin_for_item[ item_id_current ] )
-		{
+        if ( pointer_end_for_item[ item_id_current ] < pointer_begin_for_item[ item_id_current ] )
+        {
             item_id_current = all_pointers[ pointer_end_for_item[ item_id_current ] ] ;
             return ;
-			break ;
-	    }
-	    data_type = data_type_for_item[ item_id_current ] ;
-	    switch ( data_type )
-	    {
-	        case data_type_text_characters :
-	            single_character_as_integer = all_characters[ pointer_end_for_item[ item_id_current ] ] ;
-	            if ( single_character_as_integer == unicode_for_space )
-	            {
+            break ;
+        }
+        data_type = data_type_for_item[ item_id_current ] ;
+        switch ( data_type )
+        {
+            case data_type_text_characters :
+                single_character_as_integer = all_characters[ pointer_end_for_item[ item_id_current ] ] ;
+                if ( single_character_as_integer == unicode_for_space )
+                {
                     yes_or_no_last_character_is_space = yes_yes ;
-	            }
+                }
                 return ;
-	            break ;
-	        case data_type_linked_list :
-	            item_id_current = all_pointers[ pointer_end_for_item[ item_id_current ] ] ;
-	            break ;
-	        default :
+                break ;
+            case data_type_linked_list :
+                item_id_current = all_pointers[ pointer_end_for_item[ item_id_current ] ] ;
+                break ;
+            default :
                 return ;
-	            break ;
-	    }
-	}
+                break ;
+        }
+    }
     return ;
 }
 
