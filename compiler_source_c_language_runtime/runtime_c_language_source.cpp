@@ -3266,7 +3266,8 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  Creates a linked list.  The variable
 //  "id_linked_list" points to the new item.
 //  If the "requested_length" is zero then the
-//  default size of 35 is used.
+//  default size of 35 is used.  The list is
+//  empty.
 
 void create_linked_list( )
 {
@@ -3289,17 +3290,43 @@ void create_linked_list( )
 //  Function get_length_of_linked_list
 //
 //  Measure the length of the full linked list,
-//  and measure the length of the last segment in
-//  the linked list, and get the item ID of the
-//  last segment.
+//  but counting only content, not segment lengths
+//  because segements at the end can be empty.
+//  Also get the item ID of the last segment that
+//  has content, and measure the length of this
+//  content in the last occupied segment.
 
 void get_length_of_linked_list( )
 {
-    length_of_linked_list = 0 ;
+    id_linked_list_segment_first = id_linked_list ;
     id_linked_list_segment_next = id_linked_list ;
+    id_linked_list_segment_last = id_linked_list ;
+    length_of_linked_list = 0 ;
+    length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
+    while ( ( length_of_content_in_segment > 0 ) && ( id_linked_list_segment_next > 0 ) )
+    {
+        id_linked_list_segment_last = id_linked_list_segment_next ;
+        length_of_linked_list += length_of_content_in_segment ;
+        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
+        if ( id_linked_list_segment_next < 1 )
+        {
+            break ;
+        }
+        length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function get_last_segment_in_linked_list
+
+void get_last_segment_in_linked_list( )
+{
+    get_length_of_linked_list( ) ;
     while ( id_linked_list_segment_next > 0 )
     {
-        length_of_linked_list += pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
     }
     id_linked_list_segment_last = id_linked_list_segment_next ;
@@ -3318,11 +3345,12 @@ void get_length_of_linked_list( )
 //  in "length_requested_for_next_item_storage" --
 //  is less than one, create a new segment that
 //  is three times longer than the size of the
-//  prior segment.
+//  prior segment.  The content of the added
+//  segment is empty.
 
 void extend_linked_list( )
 {
-    get_length_of_linked_list( ) ;
+    get_last_segment_in_linked_list( ) ;
     id_linked_list_segment_last_former = id_linked_list_segment_last ;
     if ( length_requested_for_next_item_storage < 1 )
     {
@@ -3351,8 +3379,19 @@ void append_pointer_to_linked_list( )
     get_length_of_linked_list( ) ;
     if ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
     {
-        length_requested_for_next_item_storage = 0 ;
-        extend_linked_list( ) ;
+
+//  todo: proofread here
+
+        id_linked_list_segment_last_with_content = id_linked_list_segment_last ;
+        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_last ] + 1 ] ;
+        if ( id_linked_list_segment_next > 0 )
+        {
+            id_linked_list_segment_last = id_linked_list_segment_next ;
+        } else
+        {
+            length_requested_for_next_item_storage = 0 ;
+            extend_linked_list( ) ;
+        }
     }
     pointer = pointer_end_for_item[ id_linked_list_segment_last ] + 1 ;
     pointer_end_for_item[ id_linked_list_segment_last ] = pointer ;
@@ -3432,6 +3471,79 @@ void remove_last_pointer_from_linked_list( )
         }
     }
     pointer_end_for_item[ id_linked_list_segment_last ] -- ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function clear_linked_list
+//
+//  Clears the content from every segment of a
+//  linked list.  The segments of the linked
+//  list remain linked.
+
+void clear_linked_list( )
+{
+    id_linked_list_segment_next = id_linked_list ;
+    while ( id_linked_list_segment_next > 0 )
+    {
+        pointer_end_for_item[ id_linked_list_segment_next ] = pointer_begin_for_item[ id_linked_list_segment_next ] 1 1 ;
+        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
+    }
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function create_stacked_list
+//
+//  Creates a stacked list.
+//  The stacked list is simply a linked list
+//  that is only used for push and pop operations.
+
+void create_stacked_list( )
+{
+	create_linked_list( ) ;
+    id_stacked_list = id_linked_list ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function push_number_onto_stacked_list
+//
+//  Pushes the integer specified in
+//  "number_to_push" onto the top of the stacked
+//  specified as "id_stacked_list".
+
+void push_number_onto_stacked_list( )
+{
+    id_linked_list = id_stacked_list ;
+    pointer_to_append = number_to_push ;
+    append_pointer_to_linked_list( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function pop_number_from_stacked_list
+//
+//  Pops the integer off the top of the stacked
+//  list specified as "id_stacked_list" and puts
+//  the number into "number_from_pop".
+
+void pop_number_from_stacked_list( )
+{
+    id_linked_list = id_stacked_list ;
+    get_last_pointer_in_linked_list( ) ;
+    number_from_pop = single_pointer_to_get ;
+    remove_last_pointer_from_linked_list( ) ;
     return ;
 }
 
@@ -3876,6 +3988,15 @@ void write_to_log( )
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function put_info_into_pointer_stack_level
+
+
+
+//  todo: revise all pointer_stack_level code to use
+//  two "stacked_list" items, one for the item ID
+//  and the other for the offset position within
+//  the item.
+
+
 
 void put_info_into_pointer_stack_level( )
 {
