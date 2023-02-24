@@ -465,7 +465,7 @@ int count_of_numbers_supplied_to_array_all_characters ;
 int count_of_numbers_supplied_to_array_all_pointers ;
 int count_of_numbers_supplied_to_array_all_integers ;
 int count_of_numbers_supplied_to_array_all_decimal_numbers ;
-int pointer_to_put_into_indexed_list ;
+int number_to_put_into_indexed_list ;
 int indexed_list_position_desired ;
 int position_within_indexed_list ;
 int indexed_list_index_current ;
@@ -1078,6 +1078,7 @@ int next_available_item_id ;
 int next_character_number ;
 int next_character_position_count ;
 int next_character_position_in_storage_all_text ;
+int next_number_from_indexed_list ;
 int number_of_digits_encountered ;
 int number_of_hyphenated_phrase_names_in_text_items ;
 int number_of_phrase_words_found ;
@@ -1095,7 +1096,7 @@ int pointer_from_indexed_list ;
 int pointer_next_word_begin ;
 int pointer_next_word_end ;
 int pointer_to ;
-int pointer_to_append_to_indexed_list ;
+int number_to_append ;
 int pointer_to_character_to_insert_between_subitems ;
 int pointer_to_first_hyphen ;
 int pointer_to_leading_delimiter ;
@@ -3570,57 +3571,19 @@ void create_indexed_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_pointer_to_indexed_list
+//  Function append_number_to_indexed_list
 //
 //  Appends a pointer to the end of an indexed
 //  pointer list.  The ID that identifies
 //  the indexed pointer list is in
 //  "id_indexed_list".
-//  The pointer to add is
-//  "pointer_to_append_to_indexed_list".
-//  If the last segment is full, create a new
-//  segment.
-//  This function does not check whether the value
-//  in "id_indexed_list" is
-//  actually a linked list, so the Dashrep
-//  compiler must never specify the wrong ID.
+//  The pointer to add is "number_to_append".
 
-void append_pointer_to_indexed_list( )
+void append_number_to_indexed_list( )
 {
-
-
-// -----------------------------------------------
-//  Find the item ID of the last segment in the
-//  linked list that functions as an indexed
-//  pointer list.
-
-    get_length_of_linked_list( ) ;
-
-
-// -----------------------------------------------
-//  If the last segment is full, create a new
-//  segment that extends the indexed list.  The
-//  new segment will be three times as long as the
-//  prior segment.
-
-    if ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
-    {
-        length_requested_for_next_item_storage = 0 ;
-        extend_linked_list( ) ;
-    }
-
-
-// -----------------------------------------------
-//  Append the pointer to the end of the last
-//  segment.
-
-    pointer_end_for_item[ id_linked_list_segment_last ] ++ ;
-    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = pointer_to_append_to_indexed_list ;
-
-
-// -----------------------------------------------
-//  End of append_pointer_to_indexed_list.
-
+    number_to_append = number_to_push ;
+    id_stacked_list = id_indexed_list ;
+    push_number_onto_stacked_list( ) ;
     return ;
 
 }
@@ -3628,16 +3591,16 @@ void append_pointer_to_indexed_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_pointer_from_indexed_list_at_index_position
+//  Function get_number_from_indexed_list_at_index_position
 //
 //  Within the indexed list specified by
 //  "id_indexed_list", find the
 //  index position specified by
 //  "indexed_list_position_desired".
-//  The retrieved pointer is put into
-//  "pointer_from_indexed_list_at_index_position".
+//  The retrieved number is put into
+//  "number_from_indexed_list_at_index_position".
 //  The item ID of the segment that contains the
-//  desired indexed pointer is saved in
+//  desired indexed number is saved in
 //  "id_indexed_list_segment_containing_desired".
 //  If the index position is beyond the length of
 //  the indexed list, supply values of zero.
@@ -3646,7 +3609,7 @@ void append_pointer_to_indexed_list( )
 //  linked list, so the Dashrep compiler must
 //  never specify the wrong ID.
 
-void get_pointer_from_indexed_list_at_index_position( )
+void get_number_from_indexed_list_at_index_position( )
 {
 
 
@@ -3669,35 +3632,35 @@ void get_pointer_from_indexed_list_at_index_position( )
 // -----------------------------------------------
 //  If the current length of the indexed list is
 //  not long enough to include the desired index
-//  location, supply a pointer value of zero and
+//  location, supply a number value of zero and
 //  return.
 
     if ( id_indexed_list_segment_containing_desired < 1 )
     {
-        pointer_from_indexed_list_at_index_position = 0 ;
+        number_from_indexed_list_at_index_position = 0 ;
         segment_position_offset = 0 ;
         return ;
     }
 
 
 // -----------------------------------------------
-//  Calculate the position of the desired pointer
+//  Calculate the position of the desired number
 //  within that segment.
 
     segment_position_offset = index_position_at_end_of_current_segment - indexed_list_position_desired ;
 
 
 // -----------------------------------------------
-//  Get the pointer at the specified index
+//  Get the number at the specified index
 //  position.
 
 //  todo: test this code, including at edge cases
 
-    pointer_from_indexed_list_at_index_position = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+    number_from_indexed_list_at_index_position = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
     
 
 // -----------------------------------------------
-//  End of get_pointer_from_indexed_list_at_index_position.
+//  End of get_number_from_indexed_list_at_index_position.
 
     return ;
 
@@ -3706,88 +3669,85 @@ void get_pointer_from_indexed_list_at_index_position( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_next_pointer_from_indexed_list
+//  Function get_next_number_from_indexed_list
 //
-//  Gets the next pointer from an
-//  indexed pointer list after the function
-//  "get_pointer_from_indexed_list_at_index_position"
+//  Gets the next number from an
+//  indexed list after the function
+//  "get_number_from_indexed_list_at_index_position"
 //  has very recently been used.
 
-void get_next_pointer_from_indexed_list( )
+void get_next_number_from_indexed_list( )
 {
 
 
 // -----------------------------------------------
-//  If the next pointer is within the same segment
-//  as the previous pointer, update the offset
-//  position within the segment, get the pointer,
+//  If the next number is within the same segment
+//  as the previous number, update the offset
+//  position within the segment, get the number,
 //  then return.
 
     segment_position_offset -- ;
     if ( segment_position_offset > 0 )
     {
-        next_pointer_from_indexed_list = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+        next_number_from_indexed_list = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
         return ;
     }
 
 
 // -----------------------------------------------
-//  The new indexed position is in the next
-//  segment, so get the ID of the next segment,
-//  update the offset position, and get the
-//  pointer value from that position.
+//  The new indexed position is not in the same
+//  segment as the previous number, so get the ID
+//  of the next segment.
 
-
-//  todo: finish writing this code
-
-
-    id_indexed_list_segment_containing_desired = 123 ;
-
-// pointer_from_indexed_list_at_index_position
-
-// index_position_at_end_of_current_segment
-
-// indexed_list_position_desired ;
-
-    segment_position_offset = 0 ;
-    indexed_list_current_position = pointer_end_for_item[ id_indexed_list_segment_containing_desired ] ;
-    next_pointer_from_indexed_list = all_pointers[ indexed_list_current_position ] ;
+    id_indexed_list_segment_containing_desired = all_pointers[ pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] + 1 ] ;
 
 
 // -----------------------------------------------
-//  End of function get_next_pointer_from_indexed_list.
+//  If the end of the indexed list has been
+//  reached, supply a number value of zero and
+//  return.
+
+    if ( id_indexed_list_segment_containing_desired < 1 )
+    {
+        number_from_indexed_list_at_index_position = 0 ;
+        segment_position_offset = 0 ;
+        return ;
+    }
+
+
+// -----------------------------------------------
+//  Update the offset position to point to the
+//  first number in that segment, and get the
+//  first number in that segment.
+
+//  todo: test this code
+
+    segment_position_offset = pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - pointer_begin_for_item[ id_indexed_list_segment_containing_desired ] - 1 ;
+    next_number_from_indexed_list = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+
+
+// -----------------------------------------------
+//  End of function get_next_number_from_indexed_list.
 
     return ;
-
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function put_pointer_into_position_within_indexed_list
+//  Function put_number_into_position_within_indexed_list
 //
-//  Within the indexed pointer list specified by
+//  Within the indexed list specified by
 //  "id_indexed_list", put into the
 //  index position specified by
 //  "indexed_list_position_desired"
-//  the pointer value in
-//  "pointer_to_put_into_indexed_list".
-
-//  Within an indexed list, find the segment, and
-//  the position within that segment, that
-//  corresponds with the index location specified
-//  by "desired_index_position_within_indexed_list".
-
+//  the number in "number_to_put_into_indexed_list".
 //  If the last segment is not long enough to
 //  reach the desired position, create a new
 //  segment that is long enough to reach the
 //  desired position.
-//  This function does not check whether the value
-//  in "id_indexed_list" is actually a
-//  linked list, so the Dashrep compiler must
-//  never specify the wrong ID.
 
-void put_pointer_into_position_within_indexed_list( )
+void put_number_into_position_within_indexed_list( )
 {
 
 
@@ -3796,7 +3756,7 @@ void put_pointer_into_position_within_indexed_list( )
 //  the indexed location, and get the offset
 //  position within that segment.
 
-    get_pointer_from_indexed_list_at_index_position( ) ;
+    get_number_from_indexed_list_at_index_position( ) ;
 
 
 // -----------------------------------------------
@@ -3806,7 +3766,7 @@ void put_pointer_into_position_within_indexed_list( )
     if ( id_indexed_list_segment_containing_desired > 0 )
     {
         pointer = pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset  ;
-        all_pointers[ pointer ] = pointer_to_put_into_indexed_list ;
+        all_pointers[ pointer ] = number_to_put_into_indexed_list ;
         return ;
     }
 
@@ -3814,47 +3774,57 @@ void put_pointer_into_position_within_indexed_list( )
 // -----------------------------------------------
 //  The linked list is not long enough so append
 //  one segment that is long enough to reach the
-//  desired index position plus some extra storage
-//  for further appending.
+//  desired index position plus three times the
+//  length of the prior segment.
 
-    length_requested_for_next_item_storage = indexed_list_position_desired - index_position_at_end_of_current_segment ;
+//  todo: proofread the remainder of this function
+
+    length_of_item = pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] - pointer_begin_for_item[ id_indexed_list_segment_containing_desired ] + 1 ;
+    length_requested_for_next_item_storage = indexed_list_position_desired - index_position_at_end_of_current_segment + ( 3 * length_of_item ) ;
     extend_linked_list( ) ;
-    pointer_end_for_item[ id_linked_list_segment_last ] = pointer_allocation_end_for_item[  id_linked_list_segment_last ] ;
+    pointer_end_for_item[ id_indexed_list_segment_containing_desired ] = pointer_allocation_end_for_item[  id_indexed_list_segment_containing_desired ] ;
 
 
 // -----------------------------------------------
-//  Pad the just-created space with zeros.  But
-//  do not pad the last position because it is
-//  about to be filled with the supplied pointer.
+//  Pad the just-added segment with zeros.
 
-    for ( pointer = pointer_begin_for_item[ id_linked_list_segment_last ] ; pointer <= pointer_allocation_end_for_item[ id_linked_list_segment_last ] - 1 ; pointer ++ )
+    for ( pointer = pointer_begin_for_item[ id_indexed_list_segment_containing_desired ] ; pointer <= pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] ; pointer ++ )
     {
         all_pointers[ pointer ] = 0 ;
     }
 
 
 // -----------------------------------------------
-//  Put the supplied pointer value into the
-//  indexed list at the end of the new segment.
+//  Update the pointer that indicates how much of
+//  this segment contains the indexed list.
 
-    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = pointer_to_put_into_indexed_list ;
+    pointer_end_for_item[ id_indexed_list_segment_containing_desired ] = pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ;
 
 
 // -----------------------------------------------
-//  End of put_pointer_into_position_within_indexed_list.
+//  Put the supplied number into the last position
+//  within the indexed list.
+
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = number_to_put_into_indexed_list ;
+
+
+// -----------------------------------------------
+//  End of put_number_into_position_within_indexed_list.
 
     return ;
-
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function put_pointer_into_next_position_within_indexed_list
+//  Function put_number_into_next_position_within_indexed_list
 //
 
-void put_pointer_into_next_position_within_indexed_list( )
+void put_number_into_next_position_within_indexed_list( )
 {
+
+//  todo: write this code, use similar to earlier functions
+
     return ;
 }
 
@@ -5167,12 +5137,12 @@ void copy_text( )
 
 void add_phrase_word_to_indexed_list( )
 {
-    pointer_to_append_to_indexed_list = id_for_phrase_word ;
+    number_to_append = id_for_phrase_word ;
     if ( id_indexed_list < 1 )
     {
         create_indexed_list( ) ;
     }
-    append_pointer_to_indexed_list( ) ;
+    append_number_to_indexed_list( ) ;
     return ;
 }
 
@@ -5244,7 +5214,7 @@ void find_matching_phrase_word( )
 //  there are no more to check, return with an
 //  indication that there was no match.
 
-        get_next_pointer_from_indexed_list( ) ;
+        get_next_number_from_indexed_list( ) ;
         character_pointer_begin_for_text_one = 1 ;pointer_begin_for_item[ id_from_indexed_list ] ;
         if ( character_pointer_begin_for_text_one == 0 )
         {
@@ -5361,7 +5331,7 @@ void find_matching_phrase_name( )
 // -----------------------------------------------
 //  Point to the next already-defined phrase name.
 
-        get_next_pointer_from_indexed_list( ) ;
+        get_next_number_from_indexed_list( ) ;
         log_out << "id_for_phrase_name " << id_for_phrase_name << std::endl ;
 
 
@@ -5476,13 +5446,13 @@ void add_new_phrase_name( )
 //  list that lists other phrase names that have
 //  the same number of phrase words.
 
-    pointer_to_append_to_indexed_list = item_id ;
+    number_to_append = item_id ;
     id_indexed_list = id_for_list_of_phrase_names_of_length[ number_of_phrase_words_found ] ;
     if ( id_indexed_list < 1 )
     {
         create_indexed_list( ) ;
     }
-    append_pointer_to_indexed_list( ) ;
+    append_number_to_indexed_list( ) ;
 
 
 // -----------------------------------------------
