@@ -479,7 +479,7 @@ int not_enough_space ;
 int item_id_origin ;
 int current_pointer_to_append ;
 int id_pointer ;
-int pointer_to_append ;
+int number_to_append ;
 
 
 int access_flag ;
@@ -539,7 +539,7 @@ int from_text_data_type ;
 int highest_score_for_optimum_character_for_find_pause ;
 int id_containing_first_hyphen ;
 int id_for_copy ;
-int id_for_copy_of_pointer_stack ;
+int id_text_pointer_for_copy ;
 int id_for_character_position ;
 int id_for_decimal_numbers_as_text ;
 int id_for_empty_text ;
@@ -554,7 +554,7 @@ int id_for_next_word_begin ;
 int id_for_next_word_end ;
 int id_for_non_breaking_space ;
 int id_for_number_as_text ;
-int id_for_original_of_pointer_stack ;
+int id_text_pointer_for_original ;
 int id_for_phrase_name_append_multiple_from_phrases_named_in_pattern ;
 int id_for_phrase_name_append_new_line ;
 int id_for_phrase_name_append_repeatedly_using_count ;
@@ -1062,8 +1062,10 @@ int length_requested_for_next_item_storage ;
 int line_character_position ;
 int indexed_list_current_position ;
 int id_indexed_list ;
+int id_linked_list_segment_last_occupied ;
 int id_linked_list_segment_last_saved ;
 int id_linked_list_segment_last_saved_saved ;
+int id_linked_list_segment_last_with_content ;
 int indexed_list_current_segment_id ;
 int indexed_list_next_segment_id ;
 int looking_at_hyphenated_phrase_name_in_item_id ;
@@ -3288,32 +3290,19 @@ void create_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_length_of_linked_list
+//  Function clear_linked_list
 //
-//  Measure the length of the full linked list,
-//  but counting only content, not segment lengths
-//  because segements at the end can be empty.
-//  Also get the item ID of the last segment that
-//  has content, and measure the length of this
-//  content in the last occupied segment.
+//  Clears the content from every segment of a
+//  linked list.  The segments of the linked
+//  list remain linked.
 
-void get_length_of_linked_list( )
+void clear_linked_list( )
 {
-    id_linked_list_segment_first = id_linked_list ;
     id_linked_list_segment_next = id_linked_list ;
-    id_linked_list_segment_last = id_linked_list ;
-    length_of_linked_list = 0 ;
-    length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
-    while ( ( length_of_content_in_segment > 0 ) && ( id_linked_list_segment_next > 0 ) )
+    while ( id_linked_list_segment_next > 0 )
     {
-        id_linked_list_segment_last = id_linked_list_segment_next ;
-        length_of_linked_list += length_of_content_in_segment ;
+        pointer_end_for_item[ id_linked_list_segment_next ] = pointer_begin_for_item[ id_linked_list_segment_next ] - 1 ;
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
-        if ( id_linked_list_segment_next < 1 )
-        {
-            break ;
-        }
-        length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
     }
     return ;
 }
@@ -3323,9 +3312,15 @@ void get_length_of_linked_list( )
 // -----------------------------------------------
 //  Function get_last_segment_in_linked_list
 
+//  Gets the last segment in the linked list
+//  pointed to by "id_linked_list" and
+//  puts that item ID number into
+//  "id_linked_list_segment_last".  This function
+//  ignores any content in any segment.
+
 void get_last_segment_in_linked_list( )
 {
-    get_length_of_linked_list( ) ;
+    id_linked_list_segment_next = id_linked_list ;
     while ( id_linked_list_segment_next > 0 )
     {
         id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
@@ -3342,9 +3337,8 @@ void get_last_segment_in_linked_list( )
 //  Create a new item that is a segment that
 //  extends the length of the existing linked list
 //  pointed to by "id_linked_list".
-//  If the requested length -- which is specified
-//  in "length_requested_for_next_item_storage" --
-//  is less than one, create a new segment that
+//  If the value of "requested_length" is less
+//  than one, create a new segment that
 //  is three times longer than the size of the
 //  prior segment.  The content of the added
 //  segment is empty.
@@ -3352,74 +3346,107 @@ void get_last_segment_in_linked_list( )
 void extend_linked_list( )
 {
     get_last_segment_in_linked_list( ) ;
-    id_linked_list_segment_last_former = id_linked_list_segment_last ;
-    if ( length_requested_for_next_item_storage < 1 )
+    id_linked_list_segment_last_former = id_linked_list_segment_last_occupied ;
+    if ( requested_length < 1 )
     {
-        length_of_item = pointer_allocation_end_for_item[ id_linked_list_segment_last ] - pointer_begin_for_item[ id_linked_list_segment_last ] + 1 ;
-        length_requested_for_next_item_storage = 3 * length_of_item ;
+        length_of_item = pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] - pointer_begin_for_item[ id_linked_list_segment_last_occupied ] + 1 ;
+        requested_length = 3 * length_of_item ;
     }
     data_type = data_type_linked_list ;
     create_new_item_id_and_assign_storage( ) ;
-    id_linked_list_segment_last = new_item_id ;
-    all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_last_former ] + 1 ] = id_linked_list_segment_last ;
-    all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last ] - 1 ] = id_linked_list_segment_last_former ;
+    id_linked_list_segment_last_occupied = new_item_id ;
+    all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_last_former ] + 1 ] = id_linked_list_segment_last_occupied ;
+    all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last_occupied ] - 1 ] = id_linked_list_segment_last_former ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_pointer_to_linked_list
+//  Function get_length_of_linked_list
 //
-//  Append the pointer in
-//  "single_pointer_to_append" to the end of the
+//  Measure the length of the full linked list,
+//  but counting only content, not segment lengths
+//  because segements at the end can be empty.
+//  Also get the item ID of the last segment that
+//  has content, and measure the length of this
+//  content in the last occupied segment.
+
+void get_length_of_linked_list( )
+{
+    id_linked_list_segment_first = id_linked_list ;
+    id_linked_list_segment_next = id_linked_list ;
+    length_of_linked_list = 0 ;
+    length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
+    while ( ( length_of_content_in_segment > 0 ) && ( id_linked_list_segment_next > 0 ) )
+    {
+        length_of_linked_list += length_of_content_in_segment ;
+        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
+        if ( id_linked_list_segment_next < 1 )
+        {
+            break ;
+        }
+        length_of_content_in_segment = pointer_end_for_item[ id_linked_list_segment_next ] - pointer_begin_for_item[ id_linked_list_segment_next ] + 1 ;
+    }
+    id_linked_list_segment_last_occupied = id_linked_list_segment_next ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function append_number_to_linked_list
+//
+//  Append the number in
+//  "single_number_to_append" to the end of the
 //  linked list specified by "id_linked_list".
 
-void append_pointer_to_linked_list( )
+void append_number_to_linked_list( )
 {
     get_length_of_linked_list( ) ;
-    if ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
+    if ( pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
 
 //  todo: proofread here
 
-        id_linked_list_segment_last_with_content = id_linked_list_segment_last ;
-        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_last ] + 1 ] ;
+        id_linked_list_segment_last_with_content = id_linked_list_segment_last_occupied ;
+        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] + 1 ] ;
         if ( id_linked_list_segment_next > 0 )
         {
-            id_linked_list_segment_last = id_linked_list_segment_next ;
+            id_linked_list_segment_last_occupied = id_linked_list_segment_next ;
         } else
         {
-            length_requested_for_next_item_storage = 0 ;
+            requested_length = 0 ;
             extend_linked_list( ) ;
         }
     }
-    pointer = pointer_end_for_item[ id_linked_list_segment_last ] + 1 ;
-    pointer_end_for_item[ id_linked_list_segment_last ] = pointer ;
-    all_pointers[ pointer ] = single_pointer_to_append ;
+    pointer = pointer_end_for_item[ id_linked_list_segment_last_occupied ] + 1 ;
+    pointer_end_for_item[ id_linked_list_segment_last_occupied ] = pointer ;
+    all_pointers[ pointer ] = single_number_to_append ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function append_another_pointer_to_linked_list
+//  Function append_another_number_to_linked_list
 //
-//  Append another pointer after recently using
-//  the function "append_pointer_to_linked_list".
+//  Append another number after recently using
+//  the function "append_number_to_linked_list".
 //  This function assumes the value in
-//  "id_linked_list_segment_last" is still valid.
+//  "id_linked_list_segment_last_occupied" is
+//  still valid.
 
-void append_another_pointer_to_linked_list( )
+void append_another_number_to_linked_list( )
 {
-    if ( pointer_end_for_item[ id_linked_list_segment_last ] < pointer_allocation_end_for_item[ id_linked_list_segment_last ] )
+    if ( pointer_end_for_item[ id_linked_list_segment_last_occupied ] < pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
-        pointer = pointer_end_for_item[ id_linked_list_segment_last ] + 1 ;
-        pointer_end_for_item[ id_linked_list_segment_last ] = pointer ;
-        all_pointers[ pointer ] = single_pointer_to_append ;
+        pointer = pointer_end_for_item[ id_linked_list_segment_last_occupied ] + 1 ;
+        pointer_end_for_item[ id_linked_list_segment_last_occupied ] = pointer ;
+        all_pointers[ pointer ] = single_number_to_append ;
     } else
     {
-        append_pointer_to_linked_list( ) ;
+        append_number_to_linked_list( ) ;
     }
     return ;
 }
@@ -3427,71 +3454,54 @@ void append_another_pointer_to_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_last_pointer_in_linked_list
+//  Function get_last_number_in_linked_list
 //
-//  Get the last pointer in the linked list
-//  specified by "id_linked_list".  The value is
-//  put into "single_pointer_to_get".  If the
+//  Get the last number in the linked list
+//  specified by "id_linked_list".  The number is
+//  put into "single_number_to_get".  If the
 //  linked list is empty, return with a value of
 //  zero.
 
-void get_last_pointer_in_linked_list( )
+void get_last_number_in_linked_list( )
 {
     get_length_of_linked_list( ) ;
-    while ( pointer_end_for_item[ id_linked_list_segment_last ] <= pointer_begin_for_item[ id_linked_list_segment_last ] )
+    while ( pointer_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_begin_for_item[ id_linked_list_segment_last_occupied ] )
     {
-        id_linked_list_segment_last = all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last ] - 1 ] ;
-        if ( id_linked_list_segment_last < 1 )
+        id_linked_list_segment_last_occupied = all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last_occupied ] - 1 ] ;
+        if ( id_linked_list_segment_last_occupied < 1 )
         {
-            single_pointer_to_get = 0 ;
+            single_number_to_get = 0 ;
             return ;
         }
     }
-    single_pointer_to_get = all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] ;
+    single_number_to_get = all_pointers[ pointer_end_for_item[ id_linked_list_segment_last_occupied ] ] ;
     return ;
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function remove_last_pointer_from_linked_list
+//  Function remove_last_number_from_linked_list
 //
-//  Remove the last pointer in the linked list
+//  Remove the last number in the linked list
 //  specified by "id_linked_list".  If the linked
 //  list is empty, return without any change.
+//  Allow for the possibility that multiple
+//  segments contain just one number in each
+//  segment.
 
-void remove_last_pointer_from_linked_list( )
+void remove_last_number_from_linked_list( )
 {
     get_length_of_linked_list( ) ;
-    while ( pointer_allocation_end_for_item[ id_linked_list_segment_last ] <= pointer_end_for_item[ id_linked_list_segment_last ] )
+    while ( pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
-        id_linked_list_segment_last = all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last ] - 1 ] ;
-        if ( id_linked_list_segment_last < 1 )
+        id_linked_list_segment_last_occupied = all_pointers[ pointer_begin_for_item[ id_linked_list_segment_last_occupied ] - 1 ] ;
+        if ( id_linked_list_segment_last_occupied < 1 )
         {
             return ;
         }
     }
-    pointer_end_for_item[ id_linked_list_segment_last ] -- ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function clear_linked_list
-//
-//  Clears the content from every segment of a
-//  linked list.  The segments of the linked
-//  list remain linked.
-
-void clear_linked_list( )
-{
-    id_linked_list_segment_next = id_linked_list ;
-    while ( id_linked_list_segment_next > 0 )
-    {
-        pointer_end_for_item[ id_linked_list_segment_next ] = pointer_begin_for_item[ id_linked_list_segment_next ] 1 1 ;
-        id_linked_list_segment_next = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_segment_next ] + 1 ] ;
-    }
+    pointer_end_for_item[ id_linked_list_segment_last_occupied ] -- ;
     return ;
 }
 
@@ -3509,7 +3519,7 @@ void clear_linked_list( )
 
 void create_stacked_list( )
 {
-	create_linked_list( ) ;
+    create_linked_list( ) ;
     id_stacked_list = id_linked_list ;
     return ;
 }
@@ -3521,13 +3531,13 @@ void create_stacked_list( )
 //
 //  Pushes the integer specified in
 //  "number_to_push" onto the top of the stacked
-//  specified as "id_stacked_list".
+//  list specified in "id_stacked_list".
 
 void push_number_onto_stacked_list( )
 {
     id_linked_list = id_stacked_list ;
-    pointer_to_append = number_to_push ;
-    append_pointer_to_linked_list( ) ;
+    number_to_append = number_to_push ;
+    append_number_to_linked_list( ) ;
     return ;
 }
 
@@ -3536,15 +3546,16 @@ void push_number_onto_stacked_list( )
 // -----------------------------------------------
 //  Function read_top_number_in_stacked_list
 //
-//  Pops the integer off the top of the stacked
-//  list specified as "id_stacked_list" and puts
-//  the number into "number_from_pop".
+//  Gets (just reads) the integer at the top of
+//  the stacked list specified in
+//  "id_stacked_list" and puts the number into
+//  "number_from_top".
 
 void read_top_number_in_stacked_list( )
 {
     id_linked_list = id_stacked_list ;
-    get_last_pointer_in_linked_list( ) ;
-    number_from_pop = single_pointer_to_get ;
+    get_last_number_in_linked_list( ) ;
+    number_from_top = single_number_to_get ;
     return ;
 }
 
@@ -3555,12 +3566,46 @@ void read_top_number_in_stacked_list( )
 //
 //  Pops the integer off the top of the stacked
 //  list specified as "id_stacked_list" and puts
-//  the number into "number_from_pop".
+//  the number into "number_from_top".
 
 void pop_number_from_stacked_list( )
 {
     read_top_number_in_stacked_list( ) ;
-    remove_last_pointer_from_linked_list( ) ;
+    remove_last_number_from_linked_list( ) ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_text_pointer
+//
+//  Copies the information needed to point to a
+//  specific character position within a text
+//  item, or within a sub text item.  This allows
+//  a way to go backward to the most recent
+//  character (or delimiter) of a specific type,
+//  without losing the current character position
+//  being parsed.  Also sometimes two of these
+//  text pointers are used to point to the
+//  beginning and end of a word (or found
+//  matching text), even if it spans beyond a
+//  single sub text item.  If the linked list for
+//  the copy of the text pointer already exists,
+//  it is used instead of creating a new linked
+//  list.  The copy is pointed to by
+//  "id_text_pointer_for_copy".
+//  The original is pointed to by
+//  "id_text_pointer_for_original".
+
+void copy_text_pointer( )
+{
+	id_linked_list_original = id_text_pointer_for_original ;
+	id_linked_list_copy = id_text_pointer_for_copy ;
+    copy_linked_list( ) ;
+	id_linked_list_original = id_text_pointer_for_original + 1 ;
+	id_linked_list_copy = id_text_pointer_for_copy + 1 ;
+    copy_linked_list( ) ;
     return ;
 }
 
@@ -3589,43 +3634,42 @@ void create_indexed_list( )
 // -----------------------------------------------
 //  Function append_number_to_indexed_list
 //
-//  Appends a pointer to the end of an indexed
+//  Appends a number to the end of an indexed
 //  pointer list.  The ID that identifies
 //  the indexed pointer list is in
 //  "id_indexed_list".
-//  The pointer to add is "number_to_append".
+//  The number to append is "number_to_append".
 
 void append_number_to_indexed_list( )
 {
-    number_to_append = number_to_push ;
+    number_to_push = number_to_append ;
     id_stacked_list = id_indexed_list ;
     push_number_onto_stacked_list( ) ;
     return ;
-
 }
 
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function get_number_from_indexed_list_at_index_position
+//  Function get_number_from_indexed_position
 //
 //  Within the indexed list specified by
 //  "id_indexed_list", find the
 //  index position specified by
-//  "indexed_list_position_desired".
-//  The retrieved number is put into
-//  "number_from_indexed_list_at_index_position".
+//  "indexed_list_position_desired" and get the
+//  number at that position and put it into
+//  "number_from_indexed_list".
 //  The item ID of the segment that contains the
-//  desired indexed number is saved in
+//  desired indexed position is saved in
 //  "id_indexed_list_segment_containing_desired".
-//  If the index position is beyond the length of
-//  the indexed list, supply values of zero.
+//  If the indexed position is beyond the length
+//  of the indexed list, supply the number zero.
 //  This function does not check whether the value
-//  in "id_indexed_list" is actually a
-//  linked list, so the Dashrep compiler must
-//  never specify the wrong ID.
+//  in "id_indexed_list" is actually a linked
+//  list, so the Dashrep compiler must never
+//  specify the wrong ID.
 
-void get_number_from_indexed_list_at_index_position( )
+void get_number_from_indexed_position( )
 {
 
 
@@ -3653,7 +3697,7 @@ void get_number_from_indexed_list_at_index_position( )
 
     if ( id_indexed_list_segment_containing_desired < 1 )
     {
-        number_from_indexed_list_at_index_position = 0 ;
+        number_from_indexed_list = 0 ;
         segment_position_offset = 0 ;
         return ;
     }
@@ -3672,11 +3716,11 @@ void get_number_from_indexed_list_at_index_position( )
 
 //  todo: test this code, including at edge cases
 
-    number_from_indexed_list_at_index_position = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
+    number_from_indexed_list = all_pointers[ pointer_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ] ;
     
 
 // -----------------------------------------------
-//  End of get_number_from_indexed_list_at_index_position.
+//  End of get_number_from_indexed_position.
 
     return ;
 
@@ -3689,7 +3733,7 @@ void get_number_from_indexed_list_at_index_position( )
 //
 //  Gets the next number from an
 //  indexed list after the function
-//  "get_number_from_indexed_list_at_index_position"
+//  "get_number_from_indexed_position"
 //  has very recently been used.
 
 void get_next_number_from_indexed_list( )
@@ -3725,7 +3769,7 @@ void get_next_number_from_indexed_list( )
 
     if ( id_indexed_list_segment_containing_desired < 1 )
     {
-        number_from_indexed_list_at_index_position = 0 ;
+        number_from_indexed_list = 0 ;
         segment_position_offset = 0 ;
         return ;
     }
@@ -3772,7 +3816,7 @@ void put_number_into_position_within_indexed_list( )
 //  the indexed location, and get the offset
 //  position within that segment.
 
-    get_number_from_indexed_list_at_index_position( ) ;
+    get_number_from_indexed_position( ) ;
 
 
 // -----------------------------------------------
@@ -3793,12 +3837,9 @@ void put_number_into_position_within_indexed_list( )
 //  desired index position plus three times the
 //  length of the prior segment.
 
-//  todo: proofread the remainder of this function
-
     length_of_item = pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] - pointer_begin_for_item[ id_indexed_list_segment_containing_desired ] + 1 ;
-    length_requested_for_next_item_storage = indexed_list_position_desired - index_position_at_end_of_current_segment + ( 3 * length_of_item ) ;
+    requested_length = indexed_list_position_desired - index_position_at_end_of_current_segment + ( 3 * length_of_item ) ;
     extend_linked_list( ) ;
-    pointer_end_for_item[ id_indexed_list_segment_containing_desired ] = pointer_allocation_end_for_item[  id_indexed_list_segment_containing_desired ] ;
 
 
 // -----------------------------------------------
@@ -3814,14 +3855,16 @@ void put_number_into_position_within_indexed_list( )
 //  Update the pointer that indicates how much of
 //  this segment contains the indexed list.
 
-    pointer_end_for_item[ id_indexed_list_segment_containing_desired ] = pointer_allocation_end_for_item[ id_indexed_list_segment_containing_desired ] - segment_position_offset ;
+//  todo: test for correct position
+
+    pointer_end_for_item[ id_indexed_list_segment_containing_desired ] = pointer_allocation_end_for_item[  id_indexed_list_segment_containing_desired ] + indexed_list_position_desired - index_position_at_end_of_current_segment + 1 ;
 
 
 // -----------------------------------------------
-//  Put the supplied number into the last position
-//  within the indexed list.
+//  Put the supplied number into the appropriate
+//  position within the indexed list.
 
-    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last ] ] = number_to_put_into_indexed_list ;
+    all_pointers[ pointer_end_for_item[ id_linked_list_segment_last_occupied ] ] = number_to_put_into_indexed_list ;
 
 
 // -----------------------------------------------
@@ -3979,9 +4022,9 @@ void initialize_text_position_direction_next( )
     id_text_position_for_getting_next_character = item_id ;
     if ( id_text_position_for_getting_next_character < 1 )
     {
-    	create_stacked_list( ) ;
-    	id_text_position_for_getting_next_character = new_item_id ;
-    	create_stacked_list( ) ;
+        create_stacked_list( ) ;
+        id_text_position_for_getting_next_character = new_item_id ;
+        create_stacked_list( ) ;
     }
     id_stacked_list = id_text_position_for_getting_next_character ;
     id_linked_list = id_stacked_list ;
@@ -4399,24 +4442,11 @@ void get_next_or_previous_character_from_text_item( )
 
 // -----------------------------------------------
 // -----------------------------------------------
-//  Function copy_text_pointer
+//  Function copy_linked_list
 //
-//  Copies the information needed to point to a
-//  specific character position within a text
-//  item, or within a sub text item.  This allows
-//  a way to go backward to the most recent
-//  character (or delimiter) of a specific type,
-//  without losing the current character position
-//  being parsed.  Also sometimes two of these
-//  stacks are used to point to the beginning and
-//  end of a word or found (matching) text, even
-//  if it spans beyond a single sub text item.
-//  If the stack for the copy already exists, it
-//  is used instead of creating a new stack.  The
-//  copy is pointed to by
-//  "id_for_copy_of_pointer_stack".
-//  The original is pointed to by
-//  "id_for_original_of_pointer_stack".
+//  Copies the linked list pointed to by
+//  "id_linked_list_original" to the linked list
+//  pointed to by "id_linked_list_copy".
 
 void copy_text_pointer( )
 {
@@ -4428,19 +4458,19 @@ void copy_text_pointer( )
 //  get its location.  Otherwise use the existing
 //  stack.
 
-    if ( id_for_copy_of_pointer_stack == 0 )
+    if ( id_text_pointer_for_copy == 0 )
     {
         pointer_stack_level_bottom = 0 ;
 
 //  todo:
         push_pointer_stack_level( ) ;
 
-        id_for_copy_of_pointer_stack = pointer_stack_level_bottom ;
+        id_text_pointer_for_copy = pointer_stack_level_bottom ;
     } else
     {
-        pointer_stack_level_bottom = id_for_copy_of_pointer_stack ;
+        pointer_stack_level_bottom = id_text_pointer_for_copy ;
     }
-    pointer_stack_level_current_copy = id_for_copy_of_pointer_stack ;
+    pointer_stack_level_current_copy = id_text_pointer_for_copy ;
 
 
 // -----------------------------------------------
@@ -4448,7 +4478,7 @@ void copy_text_pointer( )
 //  stack being copied, and get the location of
 //  the top item in that stack.
 
-    pointer_stack_level_current_original = id_for_original_of_pointer_stack ;
+    pointer_stack_level_current_original = id_text_pointer_for_original ;
     zero_offset_in_stack_level_current_original = pointer_begin_for_item[ pointer_stack_level_current_original ] ;
     pointer_stack_level_top_original = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_pointer_stack_level_top ] ;
 
@@ -4497,9 +4527,9 @@ void copy_text_pointer( )
 
         if ( pointer_stack_level_current_copy == 0 )
         {
-            pointer_stack_level_bottom = id_for_copy_of_pointer_stack ;
+            pointer_stack_level_bottom = id_text_pointer_for_copy ;
             create_new_pointer_stack_level_top( ) ;
-            pointer_stack_level_current_copy = id_for_copy_of_pointer_stack ;
+            pointer_stack_level_current_copy = id_text_pointer_for_copy ;
         }
 
 
@@ -4529,7 +4559,7 @@ void copy_text_pointer( )
 //  Copy the pointer to the top level into the
 //  bottom level.
 
-    all_pointers[ pointer_begin_for_item[ id_for_copy_of_pointer_stack ] + offset_for_pointer_stack_level_top ] = pointer_stack_level_current_copy ;
+    all_pointers[ pointer_begin_for_item[ id_text_pointer_for_copy ] + offset_for_pointer_stack_level_top ] = pointer_stack_level_current_copy ;
 
 
 // -----------------------------------------------
@@ -5480,7 +5510,7 @@ void parse_phrase_name( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_phrase_name_end ;
+    id_text_pointer_for_copy = pointer_stack_pointer_for_phrase_name_end ;
     copy_text_pointer( ) ;
 
 
@@ -5723,9 +5753,9 @@ void point_to_next_word_in_text_item( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_word_begin ;
+    id_text_pointer_for_copy = pointer_stack_pointer_for_word_begin ;
     copy_text_pointer( ) ;
-    id_for_next_word_begin = id_for_copy_of_pointer_stack ;
+    id_for_next_word_begin = id_text_pointer_for_copy ;
     pointer_stack_level_top_original = pointer_stack_level_top ;
     get_next_or_previous_character_from_text_item( ) ;
 
@@ -5757,9 +5787,9 @@ void point_to_next_word_in_text_item( )
 
     direction_next_or_previous = direction_previous ;
     get_next_or_previous_character_from_text_item( ) ;
-    id_for_copy_of_pointer_stack = pointer_stack_pointer_for_word_end ;
+    id_text_pointer_for_copy = pointer_stack_pointer_for_word_end ;
     copy_text_pointer( ) ;
-    id_for_next_word_end = id_for_copy_of_pointer_stack ;
+    id_for_next_word_end = id_text_pointer_for_copy ;
 
 
 // -----------------------------------------------
