@@ -3508,6 +3508,123 @@ void remove_last_number_from_linked_list( )
 
 // -----------------------------------------------
 // -----------------------------------------------
+//  Function get_next_number_from_linked_list
+//
+//  Gets, and puts into
+//  "next_number_from_linked_list", the next
+//  number from the linked list that includes
+//  "id_linked_list_current_segment_source" as the
+//  current segment within the linked list.  The
+//  variable
+//  "pointer_for_get_next_number_from_linked_list"
+//  points to the previous position from which
+//  this function got the previous number.
+//  This pointer must be initialized before the
+//  first use of this function.
+
+//  todo: proofread
+
+void get_next_number_from_linked_list( )
+{
+    pointer_for_get_next_number_from_linked_list ++ ;
+    while ( ( id_linked_list_current_segment_source > 0 ) && ( pointer_for_get_next_number_from_linked_list > 0 ) )
+    {
+        if ( pointer_for_get_next_number_from_linked_list <=pointer_end_for_item[ id_linked_list_current_segment_source ] )
+        {
+            next_number_from_linked_list = all_pointers[ pointer_for_get_next_number_from_linked_list ] ;
+            return ;
+        }
+        id_linked_list_current_segment_source = all_pointers[ pointer_allocation_end_for_item[ id_linked_list_current_segment_source ] + 1 ] ;
+    }
+    id_linked_list_current_segment_source = 0 ;
+    pointer_for_get_next_number_from_linked_list = 0 ;
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_linked_list
+//
+//  Copies the linked list pointed to by
+//  "id_linked_list_original" to the linked list
+//  pointed to by "id_linked_list_copy".
+
+void copy_linked_list( )
+{
+
+
+// -----------------------------------------------
+//  If the destination linked list does not
+//  already exist, create a new linked list that
+//  is the length of the linked list being copied
+//  plus room for 35 more numbers.
+
+    if ( id_linked_list_copy == 0 )
+    {
+        id_linked_list = id_linked_list_original ;
+        get_length_of_linked_list( ) ;
+        requested_length = length_of_linked_list + 35 ;
+        create_linked_list( ) ;
+        id_linked_list_copy = id_linked_list ;
+
+
+// -----------------------------------------------
+//  If the destination linked list is not long
+//  enough to hold all the content in the original
+//  linked list, append a new segment that can
+//  hold the full content plus room for 35 more
+//  numbers.
+
+    } else
+    {
+        id_linked_list = id_linked_list_original ;
+        get_length_of_linked_list( ) ;
+        length_of_linked_list_original = length_of_linked_list ;
+        id_linked_list = id_linked_list_original ;
+        get_length_of_linked_list( ) ;
+        length_of_linked_list_copy = length_of_linked_list ;
+        if ( length_of_linked_list_copy < length_of_linked_list_original )
+        {
+
+// todo: write missing code here
+
+            extend_linked_list( ) ;
+        }
+    }
+
+
+// -----------------------------------------------
+//  Copy the contents.
+
+// todo: proofread
+
+    id_linked_list_segment_next = id_linked_list_copy ;
+    id_linked_list_current_segment_source = id_linked_list_original ;
+    pointer_for_get_next_number_from_linked_list = pointer_begin_for_item[ id_linked_list_current_segment_source ] - 1 ;
+    get_next_number_from_linked_list( ) ;
+    if ( ( id_linked_list_current_segment_source > 0 ) && ( pointer_for_get_next_number_from_linked_list > 0 ) )
+    {
+        single_number_to_append = next_number_from_linked_list ;
+        append_number_to_linked_list( ) ;
+    }
+    while ( ( id_linked_list_segment_next > 0 ) && ( id_linked_list_current_segment_source > 0 ) && ( pointer_for_get_next_number_from_linked_list > 0 ) )
+    {
+        get_next_number_from_linked_list( ) ;
+        single_number_to_append = next_number_from_linked_list ;
+        append_another_number_to_linked_list( )
+    }
+
+
+// -----------------------------------------------
+//  End of copy_linked_list.
+
+    return ;
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
 // -----------------------------------------------
 // -----------------------------------------------
 //  Function create_stacked_list
@@ -3572,40 +3689,6 @@ void pop_number_from_stacked_list( )
 {
     read_top_number_in_stacked_list( ) ;
     remove_last_number_from_linked_list( ) ;
-    return ;
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_text_pointer
-//
-//  Copies the information needed to point to a
-//  specific character position within a text
-//  item, or within a sub text item.  This allows
-//  a way to go backward to the most recent
-//  character (or delimiter) of a specific type,
-//  without losing the current character position
-//  being parsed.  Also sometimes two of these
-//  text pointers are used to point to the
-//  beginning and end of a word (or found
-//  matching text), even if it spans beyond a
-//  single sub text item.  If the linked list for
-//  the copy of the text pointer already exists,
-//  it is used instead of creating a new linked
-//  list.  The copy is pointed to by
-//  "id_text_pointer_for_copy".
-//  The original is pointed to by
-//  "id_text_pointer_for_original".
-
-void copy_text_pointer( )
-{
-	id_linked_list_original = id_text_pointer_for_original ;
-	id_linked_list_copy = id_text_pointer_for_copy ;
-    copy_linked_list( ) ;
-	id_linked_list_original = id_text_pointer_for_original + 1 ;
-	id_linked_list_copy = id_text_pointer_for_copy + 1 ;
-    copy_linked_list( ) ;
     return ;
 }
 
@@ -3985,7 +4068,7 @@ void specify_character_to_insert_between_subitems( )
 // -----------------------------------------------
 //  Function write_to_log
 //
-//  Can be used to debug a pointer stack.
+//  Can be used to debug the use of text pointers.
 
 void write_to_log( )
 {
@@ -3997,6 +4080,40 @@ void write_to_log( )
         log_out << "reached endless loop counter limit" << std::endl ;
         exit( EXIT_FAILURE ) ;
     }
+}
+
+
+// -----------------------------------------------
+// -----------------------------------------------
+//  Function copy_text_pointer
+//
+//  Copies the information needed to point to a
+//  specific character position within a text
+//  item, or within a sub text item.  This allows
+//  a way to go backward to the most recent
+//  character (or delimiter) of a specific type,
+//  without losing the current character position
+//  being parsed.  Also sometimes two of these
+//  text pointers are used to point to the
+//  beginning and end of a word (or found
+//  matching text), even if it spans beyond a
+//  single sub text item.  If the linked list for
+//  the copy of the text pointer already exists,
+//  it is used instead of creating a new linked
+//  list.  The copy is pointed to by
+//  "id_text_pointer_for_copy".
+//  The original is pointed to by
+//  "id_text_pointer_for_original".
+
+void copy_text_pointer( )
+{
+	id_linked_list_original = id_text_pointer_for_original ;
+	id_linked_list_copy = id_text_pointer_for_copy ;
+    copy_linked_list( ) ;
+	id_linked_list_original = id_text_pointer_for_original + 1 ;
+	id_linked_list_copy = id_text_pointer_for_copy + 1 ;
+    copy_linked_list( ) ;
+    return ;
 }
 
 
@@ -4437,135 +4554,6 @@ void get_next_or_previous_character_from_text_item( )
     count_of_characters_remaining_in_item = 0 ;
     return ;
 
-}
-
-
-// -----------------------------------------------
-// -----------------------------------------------
-//  Function copy_linked_list
-//
-//  Copies the linked list pointed to by
-//  "id_linked_list_original" to the linked list
-//  pointed to by "id_linked_list_copy".
-
-void copy_text_pointer( )
-{
-
-
-// -----------------------------------------------
-//  If the stack does not already exist, create a
-//  new, empty, pointer stack level, and
-//  get its location.  Otherwise use the existing
-//  stack.
-
-    if ( id_text_pointer_for_copy == 0 )
-    {
-        pointer_stack_level_bottom = 0 ;
-
-//  todo:
-        push_pointer_stack_level( ) ;
-
-        id_text_pointer_for_copy = pointer_stack_level_bottom ;
-    } else
-    {
-        pointer_stack_level_bottom = id_text_pointer_for_copy ;
-    }
-    pointer_stack_level_current_copy = id_text_pointer_for_copy ;
-
-
-// -----------------------------------------------
-//  Get the location of the pointer
-//  stack being copied, and get the location of
-//  the top item in that stack.
-
-    pointer_stack_level_current_original = id_text_pointer_for_original ;
-    zero_offset_in_stack_level_current_original = pointer_begin_for_item[ pointer_stack_level_current_original ] ;
-    pointer_stack_level_top_original = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_pointer_stack_level_top ] ;
-
-
-// -----------------------------------------------
-//  Begin a loop that handles each stack level.
-
-    while ( pointer_stack_level_current_original > 0 )
-    {
-
-
-// -----------------------------------------------
-//  Copy the pointer information.
-
-//  todo:
-
-        zero_offset_in_stack_level_current_copy = pointer_begin_for_item[ pointer_stack_level_current_copy ] ;
-        zero_offset_in_stack_level_current_original = pointer_begin_for_item[ pointer_stack_level_current_original ] ;
-        all_pointers[ zero_offset_in_stack_level_current_copy + offset_for_current_pointer_stack_level_text_item ] = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_current_pointer_stack_level_text_item ] ;
-        all_pointers[ zero_offset_in_stack_level_current_copy + offset_for_current_pointer_stack_level_character_position ] = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_current_pointer_stack_level_character_position ] ;
-        all_pointers[ zero_offset_in_stack_level_current_copy + offset_for_pointer_stack_level_top ] = 0 ;
-        pointer_stack_level_current_original = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_pointer_stack_level_next ] ;
-
-
-// -----------------------------------------------
-//  If the top stack level has been reached, exit
-//  the loop.
-
-        if ( ( pointer_stack_level_current_original == 0 ) || ( pointer_stack_level_current_original == pointer_stack_level_top_original ) )
-        {
-            break ;
-        }
-
-
-// -----------------------------------------------
-//  Get from the copy stack the next-higher stack
-//  level ID.
-
-        zero_offset_in_stack_level_current_copy = pointer_begin_for_item[ pointer_stack_level_current_copy ] ;
-        pointer_stack_level_current_copy = all_pointers[ zero_offset_in_stack_level_current_copy + offset_for_pointer_stack_level_next ] ;
-
-
-// -----------------------------------------------
-//  If the stack for the copy has run out of stack
-//  levels, create a new, empty, pointer stack level.
-
-        if ( pointer_stack_level_current_copy == 0 )
-        {
-            pointer_stack_level_bottom = id_text_pointer_for_copy ;
-            create_new_pointer_stack_level_top( ) ;
-            pointer_stack_level_current_copy = id_text_pointer_for_copy ;
-        }
-
-
-// -----------------------------------------------
-//  In the previous copy stack level, point to
-//  this next-higher stack level.
-
-        all_pointers[ zero_offset_in_stack_level_current_copy + offset_for_pointer_stack_level_next ] = pointer_stack_level_current_copy ;
-
-
-// -----------------------------------------------
-//  Get from the original stack item the "next"
-//  higher stack item ID.
-
-        zero_offset_in_stack_level_current_original = pointer_begin_for_item[ pointer_stack_level_current_original ] ;
-        pointer_stack_level_current_original = all_pointers[ zero_offset_in_stack_level_current_original + offset_for_pointer_stack_level_next ] ;
-
-
-// -----------------------------------------------
-//  Repeat the loop to handle the next stack
-//  level.
-
-    }
-
-
-// -----------------------------------------------
-//  Copy the pointer to the top level into the
-//  bottom level.
-
-    all_pointers[ pointer_begin_for_item[ id_text_pointer_for_copy ] + offset_for_pointer_stack_level_top ] = pointer_stack_level_current_copy ;
-
-
-// -----------------------------------------------
-//  End of copy_text_pointer.
-
-    return ;
 }
 
 
