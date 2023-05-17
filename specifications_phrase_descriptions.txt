@@ -529,7 +529,7 @@ This action supplies b-i-b no b-i-e if the text that follows contains the word b
 -----
 
 description-for-phrase-yes-or-no-same-two-phrase-definitions:
-This action supplies b-i-b yes b-i-e if the following two phrases contain the same text, and supplies b-i-b no b-i-e otherwise. s-n If one phrase contains a space (or multiple spaces) and the other phrase contains a different number of spaces at the same location, the two phrases are not the same, even if the surrounding text is the same.
+This action supplies b-i-b yes b-i-e if the following two phrases contain the same text, and supplies b-i-b no b-i-e otherwise. s-n If one phrase contains a space (or multiple spaces) and the other phrase contains a different number of spaces at the same location, the two phrases are not the same, even if the surrounding text is the same. s-n The two phrase names must be full phrase names without involving b-i-b f no-space e no-space n no-space a no-space m no-space b no-space e no-space e b-i-e or b-i-b a no-space m no-space e no-space n no-space n no-space f no-space e no-space n b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
