@@ -1068,7 +1068,7 @@ The phrases continue to exist, but their definitions are empty.
 ----
 
 description-for-phrase-delete-listed-phrases:
-This action deletes (removes) the phrases that are named in the specified phrase. s-n This phrase is related to the action b-i-b clear h-h listed h-h phrases b-i-e except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized. s-n
+This action deletes (removes) the phrases that are named in the specified phrase. s-n This action is related to b-i-b clear h-h listed h-h phrases b-i-e (noted above) except that instead of just clearing the definition, it removes (deletes) the phrase so that it will not be recognized. s-n
 This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.
 ----
 
