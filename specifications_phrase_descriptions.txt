@@ -593,17 +593,17 @@ location-of-read-file
 ----
 
 description-for-phrase-set-file-permission-public-read:
-This action changes the protection of the specified file to allow global read access. s-n It does not allow global write access. s-n It is equivalent to the Linux command i-b chmod 0644 i-e no-space . s-n
+This action changes the protection of the specified file to allow global read access. s-n It does not allow global write access. s-n It is equivalent to the Linux command italics-begin chmod 0644 italics-end no-space . s-n
 location-of-read-file
 ----
 
 description-for-phrase-set-file-permission-private:
-This action changes the protection of the specified file to be private, which means no global read or write access. s-n It is equivalent to the Linux command i-b chmod 0600 i-e no-space . s-n
+This action changes the protection of the specified file to be private, which means no global read or write access. s-n It is equivalent to the Linux command italics-begin chmod 0600 italics-end no-space . s-n
 location-of-read-file
 ----
 
 description-for-phrase-set-file-permission-private-but-executable:
-This action changes the protection of the specified file to allow global executable access, but without global read access. s-n It is equivalent to the Linux command i-b chmod 0711 i-e no-space . s-n
+This action changes the protection of the specified file to allow global executable access, but without global read access. s-n It is equivalent to the Linux command italics-begin chmod 0711 italics-end no-space . s-n
 location-of-read-file
 ----
 
