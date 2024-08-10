@@ -1,10 +1,10 @@
 ambee copy-text word-to-use-in-handler phrase-name amenn
 
-*---
+combee
 ambee trace-show phrase-name amenn
----*
+comenn
 
-ambee put-into-phrase yes-or-no-value-is-correct ambee yes-or-no-same-two-phrase-definitions ambee phrase-name amenn correct-value-for-[-phrase-name amenn amenn amenn
+ambee put-into-phrase yes-or-no-value-is-correct ambee yes-or-no-same-two-phrase-definitions ambee phrase-name amenn correct-value-for fenambee phrase-name amenn amenn amenn
 ambee append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct amenn
 ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
 
@@ -12,7 +12,7 @@ ambee if-no-begin ambee yes-or-no-value-is-correct amenn amenn
 ambee expand-text template-display-value-is-not-correct display-value-is-not-correct amenn
 ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name amenn
 ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name ambee phrase-name amenn amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name amenn amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for fenambee phrase-name amenn amenn
 ambee append-text-no-space display-value-is-not-correct full-display-values-not-correct amenn
 ambee append-text phrase-name list-of-phrases-with-incorrect-values amenn
 ambee if-else amenn
