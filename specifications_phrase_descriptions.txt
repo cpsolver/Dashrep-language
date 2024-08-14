@@ -1184,7 +1184,7 @@ Example: b-i-b am no-space bee generate h-h counts h-h from h-h integer h-h to h
 ----
 
 description-for-phrase-dashrep-comments-ignored:
-This phrase contains text that the translation process has identified as comments. s-n Comments are contained within the text b-i-b combee b-i-e and b-i-b comenn b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
+This phrase contains text that the translation process has identified as comments. s-n Comments are contained within the text b-i-b com no-space bee b-i-e and b-i-b com no space enn b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
 ----
 
 description-for-phrase-ambee:
