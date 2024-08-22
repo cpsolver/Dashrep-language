@@ -346,10 +346,6 @@ description-for-phrase-linewise-input-line-count:
 See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h use h-h handler b-i-e no-space .
 -----
 
-description-for-phrase-dashrep-file-name-if-read-file-missing:
-This phrase specifies the name of an empty file that is created if a file for reading cannot be found. s-n This file is created in the folder specified by the phrase b-i-b dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading b-i-e no-space . s-n If this file already exists when a file for reading cannot be found, the existing file is used as the source file.
------
-
 description-for-phrase-linewise-read-from-file-and-use-handler:
 This action reads each and every line from the text file whose name is specified by the first phrase, and expands the handler specified by the second phrase. s-n When the handler phrase is expanded, the contents of the current line is available in the phrase named b-i-b linewise h-h input h-h line h-h from h-h file b-i-e no-space , and the current line number (starting at one for the first line in the file) is available in the phrase named b-i-b linewise h-h input h-h line h-h count b-i-e no-space . s-n
 location-of-read-file
