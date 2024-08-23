@@ -151,7 +151,7 @@
 <p>This action clears the definitions for the phrases that are named in the specified phrase.&nbsp; The phrases continue to exist, but their definitions are empty.</p>
 
 <h3 id="delete-listed-phrases">delete-listed-phrases</h3>
-<p>This action deletes (removes) the phrases that are named in the specified phrase.&nbsp; This phrase is related to the action <b><i>clear-listed-phrases</i></b> except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized.&nbsp; This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.</p>
+<p>This action deletes (removes) the phrases that are named in the specified phrase.&nbsp; This action is related to <b><i>clear-listed-phrases</i></b> (noted above) except that instead of just clearing the definition, it removes (deletes) the phrase so that it will not be recognized.&nbsp; This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.</p>
 
 <h2>Decision-related phrases</h2>
 
@@ -488,9 +488,6 @@
 <h3 id="operating-system-slash-or-backslash">operating-system-slash-or-backslash</h3>
 <p>This pre-defined phrase contains a slash character (<b><i>/</i></b>) if the operating system is not a Microsoft Windows operating-system, and it contains a backslash (<b><i>\</i></b>) if the operating system is a Microsoft Windows operating-system.</p>
 
-<h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
-<p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found.&nbsp; This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
-
 <h3 id="generate-list-of-files-in-current-read-directory">generate-list-of-files-in-current-read-directory</h3>
 <p>This action puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
@@ -510,13 +507,13 @@
 <p>This action gets the modification time &mdash; in epoch seconds &mdash; of the specified file.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 <h3 id="set-file-permission-public-read">set-file-permission-public-read</h3>
-<p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command <i>chmod 0644</i>.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 <h3 id="set-file-permission-private">set-file-permission-private</h3>
-<p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command i-b chmod 0600 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command <i>chmod 0600</i>.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 <h3 id="set-file-permission-private-but-executable">set-file-permission-private-but-executable</h3>
-<p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command i-b chmod 0711 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command <i>chmod 0711</i>.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 <h3 id="rename-file">rename-file</h3>
 <p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.&nbsp; This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling, which prevents other parallel tasks from handling the same data.</p>
@@ -622,7 +619,7 @@
 <p>This phrase contains the filename to which <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> messages are written.&nbsp; The default filename is <b><i>output_trace.txt</i></b>.&nbsp; If the filename specified in this phrase changes during execution, the filename used is the one in effect at the time the first <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> message was written.</p>
 
 <h3 id="dashrep-comments-ignored">dashrep-comments-ignored</h3>
-<p>This phrase contains text that the translation process has identified as comments.&nbsp; Comments are contained within the text <b><i>*---</i></b> and <b><i>---*</i></b>, but these delimiters cannot be nested, so this definition can be useful for debugging.</p>
+<p>This phrase contains text that the translation process has identified as comments.&nbsp; Comments are contained within the text <b><i>combee</i></b> and <b><i>com no space enn</i></b>, but these delimiters cannot be nested, so this definition can be useful for debugging.</p>
 
 <h3 id="generate-phrase-usage-counts">generate-phrase-usage-counts</h3>
 <p>This action puts into the specified phrase a list of counts for how many times each phrase name was replaced.&nbsp; Each count and its associated phrase name are separated from the next count and phrase name by a newline character.&nbsp; The phrases are sorted by the count number, with the highest counts appearing first.&nbsp; Within each count, the order is alphabetical.</p>
