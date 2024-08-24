@@ -489,11 +489,11 @@ Example: If the first phrase contains the word b-i-b dolphin b-i-e and the secon
 -----
 
 description-for-phrase-prepend-text-no-space:
-This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, without inserting a separating space. s-n If the target phrase is initially empty, the space is not inserted.
+This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, without inserting a separating space.
 -----
 
 description-for-phrase-prepend-text:
-This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, and inserts a single space between the prepended text and the existing text.
+This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, and inserts a single space between the prepended text and the existing text. s-n If the target phrase is initially empty, the space is not inserted.
 -----
 
 description-for-phrase-linewise-input-line-from-file:
