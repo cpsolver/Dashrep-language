@@ -156,16 +156,16 @@
 <h2>Decision-related phrases</h2>
 
 <h3 id="if-yes-begin">if-yes-begin</h3>
-<p>This directive looks at the first space-delimited word, and if it is <b><i>yes</i></b> (or contains that word) then this directive ignores all the text between the next occurrences of <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; Otherwise (if the first word that follows does not contain <b><i>yes</i></b>) then this directive ignores all the text between itself and the next occurrence of <b><i>ambee if-else amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; This directive provides a major branching capability.&nbsp; However, the directive <b><i>if-yes-begin</i></b> and the text <b><i>ambee if-else amenn</i></b> and the text <b><i>ambee if-end amenn</i></b> <b>cannot</b> be nested (as allowed in most programming languages).&nbsp; Specifically, an inner <b><i>if</i></b> directive must not appear within an outer <b><i>if</i></b> directive within the same Dashrep code.&nbsp; The functional nesting of <b><i>if</i></b> branches is allowed if the inner <b><i>if</i></b> directive appears within a separate phrase that is not expanded until after the outer <b><i>if</i></b> directive is handled.</p>
+<p>This action looks at the first space-delimited word, and if it is <b><i>yes</i></b> (or contains that word) then this action ignores all the text between the next occurrences of <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; Otherwise (if the first word that follows does not contain <b><i>yes</i></b>) then this action ignores all the text between itself and the next occurrence of <b><i>ambee if-else amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; This action provides a major branching capability.&nbsp; However, the action <b><i>if-yes-begin</i></b> and the text <b><i>ambee if-else amenn</i></b> and the text <b><i>ambee if-end amenn</i></b> <b>cannot</b> be nested (as allowed in most programming languages).&nbsp; Specifically, an inner <b><i>if</i></b> action must not appear within an outer <b><i>if</i></b> action within the same Dashrep code.&nbsp; The functional nesting of <b><i>if</i></b> branches is allowed if the inner <b><i>if</i></b> action appears within a separate phrase that is not expanded until after the outer <b><i>if</i></b> action is handled.</p>
 
 <h3 id="if-no-begin">if-no-begin</h3>
-<p>This directive works similar to the directive <b><i>if-yes-begin</i></b> except that the word <b><i>no</i></b> is used instead of the word <b><i>yes</i></b>.</p>
+<p>This action works similar to the action <b><i>if-yes-begin</i></b> except that the word <b><i>no</i></b> is used instead of the word <b><i>yes</i></b>.</p>
 
 <h3 id="if-else">if-else</h3>
-<p>This special text is recognized by the directive <b><i>if-yes-begin</i></b> and the directive <b><i>if-no-begin</i></b>.</p>
+<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.</p>
 
 <h3 id="if-end">if-end</h3>
-<p>This special text is recognized by the directive <b><i>if-yes-begin</i></b> and the directive <b><i>if-no-begin</i></b>.</p>
+<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.</p>
 
 <h3 id="yes-or-no-empty-phrase">yes-or-no-empty-phrase</h3>
 <p>This action supplies <b><i>yes</i></b> if the following specified phrase is empty, and supplies <b><i>no</i></b> otherwise.&nbsp; A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined.&nbsp; If no operand is supplied (which occurs if an innermost <b><i>ambee</i></b> and <b><i>amenn</i></b> group yields empty text), then this action supplies <b><i>yes</i></b>.</p>
