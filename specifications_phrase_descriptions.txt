@@ -424,7 +424,7 @@ This action calculates the base-e logarithm of the specified number, and supplie
 -----
 
 description-for-phrase-numeric-map-tile-zoom:
-This action specifies the zoom level that is used in the action
+This phrase specifies the zoom level that is used in the action
 b-i-b numeric-y-map-tile-number-based-on-latitude b-i-e no-space .
 -----
 
@@ -445,7 +445,7 @@ This action multiplies the first number times the second number, and supplies th
 -----
 
 description-for-phrase-numeric-pi:
-This action supplies the text representation for the value of pi.
+This phrase supplies the text representation for the value of pi.
 -----
 
 description-for-phrase-numeric-sine:
