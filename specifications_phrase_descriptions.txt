@@ -424,7 +424,7 @@ This action calculates the base-e logarithm of the specified number, and supplie
 -----
 
 description-for-phrase-numeric-map-tile-zoom:
-This action specifies the zoom level that is used in the action
+This phrase specifies the zoom level that is used in the action
 b-i-b numeric-y-map-tile-number-based-on-latitude b-i-e no-space .
 -----
 
@@ -445,7 +445,7 @@ This action multiplies the first number times the second number, and supplies th
 -----
 
 description-for-phrase-numeric-pi:
-This action supplies the text representation for the value of pi.
+This phrase supplies the text representation for the value of pi.
 -----
 
 description-for-phrase-numeric-sine:
@@ -1180,7 +1180,7 @@ Example: b-i-b am no-space bee generate h-h counts h-h from h-h integer h-h to h
 ----
 
 description-for-phrase-dashrep-comments-ignored:
-This phrase contains text that the translation process has identified as comments. s-n Comments are contained within the text b-i-b com no-space bee b-i-e and b-i-b com no space enn b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
+This phrase contains text that the translation process has identified as comments. s-n Comments are contained within the text b-i-b com no-space bee b-i-e and b-i-b com no-space enn b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
 ----
 
 description-for-phrase-ambee:
