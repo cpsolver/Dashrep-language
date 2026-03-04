@@ -1,0 +1,106 @@
+std::unordered_map<std::string, std::string> global_dashrep_replacement = ( ) ;  <new_line>
+<new_line>
+
+std::unordered_map<std::string, std::string> global_yes_found_word = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_exists_tag_name = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_content_for_tag = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_endless_loop_replacements_with_count = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_found_unique_value = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_item_number_at_row_column = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_listed_word = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_occurrence_count_for_word = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_text_to_find_at_position = ( ) ;  <new_line>
+std::unordered_map<std::string, std::string> global_words_at_numeric_value = ( ) ;  <new_line>
+<new_line>
+
+std::vector<std::string> global_accumulator = ( ) ;  <new_line>
+global_accumulator[ 0 ] = "" ;  <new_line>
+global_accumulator[ 1 ] = "" ;  <new_line>
+
+std::vector<std::string> global_count_of_items_appended_to_accumulator = ( ) ;  <new_line>
+global_count_of_items_appended_to_accumulator[ 0 ] = 0 ;  <new_line>
+global_count_of_items_appended_to_accumulator[ 1 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_saved_accumulator_pointer_at_recursion_location = ( ) ;  <new_line>
+global_saved_accumulator_pointer_at_recursion_location[ 0 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_begin_position_for_word = ( ) ;  <new_line>
+global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
+global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_length_of_word = ( ) ;  <new_line>
+global_length_of_word[ 0 ] = 0 ;  <new_line>
+global_length_of_word[ 1 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_pointer_to_whitespace_type = ( ) ;  <new_line>
+global_pointer_to_whitespace_type[ 0 ] = 0 ;  <new_line>
+global_pointer_to_whitespace_type[ 1 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
+global_yes_find_next_whitespace_of_type[ 0 ] = 0 ;  <new_line>
+global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
+
+std::vector<std::string> global_phrase_usage_count_for_phrase_number = ( ) ;  <new_line>
+std::vector<std::string> global_word_begin_operand_one_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_word_length_operand_one_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_word_begin_operand_two_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_word_length_operand_two_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_word_begin_operand_three_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_word_length_operand_three_at_word = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_items_one = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_items_two = ( ) ;  <new_line>
+std::vector<std::string> global_column_position_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_input_list = ( ) ;  <new_line>
+std::vector<std::string> global_input_list_one = ( ) ;  <new_line>
+std::vector<std::string> global_input_list_two = ( ) ;  <new_line>
+std::vector<std::string> global_item_number_found_at_position = ( ) ;  <new_line>
+std::vector<std::string> global_left_and_up_direction_value_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_list = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_file_names = "" ;  <new_line>
+std::vector<std::string> global_list_of_positions = "" ;  <new_line>
+std::vector<std::string> global_list_of_storage_names = "" ;  <new_line>
+std::vector<std::string> global_list_indicating_sort_order = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_action_names = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_key_values = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_loop_words = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_paired_words = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_parameter_words = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_phrase_names = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_phrases = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_remaining_item_numbers = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_sorted_numbers = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_source_words = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_start_matching_positions = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_strings_to_match = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_tag_names = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_tag_values_in_sequence_encountered = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_text_items_to_find = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_unique_values = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_values_in_column = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_words = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_words_to_check = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_x_values = ( ) ;  <new_line>
+std::vector<std::string> global_list_of_y_values = ( ) ;  <new_line>
+std::vector<std::string> global_octet_number_at_position = ( ) ;  <new_line>
+std::vector<std::string> global_phrase_naming_convention_for_column = ( ) ;  <new_line>
+std::vector<std::string> global_right_and_up_direction_value_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_right_direction_text_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_right_direction_value_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_row_position_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_sequence_of_phrases = ( ) ;  <new_line>
+std::vector<std::string> global_sort_order = ( ) ;  <new_line>
+std::vector<std::string> global_text_item_in_column = ( ) ;  <new_line>
+std::vector<std::string> global_unique_word_at_position = ( ) ;  <new_line>
+std::vector<std::string> global_up_direction_text_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_up_direction_value_for_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_value_in_column = ( ) ;  <new_line>
+std::vector<std::string> global_zero_if_not_remaining_item_number = ( ) ;  <new_line>
+std::vector<std::string> global_name_value_pairs = ( ) ;  <new_line>
+<new_line>
+
+
+// todo: remove these when no longer used  <new_line>
+
+std::unordered_map<std::string, std::string> global_number_of_times_encountered_phrase_named ;  <new_line>
+%global_number_of_times_encountered_phrase_named = ( ) ;  <new_line>
+

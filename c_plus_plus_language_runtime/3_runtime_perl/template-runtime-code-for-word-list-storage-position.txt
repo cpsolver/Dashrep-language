@@ -1,0 +1,2 @@
+std::string template-storage-item-prefix storage-position-for-word-list-associated-with-loop = "" ;  combee **** // stores list of words for loop **** comenn
+

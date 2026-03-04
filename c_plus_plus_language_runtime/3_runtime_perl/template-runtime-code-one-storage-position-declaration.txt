@@ -1,0 +1,2 @@
+std::string storage-position-name = "" ;  <new_line>
+

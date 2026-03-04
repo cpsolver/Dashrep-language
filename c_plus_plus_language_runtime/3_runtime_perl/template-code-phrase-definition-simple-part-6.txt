@@ -1,0 +1,2 @@
+code-get-or-put-phrase-definition-end = initialize-variable-begin
+

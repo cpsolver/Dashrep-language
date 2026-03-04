@@ -1,0 +1,4 @@
+// no-space dashes-long-line  <new_line>
+//  Begin text encountered in definitions  <new_line>
+<new_line>
+

@@ -1,0 +1,4 @@
+// no-space dashes-long-line  <new_line>
+//  Declare and initialize global arrays and variables  <new_line>
+<new_line>
+
