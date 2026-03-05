@@ -1,0 +1,21 @@
+// no-space dashes-long-line  <new_line>
+
+void function__split_epoch_seconds_into_named_components( ) {  <new_line>
+global_action_name_with_underscores = "split_epoch_seconds_into_named_components" ; <new_line>
+template-check-operand-one-is-positive-integer
+
+global_action_result = "" ;  <new_line>
+( global_second_time , global_minute , global_hour , global_day_of_month , global_month_number , global_year , global_weekday , global_day_of_year , global_extra_info ) = localtime( global_operand_one ) ;  <new_line>
+global_month_number ++ ;  <new_line>
+global_year += 1900 ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>second" } = sprintf( "%d" , global_second_time ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>minute" } = sprintf( "%d" , global_minute ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>hour" } = sprintf( "%d" , global_hour ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<character_hyphen>month" } = sprintf( "%d" , global_day_of_month ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>month<character_hyphen>number" } = sprintf( "%d" , global_month_number ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>year" } = sprintf( "%d" , global_year ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<character_hyphen>week" } = sprintf( "%d" , global_weekday ) ;  <new_line>
+global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<character_hyphen>year" } = sprintf( "%d" , global_day_of_year ) ;  <new_line>
+
+template-function-segment-ending
+

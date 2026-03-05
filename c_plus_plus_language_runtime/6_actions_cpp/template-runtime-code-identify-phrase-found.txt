@@ -1,0 +1,2 @@
+global_yes_found_word{ runtime-code-word-within-source-text } = global_yes ;  <new_line>
+

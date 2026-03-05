@@ -1,0 +1,25 @@
+// no-space dashes-long-line  <new_line>
+
+void function__get_definitions_from_file( ) {  <new_line>
+global_action_name_with_underscores = "get_definitions_from_file" ; <new_line>
+global_source_file_name = global_operand_one ;  <new_line>
+template-open-file-for-reading
+
+global_action_result = "" ;  <new_line>
+
+// todo: fix this code ...  <new_line>
+
+global_source_definitions = "" ;  <new_line>
+while ( global_input_line = <INFILE> ) {  <new_line>
+    chomp( global_input_line ) ;  <new_line>
+    global_input_line =~ s/[\n\r\f\t]+/ /g ;  <new_line>
+    if ( ( defined( global_input_line ) ) && ( global_input_line =~ /[^ ]/ ) ) {  <new_line>
+        global_source_definitions .= global_input_line + " " ;  <new_line>
+    }  <new_line>
+}  <new_line>
+global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
+close( INFILE ) ;  <new_line>
+return "" ;  <new_line>
+
+template-function-segment-ending
+

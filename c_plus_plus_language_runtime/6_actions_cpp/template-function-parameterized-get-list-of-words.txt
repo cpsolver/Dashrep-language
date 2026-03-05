@@ -1,0 +1,28 @@
+// no-space dashes-long-line  <new_line>
+// function_parameterized__get_list_of_words  <new_line>
+<new_line>
+
+void function_parameterized__get_list_of_words( ) {  <new_line>
+std::string local_text ;  <new_line>
+std::string globallist_of_operands ;  <new_line>
+local_text = $_[ 0 ] ;  <new_line>
+
+if ( local_text !~ /[^ ]/ ) {  <new_line>
+return "" ;  <new_line>
+}  <new_line>
+
+if ( local_text =~ /[\n\r\t]/ ) {  <new_line>
+local_text =~ s/[\n\r\t]/ /sg ;  <new_line>
+}  <new_line>
+if ( local_text =~ /^ / ) {  <new_line>
+local_text =~ s/^ +// ;  <new_line>
+}  <new_line>
+if ( local_text =~ / $/ ) {  <new_line>
+local_text =~ s/ +$// ;  <new_line>
+}  <new_line>
+
+globallist_of_operands = split( / +/ , local_text ) ;  <new_line>
+return globallist_of_operands ;  <new_line>
+
+template-function-segment-ending
+
