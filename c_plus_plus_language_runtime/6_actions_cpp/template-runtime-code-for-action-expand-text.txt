@@ -30,4 +30,3 @@ global_accumulator_pointer = global_saved_accumulator_pointer_at_recursion_locat
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

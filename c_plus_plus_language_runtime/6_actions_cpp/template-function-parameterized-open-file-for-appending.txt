@@ -40,4 +40,3 @@ close( OUTFILE ) ;  <new_line>
 return global_no ;  <new_line>
 
 template-function-segment-ending
-

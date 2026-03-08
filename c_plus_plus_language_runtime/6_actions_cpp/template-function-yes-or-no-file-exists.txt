@@ -31,4 +31,3 @@ close( INFILE ) ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

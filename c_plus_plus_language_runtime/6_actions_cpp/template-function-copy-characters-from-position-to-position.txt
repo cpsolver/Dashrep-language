@@ -23,4 +23,3 @@ global_dashrep_replacement{ global_target_phrase_name } = substr( global_dashrep
 return "" ;  <new_line>
 
 template-function-segment-ending
-

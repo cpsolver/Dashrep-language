@@ -5,4 +5,3 @@ global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;
 function_branch_based_on_phrase_name( ) ;  <new_line>
 
 template-runtime-code-for-action-executable-phrase-end
-

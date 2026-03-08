@@ -5,4 +5,3 @@ global_target_text = global_default_text ;  <new_line>
 return global_default_text ;  <new_line>
 }  <new_line>
 // end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>
-

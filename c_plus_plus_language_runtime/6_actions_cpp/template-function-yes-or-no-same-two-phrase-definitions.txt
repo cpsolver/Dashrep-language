@@ -14,4 +14,3 @@ runtime-code-storage-item-result = "no" ;  <new_line>
 }  <new_line>
 
 template-function-segment-ending
-

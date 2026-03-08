@@ -18,4 +18,3 @@ if ( global_yes_or_no_trace_output_file_is_open == global_yes ) {  <new_line>
 exit ;  <new_line>
 
 template-runtime-code-for-every-action-end
-

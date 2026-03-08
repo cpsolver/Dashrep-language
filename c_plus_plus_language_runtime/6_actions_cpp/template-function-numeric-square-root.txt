@@ -9,4 +9,3 @@ global_action_result = function_parameterized__convert_numeric_value_into_numeri
 return "" ;  <new_line>
 
 template-function-segment-ending
-

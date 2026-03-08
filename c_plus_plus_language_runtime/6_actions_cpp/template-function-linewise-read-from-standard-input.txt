@@ -24,4 +24,3 @@ while ( global_input_line = <STDIN> ) {  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

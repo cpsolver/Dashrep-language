@@ -12,9 +12,12 @@ if ( global_dashrep_replacement{ global_operand_one } !~ /^[ \<character_hyphen>
     return "" ;  <new_line>
 }  <new_line>
 global_list_of_x_values_as_text = global_dashrep_replacement{ global_operand_one } ;  <new_line>
-global_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
-global_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
-global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
+// before: global_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
+replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
+replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
+replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist_of_x_values = split( / +/ , global_list_of_x_values_as_text ) ;  <new_line>
 global_dashrep_replacement{ global_target_operand } = "" ;  <new_line>
 for( global_pair_pointer = 0 ; global_pair_pointer <= get_length_of_global_list_of_x_values ; global_pair_pointer ++ ) {  <new_line>
@@ -25,8 +28,8 @@ for( global_pair_pointer = 0 ; global_pair_pointer <= get_length_of_global_list_
         global_dashrep_replacement{ global_target_operand } .= sprintf( "%d" , global_numeric_value ) + " " ;  <new_line>
     }  <new_line>
 }  <new_line>
-global_dashrep_replacement{ global_target_operand } =~ s/ +$// ;  <new_line>
+// before: global_dashrep_replacement{ global_target_operand } =~ s/ +$// ;  <new_line>
+replace-begin global_dashrep_replacement{ global_target_operand } replace-equals global_dashrep_replacement{ global_target_operand } replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

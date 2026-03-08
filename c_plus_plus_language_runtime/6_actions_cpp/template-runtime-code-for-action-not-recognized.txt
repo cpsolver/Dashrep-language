@@ -2,4 +2,3 @@
 // print global_action_debug_line + "\n" ;  <new_line>
 
 runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ;  <new_line>
-

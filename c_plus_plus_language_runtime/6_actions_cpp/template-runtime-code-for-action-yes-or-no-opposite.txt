@@ -9,4 +9,3 @@ runtime-code-storage-item-result = "yes" ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

@@ -25,9 +25,12 @@ if ( exists( global_dashrep_replacement{ global_operand_two } ) ) {  <new_line>
 }  <new_line>
 global_destination_phrase = global_operand_three ;  <new_line>
 
-global_text_list_key =~ s/\n/ /sg ;  <new_line>
-global_text_list_key =~ s/^ +// ;  <new_line>
-global_text_list_key =~ s/ +$// ;  <new_line>
+// before: global_text_list_key =~ s/\n/ /sg ;  <new_line>
+replace-begin global_text_list_key replace-equals global_text_list_key replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_text_list_key =~ s/^ +// ;  <new_line>
+replace-begin global_text_list_key replace-equals global_text_list_key replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_text_list_key =~ s/ +$// ;  <new_line>
+replace-begin global_text_list_key replace-equals global_text_list_key replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 if ( global_text_list_key eq "" ) {  <new_line>
     globallist_of_key_values = ( ) ;  <new_line>
 } else {  <new_line>
@@ -37,9 +40,12 @@ if ( global_text_list_key eq "" ) {  <new_line>
 foreach global_word ( globallist_of_key_values ) {  <new_line>
     global_listed_word{ global_word } = 1 ;  <new_line>
 }  <new_line>
-global_text_list_loop =~ s/\n/ /sg ;  <new_line>
-global_text_list_loop =~ s/^ +// ;  <new_line>
-global_text_list_loop =~ s/ +$// ;  <new_line>
+// before: global_text_list_loop =~ s/\n/ /sg ;  <new_line>
+replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_text_list_loop =~ s/^ +// ;  <new_line>
+replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_text_list_loop =~ s/ +$// ;  <new_line>
+replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 if ( global_text_list_loop eq "" ) {  <new_line>
     globallist_of_loop_words = ( ) ;  <new_line>
 } else {  <new_line>
@@ -61,10 +67,11 @@ if ( global_length_of_loop_list > 0 ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
-global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
-global_result_word_list =~ s/ +$// ;  <new_line>
+// before: global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
+replace-begin global_text_list_of_unique_word_pointers replace-equals global_text_list_of_unique_word_pointers replace-this R"( +$)" with-this R"()" replace-end  <new_line>
+// before: global_result_word_list =~ s/ +$// ;  <new_line>
+replace-begin global_result_word_list replace-equals global_result_word_list replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 global_dashrep_replacement{ global_destination_phrase } = global_result_word_list ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

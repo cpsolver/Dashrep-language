@@ -19,9 +19,12 @@ if ( not( exists( global_dashrep_replacement{ global_operand_three } ) ) ) {  <n
 }  <new_line>
 
 global_paired_words_as_text = global_dashrep_replacement{ global_operand_three } ;  <new_line>
-global_paired_words_as_text =~ s/\n/ /sg ;  <new_line>
-global_paired_words_as_text =~ s/^ +// ;  <new_line>
-global_paired_words_as_text =~ s/ +$// ;  <new_line>
+// before: global_paired_words_as_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_paired_words_as_text =~ s/^ +// ;  <new_line>
+replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_paired_words_as_text =~ s/ +$// ;  <new_line>
+replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist_of_paired_words = split( / +/ , global_paired_words_as_text ) ;  <new_line>
 global_pair_status = "search" ;  <new_line>
 for ( global_pair_pointer_offset_zero = 0 ; global_pair_pointer_offset_zero <= get_length_of_global_list_of_paired_words ; global_pair_pointer_offset_zero ++ ) {  <new_line>
@@ -49,4 +52,3 @@ global_dashrep_replacement{ global_operand_two } = global_result_text ;  <new_li
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -26,4 +26,3 @@ global_action_result = function_parameterized__normalize_calculated_value( globa
 return "" ;  <new_line>
 
 template-function-segment-ending
-

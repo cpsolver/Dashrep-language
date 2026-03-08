@@ -39,4 +39,3 @@ if ( ( global_repeat_count < 1 ) || ( global_repeat_count > 99999 ) ) {  <new_li
 return "" ;  <new_line>
 
 template-function-segment-ending
-

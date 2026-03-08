@@ -12,9 +12,12 @@ if ( not( exists( global_dashrep_replacement{ global_source_phrase_name } ) ) ) 
     global_dashrep_replacement{ global_source_phrase_name } = "" ;  <new_line>
 }  <new_line>
 global_temp_text = global_dashrep_replacement{ global_source_phrase_name } ;  <new_line>
-global_temp_text =~ s/\n/ /sg ;  <new_line>
-global_temp_text =~ s/^ +// ;  <new_line>
-global_temp_text =~ s/ +$// ;  <new_line>
+// before: global_temp_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_temp_text =~ s/^ +// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_temp_text =~ s/ +$// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist = split( / +/ , global_temp_text ) ;  <new_line>
 globallist_of_sorted_numbers = sort( globallist ) ;  <new_line>
 global_temp_text = join( " " , globallist_of_sorted_numbers ) ;  <new_line>
@@ -22,4 +25,3 @@ global_dashrep_replacement{ global_target_phrase_name } = global_temp_text ;  <n
 return "" ;  <new_line>
 
 template-function-segment-ending
-

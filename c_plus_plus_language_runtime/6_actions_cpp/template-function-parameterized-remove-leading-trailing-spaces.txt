@@ -30,4 +30,3 @@ return "" ;  <new_line>
 }  <new_line>
 
 template-function-segment-ending
-

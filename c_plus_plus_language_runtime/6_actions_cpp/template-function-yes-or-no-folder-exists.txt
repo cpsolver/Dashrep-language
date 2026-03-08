@@ -16,4 +16,3 @@ if ( index( global_target_file_name , " " ) < 0 ) {  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

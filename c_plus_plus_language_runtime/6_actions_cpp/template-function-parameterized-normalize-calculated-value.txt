@@ -11,15 +11,16 @@ global_normalized_calculated_value = "0" ;  <new_line>
 global_normalized_calculated_value = sprintf( "%f" , global_calculated_value ) ;  <new_line>
 }  <new_line>
 
-if ( global_normalized_calculated_value =~ /^(\-?[0-9]+\.[0-9]*[1-9])0+$/ ) {  <new_line>
+// before: if ( global_normalized_calculated_value =~ /^(\-?[0-9]+\.[0-9]*[1-9])0+$/ ) {  <new_line>
+if ( global_normalized_calculated_value looks-like-begin  R"(^(\-?[0-9]+\.[0-9]*[1-9])0+$)" looks-like-end ) {  <new_line>
 global_normalized_calculated_value = $1 ;  <new_line>
 }  <new_line>
 
-if ( global_normalized_calculated_value =~ /^(\-?[0-9]+)\.0*$/ ) {  <new_line>
+// before: if ( global_normalized_calculated_value =~ /^(\-?[0-9]+)\.0*$/ ) {  <new_line>
+if ( global_normalized_calculated_value looks-like-begin  R"(^(\-?[0-9]+)\.0*$)" looks-like-end ) {  <new_line>
 global_normalized_calculated_value = $1 ;  <new_line>
 }  <new_line>
 
 return global_normalized_calculated_value ;  <new_line>
 
 template-function-segment-ending
-

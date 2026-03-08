@@ -75,4 +75,3 @@ global_dashrep_replacement{ "trace hyphen-here from hyphen-here get hyphen-here 
 return "" ;  <new_line>
 
 template-function-segment-ending
-

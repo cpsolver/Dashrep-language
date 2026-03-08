@@ -8,14 +8,20 @@ template-check-operand-three-is-phrase-name
 
 global_action_result = "" ;  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement{ global_operand_one } ;  <new_line>
-global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
-global_list_of_words_as_text =~ s/^ +// ;  <new_line>
-global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+// before: global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist_of_words_to_check = split( / +/ , global_list_of_words_as_text ) ;  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement{ global_operand_three } ;  <new_line>
-global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
-global_list_of_words_as_text =~ s/^ +// ;  <new_line>
-global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+// before: global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist_of_strings_to_match = split( / +/ , global_list_of_words_as_text ) ;  <new_line>
 global_generated_list = "" ;  <new_line>
 foreach global_word_to_check ( globallist_of_words_to_check ) {  <new_line>
@@ -29,9 +35,9 @@ foreach global_word_to_check ( globallist_of_words_to_check ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
-global_generated_list =~ s/ +$// ;  <new_line>
+// before: global_generated_list =~ s/ +$// ;  <new_line>
+replace-begin global_generated_list replace-equals global_generated_list replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 global_dashrep_replacement{ global_operand_two } = global_generated_list ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

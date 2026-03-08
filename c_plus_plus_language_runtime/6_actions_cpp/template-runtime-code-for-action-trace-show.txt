@@ -15,4 +15,3 @@ print TRACE_OUT runtime-code-for-operand-number-one + ":" + "\n" + "<character_h
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

@@ -108,4 +108,3 @@ function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

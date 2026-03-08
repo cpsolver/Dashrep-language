@@ -9,4 +9,3 @@ local_numeric = $_[ 0 ] ;  <new_line>
 return local_numeric + "" ;  <new_line>
 
 template-function-segment-ending
-

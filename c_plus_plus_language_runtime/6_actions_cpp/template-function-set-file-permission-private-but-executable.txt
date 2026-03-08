@@ -27,4 +27,3 @@ if ( not( chmod( global_file_private_but_executable_protection_mode , global_tar
 }  <new_line>
 
 template-function-segment-ending
-

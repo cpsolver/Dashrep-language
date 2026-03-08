@@ -14,4 +14,3 @@ global_action_result = "odd" ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

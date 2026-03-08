@@ -7,4 +7,3 @@ global_action_result = "todo__not_yet_written" ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

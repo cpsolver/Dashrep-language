@@ -26,11 +26,11 @@ if ( opendir( READDIR , global_source_path_prefix ) ) {  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
-    global_list_of_file_names =~ s / +$// ;  <new_line>
+// before:     global_list_of_file_names =~ s / +$// ;  <new_line>
+replace-begin global_list_of_file_names replace-equals global_list_of_file_names replace-this R"( +$)" with-this R"()" replace-end  <new_line>
     global_dashrep_replacement{ global_operand_one } = global_list_of_file_names ;  <new_line>
     closedir( READDIR ) ;  <new_line>
 }  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -6,11 +6,11 @@ int function_parameterized__yes_or_no_positive_real_number( ) {  <new_line>
 std::string local_text ;  <new_line>
 local_text = $_[ 0 ] ;  <new_line>
 
-if ( local_text =~ /^([0-9]+)(\.[0-9]*)?$/ ) {  <new_line>
+// before: if ( local_text =~ /^([0-9]+)(\.[0-9]*)?$/ ) {  <new_line>
+if ( local_text looks-like-begin  R"(^([0-9]+)(\.[0-9]*)?$)" looks-like-end ) {  <new_line>
 return global_yes ;  <new_line>
 } else {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
 template-function-segment-ending
-

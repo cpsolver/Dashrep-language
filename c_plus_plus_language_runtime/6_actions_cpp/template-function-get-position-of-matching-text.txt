@@ -20,4 +20,3 @@ if ( global_phrase_length > 0 ) {  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

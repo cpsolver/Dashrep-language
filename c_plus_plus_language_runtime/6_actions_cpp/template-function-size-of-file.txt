@@ -22,4 +22,3 @@ global_source_file_full_path = global_source_path_prefix + global_operand_one ; 
 global_action_result = sprintf( "%d" , ( stat( global_source_file_full_path ) )[7] ) ;  <new_line>
 
 template-function-segment-ending
-

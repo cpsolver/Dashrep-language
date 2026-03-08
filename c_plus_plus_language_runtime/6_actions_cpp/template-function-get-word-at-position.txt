@@ -27,4 +27,3 @@ global_action_result = runtime-code-word-within-source-text ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

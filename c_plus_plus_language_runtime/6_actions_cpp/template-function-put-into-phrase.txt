@@ -15,4 +15,3 @@ code-get-or-put-phrase-definition-begin global_phrase_name code-get-or-put-phras
 return "" ;  <new_line>
 
 template-function-segment-ending
-

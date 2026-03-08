@@ -34,14 +34,17 @@ while ( global_input_line = <INFILE> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
     global_pointer = index( global_input_line , "\r" ) ;  <new_line>
     if ( global_pointer >= 0 ) {  <new_line>
-        global_input_line =~ s/[\r\n]+//gs ;  <new_line>
+// before:         global_input_line =~ s/[\r\n]+//gs ;  <new_line>
+replace-begin global_input_line replace-equals global_input_line replace-this R"([\r\n]+)" with-this R"()" replace-end  <new_line>
     }  <new_line>
-    if ( global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
+// before:     if ( global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
+    if ( global_input_line looks-like-begin  R"(^ *([^ ]+) *$)" looks-like-end ) {  <new_line>
         global_first_word = $1 ;  <new_line>
         if ( global_first_word eq "multi_line_end" ) {  <new_line>
             global_line_status = "within" ;  <new_line>
         } elsif ( ( global_first_word eq global_entry_end ) || ( global_first_word eq global_entry_begin ) ) {  <new_line>
-            if ( global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+// before:             if ( global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+            if ( global_unique_value looks-like-begin  R"(^[^ ]+$)" looks-like-end ) {  <new_line>
                 foreach global_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
                     global_dashrep_replacement{ global_tag_name + "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" + global_unique_value } = global_content_for_tag{ global_tag_name } ;  <new_line>
                 }  <new_line>
@@ -62,20 +65,24 @@ while ( global_input_line = <INFILE> ) {  <new_line>
         }  <new_line>
     } elsif ( global_line_status eq "within_multiline" ) {  <new_line>
         global_content_for_tag{ global_multiline_value_name } .= global_input_line + " " ;  <new_line>
-    } elsif ( global_input_line =~ /^ *([^ ]+) +([^ ].*)$/ ) {  <new_line>
+// before:     } elsif ( global_input_line =~ /^ *([^ ]+) +([^ ].*)$/ ) {  <new_line>
+    } elsif ( global_input_line looks-like-begin  R"(^ *([^ ]+) +([^ ].*)$)" looks-like-end ) {  <new_line>
         global_first_word = $1 ;  <new_line>
         global_remainder_of_line = $2 ;  <new_line>
         if ( global_first_word eq global_entry_unique ) {  <new_line>
             global_unique_value = global_remainder_of_line ;  <new_line>
-            global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+// before:             global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+replace-begin global_unique_value replace-equals global_unique_value replace-this R"([ \n\r]+)" with-this R"(_)" replace-end  <new_line>
             if ( not( exists( global_found_unique_value{ global_unique_value } ) ) ) {  <new_line>
                 global_found_unique_value{ global_unique_value } = "found" ;  <new_line>
             }  <new_line>
         } elsif ( global_first_word eq global_entry_delete ) {  <new_line>
             global_unique_value = global_remainder_of_line ;  <new_line>
-            global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+// before:             global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
+replace-begin global_unique_value replace-equals global_unique_value replace-this R"([ \n\r]+)" with-this R"(_)" replace-end  <new_line>
             global_found_unique_value{ global_unique_value } = "delete" ;  <new_line>
-        } elsif ( global_remainder_of_line =~ /^ *multi_line_begin/ ) {  <new_line>
+// before:         } elsif ( global_remainder_of_line =~ /^ *multi_line_begin/ ) {  <new_line>
+        } elsif ( global_remainder_of_line looks-like-begin  R"(^ *multi_line_begin)" looks-like-end ) {  <new_line>
             global_line_status = "within_multiline" ;  <new_line>
             global_multiline_value_name = global_first_word ;  <new_line>
             global_content_for_tag{ global_multiline_value_name } = "" ;  <new_line>
@@ -92,7 +99,8 @@ while ( global_input_line = <INFILE> ) {  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
-    if ( global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+// before:     if ( global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
+    if ( global_unique_value looks-like-begin  R"(^[^ ]+$)" looks-like-end ) {  <new_line>
         foreach global_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
             global_dashrep_replacement{ global_tag_name + "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" + global_unique_value } = global_content_for_tag{ global_tag_name } ;  <new_line>
         }  <new_line>
@@ -125,4 +133,3 @@ close( INFILE ) ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

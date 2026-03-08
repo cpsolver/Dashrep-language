@@ -9,4 +9,3 @@ if ( function_parameterized__yes_or_no_phrase_name( global_operand_one ) == glob
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

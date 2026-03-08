@@ -3,4 +3,3 @@ for ( global_word_pointer_numeric = 1 ; global_word_pointer_numeric <= global_nu
 template-runtime-code-identify-phrase-found
 
 }  <new_line>
-

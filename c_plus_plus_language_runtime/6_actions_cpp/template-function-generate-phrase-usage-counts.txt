@@ -43,4 +43,3 @@ global_dashrep_replacement{ global_operand_one } = global_action_result ;  <new_
 return "" ;  <new_line>
 
 template-function-segment-ending
-

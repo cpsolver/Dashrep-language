@@ -27,4 +27,3 @@ if ( not( chmod( global_file_public_read_protection_mode , global_target_file_fu
 }  <new_line>
 
 template-function-segment-ending
-

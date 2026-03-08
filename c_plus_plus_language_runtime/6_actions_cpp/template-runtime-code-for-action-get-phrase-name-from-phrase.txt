@@ -11,4 +11,3 @@ if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-num
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

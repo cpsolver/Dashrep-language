@@ -18,11 +18,11 @@ if ( not( exists( code-get-or-put-phrase-definition-begin local_text code-get-or
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end =~ /[^0-9\-\. ]/ ) {  <new_line>
+// before: if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end =~ /[^0-9\-\. ]/ ) {  <new_line>
+if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end looks-like-begin  R"([^0-9\-\. ])" looks-like-end ) {  <new_line>
 return global_no ;  <new_line>
 } else {  <new_line>
 return global_yes ;  <new_line>
 }  <new_line>
 
 template-function-segment-ending
-

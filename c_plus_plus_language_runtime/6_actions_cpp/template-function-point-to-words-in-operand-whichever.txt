@@ -117,4 +117,3 @@ global_word_length_operand_whichever_at_word[ global_word_count_operand_whicheve
 }  <new_line>
 
 template-function-segment-ending
-

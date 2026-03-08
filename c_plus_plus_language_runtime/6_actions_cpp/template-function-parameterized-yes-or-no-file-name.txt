@@ -115,4 +115,3 @@ return global_no ;  <new_line>
 return global_yes ;  <new_line>
 
 template-function-segment-ending
-

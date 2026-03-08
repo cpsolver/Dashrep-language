@@ -22,4 +22,3 @@ if ( function_parameterized__yes_or_no_phrase_name( global_phrase_name ) == glob
 return "" ;  <new_line>
 
 template-function-segment-ending
-

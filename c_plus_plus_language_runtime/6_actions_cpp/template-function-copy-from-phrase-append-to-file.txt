@@ -22,4 +22,3 @@ template-runtime-code-protect-target-file
 return "" ;  <new_line>
 
 template-function-segment-ending
-

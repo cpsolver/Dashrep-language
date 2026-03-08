@@ -15,4 +15,3 @@ runtime-code-storage-item-result = " " ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-

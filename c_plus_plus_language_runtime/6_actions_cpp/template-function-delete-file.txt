@@ -28,4 +28,3 @@ unlink global_target_file_full_path ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -18,4 +18,3 @@ if ( global_first_object_of_action == global_second_object_of_action ) {  <new_l
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -47,4 +47,3 @@ code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phr
 return "" ;  <new_line>
 
 template-function-segment-ending
-

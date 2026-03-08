@@ -49,4 +49,3 @@ if ( rename( global_source_file_full_path , global_target_file_full_path ) ) {  
 return "" ;  <new_line>
 
 template-function-segment-ending
-

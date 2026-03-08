@@ -12,17 +12,22 @@ if ( not( exists( global_dashrep_replacement{ global_source_phrase_name } ) ) ) 
     global_dashrep_replacement{ global_source_phrase_name } = "" ;  <new_line>
 }  <new_line>
 global_temp_text = global_dashrep_replacement{ global_source_phrase_name } ;  <new_line>
-global_temp_text =~ s/\n/ /sg ;  <new_line>
-global_temp_text =~ s/^ +// ;  <new_line>
-global_temp_text =~ s/ +$// ;  <new_line>
+// before: global_temp_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_temp_text =~ s/^ +// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_temp_text =~ s/ +$// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 global_remaining_text = global_temp_text ;  <new_line>
 global_accumulated_text = "" ;  <new_line>
-if ( global_remaining_text =~ /^([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+// before: if ( global_remaining_text =~ /^([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+if ( global_remaining_text looks-like-begin  R"(^([a<character_hyphen>z])(.*)$)" looks-like-end ) {  <new_line>
     global_character_to_capitalize = $1 ;  <new_line>
     global_remaining_text = $2 ;  <new_line>
     global_accumulated_text .= uc( global_character_to_capitalize ) ;  <new_line>
 }  <new_line>
-while ( global_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+// before: while ( global_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) {  <new_line>
+while ( global_remaining_text looks-like-begin  R"(^(.*?) ([a<character_hyphen>z])(.*)$)" looks-like-end ) {  <new_line>
     global_accumulated_text .= $1 ;  <new_line>
     global_character_to_capitalize = $2 ;  <new_line>
     global_remaining_text = $3 ;  <new_line>
@@ -33,4 +38,3 @@ global_dashrep_replacement{ global_target_phrase_name } = global_accumulated_tex
 return "" ;  <new_line>
 
 template-function-segment-ending
-

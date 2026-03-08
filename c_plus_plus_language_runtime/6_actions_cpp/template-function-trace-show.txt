@@ -12,4 +12,3 @@ print TRACE_OUT global_operand_one + ":" + "\n" + "<character_hyphen><character_
 }  <new_line>
 
 template-function-segment-ending
-

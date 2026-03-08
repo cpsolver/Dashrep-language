@@ -10,12 +10,18 @@ global_action_result = "" ;  <new_line>
 global_number_of_columns = global_operand_one ;  <new_line>
 global_text_for_right_direction_values = global_dashrep_replacement{ global_operand_two } ;  <new_line>
 global_text_for_up_direction_values = global_dashrep_replacement{ global_operand_three } ;  <new_line>
-global_text_for_up_direction_values =~ s/\n/ /s ;  <new_line>
-global_text_for_up_direction_values =~ s/^ +// ;  <new_line>
-global_text_for_up_direction_values =~ s/ +$// ;  <new_line>
-global_text_for_right_direction_values =~ s/\n/ /s ;  <new_line>
-global_text_for_right_direction_values =~ s/^ +// ;  <new_line>
-global_text_for_right_direction_values =~ s/ +$// ;  <new_line>
+// before: global_text_for_up_direction_values =~ s/\n/ /s ;  <new_line>
+replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_text_for_up_direction_values =~ s/^ +// ;  <new_line>
+replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_text_for_up_direction_values =~ s/ +$// ;  <new_line>
+replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R"( +$)" with-this R"()" replace-end  <new_line>
+// before: global_text_for_right_direction_values =~ s/\n/ /s ;  <new_line>
+replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_text_for_right_direction_values =~ s/^ +// ;  <new_line>
+replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_text_for_right_direction_values =~ s/ +$// ;  <new_line>
+replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globalup_direction_text_for_item_number = split( / +/ , global_text_for_up_direction_values ) ;  <new_line>
 unshift( globalup_direction_text_for_item_number , 0 ) ;  <new_line>
 globalright_direction_text_for_item_number = split( / +/ , global_text_for_right_direction_values ) ;  <new_line>
@@ -255,9 +261,9 @@ for ( global_item_number = 1 ; global_item_number <= global_number_of_items ; gl
     global_final_result .= "row<character_hyphen>" + global_row_number + "<character_hyphen>column<character_hyphen>" + global_column_number + " " ;  <new_line>
     global_item_number_at_row_column{ global_row_number + "" + global_column_number } = global_item_number ;  <new_line>
 }  <new_line>
-global_final_result =~ s/ +$// ;  <new_line>
+// before: global_final_result =~ s/ +$// ;  <new_line>
+replace-begin global_final_result replace-equals global_final_result replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 global_dashrep_replacement{ global_operand_four } = global_final_result ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

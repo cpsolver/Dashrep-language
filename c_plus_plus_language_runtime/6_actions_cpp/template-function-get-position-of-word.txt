@@ -8,9 +8,12 @@ template-check-operand-two-is-phrase-name
 global_action_result = " " ;  <new_line>
 global_word_to_find = global_dashrep_replacement{ global_operand_one } ;  <new_line>
 global_temp_text = global_dashrep_replacement{ global_operand_two } ;  <new_line>
-global_temp_text =~ s/\n/ /sg ;  <new_line>
-global_temp_text =~ s/^ +// ;  <new_line>
-global_temp_text =~ s/ +$// ;  <new_line>
+// before: global_temp_text =~ s/\n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
+// before: global_temp_text =~ s/^ +// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"(^ +)" with-this R"()" replace-end  <new_line>
+// before: global_temp_text =~ s/ +$// ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R"( +$)" with-this R"()" replace-end  <new_line>
 globallist = split( / +/ , global_temp_text ) ;  <new_line>
 global_list_length = get_length_of_global_list + 1 ;  <new_line>
 global_action_result = "0" ;  <new_line>
@@ -26,4 +29,3 @@ if ( global_list_length >= 1 ) {  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

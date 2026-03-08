@@ -17,4 +17,3 @@ foreach global_phrase_name_to_clear ( globallist_of_phrase_names ) {  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -58,4 +58,3 @@ global_dashrep_replacement{ global_target_phrase_name } = global_accumulated_tex
 return "" ;  <new_line>
 
 template-function-segment-ending
-

@@ -106,4 +106,3 @@ global_length_of_word[ global_number_of_words ] = global_length_of_text - global
 }  <new_line>
 
 template-function-segment-ending
-
