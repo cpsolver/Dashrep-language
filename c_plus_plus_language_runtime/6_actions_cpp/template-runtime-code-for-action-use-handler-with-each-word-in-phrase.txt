@@ -2,7 +2,7 @@ template-runtime-code-for-every-action-begin
 
 if ( function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == global_no ) {  <new_line>
     runtime-code-storage-item-result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__use_handler_with_each_word_in_phrase__not_phrase_name " + runtime-code-for-operand-number-one + " " ;  <new_line>
-} elsif ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == global_no ) {  <new_line>
+} else if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == global_no ) {  <new_line>
     runtime-code-storage-item-result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__use_handler_with_each_word_in_phrase__not_phrase_name " + runtime-code-for-operand-number-two + " " ;  <new_line>
 } else {  <new_line>
 
@@ -18,7 +18,7 @@ local_pointer_to_next_space = -1 ;  <new_line>
 length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;  <new_line>
 
 combee ****
-// print "length of word list is " + length_of_text_in_word_list + "\n" ;  <new_line>
+// std::cout << "length of word list is " + length_of_text_in_word_list + "\n" ;  <new_line>
 **** comenn
 
 combee ****
@@ -53,7 +53,7 @@ last ;  <new_line>
 local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , " " , local_pointer_to_next_space + 1 ) ;  <new_line>
 
 combee ****
-// print "future space at " + local_pointer_to_future_space + "\n" ;  <new_line>
+// std::cout << "future space at " + local_pointer_to_future_space + "\n" ;  <new_line>
 **** comenn
 
 combee ****
@@ -71,13 +71,13 @@ local_pointer_to_next_space = local_pointer_to_future_space ;  <new_line>
 local_pointer_to_next_word = local_pointer_to_next_space + 1 ;  <new_line>
 
 combee ****
-// print "next word starts at " + local_pointer_to_next_word + "\n" ;  <new_line>
+// std::cout << "next word starts at " + local_pointer_to_next_word + "\n" ;  <new_line>
 **** comenn
 
 local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , " " , local_pointer_to_next_word ) ;  <new_line>
 
 combee ****
-// print "next space at " + local_pointer_to_next_space + "\n" ;  <new_line>
+// std::cout << "next space at " + local_pointer_to_next_space + "\n" ;  <new_line>
 **** comenn
 
 if ( local_pointer_to_next_space < 0 ) {  <new_line>
@@ -95,9 +95,9 @@ last ;  <new_line>
 global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , local_pointer_to_next_word , local_pointer_to_next_space - local_pointer_to_next_word ) ;  <new_line>
 
 combee ****
-// print "next word starts at " + local_pointer_to_next_word + "\n" ;  <new_line>
-// print "next space at " + local_pointer_to_next_space + "\n" ;  <new_line>
-// print "word to use in handler is " + global_word_to_use_in_handler + "\n" ;  <new_line>
+// std::cout << "next word starts at " + local_pointer_to_next_word + "\n" ;  <new_line>
+// std::cout << "next space at " + local_pointer_to_next_space + "\n" ;  <new_line>
+// std::cout << "word to use in handler is " + global_word_to_use_in_handler + "\n" ;  <new_line>
 **** comenn
 
 code-get-or-put-phrase-definition-begin global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = global_word_to_use_in_handler ;  <new_line>

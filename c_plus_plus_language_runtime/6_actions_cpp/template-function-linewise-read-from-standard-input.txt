@@ -14,8 +14,8 @@ return "" ;  <new_line>
 local_line_count = 1 ;  <new_line>
 while ( global_input_line = <STDIN> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
-    global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = global_input_line ;  <new_line>
-    global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = local_line_count ;  <new_line>
+    global_dashrep_replacement[ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = global_input_line ;  <new_line>
+    global_dashrep_replacement[ "linewise hyphen-here input hyphen-here line hyphen-here count" } = local_line_count ;  <new_line>
     global_phrase_name_to_match = local_target_phrase_name ;  <new_line>
     function_branch_based_on_phrase_name( );  <new_line>
     global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>

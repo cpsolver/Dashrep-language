@@ -7,12 +7,12 @@ $accumulated_remaining_text = "" ;  <new_line>
 $pointer_to_next_match = index( global_concatenated_all_operands_modified , "yes" ) ;  <new_line>
 
 while ( $pointer_to_next_match > 0 ) {  <new_line>
-$accumulated_remaining_text .= substr( global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ;  <new_line>
+$accumulated_remaining_text += substr( global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ;  <new_line>
 global_concatenated_all_operands_modified = substr( global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ;  <new_line>
 $pointer_to_next_match = index( global_concatenated_all_operands_modified , "yes" ) ;  <new_line>
 }  <new_line>
 
-$accumulated_remaining_text .= " " + global_concatenated_all_operands_modified ;  <new_line>
+$accumulated_remaining_text += " " + global_concatenated_all_operands_modified ;  <new_line>
 $accumulated_remaining_text = function_parameterized__remove_leading_trailing_spaces( $accumulated_remaining_text ) ;  <new_line>
 
 if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>

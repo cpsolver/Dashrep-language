@@ -18,7 +18,7 @@ global_action_result = "" ;  <new_line>
 // global_phrase_name = global_phrase_name_for_phrase_number[ global_phrase_number ] ;  <new_line>
 
 
-// foreach global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
+// for-each global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
 //    global_replacement_count = global_replacement_count_for_item_name{ global_phrase_name } ;  <new_line>
 
 
@@ -32,14 +32,14 @@ global_action_result = "" ;  <new_line>
 //    global_endless_loop_replacements_with_count{ sprintf( "%08d" , global_replacement_count ) } .= global_phrase_name ;  <new_line>
 // }  <new_line>
 
-// foreach global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
+// for-each global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
 //     globallist_of_phrase_names = sort( split( /\n/ , global_endless_loop_replacements_with_count{ global_replacement_count_text } ) ) ;  <new_line>
-//     foreach global_phrase_name ( globallist_of_phrase_names ) {  <new_line>
+//     for-each global_phrase_name ( globallist_of_phrase_names ) {  <new_line>
 //         global_action_result .= global_replacement_count_text + " " + global_phrase_name  + "\n" ;  <new_line>
 //     }  <new_line>
 // }  <new_line>
 
-global_dashrep_replacement{ global_operand_one } = global_action_result ;  <new_line>
+global_dashrep_replacement[ global_operand_one ] = global_action_result ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending

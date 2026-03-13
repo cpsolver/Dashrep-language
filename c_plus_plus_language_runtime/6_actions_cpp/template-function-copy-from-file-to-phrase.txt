@@ -10,17 +10,17 @@ global_action_result = "" ;  <new_line>
 global_all_lines = "" ;  <new_line>
 global_line_ending = "" ;  <new_line>
 global_line_number = 0 ;  <new_line>
-if ( exists( global_dashrep_replacement{ "end hyphen-here of hyphen-here line hyphen-here indicator" } ) ) {  <new_line>
-    global_line_ending = global_dashrep_replacement{ "end hyphen-here of hyphen-here line hyphen-here indicator" } ;  <new_line>
+if ( exists( global_dashrep_replacement[ "end hyphen-here of hyphen-here line hyphen-here indicator" } ) ) {  <new_line>
+    global_line_ending = global_dashrep_replacement[ "end hyphen-here of hyphen-here line hyphen-here indicator" } ;  <new_line>
 } else {  <new_line>
     global_line_ending = "\n" ;  <new_line>
 }  <new_line>
-if ( ( exists( global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) && ( global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) {  <new_line>
+if ( ( exists( global_dashrep_replacement[ "yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) && ( global_dashrep_replacement[ "yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) {  <new_line>
     global_yes_or_no_remove = global_yes ;  <new_line>
 } else {  <new_line>
     global_yes_or_no_remove = global_no ;  <new_line>
 }  <new_line>
-if ( ( exists( global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) && ( global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) {  <new_line>
+if ( ( exists( global_dashrep_replacement[ "yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) && ( global_dashrep_replacement[ "yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file" } ) ) {  <new_line>
     global_yes_or_no_skip = global_yes ;  <new_line>
 } else {  <new_line>
     global_yes_or_no_skip = global_no ;  <new_line>
@@ -39,14 +39,14 @@ replace-begin global_input_line replace-equals global_input_line replace-this R"
         if ( global_input_line ne "" ) {  <new_line>
             global_length_of_text = length( global_length_of_text ) ;  <new_line>
             if ( substr( global_length_of_text , 0 , global_length_of_text ) ne substr( global_multiple_spaces , 0 , global_length_of_text ) ) {  <new_line>
-                global_all_lines .= global_input_line + global_line_ending ;  <new_line>
+                global_all_lines += global_input_line + global_line_ending ;  <new_line>
             }  <new_line>
         }  <new_line>
     } else {  <new_line>
-        global_all_lines .= global_input_line + global_line_ending ;  <new_line>
+        global_all_lines += global_input_line + global_line_ending ;  <new_line>
     }  <new_line>
 }  <new_line>
-global_dashrep_replacement{ global_operand_two } = global_all_lines ;  <new_line>
+global_dashrep_replacement[ global_operand_two ] = global_all_lines ;  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 return "" ;  <new_line>

@@ -9,14 +9,14 @@ template-open-file-for-reading
 
 global_action_result = "" ;  <new_line>
 global_list_of_storage_names = "" ;  <new_line>
-global_string_to_find = global_dashrep_replacement{ global_operand_two } ;  <new_line>
+global_string_to_find = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_length_of_string = length( global_string_to_find ) ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
     global_possible_match = substr( global_input_line , 0 , global_length_of_string ) ;  <new_line>
     if ( global_possible_match eq global_string_to_find ) {  <new_line>
-        global_dashrep_replacement{ global_operand_three } = global_input_line ;  <new_line>
-        last ;  <new_line>
+        global_dashrep_replacement[ global_operand_three ] = global_input_line ;  <new_line>
+        break ;  <new_line>
     }  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>

@@ -28,12 +28,12 @@ if ( function_parameterized__yes_or_no_phrase_name( global_operand_four ) == glo
 }  <new_line>
 
 global_action_result = "" ;  <new_line>
-global_string_to_find = global_dashrep_replacement{ global_operand_one } ;  <new_line>
-global_string_to_search = global_dashrep_replacement{ global_operand_two } ;  <new_line>
+global_string_to_find = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
+global_string_to_search = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_list_of_positions = "" ;  <new_line>
 global_phrase_length = length( global_string_to_search ) + 1 ;  <new_line>
-if ( ( global_phrase_length > 0 ) && ( exists( global_dashrep_replacement{ global_operand_three } ) ) ) {  <new_line>
-    global_text_list_of_start_matching_positions = global_dashrep_replacement{ global_operand_three } ;  <new_line>
+if ( ( global_phrase_length > 0 ) && ( exists( global_dashrep_replacement[ global_operand_three ] ) ) ) {  <new_line>
+    global_text_list_of_start_matching_positions = global_dashrep_replacement[ global_operand_three ] ;  <new_line>
 // before:     global_text_list_of_start_matching_positions =~ s/\n/ /sg ;  <new_line>
 replace-begin global_text_list_of_start_matching_positions replace-equals global_text_list_of_start_matching_positions replace-this R"(\n)" with-this R"( )" replace-end  <new_line>
 // before:     global_text_list_of_start_matching_positions =~ s/^ +// ;  <new_line>
@@ -44,20 +44,20 @@ replace-begin global_text_list_of_start_matching_positions replace-equals global
     if ( global_text_list_of_start_matching_positions looks-like-begin  R"([0<character_hyphen>9 ]+)" looks-like-end ) {  <new_line>
         globallist_of_start_matching_positions = split( / +/ , global_text_list_of_start_matching_positions ) ;  <new_line>
     } else {  <new_line>
-        globallist_of_start_matching_positions = ( ) ;  <new_line>
+        globallist_of_start_matching_positions do-list-clear ;  <new_line>
     }  <new_line>
-    foreach global_search_starting_position ( globallist_of_start_matching_positions ) {  <new_line>
+    for-each global_search_starting_position ( globallist_of_start_matching_positions ) {  <new_line>
         global_position = index( global_string_to_search , global_string_to_find , global_search_starting_position ) ;  <new_line>
         if ( global_position < 0 ) {  <new_line>
             global_position = -1 ;  <new_line>
         }  <new_line>
         if ( global_list_of_positions ne "" ) {  <new_line>
-            global_list_of_positions .= " " ;  <new_line>
+            global_list_of_positions += " " ;  <new_line>
         }  <new_line>
-        global_list_of_positions .= sprintf( "%d" , ( global_position + 1 ) ) ;  <new_line>
+        global_list_of_positions += sprintf( "%d" , ( global_position + 1 ) ) ;  <new_line>
     }  <new_line>
 }  <new_line>
-global_dashrep_replacement{ global_operand_four } = global_list_of_positions ;  <new_line>
+global_dashrep_replacement[ global_operand_four ] = global_list_of_positions ;  <new_line>
 return "" ;  <new_line>
 
 template-function-segment-ending

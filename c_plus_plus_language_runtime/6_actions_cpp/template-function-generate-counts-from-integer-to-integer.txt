@@ -32,13 +32,13 @@ for ( global_counter = 1 ; global_counter <= global_count_range ; global_counter
 global_count_number = global_numeric_value_first + ( global_plus_or_minus_one * ( global_counter - 1 ) );  <new_line>
 
 if ( global_counter > 1 ) {  <new_line>
-code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end .= " " ;  <new_line>
+code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += " " ;  <new_line>
 }  <new_line>
 
 if ( global_count_number == 0 ) {  <new_line>
-code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end .= "0" ;  <new_line>
+code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += "0" ;  <new_line>
 } else {  <new_line>
-code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end .= sprintf( "%d" , global_count_number ) ;  <new_line>
+code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += sprintf( "%d" , global_count_number ) ;  <new_line>
 }  <new_line>
 
 // end of loop  <new_line>
