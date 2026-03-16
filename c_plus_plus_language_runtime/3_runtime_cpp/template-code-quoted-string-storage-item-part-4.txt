@@ -1,2 +1,1 @@
-" } = initialize-variable-begin
-
+" ] = initialize-variable-begin

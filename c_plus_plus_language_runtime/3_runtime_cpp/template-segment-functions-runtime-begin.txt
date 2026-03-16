@@ -2,14 +2,23 @@
 //  Execute starting/main function  <new_line>
 <new_line>
 
-std::string operating_system_name = $^O ;  <new_line>
-if ( operating_system_name !~ /[Ww]in/ ) {  <new_line>
-    global_dashrep_replacement{ "operating hyphen-here system hyphen-here slash hyphen-here or hyphen-here backslash" } = "/" ;  <new_line>
+std::string operating_system_name =  <new_line>
+#ifdef _WIN32  <new_line>
+    "MSWin32";  <new_line>
+#elif __APPLE__  <new_line>
+    "darwin";  <new_line>
+#elif __linux__  <new_line>
+    "linux";  <new_line>
+#else  <new_line>
+    "unknown";  <new_line>
+#endif  <new_line>
+if ( operating_system_name == "MSWin32" ) {  <new_line>
+    global_dashrep_replacement[ "operating hyphen-here system hyphen-here slash hyphen-here or hyphen-here backslash" ] = "/" ;  <new_line>
 } else {  <new_line>
-    global_dashrep_replacement{ "operating hyphen-here system hyphen-here slash hyphen-here or hyphen-here backslash" } = "\\" ;  <new_line>
+    global_dashrep_replacement[ "operating hyphen-here system hyphen-here slash hyphen-here or hyphen-here backslash" ] = "\\" ;  <new_line>
 }  <new_line>
 
-if ( ( exists( global_dashrep_replacement{ "yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage" } ) ) && ( global_dashrep_replacement{ "yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage" } eq "yes" ) ) {  <new_line>
+if ( ( exists( global_dashrep_replacement[ "yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage" ] ) ) && ( global_dashrep_replacement[ "yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage" ] eq "yes" ) ) {  <new_line>
     global_yes_or_no_count_phrase_usage = global_yes ;  <new_line>
 } else {  <new_line>
     global_yes_or_no_count_phrase_usage = global_no ;  <new_line>
@@ -17,7 +26,7 @@ if ( ( exists( global_dashrep_replacement{ "yes<character_hyphen>or<character_hy
 
 global_accumulator[ 1 ] = "" ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
-output_results = &dashrep_expand_phrases( global_accumulator[ 1 ] ) ;  <new_line>
+output_results = dashrep_expand_phrases( global_accumulator[ 1 ] ) ;  <new_line>
 
 if ( exists( code-get-or-put-phrase-definition-begin "standard<character_hyphen>output" code-get-or-put-phrase-definition-end ) ) {  <new_line>
     if ( function_parameterized__yes_or_no_phrase_definition_not_empty( "standard<character_hyphen>output" ) == global_yes ) {  <new_line>

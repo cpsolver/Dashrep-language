@@ -38,11 +38,11 @@ combee ****
 Get the hyphenated phrase or supplied string.
 **** comenn
 
-if ( scalar( @_ ) == 1 ) {  <new_line>
-supplied_text = $_[ 0 ] ;  <new_line>
+if (args.size() == 1) {  <new_line>
+supplied_text = args[0];  <new_line>
 } else {  <new_line>
-result_text = "" ;  <new_line>
-return result_text ;  <new_line>
+result_text = "";  <new_line>
+return result_text;  <new_line>
 }  <new_line>
 
 combee ****
@@ -193,9 +193,9 @@ directive, insert phrase definition into the text
 being expanded, and remove the phrase name.
 **** comenn
 
-if ( ( current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( global_dashrep_replacement{ current_phrase } ) ) ) {  <new_line>
+if ( ( current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( global_dashrep_replacement[ current_phrase ] ) ) ) {  <new_line>
 recursion_level ++ ;  <new_line>
-code_at_recursion_level[ recursion_level ] = global_dashrep_replacement{ current_phrase } ;  <new_line>
+code_at_recursion_level[ recursion_level ] = global_dashrep_replacement[ current_phrase ] ;  <new_line>
 length_of_code_at_recursion_level[ recursion_level ] = length( code_at_recursion_level[ recursion_level ] ) ;  <new_line>
 pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = 0 ;  <new_line>
 next ;  <new_line>
@@ -271,8 +271,8 @@ pointer_to_remainder_of_output_buffer += length( prefix ) + length_of_tag + 2 ; 
 
 possible_phrase_name_with_hyphens = possible_phrase_name_with_underscores ;  <new_line>
 possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ;  <new_line>
-if ( exists( global_dashrep_replacement{ possible_phrase_name_with_hyphens } ) ) {  <new_line>
-new_output_buffer += global_dashrep_replacement{ possible_phrase_name_with_hyphens } ;  <new_line>
+if ( exists( global_dashrep_replacement[ possible_phrase_name_with_hyphens ] ) ) {  <new_line>
+new_output_buffer += global_dashrep_replacement[ possible_phrase_name_with_hyphens ] ;  <new_line>
 } else {  <new_line>
 new_output_buffer += "<" + possible_phrase_name_with_underscores + ">" ;  <new_line>
 }  <new_line>
