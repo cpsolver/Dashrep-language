@@ -1,8 +1,10 @@
 // no-space dashes-long-line  <new_line>
 
 void function__linewise_read_from_standard_input( ) {  <new_line>
-int local_line_count ;  <new_line>
-std::string local_target_phrase_name ;  <new_line>
+// before: int local_line_count ;  <new_line>
+declare-integer local_line_count ;  <new_line>
+// before: std::string local_target_phrase_name ;  <new_line>
+declare-string local_target_phrase_name ;  <new_line>
 global_action_result = "" ;  <new_line>
 local_target_phrase_name = global_operand_one ;  <new_line>
 

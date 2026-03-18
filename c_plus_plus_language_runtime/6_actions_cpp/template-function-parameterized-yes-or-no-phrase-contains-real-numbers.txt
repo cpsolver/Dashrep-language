@@ -2,8 +2,10 @@
 // function_parameterized__yes_or_no_phrase_contains_real_numbers  <new_line>
 <new_line>
 
-int function_parameterized__yes_or_no_phrase_contains_real_numbers( ) {  <new_line>
-std::string local_text ;  <new_line>
+// before: int function_parameterized__yes_or_no_phrase_contains_real_numbers( ) {  <new_line>
+declare-integer function_parameterized__yes_or_no_phrase_contains_real_numbers( ) {  <new_line>
+// before: std::string local_text ;  <new_line>
+declare-string local_text ;  <new_line>
 local_text = $_[ 0 ] ;  <new_line>
 
 if ( index( local_text , " " ) >= 0 ) {  <new_line>

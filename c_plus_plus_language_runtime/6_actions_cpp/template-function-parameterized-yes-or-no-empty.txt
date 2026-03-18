@@ -2,7 +2,8 @@
 // function_parameterized__yes_or_no_empty  <new_line>
 <new_line>
 
-int function_parameterized__yes_or_no_empty( ) {  <new_line>
+// before: int function_parameterized__yes_or_no_empty( ) {  <new_line>
+declare-integer function_parameterized__yes_or_no_empty( ) {  <new_line>
 
 // before: if ( $_[ 0 ] =~ /[^ ]/ ) {  <new_line>
 if ( $_[ 0 ] looks-like-begin  R"([^ ])" looks-like-end ) {  <new_line>

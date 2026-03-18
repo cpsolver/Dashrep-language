@@ -3,7 +3,8 @@
 <new_line>
 
 void function_parameterized__open_file_for_reading( ) {  <new_line>
-std::string local_file_name ;  <new_line>
+// before: std::string local_file_name ;  <new_line>
+declare-string local_file_name ;  <new_line>
 local_file_name = $_[ 0 ] ;  <new_line>
 
 if ( global_yes_or_no_file_opened_for_reading == global_yes ) {  <new_line>

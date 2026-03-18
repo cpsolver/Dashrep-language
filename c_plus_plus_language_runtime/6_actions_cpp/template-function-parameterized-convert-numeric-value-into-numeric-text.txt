@@ -3,7 +3,8 @@
 <new_line>
 
 void function_parameterized__convert_numeric_value_into_numeric_text( ) {  <new_line>
-int local_numeric ;  <new_line>
+// before: int local_numeric ;  <new_line>
+declare-integer local_numeric ;  <new_line>
 local_numeric = $_[ 0 ] ;  <new_line>
 
 return local_numeric + "" ;  <new_line>

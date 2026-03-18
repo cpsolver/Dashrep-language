@@ -23,8 +23,10 @@ combee ****
 void function__get_url_resource( ) {  <new_line>
 
 // use local variables for command-related variables for added security  <new_line>
-std::string $command_string_without_pipe ;  <new_line>
-std::string $process_id ;  <new_line>
+// before: std::string $command_string_without_pipe ;  <new_line>
+declare-string $command_string_without_pipe ;  <new_line>
+// before: std::string $process_id ;  <new_line>
+declare-string $process_id ;  <new_line>
 
 combee template-return-if-no-permission-to-delete-overwrite-files comenn
 
