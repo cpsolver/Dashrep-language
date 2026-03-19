@@ -31,7 +31,8 @@ for( global_pair_pointer = 0 ; global_pair_pointer <= get_length_of_global_list_
     if ( global_numeric_value == 0 ) {  <new_line>
         global_dashrep_replacement[ global_target_operand ] += "0 " ;  <new_line>
     } else {  <new_line>
-        global_dashrep_replacement[ global_target_operand ] += sprintf( "%d" , global_numeric_value ) + " " ;  <new_line>
+// before:         global_dashrep_replacement[ global_target_operand ] += sprintf( "%d" , global_numeric_value ) + " " ;  <new_line>
+        global_dashrep_replacement[ global_target_operand ] += convert-integer-to-string-begin global_numeric_value  convert-to-string-end  + " " ;  <new_line>
     }  <new_line>
 }  <new_line>
 // before: global_dashrep_replacement[ global_operand_three } =~ s/ +$// ;  <new_line>

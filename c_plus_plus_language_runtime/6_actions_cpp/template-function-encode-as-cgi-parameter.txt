@@ -18,7 +18,14 @@ while ( global_remaining_text looks-like-begin  R"(^(.*?)([^a hyphen-here zA hyp
     global_accumulated_text += $1 ;  <new_line>
     global_character_to_replace = regex-match-two ;  <new_line>
     global_remaining_text = regex-match-three ;  <new_line>
-    global_accumulated_text += "%" + sprintf( "%02x" , ord( global_character_to_replace ) ) ;  <new_line>
+
+// before:  global_accumulated_text += "%" + sprintf( "%02x" , ord( global_character_to_replace ) ) ;  <new_line>
+// requires: #include <cstdio>  <new_line>
+// reminder: %% yields literal "%"  <new_line>
+char char_buffer[ 10 ];  <new_line>
+std::snprintf( char_buffer, sizeof( char_buffer ), "%%%02x", static_cast<unsigned char>( global_character_to_replace[ 0 ] ) );  <new_line>
+global_accumulated_text += char_buffer;  <new_line>
+
 }  <new_line>
 global_accumulated_text += global_remaining_text ;  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_text ;  <new_line>

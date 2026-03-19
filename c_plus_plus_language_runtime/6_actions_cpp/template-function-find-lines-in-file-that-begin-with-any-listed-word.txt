@@ -29,7 +29,8 @@ while ( global_input_line = <INFILE> ) {  <new_line>
     global_length_of_first_word = index( global_input_line , " " ) ;  <new_line>
     global_possible_match = substr( global_input_line , 0 , global_length_of_first_word ) ;  <new_line>
     if ( ( exists( global_matching_text{ global_possible_match } ) ) && ( global_matching_text{ global_possible_match } eq "match" ) ) {  <new_line>
-        global_storage_name = "dashrep hyphen-here storage<character_hyphen>" + sprintf( "%d" , global_storage_number ) ;  <new_line>
+// before:         global_storage_name = "dashrep hyphen-here storage<character_hyphen>" + sprintf( "%d" , global_storage_number ) ;  <new_line>
+        global_storage_name = "dashrep hyphen-here storage<character_hyphen>" + convert-integer-to-string-begin global_storage_number  convert-to-string-end  ;  <new_line>
         global_storage_number ++ ;  <new_line>
         global_dashrep_replacement[ global_storage_name ] = global_input_line ;  <new_line>
         global_list_of_storage_names += global_storage_name + " " ;  <new_line>

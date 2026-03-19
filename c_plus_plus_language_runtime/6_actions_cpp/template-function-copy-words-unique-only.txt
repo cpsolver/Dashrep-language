@@ -72,7 +72,8 @@ for ( global_pointer = 1 ; global_pointer <= global_number_of_unique_words ; glo
     if ( global_pointer > 1 ) {  <new_line>
         global_text_list_of_unique_word_counts += " " ;  <new_line>
     }  <new_line>
-    global_text_list_of_unique_word_counts += sprintf( "%d" , global_occurrence_count_for_word{ global_unique_word_at_position[ global_pointer ] } ) ;  <new_line>
+// before:     global_text_list_of_unique_word_counts += sprintf( "%d" , global_occurrence_count_for_word{ global_unique_word_at_position[ global_pointer ] } ) ;  <new_line>
+    global_text_list_of_unique_word_counts += convert-integer-to-string-begin global_occurrence_count_for_word{ global_unique_word_at_position[ global_pointer ] }  convert-to-string-end  ;  <new_line>
 }  <new_line>
 global_dashrep_replacement[ "list<character_hyphen>of<character_hyphen>unique<character_hyphen>word<character_hyphen>counts" } = global_text_list_of_unique_word_counts ;  <new_line>
 global_dashrep_replacement[ "list<character_hyphen>of<character_hyphen>pointers<character_hyphen>to<character_hyphen>unique<character_hyphen>words" } = global_text_list_of_unique_word_pointers ;  <new_line>
