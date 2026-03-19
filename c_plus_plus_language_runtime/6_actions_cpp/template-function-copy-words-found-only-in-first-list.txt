@@ -57,7 +57,7 @@ if ( global_length_of_loop_list > 0 ) {  <new_line>
     for ( global_pointer = 1 ; global_pointer <= global_length_of_loop_list ; global_pointer ++ ) {  <new_line>
         global_word = global_list_of_loop_words[ global_pointer - 1 ] ;  <new_line>
         global_occurrence_count_for_word{ global_word } ++ ;  <new_line>
-        if ( not( exists( global_listed_word{ global_word } ) ) ) {  <new_line>
+        if ( this-dashrep-phrase global_listed_word[ global_word ] is-not-defined ) {  <new_line>
             global_result_word_list += global_word + " " ;  <new_line>
         }  <new_line>
     }  <new_line>

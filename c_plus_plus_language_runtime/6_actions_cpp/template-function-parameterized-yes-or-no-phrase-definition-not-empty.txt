@@ -17,7 +17,7 @@ return global_no ;  <new_line>
 }  <new_line>
 
 combee **** If the phrase is not defined, define it as empty **** comenn
-if ( not( exists( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+if ( this-dashrep-phrase code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end is-not-defined ) {  <new_line>
 code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end = "" ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>

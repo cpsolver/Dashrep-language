@@ -16,7 +16,7 @@ if ( index( local_text , "-" ) < 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( not( exists( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+if ( this-dashrep-phrase code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end is-not-defined ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
