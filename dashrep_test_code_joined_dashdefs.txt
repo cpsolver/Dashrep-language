@@ -1,633 +1,53 @@
 dashdef-copyright-notice:
 All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2017 by the entity who owns the source code from which this object code was generated, and who is specified in a separate copyright statement within one of the following files within this collection. ALL RIGHTS RESERVED.
 ----
-additional-test-of-dashrep-actions-not-currently-being-tested:
-combee ****
-
-ambee get-definitions-from-phrase amenn
-ambee put-listed-phrase-definitions-into-phrase amenn
-
-ambee copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1  amenn
-ambee ambee handle-double-nested-executable-phrase amenn amenn
-
-**** comenn
+simple-xml-with-tags:
+<begin>dolphin<end>
+<begin>tail<end>
+<begin>fin<end>
+<begin>flippers<end>
 ----
-appended-pattern-item-one:
-dolphin 
+web-page-begin-2-of-2:
+tag-begin /head tag-end
+new-line
+tag-begin body tag-end
 ----
-appended-pattern-item-three:
-whale 
-----
-appended-pattern-item-two:
-octopus 
-----
-case-info-idlistparticipants:
-ambee list-of-numbers amenn
-----
-character-asterisk:
-*
-----
-character-backslash:
-\
-----
-character-close-angle-bracket:
->
-----
-character-double-quote:
-"
-----
-character-equal-sign:
-=
-----
-character-open-angle-bracket:
-<
-----
-character-period:
-.
-----
-character-string-source:
-some words here
-----
-check-dashrep-recognized-phrase-names-in-documentation:
-ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names amenn
-ambee copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore amenn
-ambee copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names amenn
-ambee expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words amenn
-ambee copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names amenn
-ambee copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized amenn
-ambee copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented amenn
-ambee copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized amenn
-ambee copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented amenn
-ambee copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference amenn
-ambee append-text character-period list-of-phrase-names-difference amenn
-ambee append-text character-period list-of-phrase-names-difference amenn
-ambee append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference amenn
-ambee copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference amenn
-----
-code-indirect-executable:
-ambee put-into-phrase sample-count 234 amenn
-ambee numeric-increment sample-count amenn
-ambee numeric-increment sample-count amenn
-sample-count
-----
-code-indirect:
-code-indirect-executable
-----
-column-number:
-5
-----
-contains-angle-bracketed-phrase-names:
-one<character_hyphen>two<character_hyphen>three <item_one> 
-----
-contains-name-test-skip-level-executable-phrase:
-test-skip-level-executable-phrase
-----
-correct-value-for-alpha-something-row-column:
-alphabeta5 
-----
-correct-value-for-alphabetically-sorted-animal-types:
-dolphin octopus starfish whale 
-----
-correct-value-for-calculation-result:
-23 
-----
-correct-value-for-character-result:
-ab1233 
-----
-correct-value-for-check-current-time-in-epoch-seconds:
-greater
-----
-correct-value-for-compare-numbers-equal:
-equal 
-----
-correct-value-for-compare-numbers-greater:
-greater 
-----
-correct-value-for-compare-numbers-less:
-less 
-----
-correct-value-for-compare-result:
-greater equal less 
-----
-correct-value-for-copied-pattern-item-four:
-octopus 
-----
-correct-value-for-copied-pattern-item-one:
-dolphin 
-----
-correct-value-for-copied-pattern-item-three:
-starfish 
-----
-correct-value-for-copied-pattern-item-two:
-whale 
-----
-correct-value-for-counts-from-0-to-7:
-0 1 2 3 4 5 6 7 
-----
-correct-value-for-counts-from-5-to-minus-4:
-5 4 3 2 1 0 -1 -2 -3 -4 
-----
-correct-value-for-expanded-code-indirect:
-236
-----
-correct-value-for-expanded-date-time-frozen-adjusted:
-50 6 53 2017 
-----
-correct-value-for-expanded-date-time-frozen-zero-meridian:
-29 4 5 50 6 53 2017 
-----
-correct-value-for-expanded-entire-standard-web-page:
-<html> <head> <title>List of participants</title> </head> <body> <h1>List of participants</h1> <ul> <li>James (Conservative)</li> <li>Nicole (Bloc Qu&eacute;b&eacute;cois)</li> <li>Eduard (Liberal)</li> <li>Robert (New Democratic)</li> <li>Diane (Conservative)</li> </ul> </body> </html>
-----
-correct-value-for-expanded-test-of-dashrep-actions:
-text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases inline text text-that-occurs-after-parameter-phrases
-----
-correct-value-for-found-line-about-dolphins:
-dolphin info about dolphins
-----
-correct-value-for-initial-caps-list-of-animal-types:
-Dolphin Whale Starfish Octopus 
-----
-correct-value-for-input-cgi-value-one:
-123 
-----
-correct-value-for-input-cgi-value-two:
-abc xyz 
-----
-correct-value-for-list-from-rearranged-alphabetic:
-Thomas_Jefferson Abe_Lincoln Paul_MacCready Nikola_Tesla 
-----
-correct-value-for-list-from-rearranged-numeric:
-one three five seven twelve 
-----
-correct-value-for-list-of-counter-increment-decrement-values:
-1 0 -1 0 
-----
-correct-value-for-list-of-file-line-numbers:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-----
-correct-value-for-list-of-first-items-in-two-dimensions:
-0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 
-----
-correct-value-for-list-of-first-words-in-file:
-entry_begin uniqueid datetime title description entry_end entry_end entry_begin uniqueid datetime title description entry_end entry_end dolphin octopus whale otter otter dolphin dolphin dolphin dolphin octopus octopus whale
-----
-correct-value-for-list-of-gathered-ids:
-102 101 
-----
-correct-value-for-list-of-pointers-to-unique-words:
-1 2 3 4 5 7 8 13 
-----
-correct-value-for-list-of-prepended-items:
-alpha gamma other 
-----
-correct-value-for-list-of-repeated-text:
-number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 
-----
-correct-value-for-list-of-second-items-in-two-dimensions:
-5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 
+template-string-correct-value-for-hyphen:
+correct hyphen-here value hyphen-here for hyphen-here 
 ----
 correct-value-for-list-of-unique-word-counts:
 2 2 1 3 1 2 1 1 
 ----
-correct-value-for-list-of-values-in-column-1:
-uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
-----
-correct-value-for-list-of-values-in-column-2:
-101 2016 Robbery On 102 2016 Another On info info info info octopus whale octopus otter whale otter otter
-----
-correct-value-for-list-of-words-that-begin-with-listed-words:
-and-something-else 
-----
-correct-value-for-list-of-words-that-begin-with-text:
-here-is-something here-is-something-else 
-----
-correct-value-for-list-ordered-pairwise-words-one:
-dolphin dolphin dolphin whale whale starfish 
-----
-correct-value-for-list-ordered-pairwise-words-two:
-whale starfish octopus starfish octopus octopus 
-----
-correct-value-for-list-with-dups-without-extra-spaces:
-alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever 
-----
-correct-value-for-minimum-maximum-result:
-2 8 3 4 
-----
-correct-value-for-multiple-yes-no-checks:
-no_yes_yes_no_no_yes_yes_no_yes_no_yes_no 
-----
-correct-value-for-pointers-to-beginning-of-tags:
-1 15 21 32 38 48 54 69 
-----
-correct-value-for-pointers-to-end-of-tags:
-7 19 27 36 44 52 60 73 
-----
-correct-value-for-pointers-to-multiple-matching-words:
-1 4 11 14 16 19 26 29 
-----
-correct-value-for-result-append-multiple:
-dolphin octopus whale 
-----
-correct-value-for-result-before-listed-phrases-cleared:
-123 123 123 
-----
-correct-value-for-result-before-listed-phrases-deleted:
-123 123 123 
-----
-correct-value-for-result-calculation-absolute:
-6 
-----
-correct-value-for-result-calculation-cosine:
-0.8775 
-----
-correct-value-for-result-calculation-division:
-2.3333 
-----
-correct-value-for-result-calculation-even:
-even 
-----
-correct-value-for-result-calculation-integer:
-7 
-----
-correct-value-for-result-calculation-odd:
-odd 
-----
-correct-value-for-result-calculation-sine:
-0.4794 
-----
-correct-value-for-result-calculation-subtraction:
-4 
-----
-correct-value-for-result-contents-from-file-append-repeated:
-dolphin whale starfish octopus dolphin whale starfish octopus
-----
-correct-value-for-result-contents-from-file-renamed:
-dolphin whale starfish octopus
-----
-correct-value-for-result-contents-from-file-write-and-read:
-dolphin whale starfish octopus
-----
-correct-value-for-result-decoded-cgi-parameter:
-and a <span style="whatever">dolphin</span>
-----
-correct-value-for-result-for-action-copy-from-columns-in-file-to-named-phrases:
-uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
-----
-correct-value-for-result-integers-positive-sorted:
--72 -36 -28 -1 0 1 3 12 17 94
-----
-correct-value-for-result-list-of-expected-files-found:
-output_for_test_appending_to_file.txt
-output_for_test_writing_to_file.txt
-----
-correct-value-for-result-list-of-expected-folders-found:
-compiler_source
-test_dashrep_code
-----
-correct-value-for-result-numeric-y-map-tile-number:
-1473.433751
-----
-correct-value-for-result-of-numeric-add:
-6.2 
-----
-correct-value-for-result-of-numeric-logarithm-base-10:
-0.544068044350276 
-----
-correct-value-for-result-of-numeric-logarithm-base-e:
-1.25276296849537 
-----
-correct-value-for-result-of-numeric-vector-absolutes:
-1 82 3 
-----
-correct-value-for-result-of-numeric-vector-integers:
--1 82 -3 
-----
-correct-value-for-result-of-numeric-vectors-divide-by:
-0 -9 1000000 
-----
-correct-value-for-result-of-numeric-vectors-multiply:
--36 -742 0 
-----
-correct-value-for-result-of-testing-if-begin-actions:
-one four six seven nine eleven 
-----
-correct-value-for-result-of-zero-or-nonzero:
-nonzero 
-----
-correct-value-for-result-text-after-move-attributes-inside-tags:
-<img href="image.jpg" alt="image" />
-----
-correct-value-for-result-text-after-remove-attributes-from-tags:
-and a <span>dolphin</span>
-----
-correct-value-for-result-yes-or-no-file-exists-no:
-no 
-----
-correct-value-for-result-yes-or-no-file-exists-yes:
-yes 
-----
-correct-value-for-result-yes-or-no-file-write-read-successful:
-yes
-----
-correct-value-for-result-yes-or-no-folder-exists:
-no
-----
-correct-value-for-results-of-two-dimensional-sort:
-row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 
-----
-correct-value-for-results-position-of-matching-text:
-4 
-----
-correct-value-for-results-replacements-using-paired-words:
-fliers songflier swimmer clownswimmer 
-----
-correct-value-for-reversed-list:
-octopus starfish whale dolphin 
-----
-correct-value-for-sample-word-list-one:
-" alpha alpha-here and beta gamma beta delta<new_line> " 
-----
-correct-value-for-sample-word-list-three:
-" alpha-here and gamma delta something-here whatever<new_line> " 
-----
-correct-value-for-sample-word-list-two:
-" something-here alpha alpha-here beta delta whatever<new_line> "  
-----
-correct-value-for-should-be-17:
-17 
-----
-correct-value-for-should-be-beta-gamma:
-beta gamma 
-----
-correct-value-for-should-be-copied-text:
-first_word second_word 
-----
-correct-value-for-should-be-counts-3-and-minus-2:
-3 -2 
-----
-correct-value-for-should-be-item-with-value-7:
-7 
-----
-correct-value-for-should-be-length-0:
-0 
-----
-correct-value-for-should-be-length-1:
-1 
-----
-correct-value-for-should-be-length-7:
-7 
-----
-correct-value-for-should-be-multiple:
-multiple 
-----
-correct-value-for-should-be-number-four:
-4 
-----
-correct-value-for-should-be-number-three:
-3 
-----
-correct-value-for-should-be-one:
-one 
-----
-correct-value-for-should-be-same-no:
-no 
-----
-correct-value-for-should-be-same-words-no:
-no 
-----
-correct-value-for-should-be-same-words-yes:
-yes 
-----
-correct-value-for-should-be-same-yes:
-yes 
-----
-correct-value-for-should-be-size-one:
-1 
-----
-correct-value-for-should-be-size-three:
-3 
-----
-correct-value-for-should-be-size-zero:
-0 
-----
-correct-value-for-should-be-zero:
-zero 
-----
-correct-value-for-single-animal-type:
-whale 
-----
-correct-value-for-single-gathered-info:
-??? 
-----
-correct-value-for-some-text-with-underscores:
-here _ is _ some _ text _ with _ underscores 
-----
-correct-value-for-specification-value-for-name-value-two:
-some text here for value-two
-----
-correct-value-for-specification-value-for-name-valuethree:
-some text here for value three
-----
-correct-value-for-specification-value-for-name-value_one:
-some text here for value_one
-----
-correct-value-for-string-123-padded:
-00123 
-----
 correct-value-for-test-of-comment-delimiters:
 beginning text middle text ending text 
 ----
-correct-value-for-text-copied-lowercase:
-abc def 123 
+string-123:
+123  
+----
+web-page-begin-1-of-2:
+tag-begin html tag-end
+tag-begin head tag-end
+tag-begin title tag-end no-space
+words-web-page-title
+no-space tag-begin /title tag-end
 ----
 correct-value-for-text-copied-uppercase:
 ABC DEF 123 
 ----
-correct-value-for-text-copied-without-first-word:
-DEF 123 
-----
-correct-value-for-text-copied-without-last-word:
-abc DEF 
-----
-correct-value-for-text-with-adjacent-spaces-replaced:
-first_word second_word 
-----
-correct-value-for-text-with-spaces:
-12345 67890 54321 
-----
-correct-value-for-text-with-tag-and-attribute:
-<p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> 
-----
-correct-value-for-trace-results-from-curl:
-starting_curl_command curl -k -s -S -o temp_url_output.txt http://www.votefair.org/americanidol.html ending_curl_command
-----
-correct-value-for-unique-words:
-alpha alpha-here and beta gamma delta something-here whatever 
-----
-correct-value-for-value-inserted-if-skip-level-ok:
-ok
-----
-correct-value-for-vector-result-add-number:
-10 16 -11 
-----
-correct-value-for-vector-result-addition:
-38 14 -4 
-----
-correct-value-for-vector-result-distances:
-27 25 4 
-----
-correct-value-for-vector-result-multiply-by-number:
-119 161 -28 
+column-number:
+5
 ----
 correct-value-for-word-count-extra-space:
 3 
 ----
-correct-value-for-word-count:
-3 
-----
-correct-value-for-word-list-in-both:
-alpha alpha-here beta delta 
-----
-correct-value-for-word-list-in-either:
-beta whatever something-here gamma alpha-here alpha delta and 
-----
-correct-value-for-word-list-in-first-only:
-alpha beta beta alpha beta 
-----
-correct-value-for-word-list-result:
-1-3-0 
+list-of-animal-types:
+dolphin whale starfish octopus
 ----
 correct-value-for-yes-if-file-size-non-zero:
 yes
 ----
-correct-value-for-yes-if-got-modification-time-of-file:
-yes 
-----
-dashrep-action-trace-on-yes-or-no:
-yes
-----
-dashrep-gather-tag-begin:
-entry_begin
-----
-dashrep-gather-tag-delete:
-tag_delete
-----
-dashrep-gather-tag-end:
-entry_end
-----
-dashrep-gather-tag-matching-id:
-----
-dashrep-gather-tag-unique:
-uniqueid
-----
-dashrep-path-prefix-for-file-reading:
-----
-dashrep-path-prefix-for-file-writing:
-----
-dashrep-special-replacement-adjacent-space:
-&nbsp; 
-----
-dashrep-special-replacement-hyphen:
-&ndash; 
-----
-dashrep-special-replacement-newline:
-[eol]
-----
-dashrep-warning-trace-on-yes-or-no:
-yes
-----
-display-values-all-ok:
-All values OK! (no errors)
-----
-display-values-not-ok:
-Not all values are OK. (Errors!)
-----
-do-check-for-correct-values:
-ambee expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen amenn
-ambee generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases amenn
-ambee copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen amenn
-ambee copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text amenn
-
-*---
-ambee trace-show list-of-phrases-to-check-for-correct-value amenn
----*
-
-ambee use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value amenn
-ambee put-into-phrase yes-or-no-all-values-are-correct ambee yes-if-all-yes ambee list-of-yes-or-no-values-are-correct amenn amenn amenn
-
-*---
-ambee trace-show full-display-values-not-correct amenn
-ambee trace-show list-of-phrases-with-correct-values amenn
----*
-----
-entire-standard-web-page:
-web-page-begin-1-of-2
-web-page-begin-2-of-2
-ambee page-participants-list amenn
-web-page-end
-----
-epoch-seconds-frozen-in-time:
-1498715453 
-----
-expanded-contains-angle-bracketed-phrase-names:
-one-two-three waltz 
-----
-filename-output-for-test-appending-to-file:
-output_for_test_appending_to_file.txt
-----
-filename-output-for-test-writing-to-file:
-output_for_test_writing_to_file.txt
-----
-first-word-phrase:
-first_word 
-----
-format-begin-heading-level-1:
-tag-begin h1 tag-end no-space
-----
-format-end-heading-level-1:
-no-space  tag-begin /h1 tag-end
-----
-grep-at-file-name:
-ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-
-combee
-ambee clear-phrase action-name amenn
-ambee clear-phrase action-name-for-getting-operand-checks amenn
-ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
-ambee copy-word-at-position list-of-backslash-character-positions last-backslash-position 9999 amenn
-ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
-ambee copy-and-replace file-name file-name-split character-period character-space amenn
-ambee copy-word-at-position file-name-split file-name-root 1 amenn
-comenn
-
-
-combee ****
-ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
-ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
-ambee if-end amenn
-
-ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
-ambee grep-case-file-name-root-begins-with-template-function amenn
-ambee if-end amenn
-
-ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-runtime-code-for-action file-name-root amenn 1 amenn amenn amenn
-ambee grep-case-file-name-root-begins-with-template-runtime-code-for-action amenn
-ambee if-end amenn
-**** comenn
-----
-grep-case-file-name-root-begins-with-operand-checks-for-action:
-ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-operand-checks-for-action amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name-for-getting-operand-checks ambee prefix-length-plus-one amenn 9999 amenn
-----
-grep-case-file-name-root-begins-with-template-function:
-ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-function amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
-----
-grep-case-file-name-root-begins-with-template-runtime-code-for-action:
-ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-runtime-code-for-action amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
+text-to-repeat:
+number 9  
 ----
 grep-collect-operand-checks:
 ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
@@ -639,8 +59,95 @@ ambee append-new-line operand-checks amenn
 ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
 ambee if-end amenn
 ----
-grep-compiler-source-code:
-ambee linewise-read-from-file-and-use-handler compiler_joined_files_for_possible_global_updates.txt grep-handle-one-line amenn
+placeholder-value-of-phrase-name:
+<placeholder_value_of_phrase_name>
+----
+string-got-here-end:
+' ;  <new_line>
+----
+correct-value-for-list-of-pointers-to-unique-words:
+1 2 3 4 5 7 8 13 
+----
+contains-angle-bracketed-phrase-names:
+one<character_hyphen>two<character_hyphen>three <item_one> 
+----
+list-of-files-to-find:
+output_for_test_writing_to_file.txt
+output_for_test_appending_to_file.txt
+----
+correct-value-for-should-be-length-0:
+0 
+----
+correct-value-for-yes-if-got-modification-time-of-file:
+yes 
+----
+display-values-not-ok:
+Not all values are OK. (Errors!)
+----
+correct-value-for-should-be-multiple:
+multiple 
+----
+symbol-two-periods:
+..
+----
+word-other:
+other  
+----
+correct-value-for-list-of-file-line-numbers:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+----
+correct-value-for-counts-from-5-to-minus-4:
+5 4 3 2 1 0 -1 -2 -3 -4 
+----
+dashrep-gather-tag-unique:
+uniqueid
+----
+correct-value-for-pointers-to-end-of-tags:
+7 19 27 36 44 52 60 73 
+----
+format-begin-heading-level-1:
+tag-begin h1 tag-end no-space
+----
+string-ok-colon:
+OK:
+----
+correct-value-for-should-be-17:
+17 
+----
+correct-value-for-list-of-first-words-in-file:
+entry_begin uniqueid datetime title description entry_end entry_end entry_begin uniqueid datetime title description entry_end entry_end dolphin octopus whale otter otter dolphin dolphin dolphin dolphin octopus octopus whale
+----
+text-containing-period:
+abc.def.ghi  
+----
+correct-value-for-should-be-size-one:
+1 
+----
+list-of-numbers:
+3 12 7 13 4
+----
+grep-case-file-name-root-begins-with-template-runtime-code-for-action:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-runtime-code-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
+----
+grep-case-file-name-root-begins-with-template-function:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-function amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
+----
+vector-one:
+17 23 -4  
+----
+code-indirect-executable:
+ambee put-into-phrase sample-count 234 amenn
+ambee numeric-increment sample-count amenn
+ambee numeric-increment sample-count amenn
+sample-count
+----
+web-page-title:
+No hyphen-here title no-space
+----
+tag-begin:
+< no-space
 ----
 grep-handle-one-line:
 ambee put-into-phrase word-count-input-line  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
@@ -662,208 +169,295 @@ ambee append-text-no-space linewise-input-line-from-file revised-compiler-source
 ambee append-new-line revised-compiler-source-code amenn
 comenn
 ----
-grep-insert-operand-checks:
-ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
-ambee append-text-no-space string-got-here-begin revised-compiler-source-code amenn
-ambee append-text-no-space action-name-with-underscores revised-compiler-source-code amenn
-ambee append-text-no-space string-got-here-end revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
-ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
-ambee if-else amenn
-ambee clear-phrase operand-checks amenn
-ambee if-end amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
-ambee append-text-no-space operand-checks revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-ambee if-end amenn
-
-ambee clear-phrase action-name amenn
+placeholder-phrase-name:
+<placeholder_phrase_name>
 ----
-grep-not-at-file-name:
-ambee put-into-phrase text-to-find  function__  amenn
-
-ambee if-yes-begin ambee yes-or-no-same-two-words nonzero ambee zero-or-nonzero ambee get-position-of-matching-text text-to-find linewise-input-line-from-file amenn amenn amenn amenn
-ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-ambee if-end amenn
-
-
-combee
-ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
-ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
-ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
-comenn
-
-
-combee ****
-ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
-ambee grep-insert-operand-checks amenn
-ambee if-else amenn
-ambee grep-not-at-sub-function amenn
-ambee if-end amenn
-**** comenn
+yes-or-no-use-two-spaces-as-column-delimiter:
+no
 ----
-grep-not-at-needed-operand-checks:
+correct-value-for-compare-numbers-less:
+less 
 ----
-grep-not-at-sub-function:
-ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-needed-operand-checks amenn amenn
-ambee grep-insert-operand-checks amenn
-ambee if-else amenn
-ambee grep-collect-operand-checks amenn
-ambee if-end amenn
+vector-two:
+21 -9 0  
 ----
-handle-display-input-phrase-name-and-definition:
-ambee copy-text word-to-use-in-handler input-phrase-name amenn
-ambee copy-text html-list-item-begin display-one-input-phrase-with-value amenn
-ambee copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen amenn
-ambee append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value amenn
-ambee append-text character-equal-sign display-one-input-phrase-with-value amenn
-ambee copy-definition-of-named-phrase input-phrase-name input-phrase-definition amenn
-ambee append-text input-phrase-definition display-one-input-phrase-with-value amenn
-ambee append-text-no-space html-list-item-end display-one-input-phrase-with-value amenn
-ambee append-text-no-space character-newline display-one-input-phrase-with-value amenn
-ambee append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases amenn
+test-counter:
+17 
 ----
-handle-get-next-specification-from-phrase:
-ambee copy-text word-to-use-in-handler pointer-to-next-asterisk amenn
-ambee copy-characters-from-position-to-position sample-specifications-in-phrase current-specification-name-and-value ambee numeric-add ambee pointer-to-previous-asterisk amenn 2 amenn ambee numeric-minus ambee pointer-to-next-asterisk amenn 2 amenn amenn
-ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-name 1 1 amenn
-ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-value 2 9999 amenn
-ambee copy-text current-specification-value specification-value-for-name fenambee current-specification-name amenn amenn
-ambee copy-text pointer-to-next-asterisk pointer-to-previous-asterisk amenn
+correct-value-for-result-of-numeric-vectors-multiply:
+-36 -742 0 
 ----
-handle-linewise-read-from-file:
-ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase first-word amenn amenn
-ambee append-text first-word list-of-first-words-in-file amenn
-ambee if-end amenn
-
-ambee append-text linewise-input-line-count list-of-file-line-numbers amenn
+text-begins-with-here-is:
+here-is
 ----
-handle-one-check-for-correct-value:
-ambee copy-text word-to-use-in-handler phrase-name amenn
-
-*---
-ambee trace-show phrase-name amenn
----*
-
-ambee put-into-phrase yes-or-no-value-is-correct ambee yes-or-no-same-two-phrase-definitions ambee phrase-name amenn correct-value-for-[-phrase-name amenn amenn amenn
-ambee append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct amenn
-ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
-
-ambee if-no-begin ambee yes-or-no-value-is-correct amenn amenn
-ambee expand-text template-display-value-is-not-correct display-value-is-not-correct amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name ambee phrase-name amenn amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name amenn amenn
-ambee append-text-no-space display-value-is-not-correct full-display-values-not-correct amenn
-ambee append-text phrase-name list-of-phrases-with-incorrect-values amenn
-ambee if-else amenn
-ambee append-text phrase-name list-of-phrases-with-correct-values amenn
-ambee if-end amenn
+text-for-multiple-find:
+fish bird 
 ----
-handle-one-named-participant:
-ambee expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant amenn
-ambee append-text expanded-content-for-named-participant generated-list-named-participant-names-full amenn
+correct-value-for-reversed-list:
+octopus starfish whale dolphin 
 ----
-html-entity-hyphen:
-&#45;
+correct-value-for-copied-pattern-item-three:
+starfish 
 ----
-html-list-item-begin:
-<li>
+correct-value-for-result-calculation-subtraction:
+4 
 ----
-html-list-item-end:
-</li>
+yes-or-no-permission-to-append-to-files:
+yes
 ----
-input-filename-containing-data-to-test-gather-find-actions:
-input-data-to-test-gather-find-actions.txt
+string-got-here-begin:
+$global_action_name_with_underscores = '
+----
+correct-value-for-should-be-number-four:
+4 
+----
+correct-value-for-result-append-multiple:
+dolphin octopus whale 
+----
+first-word-phrase:
+first_word 
+----
+unused-correct-value-for-found-line-for-animal-combination:
+dolphin octopus intersection of dolphin and octopus
+----
+prefix-text:
+abc
+----
+string-three:
+three
 ----
 input-filename-for-cgi-information:
 input_cgi_information.txt
 ----
-input-right-values:
-12 -3 6 23 15 9 22 17 2 -5 10
+test-of-space-and-line-directives:
+Content-type: text/html
+<new_line>
+<new_line>
+<html>
+<new_line>
+<head>
+<new_line>
+<title> no-space web-page-title no-space </title>
+<new_line>
 ----
-input-up-values:
-8 -9 4 2 18 3 11 9 12 6 7
+correct-value-for-calculation-result:
+23 
 ----
-intended-result-of-parameter-substitution:
-abc-def-ghi-jkl-mno
+correct-value-for-result-of-testing-if-begin-actions:
+one four six seven nine eleven 
 ----
-item-one:
-waltz 
+correct-value-for-result-before-listed-phrases-cleared:
+123 123 123 
 ----
-item-two:
-dance 
+template-html-to-display-in-browser:
+Content-type: text/html<new_line>
+<new_line>
+<html>  <new_line>
+<head>  <new_line>
+<title>Response from test code</title>  <new_line>
+</head>  <new_line>
+<body>  <new_line>
+<h1>CGI information</h1>  <new_line>
+<ul>  <new_line>
+list-of-displayed-input-phrases
+no-space
+</ul>  <new_line>
+<h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
+<p>Phrases with wrong values: list-of-phrases-with-incorrect-values-version-html no-space </p>  <new_line>
+<p>Phrases with correct values: list-of-phrases-with-correct-values-version-html no-space </p>  <new_line>
+</body>  <new_line>
+</html>  <new_line>
 ----
-list-containing-only-phrase-name-list-of-phrases-newly-defined:
-list-of-phrases-newly-defined 
+correct-value-for-pointers-to-multiple-matching-words:
+1 4 11 14 16 19 26 29 
 ----
-list-from-which-to-remove-last-item:
-12, 56, 72
+template-date-time-full:
+time-day-of-month
+time-day-of-week
+time-hour
+time-minute
+time-month-number
+time-second
+time-year
 ----
-list-of-animal-types:
-dolphin whale starfish octopus
+correct-value-for-specification-value-for-name-value-two:
+some text here for value-two
+----
+correct-value-for-result-of-zero-or-nonzero:
+nonzero 
+----
+string-seven:
+seven
+----
+correct-value-for-check-current-time-in-epoch-seconds:
+greater
+----
+value-inserted-if-skip-level-ok:
+ok 
+----
+text-with-extra-spaces:
+12 34  56   78   90
+----
+correct-value-for-specification-value-for-name-value_one:
+some text here for value_one
+----
+correct-value-for-list-of-values-in-column-1:
+uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
 ----
 list-of-decimal-numbers:
 1.0 0.0 -4.2 9.666 -0.002 32.7 21.4 -7.7 42.5 0.100
 ----
-list-of-files-to-find:
-output_for_test_writing_to_file.txt
-output_for_test_appending_to_file.txt
+html-list-item-begin:
+<li>
 ----
-list-of-folders-to-find:
-compiler_source
-test_dashrep_code
+correct-value-for-copied-pattern-item-two:
+whale 
 ----
-list-of-integers-positive-and-negative:
-12 -72 0 3 -28 94 -36 1 17 -1
+template-display-value-is-not-correct:
+ERROR: Value of phrase "<placeholder_phrase_name>" is "<placeholder_value_of_phrase_name>" but should be "<placeholder_correct_value_for_phrase_name>"
+<new_line>
 ----
-list-of-integers-positive:
-12 72 0 3 28 94 36 103 17 1
+correct-value-for-list-ordered-pairwise-words-one:
+dolphin dolphin dolphin whale whale starfish 
 ----
-list-of-number-words-by-name:
-seven one five three twelve
+correct-value-for-text-with-adjacent-spaces-replaced:
+first_word second_word 
 ----
-list-of-numbers-as-text:
-one two three four five six seven eight nine ten
+character-equal-sign:
+=
 ----
-list-of-numbers-matching-number-words-by-name:
-7 1 5 3 12
+string-nine:
+nine
 ----
-list-of-numbers:
-3 12 7 13 4
+string-sub:
+sub
 ----
-list-of-person-names-first-underscore-last:
-Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready 
+correct-value-for-results-of-two-dimensional-sort:
+row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 
 ----
-list-of-person-names-lowercase-last-underscore-first:
-tesla_nikola lincoln_abe jefferson_thomas maccready_paul 
+output-filename:
+output_display_values_not_correct.txt
 ----
-list-of-phrases-to-clear:
-phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three 
+correct-value-for-should-be-length-1:
+1 
 ----
-list-of-phrases-to-delete:
-phrase-to-delete-one phrase-to-delete-two phrase-to-delete-three 
+correct-value-for-list-of-counter-increment-decrement-values:
+1 0 -1 0 
 ----
-list-of-size-three:
-4 5 6 
+input-right-values:
+12 -3 6 23 15 9 22 17 2 -5 10
 ----
-list-of-words-to-search-based-on-prefix:
-here-is-something here-is-something-else hereis-something-else and-something-else 
+test-of-adjacent-parameter-values:
+g7r[-row-number-]c[-column-number-]
+----
+string-words-inline-text:
+inline text
+----
+grep-not-at-needed-operand-checks:
+----
+grep-case-file-name-root-begins-with-operand-checks-for-action:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-operand-checks-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-for-getting-operand-checks ambee prefix-length-plus-one amenn 9999 amenn
+----
+correct-value-for-some-text-with-underscores:
+here _ is _ some _ text _ with _ underscores 
+----
+sample-word-list-two:
+something-here alpha alpha-here beta delta whatever 
+----
+phrase-to-delete-one:
+123 
+----
+text-with-tags-attributes-inside-tags:
+and a <span style="whatever">dolphin</span>
+----
+test-expand-text-inline:
+ambee copy-text string-words-inline-text copy-of-string-words-inline-text amenn
+copy-of-string-words-inline-text
+----
+string-two:
+two
 ----
 middle-text:
 ghi
 ----
-numeric-map-tile-zoom:
-12
+correct-value-for-counts-from-0-to-7:
+0 1 2 3 4 5 6 7 
 ----
-output-filename:
-output_display_values_not_correct.txt
+phrase-to-delete-two:
+123 
+----
+additional-test-of-dashrep-actions-not-currently-being-tested:
+combee ****
+
+ambee get-definitions-from-phrase amenn
+ambee put-listed-phrase-definitions-into-phrase amenn
+
+ambee copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1  amenn
+ambee ambee handle-double-nested-executable-phrase amenn amenn
+
+**** comenn
+----
+dashrep-warning-trace-on-yes-or-no:
+yes
+----
+string-template-function:
+template-function-
+----
+string-twelve:
+twelve
+----
+correct-value-for-result-calculation-even:
+even 
+----
+correct-value-for-should-be-item-with-value-7:
+7 
+----
+correct-value-for-result-of-numeric-logarithm-base-e:
+1.25276296849537 
+----
+correct-value-for-expanded-entire-standard-web-page:
+<html> <head> <title>List of participants</title> </head> <body> <h1>List of participants</h1> <ul> <li>James (Conservative)</li> <li>Nicole (Bloc Qu&eacute;b&eacute;cois)</li> <li>Eduard (Liberal)</li> <li>Robert (New Democratic)</li> <li>Diane (Conservative)</li> </ul> </body> </html>
+----
+sample-word-list-one:
+alpha alpha-here and beta gamma beta delta 
+----
+suffix-text:
+mno
+----
+text-with-tags-attributes-outside-of-tags:
+<img /><attribute href="image.jpg"><attribute alt="image">
+----
+check-dashrep-recognized-phrase-names-in-documentation:
+ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names amenn
+ambee copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names amenn
+ambee expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented amenn
+ambee copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference amenn
+ambee copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference amenn
+----
+correct-value-for-specification-value-for-name-valuethree:
+some text here for value three
+----
+correct-value-for-sample-word-list-two:
+" something-here alpha alpha-here beta delta whatever<new_line> "  
+----
+correct-value-for-should-be-size-three:
+3 
+----
+correct-value-for-result-yes-or-no-file-write-read-successful:
+yes
+----
+html-list-item-end:
+</li>
 ----
 page-participants-list:
 ambee put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  ambee case-info-idlistparticipants amenn  amenn
@@ -876,106 +470,103 @@ tag-begin ul tag-end
 generated-list-named-participant-names-full
 tag-begin /ul tag-end
 ----
-paired-words-for-replacements:
-bird flier fish swimmer 
+text-for-multiple-search:
+birds songbird fish clownfish 
+----
+template-spoken-words-split-to-avoid-replacement-here:
+dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray 
+----
+string-template-runtime-code-for-action:
+template-runtime-code-for-action-
+----
+correct-value-for-result-of-numeric-vectors-divide-by:
+0 -9 1000000 
+----
+todo-correct-value-for-skipped-list-of-numbers:
+???
 ----
 participant-fullname-for-participantid-12:
 Nicole (Bloc Qu&eacute;b&eacute;cois)
 ----
-participant-fullname-for-participantid-13:
-Robert (New Democratic)
+correct-value-for-list-from-rearranged-numeric:
+one three five seven twelve 
 ----
-participant-fullname-for-participantid-3:
-James (Conservative)
+correct-value-for-input-cgi-value-two:
+abc xyz 
 ----
-participant-fullname-for-participantid-4:
-Diane (Conservative)
+correct-value-for-alpha-something-row-column:
+alphabeta5 
 ----
-participant-fullname-for-participantid-7:
-Eduard (Liberal)
+test-assignment:
+17 
 ----
-pattern-for-appended-items:
-appended-pattern-item-ambee-list-of-numbers-as-text-amenn
+entire-standard-web-page:
+web-page-begin-1-of-2
+web-page-begin-2-of-2
+ambee page-participants-list amenn
+web-page-end
 ----
-pattern-for-copied-items:
-copied-pattern-item-ambee-list-of-numbers-as-text-amenn
+correct-value-for-result-contents-from-file-renamed:
+dolphin whale starfish octopus
 ----
-phrase-that-contains-hyphenated-phrases:
-hyphenated-content-here hyphenated-content-here
+string-word-hyphens:
+hyphens 
 ----
-phrase-to-clear-one:
-123 
+string-start-of-next-file-bracketed:
+<START_OF_NEXT_FILE>
 ----
-phrase-to-clear-three:
-123 
+correct-value-for-list-of-repeated-text:
+number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 
 ----
-phrase-to-clear-two:
-123 
+correct-value-for-word-list-in-first-only:
+alpha beta beta alpha beta 
 ----
-phrase-to-delete-one:
-123 
+correct-value-for-expanded-test-of-dashrep-actions:
+text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases inline text text-that-occurs-after-parameter-phrases
 ----
-phrase-to-delete-three:
-123 
+test-of-insert-codeview-tags:
+ambee copy-text text-being-codified dashrep-code-with-inserted-codeview-tags amenn
+ambee insert-codeview-tags dashrep-code-with-inserted-codeview-tags amenn
 ----
-phrase-to-delete-two:
-123 
+correct-value-for-text-with-tag-and-attribute:
+<p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> 
 ----
-placeholder-correct-value-for-phrase-name:
-<placeholder_correct_value_for_phrase_name>
+correct-value-for-alphabetically-sorted-animal-types:
+dolphin octopus starfish whale 
 ----
-placeholder-new-line:
-<new_line>
+words-preface-to-list-of-correct-values:
+List of phrases correctly calculated:
 ----
-placeholder-phrase-name:
-<placeholder_phrase_name>
+input-up-values:
+8 -9 4 2 18 3 11 9 12 6 7
 ----
-placeholder-value-of-phrase-name:
-<placeholder_value_of_phrase_name>
+two-dimensional-sort:
+ambee numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort amenn
 ----
-prefix-text:
-abc
+list-of-numbers-matching-number-words-by-name:
+7 1 5 3 12
 ----
-result-of-testing-of-adjacent-parameter-values:
-g7r3c5
+item-one:
+waltz 
 ----
-row-number:
-3
+code-indirect:
+code-indirect-executable
 ----
-sample-specifications-in-phrase:
-value_one some text here for value_one *
-value-two some text here for value-two *
-valuethree some text here for value three *
+correct-value-for-should-be-counts-3-and-minus-2:
+3 -2 
 ----
-sample-word-list-one:
-alpha alpha-here and beta gamma beta delta 
+correct-value-for-result-of-numeric-vector-absolutes:
+1 82 3 
 ----
-sample-word-list-three:
-alpha-here and gamma delta something-here whatever 
+correct-value-for-result-list-of-expected-folders-found:
+compiler_source
+test_dashrep_code
 ----
-sample-word-list-two:
-something-here alpha alpha-here beta delta whatever 
+string-abc:
+abc 
 ----
-sample-word-list:
-alpha beta gamma delta 
-----
-second-word-phrase:
-second_word 
-----
-simple-xml-with-tags:
-<begin>dolphin<end>
-<begin>tail<end>
-<begin>fin<end>
-<begin>flippers<end>
-----
-single-phrase-to-replace:
-replaced-phrase
-----
-some-text-with-hyphens:
-here - is - some - text - with - hyphens 
-----
-something-about-row-3:
-beta 
+correct-value-for-result-yes-or-no-folder-exists:
+no
 ----
 start-here:
 
@@ -1009,302 +600,6 @@ ambee copy-from-phrase-append-to-file words-preface-to-list-of-correct-values am
 ambee copy-from-phrase-append-to-file list-of-phrases-with-correct-values ambee output-filename amenn amenn
 
 ambee expand-text template-html-to-display-in-browser standard-output amenn
-----
-string-123:
-123  
-----
-string-abc:
-abc 
-----
-string-assignment-line-to-insert:
-$global_action_name = 'whatever' ;  <new_line>
-----
-string-begin-operand-check:
-com_bee **** template-
-----
-string-category-underscore:
-category_  
-----
-string-eight:
-eight
-----
-string-eleven:
-eleven
-----
-string-end-operand-check:
-**** com_enn
-----
-string-five:
-five
-----
-string-four:
-four
-----
-string-got-here-begin:
-$global_action_name_with_underscores = '
-----
-string-got-here-end:
-' ;  <new_line>
-----
-string-needed-operand-checks:
-needed-operand-checks
-----
-string-nine:
-nine
-----
-string-not-ok-colon:
-NOT_OK:
-----
-string-ok-colon:
-OK:
-----
-string-one:
-one
-----
-string-operand-checks-for-action:
-operand-checks-for-action-
-----
-string-seven:
-seven
-----
-string-six:
-six
-----
-string-start-of-next-file-bracketed:
-<START_OF_NEXT_FILE>
-----
-string-sub:
-sub
-----
-string-template-function:
-template-function-
-----
-string-template-runtime-code-for-action:
-template-runtime-code-for-action-
-----
-string-ten:
-ten
-----
-string-three:
-three
-----
-string-to-test-character-actions:
-abc123 abc123 abc123 
-----
-string-twelve:
-twelve
-----
-string-two:
-two
-----
-string-word-hyphens:
-hyphens 
-----
-string-word-underscores:
-underscores 
-----
-string-words-inline-text:
-inline text
-----
-structure-of-column-data:
-data-item- column-one column-two column-three column-four column-five column-six column-seven column-eight column-nine column-ten
-----
-suffix-text:
-mno
-----
-symbol-two-periods:
-..
-----
-tag-begin:
-< no-space
-----
-tag-end:
-no-space >
-----
-template-date-time-full:
-time-day-of-month
-time-day-of-week
-time-hour
-time-minute
-time-month-number
-time-second
-time-year
-----
-template-display-value-is-not-correct:
-ERROR: Value of phrase "<placeholder_phrase_name>" is "<placeholder_value_of_phrase_name>" but should be "<placeholder_correct_value_for_phrase_name>"
-<new_line>
-----
-template-for-list-named-participant-names-full:
-tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler amenn no-space tag-begin /li tag-end
-----
-template-html-to-display-in-browser:
-Content-type: text/html<new_line>
-<new_line>
-<html>  <new_line>
-<head>  <new_line>
-<title>Response from test code</title>  <new_line>
-</head>  <new_line>
-<body>  <new_line>
-<h1>CGI information</h1>  <new_line>
-<ul>  <new_line>
-list-of-displayed-input-phrases
-no-space
-</ul>  <new_line>
-<h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
-<p>Phrases with wrong values: list-of-phrases-with-incorrect-values-version-html no-space </p>  <new_line>
-<p>Phrases with correct values: list-of-phrases-with-correct-values-version-html no-space </p>  <new_line>
-</body>  <new_line>
-</html>  <new_line>
-----
-template-spoken-words-split-to-avoid-replacement-here:
-dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray 
-----
-template-string-correct-value-for-hyphen:
-correct hyphen-here value hyphen-here for hyphen-here 
-----
-test-assignment:
-17 
-----
-test-counter:
-17 
-----
-test-expand-text-inline:
-ambee copy-text string-words-inline-text copy-of-string-words-inline-text amenn
-copy-of-string-words-inline-text
-----
-test-file-related-dashrep-actions:
-ambee copy-text character-space end-of-line-indicator amenn
-ambee put-into-phrase yes-or-no-trim-spaces-when-copy-from-file yes amenn
-ambee put-into-phrase yes-or-no-skip-empty-lines-when-copy-from-file yes amenn
-ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
-ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
-ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
-ambee copy-without-extra-spaces result-contents-from-file-write-and-read result-contents-from-file-write-and-read amenn
-ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
-ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
-ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
-
-ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
-ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
-ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
-ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
-ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
-
-ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
-ambee put-into-phrase yes-if-got-modification-time-of-file  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-modification-time-of-file amenn 150000 amenn amenn  amenn
-
-ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
-ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_*?filename.txt amenn  amenn
-
-ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
-ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
-
-ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
-ambee copy-words-found-in-both-lists result-list-of-files-in-current-read-directory list-of-files-to-find result-list-of-expected-files-found amenn
-ambee copy-words-sort-alphabetic result-list-of-expected-files-found result-list-of-expected-files-found amenn
-
-ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
-
-ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
-ambee copy-words-found-in-both-lists result-list-of-folders-in-current-read-directory list-of-folders-to-find result-list-of-expected-folders-found amenn
-ambee copy-words-sort-alphabetic result-list-of-expected-folders-found result-list-of-expected-folders-found amenn
-
-ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
-
-ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
-
-ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter pointers-to-found-lines-for-animal-combinations amenn
-
-ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
-
-ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column amenn
-
-ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output.txt amenn
-
-ambee linewise-read-from-file-and-use-handler ambee input-filename-containing-data-to-test-gather-find-actions amenn handle-linewise-read-from-file amenn
-
-ambee put-into-phrase name-of-file-to-rename  temp_file_to_rename.txt  amenn
-ambee put-into-phrase new-file-name  temp_file_after_renamed.txt  amenn
-ambee delete-file ambee name-of-file-to-rename amenn amenn
-ambee delete-file ambee new-file-name amenn amenn
-ambee copy-from-phrase-append-to-file list-of-animal-types ambee name-of-file-to-rename amenn amenn
-ambee rename-file ambee name-of-file-to-rename amenn ambee new-file-name amenn amenn
-ambee copy-from-file-to-phrase ambee new-file-name amenn result-contents-from-file-renamed amenn
-ambee copy-without-extra-spaces result-contents-from-file-renamed result-contents-from-file-renamed amenn
-ambee delete-file ambee new-file-name amenn amenn
-
-
-combee
-
-ambee create-empty-sub-folder amenn
-ambee write-gathered-listed-items-to-end-of-file amenn
-ambee set-file-permission-public-read amenn
-dashrep-phrase-prefix-for-imported-phrases
-dashrep-phrase-suffix-for-imported-phrases
-
-comenn
-
-
-ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
-ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
-
-ambee grep-compiler-source-code amenn
-ambee trace-show revised-compiler-source-code amenn
-----
-test-get-specifications-from-phrase:
-ambee copy-without-extra-spaces sample-specifications-in-phrase sample-specifications-in-phrase amenn
-ambee generate-positions-of-delimiter character-asterisk sample-specifications-in-phrase pointers-to-asterisks amenn
-ambee put-into-phrase pointer-to-previous-asterisk  -1  amenn
-ambee use-handler-with-each-word-in-phrase handle-get-next-specification-from-phrase pointers-to-asterisks amenn
-----
-test-getting-of-cgi-information:
-ambee get-cgi-information amenn
-ambee use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names amenn
-----
-test-if-begin-actions:
-ambee clear-phrase result-of-testing-if-begin-actions amenn
-ambee if-yes-begin yes amenn
-ambee append-text string-one result-of-testing-if-begin-actions amenn
-ambee if-else amenn
-ambee append-text string-two result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-yes-begin no amenn
-ambee append-text string-three result-of-testing-if-begin-actions amenn
-ambee if-else amenn
-ambee append-text string-four result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-no-begin yes amenn
-ambee append-text string-five result-of-testing-if-begin-actions amenn
-ambee if-else amenn
-ambee append-text string-six result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-no-begin no amenn
-ambee append-text string-seven result-of-testing-if-begin-actions amenn
-ambee if-else amenn
-ambee append-text string-eight result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-yes-begin yes amenn
-ambee append-text string-nine result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-yes-begin no amenn
-ambee append-text string-ten result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-no-begin no amenn
-ambee append-text string-eleven result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-ambee if-no-begin yes amenn
-ambee append-text string-twelve result-of-testing-if-begin-actions amenn
-ambee if-end amenn
-----
-test-of-adjacent-parameter-values:
-g7r[-row-number-]c[-column-number-]
-----
-test-of-comment-delimiters:
-beginning text
-*---- comment text ----*
-middle text
-*--- comment text ---*
-ending text
 ----
 test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases
@@ -1546,23 +841,356 @@ ambee decode-from-cgi-parameter encoded-cgi-parameter result-decoded-cgi-paramet
 
 text-that-occurs-after-parameter-phrases
 ----
-test-of-insert-codeview-tags:
-ambee copy-text text-being-codified dashrep-code-with-inserted-codeview-tags amenn
-ambee insert-codeview-tags dashrep-code-with-inserted-codeview-tags amenn
+correct-value-for-compare-result:
+greater equal less 
 ----
-test-of-parameter-substitution:
-ambee prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text amenn
+participant-fullname-for-participantid-3:
+James (Conservative)
 ----
-test-of-space-and-line-directives:
-Content-type: text/html
-<new_line>
-<new_line>
-<html>
-<new_line>
-<head>
-<new_line>
-<title> no-space web-page-title no-space </title>
-<new_line>
+correct-value-for-list-of-words-that-begin-with-listed-words:
+and-something-else 
+----
+list-of-person-names-first-underscore-last:
+Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready 
+----
+string-end-operand-check:
+**** com_enn
+----
+string-word-underscores:
+underscores 
+----
+yes-or-no-indicate-line-endings:
+no
+----
+test-skip-level-executable-phrase:
+ambee put-into-phrase value-inserted-if-skip-level-ok  ok  amenn
+----
+dashrep-special-replacement-hyphen:
+&ndash; 
+----
+yes-or-no-allow-user-defined-actions:
+yes 
+----
+dashrep-gather-tag-matching-id:
+----
+text-contains:
+is  
+----
+handle-one-check-for-correct-value:
+ambee copy-text word-to-use-in-handler phrase-name amenn
+
+combee
+ambee trace-show phrase-name amenn
+comenn
+
+ambee put-into-phrase yes-or-no-value-is-correct ambee yes-or-no-same-two-phrase-definitions ambee phrase-name amenn correct-value-for fenambee phrase-name amenn amenn amenn
+ambee append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
+
+ambee if-no-begin ambee yes-or-no-value-is-correct amenn amenn
+ambee expand-text template-display-value-is-not-correct display-value-is-not-correct amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name ambee phrase-name amenn amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for fenambee phrase-name amenn amenn
+ambee append-text-no-space display-value-is-not-correct full-display-values-not-correct amenn
+ambee append-text phrase-name list-of-phrases-with-incorrect-values amenn
+ambee if-else amenn
+ambee append-text phrase-name list-of-phrases-with-correct-values amenn
+ambee if-end amenn
+----
+correct-value-for-results-position-of-matching-text:
+4 
+----
+string-one:
+one
+----
+grep-not-at-sub-function:
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-needed-operand-checks amenn amenn
+ambee grep-insert-operand-checks amenn
+ambee if-else amenn
+ambee grep-collect-operand-checks amenn
+ambee if-end amenn
+----
+correct-value-for-result-calculation-absolute:
+6 
+----
+correct-value-for-should-be-copied-text:
+first_word second_word 
+----
+correct-value-for-sample-word-list-one:
+" alpha alpha-here and beta gamma beta delta<new_line> " 
+----
+correct-value-for-text-copied-without-last-word:
+abc DEF 
+----
+correct-value-for-should-be-one:
+one 
+----
+do-check-for-correct-values:
+ambee expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen amenn
+ambee generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases amenn
+ambee copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen amenn
+ambee copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text amenn
+
+*---
+ambee trace-show list-of-phrases-to-check-for-correct-value amenn
+---*
+
+ambee use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value amenn
+ambee put-into-phrase yes-or-no-all-values-are-correct ambee yes-if-all-yes ambee list-of-yes-or-no-values-are-correct amenn amenn amenn
+
+*---
+ambee trace-show full-display-values-not-correct amenn
+ambee trace-show list-of-phrases-with-correct-values amenn
+---*
+----
+input-filename-containing-data-to-test-gather-find-actions:
+input-data-to-test-gather-find-actions.txt
+----
+correct-value-for-result-calculation-division:
+2.3333 
+----
+correct-value-for-expanded-date-time-frozen-adjusted:
+50 6 53 2017 
+----
+correct-value-for-result-yes-or-no-file-exists-no:
+no 
+----
+character-asterisk:
+*
+----
+filename-output-for-test-writing-to-file:
+output_for_test_writing_to_file.txt
+----
+dashrep-gather-tag-delete:
+tag_delete
+----
+string-eight:
+eight
+----
+correct-value-for-expanded-date-time-frozen-zero-meridian:
+29 4 5 50 6 53 2017 
+----
+correct-value-for-result-integers-positive-sorted:
+-72 -36 -28 -1 0 1 3 12 17 94
+----
+pattern-for-appended-items:
+appended-pattern-item-ambee-list-of-numbers-as-text-amenn
+----
+case-info-idlistparticipants:
+ambee list-of-numbers amenn
+----
+correct-value-for-should-be-length-7:
+7 
+----
+correct-value-for-vector-result-multiply-by-number:
+119 161 -28 
+----
+list-of-integers-positive-and-negative:
+12 -72 0 3 -28 94 -36 1 17 -1
+----
+correct-value-for-multiple-yes-no-checks:
+no_yes_yes_no_no_yes_yes_no_yes_no_yes_no 
+----
+correct-value-for-result-numeric-y-map-tile-number:
+1473.433751
+----
+correct-value-for-copied-pattern-item-one:
+dolphin 
+----
+correct-value-for-string-123-padded:
+00123 
+----
+list-of-number-words-by-name:
+seven one five three twelve
+----
+text-being-codified:
+<xyz>&amp;</xyz> 
+----
+dashrep-special-replacement-newline:
+[eol]
+----
+correct-value-for-vector-result-distances:
+27 25 4 
+----
+correct-value-for-result-calculation-sine:
+0.4794 
+----
+list-of-size-three:
+4 5 6 
+----
+correct-value-for-list-ordered-pairwise-words-two:
+whale starfish octopus starfish octopus octopus 
+----
+test-text-length-7:
+abcdefg 
+----
+correct-value-for-compare-numbers-greater:
+greater 
+----
+grep-at-file-name:
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+
+combee
+ambee clear-phrase action-name amenn
+ambee clear-phrase action-name-for-getting-operand-checks amenn
+ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
+ambee copy-word-at-position list-of-backslash-character-positions last-backslash-position 9999 amenn
+ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
+ambee copy-and-replace file-name file-name-split character-period character-space amenn
+ambee copy-word-at-position file-name-split file-name-root 1 amenn
+comenn
+
+
+combee ****
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-template-function amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-runtime-code-for-action file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-template-runtime-code-for-action amenn
+ambee if-end amenn
+**** comenn
+----
+word-alpha:
+alpha  
+----
+character-string-source:
+some words here
+----
+correct-value-for-result-yes-or-no-file-exists-yes:
+yes 
+----
+phrase-that-contains-hyphenated-phrases:
+hyphenated-content-here hyphenated-content-here
+----
+single-phrase-to-replace:
+replaced-phrase
+----
+test-text-length-1:
+a 
+----
+list-of-phrases-to-clear:
+phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three 
+----
+dashrep-action-trace-on-yes-or-no:
+yes
+----
+correct-value-for-result-contents-from-file-append-repeated:
+dolphin whale starfish octopus dolphin whale starfish octopus
+----
+string-operand-checks-for-action:
+operand-checks-for-action-
+----
+correct-value-for-single-gathered-info:
+??? 
+----
+correct-value-for-list-of-gathered-ids:
+102 101 
+----
+string-ten:
+ten
+----
+filename-output-for-test-appending-to-file:
+output_for_test_appending_to_file.txt
+----
+correct-value-for-should-be-same-words-no:
+no 
+----
+template-for-list-named-participant-names-full:
+tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler amenn no-space tag-begin /li tag-end
+----
+correct-value-for-list-from-rearranged-alphabetic:
+Thomas_Jefferson Abe_Lincoln Paul_MacCready Nikola_Tesla 
+----
+correct-value-for-text-copied-lowercase:
+abc def 123 
+----
+correct-value-for-should-be-number-three:
+3 
+----
+row-number:
+3
+----
+correct-value-for-character-result:
+ab1233 
+----
+words-web-page-title:
+List of participants
+----
+dashrep-gather-tag-end:
+entry_end
+----
+epoch-seconds-frozen-in-time:
+1498715453 
+----
+text-with-tag-and-attribute:
+<p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  
+----
+correct-value-for-copied-pattern-item-four:
+octopus 
+----
+expanded-contains-angle-bracketed-phrase-names:
+one-two-three waltz 
+----
+correct-value-for-result-decoded-cgi-parameter:
+and a <span style="whatever">dolphin</span>
+----
+correct-value-for-word-list-in-both:
+alpha alpha-here beta delta 
+----
+list-of-phrases-to-delete:
+phrase-to-delete-one phrase-to-delete-two phrase-to-delete-three 
+----
+correct-value-for-compare-numbers-equal:
+equal 
+----
+character-backslash:
+\
+----
+intended-result-of-parameter-substitution:
+abc-def-ghi-jkl-mno
+----
+handle-linewise-read-from-file:
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase first-word amenn amenn
+ambee append-text first-word list-of-first-words-in-file amenn
+ambee if-end amenn
+
+ambee append-text linewise-input-line-count list-of-file-line-numbers amenn
+----
+string-six:
+six
+----
+test-yes-no-checks:
+ambee put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-] amenn
+----
+word-dolphin:
+dolphin
+----
+correct-value-for-result-contents-from-file-write-and-read:
+dolphin whale starfish octopus
+----
+correct-value-for-text-with-spaces:
+12345 67890 54321 
+----
+yes-or-no-permission-to-delete-or-overwrite-files:
+yes
+----
+correct-value-for-expanded-code-indirect:
+236
+----
+correct-value-for-result-of-numeric-logarithm-base-10:
+0.544068044350276 
+----
+correct-value-for-initial-caps-list-of-animal-types:
+Dolphin Whale Starfish Octopus 
 ----
 test-of-special-line-phrases:
 abc
@@ -1571,129 +1199,520 @@ def
 new-line
 ghi
 ----
+phrase-to-delete-three:
+123 
+----
+correct-value-for-results-replacements-using-paired-words:
+fliers songflier swimmer clownswimmer 
+----
+correct-value-for-single-animal-type:
+whale 
+----
+correct-value-for-result-of-numeric-vector-integers:
+-1 82 -3 
+----
+correct-value-for-result-list-of-expected-files-found:
+output_for_test_appending_to_file.txt
+output_for_test_writing_to_file.txt
+----
+result-of-testing-of-adjacent-parameter-values:
+g7r3c5
+----
+string-to-test-character-actions:
+abc123 abc123 abc123 
+----
+correct-value-for-should-be-same-words-yes:
+yes 
+----
+string-eleven:
+eleven
+----
+some-text-with-hyphens:
+here - is - some - text - with - hyphens 
+----
+list-from-which-to-remove-last-item:
+12, 56, 72
+----
+correct-value-for-value-inserted-if-skip-level-ok:
+ok
+----
 test-of-special-spacing:
 abc no-space def one-space ghi jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx non-breaking-space yz
 ----
-test-skip-level-executable-phrase:
-ambee put-into-phrase value-inserted-if-skip-level-ok  ok  amenn
+dashrep-path-prefix-for-file-reading:
 ----
-test-text-length-1:
-a 
+correct-value-for-result-calculation-integer:
+7 
 ----
-test-text-length-7:
-abcdefg 
+test-of-parameter-substitution:
+ambee prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text amenn
 ----
-test-value:
-3 
+display-values-all-ok:
+All values OK! (no errors)
 ----
-test-yes-no-checks:
-ambee put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-] amenn
-----
-text-begins-with-here-is:
-here-is
-----
-text-begins-with:
-and  
-----
-text-being-codified:
-<xyz>&amp;</xyz> 
-----
-text-being-copied:
-abc DEF 123
-----
-text-containing-period:
-abc.def.ghi  
-----
-text-contains:
-is  
-----
-text-for-multiple-find:
-fish bird 
-----
-text-for-multiple-search:
-birds songbird fish clownfish 
-----
-text-to-repeat:
-number 9  
-----
-text-with-extra-spaces:
-12 34  56   78   90
-----
-text-with-named-html-entities:
-abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def  
-----
-text-with-periods:
-12345.67890.54321
-----
-text-with-tag-and-attribute:
-<p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  
-----
-text-with-tags-attributes-inside-tags:
-and a <span style="whatever">dolphin</span>
-----
-text-with-tags-attributes-outside-of-tags:
-<img /><attribute href="image.jpg"><attribute alt="image">
-----
-todo-correct-value-for-skipped-list-of-numbers:
-???
-----
-two-dimensional-sort:
-ambee numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort amenn
-----
-unused-correct-value-for-found-line-for-animal-combination:
-dolphin octopus intersection of dolphin and octopus
-----
-unused-template-string-end-of-line-here:
-end hyphen-here of hyphen-here line hyphen-here here
-----
-value-inserted-if-skip-level-ok:
-ok 
-----
-value-of-pi:
-3.14159
+handle-one-named-participant:
+ambee expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant amenn
+ambee append-text expanded-content-for-named-participant generated-list-named-participant-names-full amenn
 ----
 vector-decimals-and-negatives:
 -1.73 82.5 -3.9 
 ----
-vector-one:
-17 23 -4  
+correct-value-for-list-with-dups-without-extra-spaces:
+alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever 
 ----
-vector-two:
-21 -9 0  
+test-get-specifications-from-phrase:
+ambee copy-without-extra-spaces sample-specifications-in-phrase sample-specifications-in-phrase amenn
+ambee generate-positions-of-delimiter character-asterisk sample-specifications-in-phrase pointers-to-asterisks amenn
+ambee put-into-phrase pointer-to-previous-asterisk  -1  amenn
+ambee use-handler-with-each-word-in-phrase handle-get-next-specification-from-phrase pointers-to-asterisks amenn
 ----
-web-page-begin-1-of-2:
-tag-begin html tag-end
-tag-begin head tag-end
-tag-begin title tag-end no-space
-words-web-page-title
-no-space tag-begin /title tag-end
+correct-value-for-text-copied-without-first-word:
+DEF 123 
 ----
-web-page-begin-2-of-2:
-tag-begin /head tag-end
-new-line
-tag-begin body tag-end
+list-of-folders-to-find:
+compiler_source
+test_dashrep_code
+----
+correct-value-for-input-cgi-value-one:
+123 
+----
+pattern-for-copied-items:
+copied-pattern-item-ambee-list-of-numbers-as-text-amenn
+----
+grep-not-at-file-name:
+ambee put-into-phrase text-to-find  function__  amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words nonzero ambee zero-or-nonzero ambee get-position-of-matching-text text-to-find linewise-input-line-from-file amenn amenn amenn amenn
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+
+combee
+ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
+ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
+comenn
+
+
+combee ****
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
+ambee grep-insert-operand-checks amenn
+ambee if-else amenn
+ambee grep-not-at-sub-function amenn
+ambee if-end amenn
+**** comenn
+----
+test-getting-of-cgi-information:
+ambee get-cgi-information amenn
+ambee use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names amenn
+----
+contains-name-test-skip-level-executable-phrase:
+test-skip-level-executable-phrase
+----
+participant-fullname-for-participantid-7:
+Eduard (Liberal)
+----
+phrase-to-clear-two:
+123 
+----
+string-five:
+five
+----
+correct-value-for-unique-words:
+alpha alpha-here and beta gamma delta something-here whatever 
+----
+correct-value-for-result-calculation-cosine:
+0.8775 
+----
+placeholder-new-line:
+<new_line>
+----
+value-of-pi:
+3.14159
+----
+text-being-copied:
+abc DEF 123
+----
+character-open-angle-bracket:
+<
+----
+paired-words-for-replacements:
+bird flier fish swimmer 
+----
+correct-value-for-word-count:
+3 
+----
+correct-value-for-result-calculation-odd:
+odd 
 ----
 web-page-end:
 tag-begin /body tag-end
 tag-begin /html tag-end
 ----
-web-page-title:
-No hyphen-here title no-space
+correct-value-for-should-be-same-yes:
+yes 
 ----
-word-alpha:
-alpha  
+string-begin-operand-check:
+com_bee **** template-
 ----
-word-dolphin:
-dolphin
+placeholder-correct-value-for-phrase-name:
+<placeholder_correct_value_for_phrase_name>
 ----
-word-gamma:
-gamma  
+correct-value-for-word-list-in-either:
+beta whatever something-here gamma alpha-here alpha delta and 
+----
+structure-of-column-data:
+data-item- column-one column-two column-three column-four column-five column-six column-seven column-eight column-nine column-ten
+----
+character-double-quote:
+"
+----
+test-value:
+3 
+----
+dashrep-special-replacement-adjacent-space:
+&nbsp; 
+----
+text-with-periods:
+12345.67890.54321
+----
+list-of-numbers-as-text:
+one two three four five six seven eight nine ten
+----
+correct-value-for-should-be-zero:
+zero 
+----
+correct-value-for-result-text-after-move-attributes-inside-tags:
+<img href="image.jpg" alt="image" />
+----
+character-period:
+.
+----
+list-containing-only-phrase-name-list-of-phrases-newly-defined:
+list-of-phrases-newly-defined 
+----
+correct-value-for-word-list-result:
+1-3-0 
+----
+correct-value-for-should-be-size-zero:
+0 
+----
+correct-value-for-minimum-maximum-result:
+2 8 3 4 
+----
+string-category-underscore:
+category_  
+----
+correct-value-for-vector-result-addition:
+38 14 -4 
+----
+correct-value-for-should-be-same-no:
+no 
+----
+list-of-words-to-search-based-on-prefix:
+here-is-something here-is-something-else hereis-something-else and-something-else 
+----
+test-file-related-dashrep-actions:
+ambee copy-text character-space end-of-line-indicator amenn
+ambee put-into-phrase yes-or-no-trim-spaces-when-copy-from-file yes amenn
+ambee put-into-phrase yes-or-no-skip-empty-lines-when-copy-from-file yes amenn
+ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
+ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
+ambee copy-without-extra-spaces result-contents-from-file-write-and-read result-contents-from-file-write-and-read amenn
+ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
+ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
+ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
+
+ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
+ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
+
+ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
+ambee put-into-phrase yes-if-got-modification-time-of-file  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-modification-time-of-file amenn 150000 amenn amenn  amenn
+
+ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_*?filename.txt amenn  amenn
+
+ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
+ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
+
+ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-files-in-current-read-directory list-of-files-to-find result-list-of-expected-files-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-files-found result-list-of-expected-files-found amenn
+
+ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
+
+ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-folders-in-current-read-directory list-of-folders-to-find result-list-of-expected-folders-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-folders-found result-list-of-expected-folders-found amenn
+
+ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
+
+ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
+
+ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter pointers-to-found-lines-for-animal-combinations amenn
+
+ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
+
+ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column amenn
+
+ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output.txt amenn
+
+ambee linewise-read-from-file-and-use-handler ambee input-filename-containing-data-to-test-gather-find-actions amenn handle-linewise-read-from-file amenn
+
+ambee put-into-phrase name-of-file-to-rename  temp_file_to_rename.txt  amenn
+ambee put-into-phrase new-file-name  temp_file_after_renamed.txt  amenn
+ambee delete-file ambee name-of-file-to-rename amenn amenn
+ambee delete-file ambee new-file-name amenn amenn
+ambee copy-from-phrase-append-to-file list-of-animal-types ambee name-of-file-to-rename amenn amenn
+ambee rename-file ambee name-of-file-to-rename amenn ambee new-file-name amenn amenn
+ambee copy-from-file-to-phrase ambee new-file-name amenn result-contents-from-file-renamed amenn
+ambee copy-without-extra-spaces result-contents-from-file-renamed result-contents-from-file-renamed amenn
+ambee delete-file ambee new-file-name amenn amenn
+
+
+combee
+
+ambee create-empty-sub-folder amenn
+ambee write-gathered-listed-items-to-end-of-file amenn
+ambee set-file-permission-public-read amenn
+dashrep-phrase-prefix-for-imported-phrases
+dashrep-phrase-suffix-for-imported-phrases
+
+comenn
+
+
+ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
+ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
+
+ambee grep-compiler-source-code amenn
+ambee trace-show revised-compiler-source-code amenn
+----
+correct-value-for-found-line-about-dolphins:
+dolphin info about dolphins
+----
+sample-word-list-three:
+alpha-here and gamma delta something-here whatever 
+----
+dashrep-gather-tag-begin:
+entry_begin
+----
+grep-compiler-source-code:
+ambee linewise-read-from-file-and-use-handler compiler_joined_files_for_possible_global_updates.txt grep-handle-one-line amenn
+----
+second-word-phrase:
+second_word 
+----
+handle-display-input-phrase-name-and-definition:
+ambee copy-text word-to-use-in-handler input-phrase-name amenn
+ambee copy-text html-list-item-begin display-one-input-phrase-with-value amenn
+ambee copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen amenn
+ambee append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value amenn
+ambee append-text character-equal-sign display-one-input-phrase-with-value amenn
+ambee copy-definition-of-named-phrase input-phrase-name input-phrase-definition amenn
+ambee append-text input-phrase-definition display-one-input-phrase-with-value amenn
+ambee append-text-no-space html-list-item-end display-one-input-phrase-with-value amenn
+ambee append-text-no-space character-newline display-one-input-phrase-with-value amenn
+ambee append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases amenn
+----
+grep-insert-operand-checks:
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
+ambee append-text-no-space string-got-here-begin revised-compiler-source-code amenn
+ambee append-text-no-space action-name-with-underscores revised-compiler-source-code amenn
+ambee append-text-no-space string-got-here-end revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
+ambee if-else amenn
+ambee clear-phrase operand-checks amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
+ambee append-text-no-space operand-checks revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+ambee clear-phrase action-name amenn
+----
+appended-pattern-item-three:
+whale 
+----
+correct-value-for-list-of-values-in-column-2:
+101 2016 Robbery On 102 2016 Another On info info info info octopus whale octopus otter whale otter otter
+----
+item-two:
+dance 
+----
+correct-value-for-list-of-prepended-items:
+alpha gamma other 
+----
+text-with-named-html-entities:
+abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def  
+----
+string-needed-operand-checks:
+needed-operand-checks
+----
+tag-end:
+no-space >
+----
+correct-value-for-vector-result-add-number:
+10 16 -11 
+----
+appended-pattern-item-one:
+dolphin 
+----
+format-end-heading-level-1:
+no-space  tag-begin /h1 tag-end
+----
+yes-or-no-permission-administrator:
+yes
+----
+character-close-angle-bracket:
+>
+----
+correct-value-for-list-of-first-items-in-two-dimensions:
+0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 
+----
+something-about-row-3:
+beta 
+----
+yes-or-no-export-delimited-definitions:
+no 
+----
+dashrep-path-prefix-for-file-writing:
+----
+correct-value-for-should-be-beta-gamma:
+beta gamma 
+----
+phrase-to-clear-three:
+123 
+----
+appended-pattern-item-two:
+octopus 
+----
+correct-value-for-list-of-words-that-begin-with-text:
+here-is-something here-is-something-else 
+----
+correct-value-for-pointers-to-beginning-of-tags:
+1 15 21 32 38 48 54 69 
+----
+correct-value-for-result-of-numeric-add:
+6.2 
+----
+participant-fullname-for-participantid-13:
+Robert (New Democratic)
+----
+text-begins-with:
+and  
+----
+sample-word-list:
+alpha beta gamma delta 
+----
+test-if-begin-actions:
+ambee clear-phrase result-of-testing-if-begin-actions amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-one result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-two result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-three result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-four result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-five result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-six result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-seven result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-eight result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-nine result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-ten result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-eleven result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-twelve result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+----
+correct-value-for-result-for-action-copy-from-columns-in-file-to-named-phrases:
+uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
+----
+string-assignment-line-to-insert:
+$global_action_name = 'whatever' ;  <new_line>
+----
+unused-template-string-end-of-line-here:
+end hyphen-here of hyphen-here line hyphen-here here
+----
+correct-value-for-trace-results-from-curl:
+starting_curl_command curl -k -s -S -o temp_url_output.txt http://www.votefair.org/americanidol.html ending_curl_command
 ----
 word-octopus:
 octopus
 ----
-word-other:
-other  
+correct-value-for-result-text-after-remove-attributes-from-tags:
+and a <span>dolphin</span>
+----
+participant-fullname-for-participantid-4:
+Diane (Conservative)
+----
+correct-value-for-list-of-second-items-in-two-dimensions:
+5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 
+----
+phrase-to-clear-one:
+123 
+----
+correct-value-for-sample-word-list-three:
+" alpha-here and gamma delta something-here whatever<new_line> " 
+----
+string-not-ok-colon:
+NOT_OK:
+----
+sample-specifications-in-phrase:
+value_one some text here for value_one *
+value-two some text here for value-two *
+valuethree some text here for value three *
+----
+test-of-comment-delimiters:
+beginning text
+*---- comment text ----*
+middle text
+*--- comment text ---*
+ending text
+----
+list-of-person-names-lowercase-last-underscore-first:
+tesla_nikola lincoln_abe jefferson_thomas maccready_paul 
+----
+html-entity-hyphen:
+&#45;
+----
+correct-value-for-result-before-listed-phrases-deleted:
+123 123 123 
+----
+list-of-integers-positive:
+12 72 0 3 28 94 36 103 17 1
+----
+string-four:
+four
+----
+words-with-space-at-end:
+abc xyz 123 
+----
+word-gamma:
+gamma  
 ----
 words-dolphin-octopus-whale-otter:
 dolphin
@@ -1701,33 +1720,14 @@ octopus
 whale
 otter
 ----
-words-preface-to-list-of-correct-values:
-List of phrases correctly calculated:
+handle-get-next-specification-from-phrase:
+ambee copy-text word-to-use-in-handler pointer-to-next-asterisk amenn
+ambee copy-characters-from-position-to-position sample-specifications-in-phrase current-specification-name-and-value ambee numeric-add ambee pointer-to-previous-asterisk amenn 2 amenn ambee numeric-minus ambee pointer-to-next-asterisk amenn 2 amenn amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-name 1 1 amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-value 2 9999 amenn
+ambee copy-text current-specification-value specification-value-for-name fenambee current-specification-name amenn amenn
+ambee copy-text pointer-to-next-asterisk pointer-to-previous-asterisk amenn
 ----
-words-web-page-title:
-List of participants
-----
-words-with-space-at-end:
-abc xyz 123 
-----
-yes-or-no-allow-user-defined-actions:
-yes 
-----
-yes-or-no-export-delimited-definitions:
-no 
-----
-yes-or-no-indicate-line-endings:
-no
-----
-yes-or-no-permission-administrator:
-yes
-----
-yes-or-no-permission-to-append-to-files:
-yes
-----
-yes-or-no-permission-to-delete-or-overwrite-files:
-yes
-----
-yes-or-no-use-two-spaces-as-column-delimiter:
-no
+numeric-map-tile-zoom:
+12
 ----
