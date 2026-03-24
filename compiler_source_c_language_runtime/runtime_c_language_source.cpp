@@ -1098,7 +1098,6 @@ int pointer_from_indexed_list ;
 int pointer_next_word_begin ;
 int pointer_next_word_end ;
 int pointer_to ;
-int number_to_append ;
 int pointer_to_character_to_insert_between_subitems ;
 int pointer_to_first_hyphen ;
 int pointer_to_leading_delimiter ;
@@ -1287,8 +1286,7 @@ int during_initialization_store_phrase_name( int local_word_one , int local_word
 //
 //  Does initialization at the very beginning.
 
-void do_main_initialization( )
-{
+void do_main_initialization( ) {
 
     int pointer ;
     int character_number ;
@@ -1380,23 +1378,19 @@ void do_main_initialization( )
 //  Dashrep compiler are copied into the "all"
 //  arrays.
 
-for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_characters ; pointer ++ )
-{
+for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_characters ; pointer ++ ) {
     all_characters[ pointer ] = initial_contents_for_all_characters[ pointer ] ;
 }
 
-for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_pointers ; pointer ++ )
-{
+for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_pointers ; pointer ++ ) {
     all_pointers[ pointer ] = initial_contents_for_all_pointers[ pointer ] ;
 }
 
-for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_integers ; pointer ++ )
-{
+for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_integers ; pointer ++ ) {
     all_integers[ pointer ] = initial_contents_for_all_integers[ pointer ] ;
 }
 
-for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_numbers ; pointer ++ )
-{
+for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_numbers ; pointer ++ ) {
     all_decimal_numbers[ pointer ] = initial_contents_for_all_decimal_numbers[ pointer ] ;
 }
 
@@ -1837,8 +1831,7 @@ for ( pointer = 0 ; pointer <= count_of_numbers_supplied_to_array_all_decimal_nu
 //
 //  This function is intended for debugging.
 
-void show_one_defined_text_item( )
-{
+void show_one_defined_text_item( ) {
     log_out << "[item " << item_id << " spans " << pointer_begin_for_item[ item_id ] << " to " << pointer_end_for_item[ item_id ] << "]" ;
     for ( character_pointer = pointer_begin_for_item[ item_id ] ; character_pointer <= pointer_end_for_item[ item_id ] ; character_pointer ++ )
     {
@@ -1855,8 +1848,7 @@ void show_one_defined_text_item( )
 //
 //  This function is intended for debugging.
 
-void show_defined_text_items( )
-{
+void show_defined_text_items( ) {
     for ( item_id = 1 ; item_id < next_available_item_id ; item_id ++ )
     {
         show_one_defined_text_item( ) ;
@@ -1871,8 +1863,7 @@ void show_defined_text_items( )
 //  Provide an exit for functionality that has not
 //  yet been written.
 
-void exit_not_yet_supported( )
-{
+void exit_not_yet_supported( ) {
     log_out << "BUG:  This data type, " << data_type << ", (or some other capability) is not yet supported." << std::endl ;
     exit( EXIT_FAILURE ) ;
 }
@@ -1890,8 +1881,7 @@ void exit_not_yet_supported( )
 //  is no way to create a library function that
 //  would work on all operating systems.
 
-void choose_slash_or_backslash( )
-{
+void choose_slash_or_backslash( ) {
     yes_or_no_use_slash_not_backslash = yes_yes ;
     #ifdef _WIN32
     yes_or_no_use_slash_not_backslash = no_no ;
@@ -1922,8 +1912,7 @@ void choose_slash_or_backslash( )
 //  pointing to the "next" and "prior" items in
 //  the same list.
 
-void create_new_item_id_and_assign_storage( )
-{
+void create_new_item_id_and_assign_storage( ) {
     new_item_id = next_available_item_id ;
     next_available_item_id ++ ;
     data_type_for_item[ new_item_id ] = data_type ;
@@ -1975,8 +1964,7 @@ void create_new_item_id_and_assign_storage( )
 //  Measure how much space is occupied by the
 //  specified item.
 
-void measure_space_occupied_by_item( )
-{
+void measure_space_occupied_by_item( ) {
     space_occupied_by_item = pointer_end_for_item[ item_id ] - pointer_begin_for_item[ item_id ] + 1 ;
     return ;
 }
@@ -1989,8 +1977,7 @@ void measure_space_occupied_by_item( )
 //  Measure how much additional space is available
 //  in the specified item.
 
-void measure_space_available_in_item( )
-{
+void measure_space_available_in_item( ) {
     space_available_in_item = pointer_allocation_end_for_item[ item_id ] - pointer_end_for_item[ item_id ] ;
     return ;
 }
@@ -2007,8 +1994,7 @@ void measure_space_available_in_item( )
 //  "linked_list", allow space for the "next"
 //  and "prior" pointers.
 
-void adjust_storage_space_to_fit_newest_item( )
-{
+void adjust_storage_space_to_fit_newest_item( ) {
     if ( new_item_id != ( next_available_item_id - 1 ) )
     {
         return ;
@@ -2048,8 +2034,7 @@ void adjust_storage_space_to_fit_newest_item( )
 //  do not use this function, and instead point to
 //  the empty text item or create a new item.
 
-void clear_item( )
-{
+void clear_item( ) {
     pointer_end_for_item[ id_text_to_edit ] = pointer_begin_for_item[ id_text_to_edit ] - 1 ;
     return ;
 }
@@ -2059,8 +2044,7 @@ void clear_item( )
 // -----------------------------------------------
 //  Function check_yes_or_no_solo_item_is_empty
 
-void check_yes_or_no_solo_item_is_empty( )
-{
+void check_yes_or_no_solo_item_is_empty( ) {
     if ( pointer_end_for_item[ item_id ] < pointer_begin_for_item[ item_id ] )
     {
         yes_or_no_text_item_is_empty = yes_yes ;
@@ -2145,8 +2129,7 @@ void check_yes_or_no_solo_item_is_empty( )
 //  and the character length minus one is in
 //  "character_length_minus_one".
 
-void check_yes_or_no_matching_text( )
-{
+void check_yes_or_no_matching_text( ) {
 
 
 // -----------------------------------------------
@@ -2245,8 +2228,7 @@ void check_yes_or_no_matching_text( )
 //  special for data type "pointers_list" because
 //  that is not a "storage type".
 
-void just_copy_simple( )
-{
+void just_copy_simple( ) {
     pointer_from = pointer_for_just_copy_source ;
     pointer_to = pointer_for_just_copy_destination ;
     counter = length_for_just_copy ;
@@ -2321,8 +2303,7 @@ void just_copy_simple( )
 //  data type is "linked_list" the "next" and
 //  "prior" pointers are set to zeros.
 
-void copy_solo_item_to_new( )
-{
+void copy_solo_item_to_new( ) {
     length_of_item = pointer_allocation_end_for_item[ item_id ] - pointer_begin_for_item[ item_id ] + 1 ;
     length_requested_for_next_item_storage = length_of_item ;
     data_type = data_type_for_item[ item_id ] ;
@@ -2341,8 +2322,7 @@ void copy_solo_item_to_new( )
 // -----------------------------------------------
 //  Function check_yes_or_no_character_is_delimiter
 
-void check_yes_or_no_character_is_delimiter( )
-{
+void check_yes_or_no_character_is_delimiter( ) {
     switch ( single_character_as_integer )
     {
         case unicode_for_space :
@@ -2376,8 +2356,7 @@ void check_yes_or_no_character_is_delimiter( )
 //  are stored in text item
 //  "id_for_number_as_text".
 
-void convert_integer_to_text( )
-{
+void convert_integer_to_text( ) {
 
 
 // -----------------------------------------------
@@ -2464,8 +2443,7 @@ void convert_integer_to_text( )
 //  that are stored in text item
 //  id_for_number_as_text.
 
-void convert_decimal_to_text( )
-{
+void convert_decimal_to_text( ) {
 
 
 // -----------------------------------------------
@@ -2547,8 +2525,7 @@ void convert_decimal_to_text( )
 //  The result is put into the item specified by
 //  "id_for_integers_as_text".
 
-void convert_list_of_integers_into_text_item( )
-{
+void convert_list_of_integers_into_text_item( ) {
 
 
 // -----------------------------------------------
@@ -2631,8 +2608,7 @@ void convert_list_of_integers_into_text_item( )
 //  For comments, look at the function
 //  "convert_list_of_integers_into_text_item".
 
-void convert_list_of_decimal_numbers_into_text_item( )
-{
+void convert_list_of_decimal_numbers_into_text_item( ) {
     data_type = data_type_text_characters ;
     length_requested_for_next_item_storage = 200 ;
     create_new_item_id_and_assign_storage( ) ;
@@ -2669,8 +2645,7 @@ void convert_list_of_decimal_numbers_into_text_item( )
 //  Prepare to use the function named
 //  parse_one_character_of_number.
 
-void initialize_parse_characters_of_number( )
-{
+void initialize_parse_characters_of_number( ) {
     single_integer = 0 ;
     single_decimal_number = 0.0 ;
     decimal_number_divisor = 1.0 ;
@@ -2692,8 +2667,7 @@ void initialize_parse_characters_of_number( )
 //  version of the number into an integer or
 //  decimal number.
 
-void parse_one_character_of_number( )
-{
+void parse_one_character_of_number( ) {
     if ( yes_or_no_decimal_number == no_no )
     {
         switch ( single_character_as_integer )
@@ -2848,8 +2822,7 @@ void parse_one_character_of_number( )
 // -----------------------------------------------
 //  Function finish_parse_characters_of_number
 
-void finish_parse_characters_of_number( )
-{
+void finish_parse_characters_of_number( ) {
     if ( yes_or_no_number_is_valid == no_no )
     {
         single_integer = 0 ;
@@ -2885,8 +2858,7 @@ void finish_parse_characters_of_number( )
 //  -- in text format -- into a text item that is
 //  a list of integers.
 
-void convert_into_data_type_list_of_integers( )
-{
+void convert_into_data_type_list_of_integers( ) {
     count_of_words_handled = 0 ;
     id_for_integers_as_text = id_from_origin ;
     length_requested_for_next_item_storage = 2 ;
@@ -2964,8 +2936,7 @@ void convert_into_data_type_list_of_integers( )
 //  numbers -- in text format -- into a text item
 //  that is a list of decimal numbers.
 
-void convert_into_data_type_list_of_decimal_numbers( )
-{
+void convert_into_data_type_list_of_decimal_numbers( ) {
     count_of_words_handled = 0 ;
     id_for_decimal_numbers_as_text = id_from_origin ;
     length_requested_for_next_item_storage = 2 ;
@@ -3039,8 +3010,7 @@ void convert_into_data_type_list_of_decimal_numbers( )
 // -----------------------------------------------
 //  Function initialize_parse_characters_of_filename
 
-void initialize_parse_characters_of_filename( )
-{
+void initialize_parse_characters_of_filename( ) {
     yes_or_no_filename_is_valid = yes_yes ;
     yes_or_no_in_filename_before_period = yes_yes ;
     number_of_valid_characters_encountered = 0 ;
@@ -3051,8 +3021,7 @@ void initialize_parse_characters_of_filename( )
 // -----------------------------------------------
 //  Function parse_one_character_of_filename
 
-void parse_one_character_of_filename( )
-{
+void parse_one_character_of_filename( ) {
     character_category = character_category_number_for_character_number[ single_character_as_integer ] ;
     switch ( character_category )
     {
@@ -3100,8 +3069,7 @@ void parse_one_character_of_filename( )
 // -----------------------------------------------
 //  Function initialize_parse_characters_of_folder_name
 
-void initialize_parse_characters_of_folder_name( )
-{
+void initialize_parse_characters_of_folder_name( ) {
     yes_or_no_folder_name_is_valid = yes_yes ;
     yes_or_no_in_folder_name_before_period = yes_yes ;
     number_of_valid_characters_encountered = 0 ;
@@ -3112,8 +3080,7 @@ void initialize_parse_characters_of_folder_name( )
 // -----------------------------------------------
 //  Function parse_one_character_of_folder_name
 
-void parse_one_character_of_folder_name( )
-{
+void parse_one_character_of_folder_name( ) {
     character_category = character_category_number_for_character_number[ single_character_as_integer ] ;
     switch ( character_category )
     {
@@ -3171,8 +3138,7 @@ void parse_one_character_of_folder_name( )
 //  that handles Unicode characters, including
 //  Chinese characters.
 
-void write_single_character_as_integer_to_file( )
-{
+void write_single_character_as_integer_to_file( ) {
     response_ignored = fputc( char( single_character_as_integer ) , outfile_connection ) ;
     return ;
 }
@@ -3188,8 +3154,7 @@ void write_single_character_as_integer_to_file( )
 //  item ID number for this text.  This is needed
 //  during initialization.
 
-int store_text_and_get_its_item_id( const char * local_this_word )
-{
+int store_text_and_get_its_item_id( const char * local_this_word ) {
 
 
 // -----------------------------------------------
@@ -3272,8 +3237,7 @@ int store_text_and_get_its_item_id( const char * local_this_word )
 //  default size of 35 is used.  The list is
 //  empty.
 
-void create_linked_list( )
-{
+void create_linked_list( ) {
     if ( requested_length > 0 )
     {
         length_requested_for_next_item_storage = requested_length ;
@@ -3296,8 +3260,7 @@ void create_linked_list( )
 //  linked list.  The segments of the linked
 //  list remain linked.
 
-void clear_linked_list( )
-{
+void clear_linked_list( ) {
     id_linked_list_segment_next = id_linked_list ;
     while ( id_linked_list_segment_next > 0 )
     {
@@ -3325,8 +3288,7 @@ void clear_linked_list( )
 
 //  todo: proofread
 
-void get_first_number_from_linked_list( )
-{
+void get_first_number_from_linked_list( ) {
     id_linked_list_current_segment_source = id_linked_list ;
     if ( pointer_begin_for_item[ id_linked_list_current_segment_source ] <= pointer_end_for_item[ id_linked_list_current_segment_source ] )
     {
@@ -3360,8 +3322,7 @@ void get_first_number_from_linked_list( )
 
 //  todo: proofread
 
-void get_next_number_from_linked_list( )
-{
+void get_next_number_from_linked_list( ) {
     pointer_for_get_next_number_from_linked_list ++ ;
     while ( ( id_linked_list_current_segment_source > 0 ) && ( pointer_for_get_next_number_from_linked_list > 0 ) )
     {
@@ -3388,8 +3349,7 @@ void get_next_number_from_linked_list( )
 //  "id_linked_list_segment_last".  This function
 //  ignores any content in any segment.
 
-void get_last_segment_in_linked_list( )
-{
+void get_last_segment_in_linked_list( ) {
     id_linked_list_segment_next = id_linked_list ;
     while ( id_linked_list_segment_next > 0 )
     {
@@ -3413,8 +3373,7 @@ void get_last_segment_in_linked_list( )
 //  prior segment.  The content of the added
 //  segment is empty.
 
-void extend_linked_list( )
-{
+void extend_linked_list( ) {
     get_last_segment_in_linked_list( ) ;
     id_linked_list_segment_last_former = id_linked_list_segment_last_occupied ;
     if ( requested_length < 1 )
@@ -3442,8 +3401,7 @@ void extend_linked_list( )
 //  has content, and measure the length of this
 //  content in the last occupied segment.
 
-void get_length_of_linked_list( )
-{
+void get_length_of_linked_list( ) {
     id_linked_list_segment_first = id_linked_list ;
     id_linked_list_segment_next = id_linked_list ;
     length_of_linked_list = 0 ;
@@ -3471,8 +3429,7 @@ void get_length_of_linked_list( )
 //  "single_number_to_append" to the end of the
 //  linked list specified by "id_linked_list".
 
-void append_number_to_linked_list( )
-{
+void append_number_to_linked_list( ) {
     get_length_of_linked_list( ) ;
     if ( pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
@@ -3507,8 +3464,7 @@ void append_number_to_linked_list( )
 //  "id_linked_list_segment_last_occupied" is
 //  still valid.
 
-void append_another_number_to_linked_list( )
-{
+void append_another_number_to_linked_list( ) {
     if ( pointer_end_for_item[ id_linked_list_segment_last_occupied ] < pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
         pointer = pointer_end_for_item[ id_linked_list_segment_last_occupied ] + 1 ;
@@ -3532,8 +3488,7 @@ void append_another_number_to_linked_list( )
 //  linked list is empty, return with a value of
 //  zero.
 
-void get_last_number_in_linked_list( )
-{
+void get_last_number_in_linked_list( ) {
     get_length_of_linked_list( ) ;
     while ( pointer_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_begin_for_item[ id_linked_list_segment_last_occupied ] )
     {
@@ -3560,8 +3515,7 @@ void get_last_number_in_linked_list( )
 //  segments contain just one number in each
 //  segment.
 
-void remove_last_number_from_linked_list( )
-{
+void remove_last_number_from_linked_list( ) {
     get_length_of_linked_list( ) ;
     while ( pointer_allocation_end_for_item[ id_linked_list_segment_last_occupied ] <= pointer_end_for_item[ id_linked_list_segment_last_occupied ] )
     {
@@ -3584,8 +3538,7 @@ void remove_last_number_from_linked_list( )
 //  "id_linked_list_original" to the linked list
 //  pointed to by "id_linked_list_copy".
 
-void copy_linked_list( )
-{
+void copy_linked_list( ) {
 
 
 // -----------------------------------------------
@@ -3687,8 +3640,7 @@ void copy_linked_list( )
 //  that is only intended to be used for push and
 //  pop operations, or to read the top number.
 
-void create_stacked_list( )
-{
+void create_stacked_list( ) {
     create_linked_list( ) ;
     id_stacked_list = id_linked_list ;
     return ;
@@ -3703,8 +3655,7 @@ void create_stacked_list( )
 //  "number_to_push" onto the top of the stacked
 //  list specified in "id_stacked_list".
 
-void push_number_onto_stacked_list( )
-{
+void push_number_onto_stacked_list( ) {
     id_linked_list = id_stacked_list ;
     number_to_append = number_to_push ;
     append_number_to_linked_list( ) ;
@@ -3721,8 +3672,7 @@ void push_number_onto_stacked_list( )
 //  "id_stacked_list" and puts the number into
 //  "number_from_top".
 
-void read_top_number_in_stacked_list( )
-{
+void read_top_number_in_stacked_list( ) {
     id_linked_list = id_stacked_list ;
     get_last_number_in_linked_list( ) ;
     number_from_top = single_number_to_get ;
@@ -3738,8 +3688,7 @@ void read_top_number_in_stacked_list( )
 //  list specified as "id_stacked_list" and puts
 //  the number into "number_from_top".
 
-void pop_number_from_stacked_list( )
-{
+void pop_number_from_stacked_list( ) {
     read_top_number_in_stacked_list( ) ;
     remove_last_number_from_linked_list( ) ;
     return ;
@@ -3757,8 +3706,7 @@ void pop_number_from_stacked_list( )
 //  the list.  The list is identified by the ID
 //  in "id_indexed_list".
 
-void create_indexed_list( )
-{
+void create_indexed_list( ) {
     length_requested_for_next_item_storage = 35 ;
     data_type = data_type_linked_list ;
     create_new_item_id_and_assign_storage( ) ;
@@ -3776,8 +3724,7 @@ void create_indexed_list( )
 //  "id_indexed_list".
 //  The number to append is "number_to_append".
 
-void append_number_to_indexed_list( )
-{
+void append_number_to_indexed_list( ) {
     id_linked_list = id_indexed_list ;
     single_number_to_append = number_to_append ;
     append_number_to_linked_list( ) ;
@@ -3805,8 +3752,7 @@ void append_number_to_indexed_list( )
 //  list, so the Dashrep compiler must never
 //  specify the wrong ID.
 
-void get_number_from_indexed_position( )
-{
+void get_number_from_indexed_position( ) {
 
 
 // -----------------------------------------------
@@ -3871,8 +3817,7 @@ void get_number_from_indexed_position( )
 //  "get_number_from_indexed_position"
 //  has very recently been used.
 
-void get_next_number_from_indexed_list( )
-{
+void get_next_number_from_indexed_list( ) {
 
 
 // -----------------------------------------------
@@ -3942,8 +3887,7 @@ void get_next_number_from_indexed_list( )
 //  segment that is long enough to reach the
 //  desired position.
 
-void put_number_into_position_within_indexed_list( )
-{
+void put_number_into_position_within_indexed_list( ) {
 
 
 // -----------------------------------------------
@@ -4029,8 +3973,7 @@ void put_number_into_position_within_indexed_list( )
 //  that reads unicode characters.  Test with
 //  Chinese characters.
 
-void read_text_line_from_file( )
-{
+void read_text_line_from_file( ) {
     if ( yes_or_no_encountered_eof_flag == yes_yes )
     {
         yes_or_no_more_text_in_file = no_no ;
@@ -4083,8 +4026,7 @@ void read_text_line_from_file( )
 //  item must not involve any pointer or any
 //  linked list.
 
-void write_simple_text_item_to_file( )
-{
+void write_simple_text_item_to_file( ) {
     for ( character_pointer = pointer_begin_for_item[ item_id ] ; character_pointer <= pointer_end_for_item[ item_id ] ; character_pointer ++ )
     {
         single_character_as_integer = all_characters[ character_pointer ] ;
@@ -4097,8 +4039,7 @@ void write_simple_text_item_to_file( )
 // -----------------------------------------------
 //  Function specify_character_to_insert_between_subitems
 
-void specify_character_to_insert_between_subitems( )
-{
+void specify_character_to_insert_between_subitems( ) {
     switch ( data_type )
     {
         data_type_phrase_word_pointers :
@@ -4122,8 +4063,7 @@ void specify_character_to_insert_between_subitems( )
 //
 //  Can be used to debug the use of text pointers.
 
-void write_to_log( )
-{
+void write_to_log( ) {
     log_out << "direction_next_or_previous " << direction_next_or_previous << std::endl << "current_pointer_stack_text_item " << current_pointer_stack_text_item << std::endl << "current_pointer_stack_character_position " << current_pointer_stack_character_position << std::endl << "pointer_begin_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_begin_for_item[ current_pointer_stack_text_item ] << std::endl << "pointer_end_for_item[ " << current_pointer_stack_text_item << " ] " << pointer_end_for_item[ current_pointer_stack_text_item ] << std::endl << "current_pointer_stack_text_item_begin " << current_pointer_stack_text_item_begin << std::endl << "current_pointer_stack_text_item_end " << current_pointer_stack_text_item_end << std::endl << "length_from_item_begin_to_end_minus_one " << length_from_item_begin_to_end_minus_one << std::endl << "data_type_for_item " << data_type_for_item[ current_pointer_stack_text_item ] << std::endl << "yes_or_no_reached_end_of_current_text_item " << yes_or_no_reached_end_of_current_text_item << std::endl << std::endl ;
 
     test_loop_counter ++ ;
@@ -4156,8 +4096,7 @@ void write_to_log( )
 //  The original is pointed to by
 //  "id_text_pointer_for_original".
 
-void copy_text_pointer( )
-{
+void copy_text_pointer( ) {
 	id_linked_list_original = id_text_pointer_for_original ;
 	id_linked_list_copy = id_text_pointer_for_copy ;
     copy_linked_list( ) ;
@@ -4185,8 +4124,7 @@ void copy_text_pointer( )
 //  exactly one greater than the item ID of the
 //  first stacked list.
 
-void initialize_text_position_direction_next( )
-{
+void initialize_text_position_direction_next( ) {
     id_text_position_for_getting_next_character = item_id ;
     if ( id_text_position_for_getting_next_character < 1 )
     {
@@ -4238,8 +4176,7 @@ void initialize_text_position_direction_next( )
 //  direction).  The starting item ID is
 //  specified in "item_id".
 
-void initialize_text_position_direction_previous( )
-{
+void initialize_text_position_direction_previous( ) {
     initialize_text_position_direction_next( ) ;
 
 // todo:
@@ -4278,8 +4215,7 @@ void initialize_text_position_direction_previous( )
 //  "initialize_text_position_direction_next" or
 //  "initialize_get_previous_character_from_text_item".
 
-void get_next_or_previous_non_pointer_text_item( )
-{
+void get_next_or_previous_non_pointer_text_item( ) {
 
 
 // -----------------------------------------------
@@ -4472,8 +4408,7 @@ void get_next_or_previous_non_pointer_text_item( )
 //  "initialize_get_previous_character_from_text_item"
 //  must be used.
 
-void get_next_or_previous_character_from_text_item( )
-{
+void get_next_or_previous_character_from_text_item( ) {
 
 
 // -----------------------------------------------
@@ -4615,8 +4550,7 @@ void get_next_or_previous_character_from_text_item( )
 // -----------------------------------------------
 //  Function check_yes_or_no_text_item_is_empty
 
-void check_yes_or_no_text_item_is_empty( )
-{
+void check_yes_or_no_text_item_is_empty( ) {
     initialize_text_position_direction_next( ) ;
     get_next_or_previous_character_from_text_item( ) ;
     if ( single_character_as_integer == 0 )
@@ -4633,8 +4567,7 @@ void check_yes_or_no_text_item_is_empty( )
 // -----------------------------------------------
 //  Function append_single_character
 
-void append_single_character( )
-{
+void append_single_character( ) {
 
 // todo: write
 
@@ -4686,8 +4619,7 @@ void append_single_character( )
 //  numbers, there is not a space at the end, so
 //  insert one.
 
-void append_space_if_not_empty( )
-{
+void append_space_if_not_empty( ) {
     item_id = id_text_to_edit ;
     check_yes_or_no_text_item_is_empty( ) ;
     if ( yes_or_no_text_item_is_empty == yes_yes )
@@ -4715,8 +4647,7 @@ void append_space_if_not_empty( )
 //  not have enough space, additional linked items of
 //  type "linked_list" are created and linked.
 
-void append_text_item_pointers( )
-{
+void append_text_item_pointers( ) {
 
 
 // -----------------------------------------------
@@ -4800,8 +4731,7 @@ void append_text_item_pointers( )
 //  to the destination (which previously was
 //  the origin).
 
-void append_text( )
-{
+void append_text( ) {
 
 
 // -----------------------------------------------
@@ -4878,8 +4808,7 @@ void append_text( )
 //  This function does not check for protection
 //  against changes.
 
-void delete_text( )
-{
+void delete_text( ) {
     id_linked_list = id_text_to_edit ;
     clear_linked_list( ) ;
     return ;
@@ -4894,8 +4823,7 @@ void delete_text( )
 //  the origin and destination IDs are different,
 //  but this assumption is not checked.
 
-void copy_text( )
-{
+void copy_text( ) {
 
 
 // -----------------------------------------------
@@ -4939,8 +4867,7 @@ void copy_text( )
 
 
 
-void add_phrase_word_to_indexed_list( )
-{
+void add_phrase_word_to_indexed_list( ) {
     number_to_append = id_for_phrase_word ;
     if ( id_indexed_list < 1 )
     {
@@ -4968,8 +4895,7 @@ void add_phrase_word_to_indexed_list( )
 //  phrase words that have the same character
 //  length (as the phrase word to match).
 
-void find_matching_phrase_word( )
-{
+void find_matching_phrase_word( ) {
 
 
 // -----------------------------------------------
@@ -5071,8 +4997,7 @@ void find_matching_phrase_word( )
 //  but that variable is zero if no match was
 //  found.
 
-void find_matching_phrase_name( )
-{
+void find_matching_phrase_name( ) {
 
 
 // -----------------------------------------------
@@ -5222,8 +5147,7 @@ void find_matching_phrase_name( )
 //  count.  The phrase word count must be in
 //  "number_of_phrase_words_found".
 
-void add_new_phrase_name( )
-{
+void add_new_phrase_name( ) {
 
 
 // -----------------------------------------------
@@ -5277,8 +5201,7 @@ void add_new_phrase_name( )
 //  when the initialization is done using Dashrep
 //  code.
 
-int during_initialization_store_phrase_name( int local_word_one , int local_word_two , int local_word_three , int local_word_four , int local_word_five , int local_word_six , int local_word_seven , int local_word_eight , int local_word_nine , int local_word_ten , int local_word_eleven , int local_word_twelve )
-{
+int during_initialization_store_phrase_name( int local_word_one , int local_word_two , int local_word_three , int local_word_four , int local_word_five , int local_word_six , int local_word_seven , int local_word_eight , int local_word_nine , int local_word_ten , int local_word_eleven , int local_word_twelve ) {
     length_requested_for_next_item_storage = 12 ;
     create_new_item_id_and_assign_storage( ) ;
     data_type_for_item[ new_item_id ] = data_type_phrase_word_pointers ;
@@ -5336,8 +5259,7 @@ int during_initialization_store_phrase_name( int local_word_one , int local_word
 //  text item types (categories) cannot be
 //  truncated using this function.
 
-void truncate_text_item_using_pointer_stack( )
-{
+void truncate_text_item_using_pointer_stack( ) {
     log_out << "truncate item " << id_text_to_edit << std::endl ;
 
 
@@ -5406,8 +5328,7 @@ void truncate_text_item_using_pointer_stack( )
 //  function should not be used if the text item
 //  and sub text items must not change.
 
-void remove_leading_or_trailing_delimiters( )
-{
+void remove_leading_or_trailing_delimiters( ) {
 
 
 // -----------------------------------------------
@@ -5464,8 +5385,7 @@ void remove_leading_or_trailing_delimiters( )
 // -----------------------------------------------
 //  Function remove_leading_delimiters
 
-void remove_leading_delimiters( )
-{
+void remove_leading_delimiters( ) {
     direction_next_or_previous = direction_next ;
     remove_leading_or_trailing_delimiters( ) ;
     return ;
@@ -5476,8 +5396,7 @@ void remove_leading_delimiters( )
 // -----------------------------------------------
 //  Function remove_trailing_delimiters
 
-void remove_trailing_delimiters( )
-{
+void remove_trailing_delimiters( ) {
     direction_next_or_previous = direction_previous ;
     remove_leading_or_trailing_delimiters( ) ;
     return ;
@@ -5488,8 +5407,7 @@ void remove_trailing_delimiters( )
 // -----------------------------------------------
 //  Function remove_leading_and_trailing_delimiters
 
-void remove_leading_and_trailing_delimiters( )
-{
+void remove_leading_and_trailing_delimiters( ) {
     remove_leading_delimiters( ) ;
     remove_trailing_delimiters( ) ;
     return ;
@@ -5516,8 +5434,7 @@ void remove_leading_and_trailing_delimiters( )
 
 //  todo: proofread, make corrections
 
-void replace_text_item_with_pointer_list( )
-{
+void replace_text_item_with_pointer_list( ) {
     item_id = id_text_to_edit ;
     copy_solo_item_to_new( ) ;
     all_pointers[ pointer_begin_for_item[ id_text_to_edit ] ] = id_for_copy ;
@@ -5534,8 +5451,7 @@ void replace_text_item_with_pointer_list( )
 //  Function parse_phrase_name
 //
 
-void parse_phrase_name( )
-{
+void parse_phrase_name( ) {
 
 
 // -----------------------------------------------
@@ -5663,8 +5579,7 @@ void parse_phrase_name( )
 //  This function does initialization for the
 //  function "skip_to_character_position".
 
-void initalize_skip_to_character_position( )
-{
+void initalize_skip_to_character_position( ) {
     item_id_current = id_for_character_position ;
     return ;
 }
@@ -5691,8 +5606,7 @@ void initalize_skip_to_character_position( )
 //  Before calling this function, use the function
 //  "initalize_skip_to_character_position".
 
-void skip_to_character_position( )
-{
+void skip_to_character_position( ) {
     while ( character_position_current < character_position_desired )
     {
         data_type = data_type_for_item[ item_id_current ] ;
@@ -5737,8 +5651,7 @@ void skip_to_character_position( )
 // -----------------------------------------------
 //  Function initialize_point_to_next_word_in_text_item
 
-void initialize_point_to_next_word_in_text_item( )
-{
+void initialize_point_to_next_word_in_text_item( ) {
     initialize_text_position_direction_next( ) ;
 }
 
@@ -5762,8 +5675,7 @@ void initialize_point_to_next_word_in_text_item( )
 //  and
 //  "pointer_stack_pointer_for_word_end".
 
-void point_to_next_word_in_text_item( )
-{
+void point_to_next_word_in_text_item( ) {
 
 
 // -----------------------------------------------
@@ -5857,8 +5769,7 @@ void point_to_next_word_in_text_item( )
 
 //  todo: use "jump" function!!
 
-void get_text_by_character_offset_and_length( )
-{
+void get_text_by_character_offset_and_length( ) {
     length_requested_for_next_item_storage = 1000 ;
     create_new_item_id_and_assign_storage( ) ;
     id_for_copy = new_item_id ;
@@ -5901,8 +5812,7 @@ void get_text_by_character_offset_and_length( )
 //  "id_for_insertion_into_gap" is
 //  inserted.
 
-void text_replace( )
-{
+void text_replace( ) {
 
 //  todo: write this code
 
@@ -5968,8 +5878,7 @@ void text_replace( )
 //  items also are written to the file.  The text
 //  item ID must be in item_id.
 
-void write_text_item_to_file( )
-{
+void write_text_item_to_file( ) {
     log_out << "item_id " << item_id << std::endl ;
     initialize_text_position_direction_next( ) ;
     while ( 1 == 1 )
@@ -5996,8 +5905,7 @@ void write_text_item_to_file( )
 //  many times each character appears within that
 //  text.
 
-void scan_text_item_for_character_usage( )
-{
+void scan_text_item_for_character_usage( ) {
 
 
 // -----------------------------------------------
@@ -6060,8 +5968,7 @@ void scan_text_item_for_character_usage( )
 //  "searched_usage_count_for_character"
 //  array the character usage counts.
 
-void scan_searched_text_before_doing_find_text( )
-{
+void scan_searched_text_before_doing_find_text( ) {
     item_id = id_text_to_search ;
     scan_text_item_for_character_usage( ) ;
     for ( single_character_as_integer = minimum_usage_character_to_consider ; single_character_as_integer <= maximum_usage_character_to_consider ; single_character_as_integer ++ )
@@ -6075,8 +5982,7 @@ void scan_searched_text_before_doing_find_text( )
 // -----------------------------------------------
 //  Function initialize_track_recent_position_of_each_character
 
-void initialize_track_recent_position_of_each_character( )
-{
+void initialize_track_recent_position_of_each_character( ) {
     log_out << "item_id " << item_id << std::endl ;
     next_character_position_count = 0 ;
     initialize_text_position_direction_next( ) ;
@@ -6101,8 +6007,7 @@ void initialize_track_recent_position_of_each_character( )
 //  "optimum_character_for_find_pause" is
 //  encountered.
 
-void track_recent_position_of_each_character( )
-{
+void track_recent_position_of_each_character( ) {
 
 
 // -----------------------------------------------
@@ -6206,8 +6111,7 @@ void track_recent_position_of_each_character( )
 //  in the search text, then the character to find
 //  is set to zero to indicate this case.
 
-void find_optimum_character_for_find_pause( )
-{
+void find_optimum_character_for_find_pause( ) {
     optimum_character_for_find_pause = 0 ;
     length_of_text_to_find = pointer_end_for_item[ id_from_origin ] - pointer_begin_for_item[ id_from_origin ] + 1 ;
     text_pointer = pointer_begin_for_item[ id_from_origin ] ;
@@ -6250,8 +6154,7 @@ void find_optimum_character_for_find_pause( )
 
 //  todo: proofread this code
 
-void check_for_match_where_paused( )
-{
+void check_for_match_where_paused( ) {
     yes_or_no_matching_text = yes_yes ;
 
     position_of_found_character_for_find_pause = recent_character_position_for_character_number[ optimum_character_for_find_pause ] ;
@@ -6304,8 +6207,7 @@ void check_for_match_where_paused( )
 //  matching phrase names are resolved
 //  immediately.
 
-void find_matching_text( )
-{
+void find_matching_text( ) {
 
 
 // -----------------------------------------------
@@ -6397,8 +6299,7 @@ void find_matching_text( )
 //  Saves the position at which the
 //  first hyphen in a phrase name is encountered.
 
-void save_position_of_first_hyphen( )
-{
+void save_position_of_first_hyphen( ) {
     pointer_to_first_hyphen = recent_character_position_for_character_number[ unicode_for_hyphen ] ;
     id_containing_first_hyphen = current_pointer_stack_text_item ;
     character_pointer_within_text_item_for_first_hyphen = current_pointer_stack_character_position ;
@@ -6420,8 +6321,7 @@ void save_position_of_first_hyphen( )
 //  the phrase name is placed into a text item
 //  that contains a phrase name.
 
-void get_phrase_name_when_at_trailing_delimiter( )
-{
+void get_phrase_name_when_at_trailing_delimiter( ) {
 
 
 // -----------------------------------------------
@@ -6484,8 +6384,7 @@ void get_phrase_name_when_at_trailing_delimiter( )
 //  brackets include at least one underscore and
 //  does not include a hyphen.
 
-void replace_angle_bracketed_phrase_names( )
-{
+void replace_angle_bracketed_phrase_names( ) {
 
 
 // -----------------------------------------------
@@ -6636,8 +6535,7 @@ void replace_angle_bracketed_phrase_names( )
 //  Handle the "hyphen-here" and "one-space" and
 //  "no-space" directives.
 
-void handle_directives( )
-{
+void handle_directives( ) {
 
 }
 
@@ -6654,8 +6552,7 @@ void handle_directives( )
 
 //  todo: omit, not needed!!!  saved in case code is useful elsewhere
 
-void check_yes_or_no_last_character_is_space( )
-{
+void check_yes_or_no_last_character_is_space( ) {
     yes_or_no_last_character_is_space = no_no ;
     item_id_current = item_id ;
     while ( item_id_current > 0 )
@@ -6704,8 +6601,7 @@ void check_yes_or_no_last_character_is_space( )
 
 //  Currently being changed from Perl code to C.
 
-void expand_text( )
-{
+void expand_text( ) {
 
 
 // -----------------------------------------------
@@ -7075,8 +6971,7 @@ void expand_text( )
 // -----------------------------------------------
 //  Function execute_loop_handler_based_on_handler_id
 
-void execute_loop_handler_based_on_handler_id( int local_item_id_for_next_word , int local_loop_handler )
-{
+void execute_loop_handler_based_on_handler_id( int local_item_id_for_next_word , int local_loop_handler ) {
 
 //  use switch statement
 
@@ -7095,8 +6990,7 @@ void execute_loop_handler_based_on_handler_id( int local_item_id_for_next_word ,
 //  Local variables are used because this function
 //  can be used recursively.
 
-void implement_loop( )
-{
+void implement_loop( ) {
     int local_item_id_contains_word_list ;
     int local_item_id_for_next_word ;
     int local_loop_handler ;
@@ -7124,55 +7018,47 @@ void implement_loop( )
 //  in the Perl version, but these will be
 //  eliminated later.
 
-int parameterized_use_handler_with_each_word_in_phrase( int local_item_id )
-{
+int parameterized_use_handler_with_each_word_in_phrase( int local_item_id ) {
     id_from_origin = local_item_id ;
     implement_loop( ) ;
     int local_expand_result_item_id ;  // temporary, to avoid compiler error
     return local_expand_result_item_id ;
 }
 
-int parameterized_dashrep_expand_text( int local_item_id )
-{
+int parameterized_dashrep_expand_text( int local_item_id ) {
     id_from_origin = local_item_id ;
     expand_text( ) ;
     int local_expand_result_item_id ;  // temporary, to avoid compiler error
     return local_expand_result_item_id ;
 }
 
-void parameterized_append_text( int local_item_id )
-{
+void parameterized_append_text( int local_item_id ) {
     id_from_origin = local_item_id ;
 //    append_copied_text( ) ;
     return ;
 }
 
-void parameterized_get_phrase_definition( int local_to_item_id , int local_from_item_id )
-{
+void parameterized_get_phrase_definition( int local_to_item_id , int local_from_item_id ) {
     local_to_item_id = pointer_to_definition_of_item[ local_from_item_id ] ;
     return ;
 }
 
-void parameterized_put_phrase_definition( int local_from_item_id , int local_to_item_id )
-{
+void parameterized_put_phrase_definition( int local_from_item_id , int local_to_item_id ) {
     pointer_to_definition_of_item[ local_to_item_id ] = local_from_item_id ;
     return ;
 }
 
-void handle_endless_loop_encountered( )
-{
+void handle_endless_loop_encountered( ) {
     exit( EXIT_FAILURE ) ;
     return ;
 }
 
-void handle_time_limit_exceeded( )
-{
+void handle_time_limit_exceeded( ) {
     exit( EXIT_FAILURE ) ;
     return ;
 }
 
-int parameterized_remove_leading_trailing_spaces( int local_item_id )
-{
+int parameterized_remove_leading_trailing_spaces( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
     remove_leading_delimiters( ) ;
@@ -7180,126 +7066,110 @@ int parameterized_remove_leading_trailing_spaces( int local_item_id )
     return item_id ;
 }
 
-int parameterized_yes_or_no_empty( int local_item_id )
-{
+int parameterized_yes_or_no_empty( int local_item_id ) {
     item_id = local_item_id ;
     check_yes_or_no_solo_item_is_empty( ) ;
     return yes_or_no_text_item_is_empty ;
 }
 
-int parameterized_yes_or_no_phrase_name( int local_item_id )
-{
+int parameterized_yes_or_no_phrase_name( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_phrase_definition_not_empty( int local_item_id )
-{
+int parameterized_yes_or_no_phrase_definition_not_empty( int local_item_id ) {
     item_id = pointer_to_definition_of_item[ local_item_id ] ;
     check_yes_or_no_solo_item_is_empty( ) ;
     return yes_or_no_text_item_is_empty ;
 }
 
-int parameterized_yes_or_no_positive_integer( int local_item_id )
-{
+int parameterized_yes_or_no_positive_integer( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_integer( int local_item_id )
-{
+int parameterized_yes_or_no_integer( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_positive_real_number( int local_item_id )
-{
+int parameterized_yes_or_no_positive_real_number( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_real_number( int local_item_id )
-{
+int parameterized_yes_or_no_real_number( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_phrase_contains_real_numbers( int local_item_id )
-{
+int parameterized_yes_or_no_phrase_contains_real_numbers( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_normalize_calculated_value( int local_item_id )
-{
+int parameterized_normalize_calculated_value( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_item_id ;
 }
 
-int parameterized_convert_numeric_text_into_numeric_value( int local_item_id )
-{
+int parameterized_convert_numeric_text_into_numeric_value( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_item_id ;
 }
 
-int parameterized_convert_numeric_value_into_numeric_text( int local_item_id )
-{
+int parameterized_convert_numeric_value_into_numeric_text( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_item_id ;
 }
 
-int parameterized_get_list_of_words( int local_item_id )
-{
+int parameterized_get_list_of_words( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_item_id ;
 }
 
-int parameterized_yes_or_no_valid_url( int local_item_id )
-{
+int parameterized_yes_or_no_valid_url( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_valid_path( int local_item_id )
-{
+int parameterized_yes_or_no_valid_path( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_valid_path_prefix( int local_item_id )
-{
+int parameterized_yes_or_no_valid_path_prefix( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_yes_or_no_file_name( int local_item_id )
-{
+int parameterized_yes_or_no_file_name( int local_item_id ) {
     item_id = local_item_id ;
     initialize_parse_characters_of_filename( ) ;
     for ( text_pointer = pointer_begin_for_item[ id_from_origin ] ; text_pointer <= pointer_end_for_item[ id_from_origin ] ; text_pointer ++ )
@@ -7322,8 +7192,7 @@ int parameterized_yes_or_no_file_name( int local_item_id )
     return yes_or_no_filename_is_valid ;
 }
 
-int parameterized_yes_or_no_folder_name( int local_item_id )
-{
+int parameterized_yes_or_no_folder_name( int local_item_id ) {
 //  The flag yes_or_no_use_slash_not_backslash
 //  identifies whether slashes or backslashes are
 //  allowed in folder names.
@@ -7348,79 +7217,68 @@ int parameterized_yes_or_no_folder_name( int local_item_id )
     return yes_or_no_folder_name_is_valid ;
 }
 
-int parameterized_yes_or_no_input_file_exists( int local_item_id )
-{
+int parameterized_yes_or_no_input_file_exists( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_open_file_for_reading( int local_item_id )
-{
+int parameterized_open_file_for_reading( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-int parameterized_open_file_for_appending( int local_item_id )
-{
+int parameterized_open_file_for_appending( int local_item_id ) {
     int local_yes_or_no ;
     item_id = local_item_id ;
 
     return local_yes_or_no ;
 }
 
-void point_to_words( )
-{
+void point_to_words( ) {
 
     return ;
 }
 
-void point_to_words_in_operand_one( )
-{
+void point_to_words_in_operand_one( ) {
     item_id = text_item_for_operand_one ;
     point_to_words( ) ;
     return ;
 }
 
-void point_to_words_in_operand_two( )
-{
+void point_to_words_in_operand_two( ) {
     item_id = text_item_for_operand_two ;
     point_to_words( ) ;
     return ;
 }
 
-void point_to_words_in_operand_three( )
-{
+void point_to_words_in_operand_three( ) {
     item_id = text_item_for_operand_three ;
     point_to_words( ) ;
     return ;
 }
 
-void remove_extra_spaces( )
-{
+void remove_extra_spaces( ) {
     remove_leading_delimiters( ) ;
     remove_trailing_delimiters( ) ;
 
     return ;
 }
 
-void get_count_of_words( )
-{
+void get_count_of_words( ) {
 
     return ;
 }
 
-void get_word_at_position( )
-{
+void get_word_at_position( ) {
 
     return ;
 }
 
-void open_trace_output_file_if_not_open( )
-{
+void open_trace_output_file_if_not_open( ) {
 
     return ;
 }
@@ -7438,8 +7296,7 @@ void open_trace_output_file_if_not_open( )
 // -----------------------------------------------
 //  Function do_everything
 
-void do_everything( )
-{
+void do_everything( ) {
 
 
 // -----------------------------------------------
@@ -7516,8 +7373,7 @@ void do_everything( )
 // -----------------------------------------------
 //  Execution starts here.
 
-int main( int argc, char *argv[] )
-{
+int main( int argc, char *argv[] ) {
 
     int local_argv_pointer ;
 
