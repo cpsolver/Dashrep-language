@@ -6,11 +6,7 @@ ls -l dashrep_test_code_joined_dashdefs.txt
 
 # ---------- compile and run the test code ----------
 
-
-# next line not yet tested:
 find ./test_dashrep_code/ -name "*-*.txt" > test_code_list_of_dashdef_files.txt
-
-
 perl combine_listed_dashdefs.pl < test_code_list_of_dashdef_files.txt > dashrep_test_code_joined_dashdefs.txt
 perl -w dashrep_compiler_executable.pl < dashrep_test_code_joined_dashdefs.txt > output_log_from_dashrep_compiler.txt
 rm -f executable_test_dashrep_compiler.pl
