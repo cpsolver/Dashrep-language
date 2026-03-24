@@ -6,7 +6,7 @@ See www.Dashrep.org for details.
 
 The Dashrep compiler is written in the Dashrep language.
 
-The current implementation of the Dashrep compiler generates Perl code that is directly executable as Perl code.  In the future the runtime code will be changed to a combination of (mostly) C and (some) C++ code that is compiled by the Clang compiler.
+The current implementation of the Dashrep compiler generates Perl code that is directly executable as Perl code.  A C++ runtime version is being created.  (A mostly C-language runtime version was being developed but that project is on hold.)
 
 Version 3.03
 
