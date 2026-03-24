@@ -1,0 +1,7 @@
+combee ****
+ambee put-into-phrase epoch-seconds-current-time  ambee get-current-time-in-epoch-seconds amenn  amenn
+ambee put-into-phrase elapsed-time  ambee numeric-minus ambee epoch-seconds-current-time amenn ambee epoch-seconds-starting-time amenn amenn  amenn
+
+
+ambee trace-show elapsed-time amenn
+**** comenn

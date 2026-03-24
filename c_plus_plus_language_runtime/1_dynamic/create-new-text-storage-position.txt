@@ -1,0 +1,2 @@
+ambee put-into-phrase storage-type  text  amenn
+ambee create-new-storage-position amenn

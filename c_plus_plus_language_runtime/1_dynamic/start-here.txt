@@ -1,0 +1,1 @@
+ambee run-compiler amenn

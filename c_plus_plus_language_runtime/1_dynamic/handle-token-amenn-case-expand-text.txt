@@ -1,0 +1,4 @@
+ambee numeric-increment current-accumulator-pointer amenn
+ambee get-all-operands amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+ambee expand-text template-runtime-code-for-action-expand-text runtime-code-for-parameter-phrase amenn

@@ -1,0 +1,78 @@
+ambee if-no-begin ambee yes-or-no-empty-phrase warning-messages amenn amenn
+ambee copy-text runtime-code-at-top-if-warning-message output-warning-messages amenn
+ambee append-text-no-space warning-messages output-warning-messages amenn
+ambee append-text-no-space new-empty-lines output-warning-messages amenn
+ambee copy-from-phrase-append-to-file output-warning-messages ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+
+ambee copy-from-phrase-append-to-file segment-start-object-code-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-text character-pound-sign start-object-code-in-executable-code amenn
+ambee append-text source-code-copyright-notice start-object-code-in-executable-code amenn
+ambee copy-from-phrase-append-to-file start-object-code-in-executable-code ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-start-object-code-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase optional-import-statements-modified amenn amenn
+ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+
+ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn
+
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-definition-items amenn amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+
+ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-function-branches amenn amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-functions-replacement-only amenn amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-compiled-functions amenn amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase optional-extra-runtime-functions-modified amenn amenn
+ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+
+ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions amenn
+ambee copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions amenn
+
+ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-hyphen-here string-bracketed-hyphen-here amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-new-line string-bracketed-new-line amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-empty-line string-bracketed-empty-line amenn
+ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-results-from-compiler amenn amenn
+
+ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
+
+combee **** remove if OK:
+ambee clear-phrase standard-output amenn
+ambee linewise-read-from-file-and-use-handler ambee filename-output-results-from-compiler amenn append-one-line-to-standard-output amenn
+**** comenn

@@ -1,0 +1,27 @@
+ambee copy-text string-hyphen string-hyphen-here amenn
+ambee append-text-no-space character-hyphen string-hyphen-here amenn
+ambee append-text-no-space string-here string-hyphen-here amenn
+
+ambee copy-text string-character string-character-hyphen amenn
+ambee append-text-no-space character-hyphen string-character-hyphen amenn
+ambee append-text-no-space string-hyphen string-character-hyphen amenn
+
+ambee copy-text string-no string-no-space amenn
+ambee append-text-no-space character-hyphen string-no-space amenn
+ambee append-text-no-space string-space string-no-space amenn
+
+ambee copy-text string-one string-one-space amenn
+ambee append-text-no-space character-hyphen string-one-space amenn
+ambee append-text-no-space string-space string-one-space amenn
+
+ambee copy-text string-new string-new-line amenn
+ambee append-text-no-space character-hyphen string-new-line amenn
+ambee append-text-no-space string-line string-new-line amenn
+
+ambee copy-text string-empty string-empty-line amenn
+ambee append-text-no-space character-hyphen string-empty-line amenn
+ambee append-text-no-space string-line string-empty-line amenn
+
+ambee copy-text string-empty string-empty-text amenn
+ambee append-text-no-space character-hyphen string-empty-text amenn
+ambee append-text-no-space string-text string-empty-text amenn

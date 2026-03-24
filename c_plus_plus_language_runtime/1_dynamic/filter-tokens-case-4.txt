@@ -1,0 +1,6 @@
+ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn
+ambee append-text current-token list-of-tokens-in-current-definition amenn
+ambee if-else amenn
+ambee copy-text current-token phrase-being-defined amenn
+ambee remove-colon-if-at-end-of-phrase-being-defined amenn
+ambee if-end amenn

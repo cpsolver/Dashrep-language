@@ -1,0 +1,30 @@
+ambee copy-text character-f string-fen amenn
+ambee append-text-no-space character-e string-fen amenn
+ambee append-text-no-space character-n string-fen amenn
+
+ambee copy-text string-am string-ambee amenn
+ambee append-text-no-space string-bee string-ambee amenn
+
+ambee copy-text string-am string-amenn amenn
+ambee append-text-no-space string-enn string-amenn amenn
+
+ambee copy-text string-amenn string-amennfen amenn
+ambee append-text-no-space string-fen string-amennfen amenn
+
+ambee copy-text string-com string-combee amenn
+ambee append-text-no-space string-bee string-combee amenn
+
+ambee copy-text string-com string-comenn amenn
+ambee append-text-no-space string-enn string-comenn amenn
+
+ambee copy-text string-def string-defenn amenn
+ambee append-text-no-space string-enn string-defenn amenn
+
+ambee copy-text string-fen string-fenambee amenn
+ambee append-text-no-space string-bee string-fenambee amenn
+
+ambee copy-text string-no string-nospay amenn
+ambee append-text-no-space string-spay string-nospay amenn
+
+ambee copy-text string-amenn string-amennfenambee amenn
+ambee append-text-no-space string-fenambee string-amennfenambee amenn

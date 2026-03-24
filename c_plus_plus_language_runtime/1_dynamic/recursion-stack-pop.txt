@@ -1,0 +1,11 @@
+ambee put-into-phrase position-top-of-stack  ambee get-count-of-words recursion-stack amenn  amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1  amenn amenn amenn
+ambee recursion-stack-pop-case-not-empty amenn
+ambee if-else amenn
+ambee recursion-stack-pop-case-empty amenn
+ambee if-end amenn
+
+combee ****
+ambee recursion-stack-show amenn
+**** comenn

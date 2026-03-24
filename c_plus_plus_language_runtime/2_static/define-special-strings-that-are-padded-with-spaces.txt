@@ -1,0 +1,71 @@
+ambee copy-text string-ambee string-space-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-ambee-space amenn
+ambee append-text-no-space character-space string-space-ambee-space amenn
+
+ambee copy-text string-amenn string-space-amenn-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-space amenn
+ambee append-text-no-space character-space string-space-amenn-space amenn
+
+ambee copy-text string-fen string-space-fen-space amenn
+ambee prepend-text-no-space character-space string-space-fen-space amenn
+ambee append-text-no-space character-space string-space-fen-space amenn
+
+ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn
+ambee append-text-no-space character-space string-space-hyphen-here-space amenn
+
+ambee copy-text string-combee string-space-combee-space amenn
+ambee prepend-text-no-space character-space string-space-combee-space amenn
+ambee append-text-no-space character-space string-space-combee-space amenn
+
+ambee copy-text string-comenn string-space-comenn-space amenn
+ambee prepend-text-no-space character-space string-space-comenn-space amenn
+ambee append-text-no-space character-space string-space-comenn-space amenn
+
+ambee copy-text code-concat string-space-concat-space amenn
+ambee prepend-text-no-space character-space string-space-concat-space amenn
+ambee append-text-no-space character-space string-space-concat-space amenn
+
+ambee copy-text string-one-space string-space-one-space-space amenn
+ambee prepend-text-no-space character-space string-space-one-space-space amenn
+ambee append-text-no-space character-space string-space-one-space-space amenn
+
+ambee copy-text character-hyphen string-space-hyphen-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-space amenn
+ambee append-text-no-space character-space string-space-hyphen-space amenn
+
+ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
+
+ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn
+
+ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn
+ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn
+ambee append-text-no-space character-space string-code-nospay-between-spaces amenn
+
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
+
+ambee copy-text string-amennfenambee string-space-amennfenambee-space amenn
+ambee prepend-text-no-space character-space string-space-amennfenambee-space amenn
+ambee append-text-no-space character-space string-space-amennfenambee-space amenn
+
+ambee copy-text string-amenn string-space-amenn-fen-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+ambee append-text string-fen string-space-amenn-fen-ambee-space amenn
+ambee append-text string-ambee string-space-amenn-fen-ambee-space amenn
+ambee append-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
+
+ambee copy-text string-space-nospay-space string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space string-nospay string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space-nospay-space amenn

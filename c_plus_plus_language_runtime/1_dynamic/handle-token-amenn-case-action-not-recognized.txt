@@ -1,0 +1,7 @@
+ambee copy-word-at-position definition-for-phrase-being-defined next-to-last-word-in-phrase-being-defined ambee numeric-minus ambee get-count-of-words definition-for-phrase-being-defined amenn 1  amenn amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions next-to-last-word-in-phrase-being-defined action-name amenn amenn
+ambee append-text action-name list-of-action-names-not-recognized amenn
+ambee if-end amenn
+
+ambee handle-token-amenn-case-executable-phrase amenn
