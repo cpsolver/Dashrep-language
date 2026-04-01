@@ -1,0 +1,143 @@
+<p>ambee use-handler-with-each-word-in-phrase name-of-handler list-of-items amenn</p>
+
+<p>ambee numeric-absolute single-number amenn</p>
+<p>ambee numeric-add first-number-to-add second-number-to-add amenn</p>
+<p>ambee numeric-cosine decimal-number amenn</p>
+<p>ambee numeric-decrement integer-to-decrement amenn</p>
+<p>ambee numeric-divide-by numerator-number denominator-number amenn</p>
+<p>ambee numeric-equal-greater-less-compare first-number-to-compare second-number-to-compare amenn</p>
+<p>ambee numeric-increment integer-to-increment amenn</p>
+<p>ambee numeric-integer decimal-number amenn</p>
+<p>ambee numeric-logarithm-base-10 single-number amenn</p>
+<p>ambee numeric-logarithm-base-e single-number amenn</p>
+<p>ambee numeric-maximum list-of-numbers amenn</p>
+<p>ambee numeric-minimum list-of-numbers amenn</p>
+<p>ambee numeric-minus number-from-which-to-subtract number-to-subtract amenn</p>
+<p>ambee numeric-multiply first-number second-number amenn</p>
+<p>ambee numeric-odd-or-even single-integer amenn</p>
+<p>ambee numeric-sine single-number amenn</p>
+<p>ambee numeric-square-root single-number amenn</p>
+
+<p>ambee numeric-vector-absolutes list-of-numbers list-of-absolute-values amenn</p>
+<p>ambee numeric-vector-add-number first-vector-list-of-numbers second-vector-list-of-numbers list-of-sum-numbers amenn</p>
+<p>ambee numeric-vector-integers vector-list-of-numbers list-of-integers amenn</p>
+<p>ambee numeric-vector-multiply-by-number vector-list-of-numbers single-number amenn</p>
+<p>ambee numeric-vectors-add first-vector-list-of-numbers second-vector-list-of-numbers list-of-sum-numbers amenn</p>
+<p>ambee numeric-vectors-divide-by first-vector-list-of-numbers second-vector-list-of-numbers vector-list-of-division-result-numbers amenn</p>
+<p>ambee numeric-vectors-from-delta-values-calculate-distances list-of-x-axis-numbers list-of-y-axis-numbers list-of-calculated-distances amenn</p>
+<p>ambee numeric-vectors-multiply first-vector-list-of-numbers-to-multiply second-vector-list-of-numbers-to-multiply vector-list-of-numbers-multiplied amenn</p>
+
+<p>ambee numeric-y-map-tile-number-based-on-latitude latitude-number amenn</p>
+
+
+
+<p>ambee copy-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-word-at-position list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-found-in-both-lists list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-found-in-either-list list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-found-only-in-first-list list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-from-position-to-position list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-offset-skip list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-order-reversed list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-rearrange-using-order-sort-alphabetic list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-rearrange-using-order-sort-numeric list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-sort-alphabetic list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-sort-numeric list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-that-begin-with-listed-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-that-begin-with-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-that-contain-listed-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-words-unique-only list-of-items-first list-of-items-second amenn</p>
+
+
+<p>ambee append-multiple-from-phrases-named-in-pattern list-of-items-first list-of-items-second amenn</p>
+<p>ambee append-new-line list-of-items-first list-of-items-second amenn</p>
+<p>ambee append-repeatedly-using-count list-of-items-first list-of-items-second amenn</p>
+<p>ambee append-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee append-text-no-space list-of-items-first list-of-items-second amenn</p>
+<p>ambee clear-listed-phrases list-of-items-first list-of-items-second amenn</p>
+<p>ambee clear-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee convert-unicode-to-html-entities list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-and-move-attributes-into-xml-tags list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-and-remove-attributes-from-xml-tags list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-and-replace list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-and-replace-using-paired-listed-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-append-file-to-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-characters-from-position-to-position list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-from-columns-in-file-to-column-lists list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-from-columns-in-file-to-named-phrases list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-from-file-to-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-from-phrase-append-to-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-initial-caps list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-listed-words-to-phrases-named-in-pattern list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-lowercase-only list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-uppercase-only list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-without-extra-spaces list-of-items-first list-of-items-second amenn</p>
+
+<p>ambee copy-zero-pad-left-to-length list-of-items-first list-of-items-second amenn</p>
+<p>ambee create-empty-sub-folder list-of-items-first list-of-items-second amenn</p>
+<p>ambee decode-from-cgi-parameter list-of-items-first list-of-items-second amenn</p>
+<p>ambee delete-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee delete-listed-phrases list-of-items-first list-of-items-second amenn</p>
+<p>ambee encode-as-cgi-parameter list-of-items-first list-of-items-second amenn</p>
+<p>ambee exit-from-dashrep list-of-items-first list-of-items-second amenn</p>
+<p>ambee expand-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee find-line-in-file-that-begins-with-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee find-lines-in-file-that-begin-with-any-listed-word list-of-items-first list-of-items-second amenn</p>
+<p>ambee find-lines-in-file-that-begin-with-any-two-words-listed list-of-items-first list-of-items-second amenn</p>
+<p>ambee gather-from-tagged-file-one-entry list-of-items-first list-of-items-second amenn</p>
+<p>ambee gather-tagged-info-from-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-counts-from-integer-to-integer list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-every-ordered-pairwise-combination-of-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-every-pairwise-combination-of-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-list-of-all-dashrep-phrases list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-list-of-files-in-current-read-directory list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-list-of-folders-in-current-read-directory list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-phrase-usage-counts list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-positions-of-delimiter list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-positions-of-first-matching-delimiter-after-listed-positions list-of-items-first list-of-items-second amenn</p>
+<p>ambee generate-positions-of-listed-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-cgi-information list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-characters-from-position-to-position list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-count-of-characters list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-count-of-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-current-time-in-epoch-seconds list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-definitions-from-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-phrase-name-from-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-position-of-matching-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-position-of-word list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-url-resource list-of-items-first list-of-items-second amenn</p>
+<p>ambee get-word-at-position list-of-items-first list-of-items-second amenn</p>
+<p>ambee linewise-read-from-file-and-use-handler list-of-items-first list-of-items-second amenn</p>
+<p>ambee linewise-read-from-standard-input list-of-items-first list-of-items-second amenn</p>
+<p>ambee modification-time-of-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee prepend-text list-of-items-first list-of-items-second amenn</p>
+<p>ambee prepend-text-no-space list-of-items-first list-of-items-second amenn</p>
+<p>ambee put-into-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee put-listed-phrase-definitions-into-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee rename-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee set-file-permission-private list-of-items-first list-of-items-second amenn</p>
+<p>ambee set-file-permission-private-but-executable list-of-items-first list-of-items-second amenn</p>
+<p>ambee set-file-permission-public-read list-of-items-first list-of-items-second amenn</p>
+<p>ambee size-of-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee split-epoch-seconds-into-named-components list-of-items-first list-of-items-second amenn</p>
+<p>ambee split-epoch-seconds-into-named-components-for-zero-meridian list-of-items-first list-of-items-second amenn</p>
+<p>ambee trace-show list-of-items-first list-of-items-second amenn</p>
+<p>ambee trace-show-where list-of-items-first list-of-items-second amenn</p>
+<p>ambee write-gathered-listed-items-to-end-of-file list-of-items-first list-of-items-second amenn</p>
+
+<p>ambee if-end amenn</p>
+<p>ambee if-no-begin list-of-items-first list-of-items-second amenn</p>
+<p>ambee if-yes-begin list-of-items-first list-of-items-second amenn</p>
+<p>ambee no-if-any-no list-of-items-first list-of-items-second amenn</p>
+<p>ambee no-if-not-yes list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-if-all-yes list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-if-any-yes list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-if-not-no list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-empty-phrase list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-file-exists list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-folder-exists list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-opposite list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-same-two-phrase-definitions list-of-items-first list-of-items-second amenn</p>
+<p>ambee yes-or-no-same-two-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee zero-one-multiple list-of-items-first list-of-items-second amenn</p>
+<p>ambee zero-or-nonzero list-of-items-first list-of-items-second amenn</p>
