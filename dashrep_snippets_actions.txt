@@ -1,4 +1,6 @@
-zero operands
+<h3>Action snippets</h3>
+
+<h4>No operands</h4>
 
 <p>ambee get-cgi-information amenn</p>
 <p>ambee get-current-time-in-epoch-seconds amenn</p>
@@ -7,7 +9,7 @@ zero operands
 <p>ambee trace-show-where amenn</p>
 
 
-1 operand
+<h4>One operand</h4>
 
 <p>ambee append-new-line list-of-items-first amenn</p>
 <p>ambee clear-listed-phrases list-of-items-first amenn</p>
@@ -50,7 +52,7 @@ zero operands
 <p>ambee zero-or-nonzero list-of-items-first amenn</p>
 
 
-2 operands
+<h4>Two operands</h4>
 
 <p>ambee append-multiple-from-phrases-named-in-pattern list-of-items-first list-of-items-second amenn</p>
 <p>ambee append-text list-of-items-first list-of-items-second amenn</p>
@@ -96,7 +98,7 @@ zero operands
 <p>ambee yes-or-no-same-two-phrase-definitions list-of-items-first list-of-items-second amenn</p>
 
 
-3 operands
+<h4>Three operands</h4>
 
 <p>ambee append-repeatedly-using-count list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-and-replace-using-paired-listed-words list-of-items-first list-of-items-second list-of-items-third amenn</p>
@@ -127,7 +129,7 @@ zero operands
 <p>ambee numeric-vectors-multiply first-vector-list-of-numbers-to-multiply second-vector-list-of-numbers-to-multiply vector-list-of-numbers-multiplied amenn</p>
 
 
-4 operands
+<h4>Four operands</h4>
 
 <p>ambee copy-and-replace list-of-items-first list-of-items-second list-of-items-third list-of-items-fourth amenn</p>
 <p>ambee copy-characters-from-position-to-position list-of-items-first list-of-items-second list-of-items-third list-of-items-fourth amenn</p>
@@ -138,19 +140,21 @@ zero operands
 <p>ambee numeric-two-dimensional-sort-into-columns-and-rows list-of-items-first list-of-items-second list-of-items-third list-of-items-fourth amenn</p>
 
 
-variable number of operands
+<h4>Variable number of operands</h4>
 
-<p>ambee if-no-begin list-of-items-first list-of-items-second amenn</p>
-<p>ambee if-yes-begin list-of-items-first list-of-items-second amenn</p>
-<p>ambee no-if-any-no list-of-items-first list-of-items-second amenn</p>
-<p>ambee no-if-not-yes list-of-items-first list-of-items-second amenn</p>
-<p>ambee numeric-add ambee first-number-to-add amenn ambee second-number-to-add amenn amenn</p>
-<p>ambee numeric-maximum list-of-numbers amenn</p>
-<p>ambee numeric-minimum list-of-numbers amenn</p>
-<p>ambee numeric-multiply ambee first-number amenn ambee second-number amenn amenn</p>
-<p>ambee put-into-phrase list-of-items-first list-of-items-second amenn</p>
-<p>ambee yes-if-all-yes list-of-items-first list-of-items-second amenn</p>
-<p>ambee yes-if-any-yes list-of-items-first list-of-items-second amenn</p>
-<p>ambee yes-if-not-no list-of-items-first list-of-items-second amenn</p>
-<p>ambee yes-or-no-opposite list-of-items-first list-of-items-second amenn</p>
-<p>ambee yes-or-no-same-two-words list-of-items-first list-of-items-second amenn</p>
+<p>ambee put-into-phrase list-of-items-first one or more words to insert into phrase amenn</p>
+<p>ambee yes-or-no-same-two-words first_word second_word amenn</p>
+
+<p>ambee if-no-begin text possibly containing word no amenn</p>
+<p>ambee if-yes-begin text possibly containing word yes amenn</p>
+<p>ambee no-if-any-no text possibly containing words yes and no amenn</p>
+<p>ambee no-if-not-yes text possibly containing words yes and no amenn</p>
+<p>ambee yes-if-all-yes text possibly containing words yes and no amenn</p>
+<p>ambee yes-if-any-yes text possibly containing words yes and no amenn</p>
+<p>ambee yes-if-not-no text possibly containing words yes and no amenn</p>
+<p>ambee yes-or-no-opposite text including word yes or no amenn</p>
+
+<p>ambee numeric-add 123.456 789.123 456.789 amenn</p>
+<p>ambee numeric-maximum 123.456 789.123 456.789 amenn</p>
+<p>ambee numeric-minimum 123.456 789.123 456.789 amenn</p>
+<p>ambee numeric-multiply 123.456 789.123 456.789 amenn</p>
