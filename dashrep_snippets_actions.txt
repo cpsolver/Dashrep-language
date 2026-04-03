@@ -1,5 +1,7 @@
 <h3>Action snippets</h3>
 
+<p>Reminder:&nbsp; Actions that process <i>words</i> also can process numbers and lists of numbers.&nbsp; For example, <i>12 3.4 -0.5</i> is text, yet <i>numeric</i> actions can do calculations that recognize them as numbers, while they also can be accessed one at a time using actions that access space-delimited words one at a time.</p>
+
 <h4>No operands</h4>
 
 <p>ambee get-cgi-information amenn</p>
@@ -11,45 +13,45 @@
 
 <h4>One operand</h4>
 
-<p>ambee append-new-line list-of-items-first amenn</p>
-<p>ambee clear-listed-phrases list-of-items-first amenn</p>
-<p>ambee clear-phrase list-of-items-first amenn</p>
-<p>ambee create-empty-sub-folder list-of-items-first amenn</p>
-<p>ambee delete-file list-of-items-first amenn</p>
-<p>ambee delete-listed-phrases list-of-items-first amenn</p>
-<p>ambee generate-list-of-all-dashrep-phrases list-of-items-first amenn</p>
-<p>ambee generate-list-of-files-in-current-read-directory list-of-items-first amenn</p>
-<p>ambee generate-list-of-folders-in-current-read-directory list-of-items-first amenn</p>
-<p>ambee generate-phrase-usage-counts list-of-items-first amenn</p>
-<p>ambee get-count-of-characters list-of-items-first amenn</p>
-<p>ambee get-count-of-words list-of-items-first amenn</p>
-<p>ambee get-definitions-from-phrase list-of-items-first amenn</p>
-<p>ambee get-phrase-name-from-phrase list-of-items-first amenn</p>
-<p>ambee linewise-read-from-standard-input list-of-items-first amenn</p>
-<p>ambee modification-time-of-file list-of-items-first amenn</p>
-<p>ambee numeric-absolute ambee single-number amenn amenn</p>
-<p>ambee numeric-cosine ambee decimal-number amenn amenn</p>
-<p>ambee numeric-decrement integer-to-decrement amenn</p>
-<p>ambee numeric-increment integer-to-increment amenn</p>
-<p>ambee numeric-integer ambee decimal-number amenn amenn</p>
-<p>ambee numeric-logarithm-base-10 ambee single-number amenn amenn</p>
-<p>ambee numeric-logarithm-base-e ambee single-number amenn amenn</p>
-<p>ambee numeric-odd-or-even ambee single-integer amenn amenn</p>
-<p>ambee numeric-sine ambee single-number amenn amenn</p>
-<p>ambee numeric-square-root ambee single-number amenn amenn</p>
-<p>ambee numeric-y-map-tile-number-based-on-latitude ambee latitude-number amenn amenn</p>
-<p>ambee set-file-permission-private list-of-items-first amenn</p>
-<p>ambee set-file-permission-private-but-executable list-of-items-first amenn</p>
-<p>ambee set-file-permission-public-read list-of-items-first amenn</p>
-<p>ambee size-of-file list-of-items-first amenn</p>
-<p>ambee split-epoch-seconds-into-named-components list-of-items-first amenn</p>
-<p>ambee split-epoch-seconds-into-named-components-for-zero-meridian list-of-items-first amenn</p>
-<p>ambee trace-show list-of-items-first amenn</p>
-<p>ambee yes-or-no-empty-phrase list-of-items-first amenn</p>
-<p>ambee yes-or-no-file-exists list-of-items-first amenn</p>
-<p>ambee yes-or-no-folder-exists list-of-items-first amenn</p>
-<p>ambee zero-one-multiple list-of-items-first amenn</p>
-<p>ambee zero-or-nonzero list-of-items-first amenn</p>
+<p>ambee append-new-line phrase-getting-newline-appended amenn</p>
+<p>ambee clear-listed-phrases list-of-phrase-names amenn</p>
+<p>ambee clear-phrase phrase-name-to-clear-definition amenn</p>
+<p>ambee create-empty-sub-folder folder-name amenn</p>
+<p>ambee delete-file file-name amenn</p>
+<p>ambee delete-listed-phrases list-of-phrase-names-to-delete amenn</p>
+<p>ambee generate-list-of-all-dashrep-phrases list-of-dashrep-phrase-names amenn</p>
+<p>ambee generate-list-of-files-in-current-read-directory list-of-files-found amenn</p>
+<p>ambee generate-list-of-folders-in-current-read-directory list-of-folder-names amenn</p>
+<p>ambee generate-phrase-usage-counts text-storage-for-usage-count-info amenn</p>
+<p>ambee get-count-of-characters phrase-name amenn</p>
+<p>ambee get-count-of-words phrase-name-with-words-in-definition amenn</p>
+<p>ambee get-definitions-from-phrase phrase-name amenn</p>
+<p>ambee get-phrase-name-from-phrase phrase-that-holds-name-of-different-phrase amenn</p>
+<p>ambee linewise-read-from-standard-input one-line-read-from-standard-input amenn</p>
+<p>ambee modification-time-of-file file-name amenn</p>
+<p>ambee numeric-absolute -56 amenn</p>
+<p>ambee numeric-cosine 1.23 amenn</p>
+<p>ambee numeric-decrement 12 amenn</p>
+<p>ambee numeric-increment 12 amenn</p>
+<p>ambee numeric-integer 1.23 amenn</p>
+<p>ambee numeric-logarithm-base-10 1.23 amenn</p>
+<p>ambee numeric-logarithm-base-e 1.23 amenn</p>
+<p>ambee numeric-odd-or-even 3 amenn</p>
+<p>ambee numeric-sine 1.23 amenn</p>
+<p>ambee numeric-square-root 3.2 amenn</p>
+<p>ambee numeric-y-map-tile-number-based-on-latitude 123.456789 amenn</p>
+<p>ambee set-file-permission-private file-name amenn</p>
+<p>ambee set-file-permission-private-but-executable file-name amenn</p>
+<p>ambee set-file-permission-public-read file-name amenn</p>
+<p>ambee size-of-file file-name amenn</p>
+<p>ambee split-epoch-seconds-into-named-components epoch-seconds amenn</p>
+<p>ambee split-epoch-seconds-into-named-components-for-zero-meridian epoch-seconds amenn</p>
+<p>ambee trace-show name-of-phrase-to-show-definition amenn</p>
+<p>ambee yes-or-no-empty-phrase phrase-that-might-be-empty amenn</p>
+<p>ambee yes-or-no-file-exists file-name amenn</p>
+<p>ambee yes-or-no-folder-exists folder-name amenn</p>
+<p>ambee zero-one-multiple 1.23 amenn</p>
+<p>ambee zero-or-nonzero 1.23 amenn</p>
 
 
 <h4>Two operands</h4>
@@ -60,10 +62,10 @@
 <p>ambee convert-unicode-to-html-entities list-of-items-first list-of-items-second amenn</p>
 <p>ambee copy-and-move-attributes-into-xml-tags list-of-items-first list-of-items-second amenn</p>
 <p>ambee copy-and-remove-attributes-from-xml-tags list-of-items-first list-of-items-second amenn</p>
-<p>ambee copy-append-file-to-file list-of-items-first list-of-items-second amenn</p>
-<p>ambee copy-from-columns-in-file-to-column-lists list-of-items-first list-of-items-second amenn</p>
-<p>ambee copy-from-file-to-phrase list-of-items-first list-of-items-second amenn</p>
-<p>ambee copy-from-phrase-append-to-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee copy-append-file-to-file source-file-name target-file-name amenn</p>
+<p>ambee copy-from-columns-in-file-to-column-lists file-name list-of-items-second amenn</p>
+<p>ambee copy-from-file-to-phrase file-name list-of-items-second amenn</p>
+<p>ambee copy-from-phrase-append-to-file list-of-items-first file-name amenn</p>
 <p>ambee copy-initial-caps list-of-items-first list-of-items-second amenn</p>
 <p>ambee copy-listed-words-to-phrases-named-in-pattern list-of-items-first list-of-items-second amenn</p>
 <p>ambee copy-lowercase-only list-of-items-first list-of-items-second amenn</p>
@@ -77,13 +79,13 @@
 <p>ambee decode-from-cgi-parameter list-of-items-first list-of-items-second amenn</p>
 <p>ambee encode-as-cgi-parameter list-of-items-first list-of-items-second amenn</p>
 <p>ambee expand-text list-of-items-first list-of-items-second amenn</p>
-<p>ambee gather-from-tagged-file-one-entry list-of-items-first list-of-items-second amenn</p>
-<p>ambee gather-tagged-info-from-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee gather-from-tagged-file-one-entry file-name list-of-items-second amenn</p>
+<p>ambee gather-tagged-info-from-file file-name list-of-items-second amenn</p>
 <p>ambee get-position-of-matching-text list-of-items-first list-of-items-second amenn</p>
 <p>ambee get-position-of-word list-of-items-first list-of-items-second amenn</p>
 <p>ambee get-url-resource list-of-items-first list-of-items-second amenn</p>
 <p>ambee get-word-at-position list-of-items-first list-of-items-second amenn</p>
-<p>ambee linewise-read-from-file-and-use-handler list-of-items-first list-of-items-second amenn</p>
+<p>ambee linewise-read-from-file-and-use-handler file-name list-of-items-second amenn</p>
 <p>ambee numeric-divide-by ambee numerator-number amenn ambee denominator-number amenn amenn</p>
 <p>ambee numeric-equal-greater-less-compare ambee first-number-to-compare amenn ambee second-number-to-compare amenn amenn</p>
 <p>ambee numeric-minus ambee number-from-which-to-subtract amenn ambee number-to-subtract amenn amenn</p>
@@ -92,9 +94,9 @@
 <p>ambee prepend-text list-of-items-first list-of-items-second amenn</p>
 <p>ambee prepend-text-no-space list-of-items-first list-of-items-second amenn</p>
 <p>ambee put-listed-phrase-definitions-into-phrase list-of-items-first list-of-items-second amenn</p>
-<p>ambee rename-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee rename-file old-file-name new-file-name amenn</p>
 <p>ambee use-handler-with-each-word-in-phrase name-of-handler list-of-items amenn</p>
-<p>ambee write-gathered-listed-items-to-end-of-file list-of-items-first list-of-items-second amenn</p>
+<p>ambee write-gathered-listed-items-to-end-of-file list-of-items-first file-name amenn</p>
 <p>ambee yes-or-no-same-two-phrase-definitions list-of-items-first list-of-items-second amenn</p>
 
 
@@ -102,7 +104,7 @@
 
 <p>ambee append-repeatedly-using-count list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-and-replace-using-paired-listed-words list-of-items-first list-of-items-second list-of-items-third amenn</p>
-<p>ambee copy-from-columns-in-file-to-named-phrases list-of-items-first list-of-items-second list-of-items-third amenn</p>
+<p>ambee copy-from-columns-in-file-to-named-phrases file-name list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-word-at-position list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-words-found-in-both-lists list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-words-found-in-either-list list-of-items-first list-of-items-second list-of-items-third amenn</p>
@@ -113,9 +115,9 @@
 <p>ambee copy-words-that-begin-with-text list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-words-that-contain-listed-words list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee copy-zero-pad-left-to-length list-of-items-first list-of-items-second list-of-items-third amenn</p>
-<p>ambee find-line-in-file-that-begins-with-text list-of-items-first list-of-items-second list-of-items-third amenn</p>
-<p>ambee find-lines-in-file-that-begin-with-any-listed-word list-of-items-first list-of-items-second list-of-items-third amenn</p>
-<p>ambee find-lines-in-file-that-begin-with-any-two-words-listed list-of-items-first list-of-items-second list-of-items-third amenn</p>
+<p>ambee find-line-in-file-that-begins-with-text file-name list-of-items-second list-of-items-third amenn</p>
+<p>ambee find-lines-in-file-that-begin-with-any-listed-word file-name list-of-items-second list-of-items-third amenn</p>
+<p>ambee find-lines-in-file-that-begin-with-any-two-words-listed file-name list-of-items-second list-of-items-third amenn</p>
 <p>ambee generate-counts-from-integer-to-integer list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee generate-every-ordered-pairwise-combination-of-words list-of-items-first list-of-items-second list-of-items-third amenn</p>
 <p>ambee generate-positions-of-delimiter list-of-items-first list-of-items-second list-of-items-third amenn</p>
@@ -142,9 +144,8 @@
 
 <h4>Variable number of operands</h4>
 
-<p>ambee put-into-phrase list-of-items-first one or more words to insert into phrase amenn</p>
+<p>ambee put-into-phrase phrase-receiving-following-text one or more words to insert into phrase amenn</p>
 <p>ambee yes-or-no-same-two-words first_word second_word amenn</p>
-
 <p>ambee if-no-begin text possibly containing word no amenn</p>
 <p>ambee if-yes-begin text possibly containing word yes amenn</p>
 <p>ambee no-if-any-no text possibly containing words yes and no amenn</p>
@@ -153,7 +154,6 @@
 <p>ambee yes-if-any-yes text possibly containing words yes and no amenn</p>
 <p>ambee yes-if-not-no text possibly containing words yes and no amenn</p>
 <p>ambee yes-or-no-opposite text including word yes or no amenn</p>
-
 <p>ambee numeric-add 123.456 789.123 456.789 amenn</p>
 <p>ambee numeric-maximum 123.456 789.123 456.789 amenn</p>
 <p>ambee numeric-minimum 123.456 789.123 456.789 amenn</p>
