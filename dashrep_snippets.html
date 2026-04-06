@@ -1,194 +1,376 @@
+<!DOCTYPE html>
 <html>
 
-<h1>Action</span>&nbsp;<span class="class_whatever">snippets</h1>
+<head>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-<p>Reminder:&nbsp; Actions that process <i>words</i> also can process numbers and lists of numbers.&nbsp; Consider a phrase that contains <i>12 3.4 -0.5</i>. This phrase can be used with <i>numeric</i> actions that recognize them as numbers and do numeric calculations.&nbsp; Yet also the numbers in this phrase can be accessed using word-oriented actions, where each number is handled as a space-delimited word.</p>
+body {
+  background-color: #f0f0ff;
+  font-family: sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
 
+/* Left sidebar */
+.sidenav {
+  width: 210px;
+  min-width: 210px;
+  background-color: #2c2a5e;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
 
-<h2>Expand template</h2>
+.sidenav a {
+  display: block;
+  padding: 0.55rem 1.25rem;
+  color: #c8c6f0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.15s, color 0.15s;
+}
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">expand-text</span>&nbsp;<span class="class_whatever">template-containing-dashrep-phrase-names</span>&nbsp;<span class="class_whatever">expanded-text</span>&nbsp;<span class="class_whatever">amenn</span></p>
+.sidenav a:hover {
+  background-color: #3e3a80;
+  color: #ffffff;
+}
 
+.sidenav .nav-title {
+  color: #7b78c8;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1.25rem 0.25rem;
+  font-weight: 600;
+}
 
-<h2>Looping</h2>
+/* Main content */
+.main {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  max-width: 860px;
+}
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">use-handler-with-each-word-in-phrase</span>&nbsp;<span class="class_whatever">name-of-handler</span>&nbsp;<span class="class_whatever">list-of-items</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-counts-from-integer-to-integer</span>&nbsp;<span class="class_whatever">1</span>&nbsp;<span class="class_whatever">100</span>&nbsp;<span class="class_whatever">list-of-integers</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-positions-of-delimiter</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-positions-of-first-matching-delimiter-after-listed-positions</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-every-pairwise-combination-of-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-every-ordered-pairwise-combination-of-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-positions-of-listed-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-list-of-all-dashrep-phrases</span>&nbsp;<span class="class_whatever">list-of-dashrep-phrase-names</span>&nbsp;<span class="class_whatever">amenn</span></p>
+h1 {
+  font-size: 2rem;
+  color: #1a1850;
+  margin-bottom: 0.35rem;
+}
 
+h1 + p {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 15px;
+}
 
-<h2>Branching</h2>
+h2 {
+  font-size: 1.2rem;
+  color: #2c2a5e;
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #c5c2f0;
+}
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">zero-one-multiple</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">zero-or-nonzero</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-empty-phrase</span>&nbsp;<span class="class_whatever">phrase-that-might-be-empty</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-same-two-phrase-definitions</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-same-two-words</span>&nbsp;<span class="class_whatever">first_word_literal</span>&nbsp;<span class="class_whatever">second_word_literal</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">if-yes-begin</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">word</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">if-no-begin</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">word</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">if-end</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">no-if-any-no</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">and</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">no-if-not-yes</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">and</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-if-all-yes</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">and</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-if-any-yes</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">and</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-if-not-no</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">possibly</span>&nbsp;<span class="class_whatever">containing</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">and</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-opposite</span>&nbsp;<span class="class_whatever">text</span>&nbsp;<span class="class_whatever">including</span>&nbsp;<span class="class_whatever">word</span>&nbsp;<span class="class_whatever">yes</span>&nbsp;<span class="class_whatever">or</span>&nbsp;<span class="class_whatever">no</span>&nbsp;<span class="class_whatever">amenn</span></p>
+p {
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+}
 
+/* span colors — distinct roles */
+.kw-ambee {
+  color: #c0392b;       /* keyword delimiter: red */
+  font-weight: bold;
+}
 
-<h2>Copy actions</h2>
+.kw-action {
+  color: #1a5fa8;       /* action/command: blue */
+}
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-text</span>&nbsp;<span class="class_whatever">text-to-copy</span>&nbsp;<span class="class_whatever">target-destination</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">put-into-phrase</span>&nbsp;<span class="class_whatever">phrase-receiving-following-text</span>&nbsp;<span class="class_whatever">one</span>&nbsp;<span class="class_whatever">or</span>&nbsp;<span class="class_whatever">more</span>&nbsp;<span class="class_whatever">words</span>&nbsp;<span class="class_whatever">to</span>&nbsp;<span class="class_whatever">insert</span>&nbsp;<span class="class_whatever">into</span>&nbsp;<span class="class_whatever">phrase</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">append-new-line</span>&nbsp;<span class="class_whatever">phrase-getting-newline-appended</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">append-multiple-from-phrases-named-in-pattern</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">append-text</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">append-text-no-space</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">append-repeatedly-using-count</span>&nbsp;<span class="class_whatever">text-to-append</span>&nbsp;<span class="class_whatever">growing-text</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">repeat-count</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-phrase-name-from-phrase</span>&nbsp;<span class="class_whatever">phrase-that-holds-name-of-different-phrase</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">prepend-text</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">prepend-text-no-space</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-without-extra-spaces</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
+.kw-param {
+  color: #7a3f9d;       /* parameter/placeholder: purple */
+}
 
+.kw-literal {
+  color: #1d7a50;       /* literal value: green */
+}
 
-<h2>Clear actions</h2>
+code-block {
+  display: block;
+  background: #eeeeff;
+  border-left: 3px solid #7b78c8;
+  border-radius: 0 4px 4px 0;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.4rem;
+  font-family: monospace;
+  font-size: 13.5px;
+}
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">clear-phrase</span>&nbsp;<span class="class_whatever">phrase-name-to-clear-definition</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">clear-listed-phrases</span>&nbsp;<span class="class_whatever">list-of-phrase-names</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">delete-listed-phrases</span>&nbsp;<span class="class_whatever">list-of-phrase-names-to-delete</span>&nbsp;<span class="class_whatever">amenn</span></p>
+.phrase-list {
+  background: #e8e8ff;
+  border-radius: 4px;
+  padding: 0.5rem 0.85rem;
+  margin-bottom: 0.75rem;
+  font-family: monospace;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
 
+<div class="sidenav">
+  <div class="nav-title">Sections</div>
+  <a href="#expand">Expand template</a>
+  <a href="#looping">Looping</a>
+  <a href="#branching">Branching</a>
+  <a href="#copy">Copy</a>
+  <a href="#clear">Clear</a>
+  <a href="#words">Words</a>
+  <a href="#characters">Characters</a>
+  <a href="#search">Search and replace</a>
+  <a href="#conversion">Conversion</a>
+  <a href="#datetime">Date and time</a>
+  <a href="#files">File and folder</a>
+  <a href="#numeric">Numeric</a>
+  <a href="#diagnostic">Diagnostic</a>
+  <a href="#special">Special purpose</a>
+</div>
 
-<h2>Space-delimited word actions</h2>
+<div class="main">
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-from-position-to-position</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-word-at-position</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-offset-skip</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-count-of-words</span>&nbsp;<span class="class_whatever">phrase-name-with-words-in-definition</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-word-at-position</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-found-in-both-lists</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-found-in-either-list</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-found-only-in-first-list</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-rearrange-using-order-sort-alphabetic</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-rearrange-using-order-sort-numeric</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-that-begin-with-listed-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-that-begin-with-text</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-that-contain-listed-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-order-reversed</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-sort-alphabetic</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-sort-numeric</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-words-unique-only</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-listed-words-to-phrases-named-in-pattern</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
+<h1>Dashrep Snippets</h1>
 
-
-<h2>Character operations</h2>
-
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-and-replace</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-characters-from-position-to-position</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-count-of-characters</span>&nbsp;<span class="class_whatever">phrase-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-lowercase-only</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-uppercase-only</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-and-replace-using-paired-listed-words</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-position-of-matching-text</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-position-of-word</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-characters-from-position-to-position</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-initial-caps</span>&nbsp;<span class="class_whatever">source-text-to-capitalize</span>&nbsp;<span class="class_whatever">destination-for-capitalized-text</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-zero-pad-left-to-length</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-
-
-<h2>Conversion actions</h2>
-
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-cgi-information</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-url-resource</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">convert-unicode-to-html-entities</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-and-move-attributes-into-xml-tags</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-and-remove-attributes-from-xml-tags</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-definitions-from-phrase</span>&nbsp;<span class="class_whatever">phrase-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">decode-from-cgi-parameter</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">encode-as-cgi-parameter</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">put-listed-phrase-definitions-into-phrase</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-
-
-<h2>Date and time actions</h2>
-
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">get-current-time-in-epoch-seconds</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">split-epoch-seconds-into-named-components</span>&nbsp;<span class="class_whatever">epoch-seconds</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">split-epoch-seconds-into-named-components-for-zero-meridian</span>&nbsp;<span class="class_whatever">epoch-seconds</span>&nbsp;<span class="class_whatever">amenn</span></p>
-
-
-<h2>File and folder actions</h2>
-
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-from-file-to-phrase</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-from-phrase-append-to-file</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-append-file-to-file</span>&nbsp;<span class="class_whatever">source-file-name</span>&nbsp;<span class="class_whatever">target-file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">linewise-read-from-standard-input</span>&nbsp;<span class="class_whatever">one-line-read-from-standard-input</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-from-columns-in-file-to-column-lists</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">gather-from-tagged-file-one-entry</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">gather-tagged-info-from-file</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">find-line-in-file-that-begins-with-text</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">find-lines-in-file-that-begin-with-any-listed-word</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">find-lines-in-file-that-begin-with-any-two-words-listed</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">copy-from-columns-in-file-to-named-phrases</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">size-of-file</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-file-exists</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">modification-time-of-file</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">set-file-permission-private</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">set-file-permission-private-but-executable</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">set-file-permission-public-read</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">rename-file</span>&nbsp;<span class="class_whatever">old-file-name</span>&nbsp;<span class="class_whatever">new-file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">delete-file</span>&nbsp;<span class="class_whatever">file-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-list-of-files-in-current-read-directory</span>&nbsp;<span class="class_whatever">list-of-files-found</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-list-of-folders-in-current-read-directory</span>&nbsp;<span class="class_whatever">list-of-folder-names</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">yes-or-no-folder-exists</span>&nbsp;<span class="class_whatever">folder-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">create-empty-sub-folder</span>&nbsp;<span class="class_whatever">folder-name</span>&nbsp;<span class="class_whatever">amenn</span></p>
-
-
-<h2>Numeric calculations</h2>
-
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-add</span>&nbsp;<span class="class_whatever">123.456</span>&nbsp;<span class="class_whatever">789.123</span>&nbsp;<span class="class_whatever">456.789</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-maximum</span>&nbsp;<span class="class_whatever">123.456</span>&nbsp;<span class="class_whatever">789.123</span>&nbsp;<span class="class_whatever">456.789</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-minimum</span>&nbsp;<span class="class_whatever">123.456</span>&nbsp;<span class="class_whatever">789.123</span>&nbsp;<span class="class_whatever">456.789</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-multiply</span>&nbsp;<span class="class_whatever">123.456</span>&nbsp;<span class="class_whatever">789.123</span>&nbsp;<span class="class_whatever">456.789</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-absolute</span>&nbsp;<span class="class_whatever">-56</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-cosine</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-decrement</span>&nbsp;<span class="class_whatever">12</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-increment</span>&nbsp;<span class="class_whatever">12</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-integer</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-logarithm-base-10</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-logarithm-base-e</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-odd-or-even</span>&nbsp;<span class="class_whatever">3</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-sine</span>&nbsp;<span class="class_whatever">1.23</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-square-root</span>&nbsp;<span class="class_whatever">3.2</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-y-map-tile-number-based-on-latitude</span>&nbsp;<span class="class_whatever">123.456789</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-divide-by</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">numerator-number</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">denominator-number</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-equal-greater-less-compare</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">first-number-to-compare</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">second-number-to-compare</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-minus</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">number-from-which-to-subtract</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">number-to-subtract</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vector-absolutes</span>&nbsp;<span class="class_whatever">list-of-numbers</span>&nbsp;<span class="class_whatever">list-of-absolute-values</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vector-integers</span>&nbsp;<span class="class_whatever">vector-list-of-numbers</span>&nbsp;<span class="class_whatever">list-of-calculated-integers</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vector-add-number</span>&nbsp;<span class="class_whatever">vector-list-of-numbers</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">number-to-add</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">list-of-sum-numbers</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vector-multiply-by-number</span>&nbsp;<span class="class_whatever">vector-list-of-numbers</span>&nbsp;<span class="class_whatever">ambee</span>&nbsp;<span class="class_whatever">single-number</span>&nbsp;<span class="class_whatever">amenn</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vectors-add</span>&nbsp;<span class="class_whatever">first-vector-list-of-numbers</span>&nbsp;<span class="class_whatever">second-vector-list-of-numbers</span>&nbsp;<span class="class_whatever">list-of-sum-numbers</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vectors-divide-by</span>&nbsp;<span class="class_whatever">first-vector-list-of-numbers</span>&nbsp;<span class="class_whatever">second-vector-list-of-numbers</span>&nbsp;<span class="class_whatever">vector-list-of-division-result-numbers</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vectors-from-delta-values-calculate-distances</span>&nbsp;<span class="class_whatever">list-of-x-axis-numbers</span>&nbsp;<span class="class_whatever">list-of-y-axis-numbers</span>&nbsp;<span class="class_whatever">list-of-calculated-distances</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-vectors-multiply</span>&nbsp;<span class="class_whatever">first-vector-list-of-numbers-to-multiply</span>&nbsp;<span class="class_whatever">second-vector-list-of-numbers-to-multiply</span>&nbsp;<span class="class_whatever">vector-list-of-numbers-multiplied</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">numeric-two-dimensional-sort-into-columns-and-rows</span>&nbsp;<span class="class_whatever">list-of-items-first</span>&nbsp;<span class="class_whatever">list-of-items-second</span>&nbsp;<span class="class_whatever">list-of-items-third</span>&nbsp;<span class="class_whatever">list-of-items-fourth</span>&nbsp;<span class="class_whatever">amenn</span></p>
+<p>Code you can copy and paste to more quickly create new Dashrep code</p>
 
 
-<h2>Diagnostic actions</h2>
+<h2 id="expand">Expand template</h2>
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">trace-show</span>&nbsp;<span class="class_whatever">name-of-phrase-to-show-definition</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">trace-show-where</span>&nbsp;<span class="class_whatever">amenn</span></p>
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">generate-phrase-usage-counts</span>&nbsp;<span class="class_whatever">text-storage-for-usage-count-info</span>&nbsp;<span class="class_whatever">amenn</span></p>
+<code-block>
+  <span class="kw-ambee">ambee</span>&nbsp;
+  <span class="kw-action">expand-text</span>&nbsp;
+  <span class="kw-param">template-containing-dashrep-phrase-names</span>&nbsp;
+  <span class="kw-param">expanded-text</span>&nbsp;
+  <span class="kw-ambee">amenn</span>
+</code-block>
+
+<p>Useful phrases within a template:</p>
+<div class="phrase-list">
+  hyphen-here &nbsp; character-hyphen &nbsp; four-hyphens &nbsp; no-space &nbsp; empty-text<br>
+  one-space &nbsp; character-space &nbsp; non-breaking-space &nbsp; new-line &nbsp; empty-line<br>
+  line-break &nbsp; character-newline &nbsp; character-tab &nbsp; character-underscore
+</div>
 
 
-<h2>Special purpose actions</h2>
+<h2 id="looping">Looping</h2>
 
-<p><span class="class_ambee">ambee</span>&nbsp;<span class="class_whatever">exit-from-dashrep</span>&nbsp;<span class="class_whatever">amenn</span></p>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">use-handler-with-each-word-in-phrase</span>&nbsp;<span class="kw-param">name-of-handler</span>&nbsp;<span class="kw-param">list-of-items</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-param">word-to-use-in-handler</span>&nbsp;<span class="kw-param">phrase-that-changes-each-time-through-loop</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-counts-from-integer-to-integer</span>&nbsp;<span class="kw-literal">1</span>&nbsp;<span class="kw-literal">100</span>&nbsp;<span class="kw-param">list-of-integers</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-every-pairwise-combination-of-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-every-ordered-pairwise-combination-of-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-list-of-all-dashrep-phrases</span>&nbsp;<span class="kw-param">list-of-dashrep-phrase-names</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
 
+
+<h2 id="branching">Branching</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">zero-one-multiple</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">zero-or-nonzero</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-empty-phrase</span>&nbsp;<span class="kw-param">phrase-that-might-be-empty</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-same-two-phrase-definitions</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-same-two-words</span>&nbsp;<span class="kw-literal">first_word_literal</span>&nbsp;<span class="kw-literal">second_word_literal</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-yes-begin</span>&nbsp;<span class="kw-param">text possibly containing word</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-no-begin</span>&nbsp;<span class="kw-param">text possibly containing word</span>&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-end</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">no-if-any-no</span>&nbsp;<span class="kw-param">text possibly containing words</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;and&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">no-if-not-yes</span>&nbsp;<span class="kw-param">text possibly containing words</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;and&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-if-all-yes</span>&nbsp;<span class="kw-param">text possibly containing words</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;and&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-if-any-yes</span>&nbsp;<span class="kw-param">text possibly containing words</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;and&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-if-not-no</span>&nbsp;<span class="kw-param">text possibly containing words</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;and&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-opposite</span>&nbsp;<span class="kw-param">text including word</span>&nbsp;<span class="kw-literal">yes</span>&nbsp;or&nbsp;<span class="kw-literal">no</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="copy">Copy</h2>
+
+<p><code>standard-output</code></p>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-param">text-to-copy</span>&nbsp;<span class="kw-param">target-destination</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-param">phrase-receiving-following-text</span>&nbsp;<span class="kw-literal">one or more words to insert into phrase</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-new-line</span>&nbsp;<span class="kw-param">phrase-getting-newline-appended</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-multiple-from-phrases-named-in-pattern</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text-no-space</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-repeatedly-using-count</span>&nbsp;<span class="kw-param">text-to-append</span>&nbsp;<span class="kw-param">growing-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">repeat-count</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-phrase-name-from-phrase</span>&nbsp;<span class="kw-param">phrase-that-holds-name-of-different-phrase</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">prepend-text</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">prepend-text-no-space</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-without-extra-spaces</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="clear">Clear</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">clear-phrase</span>&nbsp;<span class="kw-param">phrase-name-to-clear-definition</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">clear-listed-phrases</span>&nbsp;<span class="kw-param">list-of-phrase-names</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">delete-listed-phrases</span>&nbsp;<span class="kw-param">list-of-phrase-names-to-delete</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="words">Words (space-delimited)</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-from-position-to-position</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-word-at-position</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-offset-skip</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-count-of-words</span>&nbsp;<span class="kw-param">phrase-name-with-words-in-definition</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-word-at-position</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-found-in-both-lists</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-found-in-either-list</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-found-only-in-first-list</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-rearrange-using-order-sort-alphabetic</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-rearrange-using-order-sort-numeric</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-that-begin-with-listed-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-that-begin-with-text</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-that-contain-listed-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-order-reversed</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-sort-alphabetic</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-sort-numeric</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-unique-only</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-listed-words-to-phrases-named-in-pattern</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="characters">Characters</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-characters-from-position-to-position</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-count-of-characters</span>&nbsp;<span class="kw-param">phrase-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-lowercase-only</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-uppercase-only</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-position-of-word</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-characters-from-position-to-position</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-initial-caps</span>&nbsp;<span class="kw-param">source-text-to-capitalize</span>&nbsp;<span class="kw-param">destination-for-capitalized-text</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-zero-pad-left-to-length</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="search">Search and replace</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace-using-paired-listed-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-position-of-matching-text</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-positions-of-listed-words</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-positions-of-delimiter</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-positions-of-first-matching-delimiter-after-listed-positions</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="conversion">Conversion</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-cgi-information</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-url-resource</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">convert-unicode-to-html-entities</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-move-attributes-into-xml-tags</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-remove-attributes-from-xml-tags</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-definitions-from-phrase</span>&nbsp;<span class="kw-param">phrase-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">decode-from-cgi-parameter</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">encode-as-cgi-parameter</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-listed-phrase-definitions-into-phrase</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="files">File and folder</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-append-file-to-file</span>&nbsp;<span class="kw-param">source-file-name</span>&nbsp;<span class="kw-param">target-file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-standard-input</span>&nbsp;<span class="kw-param">one-line-read-from-standard-input</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-column-lists</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-from-tagged-file-one-entry</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-tagged-info-from-file</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-line-in-file-that-begins-with-text</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-listed-word</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-two-words-listed</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-named-phrases</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">size-of-file</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-file-exists</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">modification-time-of-file</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">set-file-permission-private</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">set-file-permission-private-but-executable</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">set-file-permission-public-read</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">rename-file</span>&nbsp;<span class="kw-param">old-file-name</span>&nbsp;<span class="kw-param">new-file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">delete-file</span>&nbsp;<span class="kw-param">file-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-list-of-files-in-current-read-directory</span>&nbsp;<span class="kw-param">list-of-files-found</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-list-of-folders-in-current-read-directory</span>&nbsp;<span class="kw-param">list-of-folder-names</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-folder-exists</span>&nbsp;<span class="kw-param">folder-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">create-empty-sub-folder</span>&nbsp;<span class="kw-param">folder-name</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="numeric">Numeric</h2>
+
+<p>Actions that process <em>words</em> can also process numbers and lists of numbers. A phrase containing <code>12 3.4 -0.5</code> can be used with numeric actions (recognizing them as numbers) or with word-oriented actions (treating each as a space-delimited word).</p>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-add</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-maximum</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-minimum</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-multiply</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-absolute</span>&nbsp;<span class="kw-literal">-56</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-cosine</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-decrement</span>&nbsp;<span class="kw-literal">12</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-increment</span>&nbsp;<span class="kw-literal">12</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-integer</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-logarithm-base-10</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-logarithm-base-e</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-odd-or-even</span>&nbsp;<span class="kw-literal">3</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-sine</span>&nbsp;<span class="kw-literal">1.23</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-square-root</span>&nbsp;<span class="kw-literal">3.2</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-y-map-tile-number-based-on-latitude</span>&nbsp;<span class="kw-literal">123.456789</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-divide-by</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">numerator-number</span>&nbsp;<span class="kw-ambee">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">denominator-number</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-equal-greater-less-compare</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">first-number-to-compare</span>&nbsp;<span class="kw-ambee">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">second-number-to-compare</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-minus</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">number-from-which-to-subtract</span>&nbsp;<span class="kw-ambee">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">number-to-subtract</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-absolutes</span>&nbsp;<span class="kw-param">list-of-numbers</span>&nbsp;<span class="kw-param">list-of-absolute-values</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-integers</span>&nbsp;<span class="kw-param">vector-list-of-numbers</span>&nbsp;<span class="kw-param">list-of-calculated-integers</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-add-number</span>&nbsp;<span class="kw-param">vector-list-of-numbers</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">number-to-add</span>&nbsp;<span class="kw-ambee">amenn</span>&nbsp;<span class="kw-param">list-of-sum-numbers</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-multiply-by-number</span>&nbsp;<span class="kw-param">vector-list-of-numbers</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-param">single-number</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vectors-add</span>&nbsp;<span class="kw-param">first-vector-list-of-numbers</span>&nbsp;<span class="kw-param">second-vector-list-of-numbers</span>&nbsp;<span class="kw-param">list-of-sum-numbers</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vectors-divide-by</span>&nbsp;<span class="kw-param">first-vector-list-of-numbers</span>&nbsp;<span class="kw-param">second-vector-list-of-numbers</span>&nbsp;<span class="kw-param">vector-list-of-division-result-numbers</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vectors-from-delta-values-calculate-distances</span>&nbsp;<span class="kw-param">list-of-x-axis-numbers</span>&nbsp;<span class="kw-param">list-of-y-axis-numbers</span>&nbsp;<span class="kw-param">list-of-calculated-distances</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vectors-multiply</span>&nbsp;<span class="kw-param">first-vector-list-of-numbers-to-multiply</span>&nbsp;<span class="kw-param">second-vector-list-of-numbers-to-multiply</span>&nbsp;<span class="kw-param">vector-list-of-numbers-multiplied</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-two-dimensional-sort-into-columns-and-rows</span>&nbsp;<span class="kw-param">list-of-items-first</span>&nbsp;<span class="kw-param">list-of-items-second</span>&nbsp;<span class="kw-param">list-of-items-third</span>&nbsp;<span class="kw-param">list-of-items-fourth</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+
+<h2 id="datetime">Date and time</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-current-time-in-epoch-seconds</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">split-epoch-seconds-into-named-components</span>&nbsp;<span class="kw-param">epoch-seconds</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">split-epoch-seconds-into-named-components-for-zero-meridian</span>&nbsp;<span class="kw-param">epoch-seconds</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+<div class="phrase-list">
+  time-day-of-month &nbsp; time-day-of-week &nbsp; time-day-of-year &nbsp; time-hour<br>
+  time-minute &nbsp; time-month-number &nbsp; time-second &nbsp; time-year
+</div>
+
+
+<h2 id="diagnostic">Diagnostic</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">trace-show</span>&nbsp;<span class="kw-param">name-of-phrase-to-show-definition</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">trace-show-where</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-phrase-usage-counts</span>&nbsp;<span class="kw-param">text-storage-for-usage-count-info</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+<div class="phrase-list">output-trace-file-name &nbsp; dashrep-comments-ignored</div>
+
+<p>output-trace-file-name</p>
+<p>dashrep-comments-ignored</p>
+
+<h2 id="special">Special purpose</h2>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">exit-from-dashrep</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
+
+<div class="phrase-list">
+  dashrep-language-yes &nbsp; dashrep-version &nbsp; delayed-nospace &nbsp; delayed-newline<br>
+  yes-or-no-permission-administrator &nbsp; dashrep-endless-loop-counter-limit<br>
+  dashrep-time-limit
+</div>
+
+</div>
+</body>
 </html>
