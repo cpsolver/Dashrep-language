@@ -68,7 +68,7 @@ if ( index( local_text , """ ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "'" ) >= 0 ) {  <new_line>
+if ( index( local_text , "<character_apostrophe>" ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
