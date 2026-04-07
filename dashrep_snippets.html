@@ -81,33 +81,38 @@ p {
   color: #333;
 }
 
-/* span colors — distinct roles */
+/* ambee: forest green */
 .kw-ambee {
-  color: #c0392b;       /* ambee: red */
+  color: #1a7a3c;
   font-weight: bold;
 }
 
+/* amenn: bold reddish-orange */
 .kw-amenn {
-  color: #e0594b;       /* amenn: ??? */
+  color: #c94a1e;
   font-weight: bold;
 }
 
+/* action: strong royal blue */
 .kw-action {
-  color: #1a5fa8;       /* action/command: blue */
+  color: #1344a8;
   font-weight: bold;
   font-size: 16px;
 }
 
-.kw-phrasename {
-  color: #7a3f7d;       /* phrasename: purple */
-}
-
+/* predefined phrasename: deep violet */
 .kw-phrasename_predefined {
-  color: #7a3f9d;       /* phrasename: ??? */
+  color: #5a22aa;
 }
 
+/* phrasename: muted slate blue-gray */
+.kw-phrasename {
+  color: #5a6a85;
+}
+
+/* literal value: muted gray-green */
 .kw-literal {
-  color: #1d7a50;       /* literal value: green */
+  color: #5a7a60;
 }
 
 code-block {
@@ -227,7 +232,7 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-yes-begin</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-same-two-words</span>&nbsp;<span class="kw-literal">zero</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">zero-or-nonzero</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">count-of-items</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-yes-begin</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-same-two-words</span>&nbsp;<span class="kw-literal">greater</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-equal-greater-less-compare</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">first-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">second-number-to-compare</span>&nbsp;<span class="kw-ambee">amenn amenn</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">if-yes-begin</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-same-two-words</span>&nbsp;<span class="kw-literal">greater</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-equal-greater-less-compare</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">first-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">second-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">yes-or-no-opposite</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">yes-or-no-special-condition</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -258,7 +263,7 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text-no-space</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-phrasename">destination-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-repeatedly-using-count</span>&nbsp;<span class="kw-phrasename">text-to-append</span>&nbsp;<span class="kw-phrasename">growing-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">repeat-count</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-repeatedly-using-count</span>&nbsp;<span class="kw-phrasename">text-to-append</span>&nbsp;<span class="kw-phrasename">growing-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">repeat-count</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-phrasename">destination-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-phrase-name-from-phrase</span>&nbsp;<span class="kw-phrasename">phrase-that-holds-name-of-different-phrase</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -431,13 +436,13 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-add</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-add</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-numbers-to-add</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-add</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">list-of-numbers-to-add</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-multiply</span>&nbsp;<span class="kw-literal">123.456</span>&nbsp;<span class="kw-literal">789.123</span>&nbsp;<span class="kw-literal">456.789</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-multiply</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-numbers-to-multiply</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-multiply</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">list-of-numbers-to-multiply</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-divide-by</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">numerator-number</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">denominator-number</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-divide-by</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">numerator-number</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">denominator-number</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-phrasename">calculated-difference</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-minus</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">number-from-which-to-subtract</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">number-to-subtract</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -445,7 +450,7 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-decrement</span>&nbsp;<span class="kw-phrasename">count-to-decrement</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-equal-greater-less-compare</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">first-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">second-number-to-compare</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-equal-greater-less-compare</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">first-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">second-number-to-compare</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-phrasename">maximum-number</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-maximum</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">list-of-numbers</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -475,7 +480,7 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-add-number</span>&nbsp;<span class="kw-phrasename">vector-list-of-numbers</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">number-to-add</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-sum-numbers</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-multiply-by-number</span>&nbsp;<span class="kw-phrasename">vector-list-of-numbers</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">single-number</span>&nbsp;<span class="kw-ambee">amenn amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vector-multiply-by-number</span>&nbsp;<span class="kw-phrasename">vector-list-of-numbers</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">single-number</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">numeric-vectors-add</span>&nbsp;<span class="kw-phrasename">first-vector-list-of-numbers</span>&nbsp;<span class="kw-phrasename">second-vector-list-of-numbers</span>&nbsp;<span class="kw-phrasename">list-of-sum-numbers</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
