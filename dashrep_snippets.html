@@ -2,6 +2,9 @@
 <html>
 
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -52,6 +55,7 @@ body {
   flex: 1;
   padding: 2rem 2.5rem;
   max-width: 860px;
+  min-width: 0; /* prevent flex overflow */
 }
 
 h1 {
@@ -124,6 +128,8 @@ code-block {
   margin-bottom: 0.4rem;
   font-family: monospace;
   font-size: 15px;
+  overflow-x: auto;    /* added: scroll long lines */
+  word-break: break-word; /* added: wrap where possible */
 }
 
 .phrase-list {
@@ -135,6 +141,65 @@ code-block {
   font-size: 15px;
   color: #444;
   line-height: 1.8;
+  overflow-x: auto;   /* added: prevent overflow */
+  white-space: normal; /* added: allow wrapping */
+}
+
+/* ── Responsive: small screens ───────────────────────── */
+@media (max-width: 640px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  .sidenav {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    position: static;
+    padding: 0.6rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    overflow-y: visible;
+  }
+
+  .sidenav .nav-title {
+    width: 100%;
+    padding: 0.25rem 0.5rem 0.1rem;
+  }
+
+  .sidenav a {
+    padding: 0.35rem 0.65rem;
+    font-size: 13px;
+    background-color: #3e3a80;
+    border-radius: 4px;
+    color: #ffffff;
+  }
+
+  .sidenav a:hover {
+    background-color: #5450a0;
+  }
+
+  .main {
+    padding: 1rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+  }
+
+  h2 {
+    font-size: 1.05rem;
+  }
+
+  code-block {
+    font-size: 13px;
+  }
+
+  .phrase-list {
+    font-size: 13px;
+  }
 }
 </style>
 </head>
@@ -187,7 +252,7 @@ code-block {
   <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text-no-space</span>&nbsp;<span class="kw-phrasename">expanded-text</span> <span class="kw-phrasename_predefined">standard-output</span> <span class="kw-amenn">amenn</span><br>
   <span class="kw-phrasename_predefined">----</span><br>
   <span class="kw-phrasename">template-to-expand</span>:<br>
-  <span class="kw-literal">&lt;any_text_including_tags&gt; ... item-id ... info-associated-with-item <span class="kw-ambee">fenambee</span> item-id <span class="kw-amenn">amenn</span> <span class="kw-literal">... &lt;/end_sample_tag&gt;</span><br>
+  <span class="kw-literal">&lt;any_text_including_tags&gt; ... item-id ... info-associated-with-item <span class="kw-ambee">fenambee</span> item-id <span class="kw-amenn">amenn</span> <span class="kw-literal">... &lt;/end_sample_tag&gt;</span><span class="kw-phrasename_predefined">&lt;new_line&gt;</span><br>
   <span class="kw-phrasename_predefined">----</span><br>
   <span class="kw-phrasename">list-of-item-ids</span>:<br>
   <span class="kw-literal">alpha beta gamma delta</span><br>
