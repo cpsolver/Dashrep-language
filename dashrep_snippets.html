@@ -142,6 +142,7 @@ code-block {
 
 <div class="sidenav">
   <div class="nav-title">Categories</div>
+  <a href="#simple">Simple start</a>
   <a href="#expand">Expand template</a>
   <a href="#looping">Looping</a>
   <a href="#branching">Branching</a>
@@ -163,6 +164,47 @@ code-block {
 <h1>Dashrep Snippets</h1>
 
 <p>Code you can copy and paste to more quickly create new Dashrep code.&nbsp; <b>Note</b>: <b>This code is still being developed</b> and certainly has errors.&nbsp; <b>None of this code has yet been tested</b>.</p>
+
+
+<h2 id="simple">Simple start</h2>
+
+<p>Here's a simple Dashrep program you can use as a starting point. This program expands a template, each time inserting the specified information.</p>
+
+<code-block>
+  <span class="kw-phrasename_predefined">dashrep-language-yes</span>:<br>
+  <span class="kw-literal">[optional phrase, puts the word "dashrep" into the first 7 characters of this file]</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">documentation-or-comments-in-any-unused-phrase</span>:<br>
+  <span class="kw-literal">[the compiler ignores text in phrases that are never used]</span><br>  
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename_predefined">start-here</span>:<br>
+  <span class="kw-combee">combee</span>&nbsp;<span class="kw-literal">Execution always starts at this special phrase name, regardless of location within code</span>&nbsp;<span class="kw-comenn">comenn</span><br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">use-handler-with-each-word-in-phrase</span> <span class="kw-phrasename">handle-one-item list-of-item-ids</span> <span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">handle-one-item</span>:<br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-phrasename">word-to-use-in-handler</span> <span class="kw-phrasename">item-id</span> <span class="kw-amenn">amenn</span><br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">expand-text</span> <span class="kw-phrasename">template-to-expand expanded-text</span> <span class="kw-amenn">amenn</span><br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text-no-space</span>&nbsp;<span class="kw-phrasename">expanded-text</span> <span class="kw-phrasename_predefined">standard-output</span> <span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">template-to-expand</span>:<br>
+  <span class="kw-literal">&lt;any_text_including_tags&gt; ... item-id ... info-associated-with-item <span class="kw-ambee">fenambee</span> item-id <span class="kw-amenn">amenn</span> <span class="kw-literal">... &lt;/end_sample_tag&gt;</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">list-of-item-ids</span>:<br>
+  <span class="kw-literal">alpha beta gamma delta</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">info-associated-with-item-alpha</span>:<br>
+  <span class="kw-phrasename">alpha info</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">info-associated-with-item-beta</span>:<br>
+  <span class="kw-phrasename">beta info</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">info-associated-with-item-gamma</span>:<br>
+  <span class="kw-phrasename">gamma info</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">info-associated-with-item-delta</span>:<br>
+  <span class="kw-phrasename">delta info</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+</code-block>
 
 
 <h2 id="expand">Expand template</h2>
@@ -194,11 +236,11 @@ code-block {
 
 <h2 id="looping">Looping</h2>
 
+<p>Reminder:&nbsp; The <span class="kw-action">linewise-read-from-file-and-use-handler</span> action (included in the <b>File and Folder</b> section) creates a loop that reads each line of an input text file.</p>
+
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">use-handler-with-each-word-in-phrase</span>&nbsp;<span class="kw-phrasename">name-of-handler</span>&nbsp;<span class="kw-phrasename">list-of-item-ids</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-phrasename">word-to-use-in-handler</span>&nbsp;<span class="kw-phrasename">item-id</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">current-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">generate-counts-from-integer-to-integer</span>&nbsp;<span class="kw-literal">1</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">number-of-rows</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-row-numbers</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -251,19 +293,19 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-phrasename">text-to-copy</span>&nbsp;<span class="kw-phrasename">target-phrase-destination</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-text</span>&nbsp;<span class="kw-phrasename">text-to-copy</span>&nbsp;<span class="kw-literal">standard-output</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-phrasename">phrase-receiving-following-text</span>&nbsp;<span class="kw-literal">one or more words to insert into phrase</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-new-line</span>&nbsp;<span class="kw-phrasename">phrase-getting-newline-appended</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-multiple-from-phrases-named-in-pattern</span>&nbsp;<span class="kw-phrasename">phrase-containing-pattern[?]</span>&nbsp;<span class="kw-phrasename">destination-phrase</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-phrasename">destination-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text</span>&nbsp;<span class="kw-phrasename">text-to-write</span>&nbsp;<span class="kw-literal">standard-output</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-text-no-space</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-phrasename">destination-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-new-line</span>&nbsp;<span class="kw-phrasename">phrase-getting-newline-appended</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-repeatedly-using-count</span>&nbsp;<span class="kw-phrasename">text-to-append</span>&nbsp;<span class="kw-phrasename">growing-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">repeat-count</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-multiple-from-phrases-named-in-pattern</span>&nbsp;<span class="kw-phrasename">phrase-containing-pattern[?]</span>&nbsp;<span class="kw-phrasename">destination-phrase</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">put-into-phrase</span>&nbsp;<span class="kw-phrasename">destination-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-phrase-name-from-phrase</span>&nbsp;<span class="kw-phrasename">phrase-that-holds-name-of-different-phrase</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -289,11 +331,11 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-word-at-position</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-offset-skip</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-phrasename">list-of-items-fourth</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-offset-skip</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-phrasename">destination-text</span>&nbsp;<span class="kw-phrasename">offset-integer-number</span>&nbsp;<span class="kw-phrasename">skip-interval</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">get-count-of-words</span>&nbsp;<span class="kw-phrasename">phrase-name-with-words-in-definition</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-word-at-position</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-word-at-position</span>&nbsp;<span class="kw-phrasename">list-of-space-delimited-words</span>&nbsp;<span class="kw-phrasename">destination-text</span>&nbsp;<span class="kw-phrasename">integer-position-of-word-to-copy</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-words-found-in-both-lists</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -379,31 +421,108 @@ template-when-count-is-nonzero
 
 <h2 id="files">File and folder</h2>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<p>Used to specify path to input or output file:&nbsp;
+<span class="kw-phrasename">dashrep-path-prefix-for-file-reading</span><br>
+<span class="kw-phrasename">dashrep-path-prefix-for-file-writing</span><br>
+<span class="kw-phrasename">linewise-input-line-from-file</span><br>
+<span class="kw-phrasename">linewise-input-line-count</span>
+</p>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">current-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">copied-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-append-file-to-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">source-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">target-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-standard-input</span>&nbsp;<span class="kw-phrasename">one-line-read-from-standard-input</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-column-lists</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-column-lists</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<!-- reminder: copy-from-columns-in-file-to-column-lists
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-from-tagged-file-one-entry</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+This action reads from the specified file all the spreadsheet-like lines of text, and puts the first (space-delimited) word from each line into one list, and puts the second word from each line into another list, and puts the third word from each line into yet another list, and so on.  The generated lists are given the phrase name specified by the second operand (not by the definition in the second operand) followed by a hyphen and the column number.  This action is useful for reading spreadsheet-like data that contains columns of values, where each column of values is meaningful, such as for doing numeric vector calculations and finding the unique values in each column.  Empty lines are ignored.  The line of data with the fewest words determines how many lists are generated, and words beyond that number are ignored.  The filename is specified by the first operand, and the location of that file is specified in the phrase dashrep-path-prefix-for-file-reading.
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-tagged-info-from-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+Example: If the second operand is the phrase list-of-values-in-column and the specified file contains three lines of text, with flipper 123 234 san_diego in the first line, and adolph 456 567 miami fl in the second line, and dory 789 890 los_angeles in the third line, then the phrase list-of-values-in-column-1 will contain flipper adolph dory and the phrase list-of-values-in-column-2 will contain 123 456 789 and the phrase list-of-values-in-column-3 will contain 234 567 890 and the phrase list-of-numbers-in-column-4 will contain san_diego miami los_angeles.
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-line-in-file-that-begins-with-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-listed-word</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+find-line-in-file-that-begins-with-text
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-two-words-listed</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+This action reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase.  If none of the lines in the file begin with the specified text, then the third phrase will be empty.  The text being searched for can contain a trailing space, which is useful when full-word matches are needed.  The location of the source file is specified by the phrase dashrep-path-prefix-for-file-reading.
+find-lines-in-file-that-begin-with-any-listed-word
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-named-phrases</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+This action reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines.  If none of the lines in the file begin with any of the specified words, then the third phrase will be empty.  The location of the source file is specified by the phrase dashrep-path-prefix-for-file-reading.
+find-lines-in-file-that-begin-with-any-two-words-listed
+
+This action reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines.  If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty.  A line is regarded as a match if the first two words are the same, and if that word is in the specified word list.  The location of the source file is specified by the phrase dashrep-path-prefix-for-file-reading.
+copy-from-columns-in-file-to-named-phrases
+
+This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name.  The specified phrase must begin with the (space-delimited) prefix for all the names, is followed by the (space-delimited) name of each column.  The third operand is the name of a phrase that will contain the list of unique values that come from the first word in each line.  This action is useful for reading spreadsheet-like data.  If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.  The filename is specified by the first operand, and the location of that file is specified in the phrase dashrep-path-prefix-for-file-reading.
+
+Example: If the second operand is a phrase that contains cell-contents-for-nickname phone-number city state and one line of text in the file is flipper 123-456-7890 san_diego ca then the phrase cell-contents-for-nickname-flipper-phone-number will contain 123-456-7890 and the phrase cell-contents-for-nickname-flipper-city will contain san_diego and the phrase cell-contents-for-nickname-flipper-state will contain ca.
+
+If the phrase dashrep-use-two-spaces-as-column-delimiter is defined as yes, then two spaces (instead of one) are required between cells.  This option is useful if the spreadsheet-like cell of data might contain any spaces.
+
+If the second phrase contains only a single word, then the file is assumed to contain only two columns of data on each line, and a suffix is not appended to the end of the generated phrase names.
+copy-from-columns-in-file-to-column-lists
+
+This action reads from the specified file all the spreadsheet-like lines of text, and puts the first (space-delimited) word from each line into one list, and puts the second word from each line into another list, and puts the third word from each line into yet another list, and so on.  The generated lists are given the phrase name specified by the second operand (not by the definition in the second operand) followed by a hyphen and the column number.  This action is useful for reading spreadsheet-like data that contains columns of values, where each column of values is meaningful, such as for doing numeric vector calculations and finding the unique values in each column.  Empty lines are ignored.  The line of data with the fewest words determines how many lists are generated, and words beyond that number are ignored.  The filename is specified by the first operand, and the location of that file is specified in the phrase dashrep-path-prefix-for-file-reading.
+
+Example: If the second operand is the phrase list-of-values-in-column and the specified file contains three lines of text, with flipper 123 234 san_diego in the first line, and adolph 456 567 miami fl in the second line, and dory 789 890 los_angeles in the third line, then the phrase list-of-values-in-column-1 will contain flipper adolph dory and the phrase list-of-values-in-column-2 will contain 123 456 789 and the phrase list-of-values-in-column-3 will contain 234 567 890 and the phrase list-of-numbers-in-column-4 will contain san_diego miami los_angeles.
+yes-or-no-use-two-spaces-as-column-delimiter
+
+If this phrase equals yes then the action copy-from-columns-in-file-to-named-phrases regards two adjacent spaces as the delimiter between words.  Any other value for this phrase causes a single space to be regarded as the delimiter between words.  This adjustment enables the text in any column of (text) data to contain single spaces.  This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.
+gather-tagged-info-from-file
+
+This action reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line.  When the first word (of a line) matches the definition of the dashrep-gather-tag-begin phrase (which has a default value of entry_begin ), a new set of related items begins, and when the first word (of a line) matches the definition of the dashrep-gather-tag-end phrase (which has a default value of entry_end ), that set of items ends.  When the first word (of a line) matches the definition of the dashrep-gather-tag-unique phrase (which has a default value of url, and which must appear within a set of items), the next (space-delimited) word in that line is used as the unique identifier for the items in that set.  If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier.  Each generated phrase name begins with the tag name (that preceded that item) followed by the text -value-for-unique-id- and then followed by the unique value.  The list of encountered unique values is put into the second-operand phrase.
+
+If the text multi_line_begin immediately follows an item's name, the lines that follow, up to a line that contains (only) multi_line_end, are combined (with a space between each line's content) into a long value for that named item.
+
+If a normal (non-multi) line begins with the definition of the dashrep-gather-tag-delete phrase (which has a default value of delete_id ) then the unique value in the second word (of that line) is omitted from the list of encountered unique values.  If a later entry specifies a definition for an entry that was requested to be deleted, the later entry overrides the deletion request.  A deletion request does not delete any of the already-defined phrases, but those phrases will not be accessed if the created phrases are only accessed using the list of encountered unique values.  As an example, an entry with the unique ID of 1776 can be deleted by appending (to the file) the line delete_id 1776.
+
+A list of the encountered tag names is put into the phrase dashrep-gathered-tag-names.  The order of the list is the order in which the tag names were first encountered.
+
+This "gather" action is useful for accessing database-like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record.  This action is also useful for spreadsheet-like information where the tag names are analogous to single-word column titles, and one row of spreadsheet data is stored in multiple lines, with each cell's content on a separate (labelled) line.  The order of the items within each set is not significant, and the order does not need to be the same from one set to another.  This action does not require that each set of items use the same first words that are used in other sets, but in that case the generated phrases should be checked for undefined (empty) phrase definitions.  The location of the source file is specified by the phrase dashrep-path-prefix-for-file-reading.
+gather-from-tagged-file-one-entry
+
+This action reads from a file that also can be read by the action gather-tagged-info-from-file-and-put-unique-values-into-phrase but only gets a single entry and puts that entry into the phrase that is named as the second operand.  The first operand is the name of the file.  The selected entry is specified by a value in the phrase dashrep-gather-tag-matching-id.  If the text that is defined in the phrase dashrep-gather-tag-delete appears within the file and applies to the selected entry, then the content prior to that point is deleted, although later entries (after the last deletion) with the same matching value are recognized.
+write-gathered-listed-items-to-end-of-file
+
+This action writes to the end of the specified file all or most of the information that was recently gathered using the action gather-tagged-info-from-file.  The first operand specifies a phrase that contains the list of unique values for the gathered items to be written, which allows some of the items to be omitted.  This action, unlike the "gather" action, does not support the use of multi-line entries.  The second operand is the name of the target file.  The location of the source file is specified by the phrase dashrep-path-prefix-for-file-reading.  This action uses the list of tag names in the phrase dashrep-gathered-tag-names-in-sequence to determine which tag names to use, and the sequence in which they are written.
+dashrep-gather-tag-begin
+
+See the description for the action gather-tagged-info-from-file.
+dashrep-gather-tag-end
+
+See the description for the action gather-tagged-info-from-file.
+dashrep-gather-tag-unique
+
+See the description for the action gather-tagged-info-from-file.
+dashrep-gather-tag-delete
+
+See the description for the action gather-tagged-info-from-file.
+dashrep-gather-tag-matching-id
+
+See the description for the action gather-from-tagged-file-one-entry.
+
+-->
+
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-from-tagged-file-one-entry</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-tagged-info-from-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-line-in-file-that-begins-with-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-listed-word</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-two-words-listed</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-named-phrases</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">size-of-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
