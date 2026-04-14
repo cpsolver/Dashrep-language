@@ -486,14 +486,36 @@ template-when-count-is-nonzero
 
 <h2 id="files">File and folder</h2>
 
-<p>Used to specify path to input or output file:&nbsp;
-<span class="kw-phrasename">dashrep-path-prefix-for-file-reading</span><br>
-<span class="kw-phrasename">dashrep-path-prefix-for-file-writing</span><br>
-<span class="kw-phrasename">linewise-input-line-from-file</span><br>
-<span class="kw-phrasename">linewise-input-line-count</span>
+<p>Here's a simple Dashrep grep-like program that reads a specified file in the local directory and writes lines that match the specified criteria.</p>
+
+<code-block>
+  <span class="kw-phrasename_predefined">start-here</span>:<br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">input-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">handle-one-line</span>:<br>
+  ... [not yet written] ...<br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">linewise-input-line-from-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">output-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">input-file-name</span>:<br>
+  <span class="kw-literal">input_file.txt</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">output-file-name</span>:<br>
+  <span class="kw-literal">output_file.txt</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+</code-block>
+
+
+<p>Specify path to input or output file:<br>
+<span class="kw-phrasename_predefined">dashrep-path-prefix-for-file-reading</span><br>
+<span class="kw-phrasename_predefined">dashrep-path-prefix-for-file-writing</span><br>
 </p>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">current-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<p>Access to input file lines:<br>
+<span class="kw-phrasename_predefined">linewise-input-line-from-file</span><br>
+<span class="kw-phrasename_predefined">linewise-input-line-count</span>
+</p>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">copied-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
