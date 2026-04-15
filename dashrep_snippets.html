@@ -228,7 +228,7 @@ code-block {
 
 <h1>Dashrep Snippets</h1>
 
-<p>Code you can copy and paste to more quickly create new Dashrep code.&nbsp; <b>Note</b>: <b>This code is still being developed</b> and certainly has errors.&nbsp; <b>None of this code has yet been tested</b>.</p>
+<p>Code you can copy and paste to more quickly create new Dashrep code.&nbsp; <b>Note</b>: <b>This code is still being developed</b> and certainly has errors (especially where &ldquo;something-whatever&rdquo; appears).&nbsp; <b>None of this code has yet been tested</b>.</p>
 
 
 <h2 id="simple">Simple start</h2>
@@ -450,7 +450,7 @@ template-when-count-is-nonzero
 
 <h2 id="search">Search and replace</h2>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-phrasename">list-of-items-fourth</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-phrasename">modified-text</span>&nbsp;<span class="kw-phrasename">search-text</span>&nbsp;<span class="kw-phrasename">replacement-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace-using-paired-listed-words</span>&nbsp;<span class="kw-phrasename">list-of-items-first</span>&nbsp;<span class="kw-phrasename">list-of-items-second</span>&nbsp;<span class="kw-phrasename">list-of-items-third</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -486,15 +486,14 @@ template-when-count-is-nonzero
 
 <h2 id="files">File and folder</h2>
 
-<p>Here's a simple Dashrep grep-like program that reads a specified file in the local directory and writes lines that match the specified criteria.</p>
+<p>Here's a simple Dashrep program that reads a specified file in the local directory, replaces matching &ldquo;search&rdquo; text with replacement text, and writes the modified file to the specified output file.
 
 <code-block>
-  <span class="kw-phrasename_predefined">start-here</span>:<br>
-  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">input-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span>
+  <span class="kw-phrasename">search-text</span>:<br>
+  <span class="kw-literal">the dolphin</span><br>
   <span class="kw-phrasename_predefined">----</span><br>
-  <span class="kw-phrasename">handle-one-line</span>:<br>
-  ... [not yet written] ...<br>
-  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">linewise-input-line-from-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">output-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename">replacement-text</span>:<br>
+  <span class="kw-literal">Flipper</span><br>
   <span class="kw-phrasename_predefined">----</span><br>
   <span class="kw-phrasename">input-file-name</span>:<br>
   <span class="kw-literal">input_file.txt</span><br>
@@ -502,28 +501,45 @@ template-when-count-is-nonzero
   <span class="kw-phrasename">output-file-name</span>:<br>
   <span class="kw-literal">output_file.txt</span><br>
   <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename_predefined">start-here</span>:<br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">input-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
+  <span class="kw-phrasename">handle-one-line</span>:<br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-and-replace</span>&nbsp;<span class="kw-phrasename_predefined">linewise-input-line-from-file</span>&nbsp;<span class="kw-phrasename">possibly-modified-line</span>&nbsp;<span class="kw-phrasename">search-text</span>&nbsp;<span class="kw-phrasename">replacement-text</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">append-new-line</span>&nbsp;<span class="kw-phrasename">possibly-modified-line</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">possibly-modified-line</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">output-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span><br>
+  <span class="kw-phrasename_predefined">----</span><br>
 </code-block>
 
 
-<p>Specify path to input or output file:<br>
+<p>Full path (without filename) to input or output file.&nbsp; Default is empty, which specifies file in current folder.</p>
+<div class="phrase-list">
 <span class="kw-phrasename_predefined">dashrep-path-prefix-for-file-reading</span><br>
 <span class="kw-phrasename_predefined">dashrep-path-prefix-for-file-writing</span><br>
-</p>
+</div>
 
-<p>Access to input file lines:<br>
+<p>Access to input file lines:</p>
+<div class="phrase-list">
 <span class="kw-phrasename_predefined">linewise-input-line-from-file</span><br>
 <span class="kw-phrasename_predefined">linewise-input-line-count</span>
-</p>
+</div>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">copied-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<p>Actions that write text to text file.&nbsp; Overwrite existing file.</p>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-phrase-append-to-file</span>&nbsp;<span class="kw-phrasename">source-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-append-file-to-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">source-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">target-file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-standard-input</span>&nbsp;<span class="kw-phrasename">one-line-read-from-standard-input</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+
+<p>Actions that read from text file.</p>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-file-and-use-handler</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">handle-one-line</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-file-to-phrase</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">copied-text</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">linewise-read-from-standard-input</span>&nbsp;<span class="kw-phrasename">text-from-standard-input</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-column-lists</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
@@ -601,8 +617,6 @@ See the description for the action gather-from-tagged-file-one-entry.
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">gather-tagged-info-from-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
-<code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">write-gathered-listed-items-to-end-of-file</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
-
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-line-in-file-that-begins-with-text</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-listed-word</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
@@ -610,6 +624,9 @@ See the description for the action gather-from-tagged-file-one-entry.
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">find-lines-in-file-that-begin-with-any-two-words-listed</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">copy-from-columns-in-file-to-named-phrases</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-phrasename">something-whatever</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
+
+
+<p>Other file and folder actions:</p>
 
 <code-block><span class="kw-ambee">ambee</span>&nbsp;<span class="kw-action">size-of-file</span>&nbsp;<span class="kw-ambee">ambee</span>&nbsp;<span class="kw-phrasename">file-name</span>&nbsp;<span class="kw-amenn">amenn</span>&nbsp;<span class="kw-amenn">amenn</span></code-block>
 
