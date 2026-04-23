@@ -1,4 +1,6 @@
-print "Compiler error; for details see warning messages at top of compiler output file." + "\n" ;  <new_line>
+// before:  print "Compiler error; for details see warning messages at top of compiler output file." + "\n" ;  <new_line>
+write-to-file-begin "Compiler error; for details see warning messages at top of compiler output file." write-to-file-end-of-line ;  <new_line>
+
 exit ;  <new_line>
 // All done!  <new_line>
 <new_line>

@@ -35,10 +35,16 @@ if ( exists( code-get-or-put-phrase-definition-begin "standard<character_hyphen>
             print TRACE_OUT "\n\n\n" + output_results + "\n" ;  <new_line>
         }  <new_line>
     } else {  <new_line>
-        print output_results + "\n" ;  <new_line>
+
+// before:    print output_results + "\n" ;  <new_line>
+        write-to-file-begin output_results write-to-file-end-of-line ;  <new_line>
+
     }  <new_line>
 } else {  <new_line>
-    print output_results + "\n" ;  <new_line>
+
+// before:    print output_results + "\n" ;  <new_line>
+write-to-file-begin output_results write-to-file-end-of-line ;  <new_line>
+
 }  <new_line>
 
 exit ;  <new_line>
