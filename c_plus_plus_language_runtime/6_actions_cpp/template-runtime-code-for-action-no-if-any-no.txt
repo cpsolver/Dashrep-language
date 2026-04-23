@@ -1,10 +1,10 @@
 template-runtime-code-for-every-action-begin
 
 global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
-if ( index( global_concatenated_all_operands , "no" ) >= 0 ) {  <new_line>
-runtime-code-storage-item-result = "no" ;  <new_line>
+if ( index( global_concatenated_all_operands , <character_quotation_mark>no<character_quotation_mark> ) >= 0 ) {  <new_line>
+runtime-code-storage-item-result = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
-runtime-code-storage-item-result = "yes" ;  <new_line>
+runtime-code-storage-item-result = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end

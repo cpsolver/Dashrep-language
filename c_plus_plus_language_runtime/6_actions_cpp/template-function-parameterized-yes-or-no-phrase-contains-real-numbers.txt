@@ -8,11 +8,11 @@ declare-integer function_parameterized__yes_or_no_phrase_contains_real_numbers( 
 declare-string local_text ;  <new_line>
 local_text = $_[ 0 ] ;  <new_line>
 
-if ( index( local_text , " " ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark> <character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "-" ) < 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>-<character_quotation_mark> ) < 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
@@ -21,7 +21,7 @@ return global_no ;  <new_line>
 }  <new_line>
 
 // before: if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end =~ /[^0-9\-\. ]/ ) {  <new_line>
-if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end looks-like-begin  R"([^0-9\-\. ])" looks-like-end ) {  <new_line>
+if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end looks-like-begin  R<character_quotation_mark>([^0-9\-\. ])<character_quotation_mark> looks-like-end ) {  <new_line>
 return global_no ;  <new_line>
 } else {  <new_line>
 return global_yes ;  <new_line>

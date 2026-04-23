@@ -1,4 +1,4 @@
 combee ****
-// std::cout << "result: " + runtime-code-storage-item-result + "\n" ;  <new_line>
+// std::cout << <character_quotation_mark>result: <character_quotation_mark> + runtime-code-storage-item-result + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 // end of action <dashrep_placeholder_action_name><new_line>
 **** comenn

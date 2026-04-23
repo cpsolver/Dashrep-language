@@ -1,18 +1,18 @@
 // no-space dashes-long-line  <new_line>
 
 void function__yes_or_no_folder_exists( ) {  <new_line>
-global_action_name_with_underscores = "yes_or_no_folder_exists" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>yes_or_no_folder_exists<character_quotation_mark> ; <new_line>
 if ( function_parameterized__yes_or_no_folder_name( global_operand_one ) == global_no ) {  <new_line>
-    global_action_result = "no" ;  <new_line>
-    return "" ;  <new_line>
+    global_action_result = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>
+    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
-global_action_result = "no" ;  <new_line>
-global_target_file_name = code-get-or-put-phrase-definition-begin "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" code-get-or-put-phrase-definition-end + global_operand_one ;  <new_line>
-if ( index( global_target_file_name , " " ) < 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>
+global_target_file_name = code-get-or-put-phrase-definition-begin <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading<character_quotation_mark> code-get-or-put-phrase-definition-end + global_operand_one ;  <new_line>
+if ( index( global_target_file_name , <character_quotation_mark> <character_quotation_mark> ) < 0 ) {  <new_line>
     if ( <character_hyphen>d global_target_file_name ) {  <new_line>
-        global_action_result = "yes" ;  <new_line>
+        global_action_result = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

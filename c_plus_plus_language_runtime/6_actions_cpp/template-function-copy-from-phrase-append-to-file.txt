@@ -1,19 +1,19 @@
 // no-space dashes-long-line  <new_line>
 
 void function__copy_from_phrase_append_to_file( ) {  <new_line>
-global_action_name_with_underscores = "copy_from_phrase_append_to_file" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>copy_from_phrase_append_to_file<character_quotation_mark> ; <new_line>
 template-check-operand-one-is-phrase-name
 global_target_file_name = global_operand_two ;  <new_line>
 template-open-file-for-appending
 
 combee template-return-if-no-permission-to-append-to-files comenn
 
-global_action_result = "" ;  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
-// before:     std::cout << OUTFILE global_dashrep_replacement[ global_operand_one ] + "\n" ;  <new_line>
+// before:     std::cout << OUTFILE global_dashrep_replacement[ global_operand_one ] + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
     write-to-file-begin global_dashrep_replacement[ global_operand_one ] write-to-file-end-of-line ;  <new_line>
 } else {  <new_line>
-// before:     std::cout << OUTFILE global_operand_one + "\n" ;  <new_line>
+// before:     std::cout << OUTFILE global_operand_one + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
     write-to-file-begin global_operand_one write-to-file-end-of-line ;  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_writing = global_no ;  <new_line>
@@ -21,6 +21,6 @@ close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
 
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

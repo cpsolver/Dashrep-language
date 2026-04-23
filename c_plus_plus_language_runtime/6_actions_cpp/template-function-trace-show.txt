@@ -1,14 +1,14 @@
 // no-space dashes-long-line  <new_line>
 
 void function__trace_show( ) {  <new_line>
-// global_action_name_with_underscores = "trace_show" ; <new_line>
-global_action_result = "" ;  <new_line>
+// global_action_name_with_underscores = <character_quotation_mark>trace_show<character_quotation_mark> ; <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_one ) == global_no ) {  <new_line>
-print TRACE_OUT "trace text:" + "\n" + global_operand_one + "\n" + "<character_hyphen><character_hyphen><character_hyphen><character_hyphen>" + "\n" ;  <new_line>
+print TRACE_OUT <character_quotation_mark>trace text:<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> + global_operand_one + <character_quotation_mark>\n<character_quotation_mark> + <character_quotation_mark><character_hyphen><character_hyphen><character_hyphen><character_hyphen><character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 } else if ( exists( code-get-or-put-phrase-definition-begin global_operand_one code-get-or-put-phrase-definition-end ) ) {  <new_line>
-print TRACE_OUT global_operand_one + ":" + "\n" + code-get-or-put-phrase-definition-begin global_operand_one code-get-or-put-phrase-definition-end + "\n" + "<character_hyphen><character_hyphen><character_hyphen><character_hyphen>" + "\n" ;  <new_line>
+print TRACE_OUT global_operand_one + <character_quotation_mark>:<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> + code-get-or-put-phrase-definition-begin global_operand_one code-get-or-put-phrase-definition-end + <character_quotation_mark>\n<character_quotation_mark> + <character_quotation_mark><character_hyphen><character_hyphen><character_hyphen><character_hyphen><character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
-print TRACE_OUT global_operand_one + ":" + "\n" + "<character_hyphen><character_hyphen><character_hyphen><character_hyphen>" + "\n" ;  <new_line>
+print TRACE_OUT global_operand_one + <character_quotation_mark>:<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> + <character_quotation_mark><character_hyphen><character_hyphen><character_hyphen><character_hyphen><character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 }  <new_line>
 
 template-function-segment-ending

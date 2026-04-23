@@ -8,15 +8,15 @@ declare-integer function_parameterized__yes_or_no_phrase_name( ) {  <new_line>
 declare-string local_text ;  <new_line>
 local_text = $_[ 0 ] ;  <new_line>
 
-if ( index( local_text , " " ) > -1 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark> <character_quotation_mark> ) > -1 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "-" ) > 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>-<character_quotation_mark> ) > 0 ) {  <new_line>
 
 combee **** If the phrase is not defined, define it as empty **** comenn
 if ( this-dashrep-phrase code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end is-not-defined ) {  <new_line>
-code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end = "" ;  <new_line>
+code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 
 return global_yes ;  <new_line>

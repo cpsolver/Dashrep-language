@@ -1,15 +1,15 @@
 template-runtime-code-for-every-action-begin
 
 if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == global_no ) {  <new_line>
-    runtime-code-storage-item-result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__prepend_text_no_space__not_phrase_name" + runtime-code-for-concatenated-all-operands + " " ;  <new_line>
+    runtime-code-storage-item-result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__prepend_text_no_space__not_phrase_name<character_quotation_mark> + runtime-code-for-concatenated-all-operands + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 
 } else if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == global_no ) {  <new_line>
-    runtime-code-storage-item-result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__prepend_text_no_space__not_phrase_name " + runtime-code-for-concatenated-all-operands + " " ;  <new_line>
+    runtime-code-storage-item-result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__prepend_text_no_space__not_phrase_name <character_quotation_mark> + runtime-code-for-concatenated-all-operands + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 
 } else {  <new_line>
 
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end + code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
-runtime-code-storage-item-result = " " ;  <new_line>
+runtime-code-storage-item-result = <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 
 }  <new_line>
 

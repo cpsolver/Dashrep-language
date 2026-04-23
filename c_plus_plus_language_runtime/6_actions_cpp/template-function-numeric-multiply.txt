@@ -9,8 +9,8 @@ combee ****
 **** comenn
 
 void function__numeric_multiply( ) {  <new_line>
-global_action_result = "1" ;  <new_line>
-global_default_text = "1" ;  <new_line>
+global_action_result = <character_quotation_mark>1<character_quotation_mark> ;  <new_line>
+global_default_text = <character_quotation_mark>1<character_quotation_mark> ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
 
@@ -23,6 +23,6 @@ global_calculated_value = global_calculated_value * function_parameterized__conv
 }  <new_line>
 global_action_result = function_parameterized__normalize_calculated_value( global_calculated_value ) ;  <new_line>
 
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

@@ -1,35 +1,35 @@
 // no-space dashes-long-line  <new_line>
 
 void function__generate_list_of_folders_in_current_read_directory( ) {  <new_line>
-global_action_name_with_underscores = "generate_list_of_folders_in_current_read_directory" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>generate_list_of_folders_in_current_read_directory<character_quotation_mark> ; <new_line>
 template-check-operand-one-is-phrase-name
 
-global_action_result = "" ;  <new_line>
-global_source_path_prefix = global_dashrep_replacement[ "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" } ;  <new_line>
-if ( ( global_source_path_prefix eq "" ) || ( global_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+global_source_path_prefix = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading<character_quotation_mark> } ;  <new_line>
+if ( ( global_source_path_prefix eq <character_quotation_mark><character_quotation_mark> ) || ( global_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
 
-    global_source_path_prefix = "./" ;  <new_line>
+    global_source_path_prefix = <character_quotation_mark>./<character_quotation_mark> ;  <new_line>
 
 combee ****
-    global_source_path_prefix = "\.\\" ;  <new_line>
+    global_source_path_prefix = <character_quotation_mark>\.\\<character_quotation_mark> ;  <new_line>
 **** comenn
 
 }  <new_line>
-global_list_of_file_names = "" ;  <new_line>
+global_list_of_file_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 if ( opendir( READDIR , global_source_path_prefix ) ) {  <new_line>
     while ( defined( global_file_name = readdir( READDIR ) ) ) {  <new_line>
         if ( global_file_name !~ /^\./ ) {  <new_line>
             global_source_file_full_path = global_source_path_prefix + global_file_name ;  <new_line>
             if ( <character_hyphen>d global_source_file_full_path ) {  <new_line>
-                global_list_of_file_names += global_file_name + " " ;  <new_line>
+                global_list_of_file_names += global_file_name + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
 // before:     global_list_of_file_names =~ s / +$// ;  <new_line>
-replace-begin global_list_of_file_names replace-equals global_list_of_file_names replace-this R"( +$)" with-this R"()" replace-end  <new_line>
+replace-begin global_list_of_file_names replace-equals global_list_of_file_names replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     global_dashrep_replacement[ global_operand_one ] = global_list_of_file_names ;  <new_line>
     closedir( READDIR ) ;  <new_line>
 }  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

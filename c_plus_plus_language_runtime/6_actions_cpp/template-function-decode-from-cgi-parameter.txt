@@ -1,18 +1,18 @@
 // no-space dashes-long-line  <new_line>
 
 void function__decode_from_cgi_parameter( ) {  <new_line>
-global_action_name_with_underscores = "decode_from_cgi_parameter" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>decode_from_cgi_parameter<character_quotation_mark> ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-global_action_result = "" ;  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_text_being_edited = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
 // before: global_text_being_edited =~ s/\+/ /sg ;  <new_line>
-replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R"(\+)" with-this R"( )" replace-end  <new_line>
+replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(\+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 global_remaining_text = global_text_being_edited ;  <new_line>
-global_accumulated_text = "" ;  <new_line>
+global_accumulated_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 // before: while ( global_remaining_text =~ /^(.*?)\%([0<character_hyphen>9a hyphen-here fA hyphen-here F][0<character_hyphen>9a hyphen-here fA hyphen-here F])(.*)$/s ) {  <new_line>
-while ( global_remaining_text looks-like-begin  R"(^(.*?)\%([0<character_hyphen>9a hyphen-here fA hyphen-here F][0<character_hyphen>9a hyphen-here fA hyphen-here F])(.*)$)" looks-like-ends ) {  <new_line>
+while ( global_remaining_text looks-like-begin  R<character_quotation_mark>(^(.*?)\%([0<character_hyphen>9a hyphen-here fA hyphen-here F][0<character_hyphen>9a hyphen-here fA hyphen-here F])(.*)$)<character_quotation_mark> looks-like-ends ) {  <new_line>
     global_accumulated_text += $1 ;  <new_line>
     global_character_code_to_decode = regex-match-two ;  <new_line>
     global_remaining_text = regex-match-three ;  <new_line>
@@ -20,8 +20,8 @@ while ( global_remaining_text looks-like-begin  R"(^(.*?)\%([0<character_hyphen>
 }  <new_line>
 global_accumulated_text += global_remaining_text ;  <new_line>
 // before: global_accumulated_text =~ s/\+/ /sg ;  <new_line>
-replace-begin global_accumulated_text replace-equals global_accumulated_text replace-this R"(\+)" with-this R"( )" replace-end  <new_line>
+replace-begin global_accumulated_text replace-equals global_accumulated_text replace-this R<character_quotation_mark>(\+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_text ;  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

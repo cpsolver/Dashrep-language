@@ -12,7 +12,7 @@ if ( function_parameterized__yes_or_no_file_name( local_file_name ) == global_no
     return global_no ;  <new_line>
 }  <new_line>
 
-global_source_path_prefix = code-get-or-put-phrase-definition-begin "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" code-get-or-put-phrase-definition-end ;  <new_line>
+global_source_path_prefix = code-get-or-put-phrase-definition-begin <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading<character_quotation_mark> code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( function_parameterized__yes_or_no_valid_path_prefix( global_source_path_prefix ) == global_no ) {  <new_line>
     return global_no ;  <new_line>
@@ -20,7 +20,7 @@ if ( function_parameterized__yes_or_no_valid_path_prefix( global_source_path_pre
 
 global_source_file_full_path = global_source_path_prefix + local_file_name ;  <new_line>
 
-if ( not( open( INFILE_TEMP , "<" + global_source_file_full_path ) ) ) {  <new_line>
+if ( not( open( INFILE_TEMP , <character_quotation_mark><<character_quotation_mark> + global_source_file_full_path ) ) ) {  <new_line>
     close( INFILE_TEMP ) ;  <new_line>
     return global_no ;  <new_line>
 }  <new_line>

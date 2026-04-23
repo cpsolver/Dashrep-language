@@ -6,7 +6,7 @@
 declare-integer function_parameterized__yes_or_no_empty( ) {  <new_line>
 
 // before: if ( $_[ 0 ] =~ /[^ ]/ ) {  <new_line>
-if ( $_[ 0 ] looks-like-begin  R"([^ ])" looks-like-end ) {  <new_line>
+if ( $_[ 0 ] looks-like-begin  R<character_quotation_mark>([^ ])<character_quotation_mark> looks-like-end ) {  <new_line>
 return global_no ;  <new_line>
 } else {  <new_line>
 return global_yes ;  <new_line>

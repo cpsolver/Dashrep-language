@@ -1,7 +1,7 @@
 // no-space dashes-long-line  <new_line>
 // function_parameterized__yes_or_no_valid_path_prefix  <new_line>
 <new_line>
-// reminder: path "./" is valid, so period is OK  <new_line>
+// reminder: path <character_quotation_mark>./<character_quotation_mark> is valid, so period is OK  <new_line>
 <new_line>
 
 // before: int function_parameterized__yes_or_no_valid_path_prefix( ) {  <new_line>
@@ -16,75 +16,75 @@ if ( global_length_of_text == 0 ) {  <new_line>
 return global_yes ;  <new_line>
 }  <new_line>
 
-if ( ( index( local_text , "/" ) < 0 ) && ( index( local_text , "\\" ) < 0 ) ) {  <new_line>
+if ( ( index( local_text , <character_quotation_mark>/<character_quotation_mark> ) < 0 ) && ( index( local_text , <character_quotation_mark>\\<character_quotation_mark> ) < 0 ) ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( ( substr( local_text , global_length_of_text - 1 , 1 ) ne "\\" ) && ( substr( local_text , global_length_of_text - 1 , 1 ) ne "/" ) ) {  <new_line>
+if ( ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark>\\<character_quotation_mark> ) && ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark>/<character_quotation_mark> ) ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , " " ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark> <character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "*" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>*<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "&" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>&<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "!" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>!<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "@" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>@<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "$" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>$<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "%" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>%<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "^" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>^<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "~" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>~<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "`" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>`<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , """ ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark><character_quotation_mark><character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "<character_apostrophe>" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark><character_apostrophe><character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "," ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>,<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , ";" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>;<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "=" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>=<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "+" ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>+<character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 

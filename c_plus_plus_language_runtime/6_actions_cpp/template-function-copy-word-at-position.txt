@@ -3,17 +3,17 @@
 //  <new_line>
 
 void function__copy_word_at_position( ) {  <new_line>
-global_action_name_with_underscores = "copy_word_at_position" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>copy_word_at_position<character_quotation_mark> ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 
-global_action_result = "" ;  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 global_source_text = code-get-or-put-phrase-definition-begin global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 global_word_pointer_text = global_operand_three ;  <new_line>
 
-global_default_text = "" ;  <new_line>
+global_default_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
 
@@ -25,6 +25,6 @@ global_word_pointer_numeric = global_number_of_words ;  <new_line>
 
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = runtime-code-word-within-source-text ;  <new_line>
 
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

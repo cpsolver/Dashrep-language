@@ -1,14 +1,14 @@
 // no-space dashes-long-line  <new_line>
 
 void function__find_line_in_file_that_begins_with_text( ) {  <new_line>
-global_action_name_with_underscores = "find_line_in_file_that_begins_with_text" ; <new_line>
+global_action_name_with_underscores = <character_quotation_mark>find_line_in_file_that_begins_with_text<character_quotation_mark> ; <new_line>
 template-check-operand-two-is-phrase-not-empty
 template-check-operand-three-is-phrase-name
 global_source_file_name = global_operand_one ;  <new_line>
 template-open-file-for-reading
 
-global_action_result = "" ;  <new_line>
-global_list_of_storage_names = "" ;  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+global_list_of_storage_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_string_to_find = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_length_of_string = length( global_string_to_find ) ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
@@ -21,6 +21,6 @@ while ( global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

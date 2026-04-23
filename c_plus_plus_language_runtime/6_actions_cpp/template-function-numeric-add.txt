@@ -3,8 +3,8 @@
 //  <new_line>
 
 void function__numeric_add( ) {  <new_line>
-global_action_result = "0" ;  <new_line>
-global_default_text = "0" ;  <new_line>
+global_action_result = <character_quotation_mark>0<character_quotation_mark> ;  <new_line>
+global_default_text = <character_quotation_mark>0<character_quotation_mark> ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
 
@@ -16,6 +16,6 @@ for ( global_word_pointer_numeric = 1 ; global_word_pointer_numeric <= global_nu
     }  <new_line>
 }  <new_line>
 global_action_result = function_parameterized__normalize_calculated_value( global_calculated_value ) ;  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

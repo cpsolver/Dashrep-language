@@ -1,4 +1,4 @@
-// global_action_debug_line = "***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *" + runtime-code-for-concatenated-all-operands ;  <new_line>
-// std::cout << global_action_debug_line + "\n" ;  <new_line>
+// global_action_debug_line = <character_quotation_mark>***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *<character_quotation_mark> + runtime-code-for-concatenated-all-operands ;  <new_line>
+// std::cout << global_action_debug_line + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 
 runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ;  <new_line>

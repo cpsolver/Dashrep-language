@@ -14,11 +14,11 @@ if ( global_length_of_text == 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , " " ) >= 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark> <character_quotation_mark> ) >= 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_text , "/" ) < 0 ) {  <new_line>
+if ( index( local_text , <character_quotation_mark>/<character_quotation_mark> ) < 0 ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 

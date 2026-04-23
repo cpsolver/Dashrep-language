@@ -1,6 +1,6 @@
 template-runtime-code-for-every-action-begin
 
-// before: runtime-code-storage-item-result = sprintf( "%d" , time ) ;  <new_line>
+// before: runtime-code-storage-item-result = sprintf( <character_quotation_mark>%d<character_quotation_mark> , time ) ;  <new_line>
 runtime-code-storage-item-result = convert-integer-to-string-begin time  convert-to-string-end  ;  <new_line>
 
 template-runtime-code-for-every-action-end

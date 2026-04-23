@@ -8,11 +8,11 @@ declare-string local_text ;  <new_line>
 local_text = $_[ 0 ] ;  <new_line>
 
 // before: if ( local_text =~ /^ *([\+|\ hyphen-here ]?[0-9]+(\.[0-9]*)?) *$/ ) {  <new_line>
-if ( local_text looks-like-begin  R"(^ *([\+|\ hyphen-here ]?[0-9]+(\.[0-9]*)?) *$)" looks-like-end ) {  <new_line>
+if ( local_text looks-like-begin  R<character_quotation_mark>(^ *([\+|\ hyphen-here ]?[0-9]+(\.[0-9]*)?) *$)<character_quotation_mark> looks-like-end ) {  <new_line>
 return $1 + 0 ;  <new_line>
 } else {  <new_line>
 return 0 ;  <new_line>
 }  <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 template-function-segment-ending

@@ -8,98 +8,98 @@ declare-integer function_parameterized__yes_or_no_folder_name( ) {  <new_line>
 declare-string local_folder_name ;  <new_line>
 local_folder_name = $_[ 0 ] ;  <new_line>
 
-if ( index( local_folder_name , " " ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_space " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark> <character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_space <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "/" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_slash " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>/<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_slash <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "\\" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_backslash " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>\\<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_backslash <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "*" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_asterisk " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>*<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_asterisk <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "&" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_ampersand " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>&<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_ampersand <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "!" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_exclamation_point " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>!<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_exclamation_point <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "@" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_at_sign " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>@<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_at_sign <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "$" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_dollar_sign " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>$<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_dollar_sign <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "%" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_percent_sign " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>%<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_percent_sign <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "^" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_caret " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>^<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_caret <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "~" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_tilde " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>~<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_tilde <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "`" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_backtick " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>`<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_backtick <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , """ ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_quotation_mark " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark><character_quotation_mark><character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_quotation_mark <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "<character_apostrophe>" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_apostrophe " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark><character_apostrophe><character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_apostrophe <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "," ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_comma " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>,<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_comma <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , ":" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_colon " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>:<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_colon <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , ";" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_semicolon " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>;<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_semicolon <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "=" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_equal_sign " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>=<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_equal_sign <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_folder_name , "+" ) >= 0 ) {  <new_line>
-global_action_result = "dashrep_compiled_runtime_error__" + global_currently_executing_phrase_name_with_underscores + "__parameterized_yes_or_no_folder_name__case_contains_plus_sign " + local_folder_name ;  <new_line>
+if ( index( local_folder_name , <character_quotation_mark>+<character_quotation_mark> ) >= 0 ) {  <new_line>
+global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_plus_sign <character_quotation_mark> + local_folder_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 

@@ -1,20 +1,20 @@
 template-runtime-code-for-every-action-begin
 
-if ( exists( code-get-or-put-phrase-definition-begin "standard<character_hyphen>output" code-get-or-put-phrase-definition-end ) ) {  <new_line>
-    if ( function_parameterized__yes_or_no_phrase_definition_not_empty( "standard<character_hyphen>output" ) == global_yes ) {  <new_line>
-        std::cout << code-get-or-put-phrase-definition-begin "standard-output" code-get-or-put-phrase-definition-end ;  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin <character_quotation_mark>standard<character_hyphen>output<character_quotation_mark> code-get-or-put-phrase-definition-end ) ) {  <new_line>
+    if ( function_parameterized__yes_or_no_phrase_definition_not_empty( <character_quotation_mark>standard<character_hyphen>output<character_quotation_mark> ) == global_yes ) {  <new_line>
+        std::cout << code-get-or-put-phrase-definition-begin <character_quotation_mark>standard-output<character_quotation_mark> code-get-or-put-phrase-definition-end ;  <new_line>
         if ( global_yes_or_no_trace_output_file_is_open == global_yes ) {  <new_line>
-// before:             std::cout << TRACE_OUT "\n\n\n" + $output_results + "\n" ;  <new_line>
-            write-to-trace-file-begin "\n\n\n" write-more $output_results write-to-file-end-of-line ;  <new_line>
+// before:             std::cout << TRACE_OUT <character_quotation_mark>\n\n\n<character_quotation_mark> + $output_results + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+            write-to-trace-file-begin <character_quotation_mark>\n\n\n<character_quotation_mark> write-more $output_results write-to-file-end-of-line ;  <new_line>
         }  <new_line>
     } else {  <new_line>
-        std::cout << $output_results + "\n" ;  <new_line>
+        std::cout << $output_results + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>
 
 if ( global_yes_or_no_trace_output_file_is_open == global_yes ) {  <new_line>
-// before:     std::cout << TRACE_OUT "\n\n\n" + "Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep" + "\n" ;  <new_line>
-    write-to-trace-file-begin "\n\n\n" write-more "Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep" write-to-file-end-of-line ;  <new_line>
+// before:     std::cout << TRACE_OUT <character_quotation_mark>\n\n\n<character_quotation_mark> + <character_quotation_mark>Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+    write-to-trace-file-begin <character_quotation_mark>\n\n\n<character_quotation_mark> write-more <character_quotation_mark>Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep<character_quotation_mark> write-to-file-end-of-line ;  <new_line>
 }  <new_line>
 
 exit ;  <new_line>
