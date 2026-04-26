@@ -19,25 +19,16 @@ if ( function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase
 
 global_target_file_full_path = code-get-or-put-phrase-definition-begin <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing<character_quotation_mark> code-get-or-put-phrase-definition-end + local_file_name ;  <new_line>
 
-if ( open( INFILE_TEMP , <character_quotation_mark><<character_quotation_mark> + global_target_file_full_path ) ) {  <new_line>
-    close( INFILE_TEMP ) ;  <new_line>
-} else {  <new_line>
-    if ( open( OUTFILE , <character_quotation_mark>>><character_quotation_mark> + global_target_file_full_path  ) ) {  <new_line>
-        std::cout << OUTFILE <character_quotation_mark><character_quotation_mark> ;  <new_line>
-        close( OUTFILE ) ;  <new_line>
-template-runtime-code-protect-target-file
-    }  <new_line>
+// in main, must declare:   std::ofstream outfile
+
+std::ofstream outfile.open( global_target_file_full_path , std::ios::app);  <new_line>
+if (!outfile) {  <new_line>
+    global_runtime_error_type = <character_quotation_mark> no-space path_for_appending_invalid no-space <character_quotation_mark> ;  <new_line>
+    return global_no ;  <new_line>
 }  <new_line>
 
-if ( open( OUTFILE , <character_quotation_mark>>><character_quotation_mark> + global_target_file_full_path  ) ) {  <new_line>
-    global_yes_or_no_file_opened_for_writing = global_yes ;  <new_line>
-    global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-    return global_yes ;  <new_line>
-}  <new_line>
-
-global_target_file_full_path = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-global_yes_or_no_file_opened_for_writing = global_no ;  <new_line>
-close( OUTFILE ) ;  <new_line>
-return global_no ;  <new_line>
+global_yes_or_no_file_opened_for_writing = global_yes ;  <new_line>
+global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return global_yes ;  <new_line>
 
 template-function-segment-ending
