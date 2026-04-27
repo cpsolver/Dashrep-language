@@ -1,2 +1,1 @@
-std::string storage-position-name = "" ;  <new_line>
-
+std::string storage-position-name = <character_quotation_mark><character_quotation_mark> ;  <new_line>

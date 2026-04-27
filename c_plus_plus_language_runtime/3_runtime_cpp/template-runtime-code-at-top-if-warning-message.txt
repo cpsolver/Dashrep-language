@@ -1,4 +1,4 @@
-write-to-standard-output-begin "Compiler error; for details see warning messages at top of compiler output file." write-to-file-end-of-line  <new_line>
+write-to-standard-output-begin <character_quotation_mark>Compiler error; for details see warning messages at top of compiler output file.<character_quotation_mark> write-to-file-end-of-line  <new_line>
 exit ;  <new_line>
 // All done!  <new_line>
 <new_line>

@@ -1,2 +1,1 @@
-= "" ; // result storage
-
+= <character_quotation_mark><character_quotation_mark> ; // result storage

@@ -1,4 +1,3 @@
 ] ++ ;  <new_line>
 std::string saved_accumulator_pointer = -1 ;  <new_line>
-global_currently_executing_phrase_name_with_underscores = "
-
+global_currently_executing_phrase_name_with_underscores = <character_quotation_mark>

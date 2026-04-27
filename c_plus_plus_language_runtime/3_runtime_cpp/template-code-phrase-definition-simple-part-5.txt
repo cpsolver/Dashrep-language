@@ -1,3 +1,2 @@
-" ; <new_line>
+<character_quotation_mark> ; <new_line>
 code-get-or-put-phrase-definition-begin initialize-variable-begin
-

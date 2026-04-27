@@ -1,6 +1,5 @@
 ;  <new_line>
 }  <new_line>
 <new_line>
-return "" ;  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 } // end of function-name-prefix
-

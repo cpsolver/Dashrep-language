@@ -6,5 +6,5 @@
 <new_line>
 
 // no-space dashes-long-line  <new_line>
-//  Copyright notice within phrase "source<character_hyphen>code<character_hyphen>copyright<character_hyphen>notice":  <new_line>
+//  Copyright notice within phrase <character_quotation_mark>source<character_hyphen>code<character_hyphen>copyright<character_hyphen>notice<character_quotation_mark>:  <new_line>
 <new_line>

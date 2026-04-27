@@ -1,1 +1,1 @@
-" ] = initialize-variable-begin
+<character_quotation_mark> ] = initialize-variable-begin

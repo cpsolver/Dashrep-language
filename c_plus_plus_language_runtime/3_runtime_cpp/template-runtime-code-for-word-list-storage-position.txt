@@ -1,2 +1,1 @@
-std::string template-storage-item-prefix storage-position-for-word-list-associated-with-loop = "" ;  combee **** // stores list of words for loop **** comenn
-
+std::string template-storage-item-prefix storage-position-for-word-list-associated-with-loop = <character_quotation_mark><character_quotation_mark> ;  combee **** // stores list of words for loop **** comenn

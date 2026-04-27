@@ -1,1 +1,1 @@
-"\n\n"
+<character_quotation_mark>\n\n<character_quotation_mark>

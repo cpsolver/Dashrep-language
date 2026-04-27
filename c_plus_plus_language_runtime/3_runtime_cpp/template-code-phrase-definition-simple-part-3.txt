@@ -1,3 +1,2 @@
-" ;  <new_line>
+<character_quotation_mark> ;  <new_line>
 std::string initialize-variable-begin
-

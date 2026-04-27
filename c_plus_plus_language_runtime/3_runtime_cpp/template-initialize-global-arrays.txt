@@ -14,8 +14,8 @@ std::unordered_map<std::string, std::string> global_words_at_numeric_value = ( )
 <new_line>
 
 std::vector<std::string> global_accumulator = ( ) ;  <new_line>
-global_accumulator[ 0 ] = "" ;  <new_line>
-global_accumulator[ 1 ] = "" ;  <new_line>
+global_accumulator[ 0 ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+global_accumulator[ 1 ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 std::vector<std::string> global_count_of_items_appended_to_accumulator = ( ) ;  <new_line>
 global_count_of_items_appended_to_accumulator[ 0 ] = 0 ;  <new_line>
@@ -56,9 +56,9 @@ std::vector<std::string> global_input_list_two = ( ) ;  <new_line>
 std::vector<std::string> global_item_number_found_at_position = ( ) ;  <new_line>
 std::vector<std::string> global_left_and_up_direction_value_for_item_number = ( ) ;  <new_line>
 std::vector<std::string> global_list = ( ) ;  <new_line>
-std::vector<std::string> global_list_of_file_names = "" ;  <new_line>
-std::vector<std::string> global_list_of_positions = "" ;  <new_line>
-std::vector<std::string> global_list_of_storage_names = "" ;  <new_line>
+std::vector<std::string> global_list_of_file_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+std::vector<std::string> global_list_of_positions = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+std::vector<std::string> global_list_of_storage_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 std::vector<std::string> global_list_indicating_sort_order = ( ) ;  <new_line>
 std::vector<std::string> global_list_of_action_names = ( ) ;  <new_line>
 std::vector<std::string> global_list_of_key_values = ( ) ;  <new_line>
