@@ -1,1 +1,1 @@
-std::cout << TRACE_OUT
+trace_file <<

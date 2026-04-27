@@ -41,7 +41,7 @@ Get the hyphenated phrase or supplied string.
 if (args.size() == 1) {  <new_line>
 supplied_text = args[0];  <new_line>
 } else {  <new_line>
-result_text = "";  <new_line>
+result_text = <character_quotation_mark><character_quotation_mark>;  <new_line>
 return result_text;  <new_line>
 }  <new_line>
 
@@ -49,19 +49,19 @@ combee ****
 Initialization.
 **** comenn
 
-std::string space_directive = "none" ;  <new_line>
-std::string result_text = "" ;  <new_line>
-std::string output_buffer = "" ;  <new_line>
+std::string space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
+std::string result_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+std::string output_buffer = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 int pointer_to_remainder_of_output_buffer = 0 ;  <new_line>
-std::string new_output_buffer = "" ;  <new_line>
-std::string possible_phrase_name_with_underscores = "" ;  <new_line>
+std::string new_output_buffer = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+std::string possible_phrase_name_with_underscores = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 int expand_endless_loop_counter = 0 ;  <new_line>
 int expand_endless_loop_counter_maximum = 100000 ;  <new_line>
 int expand_endless_cycle_count_maximum = 100000 ;  <new_line>
 std::vector<std::string> code_at_recursion_level = ( ) ;  <new_line>
 std::vector<int> length_of_code_at_recursion_level = ( ) ;  <new_line>
 std::vector<int> pointer_to_remainder_of_code_at_recursion_level = ( ) ;  <new_line>
-std::vector<std::string> code_at_recursion_level[ 0 ] = "unused" ;  <new_line>
+std::vector<std::string> code_at_recursion_level[ 0 ] = <character_quotation_mark>unused<character_quotation_mark> ;  <new_line>
 std::vector<int> pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 std::vector<int> length_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 
@@ -91,15 +91,15 @@ recursion_level <character_hyphen><character_hyphen> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;  <new_line>
-while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq " " ) ) {  <new_line>
+while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq <character_quotation_mark> <character_quotation_mark> ) ) {  <new_line>
 pointer_to_phrase_begin ++ ;  <new_line>
 }  <new_line>
-pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , " " , pointer_to_phrase_begin ) ;  <new_line>
+pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , <character_quotation_mark> <character_quotation_mark> , pointer_to_phrase_begin ) ;  <new_line>
 if ( pointer_to_next_space == -1 ) {  <new_line>
 pointer_to_phrase_end = length_of_code_at_recursion_level_current - 1 ;  <new_line>
 pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = length_of_code_at_recursion_level_current ;  <new_line>
 } else {  <new_line>
-pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , " " , pointer_to_phrase_begin ) ;  <new_line>
+pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , <character_quotation_mark> <character_quotation_mark> , pointer_to_phrase_begin ) ;  <new_line>
 if ( pointer_to_next_space > pointer_to_phrase_begin ) {  <new_line>
 pointer_to_phrase_end = pointer_to_next_space - 1 ;  <new_line>
 pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_next_space ;  <new_line>
@@ -130,12 +130,9 @@ maximum_cycle_count = cycle_count ;  <new_line>
 phrase_name = phrase_name_with_highest_cycle_count ;  <new_line>
 }  <new_line>
 }  <new_line>
-global_action_result = "trace_diagnostic__expand_phrases__error_endless_loop__highest_count " + phrase_name_with_highest_cycle_count + " " + maximum_cycle_count + "\n" ;  <new_line>
-
-// before:  print global_action_result + "\n" ;  <new_line>
-write-to-file-begin global_action_result write-to-file-end-of-line ;  <new_line>
-
-return "" ;  <new_line>
+global_action_result = <character_quotation_mark>trace_diagnostic__expand_phrases__error_endless_loop__highest_count <character_quotation_mark> + phrase_name_with_highest_cycle_count + <character_quotation_mark> <character_quotation_mark> + maximum_cycle_count + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+write-to-standard-output-begin global_action_result write-to-file-end-of-line  <new_line>
+return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 }  <new_line>
 
@@ -145,47 +142,47 @@ If the phrase name is a hyphen directive, or a
 space directive, or a line directive, handle it.
 **** comenn
 
-if ( current_phrase eq ( "hyphen" + "-" + "here" ) ) {  <new_line>
-output_buffer += "-" ;  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark>hyphen<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>here<character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark>-<character_quotation_mark> ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "no" + "-" + "space" ) ) {  <new_line>
-if ( space_directive ne "one_requested" ) {  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark>no<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
+if ( space_directive ne <character_quotation_mark>one_requested<character_quotation_mark> ) {  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 }  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "<" + "no_space" + ">" ) ) {  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>no_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "one" + "-" + "space" ) ) {  <new_line>
-space_directive = "one_requested" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark>one<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
+space_directive = <character_quotation_mark>one_requested<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "<" + "one_space" + ">" ) ) {  <new_line>
-space_directive = "one_requested" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>one_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+space_directive = <character_quotation_mark>one_requested<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "new" + "-" + "line" ) ) {  <new_line>
-output_buffer += "\n" ;  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark>new<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "<" + "new_line" + ">" ) ) {  <new_line>
-output_buffer += "\n" ;  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>new_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "empty" + "-" + "line" ) ) {  <new_line>
-output_buffer += "\n\n" ;  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark>empty<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark>\n\n<character_quotation_mark> ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( "<" + "empty_line" + ">" ) ) {  <new_line>
-output_buffer += "\n\n" ;  <new_line>
-space_directive = "none" ;  <new_line>
+if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>empty_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark>\n\n<character_quotation_mark> ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 
@@ -210,10 +207,10 @@ Specify a default of inserting one space after
 the next phrase insertion.
 **** comenn
 
-if ( ( space_directive eq "one" ) || ( space_directive eq "one_requested" ) ) {  <new_line>
-output_buffer += " " ;  <new_line>
+if ( ( space_directive eq <character_quotation_mark>one<character_quotation_mark> ) || ( space_directive eq <character_quotation_mark>one_requested<character_quotation_mark> ) ) {  <new_line>
+output_buffer += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 }  <new_line>
-space_directive = "one" ;  <new_line>
+space_directive = <character_quotation_mark>one<character_quotation_mark> ;  <new_line>
 
 combee ****
 At this point the current text string is not the
@@ -225,19 +222,19 @@ pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] = pointer_to_
 
 combee ****
 In the output buffer, if there is a
-"<specify " string that needs to be
+<character_quotation_mark><specify <character_quotation_mark> string that needs to be
 combined with the preceding tag, combine it into
 a single XML or HTML tag.
-Handle tags of type "<xyz />" as well as "<xyz>".
+Handle tags of type <character_quotation_mark><xyz /><character_quotation_mark> as well as <character_quotation_mark><xyz><character_quotation_mark>.
 **** comenn
 
-if ( index( output_buffer , "<specify " ) > 0 ) {  <new_line>
+if ( index( output_buffer , <character_quotation_mark><specify <character_quotation_mark> ) > 0 ) {  <new_line>
 prior_length = 0 ;  <new_line>
 while ( length( output_buffer ) != prior_length ) {  <new_line>
 prior_length = length( output_buffer ) ;  <new_line>
 output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;  <new_line>
 }  <new_line>
-if ( index( output_buffer , "<specify " ) > 0 ) {  <new_line>
+if ( index( output_buffer , <character_quotation_mark><specify <character_quotation_mark> ) > 0 ) {  <new_line>
 prior_length = 0 ;  <new_line>
 while ( length( output_buffer ) != prior_length ) {  <new_line>
 prior_length = length( output_buffer ) ;  <new_line>
@@ -259,11 +256,11 @@ output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;  <new_line>
 output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;  <new_line>
 
 if ( output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) {  <new_line>
-space_directive = "none" ;  <new_line>
+space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 }  <new_line>
 length_of_output_buffer = -1 ;  <new_line>
 pointer_to_remainder_of_output_buffer = 0 ;  <new_line>
-new_output_buffer = "" ;  <new_line>
+new_output_buffer = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 while ( substr( output_buffer , pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \<character_hyphen><character_close_angle_bracket>]+_[^ \<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) {  <new_line>
 prefix = $1 ;  <new_line>
 possible_phrase_name_with_underscores = $2 ;  <new_line>
@@ -277,13 +274,13 @@ possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ;  <new_line>
 if ( exists( global_dashrep_replacement[ possible_phrase_name_with_hyphens ] ) ) {  <new_line>
 new_output_buffer += global_dashrep_replacement[ possible_phrase_name_with_hyphens ] ;  <new_line>
 } else {  <new_line>
-new_output_buffer += "<" + possible_phrase_name_with_underscores + ">" ;  <new_line>
+new_output_buffer += <character_quotation_mark><<character_quotation_mark> + possible_phrase_name_with_underscores + <character_quotation_mark>><character_quotation_mark> ;  <new_line>
 }  <new_line>
 }  <new_line>
 if ( length_of_output_buffer != -1 ) {  <new_line>
 output_buffer = new_output_buffer + substr( output_buffer , pointer_to_remainder_of_output_buffer ) ;  <new_line>
-new_output_buffer = "" ;  <new_line>
-possible_phrase_name_with_underscores = "" ;  <new_line>
+new_output_buffer = <character_quotation_mark><character_quotation_mark> ;  <new_line>
+possible_phrase_name_with_underscores = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 
 combee ****
@@ -292,10 +289,10 @@ that might need to be revised, then append it to
 the result text.
 **** comenn
 
-pointer_to_close_angle_bracket = index( output_buffer , ">" ) ;  <new_line>
+pointer_to_close_angle_bracket = index( output_buffer , <character_quotation_mark>><character_quotation_mark> ) ;  <new_line>
 if ( pointer_to_close_angle_bracket < 0 ) {  <new_line>
 result_text += output_buffer ;  <new_line>
-output_buffer = "" ;  <new_line>
+output_buffer = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 } elsif ( length( output_buffer ) > 1000 ) {  <new_line>
 result_text += substr( output_buffer , 0 , 500 ) ;  <new_line>
 output_buffer = substr( output_buffer , 500 ) ;  <new_line>

@@ -1,0 +1,2 @@
+outfile.close( ) ;  <new_line>
+outfile.clear( ) ;  <new_line>
