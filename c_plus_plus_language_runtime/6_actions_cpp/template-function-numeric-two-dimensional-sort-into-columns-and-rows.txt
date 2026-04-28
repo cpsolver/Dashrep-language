@@ -10,14 +10,14 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 global_number_of_columns = global_operand_one ;  <new_line>
 global_text_for_right_direction_values = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_text_for_up_direction_values = global_dashrep_replacement[ global_operand_three ] ;  <new_line>
-// before: global_text_for_up_direction_values =~ s/\n/ /s ;  <new_line>
-replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_text_for_up_direction_values =~ s/<character_backslash>n/ /s ;  <new_line>
+replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_text_for_up_direction_values =~ s/^ +// ;  <new_line>
 replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_text_for_up_direction_values =~ s/ +$// ;  <new_line>
 replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_right_direction_values =~ s/\n/ /s ;  <new_line>
-replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_text_for_right_direction_values =~ s/<character_backslash>n/ /s ;  <new_line>
+replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_text_for_right_direction_values =~ s/^ +// ;  <new_line>
 replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_text_for_right_direction_values =~ s/ +$// ;  <new_line>

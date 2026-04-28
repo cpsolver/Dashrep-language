@@ -19,8 +19,8 @@ if ( this-dashrep-phrase global_dashrep_replacement[ global_operand_three ] is-n
 }  <new_line>
 
 global_paired_words_as_text = global_dashrep_replacement[ global_operand_three ] ;  <new_line>
-// before: global_paired_words_as_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_paired_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_paired_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_paired_words_as_text replace-equals global_paired_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_paired_words_as_text =~ s/ +$// ;  <new_line>

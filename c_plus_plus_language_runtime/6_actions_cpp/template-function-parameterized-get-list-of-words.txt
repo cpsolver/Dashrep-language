@@ -13,10 +13,10 @@ if ( local_text !~ /[^ ]/ ) {  <new_line>
 return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 
-// before: if ( local_text =~ /[\n\r\t]/ ) {  <new_line>
-if ( local_text looks-like-begin  R<character_quotation_mark>([\n\r\t])<character_quotation_mark> looks-like-end ) {  <new_line>
-// before: local_text =~ s/[\n\r\t]/ /sg ;  <new_line>
-replace-begin local_text replace-equals local_text replace-this R<character_quotation_mark>([\n\r\t])<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: if ( local_text =~ /[<character_backslash>n<character_backslash>r<character_backslash>t]/ ) {  <new_line>
+if ( local_text looks-like-begin  R<character_quotation_mark>([<character_backslash>n<character_backslash>r<character_backslash>t])<character_quotation_mark> looks-like-end ) {  <new_line>
+// before: local_text =~ s/[<character_backslash>n<character_backslash>r<character_backslash>t]/ /sg ;  <new_line>
+replace-begin local_text replace-equals local_text replace-this R<character_quotation_mark>([<character_backslash>n<character_backslash>r<character_backslash>t])<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 }  <new_line>
 // before: if ( local_text =~ /^ / ) {  <new_line>
 if ( local_text looks-like-begin  R<character_quotation_mark>(^ )<character_quotation_mark> looks-like-end ) {  <new_line>

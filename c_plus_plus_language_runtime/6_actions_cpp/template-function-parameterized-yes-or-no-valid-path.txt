@@ -16,11 +16,11 @@ if ( global_length_of_text == 0 ) {  <new_line>
 return global_yes ;  <new_line>
 }  <new_line>
 
-if ( ( index( local_text , <character_quotation_mark>/<character_quotation_mark> ) < 0 ) && ( index( local_text , <character_quotation_mark>\\<character_quotation_mark> ) < 0 ) ) {  <new_line>
+if ( ( index( local_text , <character_quotation_mark>/<character_quotation_mark> ) < 0 ) && ( index( local_text , <character_quotation_mark><character_backslash><character_backslash><character_quotation_mark> ) < 0 ) ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark>\\<character_quotation_mark> ) && ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark>/<character_quotation_mark> ) ) {  <new_line>
+if ( ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark><character_backslash><character_backslash><character_quotation_mark> ) && ( substr( local_text , global_length_of_text - 1 , 1 ) ne <character_quotation_mark>/<character_quotation_mark> ) ) {  <new_line>
 return global_no ;  <new_line>
 }  <new_line>
 

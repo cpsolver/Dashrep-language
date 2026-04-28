@@ -16,7 +16,7 @@ replace-begin global_list_of_words_as_text replace-equals global_list_of_words_a
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: if ( global_list_of_words_as_text =~ / / ) {  <new_line>
 if ( global_list_of_words_as_text looks-like-begin  R<character_quotation_mark>( )<character_quotation_mark> looks-like-end ) {  <new_line>
-    globallist_of_words = split( /[ \n\r]+/ , global_list_of_words_as_text ) ;  <new_line>
+    globallist_of_words = split( /[ <character_backslash>n<character_backslash>r]+/ , global_list_of_words_as_text ) ;  <new_line>
 } else {  <new_line>
     globallist_of_words do-list-clear ;  <new_line>
     global_list_of_words[ 0 ] = global_list_of_words_as_text ;  <new_line>

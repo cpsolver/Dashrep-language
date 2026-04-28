@@ -10,8 +10,8 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 global_single_value = 0 ;  <new_line>
 global_target_operand = global_operand_three ;  <new_line>
 global_list_of_x_values_as_text = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
-// before: global_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
-replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_list_of_x_values_as_text =~ s/<character_backslash>n/ /s ;  <new_line>
+replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_values_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
@@ -19,8 +19,8 @@ replace-begin global_list_of_x_values_as_text replace-equals global_list_of_x_va
 globallist_of_x_values = split( / +/ , global_list_of_x_values_as_text ) ;  <new_line>
 global_dashrep_replacement[ global_target_operand ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_list_of_y_values_as_text = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
-// before: global_list_of_y_values_as_text =~ s/\n/ /s ;  <new_line>
-replace-begin global_list_of_y_values_as_text replace-equals global_list_of_y_values_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_list_of_y_values_as_text =~ s/<character_backslash>n/ /s ;  <new_line>
+replace-begin global_list_of_y_values_as_text replace-equals global_list_of_y_values_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_y_values_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_y_values_as_text replace-equals global_list_of_y_values_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_y_values_as_text =~ s/ +$// ;  <new_line>

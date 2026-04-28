@@ -8,8 +8,8 @@ template-check-operand-two-is-phrase-name
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
     global_temp_text = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
-// before:     global_temp_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before:     global_temp_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before:     global_temp_text =~ s/^ +// ;  <new_line>
 replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before:     global_temp_text =~ s/ +$// ;  <new_line>

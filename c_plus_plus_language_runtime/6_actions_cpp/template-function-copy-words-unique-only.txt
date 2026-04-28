@@ -15,8 +15,8 @@ if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
 
 global_text_list_key = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_destination_phrase = global_operand_two ;  <new_line>
-// before: global_text_list_key =~ s/\n/ /sg ;  <new_line>
-replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_text_list_key =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_text_list_key =~ s/^ +// ;  <new_line>
 replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_text_list_key =~ s/ +$// ;  <new_line>
@@ -30,8 +30,8 @@ if ( global_text_list_key eq <character_quotation_mark><character_quotation_mark
 for-each global_word ( globallist_of_key_values ) {  <new_line>
     global_listed_word{ global_word } = 1 ;  <new_line>
 }  <new_line>
-// before: global_text_list_loop =~ s/\n/ /sg ;  <new_line>
-replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_text_list_loop =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_text_list_loop =~ s/^ +// ;  <new_line>
 replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_text_list_loop =~ s/ +$// ;  <new_line>

@@ -12,8 +12,8 @@ globallist_of_values_in_column do-list-clear ;  <new_line>
 global_minimum_number_of_columns = 999 ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
-// before:     global_input_line =~ s/[\n\t]+/ /g ;  <new_line>
-replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([\n\t]+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before:     global_input_line =~ s/[<character_backslash>n<character_backslash>t]+/ /g ;  <new_line>
+replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([<character_backslash>n<character_backslash>t]+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before:     global_input_line =~ s/^ +// ;  <new_line>
 replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before:     global_input_line =~ s/ +$// ;  <new_line>

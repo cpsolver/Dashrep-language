@@ -1,6 +1,6 @@
 template-runtime-code-for-every-action-begin
 
 function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT <character_quotation_mark>trace-show-where:<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> + <character_quotation_mark> no-space phrase-being-defined no-space <character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+print TRACE_OUT <character_quotation_mark>trace-show-where:<character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> + <character_quotation_mark> no-space phrase-being-defined no-space <character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
 
 template-runtime-code-for-every-action-end

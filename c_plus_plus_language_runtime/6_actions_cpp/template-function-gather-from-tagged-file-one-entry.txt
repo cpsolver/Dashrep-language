@@ -37,10 +37,10 @@ global_list_of_tag_values_in_sequence_encountered = <character_quotation_mark><c
 global_line_status = <character_quotation_mark>between<character_quotation_mark> ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
-    global_pointer = index( global_input_line , <character_quotation_mark>\r<character_quotation_mark> ) ;  <new_line>
+    global_pointer = index( global_input_line , <character_quotation_mark><character_backslash>r<character_quotation_mark> ) ;  <new_line>
     if ( global_pointer >= 0 ) {  <new_line>
-// before:         global_input_line =~ s/[\r\n]+//gs ;  <new_line>
-replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([\r\n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+// before:         global_input_line =~ s/[<character_backslash>r<character_backslash>n]+//gs ;  <new_line>
+replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([<character_backslash>r<character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     }  <new_line>
 // before:     if ( global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
     if ( global_input_line looks-like-begin  R<character_quotation_mark>(^ *([^ ]+) *$)<character_quotation_mark> looks-like-end ) {  <new_line>
@@ -55,16 +55,16 @@ replace-begin global_input_line replace-equals global_input_line replace-this R<
             global_possible_matching_entry_info = <character_quotation_mark><character_quotation_mark> ;  <new_line>
             global_line_status = <character_quotation_mark>between<character_quotation_mark> ;  <new_line>
         } else if ( ( global_line_status eq <character_quotation_mark>within<character_quotation_mark> ) || ( global_line_status eq <character_quotation_mark>within hyphen-here matching<character_quotation_mark> ) ) {  <new_line>
-            global_possible_matching_entry_info += global_input_line + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+            global_possible_matching_entry_info += global_input_line + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
         }  <new_line>
-// before:     } elsif ( global_input_line =~ /^ *([^ ]+) +([^ \t\n\r]+) *$/ ) {  <new_line>
-    } else if ( global_input_line looks-like-begin  R<character_quotation_mark>(^ *([^ ]+) +([^ \t\n\r]+) *$)<character_quotation_mark> looks-like-end ) {  <new_line>
+// before:     } elsif ( global_input_line =~ /^ *([^ ]+) +([^ <character_backslash>t<character_backslash>n<character_backslash>r]+) *$/ ) {  <new_line>
+    } else if ( global_input_line looks-like-begin  R<character_quotation_mark>(^ *([^ ]+) +([^ <character_backslash>t<character_backslash>n<character_backslash>r]+) *$)<character_quotation_mark> looks-like-end ) {  <new_line>
         global_first_word = regex-match-one ;  <new_line>
         global_second_word = regex-match-two ;  <new_line>
         if ( global_first_word eq global_entry_unique ) {  <new_line>
             if ( global_second_word eq global_entry_matching_id ) {  <new_line>
                 global_line_status = <character_quotation_mark>within hyphen-here matching<character_quotation_mark> ;  <new_line>
-                global_possible_matching_entry_info += global_input_line + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+                global_possible_matching_entry_info += global_input_line + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
             } else {  <new_line>
                 global_line_status = <character_quotation_mark>within hyphen-here not hyphen-here matching<character_quotation_mark> ;  <new_line>
                 global_possible_matching_entry_info = <character_quotation_mark><character_quotation_mark> ;  <new_line>
@@ -77,10 +77,10 @@ replace-begin global_input_line replace-equals global_input_line replace-this R<
                 global_line_status = <character_quotation_mark>between<character_quotation_mark> ;  <new_line>
             }  <new_line>
         } else if ( ( global_line_status eq <character_quotation_mark>within<character_quotation_mark> ) || ( global_line_status eq <character_quotation_mark>within hyphen-here matching<character_quotation_mark> ) ) {  <new_line>
-            global_possible_matching_entry_info += global_input_line + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+            global_possible_matching_entry_info += global_input_line + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
         }  <new_line>
     } else if ( ( global_line_status eq <character_quotation_mark>within<character_quotation_mark> ) || ( global_line_status eq <character_quotation_mark>within hyphen-here matching<character_quotation_mark> ) ) {  <new_line>
-        global_possible_matching_entry_info += global_input_line + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+        global_possible_matching_entry_info += global_input_line + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_matching_entry_info ;  <new_line>

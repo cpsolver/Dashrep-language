@@ -22,7 +22,7 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code
 runtime-code-storage-item-result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
 combee ****
-// std::cout << <character_quotation_mark>fully expanded: <character_quotation_mark> + code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end + <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
+// std::cout << <character_quotation_mark>fully expanded: <character_quotation_mark> + code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
 **** comenn
 
 global_accumulator_pointer = global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>

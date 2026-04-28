@@ -20,8 +20,8 @@ if ( this-dashrep-phrase code-get-or-put-phrase-definition-begin local_text code
 return global_no ;  <new_line>
 }  <new_line>
 
-// before: if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end =~ /[^0-9\-\. ]/ ) {  <new_line>
-if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end looks-like-begin  R<character_quotation_mark>([^0-9\-\. ])<character_quotation_mark> looks-like-end ) {  <new_line>
+// before: if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end =~ /[^0-9<character_backslash>-<character_backslash>. ]/ ) {  <new_line>
+if ( code-get-or-put-phrase-definition-begin local_text code-get-or-put-phrase-definition-end looks-like-begin  R<character_quotation_mark>([^0-9<character_backslash>-<character_backslash>. ])<character_quotation_mark> looks-like-end ) {  <new_line>
 return global_no ;  <new_line>
 } else {  <new_line>
 return global_yes ;  <new_line>

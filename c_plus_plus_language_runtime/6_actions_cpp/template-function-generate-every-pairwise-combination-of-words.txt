@@ -13,16 +13,16 @@ global_input_list_two_phrase_name = global_operand_two ;  <new_line>
 global_output_list_one_phrase_name = global_operand_three ;  <new_line>
 global_output_list_two_phrase_name = global_operand_four ;  <new_line>
 global_temp_text = global_dashrep_replacement[ global_input_list_one_phrase_name ] ;  <new_line>
-// before: global_temp_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_temp_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_temp_text =~ s/^ +// ;  <new_line>
 replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_temp_text =~ s/ +$// ;  <new_line>
 replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 globalinput_list_one = split( / +/ , global_temp_text ) ;  <new_line>
 global_temp_text = global_dashrep_replacement[ global_input_list_two_phrase_name ] ;  <new_line>
-// before: global_temp_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_temp_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_temp_text =~ s/^ +// ;  <new_line>
 replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_temp_text =~ s/ +$// ;  <new_line>

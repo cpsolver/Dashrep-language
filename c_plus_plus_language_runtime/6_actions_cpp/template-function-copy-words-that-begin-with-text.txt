@@ -14,8 +14,8 @@ if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
     global_list_of_words_as_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 
-// before: global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>

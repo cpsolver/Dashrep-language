@@ -7,14 +7,14 @@ template-check-operand-two-is-phrase-name
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_text_being_edited = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
-// before: global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(\/?) *>/<$1$2$3>/gi ;  <new_line>
-replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(\/?) *>)<character_quotation_mark> with-this R<character_quotation_mark>(<$1$2$3>)<character_quotation_mark> replace-end  <new_line>
-// before: global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(\/?) *>/<$1$2$3>/gi ;  <new_line>
-replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(\/?) *>)<character_quotation_mark> with-this R<character_quotation_mark>(<$1$2$3>)<character_quotation_mark> replace-end  <new_line>
-// before: global_text_being_edited =~ s/><!\[CDATA\[/>/gi ;  <new_line>
-replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(><!\[CDATA\[)<character_quotation_mark> with-this R<character_quotation_mark>(>)<character_quotation_mark> replace-end  <new_line>
-// before: global_text_being_edited =~ s/\]\]></</gi ;  <new_line>
-replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(\]\]><)<character_quotation_mark> with-this R<character_quotation_mark>(<)<character_quotation_mark> replace-end  <new_line>
+// before: global_text_being_edited =~ s/< *(<character_backslash>/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(<character_backslash>/?) *>/<$1$2$3>/gi ;  <new_line>
+replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(< *(<character_backslash>/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(<character_backslash>/?) *>)<character_quotation_mark> with-this R<character_quotation_mark>(<$1$2$3>)<character_quotation_mark> replace-end  <new_line>
+// before: global_text_being_edited =~ s/< *(<character_backslash>/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(<character_backslash>/?) *>/<$1$2$3>/gi ;  <new_line>
+replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(< *(<character_backslash>/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>]*(<character_backslash>/?) *>)<character_quotation_mark> with-this R<character_quotation_mark>(<$1$2$3>)<character_quotation_mark> replace-end  <new_line>
+// before: global_text_being_edited =~ s/><!<character_backslash>[CDATA<character_backslash>[/>/gi ;  <new_line>
+replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(><!<character_backslash>[CDATA<character_backslash>[)<character_quotation_mark> with-this R<character_quotation_mark>(>)<character_quotation_mark> replace-end  <new_line>
+// before: global_text_being_edited =~ s/<character_backslash>]<character_backslash>]></</gi ;  <new_line>
+replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(<character_backslash>]<character_backslash>]><)<character_quotation_mark> with-this R<character_quotation_mark>(<)<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_text_being_edited ;  <new_line>
 return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 

@@ -13,8 +13,8 @@ if ( this-dashrep-phrase global_action_name_exists[ <character_quotation_mark>no
 }  <new_line>
 if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
     global_string_in_phrase = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
-// before:     global_string_in_phrase =~ s/\n/<dashrep_codeview_newline>/sg ;  <new_line>
-replace-begin global_string_in_phrase replace-equals global_string_in_phrase replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>(<dashrep_codeview_newline>)<character_quotation_mark> replace-end  <new_line>
+// before:     global_string_in_phrase =~ s/<character_backslash>n/<dashrep_codeview_newline>/sg ;  <new_line>
+replace-begin global_string_in_phrase replace-equals global_string_in_phrase replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>(<dashrep_codeview_newline>)<character_quotation_mark> replace-end  <new_line>
 // before:     global_string_in_phrase =~ s/=/<dashrep_codeview_equal_sign>/sg ;  <new_line>
 replace-begin global_string_in_phrase replace-equals global_string_in_phrase replace-this R<character_quotation_mark>(=)<character_quotation_mark> with-this R<character_quotation_mark>(<dashrep_codeview_equal_sign>)<character_quotation_mark> replace-end  <new_line>
     global_parameter_level = 1 ;  <new_line>
@@ -22,8 +22,8 @@ replace-begin global_string_in_phrase replace-equals global_string_in_phrase rep
     global_odd_or_even_based_on_zero_or_one[ 1 ] = <character_quotation_mark>odd<character_quotation_mark> ;  <new_line>
     global_accumulated_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
     global_remaining_text = global_string_in_phrase ;  <new_line>
-// before:     while ( global_remaining_text =~ /^(.*?)((\[<character_hyphen>)|(<character_hyphen>\]))(.*)$/ ) {  <new_line>
-    while ( global_remaining_text looks-like-begin  R<character_quotation_mark>(^(.*?)((\[<character_hyphen>)|(<character_hyphen>\]))(.*)$)<character_quotation_mark> looks-like-end ) {  <new_line>
+// before:     while ( global_remaining_text =~ /^(.*?)((<character_backslash>[<character_hyphen>)|(<character_hyphen><character_backslash>]))(.*)$/ ) {  <new_line>
+    while ( global_remaining_text looks-like-begin  R<character_quotation_mark>(^(.*?)((<character_backslash>[<character_hyphen>)|(<character_hyphen><character_backslash>]))(.*)$)<character_quotation_mark> looks-like-end ) {  <new_line>
         global_prefix_text = regex-match-one ;  <new_line>
         global_parameter_begin_or_end_string = regex-match-two ;  <new_line>
         global_remaining_text = $5 ;  <new_line>

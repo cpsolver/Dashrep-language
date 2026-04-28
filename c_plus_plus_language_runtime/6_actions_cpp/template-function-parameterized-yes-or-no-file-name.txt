@@ -29,7 +29,7 @@ global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error_
 return global_no ;  <new_line>
 }  <new_line>
 
-if ( index( local_file_name , <character_quotation_mark>\\<character_quotation_mark> ) >= 0 ) {  <new_line>
+if ( index( local_file_name , <character_quotation_mark><character_backslash><character_backslash><character_quotation_mark> ) >= 0 ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_file_name__case_contains_backslash <character_quotation_mark> + local_file_name ;  <new_line>
 return global_no ;  <new_line>
 }  <new_line>

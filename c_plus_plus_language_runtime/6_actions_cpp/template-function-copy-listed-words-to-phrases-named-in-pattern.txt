@@ -19,16 +19,16 @@ if ( ( global_dashrep_replacement[ global_phrase_name_containing_pattern ] looks
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid <character_quotation_mark> + global_phrase_name_containing_pattern ;  <new_line>
     return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
-// before: global_prefix =~ s/[ \n]+//g ;  <new_line>
-replace-begin global_prefix replace-equals global_prefix replace-this R<character_quotation_mark>([ \n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+// before: global_prefix =~ s/[ <character_backslash>n]+//g ;  <new_line>
+replace-begin global_prefix replace-equals global_prefix replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_prefix =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_prefix replace-equals global_prefix replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_suffix =~ s/[ \n]+//g ;  <new_line>
-replace-begin global_suffix replace-equals global_suffix replace-this R<character_quotation_mark>([ \n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+// before: global_suffix =~ s/[ <character_backslash>n]+//g ;  <new_line>
+replace-begin global_suffix replace-equals global_suffix replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_suffix =~ s/<character_hyphen>+$// ;  <new_line>
 replace-begin global_suffix replace-equals global_suffix replace-this R<character_quotation_mark>(<character_hyphen>+$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
-replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>([ \n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+// before: global_phrase_name_containing_parameter_list =~ s/[ <character_backslash>n]+//g ;  <new_line>
+replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
@@ -38,8 +38,8 @@ if ( not( defined( global_dashrep_replacement[ global_phrase_name_containing_par
     return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement[ global_phrase_name_containing_parameter_list ] ;  <new_line>
-// before: global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
@@ -49,8 +49,8 @@ if ( global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
     return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 globallist_of_parameter_words = split( / +/ , global_list_of_words_as_text ) ;  <new_line>
-// before: global_phrase_name_containing_source_words =~ s/[ \n]+//sg ;  <new_line>
-replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>([ \n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+// before: global_phrase_name_containing_source_words =~ s/[ <character_backslash>n]+//sg ;  <new_line>
+replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
@@ -60,8 +60,8 @@ if ( not( defined( global_dashrep_replacement[ global_phrase_name_containing_sou
     return <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement[ global_phrase_name_containing_source_words ] ;  <new_line>
-// before: global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
-replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(\n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
+// before: global_list_of_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
+replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 // before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
