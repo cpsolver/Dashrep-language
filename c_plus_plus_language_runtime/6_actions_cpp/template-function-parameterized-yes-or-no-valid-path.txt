@@ -4,11 +4,7 @@
 // reminder: path <character_quotation_mark>./<character_quotation_mark> is valid, so period is OK  <new_line>
 <new_line>
 
-// before: int function_parameterized__yes_or_no_valid_path( ) {  <new_line>
-declare-integer function_parameterized__yes_or_no_valid_path( ) {  <new_line>
-// before: std::string local_text ;  <new_line>
-declare-string local_text ;  <new_line>
-local_text = $_[ 0 ] ;  <new_line>
+declare-integer function_parameterized__yes_or_no_valid_path( declare-string local_text ) {  <new_line>
 
 global_length_of_text = length( local_text ) ;  <new_line>
 

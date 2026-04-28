@@ -15,7 +15,16 @@ global_raw_input = <character_quotation_mark><character_quotation_mark> ;  <new_
 global_line_count = 0 ;  <new_line>
 $dashrep_get_replacement{ <character_quotation_mark>dashrep-list-of-input-cgi-phrase-names<character_quotation_mark> } = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
-if ( ( exists( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } ) ) && ( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } eq <character_quotation_mark>GET<character_quotation_mark> ) ) {  <new_line>
+// before:  if ( ( exists( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } ) ) && ( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } eq <character_quotation_mark>GET<character_quotation_mark> ) ) {  <new_line>
+
+
+// To access ENV values:
+// #include <cstdlib>
+// const char* qs = std::getenv("QUERY_STRING");
+// if (qs != nullptr) {    // qs points to the value (null-terminated)}
+
+
+if ( ( ENV.contains( <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> ) && ( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } eq <character_quotation_mark>GET<character_quotation_mark> ) ) {  <new_line>
 
 if ( ( exists( $ENV{ <character_quotation_mark>CONTENT_LENGTH<character_quotation_mark> } ) ) && ( $ENV{ <character_quotation_mark>CONTENT_LENGTH<character_quotation_mark> } > global_cgi_string_length_limit ) ) {  <new_line>
 $dashrep_get_replacement{ <character_quotation_mark>dashrep-error-cgi-input-too-long<character_quotation_mark> } = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
@@ -28,7 +37,7 @@ global_raw_input = $ENV{ <character_quotation_mark>QUERY_STRING<character_quotat
 }  <new_line>
 
 // before: } elsif ( ( exists( $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } ) ) && ( $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } =~ /^[^ ]+<character_backslash>.[^ ]+$/ ) && ( open( INFILE , $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } ) ) ) {  <new_line>
-} else if ( ( exists( $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } ) ) && ( $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } looks-like-begin  R<character_quotation_mark>(^[^ ]+<character_backslash>.[^ ]+$)<character_quotation_mark> looks-like-end ) && ( open( INFILE , $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } ) ) ) {  <new_line>
+} else if ( ( this-dashrep-phrase $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> is-defined ) && ( $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } looks-like-begin  R<character_quotation_mark>(^[^ ]+<character_backslash>.[^ ]+$)<character_quotation_mark> looks-like-end ) && ( open( INFILE , $dashrep_get_replacement{ <character_quotation_mark>input-filename-for-cgi-information<character_quotation_mark> } ) ) ) {  <new_line>
 
 global_yes_or_no_file_opened_for_reading = global_yes ;  <new_line>
 

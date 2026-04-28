@@ -2,11 +2,7 @@
 // function_parameterized__yes_or_no_positive_real_number  <new_line>
 <new_line>
 
-// before: int function_parameterized__yes_or_no_positive_real_number( ) {  <new_line>
-declare-integer function_parameterized__yes_or_no_positive_real_number( ) {  <new_line>
-// before: std::string local_text ;  <new_line>
-declare-string local_text ;  <new_line>
-local_text = $_[ 0 ] ;  <new_line>
+declare-integer function_parameterized__yes_or_no_positive_real_number( declare-string local_text ) {  <new_line>
 
 // before: if ( local_text =~ /^([0-9]+)(<character_backslash>.[0-9]*)?$/ ) {  <new_line>
 if ( local_text looks-like-begin  R<character_quotation_mark>(^([0-9]+)(<character_backslash>.[0-9]*)?$)<character_quotation_mark> looks-like-end ) {  <new_line>

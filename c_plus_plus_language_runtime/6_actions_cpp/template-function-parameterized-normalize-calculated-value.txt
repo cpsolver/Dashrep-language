@@ -2,8 +2,7 @@
 // function_parameterized__normalize_calculated_value  <new_line>
 <new_line>
 
-void function_parameterized__normalize_calculated_value( ) {  <new_line>
-global_calculated_value = $_[ 0 ] ;  <new_line>
+void function_parameterized__normalize_calculated_value( double global_calculated_value ) {  <new_line>
 
 if ( global_calculated_value == 0 ) {  <new_line>
 global_normalized_calculated_value = <character_quotation_mark>0<character_quotation_mark> ;  <new_line>

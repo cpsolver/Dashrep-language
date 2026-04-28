@@ -2,11 +2,7 @@
 // function_parameterized__yes_or_no_folder_name  <new_line>
 <new_line>
 
-// before: int function_parameterized__yes_or_no_folder_name( ) {  <new_line>
-declare-integer function_parameterized__yes_or_no_folder_name( ) {  <new_line>
-// before: std::string local_folder_name ;  <new_line>
-declare-string local_folder_name ;  <new_line>
-local_folder_name = $_[ 0 ] ;  <new_line>
+declare-integer function_parameterized__yes_or_no_folder_name( declare-string local_folder_name ) {  <new_line>
 
 if ( index( local_folder_name , <character_quotation_mark> <character_quotation_mark> ) >= 0 ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__parameterized_yes_or_no_folder_name__case_contains_space <character_quotation_mark> + local_folder_name ;  <new_line>

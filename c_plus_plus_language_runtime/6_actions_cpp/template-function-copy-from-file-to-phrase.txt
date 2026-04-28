@@ -10,17 +10,26 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 global_all_lines = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_line_ending = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_line_number = 0 ;  <new_line>
-if ( exists( global_dashrep_replacement[ <character_quotation_mark>end hyphen-here of hyphen-here line hyphen-here indicator<character_quotation_mark> } ) ) {  <new_line>
+
+// before: if ( exists( global_dashrep_replacement[ <character_quotation_mark>end hyphen-here of hyphen-here line hyphen-here indicator<character_quotation_mark> } ) ) {  <new_line>
+if ( this-dashrep-phrase <character_quotation_mark>end hyphen-here of hyphen-here line hyphen-here indicator<character_quotation_mark> is-defined ) {  <new_line>
+
     global_line_ending = global_dashrep_replacement[ <character_quotation_mark>end hyphen-here of hyphen-here line hyphen-here indicator<character_quotation_mark> } ;  <new_line>
 } else {  <new_line>
     global_line_ending = <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
 }  <new_line>
-if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+
+// before: if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+if ( ( this-dashrep-phrase <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> is-defined ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here trim hyphen-here spaces hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+
     global_yes_or_no_remove = global_yes ;  <new_line>
 } else {  <new_line>
     global_yes_or_no_remove = global_no ;  <new_line>
 }  <new_line>
-if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+
+// before:  if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+if ( ( this-dashrep-phrase <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> is-defined ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here skip hyphen-here empty hyphen-here lines hyphen-here when hyphen-here copy hyphen-here from hyphen-here file<character_quotation_mark> } ) ) {  <new_line>
+
     global_yes_or_no_skip = global_yes ;  <new_line>
 } else {  <new_line>
     global_yes_or_no_skip = global_no ;  <new_line>

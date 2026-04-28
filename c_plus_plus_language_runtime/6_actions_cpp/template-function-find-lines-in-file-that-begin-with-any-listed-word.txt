@@ -28,7 +28,10 @@ while ( global_input_line = <INFILE> ) {  <new_line>
     chomp( global_input_line ) ;  <new_line>
     global_length_of_first_word = index( global_input_line , <character_quotation_mark> <character_quotation_mark> ) ;  <new_line>
     global_possible_match = substr( global_input_line , 0 , global_length_of_first_word ) ;  <new_line>
-    if ( ( exists( global_matching_text{ global_possible_match } ) ) && ( global_matching_text{ global_possible_match } eq <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
+
+// before:  if ( ( exists( global_matching_text{ global_possible_match } ) ) && ( global_matching_text{ global_possible_match } eq <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
+    if ( ( global_matching_text.contains( global_possible_match ) && ( global_matching_text{ global_possible_match } eq <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
+
 // before:         global_storage_name = <character_quotation_mark>dashrep hyphen-here storage<character_hyphen><character_quotation_mark> + sprintf( <character_quotation_mark>%d<character_quotation_mark> , global_storage_number ) ;  <new_line>
         global_storage_name = <character_quotation_mark>dashrep hyphen-here storage<character_hyphen><character_quotation_mark> + convert-integer-to-string-begin global_storage_number  convert-to-string-end  ;  <new_line>
         global_storage_number ++ ;  <new_line>

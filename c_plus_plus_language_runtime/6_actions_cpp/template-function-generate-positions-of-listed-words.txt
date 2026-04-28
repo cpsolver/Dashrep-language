@@ -44,7 +44,7 @@ char char_buffer[ 10 ];  <new_line>
 std::snprintf( char_buffer, sizeof( char_buffer ), <character_quotation_mark>%05d<character_quotation_mark>, global_position_of_text_found );  <new_line>
 global_position_as_string = char_buffer;  <new_line>
 
-            if ( exists( global_text_to_find_at_position{ global_position_as_string } ) ) {  <new_line>
+            if ( global_text_to_find_at_position.contains( global_position_as_string ) {  <new_line>
                 if ( length( global_text_to_find ) > length( global_text_to_find_at_position{ global_position_as_string } ) ) {  <new_line>
                     global_text_to_find_at_position{ global_position_as_string } = global_text_to_find ;  <new_line>
                     global_item_number_found_at_position{ global_position_as_string } = global_item_number ;  <new_line>

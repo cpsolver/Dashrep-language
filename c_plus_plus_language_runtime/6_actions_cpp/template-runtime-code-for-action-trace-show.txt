@@ -6,7 +6,7 @@ if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-num
 
 function__open_trace_output_file_if_not_open( ) ;  <new_line>
 
-if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
+if ( this-dashrep-phrase runtime-code-for-operand-number-one is-defined ) {  <new_line>
 print TRACE_OUT runtime-code-for-operand-number-one + <character_quotation_mark>:<character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> + code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end + <character_quotation_mark><character_backslash>n<character_quotation_mark> + <character_quotation_mark><character_hyphen><character_hyphen><character_hyphen><character_hyphen><character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
 print TRACE_OUT runtime-code-for-operand-number-one + <character_quotation_mark>:<character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> + <character_quotation_mark><character_hyphen><character_hyphen><character_hyphen><character_hyphen><character_quotation_mark> + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>

@@ -8,7 +8,7 @@ template-check-operand-three-is-phrase-name
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
-if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
+if ( this-dashrep-phrase global_operand_one is-defined ) {  <new_line>
     global_list_of_words_as_text = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
 } else {  <new_line>
     global_list_of_words_as_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>

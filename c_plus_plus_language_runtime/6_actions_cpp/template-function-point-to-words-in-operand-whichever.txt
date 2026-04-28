@@ -16,7 +16,7 @@ void function__point_to_words_in_operand_whichever( ) {  <new_line>
 global_word_count_operand_whichever = 0 ;  <new_line>
 
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_whichever ) == global_yes ) {  <new_line>
-if ( exists( global_dashrep_replacement[ global_operand_whichever ] ) ) {  <new_line>
+if ( this-dashrep-phrase global_operand_whichever is-defined ) {  <new_line>
 global_operand_whichever_words = global_dashrep_replacement[ global_operand_whichever ]  <new_line>
 } else {  <new_line>
 global_operand_whichever_words = <character_quotation_mark><character_quotation_mark>  <new_line>

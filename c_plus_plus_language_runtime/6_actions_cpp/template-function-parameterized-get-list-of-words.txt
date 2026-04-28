@@ -2,12 +2,8 @@
 // function_parameterized__get_list_of_words  <new_line>
 <new_line>
 
-void function_parameterized__get_list_of_words( ) {  <new_line>
-// before: std::string local_text ;  <new_line>
-declare-string local_text ;  <new_line>
-// before: std::string globallist_of_operands ;  <new_line>
+void function_parameterized__get_list_of_words( declare-string local_text ) {  <new_line>
 declare-string globallist_of_operands ;  <new_line>
-local_text = $_[ 0 ] ;  <new_line>
 
 if ( local_text !~ /[^ ]/ ) {  <new_line>
 return <character_quotation_mark><character_quotation_mark> ;  <new_line>

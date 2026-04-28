@@ -1,1 +1,1 @@
-global_dashrep_replacement.find(
+global_dashrep_replacement.contains(

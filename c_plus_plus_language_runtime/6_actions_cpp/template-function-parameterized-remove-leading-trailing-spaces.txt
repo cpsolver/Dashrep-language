@@ -2,8 +2,8 @@
 // function_parameterized__remove_leading_trailing_spaces  <new_line>
 <new_line>
 
-void function_parameterized__remove_leading_trailing_spaces( ) {  <new_line>
-global_temporary_text = $_[ 0 ] ;  <new_line>
+void function_parameterized__remove_leading_trailing_spaces( declare-string operand_one ) {  <new_line>
+global_temporary_text = operand_one ;  <new_line>
 
 global_length_of_text = length( global_temporary_text ) ;  <new_line>
 global_character_pointer_begin = global_length_of_text + 1 ;  <new_line>

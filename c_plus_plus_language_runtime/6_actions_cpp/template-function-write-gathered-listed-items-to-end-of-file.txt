@@ -13,11 +13,11 @@ global_entry_end = global_dashrep_replacement[ <character_quotation_mark>dashrep
 global_entry_unique = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gather hyphen-here tag hyphen-here unique<character_quotation_mark> } ;  <new_line>
 globallist_of_tag_names do-list-clear ;  <new_line>
 // before: if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } =~ /[^ ]/ ) ) {  <new_line>
-if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } looks-like-begin  R<character_quotation_mark>([^ ])<character_quotation_mark> looks-like-end ) ) {  <new_line>
+if ( ( this-dashrep-phrase <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> ) && ( global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } looks-like-begin  R<character_quotation_mark>([^ ])<character_quotation_mark> looks-like-end ) ) {  <new_line>
     globallist_of_tag_names = split( /[ <character_backslash>n<character_backslash>r]+/ , global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence<character_quotation_mark> } ) ;  <new_line>
 }  <new_line>
 globallist_of_unique_values do-list-clear ;  <new_line>
-if ( exists( global_dashrep_replacement[ global_operand_one ] ) ) {  <new_line>
+if ( this-dashrep-phrase global_operand_one is-defined ) {  <new_line>
     globallist_of_unique_values = split( /[ <character_backslash>n<character_backslash>r]+/ , global_dashrep_replacement[ global_operand_one ] ) ;  <new_line>
 }  <new_line>
 for-each global_unique_value ( globallist_of_unique_values ) {  <new_line>
@@ -25,7 +25,7 @@ for-each global_unique_value ( globallist_of_unique_values ) {  <new_line>
     global_accumulated_text += global_entry_unique + <character_quotation_mark> <character_quotation_mark> + global_unique_value + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
     for-each global_tag_name ( globallist_of_tag_names ) {  <new_line>
         global_phrase_name = global_tag_name + <character_quotation_mark><character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen><character_quotation_mark> + global_unique_value ;  <new_line>
-        if ( exists( global_dashrep_replacement[ global_phrase_name ] ) ) {  <new_line>
+        if ( this-dashrep-phrase global_phrase_name is-defined ) {  <new_line>
             global_accumulated_text += global_tag_name + <character_quotation_mark> <character_quotation_mark> + global_dashrep_replacement[ global_phrase_name ] + <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
         }  <new_line>
     }  <new_line>

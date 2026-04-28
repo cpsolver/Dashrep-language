@@ -2,10 +2,7 @@
 // function_parameterized__convert_numeric_text_into_numeric_value  <new_line>
 <new_line>
 
-void function_parameterized__convert_numeric_text_into_numeric_value( ) {  <new_line>
-// before: std::string local_text ;  <new_line>
-declare-string local_text ;  <new_line>
-local_text = $_[ 0 ] ;  <new_line>
+void function_parameterized__convert_numeric_text_into_numeric_value( declare-string local_text ) {  <new_line>
 
 // before: if ( local_text =~ /^ *([<character_backslash>+|<character_backslash> hyphen-here ]?[0-9]+(<character_backslash>.[0-9]*)?) *$/ ) {  <new_line>
 if ( local_text looks-like-begin  R<character_quotation_mark>(^ *([<character_backslash>+|<character_backslash> hyphen-here ]?[0-9]+(<character_backslash>.[0-9]*)?) *$)<character_quotation_mark> looks-like-end ) {  <new_line>

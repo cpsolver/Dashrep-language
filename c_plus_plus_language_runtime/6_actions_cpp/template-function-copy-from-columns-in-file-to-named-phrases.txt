@@ -34,7 +34,10 @@ if ( global_name_of_phrase_that_contains_list_of_index_values !~ /^[a hyphen-her
 }  <new_line>
 global_list_of_unique_values = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_dashrep_replacement[ global_name_of_phrase_that_contains_list_of_index_values ] = global_list_of_unique_values ;  <new_line>
-if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> } eq <character_quotation_mark>yes<character_quotation_mark> ) ) {  <new_line>
+
+// before: if ( ( exists( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> } ) ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> } eq <character_quotation_mark>yes<character_quotation_mark> ) ) {  <new_line>
+if ( this-dashrep-phrase <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> is-defined ) && ( global_dashrep_replacement[ <character_quotation_mark>yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter<character_quotation_mark> } eq <character_quotation_mark>yes<character_quotation_mark> ) ) {  <new_line>
+
     global_use_two_spaces_as_delimiter = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
     global_use_two_spaces_as_delimiter = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>

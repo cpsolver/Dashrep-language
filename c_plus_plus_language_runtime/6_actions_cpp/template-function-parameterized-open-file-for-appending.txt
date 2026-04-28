@@ -2,10 +2,7 @@
 // function_parameterized__open_file_for_appending  <new_line>
 <new_line>
 
-void function_parameterized__open_file_for_appending( ) {  <new_line>
-// before: std::string local_file_name ;  <new_line>
-declare-string local_file_name ;  <new_line>
-local_file_name = $_[ 0 ] ;  <new_line>
+void function_parameterized__open_file_for_appending( declare-string local_file_name ) {  <new_line>
 
 if ( function_parameterized__yes_or_no_file_name( local_file_name ) == global_no ) {  <new_line>
     global_runtime_error_type = <character_quotation_mark>file_name_invalid_parameterized<character_quotation_mark> ;  <new_line>

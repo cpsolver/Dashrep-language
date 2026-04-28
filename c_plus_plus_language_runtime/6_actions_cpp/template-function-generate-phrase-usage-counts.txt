@@ -21,9 +21,9 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 // for-each global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
 //    global_replacement_count = global_replacement_count_for_item_name{ global_phrase_name } ;  <new_line>
 
-
 // edited 2017may25  <new_line>
 //    if ( ( exists( global_endless_loop_replacements_with_count{ sprintf( <character_quotation_mark>%08d<character_quotation_mark> , global_replacement_count ) } ) ) && ( global_endless_loop_replacements_with_count{ sprintf( <character_quotation_mark>%08d<character_quotation_mark> , global_replacement_count ) } ne <character_quotation_mark><character_quotation_mark> ) ) {  <new_line>
+
 //    {  <new_line>
 //        global_endless_loop_replacements_with_count{ sprintf( <character_quotation_mark>%08d<character_quotation_mark> , global_replacement_count ) } .= <character_quotation_mark><character_backslash>n<character_quotation_mark> ;  <new_line>
 //    }  <new_line>
