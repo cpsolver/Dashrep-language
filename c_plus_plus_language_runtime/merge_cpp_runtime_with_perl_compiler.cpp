@@ -45,6 +45,9 @@ static std::string encode_as_perl_rhs(const std::string& def) {
         } else if (c == '\n') {
             if (!encoded.empty() && encoded.back() != ' ')
                 encoded += ' ';
+        } else if (c == '\r') {
+            if (!encoded.empty() && encoded.back() != ' ')
+                encoded += ' ';
         } else {
             encoded += c;
         }
@@ -84,6 +87,7 @@ read_dashrep_definitions(const std::string& path) {
     };
 
     while (std::getline(f, line)) {
+        if (!line.empty() && line.back() == '\r') line.pop_back();
         if (trim(line) == "----") { flush(); continue; }
         if (!reading_def) {
             if (!line.empty() && line.back() == ':') {
