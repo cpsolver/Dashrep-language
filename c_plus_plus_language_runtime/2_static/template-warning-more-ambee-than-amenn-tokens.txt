@@ -1,0 +1,1 @@
+contains more am no-space bee tokens (or character-open-square-bracket no-space character-hyphen occurences) than am no-space enn tokens (or character-hyphen no-space character-close-square-bracket occurences)  <new_line>
