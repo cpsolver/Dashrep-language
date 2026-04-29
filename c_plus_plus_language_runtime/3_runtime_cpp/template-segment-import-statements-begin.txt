@@ -1,5 +1,5 @@
 // no-space dashes-long-line  <new_line>
-//  Begin optional import statements  <new_line>
+//  Begin import statements  <new_line>
 //  <new_line>
 //  Reminder: Only the following Dashrep conversions are done:  <new_line>
 //  * Dashrep comments are removed.  <new_line>
@@ -7,4 +7,3 @@
 //  * Character space directives in angle brackets are replaced.  <new_line>
 //  * Multiple adjacent spaces are compressed to a single space.  <new_line>
 <new_line>
-

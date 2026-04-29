@@ -6,18 +6,14 @@ ambee copy-from-phrase-append-to-file output-warning-messages ambee filename-out
 ambee if-end amenn
 
 ambee copy-from-phrase-append-to-file segment-start-object-code-begin ambee filename-output-results-from-compiler amenn amenn
-ambee copy-text character-pound-sign start-object-code-in-executable-code amenn
+ambee copy-text comment-line-begin start-object-code-in-executable-code amenn
 ambee append-text source-code-copyright-notice start-object-code-in-executable-code amenn
 ambee copy-from-phrase-append-to-file start-object-code-in-executable-code ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file segment-start-object-code-end ambee filename-output-results-from-compiler amenn amenn
 
-ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase optional-import-statements-modified amenn amenn
-ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn
-ambee if-end amenn
-
-ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-import-statements-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-import-statements ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-import-statements-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn

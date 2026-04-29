@@ -13,9 +13,9 @@ segment-definition-items-begin
 segment-definition-items-end
 segment-start-object-code-begin
 segment-start-object-code-end
-segment-optional-import-statements-begin
-segment-required-import-statements
-segment-optional-import-statements-end
+segment-import-statements-begin
+segment-import-statements
+segment-import-statements-end
 segment-functions-runtime-begin
 segment-functions-runtime-end
 segment-functions-compiled-begin
