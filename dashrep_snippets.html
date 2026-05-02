@@ -229,6 +229,7 @@ code-block {
   <a href="#numeric">Numeric</a>
   <a href="#diagnostic">Diagnostic</a>
   <a href="#special">Special purpose</a>
+  <a href="#programs">Sample pgms</a>
 </div>
 
 <div class="main">
@@ -483,7 +484,7 @@ template-when-count-is-nonzero
 
 <code-block><span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-and-replace-using-paired-listed-words</span>&nbsp;&nbsp;<span class="kw_phrasename">source-text</span>&nbsp;&nbsp;<span class="kw_phrasename">revised-text-after-replacements</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-paired-space-delimited-words</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span></code-block>
 
-<code-block><span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action_unfeatured">put-into-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">character-position</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">get-position-of-matching-text</span>&nbsp;&nbsp;<span class="kw_phrasename">source-text</span>&nbsp;&nbsp;<span class="kw_phrasename">search-text</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span></code-block>
+<code-block><span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action_unfeatured">put-into-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">character-position-or-zero-if-no-match</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">get-position-of-matching-text</span>&nbsp;&nbsp;<span class="kw_phrasename">search-text</span>&nbsp;&nbsp;<span class="kw_phrasename">text-that-may-contain-search-text</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span></code-block>
 
 <code-block><span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">generate-positions-of-listed-words</span>&nbsp;&nbsp;<span class="kw_phrasename">space-delimited-search-words</span>&nbsp;&nbsp;<span class="kw_phrasename">source-text-being-searched</span>&nbsp;&nbsp;<span class="kw_phrasename">paired-character-pointers-to-begin-and-end-of-each-match</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span></code-block>
 
@@ -775,6 +776,115 @@ dashrep-gather-tag-matching-id
   <span class="kw_phrasename_predefined">dashrep-endless-loop-counter-limit</span><br>
   <span class="kw_phrasename_predefined">dashrep-time-limit</span>
 </div>
+
+
+<h2 id="programs">Sample programs</h2>
+
+<p>This Dashrep program searches multiple text files that have the "txt" extension,
+replaces the quotation mark (") symbol with "&lt;character_quotation_mark&gt;",
+joins together the modified files into a single file using the syntax
+that is used by the Linux "tail" command, but omits files that were not changed.
+A separate program must split the output file into separate input files,
+which then can be copied over the unmodified files.</p>
+
+<code-block>
+<span class="kw_phrasename">dashrep-path-prefix-for-file-reading</span>:<br>
+<span class="kw_literal">/home/path/to/files/</span><br>
+----<br>
+<span class="kw_phrasename">output-file-name</span>:<br>
+<span class="kw_literal">output_modified_by_do_replacements.txt</span><br>
+----<br>
+<span class="kw_phrasename">template-indicate-start-of-next-file</span>:<br>
+<span class="kw_literal">==> input-file-name <==</span><br>
+----<br>
+<span class="kw_phrasename">characters-dot-txt</span>:<br>
+<span class="kw_literal">.txt</span><br>
+----<br>
+<span class="kw_phrasename">start-here</span>:<br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">generate-list-of-files-in-current-read-directory</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-files-found</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-words-that-contain-listed-words</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-files-found</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-txt-files</span>&nbsp;&nbsp;<span class="kw_phrasename">characters-dot-txt</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">delete-file</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">output-file-name</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-words-sort-alphabetic</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-txt-files</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-txt-files</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">use-handler-with-each-word-in-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">handle-one-file</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-txt-files</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+<span class="kw_phrasename">handle-one-file</span>:<br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename">word-to-use-in-handler</span>&nbsp;&nbsp;<span class="kw_phrasename">input-file-name</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename">string-no</span>&nbsp;&nbsp;<span class="kw_phrasename">yes-or-no-at-least-one-change</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">clear-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-all-lines</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">linewise-read-from-file-and-use-handler</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">input-file-name</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_phrasename">handle-one-line</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">if-yes-begin</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">yes-or-no-at-least-one-change</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">expand-text</span>&nbsp;&nbsp;<span class="kw_phrasename">template-indicate-start-of-next-file</span>&nbsp;&nbsp;<span class="kw_phrasename">text-to-indicate-start-next-file</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-from-phrase-append-to-file</span>&nbsp;&nbsp;<span class="kw_phrasename">text-to-indicate-start-next-file</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">output-file-name</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-from-phrase-append-to-file</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-all-lines</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">output-file-name</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">if-end</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+<span class="kw_phrasename">handle-one-line</span>:<br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename_predefined">linewise-input-line-from-file</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-and-replace</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">character-backslash</span>&nbsp;&nbsp;<span class="kw_phrasename">replacement-for-backslash</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-and-replace</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">character-apostrophe</span>&nbsp;&nbsp;<span class="kw_phrasename">replacement-for-apostrophe</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-and-replace</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">character-quotation-mark</span>&nbsp;&nbsp;<span class="kw_phrasename">replacement-for-quotation-mark</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">if-no-begin</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">yes-or-no-same-two-phrase-definitions</span>&nbsp;&nbsp;<span class="kw_phrasename_predefined">linewise-input-line-from-file</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename">string-yes</span>&nbsp;&nbsp;<span class="kw_phrasename">yes-or-no-at-least-one-change</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">if-end</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">append-new-line</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">append-text-no-space</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-line</span>&nbsp;&nbsp;<span class="kw_phrasename">possibly-modified-all-lines</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+<span class="kw_phrasename">string-yes</span>:<br>
+<span class="kw_literal">yes</span><br>
+----<br>
+<span class="kw_phrasename">string-no</span>:<br>
+<span class="kw_literal">no</span><br>
+----<br>
+<span class="kw_phrasename">character-quotation-mark</span>:<br>
+<span class="kw_literal">"</span><br>
+----<br>
+<span class="kw_phrasename">replacement-for-quotation-mark</span>:<br>
+<span class="kw_literal">&lt;character_quotation_mark&gt;</span><br>
+----
+</code-block>
+
+
+<p>This Dashrep program demonstrates actions that find specified delimiters, and demonstrates one of the numeric vector actions.&nbsp; It removes comments that are delimited by the words <span class="kw_literal">combee</span> and <span class="kw_literal">comenn</span>.</p>
+
+<code-block>
+start-here:
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-from-file-to-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">joined_cpp_definitions.txt</span>&nbsp;&nbsp;<span class="kw_phrasename">raw-joined-cpp-definitions</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-without-extra-spaces</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions-with-comments</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions-with-comments</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">remove-combee-comenn-comments</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions-without-comments</span>&nbsp;&nbsp;<span class="kw_phrasename">standard-output</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+remove-combee-comenn-comments:<br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">expand-text</span>&nbsp;&nbsp;<span class="kw_phrasename">template-text-com-bee-space-padded</span>&nbsp;&nbsp;<span class="kw_phrasename">text-com-bee-space-padded</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">expand-text</span>&nbsp;&nbsp;<span class="kw_phrasename">template-text-com-enn-space-padded</span>&nbsp;&nbsp;<span class="kw_phrasename">text-com-enn-space-padded</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">generate-positions-of-delimiter</span>&nbsp;&nbsp;<span class="kw_phrasename">text-com-bee-space-padded</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-starting-character-positions-where-matches-occur</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">generate-positions-of-first-matching-delimiter-after-listed-positions</span>&nbsp;&nbsp;<span class="kw_phrasename">text-com-enn-space-padded</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-starting-character-positions-where-matches-occur</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-character-positions-at-first-match-after-each-starting-position</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">numeric-vector-add-number</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-character-positions-at-first-match-after-each-starting-position</span>&nbsp;&nbsp;<span class="kw_phrasename">6</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-begin</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">prepend-text</span>&nbsp;&nbsp;<span class="kw_phrasename">number-one</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-begin</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">append-text</span>&nbsp;&nbsp;<span class="kw_phrasename">number-huge</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-end</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">generate-counts-from-integer-to-integer</span>&nbsp;&nbsp;<span class="kw_phrasename">1</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">get-count-of-words</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-begin</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-pointer-pairs</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">use-handler-with-each-word-in-phrase</span>&nbsp;&nbsp;<span class="kw_phrasename">handle-one-comment</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-pointer-pairs</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+handle-one-comment:<br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-text</span>&nbsp;&nbsp;<span class="kw_phrasename">word-to-use-in-handler</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-pointer-pair</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-words-from-position-to-position</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-begin</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-non-comment-begin</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-pointer-pair</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-pointer-pair</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-words-from-position-to-position</span>&nbsp;&nbsp;<span class="kw_phrasename">list-of-pointers-to-non-comments-end</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-non-comment-end</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-pointer-pair</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-pointer-pair</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">copy-characters-from-position-to-position</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions</span>&nbsp;&nbsp;<span class="kw_phrasename">text-non-comment</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-non-comment-begin</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_phrasename">pointer-to-non-comment-end</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+<span class="kw_ambee">ambee</span>&nbsp;&nbsp;<span class="kw_action">append-text</span>&nbsp;&nbsp;<span class="kw_phrasename">text-non-comment</span>&nbsp;&nbsp;<span class="kw_phrasename">joined-cpp-definitions-without-comments</span>&nbsp;&nbsp;<span class="kw_amenn">amenn</span><br>
+----<br>
+<span class="kw_phrasename">number-one</span>:<br>
+<span class="kw_literal">1</span><br>
+----<br>
+<span class="kw_phrasename">number-huge</span>:<br>
+<span class="kw_literal">99999999</span><br>
+----<br>
+<span class="kw_phrasename">template-text-com-bee-space-padded</span>:<br>
+<span class="kw_literal">&lt;character_space&gt;com no-space bee&lt;character_space&gt;</span><br>
+----<br>
+<span class="kw_phrasename">template-text-com-enn-space-padded</span>:<br>
+<span class="kw_literal">&lt;character_space&gt;com no-space enn&lt;character_space&gt;</span><br>
+----
+</code-block>
+
 
 <p>&nbsp;</p>
 
