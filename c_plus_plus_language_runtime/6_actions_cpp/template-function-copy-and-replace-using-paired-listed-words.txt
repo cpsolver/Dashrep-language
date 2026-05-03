@@ -28,7 +28,7 @@ replace-begin global_paired_words_as_text replace-equals global_paired_words_as_
 globallist_of_paired_words = split( / +/ , global_paired_words_as_text ) ;  <new_line>
 global_pair_status = <character_quotation_mark>search<character_quotation_mark> ;  <new_line>
 for ( global_pair_pointer_offset_zero = 0 ; global_pair_pointer_offset_zero <= get_length_of_global_list_of_paired_words ; global_pair_pointer_offset_zero ++ ) {  <new_line>
-    if ( global_pair_status eq <character_quotation_mark>search<character_quotation_mark> ) {  <new_line>
+    if ( global_pair_status == <character_quotation_mark>search<character_quotation_mark> ) {  <new_line>
         global_string_to_be_replaced = global_list_of_paired_words[ global_pair_pointer_offset_zero ] ;  <new_line>
         global_pair_status = <character_quotation_mark>replace<character_quotation_mark> ;  <new_line>
     } else {  <new_line>

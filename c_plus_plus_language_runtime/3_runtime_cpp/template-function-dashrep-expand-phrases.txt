@@ -91,7 +91,7 @@ recursion_level <character_hyphen><character_hyphen> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 pointer_to_phrase_begin = pointer_to_remainder_of_code_at_recursion_level[ recursion_level ] ;  <new_line>
-while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) eq <character_quotation_mark> <character_quotation_mark> ) ) {  <new_line>
+while ( ( pointer_to_phrase_begin < length_of_code_at_recursion_level_current ) && ( substr( code_at_recursion_level[ recursion_level ] , pointer_to_phrase_begin , 1 ) == <character_quotation_mark> <character_quotation_mark> ) ) {  <new_line>
 pointer_to_phrase_begin ++ ;  <new_line>
 }  <new_line>
 pointer_to_next_space = index( code_at_recursion_level[ recursion_level ] , <character_quotation_mark> <character_quotation_mark> , pointer_to_phrase_begin ) ;  <new_line>
@@ -142,45 +142,45 @@ If the phrase name is a hyphen directive, or a
 space directive, or a line directive, handle it.
 **** comenn
 
-if ( current_phrase eq ( <character_quotation_mark>hyphen<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>here<character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark>hyphen<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>here<character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark>-<character_quotation_mark> ;  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark>no<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark>no<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
 if ( space_directive ne <character_quotation_mark>one_requested<character_quotation_mark> ) {  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 }  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>no_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>no_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark>one<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark>one<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>space<character_quotation_mark> ) ) {  <new_line>
 space_directive = <character_quotation_mark>one_requested<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>one_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>one_space<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
 space_directive = <character_quotation_mark>one_requested<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark>new<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark>new<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>new_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>new_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark>\n<character_quotation_mark> ;  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark>empty<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark>empty<character_quotation_mark> + <character_quotation_mark>-<character_quotation_mark> + <character_quotation_mark>line<character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark>\n\n<character_quotation_mark> ;  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( current_phrase eq ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>empty_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
+if ( current_phrase == ( <character_quotation_mark><<character_quotation_mark> + <character_quotation_mark>empty_line<character_quotation_mark> + <character_quotation_mark>><character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark>\n\n<character_quotation_mark> ;  <new_line>
 space_directive = <character_quotation_mark>none<character_quotation_mark> ;  <new_line>
 next ;  <new_line>
@@ -209,7 +209,7 @@ Specify a default of inserting one space after
 the next phrase insertion.
 **** comenn
 
-if ( ( space_directive eq <character_quotation_mark>one<character_quotation_mark> ) || ( space_directive eq <character_quotation_mark>one_requested<character_quotation_mark> ) ) {  <new_line>
+if ( ( space_directive == <character_quotation_mark>one<character_quotation_mark> ) || ( space_directive == <character_quotation_mark>one_requested<character_quotation_mark> ) ) {  <new_line>
 output_buffer += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 }  <new_line>
 space_directive = <character_quotation_mark>one<character_quotation_mark> ;  <new_line>

@@ -23,7 +23,7 @@ replace-begin global_list_of_words_as_text replace-equals global_list_of_words_a
 // before: if ( global_list_of_words_as_text =~ / / ) {  <new_line>
 if ( global_list_of_words_as_text looks-like-begin  R<character_quotation_mark>( )<character_quotation_mark> looks-like-end ) {  <new_line>
     globallist_of_words = split( / +/ , global_list_of_words_as_text ) ;  <new_line>
-} else if ( global_list_of_words_as_text eq <character_quotation_mark><character_quotation_mark> ) {  <new_line>
+} else if ( global_list_of_words_as_text == <character_quotation_mark><character_quotation_mark> ) {  <new_line>
     globallist_of_words do-list-clear ;  <new_line>
 } else {  <new_line>
     globallist_of_words do-list-clear ;  <new_line>
@@ -33,7 +33,7 @@ global_string_to_search = global_dashrep_replacement[ global_operand_three ] ;  
 global_length_of_string = length( global_string_to_search ) ;  <new_line>
 global_generated_list = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 for-each global_word ( globallist_of_words ) {  <new_line>
-    if ( substr( global_word , 0 , global_length_of_string ) eq global_string_to_search ) {  <new_line>
+    if ( substr( global_word , 0 , global_length_of_string ) == global_string_to_search ) {  <new_line>
         global_generated_list += global_word + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>

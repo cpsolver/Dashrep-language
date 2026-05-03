@@ -20,7 +20,7 @@ global_action_result = <character_quotation_mark>0<character_quotation_mark> ;  
 if ( global_list_length >= 1 ) {  <new_line>
     global_last_pointer = 0 ;  <new_line>
     for ( global_pointer = 1 ; global_pointer <= global_list_length ; global_pointer ++ ) {  <new_line>
-        if ( global_list[ global_pointer - 1 ] eq global_word_to_find ) {  <new_line>
+        if ( global_list[ global_pointer - 1 ] == global_word_to_find ) {  <new_line>
 // before:             global_action_result = sprintf( <character_quotation_mark>%d<character_quotation_mark> , global_pointer ) ;  <new_line>
             global_action_result = convert-integer-to-string-begin global_pointer  convert-to-string-end  ;  <new_line>
             break ;  <new_line>

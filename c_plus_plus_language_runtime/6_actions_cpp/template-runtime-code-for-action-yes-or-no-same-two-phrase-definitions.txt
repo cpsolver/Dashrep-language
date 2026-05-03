@@ -8,7 +8,7 @@ if ( function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-num
     runtime-code-storage-item-result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__yes_or_no_same_two_phrase_definitions__not_phrase_name <character_quotation_mark> + runtime-code-for-operand-number-two + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 } else {  <new_line>
 
-if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
+if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end == code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
 runtime-code-storage-item-result = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>

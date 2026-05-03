@@ -21,7 +21,7 @@ if ( this-dashrep-phrase global_operand_two is-not-defined ) {  <new_line>
     global_dashrep_replacement[ global_operand_two ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_text_to_append = function_parameterized__remove_leading_trailing_spaces( global_text_to_append ) ;  <new_line>
-if ( global_operand_three eq <character_quotation_mark>0<character_quotation_mark> ) {  <new_line>
+if ( global_operand_three == <character_quotation_mark>0<character_quotation_mark> ) {  <new_line>
     global_repeat_count = 0 ;  <new_line>
 } else {  <new_line>
     global_repeat_count = function_parameterized__convert_numeric_text_into_numeric_value( global_operand_three ) ;  <new_line>
@@ -30,7 +30,7 @@ if ( ( global_repeat_count < 1 ) || ( global_repeat_count > 99999 ) ) {  <new_li
     global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 } else {  <new_line>
     global_growing_text_to_append = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-    if ( global_dashrep_replacement[ global_operand_two ] eq <character_quotation_mark><character_quotation_mark> ) {  <new_line>
+    if ( global_dashrep_replacement[ global_operand_two ] == <character_quotation_mark><character_quotation_mark> ) {  <new_line>
         global_growing_text_to_append = global_text_to_append ;  <new_line>
     } else {  <new_line>
         global_growing_text_to_append = <character_quotation_mark> <character_quotation_mark> + global_text_to_append ;  <new_line>

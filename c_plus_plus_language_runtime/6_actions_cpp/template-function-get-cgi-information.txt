@@ -20,11 +20,11 @@ $dashrep_get_replacement{ <character_quotation_mark>dashrep-list-of-input-cgi-ph
 
 // To access ENV values:
 // #include <cstdlib>
-// const char* qs = std::getenv("QUERY_STRING");
+// const char* qs = std::getenv(<character_quotation_mark>QUERY_STRING<character_quotation_mark>);
 // if (qs != nullptr) {    // qs points to the value (null-terminated)}
 
 
-if ( ( ENV.contains( <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> ) && ( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } eq <character_quotation_mark>GET<character_quotation_mark> ) ) {  <new_line>
+if ( ( ENV.contains( <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> ) && ( $ENV{ <character_quotation_mark>REQUEST_METHOD<character_quotation_mark> } == <character_quotation_mark>GET<character_quotation_mark> ) ) {  <new_line>
 
 if ( ( exists( $ENV{ <character_quotation_mark>CONTENT_LENGTH<character_quotation_mark> } ) ) && ( $ENV{ <character_quotation_mark>CONTENT_LENGTH<character_quotation_mark> } > global_cgi_string_length_limit ) ) {  <new_line>
 $dashrep_get_replacement{ <character_quotation_mark>dashrep-error-cgi-input-too-long<character_quotation_mark> } = <character_quotation_mark>yes<character_quotation_mark> ;  <new_line>
@@ -100,7 +100,7 @@ global_name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
 // before: global_name  =~ s/[<><character_backslash>/<character_backslash><character_backslash>]+/_/g ;  <new_line>
 replace-begin global_name  replace-equals global_name  replace-this R<character_quotation_mark>([<><character_backslash>/<character_backslash><character_backslash>]+)<character_quotation_mark> with-this R<character_quotation_mark>(_)<character_quotation_mark> replace-end  <new_line>
 
-if ( global_name eq <character_quotation_mark>texttoimport<character_quotation_mark> ) {  <new_line>
+if ( global_name == <character_quotation_mark>texttoimport<character_quotation_mark> ) {  <new_line>
 //               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
 // before: global_value =~ s/%0D//ig ;  <new_line>
 replace-begin global_value replace-equals global_value replace-this R<character_quotation_mark>(%0D)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>

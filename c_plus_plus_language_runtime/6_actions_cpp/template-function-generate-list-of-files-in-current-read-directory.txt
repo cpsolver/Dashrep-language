@@ -6,7 +6,7 @@ template-check-operand-one-is-phrase-name
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_source_path_prefix = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading<character_quotation_mark> } ;  <new_line>
-if ( ( global_source_path_prefix eq <character_quotation_mark><character_quotation_mark> ) || ( global_source_path_prefix !~ /[<character_backslash><character_backslash><character_backslash>/]$/ ) ) {  <new_line>
+if ( ( global_source_path_prefix == <character_quotation_mark><character_quotation_mark> ) || ( global_source_path_prefix !~ /[<character_backslash><character_backslash><character_backslash>/]$/ ) ) {  <new_line>
 
     global_source_path_prefix = <character_quotation_mark>./<character_quotation_mark> ;  <new_line>
 
