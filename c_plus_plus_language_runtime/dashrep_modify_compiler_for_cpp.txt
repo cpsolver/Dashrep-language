@@ -1,0 +1,206 @@
+start-here:
+ambee  delete-file  output_debug_info.txt  amenn
+ambee  delete-file  ambee  output-file-name-compiler-with-new-merged-cpp-definitions  amenn  amenn
+ambee  do-initializations  amenn
+ambee  generate-import-lines  amenn
+ambee  get-new-joined-cpp-definitions  amenn
+ambee  remove-combee-comenn-comments  amenn
+ambee  get-phrase-names-and-new-cpp-definitions  amenn
+ambee  generate-modified-compiler-code  amenn
+ambee  copy-from-phrase-append-to-file  modified-compiler-code  ambee  output-file-name-compiler-with-new-merged-cpp-definitions  amenn  amenn
+----
+
+
+input-file-name-compiler-perl-version:
+dashrep_compiler_executable__version_for_merge_testing.pl
+----
+output-file-name-compiler-with-new-merged-cpp-definitions:
+output_perl_compiler_with_new_merged_cpp_definitions.pl
+----
+input-file-name-cpp-definitions:
+joined_cpp_definitions.txt
+----
+
+
+possibly-overwrite-storage-item-definition:
+ambee  copy-and-replace  linewise-input-line-from-file  modified-text  text-two-underscore-characters  character-space  amenn
+ambee  copy-and-replace  modified-text  modified-text  character-semicolon  character-space  amenn
+ambee  copy-words-found-only-in-first-list  linewise-input-line-from-file  list-of-words-to-remove  words-remaining  amenn
+
+ambee  copy-from-phrase-append-to-file  words-remaining  output_debug_info.txt  amenn
+ambee  copy-from-phrase-append-to-file  character-space  output_debug_info.txt  amenn
+
+----
+text-two-underscore-characters:
+__
+----
+list-of-words-to-remove:
+my =
+----
+character-semicolon:
+;
+----
+sample-line:
+my $storage_item__5289 = 'template-function-numeric-minimum' ;
+----
+
+
+generate-import-lines:
+ambee  copy-from-file-to-phrase  template-segment-import-statements.txt  template-cpp-import-lines  amenn
+ambee  copy-without-extra-spaces  template-cpp-import-lines  template-cpp-import-lines  amenn
+ambee  expand-text  template-cpp-import-lines expanded-cpp-import-lines  amenn
+----
+text-location-to-follow-cpp-import-lines:
+End optional import statements
+----
+
+
+get-new-joined-cpp-definitions:
+ambee  copy-from-file-to-phrase  ambee  input-file-name-cpp-definitions  amenn  raw-new-joined-cpp-definitions  amenn
+ambee  copy-without-extra-spaces  raw-new-joined-cpp-definitions  new-joined-cpp-definitions  amenn
+----
+
+
+get-phrase-names-and-new-cpp-definitions:
+ambee  generate-positions-of-delimiter  four-dashes  joined-cpp-definitions-without-comments  list-of-starting-character-positions-of-four-dashes  amenn
+ambee  numeric-vector-add-number  list-of-starting-character-positions-of-four-dashes  5  list-of-pointers-to-phrase-name-begin  amenn
+ambee  prepend-text  number-one  list-of-pointers-to-phrase-name-begin  amenn
+ambee  generate-positions-of-first-matching-delimiter-after-listed-positions  character-colon  joined-cpp-definitions-without-comments  list-of-pointers-to-phrase-name-begin  list-of-character-positions-of-colon-after-phrase-name  amenn
+ambee  numeric-vector-add-number  list-of-character-positions-of-colon-after-phrase-name  -1  list-of-pointers-to-phrase-name-end  amenn
+ambee  numeric-vector-add-number  list-of-character-positions-of-colon-after-phrase-name  2  list-of-pointers-to-phrase-definition-begin  amenn
+ambee  numeric-vector-add-number  list-of-starting-character-positions-of-four-dashes  -1  list-of-pointers-to-phrase-definition-end  amenn
+ambee  append-text  number-huge  list-of-pointers-to-phrase-definition-end  amenn
+ambee  generate-counts-from-integer-to-integer  1  ambee  get-count-of-words  list-of-pointers-to-phrase-name-end  amenn  list-of-pointers-to-pointer-pairs  amenn
+ambee  use-handler-with-each-word-in-phrase  handle-one-phrase-definition  list-of-pointers-to-pointer-pairs  amenn
+----
+handle-one-phrase-definition:
+ambee  copy-text  word-to-use-in-handler  pointer-to-pointer-pair  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-phrase-name-begin  pointer-to-phrase-name-begin  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-phrase-name-end  pointer-to-phrase-name-end  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-phrase-definition-begin  pointer-to-phrase-definition-begin  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-phrase-definition-end  pointer-to-phrase-definition-end  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-characters-from-position-to-position  joined-cpp-definitions-without-comments  text-phrase-name  ambee  pointer-to-phrase-name-begin  amenn  ambee  pointer-to-phrase-name-end  amenn  amenn
+ambee  copy-characters-from-position-to-position  joined-cpp-definitions-without-comments  text-phrase-definition  ambee  pointer-to-phrase-definition-begin  amenn  ambee  pointer-to-phrase-definition-end  amenn  amenn
+ambee  insert-cpp-definitions-except-omitted  amenn
+----
+insert-cpp-definitions-except-omitted:
+ambee  copy-words-found-only-in-first-list  text-phrase-name  list-of-phrase-names-to-omit  not-empty-of-ok-to-include  amenn
+
+ambee  if-no-begin  ambee  yes-or-no-empty-phrase  not-empty-of-ok-to-include  amenn  amenn
+    ambee  insert-phrase-definition   amenn
+ambee  if-end  amenn
+----
+insert-phrase-definition:
+ambee  append-text-no-space  text-to-insert-before-phrase-name  merged-cpp-definitions  amenn
+ambee  append-text-no-space  text-phrase-name  merged-cpp-definitions  amenn
+ambee  append-text-no-space  text-to-insert-after-name-before-definition  merged-cpp-definitions  amenn
+ambee  append-text-no-space  text-phrase-definition  merged-cpp-definitions  amenn
+ambee  append-text-no-space  text-to-insert-after-definition  merged-cpp-definitions  amenn
+ambee  append-text-no-space  character-newline  merged-cpp-definitions  amenn
+----
+list-of-phrase-names-to-omit:
+character-apostrophe
+----
+text-to-insert-before-phrase-name:
+$global_dashrep_replacement{ '
+----
+text-to-insert-after-name-before-definition:
+' } = '
+----
+text-to-insert-after-definition:
+';
+----
+
+
+remove-combee-comenn-comments:
+ambee  expand-text  template-text-com-bee-space-padded  text-com-bee-space-padded  amenn
+ambee  expand-text  template-text-com-enn-space-padded  text-com-enn-space-padded  amenn
+ambee  generate-positions-of-delimiter  text-com-bee-space-padded  new-joined-cpp-definitions  list-of-starting-character-positions-where-matches-occur  amenn
+ambee  generate-positions-of-first-matching-delimiter-after-listed-positions  text-com-enn-space-padded  new-joined-cpp-definitions  list-of-starting-character-positions-where-matches-occur  list-of-character-positions-at-first-match-after-each-starting-position  amenn
+ambee  numeric-vector-add-number  list-of-character-positions-at-first-match-after-each-starting-position  7  list-of-pointers-to-non-comments-begin  amenn
+ambee  prepend-text  number-one  list-of-pointers-to-non-comments-begin  amenn
+ambee  copy-text  list-of-starting-character-positions-where-matches-occur  list-of-pointers-to-non-comments-end  amenn
+ambee  numeric-vector-add-number  list-of-starting-character-positions-where-matches-occur  -1  list-of-pointers-to-non-comments-end  amenn
+ambee  append-text  number-huge  list-of-pointers-to-non-comments-end  amenn
+ambee  generate-counts-from-integer-to-integer  1  ambee  get-count-of-words  list-of-pointers-to-non-comments-begin  amenn  list-of-pointers-to-pointer-pairs  amenn
+ambee  use-handler-with-each-word-in-phrase  handle-one-comment  list-of-pointers-to-pointer-pairs  amenn
+ambee  copy-without-extra-spaces  joined-cpp-definitions-without-comments  joined-cpp-definitions-without-comments  amenn
+----
+handle-one-comment:
+ambee  copy-text  word-to-use-in-handler  pointer-to-pointer-pair  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-non-comments-begin  pointer-to-non-comment-begin  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-words-from-position-to-position  list-of-pointers-to-non-comments-end  pointer-to-non-comment-end  ambee  pointer-to-pointer-pair  amenn  ambee  pointer-to-pointer-pair  amenn  amenn
+ambee  copy-characters-from-position-to-position  new-joined-cpp-definitions  text-non-comment  ambee  pointer-to-non-comment-begin  amenn  ambee  pointer-to-non-comment-end  amenn  amenn
+ambee  append-text  text-non-comment  joined-cpp-definitions-without-comments  amenn
+----
+
+
+generate-modified-compiler-code:
+ambee  linewise-read-from-file-and-use-handler  ambee  input-file-name-compiler-perl-version  amenn  handle-one-line-of-compiler  amenn
+----
+handle-one-line-of-compiler:
+ambee  possibly-insert-generated-import-lines  amenn
+ambee  possibly-insert-generated-cpp-definitions  amenn
+ambee  append-text-no-space  linewise-input-line-from-file  modified-compiler-code  amenn
+ambee  append-new-line  modified-compiler-code  amenn
+ambee  possibly-overwrite-storage-item-definition  amenn
+----
+
+
+possibly-insert-generated-import-lines:
+ambee  put-into-phrase  character-position  ambee  get-position-of-matching-text  text-location-to-follow-cpp-import-lines  linewise-input-line-from-file  amenn  amenn
+
+ambee  if-no-begin  ambee  yes-or-no-same-two-phrase-definitions  character-position  digit-zero  amenn  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-text-no-space  expanded-cpp-import-lines  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+ambee  if-end  amenn
+----
+
+
+possibly-insert-generated-cpp-definitions:
+ambee  put-into-phrase  character-position  ambee  get-position-of-matching-text  text-location-to-follow-generated-merged-cpp-definitions  linewise-input-line-from-file  amenn  amenn
+
+ambee  if-yes-begin  ambee  yes-or-no-same-two-phrase-definitions  character-position  digit-one  amenn  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-text-no-space  merged-cpp-definitions  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+ambee  if-end  amenn
+----
+text-location-to-follow-generated-merged-cpp-definitions:
+# End text encountered in definitions
+----
+
+
+character-colon:
+:
+----
+template-four-dashes:
+<character_hyphen><character_hyphen><character_hyphen><character_hyphen>
+----
+digit-zero:
+0
+----
+digit-one:
+1
+----
+number-one:
+1
+----
+number-huge:
+99999999
+----
+template-text-com-bee-space-padded:
+<character_space>com no-space bee<character_space>
+----
+template-text-com-enn-space-padded:
+<character_space>com no-space enn<character_space>
+----
+do-initializations:
+ambee  expand-text  template-text-between-phrase-definition-and-phrase-name  text-between-phrase-definition-and-phrase-name  amenn
+ambee  expand-text  template-four-dashes  four-dashes  amenn
+----
