@@ -31,6 +31,6 @@ replace-begin global_list_of_file_names replace-equals global_list_of_file_names
     global_dashrep_replacement[ global_operand_one ] = global_list_of_file_names ;  <new_line>
     closedir( READDIR ) ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

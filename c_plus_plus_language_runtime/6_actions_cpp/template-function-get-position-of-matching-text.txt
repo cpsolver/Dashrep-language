@@ -18,6 +18,6 @@ if ( global_phrase_length > 0 ) {  <new_line>
         global_action_result = convert-integer-to-string-begin global_position  convert-to-string-end  ;  <new_line>
     }  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

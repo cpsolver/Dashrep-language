@@ -42,6 +42,6 @@ if ( ( global_word_count < 1 ) || ( global_word_number_begin < 1 ) || ( global_w
 replace-begin global_result_text replace-equals global_result_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     global_dashrep_replacement[ global_operand_two ] = global_result_text ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

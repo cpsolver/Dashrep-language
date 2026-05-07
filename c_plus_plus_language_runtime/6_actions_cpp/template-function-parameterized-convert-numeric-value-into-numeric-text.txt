@@ -2,7 +2,7 @@
 // function_parameterized__convert_numeric_value_into_numeric_text  <new_line>
 <new_line>
 
-void function_parameterized__convert_numeric_value_into_numeric_text( declare-integer local_numeric ) {  <new_line>
+returns-text-string function_parameterized__convert_numeric_value_into_numeric_text( declare-integer local_numeric ) {  <new_line>
 
 return std::to_string( local_numeric ) ;  <new_line>
 

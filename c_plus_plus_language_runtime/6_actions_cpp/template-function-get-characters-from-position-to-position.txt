@@ -28,6 +28,6 @@ if ( this-dashrep-phrase global_operand_one is-defined ) {  <new_line>
     }  <new_line>
     global_action_result = substr( global_string_in_phrase , ( global_starting_character_position - 1 ) , global_number_of_characters_to_get ) ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

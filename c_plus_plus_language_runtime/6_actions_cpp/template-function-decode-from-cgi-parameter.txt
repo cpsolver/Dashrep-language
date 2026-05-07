@@ -22,6 +22,6 @@ global_accumulated_text += global_remaining_text ;  <new_line>
 // before: global_accumulated_text =~ s/<character_backslash>+/ /sg ;  <new_line>
 replace-begin global_accumulated_text replace-equals global_accumulated_text replace-this R<character_quotation_mark>(<character_backslash>+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_text ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

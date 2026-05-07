@@ -16,6 +16,6 @@ while ( ( global_counter > 0 ) && ( global_counter < 99 ) ) {  <new_line>
     global_counter -- ;  <new_line>
 }  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = global_text_to_insert + global_source_text ;
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

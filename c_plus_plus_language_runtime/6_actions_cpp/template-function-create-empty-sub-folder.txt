@@ -10,7 +10,7 @@ global_target_path_prefix = global_dashrep_replacement[ <character_quotation_mar
 
 if ( function_parameterized__yes_or_no_valid_path_prefix( global_target_path_prefix ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__create_empty_sub_folder__invalid_path_prefix<character_quotation_mark> ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 // before: if ( global_target_path_prefix =~ /([<character_backslash>/<character_backslash><character_backslash>])/ ) {  <new_line>
@@ -23,7 +23,7 @@ global_target_sub_folder = global_target_path_prefix + global_operand_one + glob
 
 if ( function_parameterized__yes_or_no_valid_path( global_target_sub_folder ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__create_empty_sub_folder__invalid_full_path<character_quotation_mark> ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 if ( <character_hyphen>d global_target_sub_folder ) {  <new_line>
@@ -35,6 +35,6 @@ if ( <character_hyphen>d global_target_sub_folder ) {  <new_line>
         global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__create_empty_sub_folder__case_creating_sub_folder_not_successful<character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

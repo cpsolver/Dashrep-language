@@ -10,7 +10,7 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 // before:  if ( not ( exists( global_dashrep_replacement[ global_operand_one ] ) ) ) {  <new_line>
 if ( this-dashrep-phrase global_operand_one is-not-defined ) { <new_line>
 
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 globallist_of_phrase_names = split( / +/ , global_dashrep_replacement[ global_operand_one ] ) ;  <new_line>
 for-each global_phrase_name_to_clear ( globallist_of_phrase_names ) {  <new_line>
@@ -18,6 +18,6 @@ for-each global_phrase_name_to_clear ( globallist_of_phrase_names ) {  <new_line
         delete( global_dashrep_replacement[ global_phrase_name_to_clear ] ) ;  <new_line>
     }  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

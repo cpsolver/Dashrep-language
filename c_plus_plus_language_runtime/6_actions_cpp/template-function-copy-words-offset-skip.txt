@@ -11,6 +11,6 @@ template-check-operand-four-is-positive-integer
 
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

@@ -13,18 +13,18 @@ global_target_path_prefix = code-get-or-put-phrase-definition-begin <character_q
 
 if ( function_parameterized__yes_or_no_valid_path_prefix( global_target_path_prefix ) == global_no ) {  <new_line>
     global_action_result = global_action_result + <character_quotation_mark> dashrep_compiled_runtime_error__<character_quotation_mark> + global_phrase_name_currently_executing + <character_quotation_mark>__delete_file__case_invalid_path_prefix [<character_quotation_mark> + global_target_path_prefix + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_file_name( global_target_file_name ) == global_no ) {  <new_line>
     global_action_result = global_action_result + <character_quotation_mark> dashrep_compiled_runtime_error__<character_quotation_mark> + global_phrase_name_currently_executing + <character_quotation_mark>__delete_file__case_invalid_file_name [<character_quotation_mark> + global_target_file_name + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 global_target_file_full_path = global_target_path_prefix + global_target_file_name ;  <new_line>
 
 unlink global_target_file_full_path ;  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

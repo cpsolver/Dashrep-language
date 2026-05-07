@@ -29,6 +29,6 @@ for( global_pair_pointer = 0 ; global_pair_pointer <= get_length_of_global_list_
 }  <new_line>
 // before: global_dashrep_replacement[ global_operand_three } =~ s/ +$// ;  <new_line>
 replace-begin global_dashrep_replacement[ global_operand_three ] replace-equals global_dashrep_replacement[ global_operand_three ] replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

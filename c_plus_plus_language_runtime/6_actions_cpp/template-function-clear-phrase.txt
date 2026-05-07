@@ -11,6 +11,6 @@ if ( this-dashrep-phrase global_operand_one is-defined ) ) {  <new_line>
 
     global_dashrep_replacement[ global_operand_one ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

@@ -6,7 +6,7 @@ void function_parameterized__get_list_of_words( declare-string local_text ) {  <
 declare-string globallist_of_operands ;  <new_line>
 
 if ( local_text !~ /[^ ]/ ) {  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 // before: if ( local_text =~ /[<character_backslash>n<character_backslash>r<character_backslash>t]/ ) {  <new_line>

@@ -86,6 +86,6 @@ replace-begin global_input_line replace-equals global_input_line replace-this R<
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_matching_entry_info ;  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

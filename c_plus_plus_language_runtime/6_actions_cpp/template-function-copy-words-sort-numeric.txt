@@ -22,6 +22,6 @@ globallist = split( / +/ , global_temp_text ) ;  <new_line>
 globallist_of_sorted_numbers = sort { $a <=> $b } globallist ;  <new_line>
 global_temp_text = join( <character_quotation_mark> <character_quotation_mark> , globallist_of_sorted_numbers ) ;  <new_line>
 global_dashrep_replacement[ global_target_phrase_name ] = global_temp_text ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

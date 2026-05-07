@@ -29,6 +29,6 @@ global_accumulated_text += char_buffer;  <new_line>
 }  <new_line>
 global_accumulated_text += global_remaining_text ;  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_accumulated_text ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

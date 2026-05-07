@@ -22,6 +22,6 @@ close-outfile  <new_line>
 
 template-runtime-code-protect-target-file
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

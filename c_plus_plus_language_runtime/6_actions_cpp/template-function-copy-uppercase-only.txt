@@ -7,6 +7,6 @@ template-check-operand-two-is-phrase-name
 
 global_action_result = <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

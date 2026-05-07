@@ -28,6 +28,6 @@ if ( global_count > 0 ) {  <new_line>
 replace-begin global_temp_text replace-equals global_temp_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 }  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_temp_text ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

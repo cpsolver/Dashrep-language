@@ -25,6 +25,6 @@ global_word_pointer_numeric = global_number_of_words ;  <new_line>
 
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = runtime-code-word-within-source-text ;  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

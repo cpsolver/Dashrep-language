@@ -33,13 +33,13 @@ combee template-return-if-no-permission-to-delete-overwrite-files comenn
 if ( function_parameterized__yes_or_no_valid_url( global_operand_one ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__get_url_resource__invalid_url [<character_quotation_mark> + global_operand_one + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
 global_dashrep_replacement[ <character_quotation_mark>trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource<character_quotation_mark> } = global_action_result ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_file_name( global_operand_two ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__get_url_resource__invalid_file_name [<character_quotation_mark> + global_operand_two + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
 global_dashrep_replacement[ <character_quotation_mark>trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource<character_quotation_mark> } = global_action_result ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 global_target_path_prefix = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing<character_quotation_mark> } ;  <new_line>
@@ -47,7 +47,7 @@ global_target_path_prefix = global_dashrep_replacement[ <character_quotation_mar
 if ( function_parameterized__yes_or_no_valid_path_prefix( global_target_path_prefix ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__get_url_resource__invalid_path_prefix [<character_quotation_mark> + global_target_path_prefix + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
 global_dashrep_replacement[ <character_quotation_mark>trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource<character_quotation_mark> } = global_action_result ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 global_target_file_full_path = global_target_path_prefix + global_operand_two ;  <new_line>
@@ -74,6 +74,6 @@ if ( not( $process_id = open( CURLCMD , $command_string_without_pipe + <characte
 global_accumulated_text += <character_quotation_mark> ending_get_url_resource<character_quotation_mark> ;  <new_line>
 global_dashrep_replacement[ <character_quotation_mark>trace hyphen-here from hyphen-here get hyphen-here url hyphen-here resource<character_quotation_mark> } = global_accumulated_text ;  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

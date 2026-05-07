@@ -67,6 +67,6 @@ replace-begin global_text_list_of_unique_word_pointers replace-equals global_tex
 // before: global_result_word_list =~ s/ +$// ;  <new_line>
 replace-begin global_result_word_list replace-equals global_result_word_list replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_destination_phrase ] = global_result_word_list ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

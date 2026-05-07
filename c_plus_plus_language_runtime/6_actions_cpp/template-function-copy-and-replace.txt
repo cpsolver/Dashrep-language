@@ -29,6 +29,6 @@ if ( global_character_pointer_begin < global_length_of_text_source ) {  <new_lin
     global_target_text += substr( global_source_text , global_character_pointer_begin ) ;  <new_line>
 }  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_two code-get-or-put-phrase-definition-end = global_target_text ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

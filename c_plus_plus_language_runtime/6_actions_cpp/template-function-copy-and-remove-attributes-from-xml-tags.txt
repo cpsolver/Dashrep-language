@@ -16,6 +16,6 @@ replace-begin global_text_being_edited replace-equals global_text_being_edited r
 // before: global_text_being_edited =~ s/<character_backslash>]<character_backslash>]></</gi ;  <new_line>
 replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(<character_backslash>]<character_backslash>]><)<character_quotation_mark> with-this R<character_quotation_mark>(<)<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_two ] = global_text_being_edited ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

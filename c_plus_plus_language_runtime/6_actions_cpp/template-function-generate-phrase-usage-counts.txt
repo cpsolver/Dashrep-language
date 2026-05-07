@@ -38,6 +38,6 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 // }  <new_line>
 
 global_dashrep_replacement[ global_operand_one ] = global_action_result ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

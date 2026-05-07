@@ -63,6 +63,6 @@ replace-begin global_text_string replace-equals global_text_string replace-this 
         global_dashrep_replacement[ global_target_phrase_name ] += <character_quotation_mark> <character_quotation_mark> + global_text_string ;  <new_line>
     }  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

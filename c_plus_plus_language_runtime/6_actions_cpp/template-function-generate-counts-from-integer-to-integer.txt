@@ -23,7 +23,7 @@ global_count_range = global_numeric_value_second - global_numeric_value_first + 
 
 if ( global_count_range > 500000 ) {  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end = <character_quotation_mark>dashrep_undefined_from_action_generate_counts_from_integer_to_integer_error_count_range_too_large<character_quotation_mark> ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end = <character_quotation_mark><character_quotation_mark> ;  <new_line>
@@ -45,6 +45,6 @@ code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phr
 // end of loop  <new_line>
 }  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

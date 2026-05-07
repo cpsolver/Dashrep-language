@@ -11,17 +11,17 @@ local_target_phrase_name = global_operand_two ;  <new_line>
 
 if ( function_parameterized__yes_or_no_file_name( global_source_file_name ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__linewise_read_from_file_and_use_handler__case_file_name_invalid [<character_quotation_mark> + global_source_file_name + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__open_file_for_reading( global_source_file_name ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading [<character_quotation_mark> + local_target_phrase_name + <character_quotation_mark>] <character_quotation_mark> ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_phrase_definition_not_empty( local_target_phrase_name ) == global_no ) {  <new_line>
 global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__linewise_read_from_file_and_use_handler__case_phrase_empty <character_quotation_mark> + local_target_phrase_name ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 }  <new_line>
 
 local_line_count = 1 ;  <new_line>
@@ -36,6 +36,6 @@ while ( global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

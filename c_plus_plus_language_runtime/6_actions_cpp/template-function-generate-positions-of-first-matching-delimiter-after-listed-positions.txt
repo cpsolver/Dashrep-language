@@ -9,22 +9,22 @@ template-check-operand-four-is-phrase-name
 
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_one ) == global_no ) {
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name <character_quotation_mark> + global_operand_one + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_two ) == global_no ) {
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name <character_quotation_mark> + global_operand_two + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_three ) == global_no ) {
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name <character_quotation_mark> + global_operand_three + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 if ( function_parameterized__yes_or_no_phrase_name( global_operand_four ) == global_no ) {
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name <character_quotation_mark> + global_operand_four + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
-    return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
@@ -58,6 +58,6 @@ replace-begin global_text_list_of_start_matching_positions replace-equals global
     }  <new_line>
 }  <new_line>
 global_dashrep_replacement[ global_operand_four ] = global_list_of_positions ;  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

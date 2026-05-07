@@ -11,6 +11,6 @@ global_action_result = <character_quotation_mark>even<character_quotation_mark> 
 } else {  <new_line>
 global_action_result = <character_quotation_mark>odd<character_quotation_mark> ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

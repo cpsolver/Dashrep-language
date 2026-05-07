@@ -70,7 +70,7 @@ ambee  numeric-vector-add-number  list-of-character-positions-of-colon-after-phr
 ambee  numeric-vector-add-number  list-of-character-positions-of-colon-after-phrase-name  2  list-of-pointers-to-phrase-definition-begin  amenn
 ambee  numeric-vector-add-number  list-of-starting-character-positions-of-four-dashes  -1  list-of-pointers-to-phrase-definition-end  amenn
 ambee  append-text  number-huge  list-of-pointers-to-phrase-definition-end  amenn
-ambee  generate-counts-from-integer-to-integer  1  ambee  get-count-of-words  list-of-pointers-to-phrase-name-end  amenn  list-of-pointers-to-pointer-pairs  amenn
+ambee  generate-counts-from-integer-to-integer  1  ambee  get-count-of-words  list-of-starting-character-positions-of-four-dashes  amenn  list-of-pointers-to-pointer-pairs  amenn
 ambee  use-handler-with-each-word-in-phrase  handle-one-phrase-definition  list-of-pointers-to-pointer-pairs  amenn
 ----
 handle-one-phrase-definition:
@@ -100,6 +100,7 @@ ambee  append-text-no-space  character-newline  merged-cpp-definitions  amenn
 ----
 list-of-phrase-names-to-omit:
 character-apostrophe
+template-function-numeric-two-dimensional-sort-into-columns-and-rows
 ----
 text-to-insert-before-phrase-name:
 $global_dashrep_replacement{ '
@@ -203,4 +204,28 @@ template-text-com-enn-space-padded:
 do-initializations:
 ambee  expand-text  template-text-between-phrase-definition-and-phrase-name  text-between-phrase-definition-and-phrase-name  amenn
 ambee  expand-text  template-four-dashes  four-dashes  amenn
+----
+
+
+list-of-parameterized-functions:
+function_parameterized__convert_numeric_text_into_numeric_value
+function_parameterized__convert_numeric_value_into_numeric_text
+function_parameterized__normalize_calculated_value
+function_parameterized__open_file_for_appending
+function_parameterized__open_file_for_reading
+function_parameterized__remove_leading_trailing_spaces
+function_parameterized__yes_or_no_empty
+function_parameterized__yes_or_no_file_name
+function_parameterized__yes_or_no_folder_name
+function_parameterized__yes_or_no_input_file_exists
+function_parameterized__yes_or_no_integer
+function_parameterized__yes_or_no_phrase_contains_real_numbers
+function_parameterized__yes_or_no_phrase_definition_not_empty
+function_parameterized__yes_or_no_phrase_name
+function_parameterized__yes_or_no_positive_integer
+function_parameterized__yes_or_no_positive_real_number
+function_parameterized__yes_or_no_real_number
+function_parameterized__yes_or_no_valid_path
+function_parameterized__yes_or_no_valid_path_prefix
+function_parameterized__yes_or_no_valid_url
 ----

@@ -15,6 +15,6 @@ if ( global_first_object_of_action == global_second_object_of_action ) {  <new_l
 } else {  <new_line>
     global_action_result = <character_quotation_mark>less<character_quotation_mark> ;  <new_line>
 }  <new_line>
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

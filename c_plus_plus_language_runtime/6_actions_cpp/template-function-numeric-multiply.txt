@@ -23,6 +23,6 @@ global_calculated_value = global_calculated_value * function_parameterized__conv
 }  <new_line>
 global_action_result = function_parameterized__normalize_calculated_value( global_calculated_value ) ;  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending

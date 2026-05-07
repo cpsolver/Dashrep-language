@@ -146,6 +146,6 @@ if ( exists( $ENV{ <character_quotation_mark>HTTP_COOKIE<character_quotation_mar
 global_dashrep_replacement[ <character_quotation_mark>input-cookie-contents<character_quotation_mark> } = $ENV{ <character_quotation_mark>HTTP_COOKIE<character_quotation_mark> } ;  <new_line>
 }  <new_line>
 
-return <character_quotation_mark><character_quotation_mark> ;  <new_line>
+return ;  <new_line>
 
 template-function-segment-ending
