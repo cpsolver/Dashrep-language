@@ -16,6 +16,9 @@ segment-start-object-code-end
 segment-import-statements-begin
 segment-import-statements
 segment-import-statements-end
+segment-declare-functions-begin
+segment-declare-function-data-types
+segment-declare-functions-end
 segment-functions-runtime-begin
 segment-functions-runtime-end
 segment-functions-compiled-begin

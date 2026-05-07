@@ -15,6 +15,10 @@ ambee copy-from-phrase-append-to-file segment-import-statements-begin ambee file
 ambee copy-from-phrase-append-to-file segment-import-statements ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file segment-import-statements-end ambee filename-output-results-from-compiler amenn amenn
 
+ambee copy-from-phrase-append-to-file segment-declare-functions-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-declare-function-data-types ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-declare-functions-end ambee filename-output-results-from-compiler amenn amenn
+
 ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn
