@@ -9,7 +9,5 @@
 //  All done.  <new_line>
 <new_line>
 
-exit;  <new_line>
-
-1;  <new_line>
-
+return 0 ;  <new_line>
+}  <new_line>

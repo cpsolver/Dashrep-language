@@ -2,6 +2,8 @@
 //  Execute starting/main function  <new_line>
 <new_line>
 
+int main(int argc, char* argv[]) {  <new_line>
+
 std::string operating_system_name =  <new_line>
 #ifdef _WIN32  <new_line>
     <character_quotation_mark>MSWin32<character_quotation_mark>;  <new_line>
