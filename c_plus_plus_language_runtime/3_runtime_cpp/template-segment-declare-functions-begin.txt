@@ -1,0 +1,3 @@
+comment-line-begin no-space dashes-long-line  <new_line>
+comment-line-begin Begin function declarations.  <new_line>
+comment-line-begin These are needed because some functions are used in code before they have been defined.  <new_line>

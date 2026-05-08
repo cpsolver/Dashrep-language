@@ -49,6 +49,10 @@ generate-import-lines:
 ambee  copy-from-file-to-phrase  template-segment-import-statements.txt  template-cpp-import-lines  amenn
 ambee  copy-without-extra-spaces  template-cpp-import-lines  template-cpp-import-lines  amenn
 ambee  expand-text  template-cpp-import-lines expanded-cpp-import-lines  amenn
+
+ambee  copy-from-file-to-phrase  template-segment-declare-function-data-types.txt  template-segment-declare-function-data-types  amenn
+ambee  copy-without-extra-spaces  template-segment-declare-function-data-types  template-segment-declare-function-data-types  amenn
+ambee  expand-text  template-segment-declare-function-data-types  segment-declare-function-data-types  amenn
 ----
 text-location-to-follow-cpp-import-lines:
 End optional import statements
@@ -157,6 +161,9 @@ ambee  if-no-begin  ambee  yes-or-no-same-two-phrase-definitions  character-posi
     ambee  append-text-no-space  expanded-cpp-import-lines  modified-compiler-code  amenn
     ambee  append-new-line  modified-compiler-code  amenn
     ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-text-no-space  segment-declare-function-data-types  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
+    ambee  append-new-line  modified-compiler-code  amenn
 ambee  if-end  amenn
 ----
 
@@ -228,4 +235,153 @@ function_parameterized__yes_or_no_real_number
 function_parameterized__yes_or_no_valid_path
 function_parameterized__yes_or_no_valid_path_prefix
 function_parameterized__yes_or_no_valid_url
+----
+
+segment-declare-function-data-types:
+void function__append_multiple_from_phrases_named_in_pattern( ) ;
+void function__append_repeatedly_using_count( ) ;
+void function__clear_listed_phrases( ) ;
+void function__clear_phrase( ) ;
+void function__convert_unicode_to_html_entities( ) ;
+void function__copy_and_move_attributes_into_xml_tags( ) ;
+void function__copy_and_remove_attributes_from_xml_tags( ) ;
+void function__copy_and_replace( ) ;
+void function__copy_and_replace_using_paired_listed_words( ) ;
+void function__copy_append_file_to_file( ) ;
+void function__copy_characters_from_position_to_position( ) ;
+void function__copy_definition_of_named_phrase( ) ;
+void function__copy_from_columns_in_file_to_column_lists( ) ;
+void function__copy_from_columns_in_file_to_named_phrases( ) ;
+void function__copy_from_file_to_phrase( ) ;
+void function__copy_from_phrase_append_to_file( ) ;
+void function__copy_initial_caps( ) ;
+void function__copy_listed_words_to_phrases_named_in_pattern( ) ;
+void function__copy_lowercase_only( ) ;
+void function__copy_uppercase_only( ) ;
+void function__copy_without_extra_spaces( ) ;
+void function__copy_word_at_position( ) ;
+void function__copy_words_found_in_both_lists( ) ;
+void function__copy_words_found_in_either_list( ) ;
+void function__copy_words_found_only_in_first_list( ) ;
+void function__copy_words_from_position_to_position( ) ;
+void function__copy_words_offset_skip( ) ;
+void function__copy_words_order_reversed( ) ;
+void function__copy_words_rearrange_using_order_sort_alphabetic( ) ;
+void function__copy_words_rearrange_using_order_sort_numeric( ) ;
+void function__copy_words_sort_alphabetic( ) ;
+void function__copy_words_sort_numeric( ) ;
+void function__copy_words_that_begin_with_listed_words( ) ;
+void function__copy_words_that_begin_with_text( ) ;
+void function__copy_words_that_contain_listed_words( ) ;
+void function__copy_words_unique_only( ) ;
+void function__copy_zero_pad_left_to_length( ) ;
+void function__create_empty_sub_folder( ) ;
+void function__decode_from_cgi_parameter( ) ;
+void function__delete_file( ) ;
+void function__delete_listed_phrases( ) ;
+void function__encode_as_cgi_parameter( ) ;
+void function__find_line_in_file_that_begins_with_text( ) ;
+void function__find_lines_in_file_that_begin_with_any_listed_word( ) ;
+void function__find_lines_in_file_that_begin_with_any_two_words_listed( ) ;
+void function__gather_from_tagged_file_one_entry( ) ;
+void function__gather_tagged_info_from_file( ) ;
+void function__generate_counts_from_integer_to_integer( ) ;
+void function__generate_every_ordered_pairwise_combination_of_words( ) ;
+void function__generate_every_pairwise_combination_of_words( ) ;
+void function__generate_list_of_all_dashrep_phrases( ) ;
+void function__generate_list_of_files_in_current_read_directory( ) ;
+void function__generate_list_of_folders_in_current_read_directory( ) ;
+void function__generate_phrase_usage_counts( ) ;
+void function__generate_positions_of_delimiter( ) ;
+void function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) ;
+void function__generate_positions_of_listed_words( ) ;
+void function__get_cgi_information( ) ;
+void function__get_characters_from_position_to_position( ) ;
+void function__get_count_of_characters( ) ;
+void function__get_count_of_words( ) ;
+void function__get_definitions_from_file( ) ;
+void function__get_definitions_from_phrase( ) ;
+void function__get_position_of_matching_text( ) ;
+void function__get_position_of_word( ) ;
+void function__get_url_resource( ) ;
+void function__get_word_at_position( ) ;
+void function__insert_codeview_tags( ) ;
+void function__linewise_read_from_file_and_use_handler( ) ;
+void function__linewise_read_from_standard_input( ) ;
+void function__modification_time_of_file( ) ;
+void function__numeric_absolute( ) ;
+void function__numeric_add( ) ;
+void function__numeric_cosine( ) ;
+void function__numeric_decrement( ) ;
+void function__numeric_divide_by( ) ;
+void function__numeric_equal_greater_less_compare( ) ;
+void function__numeric_increment( ) ;
+void function__numeric_integer( ) ;
+void function__numeric_logarithm_base_10( ) ;
+void function__numeric_logarithm_base_e( ) ;
+void function__numeric_maximum( ) ;
+void function__numeric_minimum( ) ;
+void function__numeric_minus( ) ;
+void function__numeric_multiply( ) ;
+void function__numeric_odd_or_even( ) ;
+void function__numeric_sine( ) ;
+void function__numeric_square_root( ) ;
+void function__numeric_two_dimensional_sort_into_columns_and_rows( ) ;
+void function__numeric_vector_absolutes( ) ;
+void function__numeric_vector_add_number( ) ;
+void function__numeric_vector_integers( ) ;
+void function__numeric_vector_multiply_by_number( ) ;
+void function__numeric_vectors_add( ) ;
+void function__numeric_vectors_divide_by( ) ;
+void function__numeric_vectors_from_delta_values_calculate_distances( ) ;
+void function__numeric_vectors_multiply( ) ;
+void function__numeric_y_map_tile_number_based_on_latitude( ) ;
+void function__open_trace_output_file_if_not_open( ) ;
+void function__point_to_words( ) ;
+void function__point_to_words_in_operand_whichever( ) ;
+void function__prepend_text( ) ;
+void function__prepend_text_no_space( ) ;
+void function__put_into_phrase( ) ;
+void function__put_listed_phrase_definitions_into_phrase( ) ;
+void function__remove_extra_spaces( ) ;
+void function__rename_file( ) ;
+void function__set_file_permission_private( ) ;
+void function__set_file_permission_private_but_executable( ) ;
+void function__set_file_permission_public_read( ) ;
+void function__size_of_file( ) ;
+void function__split_epoch_seconds_into_named_components( ) ;
+void function__split_epoch_seconds_into_named_components_for_zero_meridian( ) ;
+void function__trace_show( ) ;
+void function__write_gathered_listed_items_to_end_of_file( ) ;
+void function__xml_move_attributes_into_tag_elements( ) ;
+void function__yes_if_all_yes( ) ;
+void function__yes_or_no_file_exists( ) ;
+void function__yes_or_no_folder_exists( ) ;
+void function__yes_or_no_same_two_phrase_definitions( ) ;
+void function__yes_or_no_word_is_in_phrase( ) ;
+void function__zero_one_multiple( ) ;
+void function__zero_or_nonzero( ) ;
+void function_branch_based_on_phrase_name( ) ;
+void function_compiled__start_here( ) ;
+std::string function_parameterized__convert_numeric_text_into_numeric_value( declare-text-data-type ) ;
+std::string function_parameterized__convert_numeric_value_into_numeric_text( declare-text-data-type ) ;
+std::string function_parameterized__get_list_of_words( declare-text-data-type ) ;
+std::string function_parameterized__normalize_calculated_value( declare-text-data-type ) ;
+std::string function_parameterized__open_file_for_appending( declare-text-data-type ) ;
+std::string function_parameterized__open_file_for_reading( declare-text-data-type ) ;
+std::string function_parameterized__remove_leading_trailing_spaces( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_empty( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_file_name( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_folder_name( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_input_file_exists( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_integer( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_phrase_contains_real_numbers( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_phrase_definition_not_empty( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_phrase_name( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_positive_integer( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_positive_real_number( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_real_number( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_valid_path( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_valid_path_prefix( declare-text-data-type ) ;
+std::string function_parameterized__yes_or_no_valid_url( declare-text-data-type ) ;
 ----
