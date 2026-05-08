@@ -1,0 +1,115 @@
+fix code snippet that removes combee comenn coments
+
+
+add code snippet that does diff list one versus list two
+
+
+-------------------------------------------------
+
+
+create:
+dashrep_adjust_compiler_generate_cpp_code.txt
+
+move code that inserts libraries and function declarations
+
+do replacements as needed, especially for new phrases
+
+
+-------------------------------------------------
+
+
+=~ s/
+
+   28: // before: global_dashrep_replacement[ global_target_operand } =~ s/ +$// ;  <new_line>
+   29  replace-begin global_dashrep_replacement[ global_target_operand ] replace-equals global_dashrep_replacement[ global_target_operand ] replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+   30  return ;  <new_line>
+
+
+-------------------------------------------------
+
+
+=~ /
+
+// before: if ( local_text =~ /[\n\r\t]/ ) {
+if ( local_text looks-like-begin R"([\n\r\t])" looks-like-end ) {
+
+
+-------------------------------------------------
+
+
+keys( %
+
+
+-------------------------------------------------
+
+
+
+if ( exists
+
+
+-------------------------------------------------
+
+
+current_phrase
+
+: global_number_of_times_encountered_phrase_named{ current_phrase } ++ ;  <new_line>
+  124: if ( global_number_of_times_encountered_phrase_named{ current_phrase } >= 
+
+change {} to []
+
+
+-------------------------------------------------
+
+trace
+
+write to trace file
+
+
+-------------------------------------------------
+
+regex
+
+= regex-match-first
+
+= regex-match-second
+
+
+-------------------------------------------------
+
+vector<std::string> global_list = ( )
+not = ""
+
+
+-------------------------------------------------
+
+[0] = ""
+[1] = ""
+
+remove from C++ because not needed
+
+
+-------------------------------------------------
+
+string-two-apostrophes
+
+fix to use quotation marks
+
+
+-------------------------------------------------
+
+generate-list-of-tokens-in-current-definition-quotable
+
+
+-------------------------------------------------
+
+define-special-strings-that-are-padded-with-spaces
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+-------------------------------------------------
