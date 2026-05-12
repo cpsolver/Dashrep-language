@@ -1,3 +1,14 @@
+Yet to do for converting runtime from Perl to C++
+
+
+-------------------------------------------------
+
+list where "before:" appears, write next line, proofread changes, then remove "before:" lines
+
+
+-------------------------------------------------
+
+
 fix code snippet that removes combee comenn coments
 
 
@@ -13,6 +24,12 @@ dashrep_adjust_compiler_generate_cpp_code.txt
 move code that inserts libraries and function declarations
 
 do replacements as needed, especially for new phrases
+
+
+-------------------------------------------------
+
+convert functions needed by simple Dashrep programs.
+Later, fix other functions.
 
 
 -------------------------------------------------
@@ -39,12 +56,11 @@ if ( local_text looks-like-begin R"([\n\r\t])" looks-like-end ) {
 
 keys( %
 
+at:
+global_number_of_times_encountered_phrase_named
+global_occurance_count
 
--------------------------------------------------
-
-
-
-if ( exists
+uses: do-list-clear
 
 
 -------------------------------------------------
@@ -60,9 +76,40 @@ change {} to []
 
 -------------------------------------------------
 
+ne:
+code-not-equals
+
+in template-function-open-trace-output-file
+
+
+-------------------------------------------------
+
+
+
+if ( exists
+
+
+-------------------------------------------------
+
 trace
 
 write to trace file
+
+
+-------------------------------------------------
+
+while( global_input_line = <INFILE> )
+also remove: chomp
+
+close(INFILE)  change to close-infile
+
+
+-------------------------------------------------
+
+!~
+not-looks-like-begin
+not-looks-like-end
+(similar to looks-like-...)
 
 
 -------------------------------------------------
@@ -79,6 +126,14 @@ regex
 vector<std::string> global_list = ( )
 not = ""
 
+
+-------------------------------------------------
+
++ 0.0
+ask Claude to convert to C++ (probably to_string)
+
+
+-------------------------------------------------
 
 -------------------------------------------------
 
