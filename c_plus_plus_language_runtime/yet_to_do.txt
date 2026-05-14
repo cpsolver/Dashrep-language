@@ -3,7 +3,37 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
-list where "before:" appears, write next line, proofread changes, then remove "before:" lines
+remove code for deprecated action "sort-two-dimensions"
+
+
+-------------------------------------------------
+
+save file with "before:" lines, then remove "before:" lines
+
+
+-------------------------------------------------
+
+do grep-like listing of lines with:
+
+=~ s/
+=~ /
+keys( %
+current_phrase
+ne   [space-delimited]
+if ( exists
+trace
+while( global_input_line = <INFILE> )
+chomp
+!~
+vector<std::string> global_list = ( )
++ 0.0
+[0] = ""
+[1] = ""
+string-two-apostrophes
+
+then sort, ask AI to translate,
+then get AI to write Perl script that does replacements,
+then use Dashrep code to make those replacements based on full lines of code
 
 
 -------------------------------------------------
@@ -160,11 +190,5 @@ generate-list-of-tokens-in-current-definition-quotable
 define-special-strings-that-are-padded-with-spaces
 
 
-
--------------------------------------------------
-
-
-
--------------------------------------------------
 
 -------------------------------------------------
