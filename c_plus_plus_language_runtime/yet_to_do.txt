@@ -3,67 +3,6 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
-remove code for deprecated action "sort-two-dimensions"
-
-
--------------------------------------------------
-
-save file with "before:" lines, then remove "before:" lines
-
-
--------------------------------------------------
-
-do grep-like listing of lines with:
-
-=~ s/
-=~ /
-keys( %
-current_phrase
-ne   [space-delimited]
-if ( exists
-trace
-while( global_input_line = <INFILE> )
-chomp
-!~
-vector<std::string> global_list = ( )
-+ 0.0
-[0] = ""
-[1] = ""
-string-two-apostrophes
-
-then sort, ask AI to translate,
-then get AI to write Perl script that does replacements,
-then use Dashrep code to make those replacements based on full lines of code
-
-
--------------------------------------------------
-
-
-fix code snippet that removes combee comenn coments
-
-
-add code snippet that does diff list one versus list two
-
-
--------------------------------------------------
-
-
-create:
-dashrep_adjust_compiler_generate_cpp_code.txt
-
-move code that inserts libraries and function declarations
-
-do replacements as needed, especially for new phrases
-
-
--------------------------------------------------
-
-convert functions needed by simple Dashrep programs.
-Later, fix other functions.
-
-
--------------------------------------------------
-
 
 =~ s/
 
@@ -95,32 +34,6 @@ uses: do-list-clear
 
 -------------------------------------------------
 
-
-current_phrase
-
-: global_number_of_times_encountered_phrase_named{ current_phrase } ++ ;  <new_line>
-  124: if ( global_number_of_times_encountered_phrase_named{ current_phrase } >= 
-
-change {} to []
-
-
--------------------------------------------------
-
-ne:
-code-not-equals
-
-in template-function-open-trace-output-file
-
-
--------------------------------------------------
-
-
-
-if ( exists
-
-
--------------------------------------------------
-
 trace
 
 write to trace file
@@ -129,9 +42,6 @@ write to trace file
 -------------------------------------------------
 
 while( global_input_line = <INFILE> )
-also remove: chomp
-
-close(INFILE)  change to close-infile
 
 
 -------------------------------------------------
@@ -144,33 +54,33 @@ not-looks-like-end
 
 -------------------------------------------------
 
-regex
-
-= regex-match-first
-
-= regex-match-second
+remove "before:" lines
+use dashrep_do_replacements
 
 
 -------------------------------------------------
 
-vector<std::string> global_list = ( )
-not = ""
+fix code snippet that removes combee comenn coments
+
+
+add code snippet that does diff list one versus list two
 
 
 -------------------------------------------------
 
-+ 0.0
-ask Claude to convert to C++ (probably to_string)
+
+create:
+dashrep_adjust_compiler_generate_cpp_code.txt
+
+move code that inserts libraries and function declarations
+
+do replacements as needed, especially for new phrases
 
 
 -------------------------------------------------
 
--------------------------------------------------
-
-[0] = ""
-[1] = ""
-
-remove from C++ because not needed
+convert functions needed by simple Dashrep programs.
+Later, fix other functions.
 
 
 -------------------------------------------------
