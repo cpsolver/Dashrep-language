@@ -12,7 +12,7 @@ runtime-code-storage-item-result = <character_quotation_mark>dashrep_compiled_ru
 global_source_text = function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
 global_target_text = runtime-code-for-operand-number-two ;  <new_line>
 
-if ( code-get-or-put-phrase-definition-begin global_target_text code-get-or-put-phrase-definition-end ne <character_quotation_mark><character_quotation_mark> ) {  <new_line>
+if ( code-get-or-put-phrase-definition-begin global_target_text code-get-or-put-phrase-definition-end code-not-equals <character_quotation_mark><character_quotation_mark> ) {  <new_line>
 code-get-or-put-phrase-definition-begin global_target_text code-get-or-put-phrase-definition-end += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 }  <new_line>
 

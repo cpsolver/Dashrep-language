@@ -1,4 +1,4 @@
-} elsif ( exists( code-get-or-put-phrase-definition-begin global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) {  <new_line>
+} elsif ( global_dashrep_replacement.contains( global_phrase_name_to_match )  {  <new_line>
 global_accumulator[ global_accumulator_pointer ] += code-get-or-put-phrase-definition-begin global_phrase_name_to_match code-get-or-put-phrase-definition-end ;  <new_line>
 } else {  <new_line>
 

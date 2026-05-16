@@ -62,7 +62,7 @@ global_position_as_string = char_buffer;  <new_line>
 global_position_end = -1 ;  <new_line>
 for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {  <new_line>
     if ( ( global_position_of_text_found + 1 ) >= global_position_end ) {  <new_line>
-        if ( global_list_of_positions ne <character_quotation_mark><character_quotation_mark> ) {  <new_line>
+        if ( global_list_of_positions code-not-equals <character_quotation_mark><character_quotation_mark> ) {  <new_line>
             global_list_of_positions += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
         }  <new_line>
         global_list_of_positions += global_position_of_text_found + 1 ;  <new_line>

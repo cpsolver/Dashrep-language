@@ -1,0 +1,4 @@
+combee
+assumes: if (std::regex_search(line, regex_match, re) && regex_match.size() > 1) {  <new_line>
+comenn
+= regex_match[1].str();

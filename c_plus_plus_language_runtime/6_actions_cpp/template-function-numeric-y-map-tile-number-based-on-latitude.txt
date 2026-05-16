@@ -20,7 +20,7 @@ global_pi = 4.0 * atan2( 1.0 , 1.0 ) ;  <new_line>
 
 global_dashrep_replacement[ <character_quotation_mark>numeric<character_hyphen>pi<character_quotation_mark> ] = convert-decimal-to-text global_calculated_value convert-to-text-end ;  <new_line>
 
-global_angle_in_radians = ( global_operand_one + 0.0 ) * global_pi / 180.0 ;  <new_line>
+global_angle_in_radians = ( std::stod( global_operand_one ) * global_pi ) / 180.0 ;  <new_line>
 global_sine_of_angle = sin( global_angle_in_radians ) ;  <new_line>
 global_cosine_of_angle = cos( global_angle_in_radians ) ;  <new_line>
 global_result_value = global_map_tile_n * ( 1.0 - ( log( ( global_sine_of_angle / global_cosine_of_angle ) + ( 1 / global_cosine_of_angle ) ) / global_pi ) ) / 2.0 ;  <new_line>

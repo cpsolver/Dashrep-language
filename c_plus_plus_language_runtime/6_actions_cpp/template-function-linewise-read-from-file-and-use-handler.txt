@@ -26,7 +26,6 @@ return ;  <new_line>
 
 local_line_count = 1 ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
-    chomp( global_input_line ) ;  <new_line>
     global_dashrep_replacement[ <character_quotation_mark>linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file<character_quotation_mark> } = global_input_line ;  <new_line>
     global_dashrep_replacement[ <character_quotation_mark>linewise hyphen-here input hyphen-here line hyphen-here count<character_quotation_mark> } = local_line_count ;  <new_line>
     global_phrase_name_to_match = local_target_phrase_name ;  <new_line>
@@ -35,7 +34,7 @@ while ( global_input_line = <INFILE> ) {  <new_line>
     local_line_count ++ ;  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>
-close( INFILE ) ;  <new_line>
+close-infile ;  <new_line>
 return ;  <new_line>
 
 template-function-segment-ending

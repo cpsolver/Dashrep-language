@@ -10,14 +10,14 @@ global_character_pointer_begin = global_length_of_text + 1 ;  <new_line>
 global_character_pointer_end = -1 ;  <new_line>
 
 for ( global_character_pointer = 1 ; global_character_pointer <= global_length_of_text ; global_character_pointer ++ ) {  <new_line>
-if ( substr( global_temporary_text , global_character_pointer - 1 , 1 ) ne <character_quotation_mark> <character_quotation_mark> ) {  <new_line>
+if ( substr( global_temporary_text , global_character_pointer - 1 , 1 ) code-not-equals <character_quotation_mark> <character_quotation_mark> ) {  <new_line>
 global_character_pointer_begin = global_character_pointer ;  <new_line>
 last ;  <new_line>
 }  <new_line>
 }  <new_line>
 
 for ( global_character_pointer = global_length_of_text ; global_character_pointer >= 1 ; global_character_pointer -- ) {  <new_line>
-if ( substr( global_temporary_text , global_character_pointer - 1 , 1 ) ne <character_quotation_mark> <character_quotation_mark> ) {  <new_line>
+if ( substr( global_temporary_text , global_character_pointer - 1 , 1 ) code-not-equals <character_quotation_mark> <character_quotation_mark> ) {  <new_line>
 global_character_pointer_end = global_character_pointer ;  <new_line>
 last ;  <new_line>
 }  <new_line>

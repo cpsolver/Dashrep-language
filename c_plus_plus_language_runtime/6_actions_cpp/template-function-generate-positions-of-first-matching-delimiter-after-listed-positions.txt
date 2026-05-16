@@ -51,7 +51,7 @@ replace-begin global_text_list_of_start_matching_positions replace-equals global
         if ( global_position < 0 ) {  <new_line>
             global_position = -1 ;  <new_line>
         }  <new_line>
-        if ( global_list_of_positions ne <character_quotation_mark><character_quotation_mark> ) {  <new_line>
+        if ( global_list_of_positions code-not-equals <character_quotation_mark><character_quotation_mark> ) {  <new_line>
             global_list_of_positions += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
         }  <new_line>
         global_list_of_positions += sprintf( <character_quotation_mark>%d<character_quotation_mark> , ( global_position + 1 ) ) ;  <new_line>
