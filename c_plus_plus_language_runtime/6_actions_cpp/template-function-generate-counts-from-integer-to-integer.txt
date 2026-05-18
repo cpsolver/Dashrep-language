@@ -38,7 +38,6 @@ code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phr
 if ( global_count_number == 0 ) {  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += <character_quotation_mark>0<character_quotation_mark> ;  <new_line>
 } else {  <new_line>
-// before: code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += sprintf( <character_quotation_mark>%d<character_quotation_mark> , global_count_number ) ;  <new_line>
 code-get-or-put-phrase-definition-begin global_operand_three code-get-or-put-phrase-definition-end += convert-integer-to-string-begin global_count_number  convert-to-string-end  ;  <new_line>
 }  <new_line>
 

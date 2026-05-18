@@ -13,7 +13,6 @@ global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error_
 return ;  <new_line>
 }  <new_line>
 
-// before: if ( global_target_path_prefix =~ /([<character_backslash>/<character_backslash><character_backslash>])/ ) {  <new_line>
 if ( global_target_path_prefix looks-like-begin  R<character_quotation_mark>(([<character_backslash>)<character_quotation_mark> looks-like-end<character_backslash><character_backslash>])/ ) {  <new_line>
     global_slash_or_backslash_for_path = regex-match-one ;  <new_line>
 } else {  <new_line>

@@ -10,7 +10,6 @@ global_phrase_name_containing_source_words = global_operand_one ;  <new_line>
 global_phrase_name_containing_pattern = global_operand_two ;  <new_line>
 global_phrase_name_containing_parameter_list = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_target_phrase_name = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-// before: if ( ( defined( global_dashrep_replacement[ global_phrase_name_containing_pattern } ) ) && ( global_dashrep_replacement[ global_phrase_name_containing_pattern } =~ /^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$/ ) ) {  <new_line>
 if ( ( global_dashrep_replacement[ global_phrase_name_containing_pattern ] looks-like-begin  R<character_quotation_mark>(^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$)<character_quotation_mark> looks-like-end ) ) {  <new_line>
     global_prefix = regex-match-one ;  <new_line>
     global_phrase_name_containing_parameter_list = regex-match-two ;  <new_line>
@@ -19,52 +18,36 @@ if ( ( global_dashrep_replacement[ global_phrase_name_containing_pattern ] looks
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid <character_quotation_mark> + global_phrase_name_containing_pattern ;  <new_line>
     return ;  <new_line>
 }  <new_line>
-// before: global_prefix =~ s/[ <character_backslash>n]+//g ;  <new_line>
 replace-begin global_prefix replace-equals global_prefix replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_prefix =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_prefix replace-equals global_prefix replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_suffix =~ s/[ <character_backslash>n]+//g ;  <new_line>
 replace-begin global_suffix replace-equals global_suffix replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_suffix =~ s/<character_hyphen>+$// ;  <new_line>
 replace-begin global_suffix replace-equals global_suffix replace-this R<character_quotation_mark>(<character_hyphen>+$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_parameter_list =~ s/[ <character_backslash>n]+//g ;  <new_line>
 replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
 replace-begin global_phrase_name_containing_parameter_list replace-equals global_phrase_name_containing_parameter_list replace-this R<character_quotation_mark>(<character_hyphen>+$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( not( defined( global_dashrep_replacement[ global_phrase_name_containing_parameter_list ] ) ) ) {  <new_line>
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty <character_quotation_mark> + global_phrase_name_containing_parameter_list ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement[ global_phrase_name_containing_parameter_list ] ;  <new_line>
-// before: global_list_of_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty <character_quotation_mark> + global_phrase_name_containing_parameter_list ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 globallist_of_parameter_words = split( / +/ , global_list_of_words_as_text ) ;  <new_line>
-// before: global_phrase_name_containing_source_words =~ s/[ <character_backslash>n]+//sg ;  <new_line>
 replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>([ <character_backslash>n]+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
 replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>(^<character_hyphen>+)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
 replace-begin global_phrase_name_containing_source_words replace-equals global_phrase_name_containing_source_words replace-this R<character_quotation_mark>(<character_hyphen>+$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( not( defined( global_dashrep_replacement[ global_phrase_name_containing_source_words ] ) ) ) {  <new_line>
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty <character_quotation_mark> + global_phrase_name_containing_source_words ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement[ global_phrase_name_containing_source_words ] ;  <new_line>
-// before: global_list_of_words_as_text =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
     global_action_result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty <character_quotation_mark> + global_phrase_name_containing_source_words ;  <new_line>

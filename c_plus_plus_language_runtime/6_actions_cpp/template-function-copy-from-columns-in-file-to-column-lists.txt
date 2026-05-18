@@ -11,11 +11,8 @@ global_list_name_prefix = global_operand_two ;  <new_line>
 globallist_of_values_in_column do-list-clear ;  <new_line>
 global_minimum_number_of_columns = 999 ;  <new_line>
 while ( global_input_line = <INFILE> ) {  <new_line>
-// before:     global_input_line =~ s/[<character_backslash>n<character_backslash>t]+/ /g ;  <new_line>
 replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([<character_backslash>n<character_backslash>t]+)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before:     global_input_line =~ s/^ +// ;  <new_line>
 replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before:     global_input_line =~ s/ +$// ;  <new_line>
 replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     globalvalue_in_column = split( / +/ , global_input_line ) ;  <new_line>
     global_number_of_columns = scalar( globalvalue_in_column ) ;  <new_line>
@@ -31,7 +28,6 @@ replace-begin global_input_line replace-equals global_input_line replace-this R<
     }  <new_line>
 }  <new_line>
 for ( global_column_pointer = 1 ; global_column_pointer <= global_minimum_number_of_columns ; global_column_pointer ++ ) {  <new_line>
-// before:     global_list_of_values_in_column[ global_column_pointer ] =~ s/ +$// ;  <new_line>
 replace-begin global_list_of_values_in_column[ global_column_pointer ] replace-equals global_list_of_values_in_column[ global_column_pointer ] replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     global_dashrep_replacement[ global_list_name_prefix + <character_quotation_mark><character_hyphen><character_quotation_mark> + global_column_pointer } = global_list_of_values_in_column[ global_column_pointer ] ;  <new_line>
 }  <new_line>

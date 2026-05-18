@@ -15,11 +15,8 @@ if ( this-dashrep-phrase global_operand_one is-defined ) {  <new_line>
 
 global_text_list_key = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_destination_phrase = global_operand_two ;  <new_line>
-// before: global_text_list_key =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_text_list_key =~ s/^ +// ;  <new_line>
 replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_list_key =~ s/ +$// ;  <new_line>
 replace-begin global_text_list_key replace-equals global_text_list_key replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( global_text_list_key == <character_quotation_mark><character_quotation_mark> ) {  <new_line>
     globallist_of_key_values do-list-clear ;  <new_line>
@@ -30,11 +27,8 @@ if ( global_text_list_key == <character_quotation_mark><character_quotation_mark
 for-each global_word ( globallist_of_key_values ) {  <new_line>
     global_listed_word{ global_word } = 1 ;  <new_line>
 }  <new_line>
-// before: global_text_list_loop =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_text_list_loop =~ s/^ +// ;  <new_line>
 replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_list_loop =~ s/ +$// ;  <new_line>
 replace-begin global_text_list_loop replace-equals global_text_list_loop replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 if ( global_text_list_loop == <character_quotation_mark><character_quotation_mark> ) {  <new_line>
     globallist_of_loop_words do-list-clear ;  <new_line>
@@ -62,9 +56,7 @@ if ( global_length_of_loop_list > 0 ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
-// before: global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
 replace-begin global_text_list_of_unique_word_pointers replace-equals global_text_list_of_unique_word_pointers replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_result_word_list =~ s/ +$// ;  <new_line>
 replace-begin global_result_word_list replace-equals global_result_word_list replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_destination_phrase ] = global_result_word_list ;  <new_line>
 global_text_list_of_unique_word_counts = <character_quotation_mark><character_quotation_mark> ;  <new_line>
@@ -72,7 +64,6 @@ for ( global_pointer = 1 ; global_pointer <= global_number_of_unique_words ; glo
     if ( global_pointer > 1 ) {  <new_line>
         global_text_list_of_unique_word_counts += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
     }  <new_line>
-// before:     global_text_list_of_unique_word_counts += sprintf( <character_quotation_mark>%d<character_quotation_mark> , global_occurrence_count_for_word{ global_unique_word_at_position[ global_pointer ] } ) ;  <new_line>
     global_text_list_of_unique_word_counts += convert-integer-to-string-begin global_occurrence_count_for_word{ global_unique_word_at_position[ global_pointer ] }  convert-to-string-end  ;  <new_line>
 }  <new_line>
 global_dashrep_replacement[ <character_quotation_mark>list<character_hyphen>of<character_hyphen>unique<character_hyphen>word<character_hyphen>counts<character_quotation_mark> } = global_text_list_of_unique_word_counts ;  <new_line>

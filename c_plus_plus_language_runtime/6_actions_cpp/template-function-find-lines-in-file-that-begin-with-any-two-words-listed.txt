@@ -10,11 +10,8 @@ template-open-file-for-reading
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_list_of_storage_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_list_of_words_as_text = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
-// before: global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_list_of_words_as_text =~ s/ +$//s ;  <new_line>
 replace-begin global_list_of_words_as_text replace-equals global_list_of_words_as_text replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: if ( global_list_of_words_as_text =~ / / ) {  <new_line>
 if ( global_list_of_words_as_text looks-like-begin  R<character_quotation_mark>( )<character_quotation_mark> looks-like-end ) {  <new_line>
     globallist_of_words = split( /[ <character_backslash>n<character_backslash>r]+/ , global_list_of_words_as_text ) ;  <new_line>
 } else {  <new_line>
@@ -28,15 +25,11 @@ while ( global_input_line = <INFILE> ) {  <new_line>
     global_length_of_first_word = index( global_input_line , <character_quotation_mark> <character_quotation_mark> ) ;  <new_line>
     global_possible_match = substr( global_input_line , 0 , global_length_of_first_word ) ;  <new_line>
     if ( ( exists( global_matching_text{ global_possible_match } ) ) && ( global_matching_text{ global_possible_match } == <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
-// before:         if ( global_input_line =~ /^[^ ]+ +([^ ]+)(( )|($))/ ) {  <new_line>
         if ( global_input_line looks-like-begin  R<character_quotation_mark>(^[^ ]+ +([^ ]+)(( )|($)))<character_quotation_mark> looks-like-end ) {  <new_line>
             global_second_word = regex-match-one ;  <new_line>
 
-// before:              if ( ( exists( global_matching_text{ global_second_word } ) ) && ( global_matching_text{ global_second_word } eq <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
-
             if ( ( global_matching_text.contains( global_second_word ) ) && ( global_matching_text{ global_second_word } == <character_quotation_mark>match<character_quotation_mark> ) ) {  <new_line>
 
-// before:                 global_storage_name = <character_quotation_mark>dashrep hyphen-here storage<character_hyphen><character_quotation_mark> + sprintf( <character_quotation_mark>%d<character_quotation_mark> , global_storage_number ) ;  <new_line>
                 global_storage_name = <character_quotation_mark>dashrep hyphen-here storage<character_hyphen><character_quotation_mark> + convert-integer-to-string-begin global_storage_number  convert-to-string-end  ;  <new_line>
                 global_storage_number ++ ;  <new_line>
                 if ( global_list_of_storage_names == <character_quotation_mark><character_quotation_mark> ) {  <new_line>
@@ -49,7 +42,6 @@ while ( global_input_line = <INFILE> ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
-// before: global_list_of_storage_names =~ s/ +$// ;  <new_line>
 replace-begin global_list_of_storage_names replace-equals global_list_of_storage_names replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_three ] = global_list_of_storage_names ;  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>

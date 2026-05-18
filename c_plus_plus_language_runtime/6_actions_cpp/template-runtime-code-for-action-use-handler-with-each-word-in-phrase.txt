@@ -6,17 +6,11 @@ if ( function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code
     runtime-code-storage-item-result = <character_quotation_mark>dashrep_compiled_runtime_error__<character_quotation_mark> + global_currently_executing_phrase_name_with_underscores + <character_quotation_mark>__use_handler_with_each_word_in_phrase__not_phrase_name <character_quotation_mark> + runtime-code-for-operand-number-two + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
 } else {  <new_line>
 
-// before: int local_pointer_to_next_space ;  <new_line>
 declare-integer local_pointer_to_next_space ;  <new_line>
-// before: int local_pointer_to_future_space ;  <new_line>
 declare-integer local_pointer_to_future_space ;  <new_line>
-// before: int local_pointer_to_next_word ;  <new_line>
 declare-integer local_pointer_to_next_word ;  <new_line>
-// before: int local_endless_loop_counter ;  <new_line>
 declare-integer local_endless_loop_counter ;  <new_line>
-// before: int local_endless_loop_counter_limit ;  <new_line>
 declare-integer local_endless_loop_counter_limit ;  <new_line>
-// before: int length_of_text_in_word_list ; <new_line>
 declare-integer length_of_text_in_word_list ; <new_line>
 
 template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
@@ -114,3 +108,4 @@ function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new
 }  <new_line>
 
 template-runtime-code-for-every-action-end
+

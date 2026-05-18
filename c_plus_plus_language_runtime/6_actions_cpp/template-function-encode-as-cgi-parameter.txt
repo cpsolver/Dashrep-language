@@ -7,19 +7,15 @@ template-check-operand-two-is-phrase-name
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_text_being_edited = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
-// before: global_text_being_edited =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_text_being_edited =~ s/ /<character_backslash>+/g ;  <new_line>
 replace-begin global_text_being_edited replace-equals global_text_being_edited replace-this R<character_quotation_mark>( )<character_quotation_mark> with-this R<character_quotation_mark>(<character_backslash>+)<character_quotation_mark> replace-end  <new_line>
 global_remaining_text = global_text_being_edited ;  <new_line>
 global_accumulated_text = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-// before: while ( global_remaining_text =~ /^(.*?)([^a hyphen-here zA hyphen-here Z0<character_hyphen>9])(.*)$/s ) {  <new_line>
 while ( global_remaining_text looks-like-begin  R<character_quotation_mark>(^(.*?)([^a hyphen-here zA hyphen-here Z0<character_hyphen>9])(.*)$)<character_quotation_mark> looks-like-ends ) {  <new_line>
     global_accumulated_text += $1 ;  <new_line>
     global_character_to_replace = regex-match-two ;  <new_line>
     global_remaining_text = regex-match-three ;  <new_line>
 
-// before:  global_accumulated_text += <character_quotation_mark>%<character_quotation_mark> + sprintf( <character_quotation_mark>%02x<character_quotation_mark> , ord( global_character_to_replace ) ) ;  <new_line>
 // requires: #include <cstdio>  <new_line>
 // reminder: %% yields literal <character_quotation_mark>%<character_quotation_mark>  <new_line>
 char char_buffer[ 10 ];  <new_line>

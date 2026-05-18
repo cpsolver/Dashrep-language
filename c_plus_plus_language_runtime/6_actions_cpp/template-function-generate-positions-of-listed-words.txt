@@ -10,17 +10,12 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 global_words_to_find = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
 global_string_to_search = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_list_of_positions = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-// before: global_words_to_find =~ s/<character_backslash>n/ /sg ;  <new_line>
 replace-begin global_words_to_find replace-equals global_words_to_find replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_words_to_find =~ s/^ +// ;  <new_line>
 replace-begin global_words_to_find replace-equals global_words_to_find replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_words_to_find =~ s/ +$// ;  <new_line>
 replace-begin global_words_to_find replace-equals global_words_to_find replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: if ( global_words_to_find =~ / / ) {  <new_line>
 if ( global_words_to_find looks-like-begin  R<character_quotation_mark>( )<character_quotation_mark> looks-like-end ) {  <new_line>
     globallist_of_text_items_to_find = split( / +/ , global_words_to_find ) ;  <new_line>
     global_number_of_items_to_find = get_length_of_global_list_of_text_items_to_find + 1 ;  <new_line>
-// before: } elsif ( global_words_to_find =~ /^[^ ]+$/ ) {  <new_line>
 } else if ( global_words_to_find looks-like-begin  R<character_quotation_mark>(^[^ ]+$)<character_quotation_mark> looks-like-end ) {  <new_line>
     globallist_of_text_items_to_find do-list-clear ;  <new_line>
     global_list_of_text_items_to_find[ 0 ] = global_words_to_find ;  <new_line>
@@ -39,7 +34,6 @@ if ( global_number_of_items_to_find > 0 ) {  <new_line>
         global_position_of_text_found = index( global_string_to_search , global_text_to_find , global_search_starting_position ) ;  <new_line>
         while ( ( global_position_of_text_found > -1 ) && ( global_local_endless_loop_counter <= global_local_endless_loop_counter_maximum ) ) {  <new_line>
 
-// before:  global_position_as_string = sprintf( <character_quotation_mark>%05d<character_quotation_mark> , global_position_of_text_found ) ;  <new_line>
 char char_buffer[ 10 ];  <new_line>
 std::snprintf( char_buffer, sizeof( char_buffer ), <character_quotation_mark>%05d<character_quotation_mark>, global_position_of_text_found );  <new_line>
 global_position_as_string = char_buffer;  <new_line>

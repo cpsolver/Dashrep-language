@@ -10,17 +10,11 @@ global_action_result = <character_quotation_mark><character_quotation_mark> ;  <
 global_number_of_columns = global_operand_one ;  <new_line>
 global_text_for_right_direction_values = global_dashrep_replacement[ global_operand_two ] ;  <new_line>
 global_text_for_up_direction_values = global_dashrep_replacement[ global_operand_three ] ;  <new_line>
-// before: global_text_for_up_direction_values =~ s/<character_backslash>n/ /s ;  <new_line>
 replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_up_direction_values =~ s/^ +// ;  <new_line>
 replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_up_direction_values =~ s/ +$// ;  <new_line>
 replace-begin global_text_for_up_direction_values replace-equals global_text_for_up_direction_values replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_right_direction_values =~ s/<character_backslash>n/ /s ;  <new_line>
 replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>(<character_backslash>n)<character_quotation_mark> with-this R<character_quotation_mark>( )<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_right_direction_values =~ s/^ +// ;  <new_line>
 replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>(^ +)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
-// before: global_text_for_right_direction_values =~ s/ +$// ;  <new_line>
 replace-begin global_text_for_right_direction_values replace-equals global_text_for_right_direction_values replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 globalup_direction_text_for_item_number = split( / +/ , global_text_for_up_direction_values ) ;  <new_line>
 unshift( globalup_direction_text_for_item_number , 0 ) ;  <new_line>
@@ -261,7 +255,6 @@ for ( global_item_number = 1 ; global_item_number <= global_number_of_items ; gl
     global_final_result += <character_quotation_mark>row<character_hyphen><character_quotation_mark> + global_row_number + <character_quotation_mark><character_hyphen>column<character_hyphen><character_quotation_mark> + global_column_number + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
     global_item_number_at_row_column{ global_row_number + <character_quotation_mark><character_quotation_mark> + global_column_number } = global_item_number ;  <new_line>
 }  <new_line>
-// before: global_final_result =~ s/ +$// ;  <new_line>
 replace-begin global_final_result replace-equals global_final_result replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
 global_dashrep_replacement[ global_operand_four ] = global_final_result ;  <new_line>
 return ;  <new_line>
