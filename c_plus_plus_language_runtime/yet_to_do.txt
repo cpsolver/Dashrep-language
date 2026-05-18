@@ -3,12 +3,104 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
-
 =~ s/
 
    28: // before: global_dashrep_replacement[ global_target_operand } =~ s/ +$// ;  <new_line>
    29  replace-begin global_dashrep_replacement[ global_target_operand ] replace-equals global_dashrep_replacement[ global_target_operand ] replace-this R<character_quotation_mark>( +$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
    30  return ;  <new_line>
+
+
+Searching 848 files for "=~ s/"
+
+.../edit_files_with_dashrep_script/temp_output_split_files/template-function-copy-and-move-attributes-into-xml-tags.txt:
+    9  global_text_being_edited = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
+   10  while( global_text_being_edited looks-like-begin  R<character_quotation_mark>( *<character_backslash>)<character_quotation_mark> looks-like-end> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+   11:     global_text_being_edited =~ s/ *<character_backslash>/> *<((attribute)|(specify)) (([^<character_quotation_mark><>]*<character_quotation_mark>[^<character_quotation_mark>]*<character_quotation_mark>[^<character_quotation_mark><>]*)+?)>/ $4 <character_backslash>/>/sg ;  <new_line>
+   12      if ( global_endless_loop_counter > global_endless_loop_counter_limit <character_hyphen> 100 ) {  <new_line>
+   13          global_action_result = <character_quotation_mark>error_endless_loop_within_action_copy_and_move_attributes_into_xml_tags<character_quotation_mark> ;  <new_line>
+
+.../edit_files_with_dashrep_script/temp_output_split_files/template-function-get-cgi-information.txt:
+   90  }  <new_line>
+   91  
+   92: global_name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+   93  replace-begin global_name  replace-equals global_name  replace-this R<character_quotation_mark>([<><character_backslash>/<character_backslash><character_backslash>]+)<character_quotation_mark> with-this R<character_quotation_mark>(_)<character_quotation_mark> replace-end  <new_line>
+   94  
+   ..
+   96  //               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
+   97  replace-begin global_value replace-equals global_value replace-this R<character_quotation_mark>(%0D)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+   98: global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+   99  } else {  <new_line>
+  100: global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+  101  replace-begin global_value replace-equals global_value replace-this R<character_quotation_mark>([<>]+)<character_quotation_mark> with-this R<character_quotation_mark>(_)<character_quotation_mark> replace-end  <new_line>
+  102: global_value =~ s/<character_backslash>n/<eol<character_backslash>/>/gm ;  <new_line>
+  103  }  <new_line>
+  104  
+
+.../edit_files_with_dashrep_script/temp_output_split_files/template-function-xml-move-attributes-into-tag-elements.txt:
+    9  global_text_being_edited = global_dashrep_replacement[ global_phrase_being_edited ] ;  <new_line>
+   10  while( global_text_being_edited looks-like-begin  R<character_quotation_mark>( *<character_backslash>)<character_quotation_mark> looks-like-end> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+   11:     global_text_being_edited =~ s/ *<character_backslash>/> *<((attribute)|(specify)) (([^<character_quotation_mark><>]*<character_quotation_mark>[^<character_quotation_mark>]*<character_quotation_mark>[^<character_quotation_mark><>]*)+?)>/ $4 <character_backslash>/>/sg ;  <new_line>
+   12  //    global_phrase_usage_count_for_phrase_number[ 1 ] ++ ;  <new_line>
+   13      if ( global_endless_loop_counter > global_endless_loop_counter_limit - 100 ) {  <new_line>
+
+.../3_runtime_cpp/template-function-dashrep-expand-phrases.txt:
+  235  while ( length( output_buffer ) != prior_length ) {  <new_line>
+  236  prior_length = length( output_buffer ) ;  <new_line>
+  237: output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;  <new_line>
+  238  }  <new_line>
+  239  if ( index( output_buffer , <character_quotation_mark><specify <character_quotation_mark> ) > 0 ) {  <new_line>
+  ...
+  241  while ( length( output_buffer ) != prior_length ) {  <new_line>
+  242  prior_length = length( output_buffer ) ;  <new_line>
+  243: output_buffer =~ s/ *> *<specify +/ / ;  <new_line>
+  244  }  <new_line>
+  245  }  <new_line>
+  ...
+  254  **** comenn
+  255  
+  256: output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ;  <new_line>
+  257: output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;  <new_line>
+  258: output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;  <new_line>
+  259  
+  260  if ( output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) {  <new_line>
+  ...
+  273  
+  274  possible_phrase_name_with_hyphens = possible_phrase_name_with_underscores ;  <new_line>
+  275: possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ;  <new_line>
+  276  if ( global_dashrep_replacement.contains( possible_phrase_name_with_hyphens ) ) {  <new_line>
+  277  new_output_buffer += global_dashrep_replacement[ possible_phrase_name_with_hyphens ] ;  <new_line>
+
+.../6_actions_cpp/template-function-copy-and-move-attributes-into-xml-tags.txt:
+    9  global_text_being_edited = global_dashrep_replacement[ global_operand_one ] ;  <new_line>
+   10  while( global_text_being_edited looks-like-begin  R<character_quotation_mark>( *<character_backslash>)<character_quotation_mark> looks-like-end> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+   11:     global_text_being_edited =~ s/ *<character_backslash>/> *<((attribute)|(specify)) (([^<character_quotation_mark><>]*<character_quotation_mark>[^<character_quotation_mark>]*<character_quotation_mark>[^<character_quotation_mark><>]*)+?)>/ $4 <character_backslash>/>/sg ;  <new_line>
+   12      if ( global_endless_loop_counter > global_endless_loop_counter_limit <character_hyphen> 100 ) {  <new_line>
+   13          global_action_result = <character_quotation_mark>error_endless_loop_within_action_copy_and_move_attributes_into_xml_tags<character_quotation_mark> ;  <new_line>
+
+.../6_actions_cpp/template-function-get-cgi-information.txt:
+   90  }  <new_line>
+   91  
+   92: global_name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+   93  replace-begin global_name  replace-equals global_name  replace-this R<character_quotation_mark>([<><character_backslash>/<character_backslash><character_backslash>]+)<character_quotation_mark> with-this R<character_quotation_mark>(_)<character_quotation_mark> replace-end  <new_line>
+   94  
+   ..
+   96  //               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
+   97  replace-begin global_value replace-equals global_value replace-this R<character_quotation_mark>(%0D)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
+   98: global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+   99  } else {  <new_line>
+  100: global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+  101  replace-begin global_value replace-equals global_value replace-this R<character_quotation_mark>([<>]+)<character_quotation_mark> with-this R<character_quotation_mark>(_)<character_quotation_mark> replace-end  <new_line>
+  102: global_value =~ s/<character_backslash>n/<eol<character_backslash>/>/gm ;  <new_line>
+  103  }  <new_line>
+  104  
+
+.../6_actions_cpp/template-function-xml-move-attributes-into-tag-elements.txt:
+    9  global_text_being_edited = global_dashrep_replacement[ global_phrase_being_edited ] ;  <new_line>
+   10  while( global_text_being_edited looks-like-begin  R<character_quotation_mark>( *<character_backslash>)<character_quotation_mark> looks-like-end> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
+   11:     global_text_being_edited =~ s/ *<character_backslash>/> *<((attribute)|(specify)) (([^<character_quotation_mark><>]*<character_quotation_mark>[^<character_quotation_mark>]*<character_quotation_mark>[^<character_quotation_mark><>]*)+?)>/ $4 <character_backslash>/>/sg ;  <new_line>
+   12  //    global_phrase_usage_count_for_phrase_number[ 1 ] ++ ;  <new_line>
+   13      if ( global_endless_loop_counter > global_endless_loop_counter_limit - 100 ) {  <new_line>
+
 
 
 -------------------------------------------------
@@ -54,12 +146,6 @@ not-looks-like-end
 
 -------------------------------------------------
 
-remove "before:" lines
-use dashrep_do_replacements
-
-
--------------------------------------------------
-
 fix code snippet that removes combee comenn coments
 
 
@@ -98,7 +184,6 @@ generate-list-of-tokens-in-current-definition-quotable
 -------------------------------------------------
 
 define-special-strings-that-are-padded-with-spaces
-
 
 
 -------------------------------------------------
