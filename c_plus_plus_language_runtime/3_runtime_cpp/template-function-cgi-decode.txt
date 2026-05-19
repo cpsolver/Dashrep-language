@@ -1,0 +1,24 @@
+// no-space dashes-long-line  <new_line>
+// function__cgi_decode  <new_line>
+//  <new_line>
+
+declare-return-value-text function__cgi_decode( const std::string& cgi_info ) {  <new_line>
+declare-text decoded_text ;  <new_line>
+decoded_text.reserve( cgi_info.size() ) ;  <new_line>
+for ( global_character_pointer = 0 ; global_character_pointer < cgi_info.size() ; ++ global_character_pointer ) {  <new_line>
+if ( ( cgi_info[ global_character_pointer ] == '%' ) &&
+( global_character_pointer + 2 < cgi_info.size() ) &&
+( std::isxdigit( ( unsigned char ) cgi_info[ global_character_pointer + 1 ] ) ) &&
+( std::isxdigit( ( unsigned char ) cgi_info[ global_character_pointer + 2 ] ) ) )   <new_line>
+{  <new_line>
+declare-text hex_text = cgi_info.substr( global_character_pointer + 1 , 2 ) ;  <new_line>
+char decoded = static_cast<char>(std::stoi( hex_text , nullptr , 16 ) ) ;  <new_line>
+decoded_text += decoded ;  <new_line>
+global_character_pointer += 2 ;  <new_line>
+} else {  <new_line>
+decoded_text += cgi_info[ global_character_pointer ] ;  <new_line>
+}  <new_line>
+}  <new_line>
+return decoded_text ;  <new_line>
+
+template-function-segment-ending
