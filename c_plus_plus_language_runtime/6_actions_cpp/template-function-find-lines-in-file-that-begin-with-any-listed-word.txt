@@ -21,7 +21,7 @@ if ( global_list_of_words_as_text looks-like-begin  R<character_quotation_mark>(
 for-each global_word ( globallist_of_words ) {  <new_line>
     global_matching_text{ global_word } = <character_quotation_mark>match<character_quotation_mark> ;  <new_line>
 }  <new_line>
-while ( global_input_line = <INFILE> ) {  <new_line>
+loop-begin-read-global-input-line-from-infile {  <new_line>
     global_length_of_first_word = index( global_input_line , <character_quotation_mark> <character_quotation_mark> ) ;  <new_line>
     global_possible_match = substr( global_input_line , 0 , global_length_of_first_word ) ;  <new_line>
 

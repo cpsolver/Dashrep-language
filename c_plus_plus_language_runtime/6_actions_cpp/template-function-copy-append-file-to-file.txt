@@ -11,7 +11,7 @@ global_source_file_name = global_operand_one ;  <new_line>
 template-open-file-for-reading
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-while ( global_input_line = <INFILE> ) {  <new_line>
+loop-begin-read-global-input-line-from-infile {  <new_line>
     write-to-outfile-begin global_input_line write-to-file-end-of-line  <new_line>
 }  <new_line>
 global_yes_or_no_file_opened_for_reading = global_no ;  <new_line>

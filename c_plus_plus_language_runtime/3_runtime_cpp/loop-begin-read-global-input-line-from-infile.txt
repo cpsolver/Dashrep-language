@@ -1,0 +1,1 @@
+while ( std::getline( infile , global_input_line ) ) {  <new_line>

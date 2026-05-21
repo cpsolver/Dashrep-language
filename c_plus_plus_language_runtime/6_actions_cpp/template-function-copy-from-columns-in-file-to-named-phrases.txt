@@ -38,7 +38,7 @@ if ( this-dashrep-phrase <character_quotation_mark>yes hyphen-here or hyphen-her
 } else {  <new_line>
     global_use_two_spaces_as_delimiter = <character_quotation_mark>no<character_quotation_mark> ;  <new_line>
 }  <new_line>
-while ( global_input_line = <INFILE> ) {  <new_line>
+loop-begin-read-global-input-line-from-infile {  <new_line>
 replace-begin global_input_line replace-equals global_input_line replace-this R<character_quotation_mark>([ <character_backslash>n<character_backslash>t]+$)<character_quotation_mark> with-this R<character_quotation_mark>()<character_quotation_mark> replace-end  <new_line>
     if ( global_use_two_spaces_as_delimiter == <character_quotation_mark>yes<character_quotation_mark> ) {  <new_line>
         globaltext_item_in_column = split( /<character_space> +/ , global_input_line ) ;  <new_line>

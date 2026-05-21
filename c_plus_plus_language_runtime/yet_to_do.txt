@@ -3,14 +3,13 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
-from:
-while( global_input_line = <INFILE> ) {
-while ( global_input_line = <INFILE> ) {
+keys( %
 
-to:
-loop-begin-read-global-input-line-from-infile
+10 matches across 6 files
 
-in 12 files
+for (const auto &key_value_pair : global_number_of_times_encountered_phrase_named) {
+    const std::string &phrase_name = key_value_pair.first;
+    // ... body using phrase_name (and optionally key_value_pair.second for the count)
 
 
 -------------------------------------------------
@@ -24,19 +23,6 @@ replace with:
 not-looks-like-begin
 not-looks-like
 not-looks-like-end
-
-
--------------------------------------------------
-
-keys( %
-
-10 matches across 6 files
-
-at:
-global_number_of_times_encountered_phrase_named
-global_occurance_count
-
-uses: do-list-clear
 
 
 -------------------------------------------------

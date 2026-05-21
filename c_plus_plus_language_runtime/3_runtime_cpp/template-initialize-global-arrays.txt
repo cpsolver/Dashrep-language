@@ -13,6 +13,9 @@ std::unordered_map<std::string, std::string> global_text_to_find_at_position = (
 std::unordered_map<std::string, std::string> global_words_at_numeric_value = ( ) ;  <new_line>
 <new_line>
 
+std::unordered_map<std::string, int> global_number_of_times_encountered_phrase_named ;  <new_line>
+<new_line>
+
 std::vector<std::string> global_accumulator = ( ) ;  <new_line>
 global_accumulator[ 0 ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_accumulator[ 1 ] = <character_quotation_mark><character_quotation_mark> ;  <new_line>
@@ -97,10 +100,3 @@ std::vector<std::string> global_value_in_column = ( ) ;  <new_line>
 std::vector<std::string> global_zero_if_not_remaining_item_number = ( ) ;  <new_line>
 std::vector<std::string> global_name_value_pairs = ( ) ;  <new_line>
 <new_line>
-
-
-// todo: remove these when no longer used  <new_line>
-
-std::unordered_map<std::string, std::string> global_number_of_times_encountered_phrase_named ;  <new_line>
-%global_number_of_times_encountered_phrase_named = ( ) ;  <new_line>
-
