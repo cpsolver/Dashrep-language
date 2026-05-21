@@ -3,6 +3,18 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
+from:
+while( global_input_line = <INFILE> ) {
+while ( global_input_line = <INFILE> ) {
+
+to:
+loop-begin-read-global-input-line-from-infile
+
+in 12 files
+
+
+-------------------------------------------------
+
 !~
 
 24 matches across 13 files
@@ -16,14 +28,9 @@ not-looks-like-end
 
 -------------------------------------------------
 
-insert when needed:
-template-function-cgi-decode
-needed by functions that call cgi_decode
-
-
--------------------------------------------------
-
 keys( %
+
+10 matches across 6 files
 
 at:
 global_number_of_times_encountered_phrase_named
@@ -34,15 +41,10 @@ uses: do-list-clear
 
 -------------------------------------------------
 
+declare globally:
 trace_file
-
-ensure declare globally:
+as
 std::ofstream trace_file
-
-
--------------------------------------------------
-
-while( global_input_line = <INFILE> )
 
 
 -------------------------------------------------
@@ -62,6 +64,13 @@ dashrep_adjust_compiler_generate_cpp_code.txt
 move code that inserts libraries and function declarations
 
 do replacements as needed, especially for new phrases
+
+
+-------------------------------------------------
+
+insert when needed:
+template-function-cgi-decode
+needed by functions that call cgi_decode
 
 
 -------------------------------------------------
