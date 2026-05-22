@@ -14,15 +14,34 @@ for (const auto &key_value_pair : global_number_of_times_encountered_phrase_name
 
 -------------------------------------------------
 
-!~
+split(
 
-24 matches across 13 files
+62 matches across 44 files
 
-replace with:
+#include <iterator>
 
-not-looks-like-begin
-not-looks-like
-not-looks-like-end
+std::string global_temp_text = /* ... */;
+std::regex re{" +"}; // one or more spaces
+std::sregex_token_iterator it(global_temp_text.begin(), global_temp_text.end(), re, -1);
+std::sregex_token_iterator end;
+std::vector<std::string> globallist(it, end);
+
+Perl:
+$globallist = split( / +/ , $global_temp_text );
+
+faster, just splits on spaces:
+
+std::string s = global_temp_text;
+std::vector<std::string> globallist;
+size_t i = 0, n = s.size();
+while (i < n) {
+    while (i < n && s[i] == ' ') ++i;             // skip spaces
+    if (i >= n) break;
+    size_t j = i;
+    while (j < n && s[j] != ' ') ++j;             // find next space
+    globallist.emplace_back(s.substr(i, j - i));
+    i = j;
+}
 
 
 -------------------------------------------------

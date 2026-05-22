@@ -8,19 +8,19 @@ template-open-file-for-reading
 
 global_action_result = <character_quotation_mark><character_quotation_mark> ;  <new_line>
 global_entry_begin = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gather hyphen-here tag hyphen-here begin<character_quotation_mark> } ;  <new_line>
-if ( global_entry_begin !~ /^[^ ]+$/ ) {  <new_line>
+if ( not-looks-like-begin global_entry_begin not-looks-like R"(^[^ ]+$)" not-looks-like-end ) {  <new_line>
     global_entry_begin = <character_quotation_mark>entry_begin<character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_entry_end = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gather hyphen-here tag hyphen-here end<character_quotation_mark> } ;  <new_line>
-if ( global_entry_end !~ /^[^ ]+$/ ) {  <new_line>
+if ( not-looks-like-begin global_entry_end not-looks-like R"(^[^ ]+$)" not-looks-like-end ) {  <new_line>
     global_entry_end = <character_quotation_mark>entry_end<character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_entry_unique = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gather hyphen-here tag hyphen-here unique<character_quotation_mark> } ;  <new_line>
-if ( global_entry_unique !~ /^[^ ]+$/ ) {  <new_line>
+if ( not-looks-like-begin global_entry_unique not-looks-like R"(^[^ ]+$)" not-looks-like-end ) {  <new_line>
     global_entry_unique = <character_quotation_mark>url<character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_entry_delete = global_dashrep_replacement[ <character_quotation_mark>dashrep hyphen-here gather hyphen-here tag hyphen-here delete<character_quotation_mark> } ;  <new_line>
-if ( global_entry_delete !~ /^[^ ]+$/ ) {  <new_line>
+if ( not-looks-like-begin global_entry_delete not-looks-like R"(^[^ ]+$)" not-looks-like-end ) {  <new_line>
     global_entry_delete = <character_quotation_mark>delete_id<character_quotation_mark> ;  <new_line>
 }  <new_line>
 global_unique_value = <character_quotation_mark><character_quotation_mark> ;  <new_line>

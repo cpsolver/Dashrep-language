@@ -5,7 +5,7 @@
 void function_parameterized__get_list_of_words( declare-string local_text ) {  <new_line>
 declare-string globallist_of_operands ;  <new_line>
 
-if ( local_text !~ /[^ ]/ ) {  <new_line>
+if ( not-looks-like-begin local_text not-looks-like R"([^ ])" not-looks-like-end ) {  <new_line>
 return ;  <new_line>
 }  <new_line>
 
