@@ -7,9 +7,9 @@ keys( %
 
 10 matches across 6 files
 
-for (const auto &key_value_pair : global_number_of_times_encountered_phrase_named) {
-    const std::string &phrase_name = key_value_pair.first;
-    // ... body using phrase_name (and optionally key_value_pair.second for the count)
+for (const auto& [phrase_name, [[maybe_unused]] count] : global_number_of_times_encountered_phrase_named) {
+    // only use phrase_name
+}
 
 
 -------------------------------------------------
@@ -18,29 +18,37 @@ split(
 
 62 matches across 44 files
 
-#include <iterator>
+splits on any of these:
+Spaces ( )
+Tabs (\t)
+Newlines (\n)
+Carriage returns (\r)
+Form feeds (\f)
 
-std::string global_temp_text = /* ... */;
-std::regex re{" +"}; // one or more spaces
-std::sregex_token_iterator it(global_temp_text.begin(), global_temp_text.end(), re, -1);
-std::sregex_token_iterator end;
-std::vector<std::string> globallist(it, end);
+declare globally:
+#include <sstream>
+std::string global_word;
+std::vector<std::string> globallist_of_parameter_words;
+std::istringstream global_stream_list_of_words_as_text(global_list_of_words_as_text);
 
-Perl:
-$globallist = split( / +/ , $global_temp_text );
+each instance:
+while (global_stream_list_of_words_as_text >> global_word) {
+    globallist_of_parameter_words.push_back(global_word);
+}
 
-faster, just splits on spaces:
+or, split at line breaks (after removing Windows \r characters):
+std::istringstream global_stream(global_list_of_words_as_text);
 
-std::string s = global_temp_text;
-std::vector<std::string> globallist;
-size_t i = 0, n = s.size();
-while (i < n) {
-    while (i < n && s[i] == ' ') ++i;             // skip spaces
-    if (i >= n) break;
-    size_t j = i;
-    while (j < n && s[j] != ' ') ++j;             // find next space
-    globallist.emplace_back(s.substr(i, j - i));
-    i = j;
+while (std::getline(global_stream, global_line)) {
+    globallist_of_parameter_words.push_back(global_line);
+}
+
+remove Windows \r characters:
+while (std::getline(global_stream, global_line)) {
+    if (!global_line.empty() && global_line.back() == '\r') {
+        global_line.pop_back();
+    }
+    globallist_of_parameter_words.push_back(global_line);
 }
 
 
