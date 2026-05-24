@@ -18,7 +18,7 @@ if ( global_text_list_key code-not-equals <character_quotation_mark><character_q
     for-each global_word ( globallist_of_key_values ) {  <new_line>
         global_listed_word{ global_word } = <character_quotation_mark>exists<character_quotation_mark> ;  <new_line>
     }  <new_line>
-    for-each global_word ( keys( %global_listed_word ) ) {  <new_line>
+    for-each-key-named global_word for-each-key-in-list global_listed_word for-each-key-end {  <new_line>
         global_result_word_list += global_word + <character_quotation_mark> <character_quotation_mark> ;  <new_line>
     }  <new_line>
 }  <new_line>

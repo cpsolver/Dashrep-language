@@ -123,7 +123,7 @@ if ( global_yes_or_no_count_phrase_usage == global_yes ) {  <new_line>
 global_number_of_times_encountered_phrase_named[ current_phrase ] ++ ;  <new_line>
 if ( global_number_of_times_encountered_phrase_named[ current_phrase ] >= expand_endless_cycle_count_maximum ) {  <new_line>
 maximum_cycle_count = 0 ;  <new_line>
-foreach phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {  <new_line>
+for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {  <new_line>
 cycle_count = global_number_of_times_encountered_phrase_named{ phrase_name } ;  <new_line>
 if ( cycle_count > maximum_cycle_count ) {  <new_line>
 maximum_cycle_count = cycle_count ;  <new_line>

@@ -3,23 +3,19 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
-keys( %
-
-10 matches across 6 files
-
-for (const auto& [phrase_name, [[maybe_unused]] count] : global_number_of_times_encountered_phrase_named) {
-    // only use phrase_name
-}
-
-
--------------------------------------------------
-
 split(
 
 62 matches across 44 files
 
-splits on any of these:
-Spaces ( )
+create function that gets pointer to text,
+leaves text unchanged if just single spaces,
+else modifies to remove leading spaces, trailing spaces,
+and replace multiple spaces and any other whitespace with single spaces
+
+handle any of these:
+Leading spaces
+Trailing spaces
+Multiple spaces (  )
 Tabs (\t)
 Newlines (\n)
 Carriage returns (\r)
@@ -54,18 +50,34 @@ while (std::getline(global_stream, global_line)) {
 
 -------------------------------------------------
 
-declare globally:
-trace_file
-as
-std::ofstream trace_file
-
-
--------------------------------------------------
-
 fix code snippet that removes combee comenn coments
 
 
 add code snippet that does diff list one versus list two
+
+
+-------------------------------------------------
+
+currently:
+globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
+globalsequence_of_phrases = sort( globallist_of_phrases ) ;  <new_line>
+
+another case:
+for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+perl version for AI:
+$for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+already changed:
+for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {
+
+
+-------------------------------------------------
+
+declare globally:
+trace_file
+as
+std::ofstream trace_file
 
 
 -------------------------------------------------

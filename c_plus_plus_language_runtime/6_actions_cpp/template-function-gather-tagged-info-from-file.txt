@@ -41,7 +41,7 @@ replace-begin global_input_line replace-equals global_input_line replace-this R<
             global_line_status = <character_quotation_mark>within<character_quotation_mark> ;  <new_line>
         } else if ( ( global_first_word == global_entry_end ) || ( global_first_word == global_entry_begin ) ) {  <new_line>
             if ( global_unique_value looks-like-begin  R<character_quotation_mark>(^[^ ]+$)<character_quotation_mark> looks-like-end ) {  <new_line>
-                for-each global_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
+                for-each-key-named global_tag_name for-each-key-in-list global_content_for_tag for-each-key-end {  <new_line>
                     global_dashrep_replacement[ global_tag_name + <character_quotation_mark><character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen><character_quotation_mark> + global_unique_value } = global_content_for_tag{ global_tag_name } ;  <new_line>
                 }  <new_line>
             } else if ( global_first_word == global_entry_end ) {  <new_line>
@@ -92,12 +92,12 @@ replace-begin global_unique_value replace-equals global_unique_value replace-thi
         }  <new_line>
     }  <new_line>
     if ( global_unique_value looks-like-begin  R<character_quotation_mark>(^[^ ]+$)<character_quotation_mark> looks-like-end ) {  <new_line>
-        for-each global_tag_name ( keys( %global_content_for_tag ) ) {  <new_line>
+        for-each-key-begin global_tag_name for-each-key-in-list global_content_for_tag for-each-key-end {  <new_line>
             global_dashrep_replacement[ global_tag_name + <character_quotation_mark><character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen><character_quotation_mark> + global_unique_value } = global_content_for_tag{ global_tag_name } ;  <new_line>
         }  <new_line>
     }  <new_line>
     global_list_of_unique_values = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-    for-each global_unique_value ( keys( %global_found_unique_value ) ) {  <new_line>
+    for-each-key-named global_unique_value for-each-key-in-list global_found_unique_value for-each-key-end {  <new_line>
         if ( global_found_unique_value{ global_unique_value } code-not-equals <character_quotation_mark>delete<character_quotation_mark> ) {  <new_line>
             if ( global_list_of_unique_values code-not-equals <character_quotation_mark><character_quotation_mark> ) {  <new_line>
                 global_list_of_unique_values += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
@@ -107,7 +107,7 @@ replace-begin global_unique_value replace-equals global_unique_value replace-thi
     }  <new_line>
     global_dashrep_replacement[ global_operand_two ] = global_list_of_unique_values ;  <new_line>
     global_list_of_tag_names = <character_quotation_mark><character_quotation_mark> ;  <new_line>
-    for-each global_tag_name ( keys( %global_exists_tag_name ) ) {  <new_line>
+    for-each-key-named global_tag_name for-each-key-in-list global_exists_tag_name for-each-key-end {  <new_line>
         if ( global_list_of_tag_names code-not-equals <character_quotation_mark><character_quotation_mark> ) {  <new_line>
             global_list_of_tag_names += <character_quotation_mark> <character_quotation_mark> ;  <new_line>
         }  <new_line>
