@@ -3,6 +3,76 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
+C++ code removes Windows \r (carriage return) character if present:
+
+if (!global_line.empty() && global_line.back() == '\r') {
+    global_line.pop_back();
+}
+
+
+-------------------------------------------------
+
+C++ function splits, on whitespace, a "String" object into a list/array/vector of text strings:
+
+declare:
+std::istringstream global_text_as_stream
+std::vector<std::string> globallist_of_parameter_words;
+
+usage:
+split_into_words( global_list_of_words_as_text , globallist_of_parameter_words ) ;
+
+function:
+void split_into_words( const std::string& reference_to_input_text , std::vector<std::string>& reference_to_list_of_words) {
+    reference_to_list_of_words.clear() ;
+    global_text_as_stream( reference_to_input_text ) ;
+    while ( global_text_as_stream >> global_word ) {
+        reference_to_list_of_words.push_back( global_word ) ;
+    }
+}
+
+FYI: sstream handles all the whitespace types you listed (leading, trailing, multiple spaces, tabs, newlines, form feeds) automatically
+
+
+-------------------------------------------------
+
+Write a line of C++ code that sorts a list/array/vector of String objects.  One version for alphabetical order.  Another version for numeric order where the string objects contain integers and/or decimal numbers as text (such as "-123.45").
+
+required:
+#include <algorithm> ;
+
+alphabetical order:
+std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ) ;
+
+numeric order:
+std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ,
+    []( const std::string& a , const std::string& b ) { return std::stod( a ) < std::stod( b ) ; } ) ;
+
+
+
+
+How efficient is this line of C++ code compared to using the ":" operator for creating a loop?
+while ( string_stream >> word_of_text ) { ... }
+
+
+-------------------------------------------------
+
+
+currently:
+globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
+globalsequence_of_phrases = sort( globallist_of_phrases ) ;  <new_line>
+
+another case:
+for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+perl version for AI:
+$for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+already changed:
+for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {
+
+
+-------------------------------------------------
+
 split(
 
 62 matches across 44 files
@@ -39,14 +109,6 @@ while (std::getline(global_stream, global_line)) {
     globallist_of_parameter_words.push_back(global_line);
 }
 
-remove Windows \r characters:
-while (std::getline(global_stream, global_line)) {
-    if (!global_line.empty() && global_line.back() == '\r') {
-        global_line.pop_back();
-    }
-    globallist_of_parameter_words.push_back(global_line);
-}
-
 
 -------------------------------------------------
 
@@ -58,22 +120,6 @@ add code snippet that does diff list one versus list two
 
 -------------------------------------------------
 
-currently:
-globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
-globalsequence_of_phrases = sort( globallist_of_phrases ) ;  <new_line>
-
-another case:
-for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
-
-perl version for AI:
-$for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
-
-already changed:
-for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {
-
-
--------------------------------------------------
-
 declare globally:
 trace_file
 as
@@ -81,7 +127,6 @@ std::ofstream trace_file
 
 
 -------------------------------------------------
-
 
 create:
 dashrep_adjust_compiler_generate_cpp_code.txt
