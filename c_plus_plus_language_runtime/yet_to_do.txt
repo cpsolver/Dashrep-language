@@ -12,17 +12,33 @@ if (!global_line.empty() && global_line.back() == '\r') {
 
 -------------------------------------------------
 
+split(
+
+62 matches across 44 files
+
 C++ function splits, on whitespace, a "String" object into a list/array/vector of text strings:
 
-declare:
+declare globally:
+#include <sstream>
 std::istringstream global_text_as_stream
 std::vector<std::string> globallist_of_parameter_words;
+std::vector<std::string> globallist_of_parameter_words;
+std::string global_word;
+
+split-into-words-begin
+parameterized_split_text_into_words(
+
+split-into-words-middle
+,
+
+split-into-words-end
+) ;
 
 usage:
-split_into_words( global_list_of_words_as_text , globallist_of_parameter_words ) ;
+parameterized_split_text_into_words( global_list_of_words_as_text , globallist_of_parameter_words ) ;
 
 function:
-void split_into_words( const std::string& reference_to_input_text , std::vector<std::string>& reference_to_list_of_words) {
+void parameterized_split_into_words( const std::string& reference_to_input_text , std::vector<std::string>& reference_to_list_of_words ) {
     reference_to_list_of_words.clear() ;
     global_text_as_stream( reference_to_input_text ) ;
     while ( global_text_as_stream >> global_word ) {
@@ -35,19 +51,21 @@ FYI: sstream handles all the whitespace types you listed (leading, trailing, mul
 
 -------------------------------------------------
 
-Write a line of C++ code that sorts a list/array/vector of String objects.  One version for alphabetical order.  Another version for numeric order where the string objects contain integers and/or decimal numbers as text (such as "-123.45").
+sort:
 
 required:
 #include <algorithm> ;
 
 alphabetical order:
-std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ) ;
+void parameterized_sort_alphabetic( std::vector<std::string>& globallist_of_parameter_words ) {
+    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ) ;
+}
 
 numeric order:
-std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ,
+void parameterized_sort_numeric( std::vector<std::string>& globallist_of_parameter_words ) {
+    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ,
     []( const std::string& a , const std::string& b ) { return std::stod( a ) < std::stod( b ) ; } ) ;
-
-
+}
 
 
 How efficient is this line of C++ code compared to using the ":" operator for creating a loop?
@@ -55,7 +73,6 @@ while ( string_stream >> word_of_text ) { ... }
 
 
 -------------------------------------------------
-
 
 currently:
 globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
@@ -73,40 +90,42 @@ for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encou
 
 -------------------------------------------------
 
-split(
+parameterized_remove_extra_spaces
 
-62 matches across 44 files
+std::string global_text_possibly_with_extra_spaces;
 
-create function that gets pointer to text,
-leaves text unchanged if just single spaces,
-else modifies to remove leading spaces, trailing spaces,
-and replace multiple spaces and any other whitespace with single spaces
+void parameterized_remove_extra_spaces(std::string& text_to_modify) {
+    bool needs_normalization = false;
 
-handle any of these:
-Leading spaces
-Trailing spaces
-Multiple spaces (  )
-Tabs (\t)
-Newlines (\n)
-Carriage returns (\r)
-Form feeds (\f)
+    if (!text_to_modify.empty() && std::isspace((unsigned char)text_to_modify.front())) {
+        needs_normalization = true;
+    } else if (!text_to_modify.empty() && std::isspace((unsigned char)text_to_modify.back())) {
+        needs_normalization = true;
+    } else {
+        for (size_t i = 0; i < text_to_modify.size(); ++i) {
+            if (std::isspace((unsigned char)text_to_modify[i]) &&
+                (text_to_modify[i] != ' ' || (i + 1 < text_to_modify.size() &&
+                std::isspace((unsigned char)text_to_modify[i + 1])))) {
+                needs_normalization = true;
+                break;
+            }
+        }
+    }
 
-declare globally:
-#include <sstream>
-std::string global_word;
-std::vector<std::string> globallist_of_parameter_words;
-std::istringstream global_stream_list_of_words_as_text(global_list_of_words_as_text);
+    if (!needs_normalization) return;
 
-each instance:
-while (global_stream_list_of_words_as_text >> global_word) {
-    globallist_of_parameter_words.push_back(global_word);
-}
+    std::istringstream text_to_modify_as_stream(text_to_modify);
+    std::string local_word;
+    global_text_possibly_with_extra_spaces.clear();
 
-or, split at line breaks (after removing Windows \r characters):
-std::istringstream global_stream(global_list_of_words_as_text);
+    while (text_to_modify_as_stream >> local_word) {
+        if (!global_text_possibly_with_extra_spaces.empty()) {
+            global_text_possibly_with_extra_spaces += ' ';
+        }
+        global_text_possibly_with_extra_spaces += local_word;
+    }
 
-while (std::getline(global_stream, global_line)) {
-    globallist_of_parameter_words.push_back(global_line);
+    text_to_modify = global_text_possibly_with_extra_spaces;
 }
 
 
