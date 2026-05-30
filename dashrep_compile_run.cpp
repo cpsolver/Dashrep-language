@@ -27,6 +27,8 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <filesystem>
+#include <fstream>
 
 // Validates that the parameter contains only letters, digits, and underscores.
 bool isValidParam(const std::string& param) {
@@ -54,8 +56,28 @@ int run(const std::string& cmd) {
     return ret;
 }
 
-int main(int argc, char* argv[]) {
 
+void delete_file(const std::string& path) {
+    std::error_code ec;
+    std::filesystem::remove(path, ec);
+    // Ignore error
+}
+
+
+void copy_file(const std::string& src, const std::string& dst) {
+    std::error_code ec;
+    std::filesystem::copy_file(
+        src, dst,
+        std::filesystem::copy_options::overwrite_existing,
+        ec);
+    if (ec) {
+        std::cerr << "Error copying " << src << " to " << dst
+                  << ": " << ec.message() << std::endl;
+    }
+}
+
+
+int main(int argc, char* argv[]) {
 
     if (argc < 2 || argc > 3) {
         std::cerr << "Usage: " << argv[0] << " <parameter> [<compiler_dir>]" << std::endl;
@@ -90,8 +112,8 @@ int main(int argc, char* argv[]) {
     std::string run_output          = "output_from_running_" + param + ".txt";
 
     // Step 1: Remove old trace files (ignore errors if they don't exist).
-    run("rm -f " + output_trace);
-    run("rm -f " + output_trace_copy);
+    delete_file(output_trace);
+    delete_file(output_trace_copy);
 
     // Step 2: Run the Dashrep compiler.
     std::string compile_cmd =
@@ -104,7 +126,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Step 3: Copy the compiler's trace output.
-    run("cp output_trace.txt " + output_trace_copy);
+    copy_file("output_trace.txt", output_trace_copy);
 
     // Step 4: Run the compiled Perl script.
     std::string run_cmd =
