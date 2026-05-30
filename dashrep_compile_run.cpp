@@ -7,19 +7,16 @@
 //  g++ -std=c++17 -o dashrep_compile_run dashrep_compile_run.cpp
 //  ./dashrep_compile_run <parameter> [<compiler_dir>]
 //
-//  <parameter> must contain only letters, digits, and underscores
-//  <compiler_dir> optional path to directory containing dashrep_compiler_executable.pl
-//  default path is local
+//  <parameter> must contain only letters, digits, and underscores.
+//
+//  <compiler_dir> is an optional path to the directory
+//  that contains the file: dashrep_compiler_executable.pl
+//  If omitted, the default path is local.
 //
 //  Assume Dashrep code is in file named 
 //  input_file          = "dashrep_" + param + ".txt";
 //
-//  Output files:
-//  output_trace        = "output_trace_" + param + ".txt";
-//  output_trace_copy   = "output_trace_from_dashrep_compiler_" + param + ".txt";
-//  compiler_log        = "output_log_from_dashrep_compiler_" + param + ".txt";
-//  compiled_script     = "output_from_dashrep_compiler.pl";
-//  run_output          = "output_from_running_" + param + ".txt";
+//  For output files, see code.
 //
 //---------------------------------------------------
 
@@ -47,9 +44,9 @@ bool isValidParam(const std::string& param) {
 
 // Runs a shell command and returns its exit code.
 int run(const std::string& cmd) {
-    std::cout << "Running: " << cmd << std::endl;
     int ret = std::system(cmd.c_str());
     if (ret != 0) {
+        std::cout << "Attempted to run: " << cmd << std::endl;
         std::cerr << "Warning: command exited with code " << ret
                   << ": " << cmd << std::endl;
     }
@@ -57,6 +54,7 @@ int run(const std::string& cmd) {
 }
 
 
+// Deletes a file.
 void delete_file(const std::string& path) {
     std::error_code ec;
     std::filesystem::remove(path, ec);
@@ -64,6 +62,7 @@ void delete_file(const std::string& path) {
 }
 
 
+// Copies a file.
 void copy_file(const std::string& src, const std::string& dst) {
     std::error_code ec;
     std::filesystem::copy_file(
@@ -77,6 +76,7 @@ void copy_file(const std::string& src, const std::string& dst) {
 }
 
 
+// Main code.
 int main(int argc, char* argv[]) {
 
     if (argc < 2 || argc > 3) {
@@ -101,42 +101,69 @@ int main(int argc, char* argv[]) {
     if (!compiler_dir.empty() && compiler_dir.back() == '/') {
         compiler_dir.pop_back();
     }
+    std::string name_of_temporary_file;
+
+    // Build filenames.
+    std::string input_file = "dashrep_" + param + ".txt";
+    std::string output_trace_from_compiler = "output_trace_from_dashrep_compiler_" + param + ".txt";
+    std::string compiled_runtime_program = "output_compiled_dashrep_program_" + param + ".pl";
+    std::string output_trace = "output_trace_" + param + ".txt";
+    std::string compiler_log = "output_log_from_dashrep_compiler_" + param + ".txt";
+    std::string output_from_dashrep_compiler = "output_from_dashrep_compiler" + param + ".txt";
+    std::string run_output = "output_from_running_" + param + ".txt";
+    std::string output_trace_from_running = "output_trace_from_running_" + param + ".txt";
+
+    // Build path to compiler.
     std::string compiler_path = compiler_dir + "/dashrep_compiler_executable.pl";
 
-    // Build filenames from the parameter.
-    std::string output_trace        = "output_trace_" + param + ".txt";
-    std::string output_trace_copy   = "output_trace_from_dashrep_compiler_" + param + ".txt";
-    std::string input_file          = "dashrep_" + param + ".txt";
-    std::string compiler_log        = "output_log_from_dashrep_compiler_" + param + ".txt";
-    std::string compiled_script     = "output_from_dashrep_compiler.pl";
-    std::string run_output          = "output_from_running_" + param + ".txt";
-
-    // Step 1: Remove old trace files (ignore errors if they don't exist).
+    // Remove files from previous run.
+    delete_file(output_trace_from_compiler);
+    delete_file(compiled_runtime_program);
     delete_file(output_trace);
-    delete_file(output_trace_copy);
+    delete_file(compiler_log);
+    delete_file(output_from_dashrep_compiler);
+    delete_file(run_output);
+    delete_file(output_trace_from_running);
 
-    // Step 2: Run the Dashrep compiler.
+    // Run the Dashrep compiler.
     std::string compile_cmd =
         "perl -w " + compiler_path + " < " + input_file +
         " > " + compiler_log;
     int compile_ret = run(compile_cmd);
     if (compile_ret != 0) {
-        std::cerr << "Error: Dashrep compiler step failed." << std::endl;
+        std::cerr << "Error: Dashrep compiler error." << std::endl;
         return compile_ret;
     }
 
-    // Step 3: Copy the compiler's trace output.
-    copy_file("output_trace.txt", output_trace_copy);
+    // Copy the compiler's trace output.
+    copy_file("output_trace.txt", output_trace_from_compiler);
+    name_of_temporary_file = "output_trace.txt";
+    delete_file(name_of_temporary_file);
 
-    // Step 4: Run the compiled Perl script.
+    // Copy the compiled runtime code.
+    copy_file("output_from_dashrep_compiler.pl", compiled_runtime_program);
+
+    // Delete duplicate files and files only needed for debugging compiler.
+    name_of_temporary_file = "output_from_dashrep_compiler.pl";
+    delete_file(name_of_temporary_file);
+    name_of_temporary_file = "output_compiler_functions_replacement_only.txt";
+    delete_file(name_of_temporary_file);
+    name_of_temporary_file = "output_compiler_all_function_branches.txt";
+    delete_file(name_of_temporary_file);
+    name_of_temporary_file = "output_compiler_all_definition_items.txt";
+    delete_file(name_of_temporary_file);
+    name_of_temporary_file = "output_compiler_all_compiled_functions.txt";
+    delete_file(name_of_temporary_file);
+
+    // Run the compiled Perl script.
     std::string run_cmd =
-        "perl -w " + compiled_script + " > " + run_output;
+        "perl -w " + compiled_runtime_program + " > " + run_output;
     int run_ret = run(run_cmd);
     if (run_ret != 0) {
         std::cerr << "Error: Running compiled script failed." << std::endl;
         return run_ret;
     }
 
-    std::cout << "Done. Output written to " << run_output << std::endl;
+    std::cout << "Compiled, run, output written to " << run_output << std::endl;
     return 0;
 }
