@@ -3,6 +3,56 @@ Yet to do for converting runtime from Perl to C++
 
 -------------------------------------------------
 
+sort(
+
+6 matches across 5 files
+
+function-generate-phrase-usage-counts  has two uses:
+
+for-each global_replacement_count_text ( reverse( sort( keys( global_endless_loop_replacements_with_count ) ) ) ) {
+
+globallist_of_phrase_names = sort( split( /<character_backslash>n/ , global_endless_loop_replacements_with_count{ global_replacement_count_text } ) ) ;
+
+function-generate-positions-of-listed-words  has:
+
+for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+otherwise, just sort alone
+
+C++ code:
+
+#include <algorithm> ;
+
+alphabetical order:
+void parameterized_sort_alphabetic( std::vector<std::string>& globallist_of_parameter_words ) {
+    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ) ;
+}
+
+numeric order:
+void parameterized_sort_numeric( std::vector<std::string>& globallist_of_parameter_words ) {
+    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ,
+    []( const std::string& a , const std::string& b ) { return std::stod( a ) < std::stod( b ) ; } ) ;
+}
+
+
+-------------------------------------------------
+
+currently:
+globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
+globalsequence_of_phrases = sort( globallist_of_phrases ) ;  <new_line>
+
+another case:
+for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+perl version for AI:
+$for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
+
+already changed:
+for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {
+
+
+-------------------------------------------------
+
 C++ code removes Windows \r (carriage return) character if present:
 
 if (!global_line.empty() && global_line.back() == '\r') {
@@ -47,45 +97,6 @@ void parameterized_split_into_words( const std::string& reference_to_input_text 
 }
 
 FYI: sstream handles all the whitespace types you listed (leading, trailing, multiple spaces, tabs, newlines, form feeds) automatically
-
-
--------------------------------------------------
-
-sort:
-
-required:
-#include <algorithm> ;
-
-alphabetical order:
-void parameterized_sort_alphabetic( std::vector<std::string>& globallist_of_parameter_words ) {
-    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ) ;
-}
-
-numeric order:
-void parameterized_sort_numeric( std::vector<std::string>& globallist_of_parameter_words ) {
-    std::sort( globallist_of_parameter_words.begin() , globallist_of_parameter_words.end() ,
-    []( const std::string& a , const std::string& b ) { return std::stod( a ) < std::stod( b ) ; } ) ;
-}
-
-
-How efficient is this line of C++ code compared to using the ":" operator for creating a loop?
-while ( string_stream >> word_of_text ) { ... }
-
-
--------------------------------------------------
-
-currently:
-globallist_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
-globalsequence_of_phrases = sort( globallist_of_phrases ) ;  <new_line>
-
-another case:
-for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
-
-perl version for AI:
-$for-each global_position_of_text_found ( sort( keys( %global_text_to_find_at_position ) ) ) {
-
-already changed:
-for-each-key-named phrase_name for-each-key-in-list global_number_of_times_encountered_phrase_named for-each-key-end {
 
 
 -------------------------------------------------
